@@ -138,6 +138,8 @@ export class Game implements GameActions {
     this.wyvern = new Wyvern(this.save.data.wyvern, { terrain: this.world.terrain });
     this.wyvern.setQuality(quality);
     this.rider = new Rider(this.save.data.rider, {
+      proof: this.debug.riderProof, proofMaps: this.debug.riderMaps, proofHighSize: this.debug.riderTexture,
+      proofTextureLimit: this.renderer.gl.capabilities.maxTextureSize,
       terrain: this.world.terrain, saddle: this.wyvern.saddle, events: this.events, quality,
       socket: (name, out) => this.wyvern.socket(name, out),
     });

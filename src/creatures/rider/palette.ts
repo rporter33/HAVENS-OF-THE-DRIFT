@@ -8,6 +8,7 @@
 
 import { Color } from 'three';
 import type { RiderLook } from '../../core/types';
+import { wardrobeKey } from '../../cosmetics/wardrobe';
 
 export interface RiderPalette {
   skin: Color;
@@ -37,12 +38,14 @@ export interface RiderPalette {
   cloth: Color;
   trousers: Color;
   glow: Color;
+  gearScale: Color;
+  gearLeather: Color;
 }
 
 const c = (hex: string) => new Color(hex);
 
 /** The look fields a rider color can come from. */
-export type ColorSlot = 'skin' | 'hairColor' | 'outfitPrimary' | 'outfitSecondary' | 'scarfColor' | 'capeColor';
+export type ColorSlot = 'skin' | 'hairColor' | 'outfitPrimary' | 'outfitSecondary' | 'scarfColor' | 'capeColor' | 'armorColor' | 'leatherColor';
 
 /** How a color was derived from the look's picks; constants are stored by value. */
 export type ColorRecipe =
@@ -146,7 +149,8 @@ export function evalRecipe(r: ColorRecipe, look: RiderLook, memo: Map<ColorRecip
 
 /** The look fields that change the rider's geometry; anything else is a color. */
 export function riderShapeKey(look: RiderLook): string {
-  return `${look.build}|${look.hair}|${look.outfit}|${look.headgear}|${look.scarf}|${look.cape}`;
+  return [look.build, look.hair, look.outfit, look.headgear, look.scarf, look.cape,
+    look.chest, look.shoulderDrape, look.waist, look.armWraps, look.legWraps, look.footwear, wardrobeKey(look)].join('|');
 }
 
 const pick = (look: RiderLook, s: ColorSlot) => withRecipe(c(look[s]), { k: 'slot', s });
@@ -184,5 +188,7 @@ export function riderPalette(look: RiderLook): RiderPalette {
     cloth: c('#d8c8a8'),
     trousers: mixSrgb(tone(primary, 0.5), c('#4a3e34'), 0.55),
     glow: c('#9ff0ff'),
+    gearScale: pick(look, 'armorColor'),
+    gearLeather: pick(look, 'leatherColor'),
   };
 }

@@ -101,6 +101,8 @@ export interface SaddleInfo {
    */
   straps: { name: string; line: number[] }[];
   tackRange: [number, number];
+  /** Render-only vertex ranges for direct rider/flap and foot/iron fit checks. */
+  fitRanges: { flaps: [number, number][]; irons: [number, number][] };
 }
 
 export interface SaddleFlank {
@@ -481,8 +483,8 @@ const FRAME = {
   /** Girth angle of the bars' centrelines and their padding (m). */
   barTh: 0.35,
   barThick: 0.08,
-  /** Side flaps: tilt out from vertical (along the straddling thighs), longest drop and thickness (m). */
-  flapTilt: 28 * (Math.PI / 180),
+  /** Flaps lie inside the knees, rather than following the thigh centreline through the leg. */
+  flapTilt: -8 * (Math.PI / 180),
   flapLen: 0.56,
   flapThick: 0.025,
 };
@@ -596,6 +598,7 @@ export function buildSaddle(b: GeoBuilder, rig: RigDef, id: string, res: Res = R
   const seat = new Vector3(0, topY + fit.above, rig.seat.z);
   // Hands on the neck rope where it hooks over the pommel (set below).
   const grip = new Vector3(0, 0.2, 0.42);
+  const fitRanges: SaddleInfo['fitRanges'] = { flaps: [], irons: [] };
   const p = new Vector3();
   const n = new Vector3();
 
@@ -651,8 +654,9 @@ export function buildSaddle(b: GeoBuilder, rig: RigDef, id: string, res: Res = R
       skin: hug,
       level: true,
     }, res);
-    // Side flaps: from the seat's edge down and out (along the straddling thighs) to the hide.
+    // Side flaps turn slightly inward from the seat, beneath the rider's legs, to the hide.
     for (const sx of res.tack > 0 ? [1, -1] : []) {
+      const flapStart = b.vertexCount;
       const NZ = tackN(res, 4, 2);
       const top: Vector3[] = [];
       const bot: Vector3[] = [];
@@ -708,6 +712,7 @@ export function buildSaddle(b: GeoBuilder, rig: RigDef, id: string, res: Res = R
         else b.quad(ob[i], ib[i], it[i], ot[i]);
       }
       b.end();
+      fitRanges.flaps.push([flapStart, b.vertexCount]);
     }
     // Pommel horn rising from the seat's front.
     const sP = sc - m(o.len * 0.44);
@@ -731,19 +736,22 @@ export function buildSaddle(b: GeoBuilder, rig: RigDef, id: string, res: Res = R
       // The leather hangs from the bar beside the seat, a little ahead of the knee's line.
       hide.point(barS, sx * (FRAME.barTh + 0.06), p, n);
       const top = p.clone().addScaledVector(n, 0.05).addScaledVector(UP, Math.min(0.12, lift * 0.3));
-      const eye = tread.clone().add(new Vector3(0.012 * sx, 0.2, -0.02));
+      const eye = tread.clone().add(new Vector3(0, 0.2, 0));
       const midL = top.clone().lerp(eye, 0.5).add(new Vector3(0.05 * sx, 0, 0));
       b.begin(0);
       spike(b, res.tack === 2 ? [top, top.clone().lerp(midL, 0.5), midL, midL.clone().lerp(eye, 0.5), eye] : [top, midL, eye], 0.03, skin, { region: REGION.leather, extra: [1, 0, 0, 0.5] }, sides(res, 4), new Vector3(sx, 0, 0), 0.35, 0);
       b.end();
-      // The iron: an arch from the eye down to a flat tread under the ball of the foot.
+      // The iron spans ACROSS the foot. A fore/aft hoop slices through the instep even when
+      // the ankle reaches its socket. Keep the existing tread centre/18 mm rod contact.
       const NR = tackN(res, 12, 5);
-      const ring: Vector3[] = [];
-      for (let i = 0; i < NR; i++) {
-        const a = (i / NR) * Math.PI * 2;
-        ring.push(tread.clone().add(new Vector3(0, 0.1 + Math.cos(a) * 0.1, Math.sin(a) * 0.075)));
+      const ring = [tread.clone().add(new Vector3(-0.075, 0, 0)), tread.clone().add(new Vector3(0.075, 0, 0))];
+      for (let i = 0; i <= NR; i++) {
+        const a = (i / NR) * Math.PI;
+        ring.push(tread.clone().add(new Vector3(Math.cos(a) * 0.075, 0.1 + Math.sin(a) * 0.1, 0)));
       }
+      const ironStart = b.vertexCount;
       brass(b, ring, 0.018, skin, res);
+      fitRanges.irons.push([ironStart, b.vertexCount]);
     }
   };
   const blanket = (len: number, wide: number, trim: number) =>
@@ -990,7 +998,7 @@ export function buildSaddle(b: GeoBuilder, rig: RigDef, id: string, res: Res = R
   const rx = st.halfWidth + TACK.blanket;
   const ry = st.upper + TACK.blanket;
   const flank: SaddleFlank = { cy: st.center.y - seat.y, rx, ry, sq: st.squareness };
-  return { seat, halfWidth, grip, gripSpread, flank, holds: tack.holds as SaddleInfo['holds'], straps: tack.straps, tackRange: [tackStart, tackEnd] };
+  return { seat, halfWidth, grip, gripSpread, flank, holds: tack.holds as SaddleInfo['holds'], straps: tack.straps, tackRange: [tackStart, tackEnd], fitRanges };
 }
 
 interface FrameInfo {

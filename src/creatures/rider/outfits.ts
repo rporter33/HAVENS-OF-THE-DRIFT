@@ -7,6 +7,7 @@ import type { RiderLook } from '../../core/types';
 import { B, type RigDims } from './rig';
 import { sk, sk2 } from './meshKit';
 import { torsoPoint, torsoSkin, type BodyCtx, type OutfitStyle, type Side } from './body';
+import {legSection} from './legFit';
 import { mixSrgb, tone, type RiderPalette } from './palette';
 import { armPath, block, collar, legPath, skirtPanel, strap, stud, torsoBand, torsoPanel, torsoPath, X, Y, Z, smooth } from './garments';
 
@@ -20,6 +21,12 @@ function collarUp(look: RiderLook): boolean {
 }
 
 export function outfitStyle(look: RiderLook, pal: RiderPalette, d: RigDims): OutfitStyle {
+  const style = baseOutfitStyle(look, pal, d);
+  const bootStart = style.leg.bounds[0];
+  const surface = look.outfit === 'flight' || look.outfit === 'racer' ? 'leather' : 'linen';
+  return {...style, torso:{...style.torso,surface}, arm:{...style.arm,surface}, leg:{...style.leg, bootStart, clothEnd:bootStart}};
+}
+function baseOutfitStyle(look: RiderLook, pal: RiderPalette, d: RigDims): OutfitStyle {
   switch (look.outfit) {
     case 'scout':
       return scout(look, pal, d);
@@ -61,20 +68,11 @@ function pouch(ctx: BodyCtx, y: number, th: number, inflate: number, color: Colo
 /** Boot cuff ring at s (below the hip joint) on both legs. */
 function bootCuff(ctx: BodyCtx, s: number, inflate: number, h: number, color: Color): void {
   for (const side of [1, -1] as const) {
-    const J = side > 0 ? ctx.bp.thighL : ctx.bp.thighR;
-    const r0 = ctx.legAt(s);
-    const r1 = ctx.legAt(s + h);
-    const tb = side > 0 ? B.thighL : B.thighR;
-    const sb = side > 0 ? B.shinL : B.shinR;
-    const skin = s < ctx.d.thigh + 0.05 ? sk2(tb, sb, smooth(ctx.d.thigh - 0.05, ctx.d.thigh + 0.05, s)) : sk(sb);
-    ctx.b.loft(
-      [
-        { c: new Vector3(J.x - side * 0.006, J.y - s + 0.002, J.z), ax: X, ay: Z, rx: r0.rx + inflate * 0.4, ry: r0.rf + inflate * 0.4, ryBack: r0.rb + inflate * 0.4, skin, color },
-        { c: new Vector3(J.x - side * 0.006, J.y - s, J.z), ax: X, ay: Z, rx: r0.rx + inflate, ry: r0.rf + inflate, ryBack: r0.rb + inflate, skin, color },
-        { c: new Vector3(J.x - side * 0.006, J.y - s - h, J.z), ax: X, ay: Z, rx: r1.rx + inflate * 0.9, ry: r1.rf + inflate * 0.9, ryBack: r1.rb + inflate * 0.9, skin, color },
-      ],
-      14,
-    );
+    ctx.b.loft([0,.15,.4,.75,1].map(t=>{
+      const at=s+h*t,r=legSection(ctx,at,side);
+      const lift=.002+Math.max(.003,inflate-(ctx.legStyle?.inflate(at)??0))*Math.sin(Math.PI*t);
+      return {c:r.c,ax:X,ay:Z,rx:r.rx+lift,ry:r.rf+lift,ryBack:r.rb+lift,radial:r.radial,skin:r.skin,color};
+    }),18);
   }
 }
 
@@ -125,47 +123,58 @@ function flight(look: RiderLook, pal: RiderPalette, d: RigDims): OutfitStyle {
     hand: pal.leatherDark,
     cuff: pal.leatherDark,
     foot: { color: pal.boot, sole: pal.sole },
-    extras(ctx) {
-      belt(ctx, 0.975 * d.h, 1.015 * d.h, 0.012, pal.leather, pal.brass);
-      pouch(ctx, 0.985 * d.h, PI + 0.55, 0.02, pal.leather, pal.leatherDark, 0.9);
-      // Chest strap, left shoulder to right hip, front and back.
-      const s = torsoPath(
-        ctx,
-        [
-          [1.415 * d.h, HALF - 1.25],
-          [1.33 * d.h, HALF - 0.55],
-          [1.2 * d.h, HALF + 0.2],
-          [1.04 * d.h, HALF + 1.05],
-        ],
-        0.009,
-      );
-      strap(ctx, s, 0.016, 0.003, pal.leather);
-      const sb = torsoPath(
-        ctx,
-        [
-          [1.415 * d.h, -HALF + 1.25],
-          [1.33 * d.h, -HALF + 0.55],
-          [1.2 * d.h, -HALF - 0.2],
-          [1.04 * d.h, -HALF - 1.05],
-        ],
-        0.009,
-      );
-      strap(ctx, sb, 0.016, 0.003, pal.leather);
-      const mid = s[Math.floor(s.length * 0.45)];
-      stud(ctx, mid.p.clone().addScaledVector(mid.n, 0.005), mid.n, 0.011, pal.brass, mid.skin);
-      // Shearling collar.
-      collar(ctx, {
-        h: (collarUp(look) ? 0.085 : 0.05) * d.h,
-        r0: 0.07 * d.g + 0.01,
-        flare: collarUp(look) ? 0.012 : 0.03,
-        thick: 0.018,
-        color: pal.cream,
-        bumpy: 1,
-        open: 0.25,
-      });
-      bootCuff(ctx, bootTop - 0.005, 0.016, 0.045, tone(pal.boot, 1.25));
-      // Jacket hem flare.
-      torsoBand(ctx, hem, hem + 0.035 * d.h, 0.013, pal.primary);
+    extras(ctx, part) {
+      if (!part || part === 'waist') {
+
+        belt(ctx, 0.975 * d.h, 1.015 * d.h, 0.012, pal.leather, pal.brass);
+        pouch(ctx, 0.985 * d.h, PI + 0.55, 0.02, pal.leather, pal.leatherDark, 0.9);
+      }
+      if (!part || part === 'chest') {
+        // Chest strap, left shoulder to right hip, front and back.
+        const s = torsoPath(
+          ctx,
+          [
+            [1.415 * d.h, HALF - 1.25],
+            [1.33 * d.h, HALF - 0.55],
+            [1.2 * d.h, HALF + 0.2],
+            [1.04 * d.h, HALF + 1.05],
+          ],
+          0.009,
+        );
+        strap(ctx, s, 0.016, 0.003, pal.leather);
+        const sb = torsoPath(
+          ctx,
+          [
+            [1.415 * d.h, -HALF + 1.25],
+            [1.33 * d.h, -HALF + 0.55],
+            [1.2 * d.h, -HALF - 0.2],
+            [1.04 * d.h, -HALF - 1.05],
+          ],
+          0.009,
+        );
+        strap(ctx, sb, 0.016, 0.003, pal.leather);
+        const mid = s[Math.floor(s.length * 0.45)];
+        stud(ctx, mid.p.clone().addScaledVector(mid.n, 0.005), mid.n, 0.011, pal.brass, mid.skin);
+      }
+      if (!part || part === 'shoulderDrape') {
+        // Shearling collar.
+        collar(ctx, {
+          h: (collarUp(look) ? 0.085 : 0.05) * d.h,
+          r0: 0.07 * d.g + 0.01,
+          flare: collarUp(look) ? 0.012 : 0.03,
+          thick: 0.018,
+          color: pal.cream,
+          bumpy: 1,
+          open: 0.25,
+        });
+      }
+      if (!part || part === 'footwear') {
+        bootCuff(ctx, bootTop - 0.005, 0.016, 0.045, tone(pal.boot, 1.25));
+      }
+      if (!part || part === 'top') {
+        // Jacket hem flare.
+        torsoBand(ctx, hem, hem + 0.035 * d.h, 0.013, pal.primary);
+      }
     },
   };
 }
@@ -202,41 +211,54 @@ function scout(look: RiderLook, pal: RiderPalette, d: RigDims): OutfitStyle {
     },
     hand: pal.skin,
     foot: { color: pal.leather, sole: pal.sole },
-    extras(ctx) {
-      // Jerkin: two front panels parting in a V and one across the back, open at the arms.
-      const vTop = 1.4 * d.h;
-      const vestCol = (u: number, v: number, inner: boolean) => (inner ? tone(vest, 0.7) : v > 0.92 ? tone(vest, 0.8) : vest);
-      for (const s of [1, -1]) {
-        const inner = (v: number) => HALF - s * (0.1 + 0.55 * (1 - smooth(0, 0.55, v)));
-        const outer = () => HALF - s * 1.3;
-        torsoPanel(ctx, { th0: s > 0 ? outer : inner, th1: s > 0 ? inner : outer, yTop: vTop, yBot: vestBot, inflate: 0.008, thickness: 0.008, color: vestCol });
+    extras(ctx, part) {
+      if (!part || part === 'chest') {
+
+        // Jerkin: two front panels parting in a V and one across the back, open at the arms.
+        const vTop = 1.4 * d.h;
+        const vestCol = (u: number, v: number, inner: boolean) => (inner ? tone(vest, 0.7) : v > 0.92 ? tone(vest, 0.8) : vest);
+        for (const s of [1, -1]) {
+          const inner = (v: number) => HALF - s * (0.1 + 0.55 * (1 - smooth(0, 0.55, v)));
+          const outer = () => HALF - s * 1.3;
+          torsoPanel(ctx, { th0: s > 0 ? outer : inner, th1: s > 0 ? inner : outer, yTop: vTop, yBot: vestBot, inflate: 0.008, thickness: 0.008, color: vestCol });
+        }
+        torsoPanel(ctx, { th0: () => -HALF - 1.22, th1: () => -HALF + 1.22, yTop: vTop + 0.01, yBot: vestBot, inflate: 0.008, thickness: 0.008, color: vestCol, cols: 9 });
       }
-      torsoPanel(ctx, { th0: () => -HALF - 1.22, th1: () => -HALF + 1.22, yTop: vTop + 0.01, yBot: vestBot, inflate: 0.008, thickness: 0.008, color: vestCol, cols: 9 });
-      // Tunic skirt in four panels with a contrasting hem.
-      const hem = (u: number, v: number) => (v > 0.84 ? pal.secondary : pal.primary);
-      const panels: [number, number, number][] = [
-        [HALF + 0.08, HALF + 1.5, 0.8],
-        [HALF - 1.5, HALF - 0.08, 0.8],
-        [-HALF + 0.08, -HALF + 1.5, 0.6],
-        [-HALF - 1.5, -HALF - 0.08, 0.6],
-      ];
-      for (const [a, b, f] of panels) {
-        skirtPanel(ctx, { th0: a, th1: b, yTop: waist, yBot: 0.66 * d.h, inflate: 0.01, flare: 0.12, thickness: 0.008, follow: f, color: hem });
+      if (!part || part === 'top') {
+        // Tunic skirt in four panels with a contrasting hem.
+        const hem = (u: number, v: number) => (v > 0.84 ? pal.secondary : pal.primary);
+        const panels: [number, number, number][] = [
+          [HALF + 0.08, HALF + 1.5, 0.8],
+          [HALF - 1.5, HALF - 0.08, 0.8],
+          [-HALF + 0.08, -HALF + 1.5, 0.6],
+          [-HALF - 1.5, -HALF - 0.08, 0.6],
+        ];
+        for (const [a, b, f] of panels) {
+          skirtPanel(ctx, { th0: a, th1: b, yTop: waist, yBot: 0.66 * d.h, inflate: 0.01, flare: 0.12, thickness: 0.008, follow: f, color: hem });
+        }
       }
-      belt(ctx, 0.985 * d.h, 1.02 * d.h, 0.022, pal.leather, pal.brass);
-      pouch(ctx, 0.99 * d.h, PI + 0.5, 0.03, pal.leather, pal.leatherDark);
-      pouch(ctx, 0.99 * d.h, -0.45, 0.03, pal.leather, pal.leatherDark, 0.85);
-      pouch(ctx, 0.99 * d.h, -HALF - 0.6, 0.03, tone(pal.leather, 0.9), pal.leatherDark, 0.8);
-      // Lacing at the V-neck.
-      for (let i = 0; i < 3; i++) {
-        const y = (1.26 + i * 0.035) * d.h;
-        const p = new Vector3();
-        const n = new Vector3();
-        torsoPoint(ctx, y, HALF, 0.012, p, n);
-        stud(ctx, p, n, 0.006, pal.cream, torsoSkin(ctx, y, p), 0.6);
+      if (!part || part === 'waist') {
+        belt(ctx, 0.985 * d.h, 1.02 * d.h, 0.022, pal.leather, pal.brass);
+        pouch(ctx, 0.99 * d.h, PI + 0.5, 0.03, pal.leather, pal.leatherDark);
+        pouch(ctx, 0.99 * d.h, -0.45, 0.03, pal.leather, pal.leatherDark, 0.85);
+        pouch(ctx, 0.99 * d.h, -HALF - 0.6, 0.03, tone(pal.leather, 0.9), pal.leatherDark, 0.8);
       }
-      collar(ctx, { h: (collarUp(look) ? 0.075 : 0.03) * d.h, r0: 0.064 * d.g + 0.008, flare: 0.01, thick: 0.01, color: pal.primary, open: 0.5 });
-      sleeveCuff(ctx, sleeve - 0.025, 0.03, 0.012, pal.primaryDark);
+      if (!part || part === 'chest') {
+        // Lacing at the V-neck.
+        for (let i = 0; i < 3; i++) {
+          const y = (1.26 + i * 0.035) * d.h;
+          const p = new Vector3();
+          const n = new Vector3();
+          torsoPoint(ctx, y, HALF, 0.012, p, n);
+          stud(ctx, p, n, 0.006, pal.cream, torsoSkin(ctx, y, p), 0.6);
+        }
+      }
+      if (!part || part === 'shoulderDrape') {
+        collar(ctx, { h: (collarUp(look) ? 0.075 : 0.03) * d.h, r0: 0.064 * d.g + 0.008, flare: 0.01, thick: 0.01, color: pal.primary, open: 0.5 });
+      }
+      if (!part || part === 'top') {
+        sleeveCuff(ctx, sleeve - 0.025, 0.03, 0.012, pal.primaryDark);
+      }
     },
   };
 }
@@ -265,47 +287,62 @@ function courier(look: RiderLook, pal: RiderPalette, d: RigDims): OutfitStyle {
     hand: pal.leatherDark,
     cuff: pal.leatherDark,
     foot: { color: pal.boot, sole: pal.sole },
-    extras(ctx) {
-      // Front skirt of the coat: two panels that part over the legs. The back is cloth (tails).
-      const col = (u: number, v: number, inner: boolean) => (inner ? pal.secondaryDark : v > 0.9 ? pal.primaryDark : pal.primary);
-      skirtPanel(ctx, { th0: HALF + 0.06, th1: HALF + 1.62, yTop: 0.99 * d.h, yBot: 0.5 * d.h, inflate: 0.016, flare: 0.1, thickness: 0.01, follow: 0.92, color: col, rows: 7 });
-      skirtPanel(ctx, { th0: HALF - 1.62, th1: HALF - 0.06, yTop: 0.99 * d.h, yBot: 0.5 * d.h, inflate: 0.016, flare: 0.1, thickness: 0.01, follow: 0.92, color: col, rows: 7 });
-      // Sash.
-      torsoBand(ctx, 0.985 * d.h, 1.035 * d.h, 0.024, pal.secondary);
-      // Double row of buttons.
-      for (let i = 0; i < 4; i++) {
-        const y = (1.08 + i * 0.075) * d.h;
-        for (const o of [-0.32, 0.32]) {
-          const p = new Vector3();
-          const n = new Vector3();
-          torsoPoint(ctx, y, HALF + o * (1 - i * 0.12), 0.016, p, n);
-          stud(ctx, p, n, 0.0095, pal.brass, torsoSkin(ctx, y, p), 0.5);
-        }
+    extras(ctx, part) {
+      if (!part || part === 'top') {
+
+        // Front skirt of the coat: two panels that part over the legs. The back is cloth (tails).
+        const col = (u: number, v: number, inner: boolean) => (inner ? pal.secondaryDark : v > 0.9 ? pal.primaryDark : pal.primary);
+        skirtPanel(ctx, { th0: HALF + 0.06, th1: HALF + 1.62, yTop: 0.99 * d.h, yBot: 0.5 * d.h, inflate: 0.016, flare: 0.1, thickness: 0.01, follow: 0.92, color: col, rows: 7 });
+        skirtPanel(ctx, { th0: HALF - 1.62, th1: HALF - 0.06, yTop: 0.99 * d.h, yBot: 0.5 * d.h, inflate: 0.016, flare: 0.1, thickness: 0.01, follow: 0.92, color: col, rows: 7 });
       }
-      // Lapel line: a raised placket down the front.
-      strap(ctx, torsoPath(ctx, [
-        [1.4 * d.h, HALF - 0.55],
-        [1.24 * d.h, HALF - 0.1],
-        [1.04 * d.h, HALF - 0.08],
-      ], 0.016), 0.012, 0.003, pal.primaryDark);
-      // High standing collar, lined.
-      collar(ctx, {
-        h: (collarUp(look) ? 0.12 : 0.085) * d.h,
-        r0: 0.07 * d.g + 0.012,
-        flare: 0.035,
-        thick: 0.008,
-        color: pal.primary,
-        inner: pal.secondary,
-        open: 0.55,
-      });
-      // Turned-back cuffs.
-      sleeveCuff(ctx, cuffS, 0.075, 0.022, pal.secondary, 0.008);
-      bootCuff(ctx, bootTop - 0.004, 0.018, 0.05, tone(pal.boot, 1.2));
-      // Epaulettes.
-      for (const side of [1, -1] as const) {
-        const S = side > 0 ? ctx.bp.upperArmL : ctx.bp.upperArmR;
-        const p = new Vector3(S.x - side * 0.05, S.y + 0.045, S.z - 0.005);
-        ctx.b.bar(p.clone().add(new Vector3(side * 0.045, -0.008, 0)), p.clone().add(new Vector3(-side * 0.05, 0.008, 0)), Z, 0.032, 0.007, sk2(B.chest, side > 0 ? B.clavL : B.clavR, 0.6), pal.secondary, { exp: 3 });
+      if (!part || part === 'waist') {
+        // Sash.
+        torsoBand(ctx, 0.985 * d.h, 1.035 * d.h, 0.024, pal.secondary);
+      }
+      if (!part || part === 'top') {
+        // Double row of buttons.
+        for (let i = 0; i < 4; i++) {
+          const y = (1.08 + i * 0.075) * d.h;
+          for (const o of [-0.32, 0.32]) {
+            const p = new Vector3();
+            const n = new Vector3();
+            torsoPoint(ctx, y, HALF + o * (1 - i * 0.12), 0.016, p, n);
+            stud(ctx, p, n, 0.0095, pal.brass, torsoSkin(ctx, y, p), 0.5);
+          }
+        }
+        // Lapel line: a raised placket down the front.
+        strap(ctx, torsoPath(ctx, [
+          [1.4 * d.h, HALF - 0.55],
+          [1.24 * d.h, HALF - 0.1],
+          [1.04 * d.h, HALF - 0.08],
+        ], 0.016), 0.012, 0.003, pal.primaryDark);
+      }
+      if (!part || part === 'shoulderDrape') {
+        // High standing collar, lined.
+        collar(ctx, {
+          h: (collarUp(look) ? 0.12 : 0.085) * d.h,
+          r0: 0.07 * d.g + 0.012,
+          flare: 0.035,
+          thick: 0.008,
+          color: pal.primary,
+          inner: pal.secondary,
+          open: 0.55,
+        });
+      }
+      if (!part || part === 'armWraps') {
+        // Turned-back cuffs.
+        sleeveCuff(ctx, cuffS, 0.075, 0.022, pal.secondary, 0.008);
+      }
+      if (!part || part === 'footwear') {
+        bootCuff(ctx, bootTop - 0.004, 0.018, 0.05, tone(pal.boot, 1.2));
+      }
+      if (!part || part === 'shoulderDrape') {
+        // Epaulettes.
+        for (const side of [1, -1] as const) {
+          const S = side > 0 ? ctx.bp.upperArmL : ctx.bp.upperArmR;
+          const p = new Vector3(S.x - side * 0.05, S.y + 0.045, S.z - 0.005);
+          ctx.b.bar(p.clone().add(new Vector3(side * 0.045, -0.008, 0)), p.clone().add(new Vector3(-side * 0.05, 0.008, 0)), Z, 0.032, 0.007, sk2(B.chest, side > 0 ? B.clavL : B.clavR, 0.6), pal.secondary, { exp: 3 });
+        }
       }
     },
   };
@@ -340,30 +377,41 @@ function racer(look: RiderLook, pal: RiderPalette, d: RigDims): OutfitStyle {
     hand: dark,
     cuff: pal.secondary,
     foot: { color: dark, sole: pal.secondary },
-    extras(ctx) {
-      // Chevron across the chest and a matching one on the back.
-      for (const sgn of [1, -1]) {
-        const c = sgn * HALF;
-        for (const k of [-1, 1]) {
-          strap(ctx, torsoPath(ctx, [
-            [1.33 * d.h, c + k * 0.95],
-            [1.2 * d.h, c + k * 0.02],
-          ], 0.003, 0.02), 0.017, 0.0022, pal.secondary);
+    extras(ctx, part) {
+      if (!part || part === 'chest') {
+
+        // Chevron across the chest and a matching one on the back.
+        for (const sgn of [1, -1]) {
+          const c = sgn * HALF;
+          for (const k of [-1, 1]) {
+            strap(ctx, torsoPath(ctx, [
+              [1.33 * d.h, c + k * 0.95],
+              [1.2 * d.h, c + k * 0.02],
+            ], 0.003, 0.02), 0.017, 0.0022, pal.secondary);
+          }
         }
       }
-      // Stripes down the outside of the arms and legs.
-      for (const side of [1, -1] as const) {
-        const th = side > 0 ? 0 : PI;
-        strap(ctx, armPath(ctx, side, 0.02, d.upperArm + d.foreArm - 0.06, th, 0.003), 0.009, 0.0018, pal.secondary);
-        strap(ctx, legPath(ctx, side, 0.0, d.thigh + 0.18 * d.h, th, 0.003), 0.011, 0.0018, pal.secondary);
+      if (!part || part === 'trousers' || part === 'armWraps') {
+        // Stripes down the outside of the arms and legs.
+        for (const side of [1, -1] as const) {
+          const th = side > 0 ? 0 : PI;
+          if (!part || part === 'armWraps') strap(ctx, armPath(ctx, side, part ? d.upperArm + .02 * d.h : 0.02, d.upperArm + d.foreArm - 0.06, th, 0.003), 0.009, 0.0018, pal.secondary);
+          if (!part || part === 'trousers') strap(ctx, legPath(ctx, side, 0.0, d.thigh + 0.18 * d.h, th, 0.003), 0.011, 0.0018, pal.secondary);
+        }
       }
-      collar(ctx, { h: (collarUp(look) ? 0.07 : 0.035) * d.h, r0: 0.058 * d.g + 0.004, flare: 0.004, thick: 0.006, color: pal.primaryDark });
-      belt(ctx, 0.985 * d.h, 1.01 * d.h, 0.006, dark, pal.secondary);
-      // Number patch on the left breast.
-      const p = new Vector3();
-      const n = new Vector3();
-      torsoPoint(ctx, 1.27 * d.h, HALF - 0.62, 0.004, p, n);
-      block(ctx, p, n, Y, new Vector3(0.05, 0.04, 0.004), pal.primaryLight, torsoSkin(ctx, 1.27 * d.h, p));
+      if (!part || part === 'shoulderDrape') {
+        collar(ctx, { h: (collarUp(look) ? 0.07 : 0.035) * d.h, r0: 0.058 * d.g + 0.004, flare: 0.004, thick: 0.006, color: pal.primaryDark });
+      }
+      if (!part || part === 'waist') {
+        belt(ctx, 0.985 * d.h, 1.01 * d.h, 0.006, dark, pal.secondary);
+      }
+      if (!part || part === 'chest') {
+        // Number patch on the left breast.
+        const p = new Vector3();
+        const n = new Vector3();
+        torsoPoint(ctx, 1.27 * d.h, HALF - 0.62, 0.004, p, n);
+        block(ctx, p, n, Y, new Vector3(0.05, 0.04, 0.004), pal.primaryLight, torsoSkin(ctx, 1.27 * d.h, p));
+      }
     },
   };
 }
@@ -401,87 +449,97 @@ function cartographer(look: RiderLook, pal: RiderPalette, d: RigDims): OutfitSty
     },
     hand: pal.skin,
     foot: { color: pal.leather, sole: pal.sole },
-    extras(ctx) {
-      // Four long robe panels with slits at the sides, front and back.
-      const panels: [number, number, number][] = [
-        [HALF + 0.05, HALF + 1.52, 0.92],
-        [HALF - 1.52, HALF - 0.05, 0.92],
-        [-HALF + 0.05, -HALF + 1.52, 0.6],
-        [-HALF - 1.52, -HALF - 0.05, 0.6],
-      ];
-      for (const [a, b, f] of panels) {
-        skirtPanel(ctx, { th0: a, th1: b, yTop: 1.0 * d.h, yBot: 0.36 * d.h, inflate: 0.016, flare: 0.13, thickness: 0.009, follow: f, rows: 8, color: (u, v, inner) => (inner ? pal.primaryDark : embroidery(u, v)) });
-      }
-      // Embroidered front opening.
-      strap(ctx, torsoPath(ctx, [
-        [1.43 * d.h, HALF],
-        [1.0 * d.h, HALF],
-      ], 0.014), 0.024, 0.003, trim);
-      // Sash with hanging ends.
-      torsoBand(ctx, 0.98 * d.h, 1.04 * d.h, 0.026, trim);
-      for (const [o, len] of [
-        [0.18, 0.2],
-        [0.3, 0.16],
-      ]) {
-        const pts = [];
-        for (let i = 0; i <= 4; i++) {
-          const y = 0.99 * d.h - (len * i) / 4;
-          const p = new Vector3();
-          const n = new Vector3();
-          torsoPoint(ctx, Math.max(y, 0.93 * d.h), PI + o, 0.04, p, n);
-          p.y = y;
-          pts.push({ p, n, skin: sk2(B.hips, B.thighR, 0.3 * (i / 4)) });
+    extras(ctx, part) {
+      if (!part || part === 'top') {
+
+        // Four long robe panels with slits at the sides, front and back.
+        const panels: [number, number, number][] = [
+          [HALF + 0.05, HALF + 1.52, 0.92],
+          [HALF - 1.52, HALF - 0.05, 0.92],
+          [-HALF + 0.05, -HALF + 1.52, 0.6],
+          [-HALF - 1.52, -HALF - 0.05, 0.6],
+        ];
+        for (const [a, b, f] of panels) {
+          skirtPanel(ctx, { th0: a, th1: b, yTop: 1.0 * d.h, yBot: 0.36 * d.h, inflate: 0.016, flare: 0.13, thickness: 0.009, follow: f, rows: 8, color: (u, v, inner) => (inner ? pal.primaryDark : embroidery(u, v)) });
         }
-        strap(ctx, pts, 0.022, 0.003, tone(trim, 0.9));
+        // Embroidered front opening.
+        strap(ctx, torsoPath(ctx, [
+          [1.43 * d.h, HALF],
+          [1.0 * d.h, HALF],
+        ], 0.014), 0.024, 0.003, trim);
       }
-      // Mantle collar with a compass-star clasp.
-      collar(ctx, { h: (collarUp(look) ? 0.08 : 0.04) * d.h, r0: 0.075 * d.g + 0.012, flare: 0.06, thick: 0.01, color: trim, inner: pal.primaryDark, open: 0.45 });
-      const p = new Vector3();
-      const n = new Vector3();
-      torsoPoint(ctx, 1.35 * d.h, HALF, 0.018, p, n);
-      const s = torsoSkin(ctx, 1.35 * d.h, p);
-      const rot = new Quaternion();
-      for (let i = 0; i < 4; i++) {
-        rot.setFromAxisAngle(n, (i * PI) / 4);
-        const dir = new Vector3(0, 1, 0).applyQuaternion(rot);
-        const len = i % 2 === 0 ? 0.026 : 0.016;
-        ctx.b.bar(p.clone().addScaledVector(dir, len), p.clone().addScaledVector(dir, -len), n, 0.0035, 0.003, s, pal.brass, { exp: 2 });
-      }
-      // Bell sleeves.
-      for (const side of [1, -1] as const) {
-        const S = side > 0 ? ctx.bp.upperArmL : ctx.bp.upperArmR;
-        const fo = side > 0 ? B.foreArmL : B.foreArmR;
-        const up = side > 0 ? B.upperArmL : B.upperArmR;
-        const rings = [];
-        const s0 = d.upperArm - 0.02;
-        const s1 = d.upperArm + d.foreArm + 0.01;
-        for (let i = 0; i <= 5; i++) {
-          const f = i / 5;
-          const ss = s0 + (s1 - s0) * f;
-          const a = ctx.armAt(Math.min(ss, s1 - 0.02));
-          const r = a.rx + 0.026 + 0.05 * f * f;
-          rings.push({ c: new Vector3(S.x + side * 0.004 * f, S.y - ss, S.z - 0.012 * f), ax: X, ay: Z, rx: r, ry: r * 1.08 + 0.008 * f, skin: i === 0 ? sk2(up, fo, 0.5) : sk(fo), color: i === 5 ? trim : pal.primary });
+      if (!part || part === 'waist') {
+        // The wrapped waist stays fitted; its two hanging ends use localized cloth.
+        torsoBand(ctx, 0.98 * d.h, 1.04 * d.h, 0.026, trim);
+        for (const [o, len] of [
+          [0.18, 0.2],
+          [0.3, 0.16],
+        ]) {
+          skirtPanel(ctx,{th0:PI+o-.075,th1:PI+o+.075,yTop:.99*d.h,yBot:(.99-len)*d.h,
+            inflate:.04,flare:.04,thickness:.003,follow:.3,cols:2,rows:6,
+            color:()=>tone(trim,.9)});
         }
-        const inner = rings
-          .slice()
-          .reverse()
-          .map((r, i) => ({ ...r, rx: r.rx - 0.006, ry: r.ry - 0.006, color: i < 1 ? trim : pal.primaryDark }));
-        ctx.b.loft([...rings, ...inner], 14);
       }
-      // A map case slung across the back.
-      const a = torsoPoint(ctx, 1.06 * d.h, -HALF - 0.75, 0.06, new Vector3());
-      const b = torsoPoint(ctx, 1.37 * d.h, -HALF + 0.75, 0.06, new Vector3());
-      const dir = b.clone().sub(a).normalize();
-      const caseSkin = sk2(B.spine, B.chest, 0.6);
-      ctx.b.bar(a, b, X, 0.035, 0.035, caseSkin, pal.leather, { exp: 2, seg: 12 });
-      ctx.b.bar(a.clone().addScaledVector(dir, -0.012), a.clone().addScaledVector(dir, 0.03), X, 0.039, 0.039, caseSkin, pal.brass, { exp: 2, seg: 12 });
-      ctx.b.bar(b.clone().addScaledVector(dir, -0.03), b.clone().addScaledVector(dir, 0.012), X, 0.039, 0.039, caseSkin, pal.brass, { exp: 2, seg: 12 });
-      strap(ctx, torsoPath(ctx, [
-        [1.41 * d.h, -HALF + 1.15],
-        [1.33 * d.h, HALF - 0.6],
-        [1.15 * d.h, HALF + 0.35],
-        [1.0 * d.h, HALF + 1.2],
-      ], 0.016), 0.013, 0.003, pal.leather);
+      if (!part || part === 'shoulderDrape') {
+        // Mantle collar with a compass-star clasp.
+        collar(ctx, { h: (collarUp(look) ? 0.08 : 0.04) * d.h, r0: 0.075 * d.g + 0.012, flare: 0.06, thick: 0.01, color: trim, inner: pal.primaryDark, open: 0.45 });
+        const p = new Vector3();
+        const n = new Vector3();
+        torsoPoint(ctx, 1.35 * d.h, HALF, 0.018, p, n);
+        const s = torsoSkin(ctx, 1.35 * d.h, p);
+        const rot = new Quaternion();
+        for (let i = 0; i < 4; i++) {
+          rot.setFromAxisAngle(n, (i * PI) / 4);
+          const dir = new Vector3(0, 1, 0).applyQuaternion(rot);
+          const len = i % 2 === 0 ? 0.026 : 0.016;
+          ctx.b.bar(p.clone().addScaledVector(dir, len), p.clone().addScaledVector(dir, -len), n, 0.0035, 0.003, s, pal.brass, { exp: 2 });
+        }
+      }
+      if (!part || part === 'armWraps') {
+        // Sewn bell sleeves: attached elbow ring, free rounded cuff, bounded forearm guide.
+        for (const side of [1, -1] as const) {
+          const S = side > 0 ? ctx.bp.upperArmL : ctx.bp.upperArmR;
+          const fo = side > 0 ? B.foreArmL : B.foreArmR;
+          const rest:Vector3[]=[],anchorBone:number[]=[],guideSkin:number[][]=[];
+          const cols=13,rows=6;
+          const s0 = d.upperArm + 0.015;
+          const s1 = d.upperArm + d.foreArm + 0.01;
+          for (let i = 0; i < rows; i++) {
+            const f = i / (rows-1);
+            const ss = s0 + (s1 - s0) * f;
+            const a = ctx.armAt(Math.min(ss, s1 - 0.02));
+            const r = a.rx + 0.02 + 0.045 * smooth(0,1,f);
+            for(let c=0;c<cols;c++) {
+              const th=c/(cols-1)*Math.PI*2,fold=.004*Math.sin(f*Math.PI)*Math.cos(th*6);
+              rest.push(new Vector3(S.x+side*.004*f+Math.cos(th)*(r+fold),S.y-ss,S.z-.012*f+Math.sin(th)*(r*1.08+.008*f+fold)));
+              anchorBone.push(i===0?fo:-1);guideSkin.push([fo,1]);
+            }
+          }
+          ctx.garmentCloth.push({name:`sleeve-cartographer-${side}`,cols,rows,rest,anchorBone,guideSkin,
+            config:{drag:.55,dragTangent:.12,dragQuad:.2,damping:5,bend:.7,iterations:5,radius:.006,
+              flutter:5,flutterHz:2.2,dragLow:.6,flutterFloor:.1,contactFriction:.2,
+              poseStiffness:100,poseRadius:.035*d.h,sewEdges:true},
+            colliders:[side===1?'armL':'armR','chest','belly','mount'],
+            render:{kind:'sheet',color:pal.primary,trim,pattern:'garment',subdiv:2,proofLinen:true,
+              colorAt:(_u,v)=>v>.9?trim:pal.primary}});
+        }
+      }
+      if (!part || part === 'chest') {
+        // A map case slung across the back.
+        const a = torsoPoint(ctx, 1.06 * d.h, -HALF - 0.75, 0.06, new Vector3());
+        const b = torsoPoint(ctx, 1.37 * d.h, -HALF + 0.75, 0.06, new Vector3());
+        const dir = b.clone().sub(a).normalize();
+        const caseSkin = sk2(B.spine, B.chest, 0.6);
+        ctx.b.bar(a, b, X, 0.035, 0.035, caseSkin, pal.leather, { exp: 2, seg: 12 });
+        ctx.b.bar(a.clone().addScaledVector(dir, -0.012), a.clone().addScaledVector(dir, 0.03), X, 0.039, 0.039, caseSkin, pal.brass, { exp: 2, seg: 12 });
+        ctx.b.bar(b.clone().addScaledVector(dir, -0.03), b.clone().addScaledVector(dir, 0.012), X, 0.039, 0.039, caseSkin, pal.brass, { exp: 2, seg: 12 });
+        strap(ctx, torsoPath(ctx, [
+          [1.41 * d.h, -HALF + 1.15],
+          [1.33 * d.h, HALF - 0.6],
+          [1.15 * d.h, HALF + 0.35],
+          [1.0 * d.h, HALF + 1.2],
+        ], 0.016), 0.013, 0.003, pal.leather);
+      }
     },
   };
 }
@@ -518,78 +576,95 @@ function skyknight(look: RiderLook, pal: RiderPalette, d: RigDims): OutfitStyle 
     hand: pal.steelDark,
     cuff: steel,
     foot: { color: pal.steelDark, sole: pal.sole },
-    extras(ctx) {
-      // Tabard skirt front and back, edged in the trim color.
-      const tab = (u: number, v: number, inner: boolean) => (inner ? pal.primaryDark : u < 0.07 || u > 0.93 || v > 0.9 ? trim : pal.primary);
-      skirtPanel(ctx, { th0: HALF - 0.7, th1: HALF + 0.7, yTop: 0.99 * d.h, yBot: 0.6 * d.h, inflate: 0.02, flare: 0.05, thickness: 0.008, follow: 0.6, color: tab });
-      skirtPanel(ctx, { th0: -HALF - 0.7, th1: -HALF + 0.7, yTop: 0.99 * d.h, yBot: 0.6 * d.h, inflate: 0.02, flare: 0.05, thickness: 0.008, follow: 0.35, color: tab });
-      // Faulds (hip plates).
-      for (const side of [1, -1] as const) {
-        skirtPanel(ctx, {
-          th0: side > 0 ? -0.62 : PI - 0.62,
-          th1: side > 0 ? 0.62 : PI + 0.62,
-          yTop: 0.98 * d.h,
-          yBot: 0.78 * d.h,
-          inflate: 0.018,
-          flare: 0.1,
-          thickness: 0.01,
-          follow: 0.6,
-          rows: 3,
-          cols: 5,
-          color: (u, v) => (v > 0.66 ? trim : steel),
-        });
+    extras(ctx, part) {
+      if (!part || part === 'top') {
+
+        // Tabard skirt front and back, edged in the trim color.
+        const tab = (u: number, v: number, inner: boolean) => (inner ? pal.primaryDark : u < 0.07 || u > 0.93 || v > 0.9 ? trim : pal.primary);
+        skirtPanel(ctx, { th0: HALF - 0.7, th1: HALF + 0.7, yTop: 0.99 * d.h, yBot: 0.6 * d.h, inflate: 0.02, flare: 0.05, thickness: 0.008, follow: 0.6, color: tab });
+        skirtPanel(ctx, { th0: -HALF - 0.7, th1: -HALF + 0.7, yTop: 0.99 * d.h, yBot: 0.6 * d.h, inflate: 0.02, flare: 0.05, thickness: 0.008, follow: 0.35, color: tab });
       }
-      belt(ctx, 0.98 * d.h, 1.02 * d.h, 0.026, pal.leatherDark, pal.brass);
-      // Emblem on the chest: a stylized wing.
-      const p = new Vector3();
-      const n = new Vector3();
-      torsoPoint(ctx, 1.22 * d.h, HALF, 0.017, p, n);
-      const s = torsoSkin(ctx, 1.22 * d.h, p);
-      for (let i = 0; i < 4; i++) {
-        for (const k of [-1, 1]) {
-          const a = 0.35 + i * 0.28;
-          const dir = new Vector3(k * Math.sin(a), Math.cos(a), 0);
-          const len = 0.06 - i * 0.009;
-          ctx.b.bar(p.clone().addScaledVector(dir, 0.012), p.clone().addScaledVector(dir, 0.012 + len), n, 0.007 - i * 0.0008, 0.0025, s, trim, { exp: 2 });
-        }
-      }
-      stud(ctx, p, n, 0.014, trim, s, 0.5);
-      // Gorget.
-      collar(ctx, { h: (collarUp(look) ? 0.07 : 0.045) * d.h, r0: 0.07 * d.g + 0.016, flare: 0.012, thick: 0.01, color: steel, inner: pal.steelDark });
-      // Pauldrons: three overlapping lames, the last trimmed.
-      for (const side of [1, -1] as const) {
-        const S = side > 0 ? ctx.bp.upperArmL : ctx.bp.upperArmR;
-        const clav = side > 0 ? B.clavL : B.clavR;
-        const up = side > 0 ? B.upperArmL : B.upperArmR;
-        for (let i = 0; i < 3; i++) {
-          const r = (0.088 - i * 0.008) * (0.6 + 0.4 * d.w);
-          const c = new Vector3(S.x + side * (0.008 + i * 0.01), S.y + 0.03 - i * 0.042, S.z - 0.004);
-          const rot = new Quaternion().setFromAxisAngle(Z, side * (0.35 + i * 0.12));
-          ctx.b.ellipsoid(c, new Vector3(r, r * 0.62, r * 1.05), i === 0 ? sk(clav) : sk2(clav, up, 0.3 + i * 0.2), i === 2 ? trim : steel, {
-            rot,
-            lat: 8,
-            lon: 14,
-            deform: (u) => {
-              // Hollow the underside so the lames read as shells.
-              if (u.y < 0) u.y *= 0.25;
-            },
+      if (!part || part === 'chest') {
+        // Faulds (hip plates).
+        for (const side of [1, -1] as const) {
+          skirtPanel(ctx, {
+            th0: side > 0 ? -0.62 : PI - 0.62,
+            th1: side > 0 ? 0.62 : PI + 0.62,
+            yTop: 0.98 * d.h,
+            yBot: 0.78 * d.h,
+            inflate: 0.018,
+            flare: 0.1,
+            thickness: 0.01,
+            follow: 0.6,
+            rows: 3,
+            cols: 5,
+            rigid: true,
+            color: (u, v) => (v > 0.66 ? trim : steel),
           });
         }
       }
-      // Knee cops.
-      for (const side of [1, -1] as const) {
-        const J = side > 0 ? ctx.bp.thighL : ctx.bp.thighR;
-        const r = ctx.legAt(d.thigh);
-        ctx.b.ellipsoid(
-          new Vector3(J.x - side * 0.006, J.y - d.thigh + 0.01, J.z + r.rf * 0.55),
-          new Vector3(r.rx * 1.05, 0.05, r.rf * 0.75),
-          sk2(side > 0 ? B.thighL : B.thighR, side > 0 ? B.shinL : B.shinR, 0.5),
-          steel,
-          { lat: 6, lon: 10 },
-        );
+      if (!part || part === 'waist') {
+        belt(ctx, 0.98 * d.h, 1.02 * d.h, 0.026, pal.leatherDark, pal.brass);
       }
-      sleeveCuff(ctx, vambrace - 0.005, 0.02, 0.018, trim);
-      bootCuff(ctx, bootTop - 0.004, 0.022, 0.03, trim);
+      if (!part || part === 'chest') {
+        // Emblem on the chest: a stylized wing.
+        const p = new Vector3();
+        const n = new Vector3();
+        torsoPoint(ctx, 1.22 * d.h, HALF, part === 'chest' ? .03 : .017, p, n);
+        const s = torsoSkin(ctx, 1.22 * d.h, p);
+        for (let i = 0; i < 4; i++) {
+          for (const k of [-1, 1]) {
+            const a = 0.35 + i * 0.28;
+            const dir = new Vector3(k * Math.sin(a), Math.cos(a), 0);
+            const len = 0.06 - i * 0.009;
+            ctx.b.bar(p.clone().addScaledVector(dir, 0.012), p.clone().addScaledVector(dir, 0.012 + len), n, 0.007 - i * 0.0008, 0.0025, s, trim, { exp: 2 });
+          }
+        }
+        stud(ctx, p, n, 0.014, trim, s, 0.5);
+      }
+      if (!part || part === 'shoulderDrape') {
+        // Gorget.
+        collar(ctx, { h: (collarUp(look) ? 0.07 : 0.045) * d.h, r0: 0.07 * d.g + 0.016, flare: 0.012, thick: 0.01, color: steel, inner: pal.steelDark });
+        // Pauldrons: three overlapping lames, the last trimmed.
+        for (const side of [1, -1] as const) {
+          const S = side > 0 ? ctx.bp.upperArmL : ctx.bp.upperArmR;
+          const clav = side > 0 ? B.clavL : B.clavR;
+          const up = side > 0 ? B.upperArmL : B.upperArmR;
+          for (let i = 0; i < 3; i++) {
+            const r = (0.088 - i * 0.008) * (0.6 + 0.4 * d.w);
+            const c = new Vector3(S.x + side * (0.008 + i * 0.01), S.y + 0.03 - i * 0.042, S.z - 0.004);
+            const rot = new Quaternion().setFromAxisAngle(Z, side * (0.35 + i * 0.12));
+            ctx.b.ellipsoid(c, new Vector3(r, r * 0.62, r * 1.05), i === 0 ? sk(clav) : sk2(clav, up, 0.3 + i * 0.2), i === 2 ? trim : steel, {
+              rot,
+              lat: 8,
+              lon: 14,
+              deform: (u) => {
+                // Hollow the underside so the lames read as shells.
+                if (u.y < 0) u.y *= 0.25;
+              },
+            });
+          }
+        }
+      }
+      if (!part || part === 'legWraps') {
+        // Knee cops.
+        for (const side of [1, -1] as const) {
+          const r = legSection(ctx,d.thigh,side);
+          ctx.b.ellipsoid(
+            r.c.clone().add(new Vector3(0,.008*d.h,r.rf)),
+            new Vector3(r.rx*.96,.038*d.h,.017*d.h),
+            r.skin,
+            steel,
+            { lat: 8, lon: 14 },
+          );
+        }
+      }
+      if (!part || part === 'armWraps') {
+        sleeveCuff(ctx, vambrace - 0.005, 0.02, 0.018, trim);
+      }
+      if (!part || part === 'footwear') {
+        bootCuff(ctx, bootTop - 0.004, 0.022, 0.03, trim);
+      }
     },
   };
 }

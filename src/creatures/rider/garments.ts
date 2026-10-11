@@ -5,6 +5,7 @@ import { Color, Quaternion, Vector3 } from 'three';
 import { B } from './rig';
 import { sk, sk2, type RingSpec, type SkinSpec } from './meshKit';
 import { torsoPoint, torsoSkin, type BodyCtx, type Side } from './body';
+import {legPoint} from './legFit';
 
 const X = new Vector3(1, 0, 0);
 const Y = new Vector3(0, 1, 0);
@@ -89,7 +90,7 @@ export function strap(ctx: BodyCtx, pts: StrapPoint[], halfW: number, halfT: num
       ay: bi,
       rx: halfT,
       ry: halfW,
-      exp: 6,
+      exp: 3,
       skin: pts[i].skin,
       color: typeof color === 'function' ? color(t) : color,
       glow,
@@ -133,6 +134,7 @@ export function torsoPanel(
     yBot: number;
     inflate: number;
     thickness: number;
+    folds?: number;
     cols?: number;
     rows?: number;
     color: (u: number, v: number, inner: boolean) => Color;
@@ -144,7 +146,8 @@ export function torsoPanel(
     (u, v, p, n) => {
       const y = o.yTop + (o.yBot - o.yTop) * v;
       const th = o.th0(v) + (o.th1(v) - o.th0(v)) * u;
-      torsoPoint(ctx, y, th, o.inflate + o.thickness, p, n);
+      const fold = (o.folds ?? 0) * Math.sin(v * Math.PI) * Math.cos(u * Math.PI * 4 + v * 2);
+      torsoPoint(ctx, y, th, o.inflate + o.thickness + fold, p, n);
     },
     o.thickness,
     (u, v) => {
@@ -168,10 +171,11 @@ export function block(ctx: BodyCtx, p: Vector3, n: Vector3, up: Vector3, size: V
   const side = new Vector3().crossVectors(up, nn).normalize();
   const upv = new Vector3().crossVectors(nn, side).normalize();
   const c = p.clone().addScaledVector(nn, size.z * 0.5);
-  ctx.b.bar(c.clone().addScaledVector(upv, size.y * 0.5), c.clone().addScaledVector(upv, -size.y * 0.5), side, size.x * 0.5, size.z * 0.5, skin, color, {
-    exp: 4,
-    glow,
-  });
+  ctx.b.loft([0,.07,.18,.82,.93,1].map(t=>{
+    const round=t===0||t===1?.72:t===.07||t===.93?.96:1;
+    return {c:c.clone().addScaledVector(upv,size.y*(.5-t)),ax:side,ay:nn,
+      rx:size.x*.5*round,ry:size.z*.5*round,exp:3,skin,color,glow};
+  }),12,{capStart:true,capEnd:true,capBulge:.01});
 }
 
 export interface PanelOpts {
@@ -187,8 +191,15 @@ export interface PanelOpts {
   thickness: number;
   /** How much the hem follows the thighs (front panels more than back). */
   follow?: number;
+  /** Soft hem turn; all hanging textiles have rounded corners by default. */
+  roundHem?: number;
+  /** Broad rest folds, with small defaults for hanging textiles. */
+  folds?: number;
+  hemSlope?: number;
   cols?: number;
   rows?: number;
+  /** Armor plates retain rig-driven support; hanging textile panels use localized cloth. */
+  rigid?: boolean;
   color(u: number, v: number, inner: boolean): Color;
 }
 
@@ -217,25 +228,32 @@ export function skirtPanel(ctx: BodyCtx, o: PanelOpts): void {
   const cols = o.cols ?? 6;
   const rows = o.rows ?? 6;
   const follow = o.follow ?? 0.75;
-  const e = 2.25;
-  ctx.b.sheet(
-    cols,
-    rows,
-    (u, v, p, n) => {
+  const moving = !o.rigid;
+  const e = moving ? 2 : 2.25;
+  const sample = (u: number, v: number, p: Vector3, n: Vector3) => {
       const th = o.th0 + (o.th1 - o.th0) * u;
-      const y = o.yTop + (o.yBot - o.yTop) * v;
+      const round = o.roundHem ?? (moving ? .022 * ctx.d.h : 0);
+      const corner = round * (Math.exp(-u * 16) + Math.exp(-(1 - u) * 16)) * smooth(.65, 1, v);
+      const y = o.yTop + (o.yBot - o.yTop) * v + corner + (o.hemSlope ?? 0) * (u - .5) * v;
       const s = skirtSection(ctx, y, o.yTop, o.flare);
+      if (moving) {
+        // Meet the actual bodice at the waist before easing over the hips/thighs.
+        const root = ctx.torsoAt(o.yTop), t = smooth(0, .35, v);
+        s.rx = root.rx + (s.rx - root.rx) * t;
+        s.rf = root.rf + (s.rf - root.rf) * t;
+        s.rb = root.rb + (s.rb - root.rb) * t;
+      }
       const cs = Math.cos(th);
       const sn = Math.sin(th);
       const ux = Math.sign(cs) * Math.pow(Math.abs(cs), 2 / e);
       const uz = Math.sign(sn) * Math.pow(Math.abs(sn), 2 / e);
       const rz = sn < 0 ? s.rb : s.rf;
-      const m = 1 + (o.inflate + o.thickness) / Math.max(0.05, s.rx);
+      const fold = (o.folds ?? (moving ? .007 * ctx.d.h : 0)) * Math.sin(v * Math.PI * .8) * Math.cos(u * Math.PI * 6 + v * 1.8);
+      const m = 1 + (o.inflate + o.thickness + fold) / Math.max(0.05, s.rx);
       p.set(ux * s.rx * m, y, s.cz + uz * rz * m);
       n.set(cs / s.rx, 0.15, sn / rz).normalize();
-    },
-    o.thickness,
-    (u, v) => {
+    };
+  const skin = (u: number, v: number): SkinSpec => {
       const th = o.th0 + (o.th1 - o.th0) * u;
       const cs = Math.cos(th);
       const sn = Math.sin(th);
@@ -245,9 +263,23 @@ export function skirtPanel(ctx: BodyCtx, o: PanelOpts): void {
       const wr = k * (1 - left);
       const wh = 1 - wl - wr;
       return [B.hips, wh, B.thighL, wl, B.thighR, wr];
-    },
-    o.color,
-  );
+    };
+  if (moving) {
+    const rest: Vector3[] = [], anchorBone: number[] = [], guideSkin: SkinSpec[] = [];
+    const C = cols + 1, R = rows + 1;
+    for (let j = 0; j < R; j++) for (let i = 0; i < C; i++) {
+      const u = i / cols, v = j / rows, p = new Vector3();
+      sample(u, v, p, new Vector3()); rest.push(p);
+      anchorBone.push(j === 0 ? B.hips : -1); guideSkin.push(skin(u, v));
+    }
+    ctx.garmentCloth.push({name: `garment-${ctx.look.outfit}-${ctx.garmentCloth.length}`, cols:C, rows:R, rest, anchorBone, guideSkin,
+      config:{drag:.55,dragTangent:.12,dragQuad:.25,damping:4,bend:.65,iterations:5,radius:.009,
+        flutter:7,flutterHz:2.2,dragLow:.6,flutterFloor:.12,contactFriction:.2,poseStiffness:85,poseRadius:.07*ctx.d.h},
+      colliders:['belly','thighL','thighR','shinL','shinR','mount'],
+      render:{kind:'sheet',color:o.color(.5,.5,false),trim:o.color(.5,.98,false),pattern:'garment',subdiv:2,proofLinen:true,colorAt:(u,v)=>o.color(u,v,false)}});
+    return;
+  }
+  ctx.b.sheet(cols, rows, sample, o.thickness, skin, o.color);
 }
 
 /** A collar ring around the neck base: height h above the shoulders, flaring outward by `flare`. */
@@ -310,20 +342,11 @@ export function armPath(ctx: BodyCtx, side: Side, s0: number, s1: number, th: nu
 
 /** Points along the leg surface. */
 export function legPath(ctx: BodyCtx, side: Side, s0: number, s1: number, th: number, lift: number, step = 0.035): StrapPoint[] {
-  const d = ctx.d;
-  const J = side > 0 ? ctx.bp.thighL : ctx.bp.thighR;
   const out: StrapPoint[] = [];
   const n = Math.max(1, Math.ceil((s1 - s0) / step));
-  const tb = side > 0 ? B.thighL : B.thighR;
-  const sb = side > 0 ? B.shinL : B.shinR;
   for (let i = 0; i <= n; i++) {
     const s = s0 + ((s1 - s0) * i) / n;
-    const r = ctx.legAt(s);
-    const nn = new Vector3(Math.cos(th), 0, Math.sin(th));
-    const rz = Math.sin(th) < 0 ? r.rb : r.rf;
-    const p = new Vector3(J.x - side * 0.006 * smooth(0, d.thigh, s) + nn.x * (r.rx + lift), J.y - s, J.z + nn.z * (rz + lift));
-    const k = d.thigh;
-    out.push({ p, n: nn, skin: s < k - 0.05 ? sk(tb) : s < k + 0.05 ? sk2(tb, sb, smooth(k - 0.05, k + 0.05, s)) : sk(sb) });
+    out.push(legPoint(ctx,s,th,side,lift));
   }
   return out;
 }

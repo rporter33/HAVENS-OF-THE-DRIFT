@@ -3,7 +3,9 @@ import type { Showcase } from '../showcase';
 import type { Game } from '../../game/Game';
 import type { RiderAction, RiderLook, RiderPose } from '../../core/types';
 import { Rider } from '../../creatures/rider/Rider';
+import { C02_LOOK } from '../../creatures/rider/proof';
 import { cosmeticsFor, DEFAULT_RIDER } from '../../cosmetics/catalog';
+import { GARMENT_SLOTS } from '../../cosmetics/wardrobe';
 import { toonMaterial } from '../../render/painterly';
 import { globalUniforms } from '../../render/uniforms';
 import { createRiderPose } from '../../player/poses';
@@ -93,7 +95,8 @@ function num(k: string, d: number): number {
 }
 
 function lookFromParams(): RiderLook {
-  const l: RiderLook = { ...DEFAULT_RIDER };
+  const proof = params.get('riderProof');
+  const l: RiderLook = { ...(proof === 'wanderer' || proof === 'aerie' ? C02_LOOK : DEFAULT_RIDER) };
   const set = (k: keyof RiderLook, p: string, hex = false) => {
     const v = params.get(p);
     if (v) (l as unknown as Record<string, string>)[k] = hex ? `#${v.replace('#', '')}` : v;
@@ -110,6 +113,13 @@ function lookFromParams(): RiderLook {
   set('outfitSecondary', 'secondary', true);
   set('scarfColor', 'scarfColor', true);
   set('capeColor', 'capeColor', true);
+  for (const key of ['chest', 'shoulderDrape', 'waist', 'armWraps', 'legWraps', 'footwear'] as const) set(key, key);
+  set('armorColor', 'armorColor', true);
+  set('leatherColor', 'leatherColor', true);
+  for (const part of Object.keys(GARMENT_SLOTS) as (keyof typeof GARMENT_SLOTS)[]) {
+    const value = params.get(`piece${part[0].toUpperCase()}${part.slice(1)}`);
+    if (value) l.wardrobe = { ...l.wardrobe, [part]: value };
+  }
   return l;
 }
 
@@ -248,7 +258,7 @@ const rider: Showcase = {
     if (params.get('real') === '1') {
       // The game's own rider on the real wyvern, posed by hand each frame.
       const look = lookFromParams();
-      game.setRiderLook(look);
+      if (game.debug.riderProof) game.previewRiderLook(look); else game.setRiderLook(look);
       const L = game.world.layout;
       realHome = game.world.terrain.standingPoint(L.spawn.position[0] - 6, L.spawn.position[2] + 4, new Vector3());
       game.player.teleport(realHome.clone().add(new Vector3(0, 0, 0)), 0, 'landed');
@@ -281,7 +291,9 @@ const rider: Showcase = {
         saddle = s.saddle;
         body = s.body;
       }
-      const r = new Rider(look, { terrain: t, saddle: saddle ?? undefined });
+      const r = new Rider(look, { terrain: t, saddle: saddle ?? undefined, quality: game.renderer.quality,
+        proof: game.debug.riderProof, proofMaps: game.debug.riderMaps, proofHighSize: game.debug.riderTexture,
+        proofTextureLimit: game.renderer.gl.capabilities.maxTextureSize });
       game.scene.add(r.group);
       actors.push({ rider: r, pose: createRiderPose(), home, action, fixedT, saddle, body });
     });

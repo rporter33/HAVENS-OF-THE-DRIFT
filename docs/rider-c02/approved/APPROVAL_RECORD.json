@@ -1,0 +1,105 @@
+{
+  "status": "approved_P1_review_ready_local_uncommitted",
+  "dateLocal": "2026-10-10",
+  "timezone": "America/Denver",
+  "recommendedConcept": "C02 Travel Drape",
+  "recommendedMaterial": "M01",
+  "selectedConcept": "C02 Travel Drape",
+  "approvedMaterial": "M01",
+  "approvedImplementationScope": "P1: development-preview medium body and AN-01 Wanderer, existing ponytail, early AN-04 mounted conversion, 1K toon material proof; preserve rig, behavior, catalog IDs, unlocks, saves and recolor path.",
+  "approvalEvidence": "Robert: absolutely - its a good combination - i approve. This answered the explicit C02, M01 and P1 approval request.",
+  "latestSteering": "Robert: check every 5 minutes and begin once you affirmed all files are aligned. Consolidation handoff supplied; use live verification of merged GitHub main as the implementation baseline.",
+  "implementationTarget": {
+    "baselineMain": "f9fc707d55cea36f62307d8a58ba9c00361be253",
+    "branch": "codex/rider-c02-proof",
+    "worktree": "C:/Users/Robert/.codex/worktrees/rider-c02-proof/Driftwing",
+    "owner": "Codex in this chat",
+    "readinessVerifiedUtc": "2026-10-11",
+    "sourceAlignment": "PR #3 merged at 2026-10-11T00:54:30Z; final head 41c90a19ae202cdb320542ab071073d2d1d4aae9 passed Verify integration run 38099399482. GitHub main and origin/main both f9fc707. Required feature/reference ancestors and documented historical-worktree exclusions checked.",
+    "state": "reviewable local uncommitted proof; not pushed, merged or deployed"
+  },
+  "sourceCandidatesObserved": {
+    "dev/codex-wsl": "30756b23079c56d5d033762d4cdcc58b8d123173",
+    "exp/sky-lance-v1": "0bb2498eecb5ea3c49ef4599e3078da77c103198"
+  },
+  "proposedFirstSlice": "P1: development-preview medium body and AN-01 Wanderer, existing ponytail, early AN-04 mounted conversion, 1K toon material proof; preserve rig, behavior, catalog IDs, unlocks, saves and recolor path.",
+  "hardwareConfirmed": "Desktop/laptop, including integrated graphics",
+  "integrationPrerequisites": [
+    "Verify the intended Codex worktree and target commit",
+    "Locate current Sky Lance/grapple source and preserve its contracts",
+    "Reconcile shared ART_DIRECTION.md if supplied or available"
+  ],
+  "excluded": [
+    "production default or saved-outfit replacement",
+    "new save fields",
+    "all wardrobe roles",
+    "all armor controls",
+    "broader cast or companions",
+    "renderer migration",
+    "dependency installation",
+    "commit/push/merge/deploy/publication without appropriate authorization"
+  ],
+  "readinessMonitor": {
+    "automationId": "driftwing-alignment-and-rider-start",
+    "cadenceMinutes": 5,
+    "chat": "01a12849-3937-7751-9312-e47a7490a343",
+    "integrationPR": "https://github.com/rporter33/Driftwing/pull/3",
+    "lastObservedPRHead": "41c90a19ae202cdb320542ab071073d2d1d4aae9",
+    "lastObservedState": "merged; final Verify integration run completed success",
+    "target": "Verified resulting GitHub main commit, isolated Codex worktree",
+    "autoBeginApprovedP1": true,
+    "status": "PAUSED after verified start to prevent duplicate work"
+  },
+  "verification": {
+    "unitFiles": 110,
+    "unitTestsPassed": 1155,
+    "typecheck": "passed",
+    "productionBuild": "passed",
+    "productionSmoke": "15/15 passed on rounded model build",
+    "finalProductionBrowserChecksPassed": 100,
+    "engineCaptures": 56,
+    "browserErrors": 0,
+    "evidence": "engine-proof/rounded/index.html; 49/40 main proof plus 51/16 mounted fit",
+    "hardwareLimit": "Edge/SwiftShader; integrated-GPU performance is not certified",
+    "initialP1Proof": {
+      "browserChecks": 43,
+      "captures": 34,
+      "evidence": "engine-proof/index.html; mounted images predate the correction"
+    }
+  },
+  "mountedFitCorrection": {
+    "authorization": "Robert: Yes, fix the mounted leg clipping and stirrup alignment. Keep the approved costume and existing flight behavior unchanged, then show me updated captures from both sides.",
+    "localDate": "2026-10-10",
+    "timezone": "America/Denver",
+    "existingRuntimeFileChanged": "src/creatures/wyvern/parts/saddle.ts",
+    "sourceScopeVerified": "SHA-256 comparison to p1-checkpoint-20261011T015052Z found only the saddle file changed among existing src files; approved costume, rig, animation and flight unchanged",
+    "unitFilesPassed": 110,
+    "unitTestsPassed": 1154,
+    "typecheck": "passed",
+    "build": "passed",
+    "smoke": "15/15 passed",
+    "productionBrowserChecksPassed": 51,
+    "captures": 16,
+    "browserErrors": 0,
+    "evidence": "engine-proof/mounted-fit/index.html",
+    "state": "local uncommitted/unpushed/unmerged"
+  },
+  "bodyRefinement": {
+    "authorization": "Robert: I also want the model to match the artistic rendering further, rounding out the hard corners and meshing the body together better",
+    "localDate": "2026-10-10",
+    "timezone": "America/Denver",
+    "changes": "Connected chest/neck/arm surface, continuous rounded hands, softer feet/jaw/drape/hem transitions; approved C02 costume direction preserved",
+    "unitFiles": 110,
+    "unitTests": 1155,
+    "typecheck": "passed",
+    "productionBuild": "passed",
+    "productionSmoke": "15/15 passed",
+    "browserChecks": 49,
+    "captures": 40,
+    "mountedChecks": 51,
+    "mountedCaptures": 16,
+    "browserErrors": 0,
+    "evidence": "engine-proof/rounded/index.html",
+    "state": "local uncommitted/unpushed/unmerged"
+  }
+}

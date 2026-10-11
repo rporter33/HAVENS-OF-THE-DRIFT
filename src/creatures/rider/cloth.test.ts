@@ -62,6 +62,34 @@ function maxStretch(c: Cloth): number {
 const calm = { airX: 0, airY: 0, airZ: 0, time: 0 };
 
 describe('cloth', () => {
+  it('C02 contact resolves a capsule-axis overlap without adding a rebound', () => {
+    const c = grid(1, 1, .1, { pinned: [0], gravity: 0, contactFriction: .12 });
+    c.setColliders([{ ax: 0, ay: -.1, az: 0, bx: 0, by: .1, bz: 0, r: .2 }]);
+    c.update(1 / 120, calm);
+    expect(Math.hypot(c.pos[0], c.pos[2])).toBeCloseTo(.22, 8);
+    expect(Math.hypot(...c.pos.map((p, i) => p - c.prev[i]))).toBeLessThan(1e-9);
+    for (let i = 0; i < 300; i++) c.update(1 / 60, { ...calm, time: i / 60 });
+    expect(Math.hypot(c.pos[0], c.pos[2])).toBeCloseTo(.22, 8);
+  });
+
+  it('C02 cloth rests on a sloped walkable surface and falls freely over open sky', () => {
+    const c = grid(4, 8, .1, { contactFriction: .12 });
+    const groundAt = (x: number) => -.35 + .08 * x;
+    let maxSpeed = 0;
+    for (let i = 0; i < 360; i++) {
+      c.update(1 / 60, { airX: i < 180 ? 8 : 0, airY: 0, airZ: 0, time: i / 60, groundAt });
+      for (let k = c.cols; k < c.n; k++) {
+        const j = k * 3;
+        expect(c.pos[j + 1]).toBeGreaterThanOrEqual(groundAt(c.pos[j]) + .02 - 1e-9);
+        if (i > 300) maxSpeed = Math.max(maxSpeed, Math.hypot(c.pos[j] - c.prev[j], c.pos[j + 1] - c.prev[j + 1], c.pos[j + 2] - c.prev[j + 2]) * 120);
+      }
+    }
+    expect(maxSpeed).toBeLessThan(.15);
+    for (let i = 0; i < 300; i++) c.update(1 / 60, { ...calm, time: 6 + i / 60, groundAt: () => null });
+    // It leaves the former floor rather than sticking to a cached contact over open air.
+    expect(c.pos[(c.n - 1) * 3 + 1]).toBeLessThan(-.55);
+  });
+
   it('hangs straight down in still air and keeps its length', () => {
     const c = grid(6, 8, 0.1);
     for (let i = 0; i < 300; i++) c.update(1 / 60, { ...calm, time: i / 60 });

@@ -14,8 +14,15 @@
 //   ?starglints=1           night sky: glinting starfield (0 classic .. 1; see SkyDome STAR_GLINTS)
 
 import type { QualityLevel, WeatherKind } from '../core/types';
+import type { RiderProof } from '../creatures/rider/proof';
+import type { ProofMaps } from '../creatures/rider/proofMaterials';
 
 export interface DebugParams {
+  /** P1 preview only: riderProof=wanderer|aerie, riderMaps=color|normal|off. */
+  riderProof?: RiderProof;
+  riderMaps?: ProofMaps;
+  /** High comparison only: riderTexture=3072|4096. No saved settings. */
+  riderTexture?: 3072 | 4096;
   play: boolean;
   tod?: number;
   weather?: WeatherKind;
@@ -45,6 +52,9 @@ export function readDebugParams(search = typeof location !== 'undefined' ? locat
   const num = (k: string) => (q.has(k) && Number.isFinite(Number(q.get(k))) ? Number(q.get(k)) : undefined);
   const yawDeg = num('yaw');
   return {
+    riderProof: q.get('riderProof') === 'wanderer' ? 'wanderer' : q.get('riderProof') === 'aerie' ? 'aerie' : undefined,
+    riderMaps: q.get('riderMaps') === 'off' ? 'off' : q.get('riderMaps') === 'normal' ? 'normal' : 'color',
+    riderTexture: q.get('riderTexture') === '4096' ? 4096 : q.get('riderTexture') === '3072' ? 3072 : undefined,
     play: q.get('play') === '1',
     tod: num('tod'),
     weather: (q.get('weather') as WeatherKind) ?? undefined,

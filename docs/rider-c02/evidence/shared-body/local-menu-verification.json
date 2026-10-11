@@ -1,0 +1,82 @@
+{
+  "renderer": "Edge SwiftShader; actual menu/Stable, not GPU timing",
+  "checks": [
+    {
+      "name": "initializer never seeds the normal 5193 origin",
+      "passed": true
+    },
+    {
+      "name": "initializer preserves an existing legacy test save",
+      "passed": true
+    },
+    {
+      "name": "saved Flight Leathers plus linen pieces uses the shared refined body",
+      "passed": true
+    },
+    {
+      "name": "separate test profile starts at the normal title menu",
+      "passed": true
+    },
+    {
+      "name": "refined Aerie body and light linen loadout are active without proof flags",
+      "passed": true
+    },
+    {
+      "name": "real Stable shows Travel Drape selected and all seven outfits available",
+      "passed": true
+    },
+    {
+      "name": "new Outfit Pieces menu displays Linen Chiton and no locked garment options",
+      "passed": true
+    },
+    {
+      "name": "piece selection updates the refined model immediately",
+      "passed": true
+    },
+    {
+      "name": "Revert restores the light test loadout",
+      "passed": true
+    },
+    {
+      "name": "initializer preserves the existing test save on reload",
+      "passed": true
+    },
+    {
+      "name": "original origin save is untouched by testing on the separate origin",
+      "passed": true
+    },
+    {
+      "name": "all game geometry and cloth are finite with no browser errors",
+      "passed": true
+    },
+    {
+      "name": "launcher clearly separates test profile and existing save at 1440",
+      "passed": true
+    },
+    {
+      "name": "launcher clearly separates test profile and existing save at 390",
+      "passed": true
+    },
+    {
+      "name": "all 20 shared-body captures load without overflow at 1440",
+      "passed": true
+    },
+    {
+      "name": "all 20 shared-body captures load without overflow at 390",
+      "passed": true
+    },
+    {
+      "name": "no page or shader errors across both origins",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "captures": [
+    "saved-mix-refined.png",
+    "normal-menu.png",
+    "stable-travel-drape.png",
+    "stable-light-pieces.png",
+    "gallery-1440.png",
+    "gallery-390.png"
+  ]
+}

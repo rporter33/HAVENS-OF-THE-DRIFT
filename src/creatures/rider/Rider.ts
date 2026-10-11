@@ -13,17 +13,26 @@ import type { EventBus } from '../../core/events';
 import type { RiderRenderable } from '../../game/contracts';
 import type { QualityProfile } from '../../render/quality';
 import { PLAYER_TUNING } from '../../player/tuning';
-import { buildRiderModel, recolorRiderModel, type RiderModel } from './model';
+import { buildRiderModel, recolorRiderModel, riderMaterial, type RiderModel } from './model';
 import { riderShapeKey } from './palette';
 import { RiderAnimator, type AnimContext, type SaddleFlank } from './animator';
 import { ClothRig, type ClothLod } from './clothRig';
-import { allClothSpecs, type ColliderName } from './accessories';
-import type { Capsule } from './cloth';
+import type { ColliderName } from './accessories';
+import type { Capsule, Cloth } from './cloth';
 import { B } from './rig';
+import type { RiderProof } from './proof';
+import { riderClothSpecs } from './wardrobeModel';
+import { proofTextureSize, type ProofMaps } from './proofMaterials';
 
 const P = PLAYER_TUNING;
 
 export interface RiderOptions {
+  /** Explicit C02 study selection; never stored in RiderLook or save data. */
+  proof?: RiderProof;
+  proofMaps?: ProofMaps;
+  /** High-only comparison; Low/Medium retain their fixed memory budgets. */
+  proofHighSize?: 3072 | 4096;
+  proofTextureLimit?: number;
   /** Ground for foot placement on slopes (optional: flat at pose.position otherwise). */
   terrain?: Pick<TerrainQuery, 'groundAt'>;
   /**
@@ -39,9 +48,12 @@ export interface RiderOptions {
   quality?: QualityProfile;
 }
 
-function clothLod(q: QualityProfile | undefined): ClothLod {
-  if (!q) return { detail: 1, shadows: true };
-  return { detail: q.level === 'low' ? 0.5 : q.level === 'medium' ? 0.75 : 1, shadows: q.shadows };
+function clothLod(q: QualityProfile | undefined, highSize?: 3072 | 4096, textureLimit?: number): ClothLod {
+  if (!q) return { detail: 1, shadows: true, proofAtlasSize: 1024 };
+  // Increase only the drawn surface subdivisions. The cloth particles, contacts, tethers
+  // and fixed-step solver stay identical across quality levels.
+  return { detail: q.level === 'low' ? 0.5 : q.level === 'medium' ? 1 : q.level === 'high' ? 4 / 3 : 2, shadows: q.shadows,
+    proofAtlasSize: proofTextureSize(q.level, highSize, textureLimit) };
 }
 
 const smooth = (e0: number, e1: number, x: number) => {
@@ -125,7 +137,8 @@ export class Rider implements RiderRenderable {
     this.opts = opts;
     this.look = { ...look };
     this.saddleRef = opts.saddle ?? null;
-    this.model = buildRiderModel(this.look);
+    this.lod = clothLod(opts.quality, opts.proofHighSize, opts.proofTextureLimit);
+    this.model = buildRiderModel(this.look, { proof: opts.proof, maps: opts.proofMaps, atlasSize: this.lod.proofAtlasSize });
     this.group.add(this.model.mesh);
     this.animator = new RiderAnimator(this.model.rig);
     const cap = (): Capsule => ({ ax: 0, ay: -1e4, az: 0, bx: 0, by: -1e4, bz: 0, r: 0.01 });
@@ -144,7 +157,7 @@ export class Rider implements RiderRenderable {
       mount: cap(),
     };
     this.defineColliders();
-    this.lod = clothLod(opts.quality);
+    this.lod = clothLod(opts.quality, opts.proofHighSize, opts.proofTextureLimit);
     this.cloth = this.makeCloth();
     const ground = (x: number, z: number, nearY: number) => {
       const g = this.opts.terrain?.groundAt(x, z, nearY + 0.6);
@@ -183,7 +196,7 @@ export class Rider implements RiderRenderable {
     const old = this.model;
     this.group.remove(old.mesh);
     old.geometry.dispose();
-    this.model = buildRiderModel(this.look);
+    this.model = buildRiderModel(this.look, { proof: this.opts.proof, maps: this.opts.proofMaps, atlasSize: this.lod.proofAtlasSize });
     this.group.add(this.model.mesh);
     this.animator.setRig(this.model.rig);
     old.rig.skeleton.dispose();
@@ -196,14 +209,23 @@ export class Rider implements RiderRenderable {
 
   /** Optional: follow graphics quality changes (cloth detail, cloth shadows). */
   setQuality(q: QualityProfile): void {
-    this.lod = clothLod(q);
+    this.lod = clothLod(q, this.opts.proofHighSize, this.opts.proofTextureLimit);
+    if (this.model.textured) this.model.mesh.material = riderMaterial(this.opts.proofMaps ?? 'color', this.lod.proofAtlasSize);
+    const states = this.model.textured ? new Map(this.cloth.pieces.map(pc => [pc.spec.name, pc.cloth])) : undefined;
     this.cloth.dispose();
-    this.cloth = this.makeCloth();
-    this.clothFresh = true;
+    this.cloth = this.makeCloth(states);
+    if (!states) this.clothFresh = true;
   }
 
-  private makeCloth(): ClothRig {
-    return new ClothRig(allClothSpecs(this.model.ctx, this.look), this.model.rig.bindPos, this.group, this.capsules, this.lod);
+  private makeCloth(states?: ReadonlyMap<string, Cloth>): ClothRig {
+    const specs = riderClothSpecs(this.model.ctx, this.model.proof);
+    return new ClothRig(specs, this.model.rig.bindPos, this.group, this.capsules,
+      this.model.textured ? { ...this.lod, proofMaps: this.opts.proofMaps ?? 'color' } : this.lod,
+      this.opts.terrain ? (x, _y, z) => {
+        const ground = this.opts.terrain!.groundAt(x, z, this.origin.y - this.model.rig.dims.hipsY + .3);
+        // Reject an overhead ledge/deck; the same terrain query supplies walking and foot IK.
+        return ground && ground.y < this.origin.y + .2 ? ground.y : null;
+      } : undefined, states);
   }
 
   private defineColliders(): void {

@@ -1,0 +1,22 @@
+{
+  "views": [
+    {
+      "width": 1280,
+      "title": "Driftwing C02 — five fidelity passes",
+      "images": 31,
+      "allLoaded": true,
+      "horizontalOverflow": false,
+      "passSelector": "1 and 5 passed"
+    },
+    {
+      "width": 390,
+      "title": "Driftwing C02 — five fidelity passes",
+      "images": 31,
+      "allLoaded": true,
+      "horizontalOverflow": false,
+      "passSelector": "1 and 5 passed"
+    }
+  ],
+  "externalImages": "all loaded",
+  "errors": []
+}

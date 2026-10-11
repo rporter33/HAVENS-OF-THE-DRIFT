@@ -5,7 +5,7 @@
 import { Color, Vector3 } from 'three';
 import type { RiderLook } from '../../core/types';
 import { B } from './rig';
-import { sk2, type RingSpec } from './meshKit';
+import { sk2, type RingSpec, type SkinSpec } from './meshKit';
 import { torsoPoint, type BodyCtx } from './body';
 import { hairRoots, hairThickness } from './hair';
 import { mixSrgb, tone } from './palette';
@@ -14,7 +14,7 @@ import type { ClothConfig } from './cloth';
 const X = new Vector3(1, 0, 0);
 const Z = new Vector3(0, 0, 1);
 
-export type ClothPattern = 'plain' | 'tattered' | 'feather' | 'hair' | 'scarf' | 'tail' | 'braid' | 'coat';
+export type ClothPattern = 'plain' | 'tattered' | 'feather' | 'hair' | 'scarf' | 'tail' | 'braid' | 'coat' | 'garment';
 
 /** Colliders the rider exposes (see Rider.ts); cloth picks a subset by name. */
 export type ColliderName = 'chest' | 'belly' | 'shoulders' | 'armL' | 'armR' | 'thighL' | 'thighR' | 'shinL' | 'shinR' | 'head' | 'neck' | 'mount';
@@ -27,6 +27,8 @@ export interface ClothSpec {
   rest: Vector3[];
   /** Bone pinning each anchored particle (−1 = free). */
   anchorBone: number[];
+  /** Animated rest envelope for localized clothing; free particles still simulate wind/inertia. */
+  guideSkin?: SkinSpec[];
   config: Omit<ClothConfig, 'cols' | 'rows' | 'rest' | 'pinned'>;
   colliders: ColliderName[];
   render: {
@@ -44,6 +46,10 @@ export interface ClothSpec {
      */
     twist?: number;
     minWidth?: number;
+    /** C02 only: shared M01 linen map, without changing the cloth solver. */
+    proofLinen?: boolean;
+    /** Preserve the source garment's cloth/trim colors and dye recipes on the smoothed mesh. */
+    colorAt?: (u: number, v: number) => Color;
   };
 }
 
@@ -347,12 +353,17 @@ export function coatSpecs(ctx: BodyCtx, look: RiderLook): ClothSpec[] {
         },
         rows,
         B.hips,
-        { ...SHEET, drag: 1.6, flutter: 22, bend: 0.45, damping: 0.9, radius: 0.02 },
+        { ...SHEET, drag: .55, dragQuad:.25, flutter: 7, bend: .65, damping: 4, radius: .009,
+          contactFriction:.2, poseStiffness:85, poseRadius:.07*d.h },
         ['belly', 'thighL', 'thighR', 'shinL', 'shinR', 'mount'],
-        { kind: 'sheet', color: pal.primary, trim: pal.primaryDark, pattern: 'coat', subdiv: 3 },
+        { kind: 'sheet', color: pal.primary, trim: pal.primaryDark, pattern: 'coat', subdiv: 3,proofLinen:true },
       ),
     );
   }
+  for (const piece of out) piece.guideSkin=piece.rest.map((_,i)=>{
+    const v=Math.floor(i/piece.cols)/(piece.rows-1),k=.45*v*v;
+    return [B.hips,1-k,piece.name==='coatL'?B.thighL:B.thighR,k];
+  });
   return out;
 }
 

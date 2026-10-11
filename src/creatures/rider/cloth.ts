@@ -50,6 +50,13 @@ export interface ClothConfig {
    * the square of the air speed), so a scarf still ripples and swings at a jog.
    */
   flutterFloor?: number;
+  /** Opt-in non-bouncy contact for C02. Legacy cloth retains its existing response. */
+  contactFriction?: number;
+  /** Opt-in spring and travel envelope around a posed garment, in meters. */
+  poseStiffness?: number;
+  poseRadius?: number;
+  /** Join duplicate first/last columns of a closed textile sleeve. Opt-in only. */
+  sewEdges?: boolean;
 }
 
 /** A collision capsule (segment a→b with radius r) in the simulation frame. */
@@ -70,6 +77,10 @@ export interface ClothEnv {
   airZ: number;
   /** Seconds, for the flutter wave. */
   time: number;
+  /** Walkable surface height in this translating frame; null over open air. */
+  groundAt?: (x: number, y: number, z: number) => number | null;
+  /** Bone-skinned rest positions for localized garments only. */
+  guide?: ArrayLike<number>;
 }
 
 const SUBSTEP = 1 / 120;
@@ -144,6 +155,7 @@ export class Cloth {
         if (c + 2 < C) add(i, i + 2, cfg.bend * 0.5);
       }
     }
+    if (cfg.sewEdges) for (let r = 0; r < R; r++) add(r * C, r * C + C - 1, 1);
     // Long-range attachment: never farther from the column's root than the rest path length.
     this.tetherRoot = new Int32Array(this.n).fill(-1);
     this.tetherLen = new Float64Array(this.n);
@@ -359,6 +371,12 @@ export class Cloth {
         vz += wz * k;
       }
       vy += g * h;
+      if (env.guide && cfg.poseStiffness) {
+        const k = cfg.poseStiffness * h;
+        vx += (env.guide[j] - p[j]) * k;
+        vy += (env.guide[j + 1] - p[j + 1]) * k;
+        vz += (env.guide[j + 2] - p[j + 2]) * k;
+      }
       if (flutterAmp > 0) {
         const row = Math.floor(i / C) / Math.max(1, this.rows - 1);
         const col = (i % C) / Math.max(1, C - 1);
@@ -390,8 +408,10 @@ export class Cloth {
     for (let it = 0; it < cfg.iterations; it++) {
       this.solveConstraints();
       this.solveTethers();
+      if (env.guide && cfg.poseRadius) this.solvePoseEnvelope(env.guide, cfg.poseRadius);
       if (this.capsules.length && (it === mid || it === cfg.iterations - 1)) this.collide();
     }
+    if (env.groundAt) this.collideGround(env.groundAt);
   }
 
   private solveConstraints(): void {
@@ -420,6 +440,25 @@ export class Cloth {
       p[b] -= dx * fb;
       p[b + 1] -= dy * fb;
       p[b + 2] -= dz * fb;
+    }
+  }
+
+  /** Keep seams close and hems loose. Positional repair adds no rebound velocity. */
+  private solvePoseEnvelope(guide: ArrayLike<number>, radius: number): void {
+    for (let i = 0; i < this.n; i++) {
+      if (this.pinned[i]) continue;
+      const j = i * 3, row = Math.floor(i / this.cols) / Math.max(1, this.rows - 1);
+      const limit = radius * (.15 + .85 * row * row * (3 - 2 * row));
+      const dx = this.pos[j] - guide[j], dy = this.pos[j + 1] - guide[j + 1], dz = this.pos[j + 2] - guide[j + 2];
+      const length = Math.hypot(dx, dy, dz);
+      if (length <= limit) continue;
+      const k = 1 - limit / length;
+      this.pos[j] -= dx * k;
+      this.prev[j] -= dx * k;
+      this.pos[j + 1] -= dy * k;
+      this.prev[j + 1] -= dy * k;
+      this.pos[j + 2] -= dz * k;
+      this.prev[j + 2] -= dz * k;
     }
   }
 
@@ -482,18 +521,50 @@ export class Cloth {
         const pz = p[j + 2] - c.az;
         let t = ee > 1e-12 ? (px * ex + py * ey + pz * ez) / ee : 0;
         t = t < 0 ? 0 : t > 1 ? 1 : t;
-        const dx = px - ex * t;
-        const dy = py - ey * t;
-        const dz = pz - ez * t;
+        let dx = px - ex * t;
+        let dy = py - ey * t;
+        let dz = pz - ez * t;
         const d2 = dx * dx + dy * dy + dz * dz;
         if (d2 >= R * R) continue;
-        const d = Math.sqrt(d2);
-        if (d < 1e-6) continue;
-        const push = (R - d) / d;
-        p[j] += dx * push;
-        p[j + 1] += dy * push;
-        p[j + 2] += dz * push;
+        let d = Math.sqrt(d2);
+        if (this.cfg.contactFriction === undefined) {
+          // Preserve the ordinary wardrobe's original arithmetic and contact response.
+          if (d < 1e-6) continue;
+          const push = (R - d) / d;
+          p[j] += dx * push; p[j + 1] += dy * push; p[j + 2] += dz * push;
+          continue;
+        }
+        if (d < 1e-6) {
+          // A particle exactly on the capsule axis still needs a deterministic exit direction.
+          dx = -ez; dy = 0; dz = ex; d = Math.hypot(dx, dz);
+          if (d < 1e-6) { dx = 1; dz = 0; d = 1; }
+          dx /= d; dz /= d; d = 0;
+        } else { dx /= d; dy /= d; dz /= d; }
+        this.projectContact(j, dx, dy, dz, R - d);
       }
+    }
+  }
+  private projectContact(j: number, nx: number, ny: number, nz: number, depth: number): void {
+    const p = this.pos, q = this.prev;
+    const vx = p[j] - q[j], vy = p[j + 1] - q[j + 1], vz = p[j + 2] - q[j + 2];
+    p[j] += nx * depth; p[j + 1] += ny * depth; p[j + 2] += nz * depth;
+    if (this.cfg.contactFriction === undefined) return;
+    // Position repair must not become an impulse. Remove inward velocity with mild sliding
+    // friction, so resting contact does not repeatedly launch a loose hem off the body.
+    const inward = Math.min(0, vx * nx + vy * ny + vz * nz);
+    const retain = 1 - Math.min(1, Math.max(0, this.cfg.contactFriction));
+    q[j] = p[j] - (vx - nx * inward) * retain;
+    q[j + 1] = p[j + 1] - (vy - ny * inward) * retain;
+    q[j + 2] = p[j + 2] - (vz - nz * inward) * retain;
+  }
+
+  private collideGround(groundAt: NonNullable<ClothEnv['groundAt']>): void {
+    for (let i = 0; i < this.n; i++) {
+      if (this.pinned[i]) continue;
+      const j = i * 3, p = this.pos;
+      const ground = groundAt(p[j], p[j + 1], p[j + 2]);
+      if (ground !== null && Number.isFinite(ground) && p[j + 1] < ground + this.cfg.radius)
+        this.projectContact(j, 0, 1, 0, ground + this.cfg.radius - p[j + 1]);
     }
   }
 }
