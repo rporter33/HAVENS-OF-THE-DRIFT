@@ -4,7 +4,7 @@
 // smoothed per part so separate pieces keep crisp silhouettes where they overlap.
 
 import { BufferAttribute, BufferGeometry, Color, Quaternion, Vector3 } from 'three';
-import { mixLinear, recipeOf, scaleLinear, type ColorRecipe } from './palette';
+import { mixLinear, recipeOf, scaleLinear, surfaceOf, type ColorRecipe } from './palette';
 import { proofUV, type ProofSurface } from './proofMaterials';
 
 /** Up to four [bone, weight] pairs; weights are normalized on write. */
@@ -114,6 +114,7 @@ export class SkinBuilder {
   }
 
   vertex(p: Vector3, color: Color, skin: SkinSpec, glow = 0, uv: readonly number[] = [.5, .5], surface = this.materialSurface): number {
+    if(surface==='neutral')surface=surfaceOf(color)??surface;
     this.P.push(p.x, p.y, p.z);
     this.N.push(0, 1, 0);
     this.C.push(color.r, color.g, color.b);
@@ -225,7 +226,8 @@ export class SkinBuilder {
   loft(rings: RingSpec[], seg: number, opts: { capStart?: boolean; capEnd?: boolean; capBulge?: number } = {}): void {
     this.begin();
     const base = this.vertexCount;
-    const seam = this.textured && (this.materialSurface !== 'neutral' || rings.some(r => r.surface && r.surface !== 'neutral'));
+    const seam = this.textured && (this.materialSurface !== 'neutral' || rings.some((r,i) =>
+      (r.surface && r.surface !== 'neutral') || !!surfaceOf(typeof r.color==='function'?r.color(0,i,r.c):r.color)));
     const stride = seg + (seam ? 1 : 0);
     for (let i = 0; i < rings.length; i++) {
       const r = rings[i];

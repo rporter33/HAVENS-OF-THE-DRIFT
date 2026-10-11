@@ -13,7 +13,7 @@ import { outfitStyle } from './outfits';
 import { buildHair } from './hair';
 import { buildHeadgear, coversCrown } from './headgear';
 import { buildNeckwear } from './accessories';
-import { evalRecipe, riderPalette, type ColorRecipe, type RiderPalette } from './palette';
+import { evalRecipe, riderPalette, outfitMaterialPalette, type ColorRecipe, type RiderPalette } from './palette';
 import { activeRiderProof, proofStyle, proofHeadShape, proofFace, type RiderProof } from './proof';
 import { proofAtlas, type ProofMaps, type ProofAtlasSize } from './proofMaterials';
 import { sculptProofProfiles, REFINED_BODY_SHAPE } from './softBody';
@@ -71,8 +71,11 @@ export function riderMaterial(maps?: ProofMaps, size: ProofAtlasSize = 1024): Me
         .replace('#include <common>', '#include <common>\nattribute float glow;\nvarying float vDwGlow;')
         .replace('#include <begin_vertex>', '#include <begin_vertex>\nvDwGlow = glow;');
       if (maps) shader.vertexShader = shader.vertexShader
-        .replace('#include <common>', '#include <common>\nattribute float c02Surface;\nvarying float vC02Surface;')
-        .replace('#include <begin_vertex>', '#include <begin_vertex>\nvC02Surface = c02Surface;');
+        .replace('#include <common>', '#include <common>\nattribute float c02Surface;\nvarying float vC02Surface;\nvarying vec4 vDwSurfaceMask;')
+        .replace('#include <begin_vertex>', `#include <begin_vertex>
+          vC02Surface = c02Surface;
+          vDwSurfaceMask = vec4(float(abs(c02Surface-1.0)<.1),float(abs(c02Surface-2.0)<.1),
+            float(abs(c02Surface-3.0)<.1),float(abs(c02Surface-4.0)<.1));`);
       shader.fragmentShader = shader.fragmentShader
         .replace('#include <common>', '#include <common>\nvarying float vDwGlow;\n' + CREATURE_LIGHT_PARS)
         .replace('#include <opaque_fragment>', RIDER_RIG_LIGHT + (maps ? proofShoulder : '') + '#include <opaque_fragment>')
@@ -81,22 +84,27 @@ export function riderMaterial(maps?: ProofMaps, size: ProofAtlasSize = 1024): Me
           '#include <emissivemap_fragment>\ntotalEmissiveRadiance += vColor.rgb * vDwGlow * (0.45 + 1.8 * uNight);',
         );
       if (maps) shader.fragmentShader = shader.fragmentShader
-        .replace('#include <common>', '#include <common>\nvarying float vC02Surface;')
+        .replace('#include <common>', '#include <common>\nvarying float vC02Surface;\nvarying vec4 vDwSurfaceMask;')
         // Connected skin/cloth rings interpolate across atlas regions. Keep those boundary
         // triangles neutral until they reach a fully cloth/material vertex; no woven skin.
         .replace('#include <map_fragment>', `vec4 c02Unmapped = diffuseColor;
+          float dwTileInterior = step(.999, max(max(vDwSurfaceMask.x,vDwSurfaceMask.y),max(vDwSurfaceMask.z,vDwSurfaceMask.w)));
           #include <map_fragment>
-          diffuseColor = mix(c02Unmapped, diffuseColor, step(.999, vC02Surface));`)
+          diffuseColor = mix(c02Unmapped, diffuseColor, dwTileInterior);`)
         .replace('#include <normal_fragment_maps>', `vec3 c02UnmappedNormal = normal;
           #include <normal_fragment_maps>
-          normal = normalize(mix(c02UnmappedNormal, normal, step(.999, vC02Surface)));`)
+          normal = normalize(mix(c02UnmappedNormal, normal, dwTileInterior));`)
         .replace('#include <opaque_fragment>', `
-          // Restrained broad bronze sheen; linen, slate and leather stay matte.
-          if (vC02Surface > 3.5) {
+          // Dry cloth/scales have no specular lobe. Worn leather has a faint broad
+          // coating response; aged metal catches a tighter sun highlight without chrome.
+          if (vDwSurfaceMask.z + vDwSurfaceMask.w > .001) {
             vec3 c02Sun = normalize((viewMatrix * vec4(uSunDir, 0.0)).xyz);
             vec3 c02Half = normalize(c02Sun + normalize(vViewPosition));
-            float c02Sheen = pow(max(0.0, dot(normal, c02Half)), 12.0) * max(0.0, dot(normal, c02Sun));
-            outgoingLight += diffuseColor.rgb * uSunColor * c02Sheen * .22 * (1.0 - uNight);
+            float dwNH = max(0.0, dot(normal, c02Half));
+            float dwNL = max(0.0, dot(normal, c02Sun));
+            float dwLeather = pow(dwNH,7.0) * .035 * vDwSurfaceMask.z;
+            float dwMetal = (pow(dwNH,24.0)*.27 + pow(dwNH,4.0)*.035) * vDwSurfaceMask.w;
+            outgoingLight += diffuseColor.rgb * uSunColor * (dwLeather+dwMetal) * dwNL * (1.0-uNight);
           }
           #include <opaque_fragment>`);
     },
@@ -112,7 +120,7 @@ export function buildRiderModel(look: RiderLook, options: RiderModelOptions = {}
   const mixed = mixedWardrobe(look), textured = true;
   const dims = rigDims(look.outfit === 'travel-drape' ? 'medium' : look.build);
   const rig = createRig(dims);
-  const pal = riderPalette(look);
+  const pal = outfitMaterialPalette(riderPalette(look),proof?'travel-drape':look.outfit);
   const b = new SkinBuilder(textured);
   const ctx = makeBodyCtx(b, dims, look, pal, proofHeadShape);
   sculptProofProfiles(ctx);
@@ -153,7 +161,7 @@ export function recolorRiderModel(model: RiderModel, look: RiderLook): void {
     arr[i * 3 + 2] = c.b;
   }
   attr.needsUpdate = true;
-  model.palette = riderPalette(look);
+  model.palette = outfitMaterialPalette(riderPalette(look),model.proof?'travel-drape':look.outfit);
   model.ctx.pal = model.palette;
   model.ctx.look = look;
 }

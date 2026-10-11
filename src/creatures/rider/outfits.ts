@@ -8,7 +8,7 @@ import { B, type RigDims } from './rig';
 import { sk, sk2 } from './meshKit';
 import { torsoPoint, torsoSkin, type BodyCtx, type OutfitStyle, type Side } from './body';
 import {legSection} from './legFit';
-import { mixSrgb, tone, type RiderPalette } from './palette';
+import { mixSrgb, tone, withSurface, type RiderPalette } from './palette';
 import { armPath, block, collar, legPath, skirtPanel, strap, stud, torsoBand, torsoPanel, torsoPath, X, Y, Z, smooth } from './garments';
 
 const PI = Math.PI;
@@ -187,7 +187,7 @@ function scout(look: RiderLook, pal: RiderPalette, d: RigDims): OutfitStyle {
   const sleeve = d.upperArm + 0.02;
   const bracer = d.upperArm + 0.07;
   const bootTop = d.thigh + 0.17 * d.h;
-  const vest = mixSrgb(pal.secondary, pal.leather, 0.35);
+  const vest = withSurface(mixSrgb(pal.secondary, pal.leather, 0.35),'leather');
   const wraps = mixSrgb(pal.cloth, pal.secondary, 0.2);
   return {
     torso: {
@@ -439,7 +439,8 @@ function cartographer(look: RiderLook, pal: RiderPalette, d: RigDims): OutfitSty
     },
     arm: {
       color: () => pal.primary,
-      inflate: (s) => 0.012 + 0.012 * smooth(0.1, 0.4, s),
+      // The free bell sleeve supplies the volume below the elbow; keep only a thin lining.
+      inflate: (s) => s>d.upperArm+.015?.004:0.012 + 0.012 * smooth(0.1, 0.4, s),
       bounds: [],
     },
     leg: {
@@ -496,7 +497,8 @@ function cartographer(look: RiderLook, pal: RiderPalette, d: RigDims): OutfitSty
         }
       }
       if (!part || part === 'armWraps') {
-        // Sewn bell sleeves: attached elbow ring, free rounded cuff, bounded forearm guide.
+        // Bell sleeves have a secured inner vent over the fitted lining. The loose outer
+        // fabric can move without trapping a closed cloth ring between the forearm and waist.
         for (const side of [1, -1] as const) {
           const S = side > 0 ? ctx.bp.upperArmL : ctx.bp.upperArmR;
           const fo = side > 0 ? B.foreArmL : B.foreArmR;
@@ -510,16 +512,19 @@ function cartographer(look: RiderLook, pal: RiderPalette, d: RigDims): OutfitSty
             const a = ctx.armAt(Math.min(ss, s1 - 0.02));
             const r = a.rx + 0.02 + 0.045 * smooth(0,1,f);
             for(let c=0;c<cols;c++) {
-              const th=c/(cols-1)*Math.PI*2,fold=.004*Math.sin(f*Math.PI)*Math.cos(th*6);
-              rest.push(new Vector3(S.x+side*.004*f+Math.cos(th)*(r+fold),S.y-ss,S.z-.012*f+Math.sin(th)*(r*1.08+.008*f+fold)));
-              anchorBone.push(i===0?fo:-1);guideSkin.push([fo,1]);
+              const th=(side>0?0:Math.PI)-Math.PI*.75+c/(cols-1)*Math.PI*1.5,fold=.004*Math.sin(f*Math.PI)*Math.cos(th*6);
+              const radial=side*Math.cos(th)<0?Math.min(r+fold,.045*d.g+.010):r+fold;
+              const edge=smooth(0,.18,Math.min(c/(cols-1),1-c/(cols-1)));
+              const rx=a.rx+.006+(radial-a.rx-.006)*edge,rz=a.rz+.006+(r*1.08+.008*f+fold-a.rz-.006)*edge;
+              rest.push(new Vector3(S.x+side*.004*f+Math.cos(th)*rx,S.y-ss,S.z-.012*f+Math.sin(th)*rz));
+              anchorBone.push(i===0||c===0||c===cols-1?fo:-1);guideSkin.push([fo,1]);
             }
           }
           ctx.garmentCloth.push({name:`sleeve-cartographer-${side}`,cols,rows,rest,anchorBone,guideSkin,
-            config:{drag:.55,dragTangent:.12,dragQuad:.2,damping:5,bend:.7,iterations:5,radius:.006,
+            config:{drag:.55,dragTangent:.12,dragQuad:.2,damping:5,bend:.7,iterations:5,radius:.002,
               flutter:5,flutterHz:2.2,dragLow:.6,flutterFloor:.1,contactFriction:.2,
-              poseStiffness:100,poseRadius:.035*d.h,sewEdges:true},
-            colliders:[side===1?'armL':'armR','chest','belly','mount'],
+              poseStiffness:100,poseRadius:.035*d.h},
+            colliders:[side===1?'foreArmL':'foreArmR','chest','belly','mount'],
             render:{kind:'sheet',color:pal.primary,trim,pattern:'garment',subdiv:2,proofLinen:true,
               colorAt:(_u,v)=>v>.9?trim:pal.primary}});
         }
@@ -547,7 +552,7 @@ function cartographer(look: RiderLook, pal: RiderPalette, d: RigDims): OutfitSty
 // --- Skyknight plate ------------------------------------------------------------------------
 
 function skyknight(look: RiderLook, pal: RiderPalette, d: RigDims): OutfitStyle {
-  const mail = mixSrgb(new Color('#6a6e78'), pal.primaryDark, 0.15);
+  const mail = withSurface(mixSrgb(new Color('#6a6e78'), pal.primaryDark, 0.15),'scale');
   const steel = pal.steel;
   const trim = pal.secondary;
   const bootTop = d.thigh - 0.02 * d.h;
@@ -599,6 +604,7 @@ function skyknight(look: RiderLook, pal: RiderPalette, d: RigDims): OutfitStyle 
             rows: 3,
             cols: 5,
             rigid: true,
+            rigidBone:side>0?B.thighL:B.thighR,
             color: (u, v) => (v > 0.66 ? trim : steel),
           });
         }
@@ -634,7 +640,7 @@ function skyknight(look: RiderLook, pal: RiderPalette, d: RigDims): OutfitStyle 
             const r = (0.088 - i * 0.008) * (0.6 + 0.4 * d.w);
             const c = new Vector3(S.x + side * (0.008 + i * 0.01), S.y + 0.03 - i * 0.042, S.z - 0.004);
             const rot = new Quaternion().setFromAxisAngle(Z, side * (0.35 + i * 0.12));
-            ctx.b.ellipsoid(c, new Vector3(r, r * 0.62, r * 1.05), i === 0 ? sk(clav) : sk2(clav, up, 0.3 + i * 0.2), i === 2 ? trim : steel, {
+            ctx.b.ellipsoid(c, new Vector3(r, r * 0.62, r * 1.05), sk(i===0?clav:up), i === 2 ? trim : steel, {
               rot,
               lat: 8,
               lon: 14,
@@ -653,7 +659,7 @@ function skyknight(look: RiderLook, pal: RiderPalette, d: RigDims): OutfitStyle 
           ctx.b.ellipsoid(
             r.c.clone().add(new Vector3(0,.008*d.h,r.rf)),
             new Vector3(r.rx*.96,.038*d.h,.017*d.h),
-            r.skin,
+            sk(side>0?B.shinL:B.shinR),
             steel,
             { lat: 8, lon: 14 },
           );

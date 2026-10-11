@@ -11,6 +11,7 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
+    "test:rider-qa": "vitest run --config scripts/rider-qa.config.mjs --maxWorkers=1",
     "test:watch": "vitest",
     "smoke": "node scripts/smoke.mjs",
     "test:windhaven": "node scripts/windhaven-smoke.mjs http://127.0.0.1:5174"

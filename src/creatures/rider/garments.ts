@@ -137,6 +137,8 @@ export function torsoPanel(
     folds?: number;
     cols?: number;
     rows?: number;
+    /** A solid plate follows one joint; fabric/jerkins retain distributed skinning. */
+    rigidBone?: number;
     color: (u: number, v: number, inner: boolean) => Color;
   },
 ): void {
@@ -151,6 +153,7 @@ export function torsoPanel(
     },
     o.thickness,
     (u, v) => {
+      if(o.rigidBone!==undefined)return sk(o.rigidBone);
       const y = o.yTop + (o.yBot - o.yTop) * v;
       const th = o.th0(v) + (o.th1(v) - o.th0(v)) * u;
       return torsoSkin(ctx, y, torsoPoint(ctx, y, th, 0, new Vector3()));
@@ -200,6 +203,7 @@ export interface PanelOpts {
   rows?: number;
   /** Armor plates retain rig-driven support; hanging textile panels use localized cloth. */
   rigid?: boolean;
+  rigidBone?: number;
   color(u: number, v: number, inner: boolean): Color;
 }
 
@@ -254,6 +258,7 @@ export function skirtPanel(ctx: BodyCtx, o: PanelOpts): void {
       n.set(cs / s.rx, 0.15, sn / rz).normalize();
     };
   const skin = (u: number, v: number): SkinSpec => {
+      if(o.rigid)return sk(o.rigidBone??B.hips);
       const th = o.th0 + (o.th1 - o.th0) * u;
       const cs = Math.cos(th);
       const sn = Math.sin(th);
@@ -265,6 +270,7 @@ export function skirtPanel(ctx: BodyCtx, o: PanelOpts): void {
       return [B.hips, wh, B.thighL, wl, B.thighR, wr];
     };
   if (moving) {
+    const heavy=ctx.look.outfit==='courier';
     const rest: Vector3[] = [], anchorBone: number[] = [], guideSkin: SkinSpec[] = [];
     const C = cols + 1, R = rows + 1;
     for (let j = 0; j < R; j++) for (let i = 0; i < C; i++) {
@@ -273,8 +279,8 @@ export function skirtPanel(ctx: BodyCtx, o: PanelOpts): void {
       anchorBone.push(j === 0 ? B.hips : -1); guideSkin.push(skin(u, v));
     }
     ctx.garmentCloth.push({name: `garment-${ctx.look.outfit}-${ctx.garmentCloth.length}`, cols:C, rows:R, rest, anchorBone, guideSkin,
-      config:{drag:.55,dragTangent:.12,dragQuad:.25,damping:4,bend:.65,iterations:5,radius:.009,
-        flutter:7,flutterHz:2.2,dragLow:.6,flutterFloor:.12,contactFriction:.2,poseStiffness:85,poseRadius:.07*ctx.d.h},
+      config:{drag:heavy?.4:.55,dragTangent:.12,dragQuad:heavy?.18:.25,damping:heavy?5.5:4,bend:.65,iterations:5,radius:.009,
+        flutter:heavy?4:7,flutterHz:2.2,dragLow:.6,flutterFloor:.12,contactFriction:.2,poseStiffness:heavy?110:85,poseRadius:(heavy?.055:.07)*ctx.d.h},
       colliders:['belly','thighL','thighR','shinL','shinR','mount'],
       render:{kind:'sheet',color:o.color(.5,.5,false),trim:o.color(.5,.98,false),pattern:'garment',subdiv:2,proofLinen:true,colorAt:(u,v)=>o.color(u,v,false)}});
     return;

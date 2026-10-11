@@ -20,7 +20,9 @@ describe('localized hanging garments',()=>{
       expect(panels.length).toBe(outfit==='skyknight'?2:outfit==='cartographer'?8:4);
       for(const p of panels){
         expect(p.anchorBone.slice(0,p.cols).every(b=>b===(p.name.startsWith('sleeve')?(p.name.endsWith('--1')?B.foreArmR:B.foreArmL):B.hips))).toBe(true);
-        expect(p.anchorBone.slice(p.cols).every(b=>b===-1)).toBe(true);
+        if(p.name.startsWith('sleeve')){
+          for(let row=1;row<p.rows;row++)for(let col=0;col<p.cols;col++)expect(p.anchorBone[row*p.cols+col]).toBe(col===0||col===p.cols-1?p.anchorBone[0]:-1);
+        }else expect(p.anchorBone.slice(p.cols).every(b=>b===-1)).toBe(true);
         expect(p.guideSkin!.length).toBe(p.rest.length);
         expect(p.config.poseRadius).toBeGreaterThan(0);
         expect(p.colliders).toContain('mount');
@@ -33,7 +35,7 @@ describe('localized hanging garments',()=>{
   it.each(['scout','courier','cartographer','skyknight','travel-drape'])('%s stays bounded through sustained gust reversals, hitches and calm recovery',outfit=>{
     const r=new Rider({...DEFAULT_RIDER,outfit,headgear:'none',scarf:'none'},{quality:QUALITY.low}),pose=createRiderPose();
     try{
-      let maxOffset=0,maxSeam=0;
+      let maxOffset=0,maxSeam=0,peak='';
       for(let frame=0;frame<720;frame++){
         pose.airflow.set(frame<480?(frame%120<60?80:-80):0,frame<480?5:0,frame<480?-70:0);
         r.update(frame%90===0?.2:1/60,pose,null);
@@ -41,7 +43,7 @@ describe('localized hanging garments',()=>{
           for(let i=0;i<p.cloth.n;i++) {
             const q=i*3,offset=Math.hypot(p.cloth.pos[q]-p.guide![q],p.cloth.pos[q+1]-p.guide![q+1],p.cloth.pos[q+2]-p.guide![q+2]);
             if(!Number.isFinite(offset))throw Error(`${outfit}/${p.spec.name}/${frame}: non-finite`);
-            maxOffset=Math.max(maxOffset,offset);
+            if(offset>maxOffset){maxOffset=offset;peak=`${p.spec.name}, frame ${frame}, point ${i}`;}
           }
           if(p.spec.config.sewEdges)for(let row=0;row<p.spec.rows;row++){
             const a=row*p.spec.cols*3,b=(row*p.spec.cols+p.spec.cols-1)*3;
@@ -49,7 +51,7 @@ describe('localized hanging garments',()=>{
           }
         }
       }
-      expect(maxOffset).toBeLessThan(.25);expect(maxSeam).toBeLessThan(.02);
+      expect(maxOffset,peak).toBeLessThan(.25);expect(maxSeam).toBeLessThan(.02);
       const states=cloth(r).pieces.map(p=>p.cloth);r.setQuality(QUALITY.ultra);
       expect(cloth(r).pieces.map(p=>p.cloth)).toEqual(states);
     }finally{r.dispose();}

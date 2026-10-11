@@ -412,6 +412,12 @@ export class Cloth {
       if (this.capsules.length && (it === mid || it === cfg.iterations - 1)) this.collide();
     }
     if (env.groundAt) this.collideGround(env.groundAt);
+    // At garment joints multiple capsules overlap. A final contact with the arm/mount
+    // can undo the preceding torso contact; converge the opt-in localized garments.
+    if (cfg.poseStiffness) for(let pass=0;pass<12;pass++) {
+      if(!this.collide())break;
+      if(env.groundAt)this.collideGround(env.groundAt);
+    }
   }
 
   private solveConstraints(): void {
@@ -483,7 +489,8 @@ export class Cloth {
     }
   }
 
-  private collide(): void {
+  private collide(): boolean {
+    let touched=false;
     const p = this.pos;
     const rad = this.cfg.radius;
     // Bounds of the cloth, to skip capsules nowhere near it.
@@ -527,6 +534,7 @@ export class Cloth {
         const d2 = dx * dx + dy * dy + dz * dz;
         if (d2 >= R * R) continue;
         let d = Math.sqrt(d2);
+        if(R-d>1e-6)touched=true;
         if (this.cfg.contactFriction === undefined) {
           // Preserve the ordinary wardrobe's original arithmetic and contact response.
           if (d < 1e-6) continue;
@@ -543,6 +551,7 @@ export class Cloth {
         this.projectContact(j, dx, dy, dz, R - d);
       }
     }
+    return touched;
   }
   private projectContact(j: number, nx: number, ny: number, nz: number, depth: number): void {
     const p = this.pos, q = this.prev;

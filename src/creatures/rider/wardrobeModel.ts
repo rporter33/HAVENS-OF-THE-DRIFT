@@ -4,8 +4,9 @@ import { outfitStyle } from './outfits';
 import { proofClothSpecs, proofStyle, type RiderProof } from './proof';
 import { allClothSpecs, coatSpecs, type ClothSpec } from './accessories';
 import { torsoPanel } from './garments';
-import { tone } from './palette';
+import { tone, withSurface, outfitMaterialPalette } from './palette';
 import type { BodyCtx, OutfitStyle, Side } from './body';
+import {B} from './rig';
 
 export function mixedWardrobe(look: RiderLook): boolean {
   const base = { ...look, wardrobe: undefined };
@@ -23,13 +24,13 @@ export function wardrobeStyle(ctx: BodyCtx, base: OutfitStyle, proof?: RiderProo
   const parts = Object.keys(GARMENT_SLOTS) as RiderGarmentSlot[];
   const sources = Object.fromEntries(parts.map(p => [p, garmentSource(look, p)])) as Record<RiderGarmentSlot, string | undefined>;
   const gearPal = { ...pal, leather: pal.gearLeather, leatherDark: tone(pal.gearLeather, .65), boot: tone(pal.gearLeather, .7),
-    steel: pal.gearScale, steelDark: tone(pal.gearScale, .75) };
+    steel: withSurface(tone(pal.gearScale,1),'bronze'), steelDark: withSurface(tone(pal.gearScale, .75),'bronze') };
   const contexts = new Map<string, BodyCtx>();
   const styles = new Map<string, OutfitStyle>();
   for (const id of new Set(Object.values(sources).filter((s): s is string => !!s))) {
-    const component = { ...ctx, pal: gearPal, look: { ...look, ...TRAVEL_PIECES, outfit: id } };
+    const component = { ...ctx, pal: outfitMaterialPalette(gearPal,id), look: { ...look, ...TRAVEL_PIECES, outfit: id } };
     contexts.set(id, component);
-    styles.set(id, id === 'travel-drape' ? proofStyle(component, proof ?? 'aerie') : outfitStyle(component.look, gearPal, d));
+    styles.set(id, id === 'travel-drape' ? proofStyle(component, proof ?? 'aerie') : outfitStyle(component.look, component.pal, d));
   }
   const style = (p: RiderGarmentSlot) => styles.get(sources[p] ?? '');
   const top = style('top') ?? base, pants = style('trousers') ?? base, arms = style('armWraps'), boots = style('footwear');
@@ -78,10 +79,11 @@ export function wardrobeStyle(ctx: BodyCtx, base: OutfitStyle, proof?: RiderProo
           const lift = Math.max(0, ...[0, Math.PI / 2, Math.PI].map(th => top.torso.inflate(y, th) - sourceStyle.torso.inflate(y, th)));
           return { ...r, rx: r.rx + lift, rf: r.rf + lift, rb: r.rb + lift };
         };
-        if (part === 'chest' && id === 'skyknight') body.b.surface('scale', () => {
+        if (part === 'chest' && id === 'skyknight') body.b.surface('bronze', () => {
           for (const [th0, th1] of [[.35, Math.PI - .35], [Math.PI + .35, Math.PI * 2 - .35]]) torsoPanel(component, {
             th0: () => th0, th1: () => th1, yTop: 1.35 * d.h, yBot: 1.045 * d.h, inflate: .024,
             thickness: .006, cols: 10, rows: 5, color: () => gearPal.steel,
+            rigidBone:B.chest,
           });
         });
         sourceStyle.extras(component, part);

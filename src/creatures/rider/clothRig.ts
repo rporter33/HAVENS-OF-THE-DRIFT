@@ -19,6 +19,7 @@ import {
 import { applyPainterly, toonRamp } from '../../render/painterly';
 import type { RiderLook } from '../../core/types';
 import { Cloth, type Capsule, type ClothEnv } from './cloth';
+import {capsuleDepth,capsuleExit} from './clothContact';
 import type { ClothPattern, ClothSpec, ColliderName } from './accessories';
 import { evalRecipe, recipeOf, type ColorRecipe } from './palette';
 import { proofAtlas, proofUV, type ProofMaps, type ProofAtlasSize } from './proofMaterials';
@@ -157,6 +158,12 @@ interface Piece {
   colorRecipe?: ColorRecipe;
   trimRecipe?: ColorRecipe;
   guide?: Float64Array;
+  contactDirection: Vector3;
+  renderParticles?: Float64Array;
+  surfaceRest?: Float32Array;
+  surfacePinned: Uint8Array;
+  wrappedArm: boolean;
+  contactSpans:Float32Array;
   vertexRecipes?: (ColorRecipe | undefined)[];
 }
 
@@ -238,6 +245,13 @@ export class ClothRig {
     }
     const geo = new BufferGeometry();
     const pos = new Float32Array(vu * vv * 3);
+    const surfacePinned=new Uint8Array(vu*vv);
+    if(spec.guideSkin)for(let j=0;j<vv;j++)for(let i=0;i<vu;i++){
+      const row=j/sub,col=i/sub,r0=Math.min(spec.rows-2,Math.floor(row)),c0=Math.min(spec.cols-2,Math.floor(col));
+      const fr=row-r0,fc=col-c0;let fixed=true;
+      for(let r=0;r<2;r++)for(let c=0;c<2;c++)if((r?fr:1-fr)*(c?fc:1-fc)>1e-9&&spec.anchorBone[(r0+r)*spec.cols+c0+c]<0)fixed=false;
+      surfacePinned[j*vu+i]=fixed?1:0;
+    }
     const nrm = new Float32Array(vu * vv * 3);
     const uv = new Float32Array(vu * vv * 2);
     for (let j = 0; j < vv; j++) {
@@ -332,6 +346,11 @@ export class ClothRig {
       colorRecipe: recipeOf(spec.render.color),
       trimRecipe: recipeOf(spec.render.trim),
       guide: spec.guideSkin ? new Float64Array(n * 3) : undefined,
+      contactDirection:new Vector3(0,.25,1).normalize(),
+      renderParticles:spec.guideSkin?new Float64Array(n*3):undefined,
+      surfaceRest:spec.guideSkin?new Float32Array(pos.length):undefined,
+      surfacePinned,wrappedArm:spec.name.startsWith('sleeve-'),
+      contactSpans:new Float32Array(vu*vv*4),
       vertexRecipes,
     };
   }
@@ -432,11 +451,25 @@ export class ClothRig {
       }
       out[i * 3] = x / total - origin.x; out[i * 3 + 1] = y / total - origin.y; out[i * 3 + 2] = z / total - origin.z;
     }
+    let cx=0,cz=0;for(let i=0;i<out.length;i+=3){cx+=out[i];cz+=out[i+2];}
+    const radial=Math.hypot(cx,cz);
+    if(radial>1e-6)pc.contactDirection.set(cx,.25*radial,cz).normalize();
   }
 
   private drawSheet(pc: Piece): void {
     const { cols, rows } = pc.spec;
-    const p = pc.cloth.pos;
+    const p = pc.renderParticles??pc.cloth.pos;
+    if(pc.renderParticles&&pc.guide){
+      // A collision can move a particle much farther than wind may move this fitted garment.
+      // Keep those repairs out of the interpolator; the continuous drawn envelope below owns
+      // surface contacts. Simulation positions and velocities remain untouched.
+      for(let i=0;i<pc.cloth.n;i++){
+        const k=i*3,dx=pc.cloth.pos[k]-pc.guide[k],dy=pc.cloth.pos[k+1]-pc.guide[k+1],dz=pc.cloth.pos[k+2]-pc.guide[k+2];
+        const row=Math.floor(i/pc.spec.cols)/(pc.spec.rows-1),limit=(pc.spec.config.poseRadius??.07)*(.15+.85*row);
+        const length=Math.hypot(dx,dy,dz),scale=length>limit?limit/length:1;
+        p[k]=pc.guide[k]+dx*scale;p[k+1]=pc.guide[k+1]+dy*scale;p[k+2]=pc.guide[k+2]+dz*scale;
+      }
+    }
     const sub = pc.sub;
     const vu = pc.vu;
     const vv = pc.vv;
@@ -463,6 +496,7 @@ export class ClothRig {
     // builds along the length, so a scarf tail shows its face from any side (never a string).
     if (cols === 2) {
       this.drawRibbon(pc, tmp, vv);
+      this.projectGarmentSurface(pc);
       return this.sheetNormals(pc);
     }
     // Pass 2: across the columns.
@@ -489,7 +523,132 @@ export class ClothRig {
       const a=j*vu*3,b=(j*vu+vu-1)*3;
       for (let k=0;k<3;k++) out[a+k]=out[b+k]=(out[a+k]+out[b+k])*.5;
     }
+    this.projectGarmentSurface(pc);
     this.sheetNormals(pc);
+  }
+
+  /** Spline interpolation can cut inside a capsule even when its particles are outside.
+   * Repair only the final free garment surface; never move a pinned seam or simulation state. */
+  private projectGarmentSurface(pc:Piece):void {
+    if(!pc.guide)return;
+    const out=pc.pos,rad=pc.spec.config.radius+(pc.wrappedArm?.001:.003);
+    const {x:nx,y:ny,z:nz}=pc.contactDirection;
+    pc.surfaceRest!.set(out);
+    let needsSmooth=false,spansReady=false;
+    for(let sweep=0;sweep<32;sweep++){
+    let touched=false;
+    for(let i=pc.vu;i<out.length/3;i++) {
+      if(pc.surfacePinned[i])continue;
+      const k=i*3;
+      for(let pass=0;pass<8;pass++) {
+        let push=0;
+        for(const c of pc.capsules) {
+          if(pc.wrappedArm&&pc.spec.colliders[pc.capsules.indexOf(c)].startsWith('foreArm')){
+            const depth=capsuleDepth(out[k],out[k+1],out[k+2],c,rad+.002);
+            if(depth>1e-6){
+              const ex=c.bx-c.ax,ey=c.by-c.ay,ez=c.bz-c.az,ee=ex*ex+ey*ey+ez*ez;
+              const u=ee>1e-12?Math.max(0,Math.min(1,((out[k]-c.ax)*ex+(out[k+1]-c.ay)*ey+(out[k+2]-c.az)*ez)/ee)):0;
+              const dx=out[k]-c.ax-ex*u,dy=out[k+1]-c.ay-ey*u,dz=out[k+2]-c.az-ez*u,length=Math.hypot(dx,dy,dz)||1;
+              out[k]+=dx/length*(depth+1e-5);out[k+1]+=dy/length*(depth+1e-5);out[k+2]+=dz/length*(depth+1e-5);touched=true;
+            }
+          }else push=Math.max(push,capsuleExit(out[k],out[k+1],out[k+2],nx,ny,nz,c,rad));
+        }
+        if(push<1e-6)break;
+        touched=true;
+        out[k]+=nx*(push+1e-5);out[k+1]+=ny*(push+1e-5);out[k+2]+=nz*(push+1e-5);
+      }
+      const ground=this.env.groundAt?.(out[k],out[k+1],out[k+2]);
+      if(ground!==null&&ground!==undefined&&out[k+1]<ground+rad){out[k+1]=ground+rad;touched=true;}
+    }
+    touched=this.clearGarmentTriangles(pc,rad)||touched;
+    if(!pc.wrappedArm&&(touched||needsSmooth)){
+      if(!spansReady){
+        const base=pc.surfaceRest!;
+        for(let i=pc.vu;i<out.length/3;i++)for(let dir=0;dir<4;dir++){
+          const row=Math.floor(i/pc.vu),col=i%pc.vu,a=i*3;
+          const j=dir===0?(col>0?i-1:-1):dir===1?(col<pc.vu-1?i+1:-1):dir===2?(row>1?i-pc.vu:-1):(row<pc.vv-1?i+pc.vu:-1),b=j*3;
+          pc.contactSpans[i*4+dir]=j<pc.vu?0:Math.hypot(base[a]-base[b],base[a+1]-base[b+1],base[a+2]-base[b+2]);
+        }
+        spansReady=true;
+      }
+      needsSmooth=this.smoothGarmentContact(pc);touched=needsSmooth||touched;
+    }
+    if(pc.spec.config.sewEdges)for(let row=1;row<pc.vv;row++){
+      const a=row*pc.vu*3,b=(row*pc.vu+pc.vu-1)*3;
+      for(let k=0;k<3;k++){
+        if(Math.abs(out[a+k]-out[b+k])>1e-6)touched=true;
+        out[a+k]=out[b+k]=(out[a+k]+out[b+k])*.5;
+      }
+    }
+    if(!touched)break;
+    }
+  }
+
+  /** Vertices alone cannot detect a folded face spanning the body. A capsule support plane
+   * at an intersecting edge/centroid keeps the rendered face outside. All corrections use one
+   * outward direction per piece, so overlapping contacts cannot push it back and forth. */
+  private clearGarmentTriangles(pc:Piece,rad:number):boolean {
+    const p=pc.pos,idx=pc.geo.index!.array;
+    const {x:nx,y:ny,z:nz}=pc.contactDirection;
+    let touched=false;
+      for(let t=0;t<idx.length;t+=3){
+        const a=idx[t]*3,b=idx[t+1]*3,c=idx[t+2]*3;
+        if(pc.surfacePinned[a/3]||pc.surfacePinned[b/3]||pc.surfacePinned[c/3])continue;
+        for(const cap of pc.capsules){
+          const R=cap.r+rad;
+          if(Math.min(p[a],p[b],p[c])>Math.max(cap.ax,cap.bx)+R||Math.max(p[a],p[b],p[c])<Math.min(cap.ax,cap.bx)-R||
+             Math.min(p[a+1],p[b+1],p[c+1])>Math.max(cap.ay,cap.by)+R||Math.max(p[a+1],p[b+1],p[c+1])<Math.min(cap.ay,cap.by)-R||
+             Math.min(p[a+2],p[b+2],p[c+2])>Math.max(cap.az,cap.bz)+R||Math.max(p[a+2],p[b+2],p[c+2])<Math.min(cap.az,cap.bz)-R)continue;
+        for(let sample=0;sample<4;sample++){
+          const wa=sample===0||sample===1?.5:sample===3?1/3:0;
+          const wb=sample===0||sample===2?.5:sample===3?1/3:0;
+          const wc=1-wa-wb;
+          let x=p[a]*wa+p[b]*wb+p[c]*wc,y=p[a+1]*wa+p[b+1]*wb+p[c+1]*wc,z=p[a+2]*wa+p[b+2]*wb+p[c+2]*wc;
+            if(capsuleDepth(x,y,z,cap,rad)<1e-6)continue;
+            // Wrapped sleeves need a local radial tangent plane at their own arm, rather
+            // than a ray across the arm to its opposite side. This retains the sewn ring.
+            if(pc.wrappedArm&&pc.spec.colliders[pc.capsules.indexOf(cap)].startsWith('foreArm')){
+              const ex=cap.bx-cap.ax,ey=cap.by-cap.ay,ez=cap.bz-cap.az,ee=ex*ex+ey*ey+ez*ez;
+              const u=ee>1e-12?Math.max(0,Math.min(1,((x-cap.ax)*ex+(y-cap.ay)*ey+(z-cap.az)*ez)/ee)):0;
+              let dx=x-cap.ax-ex*u,dy=y-cap.ay-ey*u,dz=z-cap.az-ez*u;
+              const length=Math.hypot(dx,dy,dz)||1;dx/=length;dy/=length;dz/=length;
+              const plane=Math.max(cap.ax*dx+cap.ay*dy+cap.az*dz,cap.bx*dx+cap.by*dy+cap.bz*dz)+cap.r+rad+1e-5;
+              for(const j of [a,b,c]){
+                const move=plane-p[j]*dx-p[j+1]*dy-p[j+2]*dz;
+                if(move>0){p[j]+=dx*move;p[j+1]+=dy*move;p[j+2]+=dz*move;touched=true;}
+              }
+              x=p[a]*wa+p[b]*wb+p[c]*wc;y=p[a+1]*wa+p[b+1]*wb+p[c+1]*wc;z=p[a+2]*wa+p[b+2]*wb+p[c+2]*wc;
+              continue;
+            }
+            const move=capsuleExit(x,y,z,nx,ny,nz,cap,rad)+1e-5;
+            for(const j of [a,b,c]){
+              if(move>0){p[j]+=nx*move;p[j+1]+=ny*move;p[j+2]+=nz*move;touched=true;}
+            }
+            x+=nx*move;y+=ny*move;z+=nz*move;
+          }
+        }
+      }
+    return touched;
+  }
+
+  /** Spread contact displacement across neighbouring cloth instead of leaving a sharp fin.
+   * Only raise the outward envelope, so smoothing cannot pull a cleared face into the body. */
+  private smoothGarmentContact(pc:Piece):boolean {
+    const p=pc.pos,base=pc.surfaceRest!,n=pc.contactDirection;
+    let touched=false;
+    for(let scan=0;scan<2;scan++)for(let ii=pc.vu;ii<p.length/3;ii++){
+      const i=scan===0?ii:p.length/3-1-(ii-pc.vu),row=Math.floor(i/pc.vu),col=i%pc.vu,a=i*3;
+      let offset=(p[a]-base[a])*n.x+(p[a+1]-base[a+1])*n.y+(p[a+2]-base[a+2])*n.z,need=offset;
+      for(let dir=0;dir<4;dir++){
+        const j=dir===0?(col>0?i-1:-1):dir===1?(col<pc.vu-1?i+1:-1):dir===2?(row>1?i-pc.vu:-1):(row<pc.vv-1?i+pc.vu:-1);
+        if(j<pc.vu)continue;const b=j*3;
+        const other=(p[b]-base[b])*n.x+(p[b+1]-base[b+1])*n.y+(p[b+2]-base[b+2])*n.z;
+        const span=pc.contactSpans[i*4+dir];
+        need=Math.max(need,other-.65*span);
+      }
+      if(need-offset>1e-5){const move=need-offset;p[a]+=n.x*move;p[a+1]+=n.y*move;p[a+2]+=n.z*move;touched=true;}
+    }
+    return touched;
   }
 
   /** Ribbon rows from the two smoothed columns in `line` (row-major, 2 points per row). */

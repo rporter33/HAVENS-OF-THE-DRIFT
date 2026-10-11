@@ -17,7 +17,7 @@ const Z = new Vector3(0, 0, 1);
 export type ClothPattern = 'plain' | 'tattered' | 'feather' | 'hair' | 'scarf' | 'tail' | 'braid' | 'coat' | 'garment';
 
 /** Colliders the rider exposes (see Rider.ts); cloth picks a subset by name. */
-export type ColliderName = 'chest' | 'belly' | 'shoulders' | 'armL' | 'armR' | 'thighL' | 'thighR' | 'shinL' | 'shinR' | 'head' | 'neck' | 'mount';
+export type ColliderName = 'chest' | 'belly' | 'shoulders' | 'armL' | 'armR' | 'foreArmL' | 'foreArmR' | 'thighL' | 'thighR' | 'shinL' | 'shinR' | 'head' | 'neck' | 'mount';
 
 export interface ClothSpec {
   name: string;
@@ -353,8 +353,8 @@ export function coatSpecs(ctx: BodyCtx, look: RiderLook): ClothSpec[] {
         },
         rows,
         B.hips,
-        { ...SHEET, drag: .55, dragQuad:.25, flutter: 7, bend: .65, damping: 4, radius: .009,
-          contactFriction:.2, poseStiffness:85, poseRadius:.07*d.h },
+        { ...SHEET, drag: .4, dragQuad:.18, flutter: 4, bend: .65, damping: 5.5, radius: .009,
+          contactFriction:.2, poseStiffness:110, poseRadius:.055*d.h },
         ['belly', 'thighL', 'thighR', 'shinL', 'shinR', 'mount'],
         { kind: 'sheet', color: pal.primary, trim: pal.primaryDark, pattern: 'coat', subdiv: 3,proofLinen:true },
       ),

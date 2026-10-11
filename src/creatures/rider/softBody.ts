@@ -4,7 +4,7 @@ import { Vector3 } from 'three';
 import { B } from './rig';
 import { hermite, legSkin, stops, torsoPoint, torsoSkin, type BodyCtx, type OutfitStyle, type Side } from './body';
 import { sk, sk2, type RingSpec, type SkinSpec } from './meshKit';
-import { tone } from './palette';
+import { tone, surfaceOf } from './palette';
 import {legSection} from './legFit';
 export const SOFT_LEG_SEGMENTS=16;
 
@@ -77,7 +77,7 @@ export function softUpperBody(ctx: BodyCtx, style: OutfitStyle): void {
       }
       const color = style.torso.color(y, th, p);
       ids.push(b.vertex(p, color, skin, 0, [j / seg, (1.455 * d.h - y) / (.625 * d.h)],
-        color === pal.skin ? 'neutral' : style.torso.surface ?? 'linen')); ps.push(p); ss.push(skin);
+        color === pal.skin ? 'neutral' : surfaceOf(color)??style.torso.surface??'linen')); ps.push(p); ss.push(skin);
     }
     grid.push(ids); points.push(ps); skins.push(ss);
   }
@@ -117,12 +117,12 @@ export function softUpperBody(ctx: BodyCtx, style: OutfitStyle): void {
       const p = start.clone().multiplyScalar((1 - t) ** 2).addScaledVector(control, 2 * t * (1 - t)).addScaledVector(end, t * t);
       const skin = blend(skins[i][angle(j)], armSkin(ctx, armSteps[0], side), smooth(0, 1, t));
       const color = style.arm.color(.04 * d.h, k / 16 * Math.PI * 2, side);
-      return b.vertex(p, color, skin, 0, [k / 16, t * .1], color === pal.skin ? 'neutral' : style.arm.surface ?? 'linen');
+      return b.vertex(p, color, skin, 0, [k / 16, t * .1], color === pal.skin ? 'neutral' : surfaceOf(color)??style.arm.surface??'linen');
     }));
     for (const s of armSteps) connect(Array.from({ length: 16 }, (_, j) => {
       const color = style.arm.color(s, j / 16 * Math.PI * 2, side);
       return b.vertex(ringPoint(s, j), color, armSkin(ctx, s, side), 0, [j / 16, s / (d.upperArm + d.foreArm)],
-        color === pal.skin ? 'neutral' : style.arm.surface ?? 'linen');
+        color === pal.skin ? 'neutral' : surfaceOf(color)??style.arm.surface??'linen');
     }));
   }
   b.end();
@@ -164,7 +164,7 @@ export function softLeg(ctx: BodyCtx, style: OutfitStyle, side: Side): void {
     return { c:r.c,
       ax: X, ay: Z, rx:r.rx,ry:r.rf,ryBack:r.rb,
       radial: th => r.radial(th)*(1 + gather * Math.cos(th * 7 + s * 22)),
-      surface: s>(style.leg.bootStart??Infinity)?'leather':r.cloth?'linen':'neutral',
+      surface: surfaceOf(style.leg.color(s,0,side))??(s>(style.leg.bootStart??Infinity)?'leather':r.cloth?'linen':'neutral'),
       skin:r.skin, color: th => style.modular || !hem ? style.leg.color(s, th, side)
         : cloth ? tone(pal.primary, .92 - .055 * (1 - Math.cos(th * 7 + s * 22))) : pal.skin };
   });

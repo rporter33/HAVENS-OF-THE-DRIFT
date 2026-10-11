@@ -9,6 +9,7 @@
 import { Color } from 'three';
 import type { RiderLook } from '../../core/types';
 import { wardrobeKey } from '../../cosmetics/wardrobe';
+import type {ProofSurface} from './proofMaterials';
 
 export interface RiderPalette {
   skin: Color;
@@ -57,6 +58,22 @@ export type ColorRecipe =
   | { k: 'scale'; a: ColorRecipe; f: number };
 
 const recipes = new WeakMap<Color, ColorRecipe>();
+const surfaces = new WeakMap<Color, ProofSurface>();
+/** Material identity follows the source garment and survives tone/dye derivation. */
+export const surfaceOf=(color:Color):ProofSurface|undefined=>surfaces.get(color);
+export function withSurface(color:Color,surface:ProofSurface):Color { surfaces.set(color,surface);return color; }
+function inheritSurface(out:Color,a:Color,b?:Color,t=0):Color {
+  const surface=surfaceOf(t>.5&&b?b:a)??(b?surfaceOf(b):undefined);
+  if(surface)surfaces.set(out,surface);return out;
+}
+/** Clone recipes as well as colors: mixed sources must not mutate each other's palette. */
+export function outfitMaterialPalette(pal:RiderPalette,outfit:string):RiderPalette {
+  const surface=outfit==='flight'||outfit==='racer'?'leather':'linen';
+  const copy={...pal};
+  for(const key of ['primary','primaryDark','primaryLight','secondary','secondaryDark'] as const)
+    copy[key]=withSurface(withRecipe(pal[key].clone(),recipeOf(pal[key])),surface);
+  return copy;
+}
 
 /** The recipe of a color that depends on a player pick, or undefined for a constant. */
 export function recipeOf(color: Color): ColorRecipe | undefined {
@@ -89,7 +106,7 @@ function toneRaw(a: Color, k: number): Color {
 export function mixSrgb(a: Color, b: Color, t: number): Color {
   const out = mixRaw(a, b, t);
   if (recipes.has(a) || recipes.has(b)) recipes.set(out, { k: 'mix', a: asRecipe(a), b: asRecipe(b), t });
-  return out;
+  return inheritSurface(out,a,b,t);
 }
 
 /** Darken/lighten in sRGB space (k < 1 darker). */
@@ -97,14 +114,14 @@ export function tone(a: Color, k: number): Color {
   const out = toneRaw(a, k);
   const r = recipes.get(a);
   if (r) recipes.set(out, { k: 'tone', a: r, f: k });
-  return out;
+  return inheritSurface(out,a);
 }
 
 /** Linear-space lerp (meshKit's mixCol), recipe-aware. */
 export function mixLinear(a: Color, b: Color, t: number): Color {
   const out = a.clone().lerp(b, t);
   if (recipes.has(a) || recipes.has(b)) recipes.set(out, { k: 'lmix', a: asRecipe(a), b: asRecipe(b), t });
-  return out;
+  return inheritSurface(out,a,b,t);
 }
 
 /** Linear-space scale (meshKit's shade), recipe-aware. */
@@ -112,7 +129,7 @@ export function scaleLinear(a: Color, k: number): Color {
   const out = a.clone().multiplyScalar(k);
   const r = recipes.get(a);
   if (r) recipes.set(out, { k: 'scale', a: r, f: k });
-  return out;
+  return inheritSurface(out,a);
 }
 
 /**
@@ -160,7 +177,7 @@ export function riderPalette(look: RiderLook): RiderPalette {
   const hair = pick(look, 'hairColor');
   const primary = pick(look, 'outfitPrimary');
   const secondary = pick(look, 'outfitSecondary');
-  return {
+  const pal:RiderPalette = {
     skin,
     skinShade: mixSrgb(tone(skin, 0.86), c('#a0503c'), 0.12),
     blush: mixSrgb(skin, c('#e06a60'), 0.22),
@@ -191,4 +208,9 @@ export function riderPalette(look: RiderLook): RiderPalette {
     gearScale: pick(look, 'armorColor'),
     gearLeather: pick(look, 'leatherColor'),
   };
+  for(const key of ['leather','leatherDark','boot','sole','gearLeather'] as const)withSurface(pal[key],'leather');
+  for(const key of ['brass','steel','steelDark'] as const)withSurface(pal[key],'bronze');
+  for(const key of ['cream','cloth','trousers','scarf','cape'] as const)withSurface(pal[key],'linen');
+  withSurface(pal.gearScale,'scale');
+  return outfitMaterialPalette(pal,look.outfit);
 }
