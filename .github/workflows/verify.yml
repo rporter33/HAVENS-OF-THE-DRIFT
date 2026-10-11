@@ -44,7 +44,26 @@ jobs:
           done
           curl --fail --silent http://127.0.0.1:5174/ > /dev/null
           node scripts/windline-gameplay-check.mjs http://127.0.0.1:5174
+          node scripts/windline-flow-check.mjs http://127.0.0.1:5174
+          node scripts/windline-reticle-check.mjs http://127.0.0.1:5174
+          # Owner-approved neutral dot: zero prediction work; actual casts and
+          # original collision/swing CPU gates remain in the checks above/below.
+          node scripts/windline-reticle-motion-check.mjs http://127.0.0.1:5174
+          node scripts/editor-check.mjs http://127.0.0.1:5174
+          # The approved audio harness imports its offline QA helper from /src/;
+          # run it against this same exact checkout through Vite's source server.
+          npm run dev -- --host 127.0.0.1 --port 5411 --strictPort > /tmp/audio-dev.log 2>&1 &
+          audio_dev_pid=$!
+          trap 'kill "$preview_pid" "$audio_dev_pid" 2>/dev/null || true' EXIT
+          for attempt in {1..60}; do
+            if curl --fail --silent http://127.0.0.1:5411/ > /dev/null; then break; fi
+            sleep 1
+          done
+          curl --fail --silent http://127.0.0.1:5411/ > /dev/null
+          node scripts/audio-qa.mjs http://127.0.0.1:5411 /tmp/driftwing-reticle-audio-qa
+          kill "$audio_dev_pid" 2>/dev/null || true
           node scripts/windline-hud-layout-check.mjs http://127.0.0.1:5174
+          node scripts/windline-hud-layout-check.mjs http://127.0.0.1:5174 --device=gamepad --review-viewports
           node scripts/windline-performance-check.mjs http://127.0.0.1:5174 --assert-cost --evidence=ci
           node scripts/windhaven-smoke.mjs http://127.0.0.1:5174
           node scripts/sky-lance-check.mjs http://127.0.0.1:5174
@@ -63,4 +82,7 @@ jobs:
             /tmp/driftwing-*-browser-check.json
             /tmp/driftwing-spin-integration.json
             /tmp/driftwing-windline-performance-ci.json
+            /tmp/driftwing-reticle-audio-qa/
+            /tmp/driftwing-editor-evidence/
+            /tmp/audio-dev.log
           retention-days: 30

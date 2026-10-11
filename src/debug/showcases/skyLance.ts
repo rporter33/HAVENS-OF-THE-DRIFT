@@ -45,7 +45,7 @@ const showcase: Showcase = {
     game.scene.add(scene);
     cueWorld = new TraversalWorld(terrain, new AnchorRegistry(fixtures.map((collider, i) => ({ id: `test-anchor-${i}`, collider })),true));
     game.player.enableSkyLance(cueWorld);
-    visuals = new SkyLanceVisuals(); game.scene.add(visuals.group);
+    visuals = new SkyLanceVisuals(true); game.scene.add(visuals.group);
     game.skyLanceVisuals = visuals;
     reset = () => {
       game.player.teleport(origin.clone().add(new Vector3(0, 0, -3)), 0, 'onFoot');

@@ -42,7 +42,10 @@ jobs:
             sleep 1
           done
           node scripts/windline-gameplay-check.mjs http://127.0.0.1:5174
+          node scripts/windline-flow-check.mjs http://127.0.0.1:5174
+          node scripts/windline-reticle-check.mjs http://127.0.0.1:5174
           node scripts/windline-hud-layout-check.mjs http://127.0.0.1:5174
+          node scripts/windline-hud-layout-check.mjs http://127.0.0.1:5174 --device=gamepad --review-viewports
           node scripts/windline-performance-check.mjs http://127.0.0.1:5174 --assert-cost --evidence=deploy
       # Pages must already be enabled with Source: GitHub Actions — the workflow token is not
       # allowed to create the Pages site, so enabling it here fails the run instead.

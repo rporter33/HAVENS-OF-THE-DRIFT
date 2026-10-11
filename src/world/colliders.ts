@@ -62,6 +62,9 @@ export interface ColliderWork {
 }
 
 export class ColliderIndex {
+  /** Changes to indexed static geometry invalidate presentation query snapshots. */
+  private geometryRevision = 0;
+  get revision(): number { return this.geometryRevision; }
   readonly work: ColliderWork = { queries: 0, candidates: 0, exact: 0 };
   private grid = new Map<number, Entry[]>();
   private entries: Entry[] = [];
@@ -81,6 +84,7 @@ export class ColliderIndex {
   add(c: Collider): void { this.addEntry(c, null); }
 
   private addEntry(c: Collider, source: Source | null): void {
+    this.geometryRevision++;
     this.membership.set(c, source);
     if (!this.colliderIds.has(c)) this.colliderIds.set(c,`solid-${this.nextColliderId++}`);
     let minX: number, maxX: number, minZ: number, maxZ: number, top: number, bottom: number;
@@ -187,6 +191,7 @@ export class ColliderIndex {
 
   /** Drop every indexed collider (sources stay registered and refill on the next sync). */
   clear(): void {
+    this.geometryRevision++;
     this.grid.clear();
     this.entries.length = 0;
     this.membership.clear();

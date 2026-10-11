@@ -105,7 +105,15 @@ try {
     assert.equal(await page.locator('#playtest').isDisabled(), true);
     const sandbox = await navigation;
     if (cycle < 2) await page.unroute(delayedSandbox);
-    await sandbox.waitForFunction(() => window.__editorPlaytest?.ready, null, { timeout: 180_000 });
+    try { await sandbox.waitForFunction(() => window.__editorPlaytest?.ready, null, { timeout: 180_000 }); }
+    catch (error) {
+      report.sandboxBootFailure = await Promise.race([
+        sandbox.evaluate(() => ({ url: location.href, readyState: document.readyState, ready: !!window.__editorPlaytest?.ready, boot: document.getElementById('boot')?.textContent })),
+        new Promise(resolve => setTimeout(() => resolve('Sandbox renderer did not answer within 3 seconds'), 3000)),
+      ]).catch(() => 'Sandbox state unavailable');
+      console.error('Sandbox boot failure diagnostics:', JSON.stringify(report.sandboxBootFailure));
+      throw error;
+    }
     const result = await sandbox.evaluate(async () => {
       const { game: g, region, assets } = __editorPlaytest;
       g.save.data.collected.push('sandbox-only'); g.save.flush();

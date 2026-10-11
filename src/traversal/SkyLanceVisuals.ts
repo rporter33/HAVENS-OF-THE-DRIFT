@@ -2,7 +2,8 @@ import { BufferAttribute, BufferGeometry, BoxGeometry, CylinderGeometry, ConeGeo
 import type { Camera } from 'three';
 import { LANCE } from './tuning';
 import type { SkyLance } from './SkyLance';
-import { predictTarget, type TargetPreview } from './target';
+import type { SweepWorld } from './sweep';
+import { predictCenteredTarget, type TargetPreview } from './target';
 import type { Rider } from '../creatures/rider/Rider';
 import type { RiderPose } from '../core/types';
 import { toonMaterial } from '../render/painterly';
@@ -40,10 +41,13 @@ export class SkyLanceVisuals {
   private readonly forecastAim = new Vector3();
   private readonly forecastOrigin = new Vector3();
   private readonly forecastVelocity = new Vector3();
+  private readonly forecastCamera = new Vector3();
   private previewState = '';
+  private forecastWorld: SweepWorld | null = null;
+  private forecastRevision: number | undefined;
   target: TargetPreview | null = null;
   private readonly previewOrigin = new Vector3();
-  constructor() {
+  constructor(private readonly predictiveAim = false) {
     const bronze = toonMaterial({ color: '#AA8656' });
     this.seed.name = 'windline-seed'; this.seed.renderOrder = 102;
     this.group.add(this.seed);
@@ -111,48 +115,61 @@ export class SkyLanceVisuals {
     for (const material of materials) material.dispose();
     this.group.clear(); this.reticle = null;
   }
-  /** Aim marker follows every frame; expensive first-solid feedback is bounded to 20 Hz. */
+  /** Normal gameplay draws a neutral aiming dot without any world query.
+   * Predictive feedback is explicitly opt-in for the isolated SkyLance study. */
   updateReticle(camera: Camera, feet: Vector3, velocity: Vector3, lance: SkyLance): void {
     this.reticle ??= document.getElementById('sky-lance-reticle');
     this.updateLineWidth(camera);
-    if (!this.reticle || this.reticle.hidden || this.reticle.closest('[hidden]')) return;
+    if (!this.reticle) return;
+    if (!this.predictiveAim) {
+      this.target = null;
+      this.reticle.dataset.target = 'aiming';
+      this.reticle.style.color = '#a8ddec';
+      this.reticle.classList.remove('is-valid');
+      this.reticle.style.left = '50%'; this.reticle.style.top = '50%';
+      return;
+    }
+    if (this.reticle.hidden || this.reticle.closest('[hidden]')) {
+      // A caller may reveal this element later in the same frame. Hidden feedback
+      // must carry no old eligibility, and the first visible update must query now.
+      this.target=null;this.forecastWorld=null;this.nextPreview=0;
+      this.reticle.dataset.target=lance.state==='ready'?'checking':lance.state;
+      this.reticle.style.color='#a8ddec';this.reticle.classList.toggle('is-valid',false);
+      const label=this.reticle.querySelector<HTMLElement>('[data-aim-status]');if(label)label.textContent='';
+      return;
+    }
     camera.getWorldDirection(this.aimDirection);
     this.previewOrigin.copy(feet).addScaledVector(UP,LANCE.harnessHeight);
     const now=performance.now();
     if (now >= this.nextPreview || this.previewState !== lance.state) {
-      this.nextPreview=now+50;this.previewState=lance.state;
+      this.previewState=lance.state;
       this.forecastAim.copy(this.aimDirection); this.forecastOrigin.copy(this.previewOrigin); this.forecastVelocity.copy(velocity);
-      this.target=lance.state==='ready' ? predictTarget(lance.world,this.previewOrigin,this.aimDirection,velocity) : null;
+      this.forecastCamera.copy(camera.position);
+      this.target=lance.state==='ready' ? predictCenteredTarget(lance.world,camera.position,this.aimDirection,this.previewOrigin,velocity) : null;
+      this.forecastWorld=lance.world;this.forecastRevision=lance.world.revision;
+      // Start the breathing interval after completion. A slow query must not
+      // consume its own cooldown and run again immediately on the next frame.
+      // Under load, reserve eight times its CPU cost (up to 250 ms) for gameplay.
+      const completed=performance.now();
+      this.nextPreview=completed+Math.max(50,Math.min(250,(completed-now)*8));
     }
-    // Never keep a blue READY cue for a different aim while waiting for the next bounded query.
-    const fresh = this.forecastAim.dot(this.aimDirection) >= Math.cos(.008)
-      && this.forecastOrigin.distanceToSquared(this.previewOrigin) <= .15*.15
-      && this.forecastVelocity.distanceToSquared(velocity) <= .5*.5;
+    // The isolated study clears eligibility when its bounded forecast is stale.
+    const fresh = this.forecastAim.equals(this.aimDirection)
+      && this.forecastOrigin.equals(this.previewOrigin)
+      && this.forecastVelocity.equals(velocity)
+      && this.forecastCamera.equals(camera.position)
+      && this.forecastWorld===lance.world && this.forecastRevision===lance.world.revision
+      && (this.target?.state !== 'reachable' || !!this.target.anchorId && lance.world.anchorValid(this.target.anchorId));
     const target = fresh ? this.target : null;
-    const reachable=target?.state==='reachable';
+    const reachable=lance.state==='ready' && target?.state==='reachable';
     this.reticle.dataset.target = lance.rope ? 'attached' : target?.state ?? (lance.state === 'ready' ? 'checking' : lance.state);
-    this.reticle.style.color = lance.rope || reachable ? '#79e5ff' : target?.state==='blocked' ? '#d9ad79' : '#F2EADA';
+    this.reticle.style.color = reachable ? '#94d6a2' : '#a8ddec';
+    this.reticle.classList.toggle('is-valid',reachable);
     const label=this.reticle.querySelector<HTMLElement>('[data-aim-status]');
     if (label) label.textContent = lance.rope ? `LINKED · ${lance.rope.length.toFixed(0)} m` : reachable ? `READY · ${target!.distance.toFixed(0)} m` : target?.state==='blocked' ? 'BLOCKED / TOO CLOSE' : lance.state==='ready' ? (fresh ? 'NO SURFACE · 65 m' : 'CHECKING') : lance.state==='spent' ? 'REFORMING' : 'FIRING';
-    // A single near ballistic aim marker avoids jumping between distant impact and fallback points.
-    {
-      const t=20/LANCE.throwSpeed;
-      this.aimPoint.copy(this.previewOrigin).addScaledVector(this.aimDirection,20).addScaledVector(velocity,t);
-      this.aimPoint.y-=.5*LANCE.projectileGravity*t*t;
-    }
     const hit = this.reticle.querySelector<HTMLElement>('[data-impact]');
-    if (hit) {
-      hit.style.display = reachable ? 'block' : 'none';
-      if (reachable) {
-        this.endpoint.copy(target!.point).project(camera);
-        this.grip.copy(this.aimPoint).project(camera);
-        hit.style.left = `calc(50% + ${(this.endpoint.x-this.grip.x)*50}vw)`;
-        hit.style.top = `calc(50% + ${-(this.endpoint.y-this.grip.y)*50}vh)`;
-      }
-    }
-    this.aimPoint.project(camera);
-    this.reticle.style.left=`${(this.aimPoint.x*.5+.5)*100}%`;
-    this.reticle.style.top=`${(-this.aimPoint.y*.5+.5)*100}%`;
+    if (hit) hit.style.display = 'none';
+    this.reticle.style.left='50%'; this.reticle.style.top='50%';
   }
   update(lance: SkyLance, rider: Rider, pose: RiderPose, alpha: number): void {
     this.bracer.visible = this.harness.visible = this.waist.visible = !pose.mounted;

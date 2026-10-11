@@ -138,6 +138,30 @@ describe('Input on fake devices', () => {
     expect(input.poll(1 / 120).pressed.lanceRelease).toBe(false);
   });
 
+  it('uses LT only airborne, retaining flare and ordinary A jump roles', () => {
+    const { input }=make(),g=fakePad('standard',4,17);pads=[g];input.poll(1/120);
+    press(g.buttons[STD.LT]);let f=input.poll(1/120);expect(f.flight.flare).toBeGreaterThan(.9);expect(f.pressed.airAction).toBe(false);expect(f.pressed.jump).toBe(false);
+    input.airborneTraversal=true;expect(input.poll(1/120).pressed.airAction).toBe(false);
+    press(g.buttons[STD.LT],0);input.poll(1/120);press(g.buttons[STD.LT]);f=input.poll(1/120);
+    expect(f.pressed.airAction).toBe(true);expect(f.pressed.jump).toBe(false);expect(input.poll(1/120).pressed.airAction).toBe(false);
+    press(g.buttons[0]);expect(input.poll(1/120).pressed.jump).toBe(true);
+  });
+  it('requires full trigger release across jitter, pauses and a held reconnect',()=>{
+    const { input }=make(),g=fakePad('standard',4,17);pads=[g];input.traversal=input.airborneTraversal=true;input.poll(1/120);
+    press(g.buttons[STD.LT],.6);press(g.buttons[STD.RT],.6);let f=input.poll(1/120);expect(f.pressed.airAction).toBe(true);expect(f.pressed.lance).toBe(true);
+    for(const value of [.51,.49,.3,.21,.6]){press(g.buttons[STD.LT],value);press(g.buttons[STD.RT],value);f=input.poll(1/120);expect(f.pressed.airAction).toBe(false);expect(f.pressed.lance).toBe(false);expect(f.pressed.lanceRelease).toBe(false);expect(f.lanceHeld).toBe(true);}
+    input.traversal=input.airborneTraversal=false;input.poll(1/120);input.traversal=input.airborneTraversal=true;
+    f=input.poll(1/120);expect(f.pressed.airAction).toBe(false);expect(f.pressed.lance).toBe(false);
+    pads=[];input.poll(1/120);pads=[g];f=input.poll(1/120);expect(f.pressed.airAction).toBe(false);expect(f.pressed.lance).toBe(false);
+    press(g.buttons[STD.LT],.2);press(g.buttons[STD.RT],.2);input.poll(1/120);
+    press(g.buttons[STD.LT],.6);press(g.buttons[STD.RT],.6);f=input.poll(1/120);expect(f.pressed.airAction).toBe(true);expect(f.pressed.lance).toBe(true);
+  });
+  it('does not reinterpret partially held flight triggers when entering traversal',()=>{
+    const { input }=make(),g=fakePad('standard',4,17);pads=[g];press(g.buttons[STD.LT],.3);press(g.buttons[STD.RT],.3);input.poll(1/120);
+    input.traversal=input.airborneTraversal=true;input.poll(1/120);press(g.buttons[STD.LT],.8);press(g.buttons[STD.RT],.8);
+    const f=input.poll(1/120);expect(f.pressed.airAction).toBe(false);expect(f.pressed.lance).toBe(false);
+  });
+
   it('flaps from a non-standard pad whose triggers are axes, and says the layout was guessed', () => {
     const events = new EventBus<GameEvents>();
     const toasts: string[] = [];

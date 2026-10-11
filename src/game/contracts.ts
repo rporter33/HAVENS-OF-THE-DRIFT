@@ -144,6 +144,8 @@ export interface PlayerSystem {
   readonly skyLance?: SkyLance | null;
   readonly airBoost?: AirBoost;
   readonly lanceInteraction?: 'hold' | 'toggle';
+  readonly windlineHoldAction?: 'leap' | 'recall' | null;
+  readonly windlineHoldProgress?: number;
   readonly mode: PlayerMode;
   readonly breed: BreedStats;
   /** Physics state of the wyvern while flying (also valid, if stale, on the ground). */

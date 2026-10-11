@@ -1,0 +1,142 @@
+{
+  "passed": true,
+  "commit": "0fcc7091a38dad486b391da945df63076e730d16",
+  "dirty": "",
+  "browser": "154.0.8037.57",
+  "url": "http://127.0.0.1:5191/",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "cycles": [
+    {
+      "cycle": 0,
+      "activation": "repeated-enter",
+      "singleSandbox": true,
+      "mode": "flying",
+      "race": "authored-region",
+      "islands": 2,
+      "authoredInTerrain": 2,
+      "assetCount": 3,
+      "shrine": true,
+      "roost": "roost",
+      "storage": [],
+      "databases": [],
+      "sentinel": "{\"sentinel\":\"player progress untouched\"}"
+    },
+    {
+      "cycle": 1,
+      "activation": "pointer-double-click",
+      "singleSandbox": true,
+      "mode": "flying",
+      "race": "authored-region",
+      "islands": 2,
+      "authoredInTerrain": 2,
+      "assetCount": 3,
+      "shrine": true,
+      "roost": "roost",
+      "storage": [],
+      "databases": [],
+      "sentinel": "{\"sentinel\":\"player progress untouched\"}"
+    },
+    {
+      "cycle": 2,
+      "activation": "single-click",
+      "singleSandbox": true,
+      "mode": "flying",
+      "race": "authored-region",
+      "islands": 2,
+      "authoredInTerrain": 2,
+      "assetCount": 3,
+      "shrine": true,
+      "roost": "roost",
+      "storage": [],
+      "databases": [],
+      "sentinel": "{\"sentinel\":\"player progress untouched\"}"
+    }
+  ],
+  "captures": [
+    {
+      "name": "editor-overview",
+      "file": "/tmp/driftwing-refinement-editor-evidence/editor-overview.png",
+      "sha256": "3383848f83abc0813b4e3fb0017de7d23a73b0c45070c406b0fdeda1bc09507a"
+    },
+    {
+      "name": "playtest-on-foot",
+      "file": "/tmp/driftwing-refinement-editor-evidence/playtest-on-foot.png",
+      "sha256": "f629f106ced86ab3d1e1ac3a3b0a9468cf9770852dac9ba73685f95c0d83c591"
+    },
+    {
+      "name": "playtest-mounted",
+      "file": "/tmp/driftwing-refinement-editor-evidence/playtest-mounted.png",
+      "sha256": "4be1e3bfc5165ce93058a94b9dcbdaff5847255b0844ac6e23f6c7675d470f15"
+    },
+    {
+      "name": "editor-column",
+      "file": "/tmp/driftwing-refinement-editor-evidence/editor-column.png",
+      "sha256": "8627e3f0ba6ba071bc92a3086685b7442521f746341661132b86b00dc0cc3961"
+    }
+  ],
+  "errors": [],
+  "reload": {
+    "documentReadyMs": 1113,
+    "editorReadyMs": 1653,
+    "state": {
+      "readyState": "complete",
+      "renderFrame": 8,
+      "navigation": {
+        "name": "http://127.0.0.1:5191/editor.html?debug=1",
+        "entryType": "navigation",
+        "startTime": 0,
+        "duration": 1627.300000000745,
+        "navigationId": 2342,
+        "initiatorType": "navigation",
+        "deliveryType": "cache",
+        "nextHopProtocol": "",
+        "renderBlockingStatus": "non-blocking",
+        "contentType": "text/html",
+        "contentEncoding": "gzip",
+        "workerStart": 0,
+        "workerRouterEvaluationStart": 0,
+        "workerCacheLookupStart": 0,
+        "workerMatchedSourceType": "",
+        "workerFinalSourceType": "",
+        "redirectStart": 0,
+        "redirectEnd": 0,
+        "fetchStart": 0.3999999985098839,
+        "domainLookupStart": 0.3999999985098839,
+        "domainLookupEnd": 0.3999999985098839,
+        "connectStart": 0.3999999985098839,
+        "secureConnectionStart": 0,
+        "connectEnd": 0.3999999985098839,
+        "requestStart": 7,
+        "responseStart": 8.800000000745058,
+        "firstInterimResponseStart": 0,
+        "finalResponseHeadersStart": 8.800000000745058,
+        "responseEnd": 9.300000000745058,
+        "transferSize": 300,
+        "encodedBodySize": 569,
+        "decodedBodySize": 1215,
+        "responseStatus": 200,
+        "serverTiming": [],
+        "unloadEventStart": 15.199999999254942,
+        "unloadEventEnd": 15.199999999254942,
+        "domInteractive": 1008.3999999985099,
+        "domContentLoadedEventStart": 1107.5,
+        "domContentLoadedEventEnd": 1107.5999999977648,
+        "domComplete": 1627.199999999255,
+        "loadEventStart": 1627.300000000745,
+        "loadEventEnd": 1627.300000000745,
+        "type": "reload",
+        "redirectCount": 0,
+        "activationStart": 0,
+        "criticalCHRestart": 0,
+        "notRestoredReasons": null,
+        "confidence": {
+          "randomizedTriggerRate": 0.4994798,
+          "value": "high"
+        }
+      }
+    }
+  }
+}

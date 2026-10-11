@@ -4,6 +4,8 @@
 
 import { SkyLanceVisuals } from '../traversal/SkyLanceVisuals';
 import { TraversalWorld } from '../traversal/sweep';
+import { centeredCast } from '../traversal/target';
+import { LANCE } from '../traversal/tuning';
 import { PerspectiveCamera, Scene, Vector3 } from 'three';
 import { EventBus } from '../core/events';
 import type { BoxCollider, GameEvents, RiderLook, Settings, WyvernLook } from '../core/types';
@@ -282,6 +284,7 @@ export class Game implements GameActions {
     this.input.flying = this.player.mode === 'flying';
     this.input.traversal = !!this.player.skyLance && this.screen === 'play' && !this.ui.capturesInput &&
       (this.player.mode === 'onFoot' || this.player.mode === 'falling' || this.player.mode === 'traversing');
+    this.input.airborneTraversal = this.input.traversal && this.player.mode === 'traversing';
     const input = this.input.poll(dt);
     this.haptics.update(dt);
     const simulate = (this.screen === 'play' || this.screen === 'title') && !this.debug.freeze;
@@ -293,7 +296,12 @@ export class Game implements GameActions {
       if (gameplayInput === this.idleInput && this.player.skyLance) this.player.cancelLanceWindup();
       // Presses are per rendered frame; latch them so 0 or several fixed steps see each once.
       if (this.player.skyLance && !gameplayInput.aim) {
-        gameplayInput.aim = this.camera.getWorldDirection(this.lanceAim);
+        this.camera.getWorldDirection(this.lanceAim);
+        if (gameplayInput.pressed.lance && this.player.skyLance.state === 'ready') {
+          const origin = this.player.foot.position.clone(); origin.y += LANCE.harnessHeight;
+          this.lanceAim.copy(centeredCast(this.player.skyLance.world,this.camera.position,this.lanceAim,origin,this.player.foot.velocity).aim);
+        }
+        gameplayInput.aim = this.lanceAim;
       }
       this.player.latchPresses(gameplayInput);
       while (this.accumulator >= FIXED_DT && steps < MAX_STEPS) {
@@ -325,7 +333,6 @@ export class Game implements GameActions {
     // Photo mode (opened from the pause menu) flies the camera while the world holds still.
     const cameraInput = this.screen === 'play' || this.screen === 'stable' || this.cameraRig.mode === 'photo';
     this.cameraRig.update(dt, cameraInput ? input : this.idleInput, this.player);
-    if (this.player.skyLance) this.skyLanceVisuals?.updateReticle(this.camera, this.player.foot.position, this.player.foot.velocity, this.player.skyLance);
     this.dressing.update(dt, this.camera, focus);
     this.races.update(dt, this.camera, this.player);
     this.collectibles.update(dt, this.camera, this.player);
@@ -342,6 +349,9 @@ export class Game implements GameActions {
     this.view.screen = this.screen;
     this.view.prompt = this.prompt;
     this.ui.update(dt, this.view);
+    // Visibility can change on this frame (resume, HUD reveal or leaving the
+    // saddle). Validate after that decision, before any newly visible cue paints.
+    if (this.player.skyLance) this.skyLanceVisuals?.updateReticle(this.camera, this.player.foot.position, this.player.foot.velocity, this.player.skyLance);
 
     if (this.screen === 'play') this.save.data.playTime += dt;
     if (render) {

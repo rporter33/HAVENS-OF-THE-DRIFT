@@ -42,10 +42,12 @@ export interface FootInput {
 
 /** Edge-triggered buttons: true only on the frame the button went down. */
 export interface InputPresses {
-  /** Experimental on-foot equipment actions; ignored unless the Sky Lance is enabled. */
+  /** Windline equipment actions; ignored unless the Sky Lance is enabled. */
   lance?: boolean;
   lanceRelease?: boolean;
   recoverLance?: boolean;
+  /** Fresh airborne LT press: pull/boost only, never an ordinary ground jump. */
+  airAction?: boolean;
   /** A / Space / Enter in menus. On foot: jump. */
   confirm: boolean;
   /** B / Escape-in-menus. */
@@ -76,7 +78,7 @@ export interface InputFrame {
   device: InputDevice;
   /** Sampled world-space throw direction; presentation supplies it, fixed simulation consumes it. */
   aim?: Vector3;
-  /** Experimental held controls; no effect outside independent rider traversal. */
+  /** Held controls for independent rider traversal. */
   lanceHeld?: boolean;
   callHeld?: boolean;
   flight: FlightInput;

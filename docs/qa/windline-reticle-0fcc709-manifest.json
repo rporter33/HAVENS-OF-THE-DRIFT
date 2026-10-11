@@ -1,0 +1,51 @@
+{
+  "testedHead": "0fcc7091a38dad486b391da945df63076e730d16",
+  "testedTree": "d6ab5d1f46cdc667c16f1311afe5867c83438fab",
+  "evidenceOnlyCommit": true,
+  "runtimeAndTestsUnchanged": true,
+  "files": [
+    {
+      "kind": "gentle",
+      "path": "windline-reticle-0fcc709-gentle.json",
+      "sha256": "5ff8e0601d5a329b01ecf528060f1b625de311b8e9d61090adedb0808f8f8382",
+      "bytes": 785217
+    },
+    {
+      "kind": "moving",
+      "path": "windline-reticle-0fcc709-moving.json",
+      "sha256": "ef0ad03f9e5b43fff9a4277c4d6eaa6aca0139c2185d01767b69062b599493c4",
+      "bytes": 782843
+    },
+    {
+      "kind": "cold",
+      "path": "windline-reticle-0fcc709-cold.json",
+      "sha256": "4683c14ec56711f334231b123600efb1f0eba2b29b0508b201ac64be0ed43801",
+      "bytes": 784540
+    },
+    {
+      "kind": "raf",
+      "path": "windline-reticle-0fcc709-raf.json",
+      "sha256": "44408c441ef1d406a84f7a122f37db8e25b5aac448f5dee6c7d699966bb841e9",
+      "bytes": 172840
+    },
+    {
+      "kind": "lifecycle",
+      "path": "windline-reticle-0fcc709-lifecycle.json",
+      "sha256": "0c4f903c0fdebf9ce1ee38c13c5a90e3052576c3ea60652d95d232185a168289",
+      "bytes": 28098
+    },
+    {
+      "kind": "editor",
+      "path": "windline-reticle-0fcc709-editor.json",
+      "sha256": "6e108bb8a778995870fce9c8e077c85fc9146514022e966c792c4e7a128516f6",
+      "bytes": 4333
+    },
+    {
+      "kind": "ci-budget",
+      "path": "windline-reticle-0fcc709-ci-budget.json",
+      "sha256": "9ef104d0d4db115f7381414896f2716cb818b6b86b1f290585bba378dabd3a46",
+      "bytes": 12156
+    }
+  ],
+  "remotePublication": "Paused at pending GitHub create-blob approval; no evidence commit/ref published"
+}

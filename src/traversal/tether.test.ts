@@ -1,8 +1,30 @@
 import { describe, it, expect } from 'vitest';
 import { Vector3 as V } from 'three';
-import { constrain, integrate, resolveTether } from './tether';
+import { constrain, integrate, resolveTether, steerSwing } from './tether';
 import { LANCE as T } from './tuning';
 const dt = 1 / 120;
+describe('gentle swing-plane steering',()=>{
+  it('preserves speed, radial velocity and length while turning toward camera intent',()=>{
+    const p=new V(0,0,0),v=new V(0,-3,8),rope={anchor:new V(0,10,0),length:10};
+    const speed=v.lengthSq();steerSwing(p,v,rope,1,0,0,dt);
+    expect(v.x).toBeLessThan(0);expect(v.y).toBe(-3);expect(v.lengthSq()).toBeCloseTo(speed,12);expect(rope.length).toBe(10);
+    expect(Math.atan2(-v.x,v.z)).toBeLessThanOrEqual(.9*dt+1e-10);
+  });
+  it('leaves neutral input, zero time and a still rider unchanged',()=>{
+    const p=new V(),v=new V(3,2,4),r={anchor:new V(0,10,0),length:10},before=v.clone();
+    steerSwing(p,v,r,0,0,0,dt);expect(v.equals(before)).toBe(true);steerSwing(p,v,r,1,0,0,0);expect(v.equals(before)).toBe(true);
+    v.set(0,0,0);steerSwing(p,v,r,1,0,0,dt);expect(v.lengthSq()).toBe(0);
+  });
+  it('cannot grow unpowered energy during a minute of continuous steering',()=>{
+    const p=new V(6,2,0),v=new V(0,0,8),r={anchor:new V(0,10,0),length:10};
+    let previous=.5*v.lengthSq()+18*p.y;
+    for(let i=0;i<7200;i++){
+      steerSwing(p,v,r,Math.sin(i*.03),.5,0,dt);integrate(p,v,dt,r);
+      const energy=.5*v.lengthSq()+18*p.y;expect(energy).toBeLessThanOrEqual(previous+1e-8);previous=energy;
+      expect(p.distanceTo(r.anchor)).toBeLessThanOrEqual(r.length+1e-8);
+    }
+  });
+});
 describe('fixed-length unilateral tether', () => {
   const rope = { anchor: new V(0, 10, 0), length: 10 };
   it('permits slack and inward movement without pulling', () => {

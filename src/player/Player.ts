@@ -40,7 +40,7 @@ import { Companion } from './companion';
 import { PLAYER_TUNING as P } from './tuning';
 import { FixedHome, type HomeAnchor } from './home';
 import { SkyLance } from '../traversal/SkyLance';
-import { integrate, resolveTether, ROPE_EPSILON } from '../traversal/tether';
+import { integrate, resolveTether, steerSwing, ROPE_EPSILON } from '../traversal/tether';
 import { moveBody, type SweepWorld } from '../traversal/sweep';
 import { LANCE } from '../traversal/tuning';
 import { fallSpeed } from '../traversal/freefall';
@@ -142,6 +142,11 @@ export class Player implements PlayerSystem {
     this.lanceInteraction = value; this.skyLance?.reset(); this.cancelLanceWindup();
   }
   private callTime = 0;
+  get windlineHoldAction(): 'leap' | 'recall' | null {
+    if (!this.skyLance || this.mountHoldBlocked || this.skyLance.rope) return null;
+    return this.mode === 'flying' ? 'leap' : this.mode === 'traversing' ? 'recall' : null;
+  }
+  get windlineHoldProgress(): number { return this.windlineHoldAction ? clamp01(this.callTime / LANCE.callHold) : 0; }
   private readonly traversalStart = new Vector3();
   freefallTilt = 0;
   freefallSteer = 0;
@@ -209,8 +214,10 @@ export class Player implements PlayerSystem {
   private latched = false;
   private latchInteract = false;
   private latchJump = false;
+  private latchAirAction = false;
   private prevInteract = false;
   private prevJump = false;
+  private prevAirAction = false;
   private prevFlap = 0;
   private flapQueued = 0;
   private beatsAtQueue = 0;
@@ -449,6 +456,7 @@ export class Player implements PlayerSystem {
     this.latched = true;
     if (input.pressed.interact) this.latchInteract = true;
     if (input.pressed.jump) this.latchJump = true;
+    if (input.pressed.airAction) this.latchAirAction = true;
     if (input.pressed.lance && !this.latchLance) {
       this.latchLance = true;
       this.hasLanceAim = !!input.aim;
@@ -481,17 +489,22 @@ export class Player implements PlayerSystem {
 
     let interact: boolean;
     let jump: boolean;
+    let airAction: boolean;
     if (this.latched) {
       interact = this.latchInteract;
       jump = this.latchJump;
+      airAction = this.latchAirAction;
       this.latchInteract = false;
       this.latchJump = false;
+      this.latchAirAction = false;
     } else {
       interact = input.pressed.interact && !this.prevInteract;
       jump = input.pressed.jump && !this.prevJump;
+      airAction = !!input.pressed.airAction && !this.prevAirAction;
     }
     this.prevInteract = input.pressed.interact;
     this.prevJump = input.pressed.jump;
+    this.prevAirAction = !!input.pressed.airAction;
 
     if (this.skyLance) {
       if (!input.callHeld) this.mountHoldBlocked = false;
@@ -515,7 +528,7 @@ export class Player implements PlayerSystem {
     this.hasLanceAim = false;
     switch (this.mode) {
       case 'traversing':
-        this.updateTraversal(dt, input, jump);
+        this.updateTraversal(dt, input, jump || airAction);
         break;
       case 'flying':
         this.updateFlying(dt, input);
@@ -556,6 +569,7 @@ export class Player implements PlayerSystem {
     if (this.skyLance?.state === 'projectile') this.skyLance.detach('Cast cancelled');
     this.latchLance = this.latchLanceRelease = this.latchRecover = false; this.hasLanceAim = false;
     this.latchJump = this.latchInteract = false;
+    this.latchAirAction = false; this.airBoost.cancelRequest();
     this.blockWindup = true;
   }
 
@@ -633,18 +647,23 @@ export class Player implements PlayerSystem {
     };
     this.freefallTilt += (Math.max(-1, Math.min(1, input.foot.moveY)) - this.freefallTilt) * (1 - Math.exp(-5 * dt));
     this.freefallSteer = damp(this.freefallSteer, this.freefallOpen ? clamp(input.foot.moveX,-1,1) : 0, 8, dt);
-    if (rope) { this.airBoost.stop(); if (jump) lance.pull(); }
+    if (rope) {
+      this.airBoost.stop(); if (jump) lance.pull();
+      steerSwing(this.harness,foot.velocity,rope,input.foot.moveX,input.foot.moveY,this.cameraYaw,dt);
+    }
     else {
       if (jump) {
         const x = input.foot.moveX, y = input.foot.moveY;
         _fwd.set(-Math.cos(this.cameraYaw)*x + Math.sin(this.cameraYaw)*y,0,Math.sin(this.cameraYaw)*x + Math.cos(this.cameraYaw)*y);
-        this.airBoost.start(foot.velocity, _fwd.lengthSq() > .01 ? _fwd : input.aim, this.cameraYaw);
+        this.airBoost.request(foot.velocity, _fwd.lengthSq() > .01 ? _fwd : input.aim, this.cameraYaw);
       }
+      const boosting = this.airBoost.remaining > 0 || (this.airBoost.buffered && this.airBoost.available);
       this.airBoost.step(dt, foot.velocity);
-      if (this.freefallOpen) steerFreefall(foot.velocity, input.foot.moveX, input.foot.moveY, this.cameraYaw, dt);
+      if (this.freefallOpen && !boosting) steerFreefall(foot.velocity, input.foot.moveX, input.foot.moveY, this.cameraYaw, dt);
     }
     const drag = rope || !this.freefallOpen ? 0 : LANCE.spreadDrag + (LANCE.diveDrag - LANCE.spreadDrag) * (this.freefallTilt + 1) * .5;
-    lance.taut = integrate(this.harness, foot.velocity, dt, rope, bodyCollision, drag, undefined, rope || !this.freefallOpen ? 0 : fallSpeed(this.freefallTilt), lance.pullTime > 0 ? LANCE.pullAcceleration : 0);
+    const pull = lance.pullTime > 0 ? LANCE.pullAcceleration * smoothstep(0,LANCE.pullRise,LANCE.pullDuration-lance.pullTime+dt*.5) : 0;
+    lance.taut = integrate(this.harness, foot.velocity, dt, rope, bodyCollision, drag, undefined, rope || !this.freefallOpen ? 0 : fallSpeed(this.freefallTilt), pull);
     lance.pullTime = Math.max(0, lance.pullTime - dt);
     foot.position.copy(this.harness).addScaledVector(UP, -LANCE.harnessHeight);
     foot.grounded = false; foot.airTime += dt;
@@ -1324,6 +1343,7 @@ export class Player implements PlayerSystem {
     }
     this.riderMounted = mode === 'flying' || mode === 'landed' || mode === 'respawning';
     if (this.riderMounted) {this.unmountedFlight = false; this.airBoost.stop(); this.freefallOpen = false;}
+    if (mode !== 'traversing') this.airBoost.cancelRequest();
     if (this.riderMounted) this.setRiderAction('mounted');
     if (mode === 'onFoot' || mode === 'landed' || mode === 'mounting' || mode === 'dismounting') this.airborne = false;
     if (from !== mode) this.deps.events.emit('modeChange', { from, to: mode });
@@ -1337,6 +1357,7 @@ export class Player implements PlayerSystem {
     this.callTime = 0; this.freefallTilt = 0; this.traversalPhase = 'released';
     this.latchLance = this.latchRecover = this.prevLance = this.prevRecover = false;
     this.latchJump = this.latchInteract = this.prevJump = this.prevInteract = false;
+    this.latchAirAction = this.prevAirAction = false;
     this.contact.reset++;
     this.contact.impact = 0;
     this.takeoffTimer = -1;

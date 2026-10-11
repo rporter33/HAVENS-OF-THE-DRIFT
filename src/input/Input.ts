@@ -43,7 +43,7 @@ export function emptyPresses(): InputPresses {
   return {
     confirm: false, back: false, interact: false, pause: false, restart: false, jump: false,
     navUp: false, navDown: false, navLeft: false, navRight: false, tabPrev: false, tabNext: false,
-    recenter: false, toggleHud: false, lance: false, lanceRelease: false, recoverLance: false,
+    recenter: false, toggleHud: false, lance: false, lanceRelease: false, recoverLance: false, airAction: false,
   };
 }
 
@@ -110,8 +110,15 @@ export class Input implements InputSystem, RumbleSink {
   flying = false;
   /** Independent rider context; RT retains its flight/menu roles outside traversal. */
   traversal = false;
+  /** LT stays flare on a wyvern and cannot jump on foot. */
+  airborneTraversal = false;
   private previousTraversal = false;
   private lanceArmed = true;
+  private previousAirborneTraversal = false;
+  private airActionArmed = true;
+  private lanceTrigger = false;
+  private airTrigger = false;
+  private traversalPadSource = '';
 
   private target: HTMLElement;
   private settings: () => Settings;
@@ -371,23 +378,37 @@ export class Input implements InputSystem, RumbleSink {
     this.wheel = 0;
 
     // --- Presses ------------------------------------------------------------------------------
-    let rawLanceHeld = this.padHeldAny(PAD.lance);
-    for (const code of KEYS.lance) rawLanceHeld ||= this.keys.has(code);
-    if (this.traversal !== this.previousTraversal) {
-      this.lanceArmed = !rawLanceHeld;
+    const source = pad ? `${pad.index}:${pad.id}` : '';
+    const padChanged = source !== this.traversalPadSource;
+    this.traversalPadSource = source;
+    const rtValue = pad ? this.padView.buttons[PAD_BUTTON[PAD.lance[0]]]?.value ?? 0 : 0;
+    const ltValue = pad ? this.padView.buttons[PAD_BUTTON[PAD.airAction[0]]]?.value ?? 0 : 0;
+    const previousRt = this.lanceTrigger, previousLt = this.airTrigger;
+    // Hysteresis belongs only to discrete rider actions; mounted analog flight is unchanged.
+    this.lanceTrigger = rtValue >= .55 || (this.lanceTrigger && rtValue > .2);
+    this.airTrigger = ltValue >= .55 || (this.airTrigger && ltValue > .2);
+    let keyboardLanceHeld = false;
+    for (const code of KEYS.lance) keyboardLanceHeld ||= this.keys.has(code);
+    const rawLanceHeld = this.lanceTrigger || keyboardLanceHeld;
+    if (this.traversal !== this.previousTraversal || padChanged) {
+      this.lanceArmed = !keyboardLanceHeld && rtValue <= .2;
     }
-    if (!rawLanceHeld) this.lanceArmed = true;
+    if (!rawLanceHeld && rtValue <= .2) this.lanceArmed = true;
     f.lanceHeld = this.traversal && this.lanceArmed && rawLanceHeld;
     f.callHeld = this.held(KEYS.interact) || this.padHeldAny(PAD.interact);
     // Keep an existing hold across a menu/context suspension. Deliver its physical release
     // when gameplay owns input again; a filtered/unarmed hold is not a release.
     p.lanceRelease = this.traversal && this.previousLanceHeld && !rawLanceHeld;
     p.lance = this.traversal && this.lanceArmed &&
-      (this.down(KEYS.lance) || this.padPressedAny(PAD.lance));
+      (this.down(KEYS.lance) || (this.lanceTrigger && !previousRt));
     // A buffered keyboard tap may begin and end between render polls.
     p.lanceRelease ||= !!p.lance && !rawLanceHeld;
     this.previousLanceHeld = !!f.lanceHeld || (this.previousLanceHeld && (!this.traversal || rawLanceHeld));
     this.previousTraversal = this.traversal;
+    if (this.airborneTraversal !== this.previousAirborneTraversal || padChanged) this.airActionArmed = ltValue <= .2;
+    if (ltValue <= .2) this.airActionArmed = true;
+    p.airAction = this.airborneTraversal && this.airActionArmed && this.airTrigger && !previousLt;
+    this.previousAirborneTraversal = this.airborneTraversal;
     p.recoverLance = this.traversal && (this.down(KEYS.recoverLance) || this.padPressedAny(PAD.recoverLance));
     p.confirm = this.down(KEYS.confirm) || this.padPressedAny(PAD.confirm);
     p.jump = this.down(KEYS.jump) || this.padPressedAny(PAD.jump);

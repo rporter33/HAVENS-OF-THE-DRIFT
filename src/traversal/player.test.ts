@@ -111,9 +111,29 @@ describe('rider traversal fidelity', () => {
   it('pulls a slack attached line without consuming the detached boost or adding sideways steering',()=>{
     const r=rig();r.attach();r.p.foot.position.copy(r.p.skyLance!.rope!.anchor).add(new V(0,-6,0));r.p.foot.velocity.set(0,0,0);
     const input=emptyFrame();input.pressed.jump=true;input.foot.moveX=1;stepInput(r.p,input);
-    expect(r.p.airBoost.available).toBe(true);expect(r.p.airBoost.remaining).toBe(0);expect(r.p.foot.velocity.x).toBe(0);expect(r.p.foot.velocity.y).toBeGreaterThan(0);expect(r.p.skyLance!.pullTime).toBeGreaterThan(0);
+    expect(r.p.airBoost.available).toBe(true);expect(r.p.airBoost.remaining).toBe(0);expect(r.p.foot.velocity.x).toBe(0);
+    expect(r.p.foot.velocity.y).toBeGreaterThanOrEqual(0);expect(r.p.foot.velocity.y).toBeLessThan(.1);expect(r.p.skyLance!.pullTime).toBeGreaterThan(0);
+    input.pressed.jump=false;for(let i=0;i<12;i++)stepInput(r.p,input);expect(r.p.foot.velocity.y).toBeGreaterThan(0);
     expect(r.p.skyLance!.rope).not.toBeNull();
   });
+  it('keeps LT away from ordinary ground jumps and exposes readonly hold progress',()=>{
+    const r=supported(),input=emptyFrame();input.pressed.airAction=true;stepInput(r.p,input);
+    expect(r.p.mode).toBe('onFoot');expect(r.p.foot.grounded).toBe(true);expect(r.p.foot.velocity.y).toBe(0);expect(r.p.airBoost.available).toBe(true);
+    r.p.teleport(new V(5000,1000,5000),0,'flying',30);r.tick();input.pressed.airAction=false;input.callHeld=true;
+    for(let i=0;i<12;i++)stepInput(r.p,input);
+    expect(r.p.windlineHoldAction).toBe('leap');expect(r.p.windlineHoldProgress).toBeCloseTo(.25,10);
+    r.p.cancelLanceWindup();expect(r.p.windlineHoldProgress).toBe(0);expect(r.p.mode).toBe('flying');
+  });
+  it('does not let ordinary steering fight the active horizontal boost',()=>{
+    function run(side:number){
+      const r=rig();r.p.foot.position.set(5000,1000,5000);r.p.foot.grounded=false;r.p.foot.velocity.set(0,-5,8);r.tick();
+      const input=emptyFrame();input.pressed.airAction=true;input.aim=new V(0,0,1);stepInput(r.p,input);input.pressed.airAction=false;
+      input.foot.moveX=side;for(let i=0;i<32;i++)stepInput(r.p,input);
+      return r.p.foot.velocity.toArray();
+    }
+    expect(run(1)).toEqual(run(0));expect(run(-1)).toEqual(run(0));
+  });
+
   it('sweeps the initial saddle hop and does not pass through an intervening contact',()=>{
     const r=rig();r.p.teleport(new V(5000,1000,5000),0,'flying',30);r.tick();
     const sweep=vi.spyOn(r.p.skyLance!.world,'sweep');
@@ -255,14 +275,21 @@ describe('Sky Lance movement ownership', () => {
     for (let i = 0; i < 180; i++) { r.p.latchPresses(call); r.p.fixedUpdate(dt, call, 0); }
     expect(r.p.skyLance!.rope).not.toBeNull(); expect(r.p.mode).toBe('traversing');
   });
-  it('directional input cannot power an attached swing', () => {
+  it('directional input turns an attached swing without powering it', () => {
     function run(moveX: number, moveY: number) {
       const r = rig(); r.attach(); const input = emptyFrame();
       input.foot.moveX = moveX; input.foot.moveY = moveY;
-      for (let i = 0; i < 720; i++) { r.p.latchPresses(input); r.p.fixedUpdate(dt, input, 0); }
+      const rope=r.p.skyLance!.rope!;
+      const energy=()=>.5*r.p.foot.velocity.lengthSq()+18*(r.p.foot.position.y+1-rope.anchor.y);
+      let previous=energy();
+      for (let i = 0; i < 720; i++) {
+        r.p.latchPresses(input); r.p.fixedUpdate(dt, input, 0);
+        expect(r.p.skyLance!.rope).toBe(rope);expect(energy()).toBeLessThanOrEqual(previous+1e-7);previous=energy();
+        expect(r.p.foot.position.clone().add(new V(0,1,0)).distanceTo(rope.anchor)).toBeLessThanOrEqual(rope.length+1e-6);
+      }
       return [...r.p.foot.position.toArray(), ...r.p.foot.velocity.toArray()];
     }
-    expect(run(1, 1)).toEqual(run(0, 0)); expect(run(-1, -1)).toEqual(run(0, 0));
+    const neutral=run(0,0);expect(run(1,1)).not.toEqual(neutral);expect(run(-1,-1)).not.toEqual(neutral);
   });
   it('dive tilt falls faster than a spread brake pose while steering remains bounded', () => {
     function fall(tilt: number) {
@@ -274,8 +301,8 @@ describe('Sky Lance movement ownership', () => {
     const dive = fall(1), brake = fall(-1);
     expect(dive.mode).toBe('traversing'); expect(brake.mode).toBe('traversing');
     expect(-dive.velocity.y).toBeGreaterThan(-brake.velocity.y * 1.5);
-    expect(dive.velocity.x).toBeCloseTo(0,10);expect(brake.velocity.x).toBeCloseTo(0,10);
-    expect(Math.abs(dive.velocity.z)).toBeLessThan(.01);expect(Math.abs(brake.velocity.z)).toBeLessThan(.01);
+    expect(Math.abs(dive.velocity.x)).toBeLessThan(.01);expect(brake.velocity.x).toBeGreaterThanOrEqual(0);expect(brake.velocity.x).toBeLessThan(.01);
+    expect(dive.velocity.z).toBeGreaterThan(10);expect(Math.abs(brake.velocity.z)).toBeLessThan(.01);
     expect(Math.hypot(dive.velocity.x,dive.velocity.z)).toBeLessThanOrEqual(18);expect(Math.hypot(brake.velocity.x,brake.velocity.z)).toBeLessThanOrEqual(18);
     expect(dive.tilt).toBeGreaterThan(.99); expect(brake.tilt).toBeLessThan(-.99);
   });
@@ -315,7 +342,7 @@ describe('Sky Lance movement ownership', () => {
   it('casts immediately, releases on button-up and automatically recovers without recasting a hold', () => {
     const r = rig(), input = emptyFrame(); input.pressed.lance = true; input.lanceHeld = true; input.aim = new V(0, 1, 0);
     stepInput(r.p, input); expect(r.p.skyLance!.state).toBe('projectile');
-    expect(r.p.skyLance!.velocity.y).toBeCloseTo(74.95, 5);
+    expect(r.p.skyLance!.velocity.y).toBeCloseTo(119.95, 5);
     input.pressed.lance = false; stepInput(r.p, input); expect(r.p.skyLance!.state).toBe('projectile');
     input.lanceHeld = false; input.pressed.lanceRelease = true; stepInput(r.p, input);
     expect(r.p.skyLance!.state).toBe('spent'); input.pressed.lanceRelease = false;
@@ -371,17 +398,17 @@ describe('fixed simulation independent of presentation rate', () => {
       run(intervals).forEach((v, i) => expect(v).toBeCloseTo(baseline[i], 10));
     }
   });
-  it('matches freefall steering and a finite waist burst across presentation rates',()=>{
+  it('matches freefall steering and a buffered waist burst across presentation rates',()=>{
     function run(intervals:number[]){
       const r=rig();r.p.foot.position.set(5000,1000,5000);r.p.foot.grounded=false;r.p.foot.velocity.set(0,-3,8);r.tick();
-      let acc=0,steps=0,frame=0;
+      let acc=0,steps=0,frame=0,bursts=0;
       while(steps<360){const elapsed=intervals[frame++%intervals.length];acc+=elapsed;
-        while(acc+1e-12>=dt&&steps<360){const input=emptyFrame();input.foot.moveX=steps<200?.5:-.5;input.foot.moveY=.4;input.pressed.jump=steps===80;stepInput(r.p,input);acc-=dt;steps++;}
+        while(acc+1e-12>=dt&&steps<360){const input=emptyFrame();input.foot.moveX=steps<200?.5:-.5;input.foot.moveY=steps<200?.4:-.5;input.pressed.jump=steps===80||steps===280;const cooldown=r.p.airBoost.cooldown;stepInput(r.p,input);if(r.p.airBoost.cooldown>cooldown)bursts++;acc-=dt;steps++;}
         r.p.update(elapsed,Math.max(0,Math.min(1,acc/dt)));
       }
-      return [...r.p.foot.position.toArray(),...r.p.foot.velocity.toArray(),r.p.airBoost.remaining,r.p.airBoost.cooldown];
+      return [...r.p.foot.position.toArray(),...r.p.foot.velocity.toArray(),r.p.airBoost.remaining,r.p.airBoost.cooldown,bursts];
     }
-    const baseline=run([1/120]);for(const timing of [[1/30],[1/60],[1/144],[.004,.021,.009,.017]])run(timing).forEach((v,i)=>expect(v).toBeCloseTo(baseline[i],10));
+    const baseline=run([1/120]);expect(baseline.at(-1)).toBe(2);for(const timing of [[1/30],[1/60],[1/144],[.004,.021,.009,.017]])run(timing).forEach((v,i)=>expect(v).toBeCloseTo(baseline[i],10));
   });
   it('matches release, recovery and deliberate rescue across presentation rates', () => {
     function run(intervals: number[]) {
@@ -463,7 +490,7 @@ describe('manual tether pull lifecycle',()=>{
     function run(timings:number[]){
       const r=rig();r.attach();let acc=0,n=0,frame=0;
       while(n<180){const elapsed=timings[frame++%timings.length];acc+=elapsed;
-        while(acc+1e-12>=dt&&n<180){const input=emptyFrame();input.pressed.jump=n===10||n===80;input.pressed.lanceRelease=n===140;stepInput(r.p,input);acc-=dt;n++;}
+        while(acc+1e-12>=dt&&n<180){const input=emptyFrame();input.foot.moveX=.3;input.foot.moveY=.5;input.pressed.jump=n===10||n===80;input.pressed.lanceRelease=n===140;stepInput(r.p,input);acc-=dt;n++;}
         r.p.update(elapsed,Math.max(0,Math.min(1,acc/dt)));
       }
       return [...r.p.foot.position.toArray(),...r.p.foot.velocity.toArray(),r.p.skyLance!.pullTime];

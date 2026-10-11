@@ -12,6 +12,14 @@ Normal play uses only the existing shared static world and preserves the introdu
 
 `scripts/windline-gameplay-check.mjs` verifies normal launch, DOM cast/leap/boost/recall, real-world tether/pull, release during pause, repeated interruptions, save/reload, simulated controller roles, Controls discovery and ship exclusion. Both PR verification and Pages deployment run it against the production build. See the current AI_HANDOFF entry and PR for exact final check results and release SHA. Software-rendered browser checks do not establish physical iPhone/controller/GPU performance or complete art compliance.
 
+## Approved fluid traversal draft — separate follow-up
+
+The normal-game baseline above merged as `193e56f382ae29fd44647e4b9c29b2fa31b9e281` and [deployed successfully](https://github.com/rporter33/Driftwing/actions/runs/38105521341). The approved `enhance/windline-flow` follow-up is a separate draft for review before merge/deployment. It preserves dragon flight weight, ship isolation, the existing character and save/progression.
+
+Its controller-first additions keep A/Space and add airborne LT for pull/boost; mounted LT still flares. Fresh trigger actions require full release through pause/reconnect and use hysteresis. Forward dives retain horizontal momentum, backward input brakes gradually, and left-stick swing guidance changes direction without adding speed. Pull has a gentle onset. Boost keeps its 0.28-second burst and 1.75-second recharge, with a 120 ms fresh-press buffer near ready; attachment/input interruptions cancel pending boosts without refunding recharge.
+
+The compact HUD distinguishes slack, taut, pulling and caught lines, active/queued/recharging/ready boost, and leap/recall hold progress. Recall feedback remains with optional hints off. `scripts/windline-flow-check.mjs` verifies the normal controller chain, keyboard momentum/braking, interrupted flows and layout safety. See AI_HANDOFF and the draft PR for final validation evidence and limits; this draft is not part of the deployed baseline until reviewed and merged.
+
 ## Source and feature status
 
 | Work | Preserved source | Status and boundaries |

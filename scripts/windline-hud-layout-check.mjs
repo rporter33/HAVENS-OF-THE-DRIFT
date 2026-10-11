@@ -5,16 +5,24 @@ import {createHash} from 'node:crypto';
 import {chromium} from 'playwright';
 import {browserEvidence} from './browser-evidence.mjs';
 const url=new URL(process.argv[2]??'http://127.0.0.1:5176/');url.search='?manual=1&quality=low';
+const gamepad=process.argv.includes('--device=gamepad'),review=process.argv.includes('--review-viewports');
+const captureDir=`shots/hud-layout-after${gamepad?'-gamepad':''}`;
 const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist','--enable-webgl']});
 const page=await browser.newPage({viewport:{width:1280,height:720}}),errors=[],evidence=[];
 let metadata=null;
 page.on('pageerror',e=>errors.push(e.message));
-fs.mkdirSync('shots/hud-layout-after',{recursive:true});
+fs.mkdirSync(captureDir,{recursive:true});
 try {
  await page.goto(url.href);await page.waitForFunction(()=>window.__dw?.ready,null,{timeout:180000});
  metadata=await browserEvidence(page,url);
  await page.evaluate(()=>{const g=__dw.game;g.save.data.firstLeadGuide='skipped';g.startGame();__dw.advance(.1);g.applySettings({...g.settings,reducedMotion:true});});
- for(const [width,height] of [[1920,1080],[1280,720],[960,540],[617,380],[360,780]]) {
+ if(gamepad)await page.evaluate(()=>{
+  const pad={id:'Xbox standard controller visual QA',mapping:'standard',connected:true,index:0,timestamp:0,axes:[.9,0,0,0],buttons:Array.from({length:17},()=>({pressed:false,touched:false,value:0}))};
+  Object.defineProperty(navigator,'getGamepads',{configurable:true,value:()=>[pad]});__dw.game.frame(1/120,false);pad.axes[0]=0;__dw.game.frame(1/120,false);
+ });
+ if(gamepad){assert.equal(await page.evaluate(()=>__dw.game.input.device),'gamepad');assert.notEqual(await page.locator('.dw-ui').getAttribute('data-device'),'keyboard');}
+ const viewports=review?[[1280,720],[1920,1080],[617,380]]:[[1920,1080],[1280,720],[960,540],[617,380],[360,780]];
+ for(const [width,height] of viewports) {
   await page.setViewportSize({width,height});
   for(const scenario of ['mounted','mounted-crowded','freefall','tether','pull','boost','recall','hints-off']) {
    await page.evaluate(scenario=>{
@@ -24,12 +32,12 @@ try {
     g.placeAtSpawn();
     if(scenario.startsWith('mounted')){p.teleport(p.foot.position.clone().set(0,900,-90),0,'flying',28);p.model.state.stamina=.45;tick();}
     else {
-     const x=s.def.x+s.def.radius*.35,z=s.def.z;p.foot.position.set(x,s.bottomHeight(x,z)-18,z);p.foot.grounded=false;p.foot.velocity.set(0,0,0);tick();
+     const x=s.def.x+s.def.radius*.35,z=s.def.z;p.foot.position.set(x,s.bottomHeight(x,z)-18,z);p.foot.grounded=false;p.foot.velocity.set(0,0,0);tick();tick();
      if(scenario==='tether'||scenario==='pull'){
       const aim=p.foot.position.clone().set(0,1,0);tick({pressed:{lance:true},lanceHeld:true,aim});for(let i=0;i<240&&!p.skyLance.rope;i++)tick({lanceHeld:true,aim});if(!p.skyLance.rope)throw Error('No real-world line');
       if(scenario==='pull')tick({pressed:{jump:true},lanceHeld:true});
      }
-     if(scenario==='boost')tick({pressed:{jump:true}});
+     if(scenario==='boost'){tick({pressed:{jump:true}});tick();}
      if(scenario==='recall')for(let i=0;i<20;i++)tick({callHeld:true});
     }
     g.cameraRig.snap(p);g.frame(0,false);
@@ -68,18 +76,19 @@ try {
     const a=panel.getBoundingClientRect();
     const visible=painted(panel),overlaps=visible?blockers.filter(b=>a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top):[];
     const centre={left:innerWidth*.35,right:innerWidth*.65,top:innerHeight*.25,bottom:innerHeight*.75};
-    return {panel:plain(a),visible,essential:panel.dataset.essential==='true',viewport:[innerWidth,innerHeight],layout:panel.dataset.layout,blockers,overlaps,centralOverlap:visible&&a.left<centre.right&&a.right>centre.left&&a.top<centre.bottom&&a.bottom>centre.top,mode:__dw.game.player.mode,ship:!!__dw.game.scene.getObjectByName('Windhaven')};
+    return {panel:plain(a),visible,essential:panel.dataset.essential==='true',viewport:[innerWidth,innerHeight],layout:panel.dataset.layout,device:__dw.game.input.device,glyphDevice:document.querySelector('.dw-ui').dataset.device,blockers,overlaps,centralOverlap:visible&&a.left<centre.right&&a.right>centre.left&&a.top<centre.bottom&&a.bottom>centre.top,mode:__dw.game.player.mode,ship:!!__dw.game.scene.getObjectByName('Windhaven')};
    });
    const entry={width,height,scenario,...result};evidence.push(entry);
+   if(result.essential&&!result.visible)console.error('Critical HUD placement diagnostics:',JSON.stringify({metadata,entry}));
    if(result.essential)assert.equal(result.visible,true,`${width}×${height} ${scenario} critical status visible`);
    else if(!result.visible)assert.equal(result.layout,'suppressed');
    assert.deepEqual(result.overlaps,[],`${width}×${height} ${scenario} overlap`);
    assert.equal(result.centralOverlap,false,`${width}×${height} ${scenario} central view`);
    if(result.visible)assert.ok(result.panel.left>=0&&result.panel.right<=width&&result.panel.top>=0&&result.panel.bottom<=height);
    assert.equal(result.ship,false);
-   if(['mounted','mounted-crowded','tether','recall'].includes(scenario)){
+   if(review||['mounted','mounted-crowded','tether','recall'].includes(scenario)){
     await page.evaluate(()=>{const g=__dw.game;g.renderer.render(g.scene,g.camera,0);});
-    const path=`shots/hud-layout-after/${scenario}-${width}.png`;await page.screenshot({path});
+    const path=`${captureDir}/${scenario}-${width}.png`;await page.screenshot({path});
     entry.capture={path,sha256:createHash('sha256').update(fs.readFileSync(path)).digest('hex')};
    }
   }
@@ -99,4 +108,4 @@ try {
  await page.evaluate(()=>{const g=__dw.game;g.ui.hudHidden=false;g.pause();g.ui.debugOpen('photo');g.frame(0,true);});assert.equal(await page.locator('.dw-windline').isVisible(),false);
  assert.deepEqual(errors,[]);assert.deepEqual(await page.evaluate(()=>__dw.errors),[]);
  console.log(`HUD layout checks passed: ${evidence.length} combinations, menus and hidden HUD`);
-} finally {fs.writeFileSync('/tmp/driftwing-windline-hud-layout-browser-check.json',JSON.stringify({metadata,evidence,errors},null,2));await browser.close();}
+} finally {fs.writeFileSync(`/tmp/driftwing-windline-hud-layout${gamepad?'-gamepad':''}-browser-check.json`,JSON.stringify({metadata,evidence,errors},null,2));await browser.close();}

@@ -1,0 +1,178 @@
+{
+  "metadata": {
+    "testedHead": "43439d856e64b609d53e2f4904e525eac583cfbd",
+    "testedTree": "cf167a989993e496946c4f0559025cf7ef9293f6",
+    "runnerHead": "43439d856e64b609d53e2f4904e525eac583cfbd",
+    "runnerDirty": false,
+    "capturedAt": "2026-10-11T04:46:35.557Z",
+    "url": "http://127.0.0.1:5175/?manual=1&quality=low",
+    "buildStamp": "Build 43439d8 · 11 Oct 2026, 04:46 UTC",
+    "assets": [
+      "http://127.0.0.1:5175/assets/index-BadNCE55.js"
+    ],
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36"
+  },
+  "evidence": {
+    "captures": [
+      {
+        "path": "shots/windline-reticle/green-1280.png",
+        "sha256": "de36da5e7f986ba07cbe29d4b8bf5925f901e2b04c43c7c7c225a07183619cbd"
+      },
+      {
+        "path": "shots/windline-reticle/green-dot-zoom-source.png",
+        "sha256": "205af1333a898604c9619439c90f3952747afcb14f36f4fae64b6aec231ddd71"
+      },
+      {
+        "path": "shots/windline-reticle/green-1920.png",
+        "sha256": "c617e44ba1b240cecb19c9272b3e5fa2cb9776612a1672dbe16dad6fc86c82a4"
+      },
+      {
+        "path": "shots/windline-reticle/green-617.png",
+        "sha256": "778b97ca66c8683e1aee18b3353fdeb50fec251540a5fee559cf409d5c3ab7be"
+      },
+      {
+        "path": "shots/windline-reticle/blue-1280.png",
+        "sha256": "38d3b005db35d9132d5b46fdf2080d6f93a1d2369efd41f5c49cbbb975bb631d"
+      },
+      {
+        "path": "shots/windline-reticle/blue-dot-zoom-source.png",
+        "sha256": "2fbf9d475121b6f99969b9c302b41d6977ebf67726b7886fcf080355417953d8"
+      }
+    ],
+    "glyphDevice": "xbox",
+    "green": [
+      {
+        "target": "reachable",
+        "color": "rgb(148,214,162)",
+        "ring": "1",
+        "centre": [
+          640,
+          360
+        ],
+        "size": [
+          20,
+          20
+        ],
+        "viewport": [
+          1280,
+          720
+        ]
+      },
+      {
+        "target": "reachable",
+        "color": "rgb(148,214,162)",
+        "ring": "1",
+        "centre": [
+          960,
+          540
+        ],
+        "size": [
+          20,
+          20
+        ],
+        "viewport": [
+          1920,
+          1080
+        ]
+      },
+      {
+        "target": "reachable",
+        "color": "rgb(148,214,162)",
+        "ring": "1",
+        "centre": [
+          308.5,
+          190
+        ],
+        "size": [
+          20,
+          20
+        ],
+        "viewport": [
+          617,
+          380
+        ]
+      }
+    ],
+    "blue": {
+      "target": "out-of-range",
+      "color": "rgb(168,221,236)",
+      "ring": "0",
+      "centre": [
+        640,
+        360
+      ],
+      "size": [
+        20,
+        20
+      ],
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    "budget": {
+      "calls": 100,
+      "forecasts": 0,
+      "elapsed": 0.5,
+      "invalidated": {
+        "target": "checking",
+        "valid": false,
+        "color": "rgb(168, 221, 236)"
+      }
+    },
+    "cast": {
+      "anchor": "rock-island-0",
+      "actualAnchor": "rock-island-0",
+      "attached": true,
+      "impactError": 0,
+      "seconds": 0.23333333333333334,
+      "ship": false
+    },
+    "movingCamera": {
+      "ready": {
+        "samples": 120,
+        "elapsedMs": 265.5,
+        "meanMs": 2.2125,
+        "p95Ms": 9.400000000372529,
+        "maxMs": 33.59999999962747,
+        "reticlePerStepMs": 0.38583333330849806,
+        "forecasts": 5
+      },
+      "candidate": "rock-island-0",
+      "cue": "reachable",
+      "anchor": "rock-island-0",
+      "length": 56.26572802312435,
+      "hanging": {
+        "samples": 360,
+        "elapsedMs": 832.3999999985099,
+        "meanMs": 2.311388888887854,
+        "p95Ms": 3.800000000745058,
+        "maxMs": 27.199999999254942,
+        "reticlePerStepMs": 0.033611111094554266,
+        "forecasts": 0
+      },
+      "swinging": {
+        "samples": 480,
+        "elapsedMs": 889.8999999985099,
+        "meanMs": 1.8537499999976716,
+        "p95Ms": 2.599999999627471,
+        "maxMs": 23.199999999254942,
+        "reticlePerStepMs": 0.026041666662786157,
+        "forecasts": 0
+      },
+      "retained": true,
+      "released": {
+        "samples": 180,
+        "elapsedMs": 92.10000000149012,
+        "meanMs": 0.5111111111214591,
+        "p95Ms": 0.6000000014901161,
+        "maxMs": 7.399999998509884,
+        "reticlePerStepMs": 0.07166666665838825,
+        "forecasts": 2
+      },
+      "releasedRope": false,
+      "yaw": -2.054768694266782
+    }
+  },
+  "errors": []
+}

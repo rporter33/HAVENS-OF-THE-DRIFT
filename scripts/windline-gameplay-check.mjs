@@ -79,12 +79,12 @@ try {
     g.frame(1/120,false);g.cameraRig.snap(p);g.input.setScripted({lookActive:true,lookIsRate:false,lookY:-10});g.frame(1/120,false);g.input.setScripted(null);
   });
   await page.waitForTimeout(100);evidence.aim=await page.evaluate(()=>{
-    const g=__dw.game;g.skyLanceVisuals.nextPreview=0;g.frame(0,false);
+    const g=__dw.game;g.frame(0,false);
     const reticle=document.querySelector('#sky-lance-reticle');
     return {screen:g.screen,mode:g.player.mode,captures:g.ui.capturesInput,hidden:reticle.hidden,parentHidden:!!reticle.closest('[hidden]'),target:g.skyLanceVisuals.target,direction:g.camera.getWorldDirection(g.player.foot.position.clone()).toArray()};
   });
   console.log('Normal-world aim:',JSON.stringify(evidence.aim));
-  assert.equal(await page.locator('#sky-lance-reticle').getAttribute('data-target'),'reachable');
+  assert.equal(await page.locator('#sky-lance-reticle').getAttribute('data-target'),'aiming');
   await page.keyboard.down('q');
   evidence.tether = await page.evaluate(() => {
     const g=__dw.game,p=g.player;g.frame(1/120,false);

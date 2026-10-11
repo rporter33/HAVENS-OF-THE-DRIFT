@@ -1,0 +1,22 @@
+{
+  "files": [
+    {
+      "file": "Driftwing-valid-dot-controller-720p-43439d8.png",
+      "sourceShortSha": "43439d8",
+      "sha256": "de36da5e7f986ba07cbe29d4b8bf5925f901e2b04c43c7c7c225a07183619cbd",
+      "bytes": 558330
+    },
+    {
+      "file": "Driftwing-controller-freefall-720p-7fde07c.png",
+      "sourceShortSha": "7fde07c",
+      "sha256": "ffef8eac5ced5bffea76325ff7bc5fce16ffb1674b495d8e81be10cc0654e52c",
+      "bytes": 549294
+    }
+  ],
+  "scope": "Completed controller HUD/reticle layout captures; neither physical device tests nor rider-animation evidence. Each name records its actual capture source.",
+  "libraryUpload": "Two attempts failed before creation: hosted apps tools/list request failed: network",
+  "supportingEvidence": [
+    "windline-priority-review-reticle.json",
+    "windline-priority-review-controller-hud.json"
+  ]
+}

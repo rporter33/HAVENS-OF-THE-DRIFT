@@ -1,0 +1,1225 @@
+{
+  "metadata": {
+    "testedHead": "0fcc7091a38dad486b391da945df63076e730d16",
+    "testedTree": "d6ab5d1f46cdc667c16f1311afe5867c83438fab",
+    "runnerHead": "0fcc7091a38dad486b391da945df63076e730d16",
+    "runnerDirty": false,
+    "capturedAt": "2026-10-11T10:35:19.392Z",
+    "url": "http://127.0.0.1:5191/?manual=1&quality=low",
+    "buildStamp": "Build 0fcc709 · 11 Oct 2026, 10:35 UTC",
+    "assets": [
+      "http://127.0.0.1:5191/assets/game-DRKNuMNu.js"
+    ],
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36"
+  },
+  "evidence": {
+    "captures": [
+      {
+        "path": "shots/windline-reticle/green-1280.png",
+        "sha256": "de36da5e7f986ba07cbe29d4b8bf5925f901e2b04c43c7c7c225a07183619cbd"
+      },
+      {
+        "path": "shots/windline-reticle/green-dot-zoom-source.png",
+        "sha256": "205af1333a898604c9619439c90f3952747afcb14f36f4fae64b6aec231ddd71"
+      },
+      {
+        "path": "shots/windline-reticle/green-1920.png",
+        "sha256": "c617e44ba1b240cecb19c9272b3e5fa2cb9776612a1672dbe16dad6fc86c82a4"
+      },
+      {
+        "path": "shots/windline-reticle/green-617.png",
+        "sha256": "29c41ea362950f43a8b209a0660dcf40a09120b71aed34e0da3e9a2b3d513274"
+      },
+      {
+        "path": "shots/windline-reticle/blue-1280.png",
+        "sha256": "38d3b005db35d9132d5b46fdf2080d6f93a1d2369efd41f5c49cbbb975bb631d"
+      },
+      {
+        "path": "shots/windline-reticle/blue-dot-zoom-source.png",
+        "sha256": "2fbf9d475121b6f99969b9c302b41d6977ebf67726b7886fcf080355417953d8"
+      }
+    ],
+    "glyphDevice": "xbox",
+    "green": [
+      {
+        "target": "reachable",
+        "color": "rgb(148,214,162)",
+        "ring": "1",
+        "centre": [
+          640,
+          360
+        ],
+        "size": [
+          20,
+          20
+        ],
+        "viewport": [
+          1280,
+          720
+        ]
+      },
+      {
+        "target": "reachable",
+        "color": "rgb(148,214,162)",
+        "ring": "1",
+        "centre": [
+          960,
+          540
+        ],
+        "size": [
+          20,
+          20
+        ],
+        "viewport": [
+          1920,
+          1080
+        ]
+      },
+      {
+        "target": "reachable",
+        "color": "rgb(148,214,162)",
+        "ring": "1",
+        "centre": [
+          308.5,
+          190
+        ],
+        "size": [
+          20,
+          20
+        ],
+        "viewport": [
+          617,
+          380
+        ]
+      }
+    ],
+    "blue": {
+      "target": "out-of-range",
+      "color": "rgb(168,221,236)",
+      "ring": "0",
+      "centre": [
+        640,
+        360
+      ],
+      "size": [
+        20,
+        20
+      ],
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    "budget": {
+      "calls": 100,
+      "forecasts": 100,
+      "elapsed": 61.69999999925494,
+      "firstCompleteMs": 3.5,
+      "coldStart": true,
+      "rows": [
+        {
+          "ms": 3.5,
+          "misses": 351,
+          "hits": 31,
+          "tightened": 200
+        },
+        {
+          "ms": 0.6999999992549419,
+          "misses": 2,
+          "hits": 381,
+          "tightened": 2
+        },
+        {
+          "ms": 0.6000000014901161,
+          "misses": 1,
+          "hits": 383,
+          "tightened": 1
+        },
+        {
+          "ms": 3.899999998509884,
+          "misses": 1,
+          "hits": 383,
+          "tightened": 1
+        },
+        {
+          "ms": 0.7000000029802322,
+          "misses": 1,
+          "hits": 384,
+          "tightened": 0
+        },
+        {
+          "ms": 0.5,
+          "misses": 0,
+          "hits": 385,
+          "tightened": 0
+        },
+        {
+          "ms": 0.6999999992549419,
+          "misses": 0,
+          "hits": 385,
+          "tightened": 0
+        },
+        {
+          "ms": 0.6000000014901161,
+          "misses": 0,
+          "hits": 384,
+          "tightened": 0
+        },
+        {
+          "ms": 2.899999998509884,
+          "misses": 1,
+          "hits": 384,
+          "tightened": 0
+        },
+        {
+          "ms": 0.5,
+          "misses": 0,
+          "hits": 385,
+          "tightened": 0
+        },
+        {
+          "ms": 0.20000000298023224,
+          "misses": 0,
+          "hits": 385,
+          "tightened": 0
+        },
+        {
+          "ms": 0.3999999985098839,
+          "misses": 1,
+          "hits": 385,
+          "tightened": 0
+        },
+        {
+          "ms": 0.3999999985098839,
+          "misses": 0,
+          "hits": 384,
+          "tightened": 0
+        },
+        {
+          "ms": 0.20000000298023224,
+          "misses": 0,
+          "hits": 384,
+          "tightened": 0
+        },
+        {
+          "ms": 0.3999999985098839,
+          "misses": 0,
+          "hits": 384,
+          "tightened": 0
+        },
+        {
+          "ms": 0.3999999985098839,
+          "misses": 0,
+          "hits": 383,
+          "tightened": 0
+        },
+        {
+          "ms": 0.5,
+          "misses": 1,
+          "hits": 382,
+          "tightened": 0
+        },
+        {
+          "ms": 0.4000000022351742,
+          "misses": 1,
+          "hits": 383,
+          "tightened": 0
+        },
+        {
+          "ms": 0.3999999985098839,
+          "misses": 0,
+          "hits": 383,
+          "tightened": 0
+        },
+        {
+          "ms": 0.3999999985098839,
+          "misses": 0,
+          "hits": 383,
+          "tightened": 0
+        },
+        {
+          "ms": 0.4000000022351742,
+          "misses": 2,
+          "hits": 380,
+          "tightened": 0
+        },
+        {
+          "ms": 0.3999999985098839,
+          "misses": 0,
+          "hits": 381,
+          "tightened": 0
+        },
+        {
+          "ms": 0.4000000022351742,
+          "misses": 0,
+          "hits": 381,
+          "tightened": 0
+        },
+        {
+          "ms": 0.3999999985098839,
+          "misses": 0,
+          "hits": 381,
+          "tightened": 0
+        },
+        {
+          "ms": 0.19999999925494194,
+          "misses": 0,
+          "hits": 380,
+          "tightened": 0
+        },
+        {
+          "ms": 0.4000000022351742,
+          "misses": 1,
+          "hits": 380,
+          "tightened": 1
+        },
+        {
+          "ms": 0.29999999701976776,
+          "misses": 0,
+          "hits": 381,
+          "tightened": 0
+        },
+        {
+          "ms": 0.4000000022351742,
+          "misses": 0,
+          "hits": 381,
+          "tightened": 0
+        },
+        {
+          "ms": 0.19999999925494194,
+          "misses": 1,
+          "hits": 380,
+          "tightened": 1
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 381,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 379,
+          "tightened": 0
+        },
+        {
+          "ms": 0.3999999985098839,
+          "misses": 0,
+          "hits": 379,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 378,
+          "tightened": 0
+        },
+        {
+          "ms": 0.3999999985098839,
+          "misses": 0,
+          "hits": 377,
+          "tightened": 0
+        },
+        {
+          "ms": 0.19999999925494194,
+          "misses": 0,
+          "hits": 377,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 378,
+          "tightened": 0
+        },
+        {
+          "ms": 0.4000000022351742,
+          "misses": 1,
+          "hits": 376,
+          "tightened": 0
+        },
+        {
+          "ms": 0.29999999701976776,
+          "misses": 0,
+          "hits": 377,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 377,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 377,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 7,
+          "hits": 377,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 384,
+          "tightened": 0
+        },
+        {
+          "ms": 0.3999999985098839,
+          "misses": 0,
+          "hits": 384,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 384,
+          "tightened": 0
+        },
+        {
+          "ms": 0.19999999925494194,
+          "misses": 0,
+          "hits": 384,
+          "tightened": 0
+        },
+        {
+          "ms": 0.3999999985098839,
+          "misses": 1,
+          "hits": 384,
+          "tightened": 1
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 385,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 385,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 385,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 385,
+          "tightened": 0
+        },
+        {
+          "ms": 0.3999999985098839,
+          "misses": 0,
+          "hits": 385,
+          "tightened": 0
+        },
+        {
+          "ms": 0.19999999925494194,
+          "misses": 0,
+          "hits": 385,
+          "tightened": 0
+        },
+        {
+          "ms": 0.4000000022351742,
+          "misses": 0,
+          "hits": 384,
+          "tightened": 0
+        },
+        {
+          "ms": 0.3999999985098839,
+          "misses": 0,
+          "hits": 384,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 383,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 383,
+          "tightened": 0
+        },
+        {
+          "ms": 0.29999999701976776,
+          "misses": 0,
+          "hits": 382,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 381,
+          "tightened": 0
+        },
+        {
+          "ms": 0.4000000022351742,
+          "misses": 0,
+          "hits": 380,
+          "tightened": 0
+        },
+        {
+          "ms": 0.19999999925494194,
+          "misses": 0,
+          "hits": 378,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 2,
+          "hits": 376,
+          "tightened": 0
+        },
+        {
+          "ms": 1.7999999970197678,
+          "misses": 0,
+          "hits": 378,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 377,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 3,
+          "hits": 376,
+          "tightened": 1
+        },
+        {
+          "ms": 0.3999999985098839,
+          "misses": 1,
+          "hits": 377,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 378,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 378,
+          "tightened": 0
+        },
+        {
+          "ms": 0.3999999985098839,
+          "misses": 0,
+          "hits": 378,
+          "tightened": 0
+        },
+        {
+          "ms": 0.5,
+          "misses": 1,
+          "hits": 378,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 379,
+          "tightened": 0
+        },
+        {
+          "ms": 0.5,
+          "misses": 1,
+          "hits": 378,
+          "tightened": 1
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 379,
+          "tightened": 0
+        },
+        {
+          "ms": 5.899999998509884,
+          "misses": 0,
+          "hits": 379,
+          "tightened": 0
+        },
+        {
+          "ms": 0.3999999985098839,
+          "misses": 1,
+          "hits": 379,
+          "tightened": 1
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 380,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 2,
+          "hits": 378,
+          "tightened": 1
+        },
+        {
+          "ms": 0.3999999985098839,
+          "misses": 0,
+          "hits": 380,
+          "tightened": 0
+        },
+        {
+          "ms": 0.20000000298023224,
+          "misses": 0,
+          "hits": 380,
+          "tightened": 0
+        },
+        {
+          "ms": 4.899999998509884,
+          "misses": 0,
+          "hits": 379,
+          "tightened": 0
+        },
+        {
+          "ms": 0.5,
+          "misses": 0,
+          "hits": 378,
+          "tightened": 0
+        },
+        {
+          "ms": 0.19999999925494194,
+          "misses": 0,
+          "hits": 378,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 376,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 377,
+          "tightened": 0
+        },
+        {
+          "ms": 0.3999999985098839,
+          "misses": 2,
+          "hits": 377,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 379,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 379,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 1,
+          "hits": 378,
+          "tightened": 1
+        },
+        {
+          "ms": 1.0999999977648258,
+          "misses": 2,
+          "hits": 379,
+          "tightened": 1
+        },
+        {
+          "ms": 0.4000000022351742,
+          "misses": 0,
+          "hits": 380,
+          "tightened": 0
+        },
+        {
+          "ms": 0.19999999925494194,
+          "misses": 0,
+          "hits": 380,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 1,
+          "hits": 380,
+          "tightened": 1
+        },
+        {
+          "ms": 0.3999999985098839,
+          "misses": 2,
+          "hits": 380,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 380,
+          "tightened": 0
+        },
+        {
+          "ms": 0.3999999985098839,
+          "misses": 0,
+          "hits": 380,
+          "tightened": 0
+        },
+        {
+          "ms": 0.19999999925494194,
+          "misses": 0,
+          "hits": 380,
+          "tightened": 0
+        },
+        {
+          "ms": 0.30000000074505806,
+          "misses": 0,
+          "hits": 380,
+          "tightened": 0
+        },
+        {
+          "ms": 3.600000001490116,
+          "misses": 0,
+          "hits": 379,
+          "tightened": 0
+        },
+        {
+          "ms": 0.3999999985098839,
+          "misses": 1,
+          "hits": 379,
+          "tightened": 0
+        },
+        {
+          "ms": 0.19999999925494194,
+          "misses": 0,
+          "hits": 379,
+          "tightened": 0
+        },
+        {
+          "ms": 0.4000000022351742,
+          "misses": 0,
+          "hits": 379,
+          "tightened": 0
+        }
+      ],
+      "validFrames": 100,
+      "checkingFrames": 0,
+      "invalidated": {
+        "target": "blocked",
+        "valid": false,
+        "color": "rgb(168, 221, 236)"
+      }
+    },
+    "lifecycle": [
+      {
+        "action": "pause",
+        "hidden": {
+          "visible": false,
+          "valid": false,
+          "state": "checking",
+          "queries": 0,
+          "mode": "traversing"
+        },
+        "firstVisible": {
+          "visible": true,
+          "valid": false,
+          "state": "blocked",
+          "queries": 7,
+          "mode": "traversing"
+        },
+        "freshQueries": 7,
+        "paints": [
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "traversing"
+          },
+          {
+            "visible": true,
+            "valid": false,
+            "state": "blocked",
+            "queries": 7,
+            "mode": "traversing"
+          }
+        ]
+      },
+      {
+        "action": "hud",
+        "hidden": {
+          "visible": false,
+          "valid": false,
+          "state": "checking",
+          "queries": 0,
+          "mode": "traversing"
+        },
+        "firstVisible": {
+          "visible": true,
+          "valid": false,
+          "state": "blocked",
+          "queries": 7,
+          "mode": "traversing"
+        },
+        "freshQueries": 7,
+        "paints": [
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "traversing"
+          },
+          {
+            "visible": true,
+            "valid": false,
+            "state": "blocked",
+            "queries": 7,
+            "mode": "traversing"
+          }
+        ]
+      },
+      {
+        "action": "mount-leap",
+        "hidden": {
+          "visible": false,
+          "valid": false,
+          "state": "checking",
+          "queries": 0,
+          "mode": "flying"
+        },
+        "firstVisible": {
+          "visible": true,
+          "valid": false,
+          "state": "out-of-range",
+          "queries": 16,
+          "mode": "traversing"
+        },
+        "freshQueries": 16,
+        "paints": [
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": false,
+            "valid": false,
+            "state": "checking",
+            "queries": 0,
+            "mode": "flying"
+          },
+          {
+            "visible": true,
+            "valid": false,
+            "state": "out-of-range",
+            "queries": 16,
+            "mode": "traversing"
+          }
+        ]
+      }
+    ],
+    "cast": {
+      "anchor": "rock-island-0",
+      "actualAnchor": "rock-island-0",
+      "attached": true,
+      "impactError": 0,
+      "seconds": 0.23333333333333334,
+      "ship": false
+    },
+    "movingCamera": {
+      "ready": {
+        "samples": 120,
+        "elapsedMs": 225.19999999925494,
+        "meanMs": 1.876666666660458,
+        "p95Ms": 2.899999998509884,
+        "maxMs": 24.899999998509884,
+        "reticlePerStepMs": 1.1274999998820325,
+        "forecasts": 120,
+        "validFrames": 120,
+        "checkingFrames": 0
+      },
+      "candidate": "rock-island-0",
+      "cue": "reachable",
+      "anchor": "rock-island-0",
+      "length": 56.26572802312435,
+      "hanging": {
+        "samples": 360,
+        "elapsedMs": 338.5,
+        "meanMs": 0.9400000000062089,
+        "p95Ms": 1.6000000014901161,
+        "maxMs": 30.900000002235174,
+        "reticlePerStepMs": 0.030833333327124516,
+        "forecasts": 0,
+        "validFrames": 0,
+        "checkingFrames": 0
+      },
+      "swinging": {
+        "samples": 480,
+        "elapsedMs": 562.3000000007451,
+        "meanMs": 1.1700000000108655,
+        "p95Ms": 3.300000000745058,
+        "maxMs": 36.5,
+        "reticlePerStepMs": 0.021458333311602473,
+        "forecasts": 0,
+        "validFrames": 0,
+        "checkingFrames": 0
+      },
+      "retained": true,
+      "released": {
+        "samples": 180,
+        "elapsedMs": 304.5999999977648,
+        "meanMs": 1.6899999999544686,
+        "p95Ms": 3.300000000745058,
+        "maxMs": 23.199999999254942,
+        "reticlePerStepMs": 1.0883333333250549,
+        "forecasts": 138,
+        "validFrames": 20,
+        "checkingFrames": 0
+      },
+      "releasedRope": false,
+      "yaw": -2.054768694266782
+    }
+  },
+  "errors": []
+}

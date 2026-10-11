@@ -23,6 +23,20 @@ describe('edge-aware freefall',()=>{
   });
 });
 describe('bounded body steering and waist boost',()=>{
+  it('bounds braking and diagonal corrections even at inherited overspeed',()=>{
+    for(const x of [0,.5,1]) {
+      const v=new V(0,-13,80),before=v.clone();steerFreefall(v,x,-1,0,1/120);
+      expect(v.distanceTo(before)).toBeLessThanOrEqual(26/120+1e-10);expect(v.z).toBeGreaterThan(0);expect(Math.hypot(v.x,v.z)).toBeLessThanOrEqual(80);
+    }
+  });
+  it('carries forward momentum through a full dive and brakes without reversing',()=>{
+    const v=new V(0,-18,18);for(let i=0;i<240;i++)steerFreefall(v,0,1,0,1/120);
+    expect(v.toArray()).toEqual([0,-18,18]);
+    const before=v.clone();steerFreefall(v,0,0,0,1/120);expect(v.equals(before)).toBe(true);
+    let previous=v.z;
+    for(let i=0;i<240;i++){steerFreefall(v,0,-1,0,1/120);expect(v.z).toBeGreaterThanOrEqual(0);expect(v.z).toBeLessThan(previous);previous=v.z;}
+    expect(v.z).toBeLessThan(.1);expect(v.y).toBe(-18);
+  });
   it('steers relative to the camera, caps input speed, and preserves overspeed without input',()=>{
     const v=new V(0,-13,10);steerFreefall(v,1,0,0,1/120);expect(v.x).toBeLessThan(0);expect(v.y).toBe(-13);
     for(let i=0;i<1200;i++)steerFreefall(v,1,1,0,1/120);expect(Math.hypot(v.x,v.z)).toBeLessThanOrEqual(18+1e-10);
@@ -57,6 +71,22 @@ describe('bounded body steering and waist boost',()=>{
 });
 
 describe('1.75-second simulation recharge',()=>{
+  it('buffers one near-ready fresh press, retains its direction and never repeats',()=>{
+    const boost=new AirBoost(),v=new V();boost.start(v,undefined,0);boost.step(1,v);boost.tick(1.65);
+    expect(boost.request(v,new V(1,0,0),0)).toBe(false);expect(boost.buffered).toBe(true);
+    const clock=boost.cooldown;boost.tick(0);boost.step(0,v);expect(boost.cooldown).toBe(clock);expect(boost.remaining).toBe(0);
+    for(let i=0;i<12;i++){boost.tick(1/120);boost.step(1/120,v);}
+    expect(boost.remaining).toBeGreaterThan(0);expect(boost.direction.toArray()).toEqual([1,0,0]);expect(boost.buffered).toBe(false);
+    for(let i=0;i<300;i++){boost.tick(1/120);boost.step(1/120,v);}
+    expect(boost.available).toBe(true);expect(boost.remaining).toBe(0);
+  });
+  it('rejects early presses and cancels a pending action without refunding recharge',()=>{
+    const boost=new AirBoost(),v=new V();boost.start(v,undefined,0);boost.step(1,v);boost.tick(1);
+    boost.request(v,undefined,0);expect(boost.buffered).toBe(false);
+    boost.tick(.65);boost.request(v,new V(0,1,0),Math.PI/2);expect(boost.buffered).toBe(true);
+    const clock=boost.cooldown;boost.stop();expect(boost.cooldown).toBe(clock);expect(boost.buffered).toBe(false);
+    boost.tick(1);boost.step(1/120,v);expect(boost.remaining).toBe(0);
+  });
   it('recharges in midair at 1.75 seconds, with no landing or reset',()=>{
     const boost=new AirBoost(),v=new V();boost.start(v,undefined,0);boost.step(1,v);
     for(let i=0;i<209;i++)boost.tick(1/120);

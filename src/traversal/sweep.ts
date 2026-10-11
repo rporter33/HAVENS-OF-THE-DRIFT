@@ -4,7 +4,7 @@ import type { Terrain, TerrainSolid, RockColumns } from '../world/terrain';
 import { signedDistance } from '../world/colliders';
 import { AnchorRegistry } from './anchors';
 export interface SweepHit { fraction: number; point: Vector3; normal: Vector3; anchorId: string | null; exhausted?: boolean }
-export interface SweepWorld { anchorValid(id: string): boolean; sweep(from: Vector3, to: Vector3, radius: number, ignoreAnchorId?: string): SweepHit | null }
+export interface SweepWorld { readonly revision?: number; anchorValid(id: string): boolean; sweep(from: Vector3, to: Vector3, radius: number, ignoreAnchorId?: string): SweepHit | null }
 /** Conservative fixed query budgets for the isolated V1; overload blocks rather than tunnels. */
 export const SWEEP_LIMITS = Object.freeze({ length: 128, candidates: 256, tetherSpacing: .04 });
 /** Exact-distance conservative advancement against a sphere-expanded primitive (including thin boxes).
@@ -35,6 +35,7 @@ export function sweepShape(from: Vector3, to: Vector3, radius: number, shape: Co
  * fails closed for pathological grazing displacement. Soft foliage is ignored.
  */
 export class TraversalWorld implements SweepWorld {
+  get revision(): number { return this.terrain.colliders.revision; }
   private readonly rockAnchors = new Map<string,{solid:TerrainSolid; definition:string}>();
   constructor(readonly terrain: Terrain, readonly anchors = new AnchorRegistry([],true)) {}
   private rockId(solid: TerrainSolid): string | null {

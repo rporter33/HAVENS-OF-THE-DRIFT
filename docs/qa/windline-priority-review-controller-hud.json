@@ -1,0 +1,1662 @@
+{
+  "metadata": {
+    "testedHead": "7fde07cbc5c550bc330af77c2a787665d5846da0",
+    "testedTree": "a4620dbecbc1e4dddb3aeaedf73a98dc319c1b83",
+    "runnerHead": "7fde07cbc5c550bc330af77c2a787665d5846da0",
+    "runnerDirty": false,
+    "capturedAt": "2026-10-11T04:54:07.984Z",
+    "url": "http://127.0.0.1:5175/?manual=1&quality=low",
+    "buildStamp": "Build 7fde07c · 11 Oct 2026, 04:54 UTC",
+    "assets": [
+      "http://127.0.0.1:5175/assets/index-B7Uo_xHV.js"
+    ],
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36"
+  },
+  "evidence": [
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "mounted",
+      "panel": {
+        "left": 976,
+        "top": 207.421875,
+        "right": 1266,
+        "bottom": 289.25
+      },
+      "visible": true,
+      "essential": false,
+      "viewport": [
+        1280,
+        720
+      ],
+      "layout": "full",
+      "device": "gamepad",
+      "glyphDevice": "xbox",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 388,
+          "top": 21,
+          "right": 892,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-readouts dw-fadeable",
+          "left": 1081.375,
+          "top": 627.59375,
+          "right": 1162.40625,
+          "bottom": 683.59375
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "flying",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after-gamepad/mounted-1280.png",
+        "sha256": "b006698911e813975d6f82ebcbceabe29be86a18d5a42667b3303415b579c443"
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "mounted-crowded",
+      "panel": {
+        "left": 976,
+        "top": 207.421875,
+        "right": 1266,
+        "bottom": 289.25
+      },
+      "visible": true,
+      "essential": false,
+      "viewport": [
+        1280,
+        720
+      ],
+      "layout": "full",
+      "device": "gamepad",
+      "glyphDevice": "xbox",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 388,
+          "top": 21,
+          "right": 892,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 360,
+          "top": 78.390625,
+          "right": 920,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-prompt is-on",
+          "left": 421.609375,
+          "top": 635.953125,
+          "right": 858.390625,
+          "bottom": 671.046875
+        },
+        {
+          "class": "dw-flightinfo-notes is-on",
+          "left": 1134.09375,
+          "top": 584.109375,
+          "right": 1249.203125,
+          "bottom": 612.203125
+        },
+        {
+          "class": "dw-readouts dw-fadeable",
+          "left": 1081.375,
+          "top": 627.59375,
+          "right": 1162.40625,
+          "bottom": 683.59375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1176.40625,
+          "top": 619.203125,
+          "right": 1249.203125,
+          "bottom": 692
+        },
+        {
+          "class": "dw-tip is-on",
+          "left": 30.796875,
+          "top": 562.359375,
+          "right": 324.796875,
+          "bottom": 657.046875
+        },
+        {
+          "class": "dw-tip dw-tip--gauge is-on",
+          "left": 1004.203125,
+          "top": 490.765625,
+          "right": 1249.203125,
+          "bottom": 585.609375
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "flying",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after-gamepad/mounted-crowded-1280.png",
+        "sha256": "c11078a0844e9296e798db54b16441b8ff2d77e515a6940b8700f02a1cd26e7e"
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "freefall",
+      "panel": {
+        "left": 976,
+        "top": 207.421875,
+        "right": 1266,
+        "bottom": 426.046875
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        1280,
+        720
+      ],
+      "layout": "full",
+      "device": "gamepad",
+      "glyphDevice": "xbox",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 388,
+          "top": 21,
+          "right": 892,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 360,
+          "top": 78.390625,
+          "right": 920,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1176.40625,
+          "top": 619.203125,
+          "right": 1249.203125,
+          "bottom": 692
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after-gamepad/freefall-1280.png",
+        "sha256": "ffef8eac5ced5bffea76325ff7bc5fce16ffb1674b495d8e81be10cc0654e52c"
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "tether",
+      "panel": {
+        "left": 976,
+        "top": 207.421875,
+        "right": 1266,
+        "bottom": 397.5625
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        1280,
+        720
+      ],
+      "layout": "full",
+      "device": "gamepad",
+      "glyphDevice": "xbox",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 388,
+          "top": 21,
+          "right": 892,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 360,
+          "top": 78.390625,
+          "right": 920,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1176.40625,
+          "top": 619.203125,
+          "right": 1249.203125,
+          "bottom": 692
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after-gamepad/tether-1280.png",
+        "sha256": "25cb50d4751e9448aee566a78ebf99a77f11a8352069ed1ca0cd42025f1dc11d"
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "pull",
+      "panel": {
+        "left": 976,
+        "top": 207.421875,
+        "right": 1266,
+        "bottom": 405.75
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        1280,
+        720
+      ],
+      "layout": "full",
+      "device": "gamepad",
+      "glyphDevice": "xbox",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 388,
+          "top": 21,
+          "right": 892,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 360,
+          "top": 78.390625,
+          "right": 920,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1176.40625,
+          "top": 619.203125,
+          "right": 1249.203125,
+          "bottom": 692
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after-gamepad/pull-1280.png",
+        "sha256": "e46de9ad6e717f9870d89445cfa9746488be6de4ec75e9e1a3e486e62b2e94be"
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "boost",
+      "panel": {
+        "left": 976,
+        "top": 207.421875,
+        "right": 1266,
+        "bottom": 426.046875
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        1280,
+        720
+      ],
+      "layout": "full",
+      "device": "gamepad",
+      "glyphDevice": "xbox",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 388,
+          "top": 21,
+          "right": 892,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 360,
+          "top": 78.390625,
+          "right": 920,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1176.40625,
+          "top": 619.203125,
+          "right": 1249.203125,
+          "bottom": 692
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after-gamepad/boost-1280.png",
+        "sha256": "bebd57f1599337967c993de95a2d27bf30daecd764eeea3afbc3625c96fdbdd6"
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "recall",
+      "panel": {
+        "left": 976,
+        "top": 207.421875,
+        "right": 1266,
+        "bottom": 434.234375
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        1280,
+        720
+      ],
+      "layout": "full",
+      "device": "gamepad",
+      "glyphDevice": "xbox",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 388,
+          "top": 21,
+          "right": 892,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 360,
+          "top": 78.390625,
+          "right": 920,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1176.40625,
+          "top": 619.203125,
+          "right": 1249.203125,
+          "bottom": 692
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after-gamepad/recall-1280.png",
+        "sha256": "3c8be44aa2d08de5f85784c6aa233ce1f7224451c23ad54d1428f284319ec863"
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "hints-off",
+      "panel": {
+        "left": 976,
+        "top": 207.421875,
+        "right": 1266,
+        "bottom": 321.21875
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        1280,
+        720
+      ],
+      "layout": "full",
+      "device": "gamepad",
+      "glyphDevice": "xbox",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 388,
+          "top": 21,
+          "right": 892,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 360,
+          "top": 78.390625,
+          "right": 920,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1176.40625,
+          "top": 619.203125,
+          "right": 1249.203125,
+          "bottom": 692
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after-gamepad/hints-off-1280.png",
+        "sha256": "405fef8c3aef131055d3ecf1a87d55ff656888579c24ed1cf969ff18b830f70e"
+      }
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "scenario": "mounted",
+      "panel": {
+        "left": 1616,
+        "top": 14,
+        "right": 1906,
+        "bottom": 108.6875
+      },
+      "visible": true,
+      "essential": false,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "layout": "full",
+      "device": "gamepad",
+      "glyphDevice": "xbox",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 635.9375,
+          "top": 27,
+          "right": 1284.0625,
+          "bottom": 73.796875
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 599.9296875,
+          "top": 113.390625,
+          "right": 1320.0703125,
+          "bottom": 248.453125
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1786.796875,
+          "top": 950.390625,
+          "right": 1880.40625,
+          "bottom": 1044
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "flying",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after-gamepad/mounted-1920.png",
+        "sha256": "1bd1b63b10bb1afba020118b41fa699d831aed0a38d0036930d3a3deead1e49d"
+      }
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "scenario": "mounted-crowded",
+      "panel": {
+        "left": 1616,
+        "top": 14,
+        "right": 1906,
+        "bottom": 108.6875
+      },
+      "visible": true,
+      "essential": false,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "layout": "full",
+      "device": "gamepad",
+      "glyphDevice": "xbox",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 635.9375,
+          "top": 27,
+          "right": 1284.0625,
+          "bottom": 73.796875
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 599.9296875,
+          "top": 113.390625,
+          "right": 1320.0703125,
+          "bottom": 248.453125
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-prompt is-on",
+          "left": 679.34375,
+          "top": 962.015625,
+          "right": 1240.65625,
+          "bottom": 1006.5625
+        },
+        {
+          "class": "dw-flightinfo-notes is-on",
+          "left": 1733,
+          "top": 905.84375,
+          "right": 1880.40625,
+          "bottom": 941.390625
+        },
+        {
+          "class": "dw-readouts dw-fadeable",
+          "left": 1664.578125,
+          "top": 961.1875,
+          "right": 1768.796875,
+          "bottom": 1033.203125
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1786.796875,
+          "top": 950.390625,
+          "right": 1880.40625,
+          "bottom": 1044
+        },
+        {
+          "class": "dw-tip is-on",
+          "left": 39.59375,
+          "top": 867.390625,
+          "right": 417.65625,
+          "bottom": 988.5625
+        },
+        {
+          "class": "dw-tip dw-tip--gauge is-on",
+          "left": 1565.34375,
+          "top": 786.375,
+          "right": 1880.40625,
+          "bottom": 907.171875
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "flying",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after-gamepad/mounted-crowded-1920.png",
+        "sha256": "e3e4b6975758b3b1033d661158d84955744e9c3cf9f6401ad7715f107b028d72"
+      }
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "scenario": "freefall",
+      "panel": {
+        "left": 1616,
+        "top": 14,
+        "right": 1906,
+        "bottom": 274.921875
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "layout": "full",
+      "device": "gamepad",
+      "glyphDevice": "xbox",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 635.9375,
+          "top": 27,
+          "right": 1284.0625,
+          "bottom": 73.796875
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 599.9296875,
+          "top": 113.390625,
+          "right": 1320.0703125,
+          "bottom": 248.453125
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1786.796875,
+          "top": 950.390625,
+          "right": 1880.40625,
+          "bottom": 1044
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after-gamepad/freefall-1920.png",
+        "sha256": "1d88c59add44556853b60f0f2cb6b1bc1e1aba9254567dcbef855bc4eb142415"
+      }
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "scenario": "tether",
+      "panel": {
+        "left": 1616,
+        "top": 14,
+        "right": 1906,
+        "bottom": 234.09375
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "layout": "full",
+      "device": "gamepad",
+      "glyphDevice": "xbox",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 635.9375,
+          "top": 27,
+          "right": 1284.0625,
+          "bottom": 73.796875
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 599.9296875,
+          "top": 113.390625,
+          "right": 1320.0703125,
+          "bottom": 248.453125
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1786.796875,
+          "top": 950.390625,
+          "right": 1880.40625,
+          "bottom": 1044
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after-gamepad/tether-1920.png",
+        "sha256": "7923ef28c505255c5eed9a283d9193750475e0e26cac11ec2655c97f41d7790f"
+      }
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "scenario": "pull",
+      "panel": {
+        "left": 1616,
+        "top": 14,
+        "right": 1906,
+        "bottom": 242.953125
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "layout": "full",
+      "device": "gamepad",
+      "glyphDevice": "xbox",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 635.9375,
+          "top": 27,
+          "right": 1284.0625,
+          "bottom": 73.796875
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 599.9296875,
+          "top": 113.390625,
+          "right": 1320.0703125,
+          "bottom": 248.453125
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1786.796875,
+          "top": 950.390625,
+          "right": 1880.40625,
+          "bottom": 1044
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after-gamepad/pull-1920.png",
+        "sha256": "2a2ff77f1ee4767971e7458733f13aff1ad3b6bdfe2d60ab028fa320cd19d2a2"
+      }
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "scenario": "boost",
+      "panel": {
+        "left": 1616,
+        "top": 14,
+        "right": 1906,
+        "bottom": 274.921875
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "layout": "full",
+      "device": "gamepad",
+      "glyphDevice": "xbox",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 635.9375,
+          "top": 27,
+          "right": 1284.0625,
+          "bottom": 73.796875
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 599.9296875,
+          "top": 113.390625,
+          "right": 1320.0703125,
+          "bottom": 248.453125
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1786.796875,
+          "top": 950.390625,
+          "right": 1880.40625,
+          "bottom": 1044
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after-gamepad/boost-1920.png",
+        "sha256": "bfb0c5e42675a200577b1573b4900343d290c58b2fff4455d8d932304b761099"
+      }
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "scenario": "recall",
+      "panel": {
+        "left": 1616,
+        "top": 14,
+        "right": 1906,
+        "bottom": 283.78125
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "layout": "full",
+      "device": "gamepad",
+      "glyphDevice": "xbox",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 635.9375,
+          "top": 27,
+          "right": 1284.0625,
+          "bottom": 73.796875
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 599.9296875,
+          "top": 113.390625,
+          "right": 1320.0703125,
+          "bottom": 248.453125
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1786.796875,
+          "top": 950.390625,
+          "right": 1880.40625,
+          "bottom": 1044
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after-gamepad/recall-1920.png",
+        "sha256": "279956a152a298e065f99cbe1c851b20530862acc187a92c4b6d69ad0a5e44e5"
+      }
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "scenario": "hints-off",
+      "panel": {
+        "left": 1616,
+        "top": 14,
+        "right": 1906,
+        "bottom": 145.0625
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "layout": "full",
+      "device": "gamepad",
+      "glyphDevice": "xbox",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 635.9375,
+          "top": 27,
+          "right": 1284.0625,
+          "bottom": 73.796875
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 599.9296875,
+          "top": 113.390625,
+          "right": 1320.0703125,
+          "bottom": 248.453125
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1786.796875,
+          "top": 950.390625,
+          "right": 1880.40625,
+          "bottom": 1044
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after-gamepad/hints-off-1920.png",
+        "sha256": "8548d3917ceb7b0ebdb7a1c0a4dfa279934cb22cab4a9d9e1264204ec3e54ff8"
+      }
+    },
+    {
+      "width": 617,
+      "height": 380,
+      "scenario": "mounted",
+      "panel": {
+        "left": 14,
+        "top": 284.171875,
+        "right": 211.4375,
+        "bottom": 366
+      },
+      "visible": true,
+      "essential": false,
+      "viewport": [
+        617,
+        380
+      ],
+      "layout": "full",
+      "device": "gamepad",
+      "glyphDevice": "xbox",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 56.5,
+          "top": 21,
+          "right": 560.5,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 28.5,
+          "top": 78.390625,
+          "right": 588.5,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 513.40625,
+          "top": 279.203125,
+          "right": 586.203125,
+          "bottom": 352
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "flying",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after-gamepad/mounted-617.png",
+        "sha256": "0e21b94a04de84ddc088c76b4f44a83c6368b81bff30cab1d67e5f4737739134"
+      }
+    },
+    {
+      "width": 617,
+      "height": 380,
+      "scenario": "mounted-crowded",
+      "panel": {
+        "left": 14,
+        "top": 284.171875,
+        "right": 174,
+        "bottom": 349.9375
+      },
+      "visible": false,
+      "essential": false,
+      "viewport": [
+        617,
+        380
+      ],
+      "layout": "suppressed",
+      "device": "gamepad",
+      "glyphDevice": "xbox",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 56.5,
+          "top": 21,
+          "right": 560.5,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 28.5,
+          "top": 78.390625,
+          "right": 588.5,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-prompt is-on",
+          "left": 90.109375,
+          "top": 319.078125,
+          "right": 526.890625,
+          "bottom": 354.171875
+        },
+        {
+          "class": "dw-flightinfo-notes is-on",
+          "left": 471.09375,
+          "top": 244.109375,
+          "right": 586.203125,
+          "bottom": 272.203125
+        },
+        {
+          "class": "dw-readouts dw-fadeable",
+          "left": 418.375,
+          "top": 287.59375,
+          "right": 499.40625,
+          "bottom": 343.59375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 513.40625,
+          "top": 279.203125,
+          "right": 586.203125,
+          "bottom": 352
+        },
+        {
+          "class": "dw-tip is-on",
+          "left": 30.796875,
+          "top": 245.484375,
+          "right": 324.796875,
+          "bottom": 340.171875
+        },
+        {
+          "class": "dw-tip dw-tip--gauge is-on",
+          "left": 341.203125,
+          "top": 150.765625,
+          "right": 586.203125,
+          "bottom": 245.609375
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "flying",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after-gamepad/mounted-crowded-617.png",
+        "sha256": "14a3d6056cbf9cb7159305ff5ea4acb202e7ee0aab75da1252ccbbfa90a89d26"
+      }
+    },
+    {
+      "width": 617,
+      "height": 380,
+      "scenario": "freefall",
+      "panel": {
+        "left": 14,
+        "top": 242.078125,
+        "right": 211.4375,
+        "bottom": 366
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        617,
+        380
+      ],
+      "layout": "compact",
+      "device": "gamepad",
+      "glyphDevice": "xbox",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 56.5,
+          "top": 21,
+          "right": 560.5,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 28.5,
+          "top": 78.390625,
+          "right": 588.5,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 513.40625,
+          "top": 279.203125,
+          "right": 586.203125,
+          "bottom": 352
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after-gamepad/freefall-617.png",
+        "sha256": "beb65b3cae5091f771bfd831cd3f631f56a2dc241d3b1653fe766693d4dae144"
+      }
+    },
+    {
+      "width": 617,
+      "height": 380,
+      "scenario": "tether",
+      "panel": {
+        "left": 14,
+        "top": 251.671875,
+        "right": 211.4375,
+        "bottom": 366
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        617,
+        380
+      ],
+      "layout": "compact",
+      "device": "gamepad",
+      "glyphDevice": "xbox",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 56.5,
+          "top": 21,
+          "right": 560.5,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 28.5,
+          "top": 78.390625,
+          "right": 588.5,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 513.40625,
+          "top": 279.203125,
+          "right": 586.203125,
+          "bottom": 352
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after-gamepad/tether-617.png",
+        "sha256": "731c1e28de77857b251ba16299fc3c50b10e4b984617760ba76450c1b9337507"
+      }
+    },
+    {
+      "width": 617,
+      "height": 380,
+      "scenario": "pull",
+      "panel": {
+        "left": 14,
+        "top": 243.484375,
+        "right": 211.4375,
+        "bottom": 366
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        617,
+        380
+      ],
+      "layout": "compact",
+      "device": "gamepad",
+      "glyphDevice": "xbox",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 56.5,
+          "top": 21,
+          "right": 560.5,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 28.5,
+          "top": 78.390625,
+          "right": 588.5,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 513.40625,
+          "top": 279.203125,
+          "right": 586.203125,
+          "bottom": 352
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after-gamepad/pull-617.png",
+        "sha256": "607c0b76b95a789d88561f1874606d5d5cc2a698a2d5e8346c97d2ce838ffddd"
+      }
+    },
+    {
+      "width": 617,
+      "height": 380,
+      "scenario": "boost",
+      "panel": {
+        "left": 14,
+        "top": 242.078125,
+        "right": 211.4375,
+        "bottom": 366
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        617,
+        380
+      ],
+      "layout": "compact",
+      "device": "gamepad",
+      "glyphDevice": "xbox",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 56.5,
+          "top": 21,
+          "right": 560.5,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 28.5,
+          "top": 78.390625,
+          "right": 588.5,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 513.40625,
+          "top": 279.203125,
+          "right": 586.203125,
+          "bottom": 352
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after-gamepad/boost-617.png",
+        "sha256": "61a839f6ac5b9cf80c8c50eb8ac96f6fff66a6d91a54eebb6bdad299f8e6a19e"
+      }
+    },
+    {
+      "width": 617,
+      "height": 380,
+      "scenario": "recall",
+      "panel": {
+        "left": 14,
+        "top": 233.890625,
+        "right": 211.4375,
+        "bottom": 366
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        617,
+        380
+      ],
+      "layout": "compact",
+      "device": "gamepad",
+      "glyphDevice": "xbox",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 56.5,
+          "top": 21,
+          "right": 560.5,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 28.5,
+          "top": 78.390625,
+          "right": 588.5,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 513.40625,
+          "top": 279.203125,
+          "right": 586.203125,
+          "bottom": 352
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after-gamepad/recall-617.png",
+        "sha256": "4112c8627c9d0b8d99ac6a20918311c22299c531675bd431f308a21108af9ee7"
+      }
+    },
+    {
+      "width": 617,
+      "height": 380,
+      "scenario": "hints-off",
+      "panel": {
+        "left": 14,
+        "top": 252.203125,
+        "right": 211.4375,
+        "bottom": 366
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        617,
+        380
+      ],
+      "layout": "full",
+      "device": "gamepad",
+      "glyphDevice": "xbox",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 56.5,
+          "top": 21,
+          "right": 560.5,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 28.5,
+          "top": 78.390625,
+          "right": 588.5,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 513.40625,
+          "top": 279.203125,
+          "right": 586.203125,
+          "bottom": 352
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after-gamepad/hints-off-617.png",
+        "sha256": "9d8011e6a6efc613fa7b296344897979f7b35b4d98639ea397336480c6efeb5d"
+      }
+    }
+  ],
+  "errors": []
+}

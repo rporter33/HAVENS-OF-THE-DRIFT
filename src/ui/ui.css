@@ -3348,16 +3348,22 @@
 
 /* Rider traversal feedback shares the normal HUD's visibility and device glyphs. */
 .dw-windline [hidden], .dw-windline[hidden] { display: none !important; }
-.dw-windline-panel { position: absolute; box-sizing: border-box; padding: .65em .9em; border: 1px solid #7fa8c466; border-radius: .5em; background: #182631e8; color: #f2eada; font-size: max(14px, .85em); }
+.dw-windline-panel { position: absolute; box-sizing: border-box; padding: .65em .9em; border-left: 2px solid #aa8656; border-radius: .5em; background: #182631; color: #f2eada; font-size: max(14px, .9em); }
+.dw-windline-title { display: block; color: #c6ac86; font-size: .85em; letter-spacing: .12em; text-transform: uppercase; }
+.dw-windline-panel > strong { display: block; margin-top: .2em; }
+.dw-windline-call { margin-top: .4em; }
+.dw-windline-call-label { display: flex; align-items: center; gap: .4em; }
 .dw-windline-panel, .dw-windline-panel * { transition-property: none !important; }
 .dw-windline-compact { display: none; }
 .dw-windline-panel.is-compact .dw-windline-hints, .dw-windline-panel.is-compact .dw-windline-title { display: none; }
 .dw-windline-panel.is-compact .dw-windline-compact { display: block; }
 .dw-windline-panel.is-status-only .dw-windline-hints, .dw-windline-panel.is-status-only .dw-windline-title, .dw-windline-panel.is-status-only .dw-windline-compact { display: none; }
+.dw-windline-panel.is-status-only .dw-windline-call:not(.is-critical) { display: none; }
 .dw-windline-hints p { margin: .35em 0 0; }
 .dw-windline-boost { color: #a8e5ff; margin-top: .35em; }
 .dw-windline-meter { height: 4px; background: #315e9c66; margin-top: .3em; border-radius: 2px; overflow: hidden; }
 .dw-windline-meter > div { height: 100%; background: #a8e5ff; }
-.dw-windline-reticle { position: fixed; width: 56px; height: 56px; transform: translate(-50%, -50%); filter: drop-shadow(0 1px 3px #182631); color: #f2eada; }
-.dw-windline-reticle [data-aim-status] { position: absolute; top: 58px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 12px; background: #182631e8; padding: 3px 6px; border-radius: 4px; }
-.dw-windline-reticle [data-impact] { display: none; position: absolute; width: 8px; height: 8px; border: 2px solid #79e5ff; border-radius: 50%; transform: translate(-50%, -50%); }
+.dw-windline-reticle { position: fixed; left: 50%; top: 50%; width: 20px; height: 20px; transform: translate(-50%, -50%); filter: drop-shadow(0 0 1px #182631); color: #a8ddec; }
+.dw-windline-reticle, .dw-windline-reticle * { transition-property: none !important; }
+.dw-windline-reticle [data-aim-status] { display: none; }
+.dw-windline-reticle [data-impact] { display: none; position: absolute; width: 8px; height: 8px; border: 2px solid #79e5ff; box-shadow: 0 0 0 2px #182631; border-radius: 50%; transform: translate(-50%, -50%); }

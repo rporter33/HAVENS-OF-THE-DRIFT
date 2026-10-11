@@ -1,0 +1,232 @@
+{
+  "diagnostics": [
+    {
+      "step": "fresh boot",
+      "ms": 2263,
+      "url": "http://127.0.0.1:5175/?view=skyLance&play=1&manual=1&quality=low&weather=clear&tod=.5"
+    },
+    {
+      "step": "reload document",
+      "ms": 92,
+      "url": "http://127.0.0.1:5175/?view=skyLance&play=1&manual=1&quality=low&weather=clear&tod=.5"
+    },
+    {
+      "step": "reload ready",
+      "ms": 1674,
+      "url": "http://127.0.0.1:5175/?view=skyLance&play=1&manual=1&quality=low&weather=clear&tod=.5"
+    }
+  ],
+  "errors": [],
+  "networkFailures": [],
+  "runtime": {
+    "assets": [
+      "http://127.0.0.1:5175/assets/index-B7Uo_xHV.js"
+    ],
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36"
+  },
+  "practice": {
+    "attempts": [
+      {
+        "releaseStep": 20,
+        "landed": false,
+        "releasePosition": [
+          0.22583777457713397,
+          420.85911458333334,
+          -83.99104854760056
+        ],
+        "velocity": [
+          0.1892798320205252,
+          -0.5500000000002007,
+          7.4976111625750645
+        ],
+        "position": [
+          0.7199065722300816,
+          387.8601272449477,
+          -64.42036479952391
+        ]
+      },
+      {
+        "releaseStep": 40,
+        "landed": false,
+        "releasePosition": [
+          0.2573844132472186,
+          420.51744791666675,
+          -82.74144668717129
+        ],
+        "velocity": [
+          0.18927983202049117,
+          -3.5499999999998577,
+          7.497611162573715
+        ],
+        "position": [
+          0.7432084914505585,
+          385.6973607251055,
+          -63.497346600532715
+        ]
+      },
+      {
+        "releaseStep": 60,
+        "landed": false,
+        "releasePosition": [
+          0.2889300360632074,
+          419.6759739631234,
+          -81.49188506599462
+        ],
+        "velocity": [
+          0.18908483828099026,
+          -6.512837302680182,
+          7.489887216380895
+        ],
+        "position": [
+          0.7713587435646316,
+          383.3690092016249,
+          -62.38227986454294
+        ]
+      },
+      {
+        "releaseStep": 80,
+        "landed": false,
+        "releasePosition": [
+          0.3204766747332832,
+          418.33452614713326,
+          -80.24228320556551
+        ],
+        "velocity": [
+          0.18908483828097272,
+          -9.470831623894657,
+          7.489887216380196
+        ],
+        "position": [
+          0.8029053822346701,
+          380.7035165519336,
+          -61.13267800411509
+        ]
+      },
+      {
+        "releaseStep": 100,
+        "landed": false,
+        "releasePosition": [
+          0.3520233134033578,
+          416.49315948371833,
+          -78.9926813451374
+        ],
+        "velocity": [
+          0.1890848382809613,
+          -12.413342490936191,
+          7.489887216379753
+        ],
+        "position": [
+          0.8344520209047169,
+          377.7073729346981,
+          -59.88307614368799
+        ]
+      },
+      {
+        "releaseStep": 120,
+        "landed": false,
+        "releasePosition": [
+          0.3835699520734297,
+          414.1518733379709,
+          -77.74307948470927
+        ],
+        "velocity": [
+          0.18908483828095266,
+          -15.340521175705856,
+          7.489887216379407
+        ],
+        "position": [
+          0.8659986595747713,
+          374.34268055705434,
+          -58.6334742832607
+        ]
+      },
+      {
+        "releaseStep": 140,
+        "landed": false,
+        "releasePosition": [
+          0.41207837616736753,
+          411.4521543956745,
+          -76.42342247995353
+        ],
+        "velocity": [
+          -0.06342090942943648,
+          -6.631738167673434,
+          13.306772991988298
+        ],
+        "position": [
+          0.26593841872765855,
+          375.0882120086561,
+          -45.76080259316829
+        ]
+      },
+      {
+        "releaseStep": 160,
+        "landed": false,
+        "releasePosition": [
+          0.3931450227346272,
+          410.497516215079,
+          -74.0264164331531
+        ],
+        "velocity": [
+          -0.15484465927645855,
+          -5.101604468793645,
+          15.142112243331994
+        ],
+        "position": [
+          0.046553916189444884,
+          374.8945864483017,
+          -40.133601127990815
+        ]
+      },
+      {
+        "releaseStep": 180,
+        "landed": false,
+        "releasePosition": [
+          0.3588284733298164,
+          409.8581551766664,
+          -71.37129653513948
+        ],
+        "velocity": [
+          -0.24624372850010506,
+          -2.971569871608098,
+          16.410670428193647
+        ],
+        "position": [
+          -0.2376949097234783,
+          374.947498620047,
+          -55.352000721085446
+        ]
+      },
+      {
+        "releaseStep": 200,
+        "landed": true,
+        "releasePosition": [
+          0.309884262514233,
+          409.6129544260857,
+          -68.57106797286609
+        ],
+        "velocity": [
+          -0.32937192455705155,
+          -0.4783757011891611,
+          16.927310765649715
+        ],
+        "position": [
+          -0.01873906245313224,
+          400,
+          -51.682229757391404
+        ]
+      }
+    ],
+    "maxCameraStep": 0,
+    "maxCameraRoll": 2.168404344971009e-19,
+    "pillarSpeed": 17.263587038232387
+  },
+  "sourceIdentity": {
+    "testedHead": "7fde07cbc5c550bc330af77c2a787665d5846da0",
+    "testedTree": "a4620dbecbc1e4dddb3aeaedf73a98dc319c1b83",
+    "runnerHead": "5d30bb9b5c89259a0616ffa7c4744991bd59b2ff",
+    "runtimeBuild": "7fde07c",
+    "identityEvidence": "Prototype DOM has no pause build stamp. Loaded production script URL matches the prior clean 7fde07c capture, whose recorded build stamp was verified. The intervening commit changes only the presentation test.",
+    "productionScriptSha256": "ff47cc4c76700187fa7b07305af615baf999954a4b49e45806889aa3a49ebbb4"
+  }
+}
