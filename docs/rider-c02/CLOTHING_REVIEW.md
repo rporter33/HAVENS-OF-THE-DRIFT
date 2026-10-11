@@ -1,5 +1,11 @@
 # Localized garment refinement
 
+Current follow-up: [four-pass QA review](QA_REVIEW.md) and [28 new production captures](evidence/qa/index.html).
+The follow-up repairs material identity, final cloth-surface contacts and bell sleeves, gives
+heavy cloth its own response, and corrects rigid armor weighting. **119 files / 1,260 tests,
+two dedicated audits, typecheck/build, 15 smoke, 32 mixing/flight and 33 browser checks** pass.
+The implementation and counts below describe the preserved preceding clothing checkpoint.
+
 Robert broadened this pass from lower-leg joins to a major clothing refinement: loose lower
 tops should behave as cloth like the existing capes/shawls, while retaining every outfit and
 mixed piece, softer silhouettes and the supplied art/material direction.
@@ -13,9 +19,9 @@ mixed piece, softer silhouettes and the supplied art/material direction.
   bending, tethers, frame inertia, wind and contacts remain. `clothRig.ts` skins guides with
   existing bones. Top rows stay attached; free hems ripple/swing without streaming away.
   Quality changes reuse solvers; dyes update vertex colors in place.
-- Courier rear tails use bounded guides. Cartographer sash ends use cloth; bell sleeves are
-  sewn sheets with attached elbow rings and free cuffs. Duplicate seam columns are constrained
-  together and rendered with matched positions/normals.
+- Courier rear tails use bounded guides. Cartographer sash ends use cloth; the original bell
+  sleeves were closed sewn sheets. The QA follow-up uses secured inner vents over fitted
+  lining, an attached elbow root and free outer bell fabric; it removes duplicate sleeve bulk.
 - `legFit.ts` supplies one dressed-leg envelope and shared knee/ankle weights to body, wraps,
   stripes, cuffs and knee shells. Modular contexts receive the selected envelope. Short linen
   hems do not draw a rolled cuff through high boots. Legs have 16 smooth sectors; broad wraps

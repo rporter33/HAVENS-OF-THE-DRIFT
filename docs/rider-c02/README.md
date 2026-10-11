@@ -1,5 +1,15 @@
 # C02 Travel Drape — approved P1 development proof
 
+## Current: four-pass clothing QA
+
+Material identity, smoothed cloth contacts, bell sleeves and rigid armor weighting received
+four QA passes after `c6ae42d`. **119 files / 1,260 tests, two dedicated geometry audits,
+typecheck/build, 15 smoke, 32 mixing/actual-flight and 33 production browser checks** pass.
+[QA review and precise coverage/limits](QA_REVIEW.md), [28 fresh captures](evidence/qa/index.html).
+The pairwise matrix covers 384 looks / 2,304 poses with no sampled free render-surface
+penetration; attached seams and unsampled mesh/accessory intersections are not certified.
+Older sections below preserve earlier checkpoints. [Current handoff](../AI_HANDOFF.md).
+
 ## Latest: localized clothing refinement
 
 Current integrated review: **1,239 tests in 117 files; typecheck/build; 15 smoke, 32 outfit-mixing, 30 clothing and 12 local-menu checks passed**. Windline gameplay and editor workflows passed. [24 fresh integrated captures and reports](evidence/clothing/integration/index.html). Normal menu: http://127.0.0.1:5193/?quality=high&tod=.42 ; separate outfit test profile: http://127.0.0.1:5198/?quality=high&tod=.42 . Existing saves are preserved. Hosted snapshot is unchanged.
