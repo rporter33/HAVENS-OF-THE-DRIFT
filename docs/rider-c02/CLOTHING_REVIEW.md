@@ -1,5 +1,9 @@
 # Localized garment refinement
 
+Latest integration: reviewed main `f97bac5` is included with the rider runtime preserved.
+**119 files / 1,286 tests**, typecheck/build and repeated game/clothing integration checks
+pass. [Current captures and source hashes](evidence/qa/integration/index.html).
+
 Current follow-up: [four-pass QA review](QA_REVIEW.md) and [28 new production captures](evidence/qa/index.html).
 The follow-up repairs material identity, final cloth-surface contacts and bell sleeves, gives
 heavy cloth its own response, and corrects rigid armor weighting. **119 files / 1,260 tests,

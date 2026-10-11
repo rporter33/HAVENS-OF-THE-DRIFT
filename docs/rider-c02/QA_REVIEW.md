@@ -1,5 +1,24 @@
 # Four-pass rider QA — October 11, 2026
 
+## Current reviewed-main integration
+
+Remote main advanced during QA to `f97bac535611e09c6c732230b5f0ca73b9bbf804`, the reviewed
+neutral-Windline/controller release. Integration `a4e278dd70c56058f69744ed3962a719ed323f97`
+preserves both handoffs and every tested rider source file byte for byte. Flight, traversal,
+player and shared world source match that main. Its workflow gates remain intact; this
+branch adds the dedicated garment audit. Main and other agents' worktrees remain untouched.
+
+The integrated build passes **119 files / 1,286 tests**, typecheck/build, **15** smoke,
+**32** Stable/mixing/actual-flight, **33** appearance checks / **28** new captures and
+**12** local-menu/profile checks. Normal Windline keyboard/controller gameplay and the
+controller-first leap/cast/boost/recall flow also pass. The 384-look geometry matrix remains
+applicable because the entire rider runtime is identical to the four-pass checkpoint.
+[Current integrated captures and hashes](evidence/qa/integration/index.html) supersede
+the pre-integration build identity below; all earlier evidence/backups are preserved.
+
+The current local release is `local-rider-qa-integrated-test/dist` at the same 5193/5198
+menu links. PR checks must be read against its final documentation/evidence head.
+
 Robert requested at least three to four QA passes, fixes for any findings, clean clothing
 clearance and distinct cloth/leather/metal behavior. This review follows the preserved
 `c6ae42d` clothing checkpoint on `codex/rider-c02-proof`. Implementation commit:

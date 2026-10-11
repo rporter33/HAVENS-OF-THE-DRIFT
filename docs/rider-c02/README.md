@@ -2,6 +2,11 @@
 
 ## Current: four-pass clothing QA
 
+Reviewed main `f97bac5` advanced during QA and is integrated without changing the rider
+runtime. **1,286 tests in 119 files**, typecheck/build and the clothing/game integration
+checks pass. [Latest integrated captures and reports](evidence/qa/integration/index.html)
+and [review notes](QA_REVIEW.md) supersede the earlier counts immediately below.
+
 Material identity, smoothed cloth contacts, bell sleeves and rigid armor weighting received
 four QA passes after `c6ae42d`. **119 files / 1,260 tests, two dedicated geometry audits,
 typecheck/build, 15 smoke, 32 mixing/actual-flight and 33 production browser checks** pass.
