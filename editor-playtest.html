@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1b2a3f" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Cpath d=%22M4 36 Q20 14 32 30 Q44 14 60 36 Q44 28 32 44 Q20 28 4 36Z%22 fill=%22%23e8b85a%22/%3E%3C/svg%3E" />
+    <title>Driftwing — Region playtest</title>
+    <style>
+      html, body { margin: 0; height: 100%; overflow: hidden; background: #1b2a3f; }
+      #app { position: fixed; inset: 0; }
+      #app canvas { display: block; width: 100%; height: 100%; outline: none; }
+      #ui { position: fixed; inset: 0; pointer-events: none; }
+      #sandbox-bar { position: fixed; top: 10px; left: 50%; transform: translateX(-50%); z-index: 100; display: flex; align-items: center; gap: 8px; background: #faf8f3ed; border: 1px solid #d8d1c2; border-radius: 6px; padding: 7px 10px; color: #263b43; font: 14px system-ui; white-space: nowrap; }
+      #sandbox-bar span { margin-right: 10px; font-size: 12px; }
+      #sandbox-bar button { font: inherit; padding: 6px 9px; border: 1px solid #c9c5b9; border-radius: 4px; background: #fffdf7; color: #263b43; cursor: pointer; }
+      #sandbox-bar button:focus-visible { outline: 2px solid #315e9c; }
+      #sandbox-bar button:last-child { background: #315e9c; color: #faf8f3; }
+      #boot { position: fixed; inset: 0; z-index: 120; display: grid; place-items: center; font: 22px Georgia; color: #faf8f3; background: #233452; }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div><div id="ui"></div>
+    <div id="sandbox-bar"><span>Sandbox · Esc releases mouse</span><button id="fly">Fly route</button><button id="walk">Walk island</button><button id="capture">Capture mouse</button><button id="return">Return to editor</button></div>
+    <div id="boot" role="status">Preparing your region…</div>
+    <script type="module" src="/src/editor/playtest.ts"></script>
+  </body>
+</html>

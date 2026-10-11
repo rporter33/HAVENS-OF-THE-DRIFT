@@ -10,6 +10,8 @@ import { ambienceMix, emptyAmbienceMix, emptyWindMix, windMix, type AmbienceMix 
 import { MusicPlayer } from './music';
 import { finishArpeggio, medalChord, ringNote, thermalNotes, unlockJingle } from './notes';
 import * as V from './voices';
+import { traversalVoice } from './traversalVoices';
+import type { TraversalCue } from './traversalCues';
 
 export interface SceneReport {
   name: string;
@@ -36,6 +38,41 @@ function steer(seconds: number, frame: number, fn: (t: number) => void): void {
 }
 
 const SCENES: Record<string, { seconds: number; minRmsDb: number; build: Builder }> = {
+  volumeDuringUnlock: {
+    seconds: 3,
+    minRmsDb: -45,
+    build: (e) => {
+      // Reproduce unmuting while AudioSystem's initial 1.5 s master fade is pending.
+      e.setVolumes(0, 0.6, 0.9, true);
+      e.master.gain.setValueAtTime(0, 0);
+      e.master.gain.linearRampToValueAtTime(0, 1.5);
+      e.setVolumes(0.8, 0.6, 0.9);
+      V.pluck(e, e.strip(e.sfx, 1), 2, 67, 1, 0.7);
+    },
+  },
+  volumeDuringUnlockFallback: {
+    seconds: 3,
+    minRmsDb: -45,
+    build: (e) => {
+      // Exercise browsers without cancelAndHoldAtTime using real AudioParams.
+      for (const g of [e.master, e.sfx.dry, e.sfx.wet, e.music.dry, e.music.wet, e.amb.dry, e.amb.wet]) {
+        Object.defineProperty(g.gain, 'cancelAndHoldAtTime', { value: undefined });
+      }
+      e.setVolumes(0, 0.6, 0.9, true);
+      e.master.gain.setValueAtTime(0, 0);
+      e.master.gain.linearRampToValueAtTime(0, 1.5);
+      e.setVolumes(0.8, 0.6, 0.9);
+      V.pluck(e, e.strip(e.sfx, 1), 2, 67, 1, 0.7);
+    },
+  },
+  traversal: {
+    seconds: 5,
+    minRmsDb: -45,
+    build: (e) => {
+      const cues: TraversalCue[] = ['cast', 'attach', 'pull', 'release', 'boost'];
+      cues.forEach((cue, i) => traversalVoice(e, cue, 0.1 + i * 0.85));
+    },
+  },
   windCruise: {
     seconds: 3,
     minRmsDb: -45,
@@ -222,9 +259,23 @@ const SCENES: Record<string, { seconds: number; minRmsDb: number; build: Builder
       for (let i = 0; i < 10; i++) V.chime(e, c, 0.5 + i * 0.12, ringNote(i, 10), 1);
       V.deepBell(e, e.strip(e.sfx, 1, 0, 0.65), 1, 50, 1);
       new MusicPlayer(e, 1).renderSpan(0, s, 0.5, 1);
+      for (let i = 0; i < 8; i++) {
+        traversalVoice(e, 'attach', 0.15 + i * 0.5);
+        traversalVoice(e, 'pull', 0.3 + i * 0.5);
+        traversalVoice(e, 'release', 0.45 + i * 0.5);
+        traversalVoice(e, 'boost', 0.5 + i * 0.5);
+      }
     },
   },
 };
+
+for (const cue of ['cast', 'attach', 'release', 'pull', 'boost'] as const) {
+  SCENES[`traversal-${cue}`] = {
+    seconds: 1.5,
+    minRmsDb: -55,
+    build: (e) => traversalVoice(e, cue, 0.1),
+  };
+}
 
 export const AUDIO_SCENES = Object.keys(SCENES);
 

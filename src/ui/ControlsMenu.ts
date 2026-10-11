@@ -17,6 +17,7 @@ const DEVICES: { id: Exclude<GlyphDevice, 'generic'>; label: string }[] = [
 const GROUPS: { context: Binding['context']; title: string }[] = [
   { context: 'flight', title: 'In the air' },
   { context: 'ground', title: 'On the ground' },
+  { context: 'traversal', title: 'Windline · on foot & freefall' },
   { context: 'general', title: 'Anywhere' },
   { context: 'menu', title: 'Menus & the Stable' },
 ];
@@ -82,7 +83,9 @@ export class ControlsMenu extends Panel {
         // Free look only exists for mouse steering; on a pad the right stick always looks.
         if (b.action === 'freeLook' && dev !== 'keyboard') continue;
         const glyphs = dev === 'keyboard' ? bindingKeyboardHtml(b) : bindingPadHtml(b, dev);
-        block.append(div('dw-control', h('span', { class: 'dw-control-l', text: controlLabel(b.label, dev) }), h('span', { class: 'dw-control-g', html: glyphs })));
+        const label = b.action === 'lance' && this.ctx.settings().windlineToggle
+          ? 'Cast Windline at solid surfaces within 65 m (press again to detach)' : b.label;
+        block.append(div('dw-control', h('span', { class: 'dw-control-l', text: controlLabel(label, dev) }), h('span', { class: 'dw-control-g', html: glyphs })));
       }
       grid.append(block);
     }

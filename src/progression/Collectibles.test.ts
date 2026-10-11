@@ -52,11 +52,11 @@ describe('collectible pickup', () => {
     expect(log.some((e) => e.type === 'toast' && e.payload.icon === 'feather')).toBe(true);
   });
 
-  it('on foot, reach is measured from the rider and is shorter', () => {
+  it.each(['onFoot', 'traversing'] as const)('%s reach is measured from the rider and is shorter', mode => {
     const { log, sys, player, step } = setup();
     const f = sys.items.find((c) => c.id === featherId(0))!; // the launch deck
     expect(f.access).toBe('foot');
-    player.mode = 'onFoot';
+    player.mode = mode;
     player.position.set(0, 5000, 0); // the wyvern is far away: irrelevant on foot
     player.riderPosition.copy(f.position).add(new Vector3(PICKUP_RADIUS.foot + 1, -1.3, 0));
     step();

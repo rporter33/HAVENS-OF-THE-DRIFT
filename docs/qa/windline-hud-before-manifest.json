@@ -1,0 +1,33 @@
+{
+  "metadata": {
+    "testedHead": "a475c40cae0bfe6f806978d1e0b031e7744af2a4",
+    "testedTree": "764b3a8ff6a7623e124a06e80535e5448911ec27",
+    "runnerHead": "c1b8e37b0e6fb6b4d09ea8da2bda9a74ece2fc87",
+    "runnerDirty": false,
+    "capturedAt": "2026-10-11T03:55:36.156Z",
+    "url": "http://127.0.0.1:5174/?manual=1&quality=low",
+    "buildStamp": "Build a475c40 \u00b7 11 Oct 2026, 02:12 UTC",
+    "assets": [
+      "http://127.0.0.1:5174/assets/index-CMqs2s7R.js"
+    ],
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36"
+  },
+  "captures": [
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "mounted",
+      "path": "shots/hud-layout-before-review/mounted-1280.png",
+      "sha256": "2bf4b131d854ae6ab8dbb6c3686804c6a6138962a3ea4e5822a25c6505cf20ea",
+      "archivedPath": "docs/qa/windline-hud-before-1280.png"
+    },
+    {
+      "width": 617,
+      "height": 380,
+      "scenario": "mounted",
+      "path": "shots/hud-layout-before-review/mounted-617.png",
+      "sha256": "82730dc58f8800d25c58b324e87a54dbe2728033b01f2feb9a1b6bda2e53636d",
+      "archivedPath": "docs/qa/windline-hud-before-617.png"
+    }
+  ]
+}

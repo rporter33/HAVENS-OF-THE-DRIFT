@@ -18,6 +18,8 @@ jobs:
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -25,9 +27,9 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm test -- --maxWorkers=2
-      - run: npm run build
+      - run: GITHUB_SHA="$(git rev-parse HEAD)" npm run build
       - run: npx playwright install --with-deps chromium
-      - run: node scripts/smoke.mjs --no-build
+      - run: GITHUB_SHA="$(git rev-parse HEAD)" node scripts/smoke.mjs --no-build
       - name: Verify experimental scenes against the production build
         shell: bash
         run: |
@@ -39,6 +41,9 @@ jobs:
             sleep 1
           done
           curl --fail --silent http://127.0.0.1:5174/ > /dev/null
+          node scripts/windline-gameplay-check.mjs http://127.0.0.1:5174
+          node scripts/windline-hud-layout-check.mjs http://127.0.0.1:5174
+          node scripts/windline-performance-check.mjs http://127.0.0.1:5174 --assert-cost --evidence=ci
           node scripts/windhaven-smoke.mjs http://127.0.0.1:5174
           node scripts/sky-lance-check.mjs http://127.0.0.1:5174
           node scripts/sky-lance-check.mjs http://127.0.0.1:5174 --motion-only
@@ -55,4 +60,5 @@ jobs:
             /tmp/preview.log
             /tmp/driftwing-*-browser-check.json
             /tmp/driftwing-spin-integration.json
+            /tmp/driftwing-windline-performance-ci.json
           retention-days: 30

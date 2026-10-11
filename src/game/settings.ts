@@ -15,6 +15,7 @@ export const DEFAULT_SETTINGS: Settings = {
   timeOfDay: 'cycle',
   dayLengthMinutes: 24,
   holdToFlap: true,
+  windlineToggle: false,
   showGhost: true,
 };
 

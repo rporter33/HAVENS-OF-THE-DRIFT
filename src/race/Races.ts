@@ -85,7 +85,7 @@ const _v = new Vector3();
 
 /** Where the player is: the rider on foot (the wyvern may be waiting far off), else the wyvern. */
 function focusOf(player: PlayerSystem): Vector3 {
-  return player.mode === 'onFoot' || player.mode === 'falling' ? player.riderPosition : player.position;
+  return player.mode === 'onFoot' || player.mode === 'falling' || player.mode === 'traversing' ? player.riderPosition : player.position;
 }
 
 export class Races implements RaceSystem {
@@ -270,6 +270,11 @@ export class Races implements RaceSystem {
         const def = this.airTime >= ARMING.airborne ? this.armable(b, player.flight.velocity) : null;
         if (def) this.arm(def);
       }
+      return;
+    }
+    // A deliberate leap leaves the mounted race before a riderless dragon can cross a gate.
+    if (player.mode === 'traversing' && (this.state === 'countdown' || this.state === 'running')) {
+      if (this.state === 'running') this.abort('dismount'); else this.disarm('landed');
       return;
     }
     const def = this.active!;

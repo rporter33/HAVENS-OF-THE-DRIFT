@@ -83,7 +83,7 @@ describe('responsive aiming feedback',()=>{
   it('updates aim every frame without jumping on READY, bounds forecasts and clears stale eligibility',()=>{
     vi.stubGlobal('window',{innerHeight:720});
     const label={textContent:''},impact={style:{} as Record<string,string>};
-    const el={dataset:{} as Record<string,string>,style:{} as Record<string,string>,querySelector:(query:string)=>query==='[data-impact]'?impact:label};
+    const el={hidden:false,closest:()=>null,dataset:{} as Record<string,string>,style:{} as Record<string,string>,querySelector:(query:string)=>query==='[data-impact]'?impact:label};
     vi.stubGlobal('document',{getElementById:()=>el});let now=1000;const clock=vi.spyOn(performance,'now').mockImplementation(()=>now);
     let queries=0;
     const lance=new SkyLance({anchorValid:()=>true,sweep:(_from,to,radius)=>{queries++;return radius===.08?{fraction:1,point:to.clone().setZ(20),normal:new Vector3(0,0,-1),anchorId:'surface'}:null;}});
@@ -99,6 +99,8 @@ describe('responsive aiming feedback',()=>{
       lance.state='ready';now+=50;visuals.updateReticle(camera,feet,v,lance);const before=queries;
       for(let i=0;i<120;i++){now+=1000/120;visuals.updateReticle(camera,feet,v,lance);}
       expect(queries-before).toBeLessThanOrEqual(40); // Two world sweeps per forecast, at most 20 forecasts/sec.
+      el.hidden=true;now+=100;const hiddenQueries=queries;visuals.updateReticle(camera,feet,v,lance);
+      expect(queries).toBe(hiddenQueries); // Mounted/menu HUD does not forecast an unusable cast.
     }finally{clock.mockRestore();visuals.dispose();}
   });
 });

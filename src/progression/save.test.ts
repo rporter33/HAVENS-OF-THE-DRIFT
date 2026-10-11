@@ -72,6 +72,7 @@ describe('save migration and sanitizing', () => {
     s.playTime = 321.5;
     s.tutorialDone = true;
     s.settings.fov = 70;
+    s.settings.windlineToggle = true;
     s.wyvern.horns = 'ram';
     s.research = researchState(s.research, s);
     expect(migrateSave(JSON.parse(JSON.stringify(s)))).toEqual(s);
@@ -93,6 +94,7 @@ describe('save migration and sanitizing', () => {
     expect(s.wyvern.primary).toBe('#112233');
     expect(s.wyvern.horns).toBe(DEFAULT_WYVERN.horns);
     expect(s.settings.fov).toBe(75);
+    expect(s.settings.windlineToggle).toBe(false);
     expect(s.settings.quality).toBe(DEFAULT_SETTINGS.quality);
     expect(s.discovered).toEqual([]);
   });

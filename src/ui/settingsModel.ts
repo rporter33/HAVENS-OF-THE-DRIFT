@@ -111,6 +111,7 @@ export const SETTINGS_TABS: SettingsTab[] = [
     label: 'Gameplay',
     rows: [
       { kind: 'toggle', key: 'holdToFlap', label: 'Hold to flap', help: 'On: hold to keep beating. Off: one beat per press.' },
+      { kind: 'toggle', key: 'windlineToggle', label: 'Toggle Windline', help: 'On: press to cast, press again to release. Off: hold to retain, release to detach. Changing this releases the current line.' },
       { kind: 'toggle', key: 'showGhost', label: 'Race ghost', help: 'Race against a ghost of your best run.' },
       {
         kind: 'toggle', key: 'showControlHints', label: 'Show tips',

@@ -1,0 +1,59 @@
+name: Verify region editor
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'editor*.html'
+      - 'src/editor/**'
+      - 'src/audio/**'
+      - 'src/game/Game.ts'
+      - 'src/world/World.ts'
+      - 'vite.config.ts'
+      - 'scripts/editor-check.mjs'
+      - '.github/workflows/editor-verify.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: editor-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  editor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: GITHUB_SHA="$(git rev-parse HEAD)" npm run build
+      - run: npx playwright install --with-deps chromium
+      - name: Verify production authoring workflow
+        shell: bash
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 5399 --strictPort > /tmp/editor-preview.log 2>&1 &
+          preview_pid=$!
+          trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
+          for attempt in {1..60}; do
+            if curl --fail --silent http://127.0.0.1:5399/editor.html > /dev/null; then break; fi
+            sleep 1
+          done
+          curl --fail --silent http://127.0.0.1:5399/editor.html > /dev/null
+          node scripts/editor-check.mjs http://127.0.0.1:5399/
+      - name: Preserve authoring evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: region-editor-browser-evidence
+          path: |
+            /tmp/driftwing-editor-evidence/
+            /tmp/editor-preview.log
+          retention-days: 30

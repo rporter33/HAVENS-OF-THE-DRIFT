@@ -134,7 +134,7 @@ export class Player implements PlayerSystem {
   /** Where the stable is and where to fall back to (the Roost today; one day an airship). */
   readonly home: HomeAnchor;
 
-  /** Null outside the opt-in experimental scenario. */
+  /** Rider traversal equipment; isolated showcases may supply their own world adapter. */
   skyLance: SkyLance | null = null;
   traversalPhase: 'tethered' | 'released' = 'released';
   lanceInteraction: 'hold' | 'toggle' = 'hold';
@@ -548,7 +548,7 @@ export class Player implements PlayerSystem {
     this.updateLookTarget(dt);
   }
 
-  // --- Experimental independent rider traversal -------------------------------------------------
+  // --- Independent rider traversal --------------------------------------------------------------
 
   /** Called when play loses input ownership. A held button must be released before a fresh windup. */
   cancelLanceWindup(): void {

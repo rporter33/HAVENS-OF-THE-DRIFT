@@ -1,0 +1,2636 @@
+{
+  "metadata": {
+    "testedHead": "c1b8e37b0e6fb6b4d09ea8da2bda9a74ece2fc87",
+    "testedTree": "67acdb7189de45047dfee9cdc7c34a6c398c0706",
+    "runnerHead": "c1b8e37b0e6fb6b4d09ea8da2bda9a74ece2fc87",
+    "runnerDirty": false,
+    "capturedAt": "2026-10-11T03:53:34.641Z",
+    "url": "http://127.0.0.1:5176/?manual=1&quality=low",
+    "buildStamp": "Build c1b8e37 \u00b7 11 Oct 2026, 03:53 UTC",
+    "assets": [
+      "http://127.0.0.1:5176/assets/index-CoGsIOGa.js"
+    ],
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36"
+  },
+  "evidence": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "scenario": "mounted",
+      "panel": {
+        "left": 1616,
+        "top": 14,
+        "right": 1906,
+        "bottom": 103.140625
+      },
+      "visible": true,
+      "essential": false,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 635.9375,
+          "top": 27,
+          "right": 1284.0625,
+          "bottom": 73.796875
+        },
+        {
+          "class": "dw-readouts dw-fadeable",
+          "left": 1664.578125,
+          "top": 961.1875,
+          "right": 1768.796875,
+          "bottom": 1033.203125
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "flying",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after/mounted-1920.png",
+        "sha256": "bd157b708607c3aba918287cbc5d5ee745ba725227d8c1de08bcd8b6f69e3b98"
+      }
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "scenario": "mounted-crowded",
+      "panel": {
+        "left": 1616,
+        "top": 14,
+        "right": 1906,
+        "bottom": 103.140625
+      },
+      "visible": true,
+      "essential": false,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 635.9375,
+          "top": 27,
+          "right": 1284.0625,
+          "bottom": 73.796875
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 599.9296875,
+          "top": 113.390625,
+          "right": 1320.0703125,
+          "bottom": 248.453125
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-prompt is-on",
+          "left": 679.34375,
+          "top": 962.015625,
+          "right": 1240.65625,
+          "bottom": 1006.5625
+        },
+        {
+          "class": "dw-flightinfo-notes is-on",
+          "left": 1733,
+          "top": 905.84375,
+          "right": 1880.40625,
+          "bottom": 941.390625
+        },
+        {
+          "class": "dw-readouts dw-fadeable",
+          "left": 1664.578125,
+          "top": 961.1875,
+          "right": 1768.796875,
+          "bottom": 1033.203125
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1786.796875,
+          "top": 950.390625,
+          "right": 1880.40625,
+          "bottom": 1044
+        },
+        {
+          "class": "dw-tip is-on",
+          "left": 39.59375,
+          "top": 867.390625,
+          "right": 417.65625,
+          "bottom": 988.5625
+        },
+        {
+          "class": "dw-tip dw-tip--gauge is-on",
+          "left": 1565.34375,
+          "top": 786.375,
+          "right": 1880.40625,
+          "bottom": 907.171875
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "flying",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after/mounted-crowded-1920.png",
+        "sha256": "d52c0aa0bbbf8c8648be08dc33c1709ae0f9b8f58972b926c61d4b1c1dc18311"
+      }
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "scenario": "freefall",
+      "panel": {
+        "left": 1616,
+        "top": 14,
+        "right": 1906,
+        "bottom": 236.296875
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 635.9375,
+          "top": 27,
+          "right": 1284.0625,
+          "bottom": 73.796875
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 599.9296875,
+          "top": 113.390625,
+          "right": 1320.0703125,
+          "bottom": 248.453125
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1786.796875,
+          "top": 950.390625,
+          "right": 1880.40625,
+          "bottom": 1044
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "scenario": "tether",
+      "panel": {
+        "left": 1616,
+        "top": 14,
+        "right": 1906,
+        "bottom": 210.3125
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 635.9375,
+          "top": 27,
+          "right": 1284.0625,
+          "bottom": 73.796875
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 599.9296875,
+          "top": 113.390625,
+          "right": 1320.0703125,
+          "bottom": 248.453125
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1786.796875,
+          "top": 950.390625,
+          "right": 1880.40625,
+          "bottom": 1044
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after/tether-1920.png",
+        "sha256": "20257ce89d4a5ca28f77e363741ed3c36100301c3a394ec310908c5e7a158fd8"
+      }
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "scenario": "pull",
+      "panel": {
+        "left": 1616,
+        "top": 14,
+        "right": 1906,
+        "bottom": 210.3125
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 635.9375,
+          "top": 27,
+          "right": 1284.0625,
+          "bottom": 73.796875
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 599.9296875,
+          "top": 113.390625,
+          "right": 1320.0703125,
+          "bottom": 248.453125
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1786.796875,
+          "top": 950.390625,
+          "right": 1880.40625,
+          "bottom": 1044
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "scenario": "boost",
+      "panel": {
+        "left": 1616,
+        "top": 14,
+        "right": 1906,
+        "bottom": 236.296875
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 635.9375,
+          "top": 27,
+          "right": 1284.0625,
+          "bottom": 73.796875
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 599.9296875,
+          "top": 113.390625,
+          "right": 1320.0703125,
+          "bottom": 248.453125
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1786.796875,
+          "top": 950.390625,
+          "right": 1880.40625,
+          "bottom": 1044
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "scenario": "recall",
+      "panel": {
+        "left": 1616,
+        "top": 14,
+        "right": 1906,
+        "bottom": 236.296875
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 635.9375,
+          "top": 27,
+          "right": 1284.0625,
+          "bottom": 73.796875
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 599.9296875,
+          "top": 113.390625,
+          "right": 1320.0703125,
+          "bottom": 248.453125
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1786.796875,
+          "top": 950.390625,
+          "right": 1880.40625,
+          "bottom": 1044
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after/recall-1920.png",
+        "sha256": "ead8409c4944faf8a007c4174a2728dcc95927cdc88342180a26e03a0eedfefd"
+      }
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "scenario": "hints-off",
+      "panel": {
+        "left": 1616,
+        "top": 14,
+        "right": 1906,
+        "bottom": 91.078125
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 635.9375,
+          "top": 27,
+          "right": 1284.0625,
+          "bottom": 73.796875
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 599.9296875,
+          "top": 113.390625,
+          "right": 1320.0703125,
+          "bottom": 248.453125
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 437.8984375,
+          "top": 97.1875,
+          "right": 1482.0859375,
+          "bottom": 266.453125
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1786.796875,
+          "top": 950.390625,
+          "right": 1880.40625,
+          "bottom": 1044
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "mounted",
+      "panel": {
+        "left": 976,
+        "top": 207.421875,
+        "right": 1266,
+        "bottom": 289.171875
+      },
+      "visible": true,
+      "essential": false,
+      "viewport": [
+        1280,
+        720
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 388,
+          "top": 21,
+          "right": 892,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 360,
+          "top": 78.390625,
+          "right": 920,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1176.40625,
+          "top": 619.203125,
+          "right": 1249.203125,
+          "bottom": 692
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "flying",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after/mounted-1280.png",
+        "sha256": "ac385e7c28e0270ccc31221de35fdaf92043d552f26be11113ba66eea5081ff0",
+        "archivedPath": "docs/qa/windline-hud-after-1280.png"
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "mounted-crowded",
+      "panel": {
+        "left": 976,
+        "top": 207.421875,
+        "right": 1266,
+        "bottom": 289.171875
+      },
+      "visible": true,
+      "essential": false,
+      "viewport": [
+        1280,
+        720
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 388,
+          "top": 21,
+          "right": 892,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 360,
+          "top": 78.390625,
+          "right": 920,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-prompt is-on",
+          "left": 421.609375,
+          "top": 635.953125,
+          "right": 858.390625,
+          "bottom": 671.046875
+        },
+        {
+          "class": "dw-flightinfo-notes is-on",
+          "left": 1134.09375,
+          "top": 584.109375,
+          "right": 1249.203125,
+          "bottom": 612.203125
+        },
+        {
+          "class": "dw-readouts dw-fadeable",
+          "left": 1081.375,
+          "top": 627.59375,
+          "right": 1162.40625,
+          "bottom": 683.59375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1176.40625,
+          "top": 619.203125,
+          "right": 1249.203125,
+          "bottom": 692
+        },
+        {
+          "class": "dw-tip is-on",
+          "left": 30.796875,
+          "top": 562.359375,
+          "right": 324.796875,
+          "bottom": 657.046875
+        },
+        {
+          "class": "dw-tip dw-tip--gauge is-on",
+          "left": 1004.203125,
+          "top": 490.765625,
+          "right": 1249.203125,
+          "bottom": 585.609375
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "flying",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after/mounted-crowded-1280.png",
+        "sha256": "2c5eda8a8969fff32915bbb7b68de239547f655b3f8e4ee16d64576cd7202fd3"
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "freefall",
+      "panel": {
+        "left": 976,
+        "top": 207.421875,
+        "right": 1266,
+        "bottom": 411.375
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        1280,
+        720
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 388,
+          "top": 21,
+          "right": 892,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 360,
+          "top": 78.390625,
+          "right": 920,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1176.40625,
+          "top": 619.203125,
+          "right": 1249.203125,
+          "bottom": 692
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "tether",
+      "panel": {
+        "left": 976,
+        "top": 207.421875,
+        "right": 1266,
+        "bottom": 387.59375
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        1280,
+        720
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 388,
+          "top": 21,
+          "right": 892,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 360,
+          "top": 78.390625,
+          "right": 920,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1176.40625,
+          "top": 619.203125,
+          "right": 1249.203125,
+          "bottom": 692
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after/tether-1280.png",
+        "sha256": "0cf7425fb1a7370e6e11eea1d7f96c021ba87b8780378b762689242511e3de9b"
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "pull",
+      "panel": {
+        "left": 976,
+        "top": 207.421875,
+        "right": 1266,
+        "bottom": 387.59375
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        1280,
+        720
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 388,
+          "top": 21,
+          "right": 892,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 360,
+          "top": 78.390625,
+          "right": 920,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1176.40625,
+          "top": 619.203125,
+          "right": 1249.203125,
+          "bottom": 692
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "boost",
+      "panel": {
+        "left": 976,
+        "top": 207.421875,
+        "right": 1266,
+        "bottom": 411.375
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        1280,
+        720
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 388,
+          "top": 21,
+          "right": 892,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 360,
+          "top": 78.390625,
+          "right": 920,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1176.40625,
+          "top": 619.203125,
+          "right": 1249.203125,
+          "bottom": 692
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "recall",
+      "panel": {
+        "left": 976,
+        "top": 207.421875,
+        "right": 1266,
+        "bottom": 411.375
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        1280,
+        720
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 388,
+          "top": 21,
+          "right": 892,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 360,
+          "top": 78.390625,
+          "right": 920,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1176.40625,
+          "top": 619.203125,
+          "right": 1249.203125,
+          "bottom": 692
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after/recall-1280.png",
+        "sha256": "dc2180d8ac34739ede22c86105181383f5448e7b1594037c6dd89b42e2e83624"
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scenario": "hints-off",
+      "panel": {
+        "left": 976,
+        "top": 207.421875,
+        "right": 1266,
+        "bottom": 278.46875
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        1280,
+        720
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 388,
+          "top": 21,
+          "right": 892,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 360,
+          "top": 78.390625,
+          "right": 920,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 234,
+          "top": 65.796875,
+          "right": 1046,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 1176.40625,
+          "top": 619.203125,
+          "right": 1249.203125,
+          "bottom": 692
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false
+    },
+    {
+      "width": 960,
+      "height": 540,
+      "scenario": "mounted",
+      "panel": {
+        "left": 656,
+        "top": 207.421875,
+        "right": 946,
+        "bottom": 289.171875
+      },
+      "visible": true,
+      "essential": false,
+      "viewport": [
+        960,
+        540
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 228,
+          "top": 21,
+          "right": 732,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 200,
+          "top": 78.390625,
+          "right": 760,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 74,
+          "top": 65.796875,
+          "right": 886,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 74,
+          "top": 65.796875,
+          "right": 886,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-readouts dw-fadeable",
+          "left": 761.375,
+          "top": 447.59375,
+          "right": 842.40625,
+          "bottom": 503.59375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 856.40625,
+          "top": 439.203125,
+          "right": 929.203125,
+          "bottom": 512
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "flying",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after/mounted-960.png",
+        "sha256": "6588d5c995a9ed9dcbdeb0a6740f00d0b15ddcb01f08c8b87f3bd3247ceeea00"
+      }
+    },
+    {
+      "width": 960,
+      "height": 540,
+      "scenario": "mounted-crowded",
+      "panel": {
+        "left": 656,
+        "top": 207.421875,
+        "right": 946,
+        "bottom": 289.171875
+      },
+      "visible": true,
+      "essential": false,
+      "viewport": [
+        960,
+        540
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 228,
+          "top": 21,
+          "right": 732,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 200,
+          "top": 78.390625,
+          "right": 760,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 74,
+          "top": 65.796875,
+          "right": 886,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 74,
+          "top": 65.796875,
+          "right": 886,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-prompt is-on",
+          "left": 261.609375,
+          "top": 468.1875,
+          "right": 698.390625,
+          "bottom": 503.28125
+        },
+        {
+          "class": "dw-flightinfo-notes is-on",
+          "left": 814.09375,
+          "top": 404.109375,
+          "right": 929.203125,
+          "bottom": 432.203125
+        },
+        {
+          "class": "dw-readouts dw-fadeable",
+          "left": 761.375,
+          "top": 447.59375,
+          "right": 842.40625,
+          "bottom": 503.59375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 856.40625,
+          "top": 439.203125,
+          "right": 929.203125,
+          "bottom": 512
+        },
+        {
+          "class": "dw-tip is-on",
+          "left": 30.796875,
+          "top": 394.59375,
+          "right": 324.796875,
+          "bottom": 489.28125
+        },
+        {
+          "class": "dw-tip dw-tip--gauge is-on",
+          "left": 684.203125,
+          "top": 310.765625,
+          "right": 929.203125,
+          "bottom": 405.609375
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "flying",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after/mounted-crowded-960.png",
+        "sha256": "13642cd597df3250b3da190b1fe6bb0b3a5f641463291fd71fc6e628412cc742"
+      }
+    },
+    {
+      "width": 960,
+      "height": 540,
+      "scenario": "freefall",
+      "panel": {
+        "left": 656,
+        "top": 207.421875,
+        "right": 946,
+        "bottom": 411.375
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        960,
+        540
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 228,
+          "top": 21,
+          "right": 732,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 200,
+          "top": 78.390625,
+          "right": 760,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 74,
+          "top": 65.796875,
+          "right": 886,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 74,
+          "top": 65.796875,
+          "right": 886,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 856.40625,
+          "top": 439.203125,
+          "right": 929.203125,
+          "bottom": 512
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false
+    },
+    {
+      "width": 960,
+      "height": 540,
+      "scenario": "tether",
+      "panel": {
+        "left": 656,
+        "top": 207.421875,
+        "right": 946,
+        "bottom": 387.59375
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        960,
+        540
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 228,
+          "top": 21,
+          "right": 732,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 200,
+          "top": 78.390625,
+          "right": 760,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 74,
+          "top": 65.796875,
+          "right": 886,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 74,
+          "top": 65.796875,
+          "right": 886,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 856.40625,
+          "top": 439.203125,
+          "right": 929.203125,
+          "bottom": 512
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after/tether-960.png",
+        "sha256": "49a09ebb9d82b650bb17aac1a1746ca0236a0e604c7d2c7c58e322bfb98fc68b"
+      }
+    },
+    {
+      "width": 960,
+      "height": 540,
+      "scenario": "pull",
+      "panel": {
+        "left": 656,
+        "top": 207.421875,
+        "right": 946,
+        "bottom": 387.59375
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        960,
+        540
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 228,
+          "top": 21,
+          "right": 732,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 200,
+          "top": 78.390625,
+          "right": 760,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 74,
+          "top": 65.796875,
+          "right": 886,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 74,
+          "top": 65.796875,
+          "right": 886,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 856.40625,
+          "top": 439.203125,
+          "right": 929.203125,
+          "bottom": 512
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false
+    },
+    {
+      "width": 960,
+      "height": 540,
+      "scenario": "boost",
+      "panel": {
+        "left": 656,
+        "top": 207.421875,
+        "right": 946,
+        "bottom": 411.375
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        960,
+        540
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 228,
+          "top": 21,
+          "right": 732,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 200,
+          "top": 78.390625,
+          "right": 760,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 74,
+          "top": 65.796875,
+          "right": 886,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 74,
+          "top": 65.796875,
+          "right": 886,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 856.40625,
+          "top": 439.203125,
+          "right": 929.203125,
+          "bottom": 512
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false
+    },
+    {
+      "width": 960,
+      "height": 540,
+      "scenario": "recall",
+      "panel": {
+        "left": 656,
+        "top": 207.421875,
+        "right": 946,
+        "bottom": 411.375
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        960,
+        540
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 228,
+          "top": 21,
+          "right": 732,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 200,
+          "top": 78.390625,
+          "right": 760,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 74,
+          "top": 65.796875,
+          "right": 886,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 74,
+          "top": 65.796875,
+          "right": 886,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 856.40625,
+          "top": 439.203125,
+          "right": 929.203125,
+          "bottom": 512
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after/recall-960.png",
+        "sha256": "54e3c8bc331136812a7df264a6acdab5ffccaa34df809dc8c9688c13ff2d2729"
+      }
+    },
+    {
+      "width": 960,
+      "height": 540,
+      "scenario": "hints-off",
+      "panel": {
+        "left": 656,
+        "top": 207.421875,
+        "right": 946,
+        "bottom": 278.46875
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        960,
+        540
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 228,
+          "top": 21,
+          "right": 732,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 200,
+          "top": 78.390625,
+          "right": 760,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 74,
+          "top": 65.796875,
+          "right": 886,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 74,
+          "top": 65.796875,
+          "right": 886,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 856.40625,
+          "top": 439.203125,
+          "right": 929.203125,
+          "bottom": 512
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false
+    },
+    {
+      "width": 617,
+      "height": 380,
+      "scenario": "mounted",
+      "panel": {
+        "left": 14,
+        "top": 284.25,
+        "right": 211.4375,
+        "bottom": 366
+      },
+      "visible": true,
+      "essential": false,
+      "viewport": [
+        617,
+        380
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 56.5,
+          "top": 21,
+          "right": 560.5,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 28.5,
+          "top": 78.390625,
+          "right": 588.5,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-readouts dw-fadeable",
+          "left": 418.375,
+          "top": 287.59375,
+          "right": 499.40625,
+          "bottom": 343.59375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 513.40625,
+          "top": 279.203125,
+          "right": 586.203125,
+          "bottom": 352
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "flying",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after/mounted-617.png",
+        "sha256": "4d027b14e4885841f14a02f13bb3413c640faf5689aab7bb5157d9c0a36f032d",
+        "archivedPath": "docs/qa/windline-hud-after-617.png"
+      }
+    },
+    {
+      "width": 617,
+      "height": 380,
+      "scenario": "mounted-crowded",
+      "panel": {
+        "left": 14,
+        "top": 284.25,
+        "right": 174,
+        "bottom": 323.328125
+      },
+      "visible": false,
+      "essential": false,
+      "viewport": [
+        617,
+        380
+      ],
+      "layout": "suppressed",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 56.5,
+          "top": 21,
+          "right": 560.5,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 28.5,
+          "top": 78.390625,
+          "right": 588.5,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-prompt is-on",
+          "left": 90.109375,
+          "top": 319.078125,
+          "right": 526.890625,
+          "bottom": 354.171875
+        },
+        {
+          "class": "dw-flightinfo-notes is-on",
+          "left": 471.09375,
+          "top": 244.109375,
+          "right": 586.203125,
+          "bottom": 272.203125
+        },
+        {
+          "class": "dw-readouts dw-fadeable",
+          "left": 418.375,
+          "top": 287.59375,
+          "right": 499.40625,
+          "bottom": 343.59375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 513.40625,
+          "top": 279.203125,
+          "right": 586.203125,
+          "bottom": 352
+        },
+        {
+          "class": "dw-tip is-on",
+          "left": 30.796875,
+          "top": 245.484375,
+          "right": 324.796875,
+          "bottom": 340.171875
+        },
+        {
+          "class": "dw-tip dw-tip--gauge is-on",
+          "left": 341.203125,
+          "top": 150.765625,
+          "right": 586.203125,
+          "bottom": 245.609375
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "flying",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after/mounted-crowded-617.png",
+        "sha256": "ee481654a5cdc20591c006caacae34cedf9c6d60ce3f5d68a2ed42f367a15f3f",
+        "archivedPath": "docs/qa/windline-hud-crowded-617.png"
+      }
+    },
+    {
+      "width": 617,
+      "height": 380,
+      "scenario": "freefall",
+      "panel": {
+        "left": 14,
+        "top": 276.0625,
+        "right": 211.4375,
+        "bottom": 366
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        617,
+        380
+      ],
+      "layout": "compact",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 56.5,
+          "top": 21,
+          "right": 560.5,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 28.5,
+          "top": 78.390625,
+          "right": 588.5,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 513.40625,
+          "top": 279.203125,
+          "right": 586.203125,
+          "bottom": 352
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false
+    },
+    {
+      "width": 617,
+      "height": 380,
+      "scenario": "tether",
+      "panel": {
+        "left": 14,
+        "top": 294.953125,
+        "right": 211.4375,
+        "bottom": 366
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        617,
+        380
+      ],
+      "layout": "compact",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 56.5,
+          "top": 21,
+          "right": 560.5,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 28.5,
+          "top": 78.390625,
+          "right": 588.5,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 513.40625,
+          "top": 279.203125,
+          "right": 586.203125,
+          "bottom": 352
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after/tether-617.png",
+        "sha256": "9c5396699636e69923fae197c0295f2e9c475880c7055d7e45c2ad67abf99a5b"
+      }
+    },
+    {
+      "width": 617,
+      "height": 380,
+      "scenario": "pull",
+      "panel": {
+        "left": 14,
+        "top": 294.953125,
+        "right": 211.4375,
+        "bottom": 366
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        617,
+        380
+      ],
+      "layout": "compact",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 56.5,
+          "top": 21,
+          "right": 560.5,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 28.5,
+          "top": 78.390625,
+          "right": 588.5,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 513.40625,
+          "top": 279.203125,
+          "right": 586.203125,
+          "bottom": 352
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false
+    },
+    {
+      "width": 617,
+      "height": 380,
+      "scenario": "boost",
+      "panel": {
+        "left": 14,
+        "top": 276.0625,
+        "right": 211.4375,
+        "bottom": 366
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        617,
+        380
+      ],
+      "layout": "compact",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 56.5,
+          "top": 21,
+          "right": 560.5,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 28.5,
+          "top": 78.390625,
+          "right": 588.5,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 513.40625,
+          "top": 279.203125,
+          "right": 586.203125,
+          "bottom": 352
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false
+    },
+    {
+      "width": 617,
+      "height": 380,
+      "scenario": "recall",
+      "panel": {
+        "left": 14,
+        "top": 276.0625,
+        "right": 211.4375,
+        "bottom": 366
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        617,
+        380
+      ],
+      "layout": "compact",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 56.5,
+          "top": 21,
+          "right": 560.5,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 28.5,
+          "top": 78.390625,
+          "right": 588.5,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 513.40625,
+          "top": 279.203125,
+          "right": 586.203125,
+          "bottom": 352
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after/recall-617.png",
+        "sha256": "5e79381c4a19a8f54dbd6659b02d0a51dd6b12cab80ddb3942139b5d203355d6"
+      }
+    },
+    {
+      "width": 617,
+      "height": 380,
+      "scenario": "hints-off",
+      "panel": {
+        "left": 14,
+        "top": 294.953125,
+        "right": 211.4375,
+        "bottom": 366
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        617,
+        380
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": 56.5,
+          "top": 21,
+          "right": 560.5,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": 28.5,
+          "top": 78.390625,
+          "right": 588.5,
+          "bottom": 183.4375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 0,
+          "top": 65.796875,
+          "right": 617,
+          "bottom": 197.4375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 513.40625,
+          "top": 279.203125,
+          "right": 586.203125,
+          "bottom": 352
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false
+    },
+    {
+      "width": 360,
+      "height": 780,
+      "scenario": "mounted",
+      "panel": {
+        "left": 186,
+        "top": 630.125,
+        "right": 346,
+        "bottom": 669.203125
+      },
+      "visible": true,
+      "essential": false,
+      "viewport": [
+        360,
+        780
+      ],
+      "layout": "compact",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": -72,
+          "top": 21,
+          "right": 432,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": -100,
+          "top": 81.890625,
+          "right": 460,
+          "bottom": 186.9375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 0,
+          "top": 69.296875,
+          "right": 360,
+          "bottom": 200.9375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 0,
+          "top": 69.296875,
+          "right": 360,
+          "bottom": 200.9375
+        },
+        {
+          "class": "dw-readouts dw-fadeable",
+          "left": 161.375,
+          "top": 687.59375,
+          "right": 242.40625,
+          "bottom": 743.59375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 256.40625,
+          "top": 679.203125,
+          "right": 329.203125,
+          "bottom": 752
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "flying",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after/mounted-360.png",
+        "sha256": "4fdd56cb0062bbf97f44024e88ed6091d87ba48631e25e250ba5cd539d5c7561"
+      }
+    },
+    {
+      "width": 360,
+      "height": 780,
+      "scenario": "mounted-crowded",
+      "panel": {
+        "left": 244,
+        "top": 210.921875,
+        "right": 346,
+        "bottom": 268.890625
+      },
+      "visible": true,
+      "essential": false,
+      "viewport": [
+        360,
+        780
+      ],
+      "layout": "compact",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": -72,
+          "top": 21,
+          "right": 432,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": -100,
+          "top": 81.890625,
+          "right": 460,
+          "bottom": 186.9375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 0,
+          "top": 69.296875,
+          "right": 360,
+          "bottom": 200.9375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 0,
+          "top": 69.296875,
+          "right": 360,
+          "bottom": 200.9375
+        },
+        {
+          "class": "dw-prompt is-on",
+          "left": -38.390625,
+          "top": 691.875,
+          "right": 398.390625,
+          "bottom": 726.96875
+        },
+        {
+          "class": "dw-flightinfo-notes is-on",
+          "left": 214.09375,
+          "top": 644.109375,
+          "right": 329.203125,
+          "bottom": 672.203125
+        },
+        {
+          "class": "dw-readouts dw-fadeable",
+          "left": 161.375,
+          "top": 687.59375,
+          "right": 242.40625,
+          "bottom": 743.59375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 256.40625,
+          "top": 679.203125,
+          "right": 329.203125,
+          "bottom": 752
+        },
+        {
+          "class": "dw-tip is-on",
+          "left": 30.796875,
+          "top": 618.28125,
+          "right": 324.796875,
+          "bottom": 712.96875
+        },
+        {
+          "class": "dw-tip dw-tip--gauge is-on",
+          "left": 84.203125,
+          "top": 550.765625,
+          "right": 329.203125,
+          "bottom": 645.609375
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "flying",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after/mounted-crowded-360.png",
+        "sha256": "a17ee58f7cc7384d1337917ce97e19146e06a9ce2c9a41109b81ae3fbc596330"
+      }
+    },
+    {
+      "width": 360,
+      "height": 780,
+      "scenario": "freefall",
+      "panel": {
+        "left": 14,
+        "top": 676.0625,
+        "right": 174,
+        "bottom": 766
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        360,
+        780
+      ],
+      "layout": "compact",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": -72,
+          "top": 21,
+          "right": 432,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": -100,
+          "top": 81.890625,
+          "right": 460,
+          "bottom": 186.9375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 0,
+          "top": 69.296875,
+          "right": 360,
+          "bottom": 200.9375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 0,
+          "top": 69.296875,
+          "right": 360,
+          "bottom": 200.9375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 256.40625,
+          "top": 679.203125,
+          "right": 329.203125,
+          "bottom": 752
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false
+    },
+    {
+      "width": 360,
+      "height": 780,
+      "scenario": "tether",
+      "panel": {
+        "left": 14,
+        "top": 676.0625,
+        "right": 174,
+        "bottom": 766
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        360,
+        780
+      ],
+      "layout": "compact",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": -72,
+          "top": 21,
+          "right": 432,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": -100,
+          "top": 81.890625,
+          "right": 460,
+          "bottom": 186.9375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 0,
+          "top": 69.296875,
+          "right": 360,
+          "bottom": 200.9375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 0,
+          "top": 69.296875,
+          "right": 360,
+          "bottom": 200.9375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 256.40625,
+          "top": 679.203125,
+          "right": 329.203125,
+          "bottom": 752
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after/tether-360.png",
+        "sha256": "001eb0c4fffca1816c282acc5abae59c53d1658f736f012b8450e14b8504d187"
+      }
+    },
+    {
+      "width": 360,
+      "height": 780,
+      "scenario": "pull",
+      "panel": {
+        "left": 14,
+        "top": 676.0625,
+        "right": 174,
+        "bottom": 766
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        360,
+        780
+      ],
+      "layout": "compact",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": -72,
+          "top": 21,
+          "right": 432,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": -100,
+          "top": 81.890625,
+          "right": 460,
+          "bottom": 186.9375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 0,
+          "top": 69.296875,
+          "right": 360,
+          "bottom": 200.9375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 0,
+          "top": 69.296875,
+          "right": 360,
+          "bottom": 200.9375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 256.40625,
+          "top": 679.203125,
+          "right": 329.203125,
+          "bottom": 752
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false
+    },
+    {
+      "width": 360,
+      "height": 780,
+      "scenario": "boost",
+      "panel": {
+        "left": 14,
+        "top": 676.0625,
+        "right": 174,
+        "bottom": 766
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        360,
+        780
+      ],
+      "layout": "compact",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": -72,
+          "top": 21,
+          "right": 432,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": -100,
+          "top": 81.890625,
+          "right": 460,
+          "bottom": 186.9375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 0,
+          "top": 69.296875,
+          "right": 360,
+          "bottom": 200.9375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 0,
+          "top": 69.296875,
+          "right": 360,
+          "bottom": 200.9375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 256.40625,
+          "top": 679.203125,
+          "right": 329.203125,
+          "bottom": 752
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false
+    },
+    {
+      "width": 360,
+      "height": 780,
+      "scenario": "recall",
+      "panel": {
+        "left": 14,
+        "top": 676.0625,
+        "right": 174,
+        "bottom": 766
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        360,
+        780
+      ],
+      "layout": "compact",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": -72,
+          "top": 21,
+          "right": 432,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": -100,
+          "top": 81.890625,
+          "right": 460,
+          "bottom": 186.9375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 0,
+          "top": 69.296875,
+          "right": 360,
+          "bottom": 200.9375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 0,
+          "top": 69.296875,
+          "right": 360,
+          "bottom": 200.9375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 256.40625,
+          "top": 679.203125,
+          "right": 329.203125,
+          "bottom": 752
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false,
+      "capture": {
+        "path": "shots/hud-layout-after/recall-360.png",
+        "sha256": "0648d6e470c0b62745fa42744088a42edcf3eac20cb75d553b96f0c0bd2d5281"
+      }
+    },
+    {
+      "width": 360,
+      "height": 780,
+      "scenario": "hints-off",
+      "panel": {
+        "left": 186,
+        "top": 598.15625,
+        "right": 346,
+        "bottom": 669.203125
+      },
+      "visible": true,
+      "essential": true,
+      "viewport": [
+        360,
+        780
+      ],
+      "layout": "full",
+      "blockers": [
+        {
+          "class": "dw-compass dw-fadeable",
+          "left": -72,
+          "top": 21,
+          "right": 432,
+          "bottom": 57.390625
+        },
+        {
+          "class": "dw-banner is-on",
+          "left": -100,
+          "top": 81.890625,
+          "right": 460,
+          "bottom": 186.9375
+        },
+        {
+          "class": "dw-banner::before",
+          "left": 0,
+          "top": 69.296875,
+          "right": 360,
+          "bottom": 200.9375
+        },
+        {
+          "class": "dw-banner::after",
+          "left": 0,
+          "top": 69.296875,
+          "right": 360,
+          "bottom": 200.9375
+        },
+        {
+          "class": "dw-gauge",
+          "left": 256.40625,
+          "top": 679.203125,
+          "right": 329.203125,
+          "bottom": 752
+        }
+      ],
+      "overlaps": [],
+      "centralOverlap": false,
+      "mode": "traversing",
+      "ship": false
+    }
+  ],
+  "errors": []
+}

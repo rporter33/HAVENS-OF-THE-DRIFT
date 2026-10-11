@@ -211,7 +211,7 @@ describe('Races: a full run of the Roost Loop', () => {
     expect(races.activeId).toBeNull();
   });
 
-  it('dismounting mid-race abandons it as a dismount; flying away from an armed gate disarms quietly', () => {
+  it.each(['onFoot', 'traversing'] as const)('%s mid-race abandons it as a dismount; flying away from an armed gate disarms quietly', mode => {
     const { log, player, races, flyTo, approach } = setup();
     approach(gatePoint(-150));
     expect(races.state).toBe('countdown');
@@ -224,7 +224,7 @@ describe('Races: a full run of the Roost Loop', () => {
     approach(gatePoint(-150));
     flyTo(gatePoint(10));
     expect(races.state).toBe('running');
-    player.mode = 'onFoot';
+    player.mode = mode;
     races.fixedUpdate(DT, player as unknown as PlayerSystem);
     expect(log.find((e) => e.type === 'raceAbort')?.payload.reason).toBe('dismount');
     // Restart tries the same race again for a while.
@@ -233,6 +233,20 @@ describe('Races: a full run of the Roost Loop', () => {
     races.restart();
     expect(races.state).toBe('countdown');
     expect(races.activeId).toBe('roost-loop');
+  });
+
+  it.each(['countdown', 'running'] as const)('a leap during %s wins over a riderless dragon crossing on the same step', state => {
+    const { log, player, races, approach, flyTo, save } = setup();
+    approach(gatePoint(-150));
+    if (state === 'running') flyTo(gatePoint(10));
+    const starts = log.filter(e => e.type === 'raceStart').length;
+    player.prevPosition.copy(state === 'countdown' ? gatePoint(-10) : ringPoint(0, -10));
+    player.position.copy(state === 'countdown' ? gatePoint(10) : ringPoint(0, 10));
+    player.mode = 'traversing'; races.fixedUpdate(DT, player as unknown as PlayerSystem);
+    expect(races.state).toBe('idle');
+    expect(log.filter(e => e.type === 'raceStart')).toHaveLength(starts);
+    expect(log.some(e => e.type === 'ringPassed')).toBe(false);
+    expect(save.data.races).toEqual({});
   });
 
   it('points the HUD at the gate, then each ring, and knows which start is nearby', () => {

@@ -28,7 +28,7 @@
 //    strength is the trigger's peak during the press. Held mode beats continuously.
 //  - Esc (or anything else that releases the captured mouse during play, like alt-tab) pauses.
 //    Losing window focus and a controller disconnecting during play also pause.
-//  - X is reserved for the opt-in Sky Lance experiment; ignored during ordinary gameplay.
+//  - On foot / freefall, Q / RT casts the Windline. Flight keeps its rudder / flap bindings.
 //  - Menus: left stick, D-pad, arrows or WASD navigate with auto-repeat (380 ms, then 90 ms).
 //    In the stable, the right stick or a mouse drag turns the view, and RT/LT or the wheel zoom.
 
@@ -41,7 +41,8 @@ export type ControlAction =
   | 'pitch' | 'roll' | 'yaw' | 'flap' | 'tuck' | 'flare' | 'look' | 'freeLook' | 'recenter'
   | 'move' | 'jump' | 'sprint' | 'interact' | 'mount' | 'dismount' | 'stable'
   | 'pause' | 'restart' | 'toggleHud' | 'confirm' | 'back' | 'tabPrev' | 'tabNext'
-  | 'navigate' | 'rotateView' | 'zoom';
+  | 'navigate' | 'rotateView' | 'zoom'
+  | 'lance' | 'recoverLance' | 'airSteer' | 'airBoost' | 'tetherPull' | 'leap' | 'recall';
 
 /** Physical controls on a standard-mapping gamepad, named by their Xbox position. */
 export type PadControl =
@@ -134,7 +135,7 @@ export interface Binding {
   /** Human description for the controls screen. */
   label: string;
   /** Which context the binding belongs to. */
-  context: 'flight' | 'ground' | 'menu' | 'general';
+  context: 'flight' | 'ground' | 'traversal' | 'menu' | 'general';
   /** Display strings, derived from `pad` / `keys` (see bind()). */
   xbox: string;
   playstation: string;
@@ -243,6 +244,13 @@ export const SCHEME: Binding[] = [
   bind('mount', 'Mount your wyvern', 'ground', PAD.interact, KEYS.interact),
   bind('dismount', 'Dismount (when landed)', 'ground', PAD.interact, KEYS.interact),
   bind('stable', 'Open the Stable', 'ground', PAD.interact, KEYS.interact),
+  bind('lance', 'Cast Windline at solid surfaces within 65 m (hold to retain; release to detach)', 'traversal', PAD.lance, KEYS.lance),
+  bind('recoverLance', 'Reform a missed line (also reforms automatically)', 'traversal', PAD.recoverLance, KEYS.recoverLance),
+  bind('airSteer', 'Steer freefall — forward dives, back brakes', 'traversal', ['LS'], [...KEYS.moveForward, ...KEYS.moveBack, ...KEYS.moveLeft, ...KEYS.moveRight], { kb: 'WASD' }),
+  bind('tetherPull', 'Pull inward while linked (one pulse per press)', 'traversal', PAD.jump, KEYS.jump),
+  bind('airBoost', 'Air boost while free (recharges in 1.75 seconds)', 'traversal', PAD.jump, KEYS.jump),
+  bind('leap', 'Hold to leap from your flying wyvern', 'traversal', PAD.interact, KEYS.interact, { hold: true }),
+  bind('recall', 'Hold to recall your wyvern when free — release after leaping, then hold again', 'traversal', PAD.interact, KEYS.interact, { hold: true }),
   bind('restart', 'Restart race', 'general', PAD.restart, KEYS.restart),
   bind('toggleHud', 'Hide HUD', 'general', PAD.toggleHud, KEYS.toggleHud),
   bind('pause', 'Pause menu', 'general', PAD.pause, KEYS.pause),

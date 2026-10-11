@@ -124,6 +124,20 @@ describe('Input on fake devices', () => {
     input.traversal = true; expect(input.poll(1 / 120).pressed.lance).toBe(false);
   });
 
+  it.each([true, false])('delivers a retained tether release after a pause (release during pause: %s)', duringPause => {
+    const { input } = make(), g = fakePad('standard', 4, 17); pads = [g];
+    input.traversal = true; input.poll(1 / 120);
+    press(g.buttons[STD.RT]); expect(input.poll(1 / 120).lanceHeld).toBe(true);
+    input.traversal = false; expect(input.poll(1 / 120).pressed.lanceRelease).toBe(false);
+    if (duringPause) { press(g.buttons[STD.RT], 0); expect(input.poll(1 / 120).pressed.lanceRelease).toBe(false); }
+    input.traversal = true;
+    const resumed = input.poll(1 / 120);
+    expect(resumed.pressed.lance).toBe(false);
+    expect(resumed.pressed.lanceRelease).toBe(duringPause);
+    if (!duringPause) { press(g.buttons[STD.RT], 0); expect(input.poll(1 / 120).pressed.lanceRelease).toBe(true); }
+    expect(input.poll(1 / 120).pressed.lanceRelease).toBe(false);
+  });
+
   it('flaps from a non-standard pad whose triggers are axes, and says the layout was guessed', () => {
     const events = new EventBus<GameEvents>();
     const toasts: string[] = [];

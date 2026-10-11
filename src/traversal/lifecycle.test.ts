@@ -8,6 +8,7 @@ import { LAYOUT } from '../world/layout';
 import { EventBus } from '../core/events';
 import type { GameEvents } from '../core/types';
 import { emptyFrame } from '../input/Input';
+import { DEFAULT_SETTINGS } from '../game/settings';
 
 class Node {
   id = ''; style = {}; textContent = ''; innerHTML = ''; onclick: (() => void) | null = null;
@@ -16,7 +17,7 @@ class Node {
   setAttribute() {} remove() { this.removed = true; }
 }
 afterEach(() => { vi.unstubAllGlobals(); vi.restoreAllMocks(); });
-function rig() {
+function rig(practice = true) {
   const nodes: Node[] = [], listeners = new Map<string, () => void>();
   vi.stubGlobal('document', { createElement: () => new Node(), body: { append: (node: Node) => nodes.push(node) } });
   vi.stubGlobal('window', { addEventListener: (name: string, fn: () => void) => listeners.set(name, fn), removeEventListener: (name: string) => listeners.delete(name) });
@@ -25,14 +26,15 @@ function rig() {
   player.placeAtSpawn();
   // Run actual Game lifecycle methods without constructing a renderer or parallel game loop.
   const game: Game = Object.assign(Object.create(Game.prototype), {
-    scene: new Group(), world: { terrain }, player, events, showcase, screen: 'play', adaptiveGrace: 0,
+    scene: new Group(), world: { terrain }, player, events, showcase: practice ? showcase : null, screen: 'play', adaptiveGrace: 0,
     cameraRig: { snap: vi.fn(), setOverride: vi.fn() }, skyLanceVisuals: null,
-    audio: { setScreen: vi.fn() }, ui: { setScreen: vi.fn() }, collectibles: { setActive: vi.fn() }, input: { setPointerLock: vi.fn() },
-    races: { activeId: null, resetProgress: vi.fn() }, save: { reset: vi.fn(), data: { wyvern: {}, rider: {} } },
+    audio: { setScreen: vi.fn(), applySettings: vi.fn() }, ui: { setScreen: vi.fn(), enableWindline: vi.fn(), disableWindline: vi.fn() }, collectibles: { setActive: vi.fn() }, input: { setPointerLock: vi.fn() },
+    races: { activeId: null, resetProgress: vi.fn(), setShowGhost: vi.fn() }, save: { reset: vi.fn(), save: vi.fn(), data: { wyvern: {}, rider: {}, settings: {...DEFAULT_SETTINGS} } },
     research: { refresh: vi.fn() }, firstLead: { setStage: vi.fn() },
     previewWyvernLook: vi.fn(), previewRiderLook: vi.fn(),
   });
-  showcase.setup(game, new URLSearchParams());
+  if (practice) showcase.setup(game, new URLSearchParams());
+  else game['enableWindline']();
   return { game, player, terrain, nodes, listeners };
 }
 describe('experimental scene lifecycle', () => {
@@ -75,5 +77,27 @@ describe('experimental scene lifecycle', () => {
     r.player.fixedUpdate(1 / 120, emptyFrame(), 0);
     expect(r.game.save.reset).toHaveBeenCalledTimes(1); expect(r.player.skyLance!.state).toBe('ready');
     expect(r.player.skyLance!.anchorId).toBeNull(); expect(r.player.foot.grounded).toBe(true); r.game.stop();
+  });
+});
+
+describe('normal-game Windline lifecycle', () => {
+  it('uses only the shared world and disposes normal equipment once', () => {
+    const r = rig(false), lance = r.player.skyLance!, visuals = r.game.skyLanceVisuals!;
+    expect(r.terrain.colliders.size).toBe(0); // Neither practice platforms nor the ship were installed.
+    expect(r.game.ui.enableWindline).toHaveBeenCalledOnce();
+    expect(r.player.foot.grounded).toBe(true);
+    const dispose = vi.spyOn(visuals, 'dispose');
+    r.game.stop(); r.game.stop();
+    expect(dispose).toHaveBeenCalledOnce(); expect(r.game.ui.disableWindline).toHaveBeenCalledOnce();
+    expect(r.player.skyLance).toBeNull(); expect(lance.state).toBe('ready');
+  });
+  it('applies the persisted toggle setting and clears a live cast when changed', () => {
+    const r = rig(false), lance = r.player.skyLance!;
+    lance.beginCharge();
+    r.game.applySettings({...r.game.settings, windlineToggle: true});
+    expect(r.player.lanceInteraction).toBe('toggle'); expect(lance.charging).toBe(false);
+    expect(r.game.save.save).toHaveBeenCalledOnce();
+    r.game.applySettings({...r.game.settings, windlineToggle: false});
+    expect(r.player.lanceInteraction).toBe('hold'); r.game.stop();
   });
 });

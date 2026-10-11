@@ -186,20 +186,20 @@ export class Terrain implements TerrainQuery {
   }
 
   /** Experimental swept traversal queries: same analytic rock, excluding structure/foliage proxies. */
-  rockContact(center: Vector3, radius: number, push: Vector3, normal: Vector3, contact?: { solid: TerrainSolid | null }, columns?: RockColumns): boolean {
+  rockContact(center: Vector3, radius: number, push: Vector3, normal: Vector3, contact?: { solid: TerrainSolid | null }, columns?: RockColumns, candidates?: readonly TerrainSolid[]): boolean {
     const p = rockProbe.copy(center);
     normal.set(0, 0, 0);
     if (contact) contact.solid = null;
-    if (!this.collideRock(p, radius, normal, contact, columns)) return false;
+    if (!this.collideRock(p, radius, normal, contact, columns, candidates)) return false;
     push.subVectors(p, center);
     normal.normalize();
     return true;
   }
 
-  private collideRock(p: Vector3, radius: number, outNormal: Vector3, contact?: { solid: TerrainSolid | null }, columns?: RockColumns): boolean {
+  private collideRock(p: Vector3, radius: number, outNormal: Vector3, contact?: { solid: TerrainSolid | null }, columns?: RockColumns, candidates?: readonly TerrainSolid[]): boolean {
     let hit = false;
     const center = p;
-    const list = this.candidates(center.x, center.z, radius + 1);
+    const list = candidates ?? this.candidates(center.x, center.z, radius + 1);
     for (let i = 0; i < list.length; i++) {
       const s = list[i];
       // Resolve against each solid in turn, accumulating the correction.
@@ -214,6 +214,20 @@ export class Terrain implements TerrainQuery {
       }
     }
     return hit;
+  }
+
+  /** Exact vertical contact interval for the same island planes used by collideIsland.
+   * The sweep may clip its fine lattice to this interval; no terrain approximation is used. */
+  rockColumnBounds(shape: IslandShape, x: number, z: number, radius: number, columns: RockColumns): [number, number] | null {
+    const dx = x - shape.def.x, dz = z - shape.def.z;
+    const r = hyp(dx, dz), outline = shape.outlineRadius(Math.atan2(dz, dx));
+    if (r > outline + radius) return null;
+    const bottom = shape.bottomHeight(x, z), top = shape.topHeight(x, z);
+    const normal = shape.bottomNormal(x, z, new Vector3());
+    columns.set(shape, { x, z, bottom, top, normal });
+    if (r > outline) return [bottom - radius, top + radius];
+    const topY = shape.topNormal(x, z, tmpN).y;
+    return [bottom - radius / Math.max(1e-12, -normal.y), top + radius / Math.max(1e-12, topY)];
   }
 
   /** Pushes p out of the island in place. On contact, tmpN holds the contact normal. */

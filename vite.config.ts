@@ -30,6 +30,7 @@ export default defineConfig({
     target: 'es2022',
     chunkSizeWarningLimit: 2000,
     rolldownOptions: {
+      input: { game: 'index.html', editor: 'editor.html', editorPlaytest: 'editor-playtest.html' },
       output: {
         // three.js in its own chunk: it changes far less often than the game, so returning
         // players keep it cached across releases.

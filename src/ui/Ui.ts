@@ -31,6 +31,7 @@ import { Results, type RaceResult } from './Results';
 import { SettingsMenu } from './SettingsMenu';
 import { Stable } from './Stable';
 import { Tips } from './Tips';
+import { WindlineHud } from './WindlineHud';
 import { Title } from './Title';
 import { FIRST_LEAD_TRANSLATION } from '../research/firstLeadText';
 
@@ -54,6 +55,7 @@ export class Ui implements UiSystem {
   private hud: Hud;
   private raceHud: RaceHud;
   private tips: Tips;
+  private windline: WindlineHud | null = null;
   private gaugeTip: LiveClass;
   private stack: Panel[] = [];
   private title: Title | null = null;
@@ -133,6 +135,16 @@ export class Ui implements UiSystem {
 
   get capturesInput(): boolean {
     return this.screen !== 'play' || this.stack.length > 0;
+  }
+
+  enableWindline(): void {
+    if (this.windline) return;
+    this.windline = new WindlineHud(el => this.fillGlyphs(el));
+    this.root.append(this.windline.root);
+  }
+
+  disableWindline(): void {
+    this.windline?.root.remove(); this.windline = null;
   }
 
   // --- Screens --------------------------------------------------------------------------------
@@ -425,7 +437,9 @@ export class Ui implements UiSystem {
     this.hud.update(dt, view);
     this.raceHud.update(dt, view, hudVisible);
     this.tips.update(dt, view, hudVisible);
+    this.windline?.update(view, hudVisible && !this.capturesInput);
     this.gaugeTip.set(this.tips.gaugeOn);
+    this.windline?.layout();
     if (hudVisible && view.tutorialShrine && view.save.data.settings.showControlHints &&
         view.races.state === 'idle' && readyForShrine(view.save.data)) {
       // Remember the offer immediately so backing out does not reopen it every frame.

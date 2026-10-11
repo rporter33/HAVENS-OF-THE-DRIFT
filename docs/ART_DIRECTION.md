@@ -2,9 +2,9 @@
 
 Claude and Codex must use this same guide for art direction, costumes, themes, colors, props, architecture, dragons, and asset work. It is a reading guide to one canonical visual authority: the revised `Art_Direction_Master.md` v2 and the pack introduction, subject to Robert's explicit current direction. Do not maintain a separate Claude art brief.
 
-## Current experimental override — 2026-10-11
+## Current Windline override — 2026-10-11
 
-Within the opt-in Windline prototype, Robert subsequently approved a bracer-fired magical tether in place of the thrown lance, plus deliberate A/Space inward pulls. The older lance/anchor and no-powered-pull references below remain historical design context; they do not override those explicit requests. The harness still carries the load, animation never drives physics, and there is no automatic winch. This does not approve wardrobes, moving anchors or broader production art. See [the cloud handoff](CLOUD_HANDOFF_2026-10-11.md) for the implemented scope.
+Robert approved a bracer-fired magical tether in place of the thrown lance, plus deliberate A/Space inward pulls, and subsequently requested integration of the completed Windline systems into normal gameplay. The older lance/anchor and no-powered-pull references below remain historical design context; they do not override those explicit requests. The harness still carries the load, animation never drives physics, and there is no automatic winch. Updated character models, wardrobes, moving anchors and broader production art remain deferred. See [the cloud handoff](CLOUD_HANDOFF_2026-10-11.md) for the implemented scope.
 
 ## Authority and scope
 

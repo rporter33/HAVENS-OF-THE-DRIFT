@@ -108,7 +108,7 @@ export class Input implements InputSystem, RumbleSink {
    * takes the mouse in flight; on the ground it still looks around.
    */
   flying = false;
-  /** Explicit opt-in; RT retains its flight/menu roles outside independent traversal. */
+  /** Independent rider context; RT retains its flight/menu roles outside traversal. */
   traversal = false;
   private previousTraversal = false;
   private lanceArmed = true;
@@ -375,17 +375,18 @@ export class Input implements InputSystem, RumbleSink {
     for (const code of KEYS.lance) rawLanceHeld ||= this.keys.has(code);
     if (this.traversal !== this.previousTraversal) {
       this.lanceArmed = !rawLanceHeld;
-      this.previousLanceHeld = false;
     }
     if (!rawLanceHeld) this.lanceArmed = true;
     f.lanceHeld = this.traversal && this.lanceArmed && rawLanceHeld;
     f.callHeld = this.held(KEYS.interact) || this.padHeldAny(PAD.interact);
-    p.lanceRelease = this.traversal && this.previousLanceHeld && !f.lanceHeld;
+    // Keep an existing hold across a menu/context suspension. Deliver its physical release
+    // when gameplay owns input again; a filtered/unarmed hold is not a release.
+    p.lanceRelease = this.traversal && this.previousLanceHeld && !rawLanceHeld;
     p.lance = this.traversal && this.lanceArmed &&
       (this.down(KEYS.lance) || this.padPressedAny(PAD.lance));
     // A buffered keyboard tap may begin and end between render polls.
     p.lanceRelease ||= !!p.lance && !rawLanceHeld;
-    this.previousLanceHeld = !!f.lanceHeld;
+    this.previousLanceHeld = !!f.lanceHeld || (this.previousLanceHeld && (!this.traversal || rawLanceHeld));
     this.previousTraversal = this.traversal;
     p.recoverLance = this.traversal && (this.down(KEYS.recoverLance) || this.padPressedAny(PAD.recoverLance));
     p.confirm = this.down(KEYS.confirm) || this.padPressedAny(PAD.confirm);

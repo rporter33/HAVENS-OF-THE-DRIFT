@@ -107,9 +107,9 @@ export class World implements WorldSystem {
   /** Shadow-only stand-ins. */
   private proxies = new Group();
 
-  constructor(scene: Scene, quality: QualityProfile) {
+  constructor(scene: Scene, quality: QualityProfile, layout: WorldLayout = LAYOUT) {
     const t0 = performance.now();
-    this.layout = LAYOUT;
+    this.layout = layout;
     this.terrain = new Terrain(this.layout);
     this.quality = quality;
     this.lodScale = LOD_SCALE[quality.level];

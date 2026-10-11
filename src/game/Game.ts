@@ -2,7 +2,8 @@
 // 120 Hz (flight physics, ring checks); everything visual runs once per rendered frame and
 // interpolates between the last two physics steps.
 
-import type { SkyLanceVisuals } from '../traversal/SkyLanceVisuals';
+import { SkyLanceVisuals } from '../traversal/SkyLanceVisuals';
+import { TraversalWorld } from '../traversal/sweep';
 import { PerspectiveCamera, Scene, Vector3 } from 'three';
 import { EventBus } from '../core/events';
 import type { BoxCollider, GameEvents, RiderLook, Settings, WyvernLook } from '../core/types';
@@ -38,17 +39,29 @@ import { shrineInteraction } from '../research/firstLeadEncounter';
 import { FirstLead } from '../world/dressing/ventari/FirstLead';
 import { readDebugParams, type DebugParams } from '../debug/params';
 import { findShowcase, type Showcase } from '../debug/showcase';
+import type { WorldLayout } from '../world/layout';
+import type { RaceDef } from './contracts';
+import type { Terrain } from '../world/terrain';
 
 export const FIXED_DT = 1 / 120;
 const MAX_STEPS = 12;
 const TOD_PRESETS = { dawn: 0.27, day: 0.42, dusk: 0.72, night: 0.95 } as const;
+
+/** Opt-in composition for a separate authoring sandbox; ordinary boot keeps every default. */
+export interface GameOptions {
+  layout?: WorldLayout;
+  races?: RaceDef[];
+  save?: LocalSaveStore;
+  /** Authoring adds only manual props; canonical dressing can retain its original terrain. */
+  dressingTerrain?: Terrain;
+}
 
 export class Game implements GameActions {
   readonly events = new EventBus<GameEvents>();
   readonly scene = new Scene();
   readonly camera: PerspectiveCamera;
   readonly renderer: Renderer;
-  readonly save = new LocalSaveStore();
+  readonly save: LocalSaveStore;
   readonly input: Input;
   readonly haptics: Haptics;
   readonly world: World;
@@ -79,8 +92,9 @@ export class Game implements GameActions {
   private running = false;
   private view: GameView;
   private showcase: Showcase | null = null;
-  /** Presentation only, populated by the opt-in experimental showcase. */
+  /** Presentation only; movement remains owned by Player and RiderFoot. */
   skyLanceVisuals: SkyLanceVisuals | null = null;
+  private windlineEnabled = false;
   /** Neutral input fed to the simulation when the player has no control (title, menus). */
   private idleInput = emptyFrame();
   private readonly lanceAim = new Vector3();
@@ -93,7 +107,8 @@ export class Game implements GameActions {
   /** The dressing's decks as solid slabs (filled as decks are built). */
   private deckColliders: BoxCollider[] = [];
 
-  constructor(container: HTMLElement, uiRoot: HTMLElement) {
+  constructor(container: HTMLElement, uiRoot: HTMLElement, options: GameOptions = {}) {
+    this.save = options.save ?? new LocalSaveStore();
     this.debug = readDebugParams();
     const settings = this.settings;
     // First launch: pick a quality preset from what the GPU says about itself.
@@ -111,8 +126,8 @@ export class Game implements GameActions {
 
     this.input = new Input(this.renderer.canvas, () => this.settings, this.events);
     this.haptics = new Haptics(this.events, this.input, () => this.settings);
-    this.world = new World(this.scene, quality);
-    this.dressing = new Dressing({ scene: this.scene, terrain: this.world.terrain, quality, asyncStreaming: !this.debug.manual });
+    this.world = new World(this.scene, quality, options.layout);
+    this.dressing = new Dressing({ scene: this.scene, terrain: options.dressingTerrain ?? this.world.terrain, quality, asyncStreaming: !this.debug.manual });
     // Everything solid that isn't rock (buildings, trees, decks) collides through the terrain's
     // collider index; sources are synced every frame as distant sites finish building.
     const colliders = this.world.terrain.colliders;
@@ -145,6 +160,7 @@ export class Game implements GameActions {
     });
     this.scene.add(this.wyvern.group, this.rider.group);
     this.races = new Races({
+      defs: options.races,
       scene: this.scene,
       events: this.events,
       save: this.save,
@@ -213,7 +229,8 @@ export class Game implements GameActions {
     this.applyDebug();
     this.wireEvents();
     this.showcase = findShowcase(this.debug.view);
-    this.showcase?.setup(this, new URLSearchParams(typeof location !== 'undefined' ? location.search : ''));
+    if (this.showcase) this.showcase.setup(this, new URLSearchParams(typeof location !== 'undefined' ? location.search : ''));
+    else this.enableWindline();
   }
 
   get settings(): Settings {
@@ -241,6 +258,18 @@ export class Game implements GameActions {
   /** Stop the loop and release opt-in scene resources. Other systems retain their existing lifecycle. */
   stop(): void {
     this.running = false; this.showcase?.dispose?.(this); this.showcase = null;
+    if (this.windlineEnabled) {
+      this.skyLanceVisuals?.dispose(); this.skyLanceVisuals = null;
+      this.player.disableSkyLance(); this.ui.disableWindline(); this.windlineEnabled = false;
+    }
+  }
+
+  /** Standard rider equipment uses the live world's shared static solids, without practice props. */
+  private enableWindline(): void {
+    this.player.enableSkyLance(new TraversalWorld(this.world.terrain));
+    this.player.setLanceInteraction(this.settings.windlineToggle ? 'toggle' : 'hold');
+    this.skyLanceVisuals = new SkyLanceVisuals(); this.scene.add(this.skyLanceVisuals.group);
+    this.ui.enableWindline(); this.windlineEnabled = true;
   }
 
   /**
@@ -281,7 +310,7 @@ export class Game implements GameActions {
 
     if (this.screen === 'play' && !this.ui.capturesInput) this.handlePlayInput();
 
-    const focus = this.player.wyvernPose.position;
+    const focus = this.player.riderPose.mounted ? this.player.wyvernPose.position : this.player.riderPosition;
     globalUniforms.uPlayerPos.value.copy(this.player.riderPosition);
     // Paused (photo mode included) the world holds still: no time of day, weather or sky motion.
     const worldDt = this.screen === 'pause' ? 0 : dt;
@@ -388,6 +417,9 @@ export class Game implements GameActions {
   applySettings(s: Settings): void {
     const prev = this.settings;
     this.save.data.settings = { ...s };
+    if (this.windlineEnabled && s.windlineToggle !== prev.windlineToggle) {
+      this.player.setLanceInteraction(s.windlineToggle ? 'toggle' : 'hold');
+    }
     if (s.quality !== prev.quality || s.resolutionScale !== prev.resolutionScale) {
       this.renderer.setQuality(s.quality, s.resolutionScale);
       const q = QUALITY[s.quality];

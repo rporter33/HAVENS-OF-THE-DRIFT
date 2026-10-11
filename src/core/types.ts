@@ -561,6 +561,8 @@ export interface Settings {
   dayLengthMinutes: number;
   /** Hold-to-flap (true) vs tap-per-beat (false). */
   holdToFlap: boolean;
+  /** Windline accessibility: press again to release instead of holding the cast control. */
+  windlineToggle?: boolean;
   showGhost: boolean;
 }
 

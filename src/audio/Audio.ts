@@ -20,6 +20,8 @@ import { AudioEngine } from './engine';
 import { AmbienceLayer, StallLayer, WindLayer } from './layers';
 import { MusicPlayer } from './music';
 import { TitleMusic } from './titleMusic';
+import { TraversalCues } from './traversalCues';
+import { traversalVoice } from './traversalVoices';
 import titleMusicUrl from './assets/driftwing-intro.mp3?url';
 import {
   ambienceMix,
@@ -55,6 +57,8 @@ export class AudioSystem implements AudioSystemApi {
   private music: MusicPlayer | null = null;
   private titleMusic: TitleMusic | null = null;
   private inTitle = false;
+  private inPlay = false;
+  private readonly traversalCues = new TraversalCues();
   private settings: () => Settings;
   private deps: AudioDeps;
 
@@ -158,6 +162,7 @@ export class AudioSystem implements AudioSystemApi {
     if (!e || !this.running) return;
     const t = e.now;
     const step = Math.min(0.1, Math.max(0, dt));
+    this.traversalCues.update(player, this.inPlay, this.playTraversalCue);
 
     // --- Wind --------------------------------------------------------------------------------
     const f = player.flight;
@@ -216,6 +221,7 @@ export class AudioSystem implements AudioSystemApi {
 
   /** Keep title music through menu sheets/stable, stopping on entry into gameplay. */
   setScreen(screen: string): void {
+    this.inPlay = screen === 'play';
     if (screen === 'title') this.inTitle = true;
     else if (screen === 'play') this.inTitle = false;
     this.titleMusic?.setActive(this.inTitle);
@@ -235,6 +241,10 @@ export class AudioSystem implements AudioSystemApi {
     if (typeof window === 'undefined') return;
     for (const g of GESTURES) window.removeEventListener(g, this.onGesture, { capture: true });
   }
+
+  private playTraversalCue = (cue: Parameters<typeof traversalVoice>[1]): void => {
+    if (this.engine) traversalVoice(this.engine, cue, this.engine.now + 0.01);
+  };
 
   /** Time to schedule a one-shot "now" (a hair ahead of the clock), or -1 if audio is not live. */
   private when(): number {

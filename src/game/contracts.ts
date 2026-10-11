@@ -30,6 +30,8 @@ import type { Renderer } from '../render/renderer';
 import type { QualityProfile } from '../render/quality';
 import type { Terrain } from '../world/terrain';
 import type { WorldLayout } from '../world/layout';
+import type { SkyLance } from '../traversal/SkyLance';
+import type { AirBoost } from '../traversal/air';
 
 // ---------------------------------------------------------------------------------------------
 // Input
@@ -139,6 +141,9 @@ export interface DressingSystem {
 // ---------------------------------------------------------------------------------------------
 
 export interface PlayerSystem {
+  readonly skyLance?: SkyLance | null;
+  readonly airBoost?: AirBoost;
+  readonly lanceInteraction?: 'hold' | 'toggle';
   readonly mode: PlayerMode;
   readonly breed: BreedStats;
   /** Physics state of the wyvern while flying (also valid, if stale, on the ground). */

@@ -95,6 +95,14 @@ export class AudioEngine {
   setVolumes(master: number, music: number, sfx: number, immediate = false): void {
     const t = this.ctx.currentTime;
     const set = (g: GainNode, v: number) => {
+      // A settings change replaces pending fades (including AudioSystem's unlock ramp).
+      // Holding the current value preserves a smooth glide rather than jumping the mix.
+      if (typeof g.gain.cancelAndHoldAtTime === 'function') g.gain.cancelAndHoldAtTime(t);
+      else {
+        const held = g.gain.value;
+        g.gain.cancelScheduledValues(t);
+        g.gain.setValueAtTime(held, t);
+      }
       if (immediate) g.gain.setValueAtTime(v, t);
       else g.gain.setTargetAtTime(v, t, 0.05);
     };

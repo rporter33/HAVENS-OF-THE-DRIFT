@@ -2,6 +2,16 @@
 
 The owner authorized inventory, backups, coherent commits, reviewed integration, GitHub publication and a cloud handoff. This checkpoint combines existing work; it does not complete new gameplay milestones or authorize future scope automatically. Integration PR: [#3](https://github.com/rporter33/Driftwing/pull/3). The owner's completion report supplies the exact final main commit; an existing cloud checkout does not update automatically.
 
+## Subsequent normal-game integration — PR #4
+
+Robert subsequently authorized the completed Windline systems in normal play, with merge and the existing latest-build Pages deployment. [PR #4](https://github.com/rporter33/Driftwing/pull/4) starts from merged main `f9fc707d55cea36f62307d8a58ba9c00361be253`. Its current source makes Windline standard rider equipment on `/`; the historical prototype-only status below describes the earlier consolidation checkpoint.
+
+Start through the normal title → Fly flow. On foot or in freefall, aim with mouse/right stick, press Q/RT to cast at existing solid surfaces within 65 m, hold to retain and release to detach. Space/A jumps on the ground, pulls inward while linked, or boosts while freely airborne; boost recharges in 1.75 simulation seconds. WASD/left stick steers freefall (forward dives, back brakes). Hold F/Y to leap from a flying wyvern; release, then hold again to recall while free. An attached line, including a slack line, prevents rescue. Ground mounting, Stable and inscription interactions retain their priority. Pause → Controls lists these actions; Settings → Gameplay → Toggle Windline exposes the existing accessibility interaction and survives reload.
+
+Normal play uses only the existing shared static world and preserves the introductory tutorial, research/save IDs, collectibles and static dock construction. World streaming and pickups follow the independent rider. Leaving the saddle ends a mounted race before a riderless dragon can cross its next gate. No progression unlock, practice platforms, ship functionality or updated character model was added. Windhaven remains accessible only in its separate unfinished `?view=windhaven` study; `?view=skyLance&play=1` remains available as practice.
+
+`scripts/windline-gameplay-check.mjs` verifies normal launch, DOM cast/leap/boost/recall, real-world tether/pull, release during pause, repeated interruptions, save/reload, simulated controller roles, Controls discovery and ship exclusion. Both PR verification and Pages deployment run it against the production build. See the current AI_HANDOFF entry and PR for exact final check results and release SHA. Software-rendered browser checks do not establish physical iPhone/controller/GPU performance or complete art compliance.
+
 ## Source and feature status
 
 | Work | Preserved source | Status and boundaries |

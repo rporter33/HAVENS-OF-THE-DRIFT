@@ -56,14 +56,14 @@ construction state, unlocked by reading the first inscription and capped at stag
 - The current collectibles (feathers, relics) and landmark discoveries fold into this: they become
   the first research entries rather than a separate system.
 
-**Leap and call (after the dragon pass).** Today, walking off an island's edge makes your wyvern
-swoop in and catch you after a moment. The full version makes it a move you choose:
-- a running leap off any edge;
-- freefall you steer with your body;
-- a whistle that calls your wyvern from wherever it is, with real travel time, ending in a dive
-  and a mid-air catch into the saddle.
-
-It builds on the existing fall-and-catch (`Player.startFall` / `catchRider`).
+**Leap, Windline and call.** Robert approved the completed traversal systems in normal play
+(2026-10-11, PR #4). Walking off an edge or holding F/Y in flight enters independent rider
+freefall. WASD/left stick steers; forward dives, back brakes. Q/RT casts the bracer's line at
+existing static solids; retain/release controls the tether and Space/A deliberately pulls inward
+while linked or boosts while free. Release F/Y after leaping, then hold again to call the wyvern
+for the existing mid-air catch (`Player.startFall` / `catchRider`). A retained line blocks rescue.
+Controls and the saved toggle interaction are available in the existing menus. No new research
+unlock, ship gameplay, moving anchors, rope wrapping or updated character model is included.
 
 ## Then: the Craghorn — a fifth breed
 

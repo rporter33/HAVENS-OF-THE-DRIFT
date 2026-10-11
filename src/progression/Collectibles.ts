@@ -227,8 +227,8 @@ export class Collectibles implements CollectibleSystem {
     this.spin = (this.spin + dt * 0.45) % TAU;
     this.bob = (this.bob + dt * 1.3) % TAU;
     if (this.deps.save.data !== this.shownData) this.resetFromSave();
-    // Pickups: rider on foot, wyvern in the air (or carrying the rider on the ground).
-    const onFoot = player.mode === 'onFoot';
+    // Pickups follow the independent rider, or the wyvern carrying them.
+    const onFoot = player.mode === 'onFoot' || player.mode === 'traversing';
     const reach = onFoot ? PICKUP_RADIUS.foot : PICKUP_RADIUS.air;
     const from = onFoot ? player.riderPosition : player.position;
     const r2 = reach * reach;

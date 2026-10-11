@@ -6,7 +6,7 @@ import { AnchorRegistry } from './anchors';
 export interface SweepHit { fraction: number; point: Vector3; normal: Vector3; anchorId: string | null; exhausted?: boolean }
 export interface SweepWorld { anchorValid(id: string): boolean; sweep(from: Vector3, to: Vector3, radius: number, ignoreAnchorId?: string): SweepHit | null }
 /** Conservative fixed query budgets for the isolated V1; overload blocks rather than tunnels. */
-export const SWEEP_LIMITS = Object.freeze({ length: 128, candidates: 256 });
+export const SWEEP_LIMITS = Object.freeze({ length: 128, candidates: 256, tetherSpacing: .04 });
 /** Exact-distance conservative advancement against a sphere-expanded primitive (including thin boxes).
  * Iteration exhaustion fails closed rather than permitting tunnelling. */
 export function sweepShape(from: Vector3, to: Vector3, radius: number, shape: Collider): SweepHit | null {
@@ -27,7 +27,10 @@ export function sweepShape(from: Vector3, to: Vector3, radius: number, shape: Co
 /** V1 world adapter. Structures use exact primitive sweeps. Rock uses the shared analytic
  * contact query with a conservative sampled envelope, then bisection. Probe inflation by half
  * the spacing covers the swept segment between samples, including grazing contacts. This adds
- * at most 1 cm of rock clearance; it never derives collision from the render mesh.
+ * at most 1 cm of body/projectile rock clearance, or 2 cm for the thinner tether;
+ * it never derives collision from the render mesh. Tether sampling uses a wider
+ * conservative envelope, preserving full line obstruction checks at one quarter
+ * of the previous query count. Primitive sweeps stay exact.
  * Solid-bound interval clipping skips empty space; a bounded 16384-query budget
  * fails closed for pathological grazing displacement. Soft foliage is ignored.
  */
@@ -52,8 +55,8 @@ export class TraversalWorld implements SweepWorld {
   }
   // Keep the caller interface, but never ignore an entire solid anchor. Projectile clearance
   // already places the endpoint outside it; the thinner tether must still test its near side.
-  sweep(from: Vector3, to: Vector3, radius: number, _ignoreAnchorId?: string): SweepHit | null {
-    const spacing = Math.min(0.02, Math.max(radius / 2, 0.002));
+  sweep(from: Vector3, to: Vector3, radius: number, lineAnchorId?: string): SweepHit | null {
+    const spacing = lineAnchorId && radius === .02 ? SWEEP_LIMITS.tetherSpacing : Math.min(0.02, Math.max(radius / 2, 0.002));
     const rockRadius = radius + spacing / 2;
     const length = from.distanceTo(to), mid = from.clone().add(to).multiplyScalar(0.5);
     let hit: SweepHit | null = null;
@@ -95,8 +98,13 @@ export class TraversalWorld implements SweepWorld {
       const shape=solid.shape;
       const center = solid.type==='arch' ? solid.shape.center : {x:shape.def.x,z:shape.def.z};
       const reach = (solid.type==='arch'?solid.shape.boundRadius:solid.shape.maxRadius)+rockRadius;
-      const bottom = (solid.type==='island'?solid.shape.minY:solid.type==='spire'?solid.shape.def.tipY:solid.shape.center.y-solid.shape.boundRadius)-rockRadius;
-      const top = (solid.type==='island'?solid.shape.maxY:solid.type==='spire'?solid.shape.def.topY:solid.shape.center.y+solid.shape.boundRadius)+rockRadius;
+      let bottom = (solid.type==='island'?solid.shape.minY:solid.type==='spire'?solid.shape.def.tipY:solid.shape.center.y-solid.shape.boundRadius)-rockRadius;
+      let top = (solid.type==='island'?solid.shape.maxY:solid.type==='spire'?solid.shape.def.topY:solid.shape.center.y+solid.shape.boundRadius)+rockRadius;
+      if (columns && solid.type === 'island') {
+        const interval = this.terrain.rockColumnBounds(solid.shape, from.x, from.z, rockRadius, columns);
+        if (!interval) continue;
+        bottom = Math.max(bottom, interval[0]); top = Math.min(top, interval[1]);
+      }
       let lo=0,hi=end;
       for (const [origin,travel,min,max] of [[from.x,delta.x,center.x-reach,center.x+reach],[from.y,delta.y,bottom,top],[from.z,delta.z,center.z-reach,center.z+reach]]) {
         if (Math.abs(travel)<1e-12) {if(origin<min||origin>max)hi=-1;continue;}
@@ -110,16 +118,16 @@ export class TraversalWorld implements SweepWorld {
     for (const [first,last] of ranges) for (let i=Math.max(first,checked+1);i<=last;i++) {
       checked=i;point.lerpVectors(from,to,end*i/count);
       if (++queries>16384) return {fraction:end*i/count,point,normal:from.clone().sub(to).normalize(),anchorId:null,exhausted:true};
-      if (!this.terrain.rockContact(point,rockRadius,push,normal,undefined,columns)) continue;
+      if (!this.terrain.rockContact(point,rockRadius,push,normal,undefined,columns,rocks)) continue;
       const fraction = end * i / count;
       if (i === 0 && push.lengthSq() < 1e-8 && to.clone().sub(from).dot(normal) >= 0) continue;
       let lo = Math.max(0,end*(i-1)/count), hi = fraction;
       for (let j = 0; j < 12; j++) {
         const m = (lo+hi)/2;point.lerpVectors(from,to,m);
-        if (this.terrain.rockContact(point,rockRadius,push,normal,undefined,columns)) hi=m;else lo=m;
+        if (this.terrain.rockContact(point,rockRadius,push,normal,undefined,columns,rocks)) hi=m;else lo=m;
       }
       point.lerpVectors(from,to,hi);
-      this.terrain.rockContact(point,rockRadius,push,normal,contact,columns);
+      this.terrain.rockContact(point,rockRadius,push,normal,contact,columns,rocks);
       return {fraction:hi,point,normal,anchorId:contact.solid?this.rockId(contact.solid):null};
     }
     return hit;

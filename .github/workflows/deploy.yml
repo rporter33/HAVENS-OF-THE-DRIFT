@@ -31,6 +31,19 @@ jobs:
       # console errors (scripts/smoke.mjs).
       - run: npx playwright install --with-deps chromium
       - run: node scripts/smoke.mjs --no-build
+      - name: Verify normal-game Windline
+        shell: bash
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 5174 --strictPort > /tmp/preview.log 2>&1 &
+          preview_pid=$!
+          trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
+          for attempt in {1..60}; do
+            if curl --fail --silent http://127.0.0.1:5174/ > /dev/null; then break; fi
+            sleep 1
+          done
+          node scripts/windline-gameplay-check.mjs http://127.0.0.1:5174
+          node scripts/windline-hud-layout-check.mjs http://127.0.0.1:5174
+          node scripts/windline-performance-check.mjs http://127.0.0.1:5174 --assert-cost --evidence=deploy
       # Pages must already be enabled with Source: GitHub Actions — the workflow token is not
       # allowed to create the Pages site, so enabling it here fails the run instead.
       - uses: actions/configure-pages@v5

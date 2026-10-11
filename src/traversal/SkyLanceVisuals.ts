@@ -115,7 +115,7 @@ export class SkyLanceVisuals {
   updateReticle(camera: Camera, feet: Vector3, velocity: Vector3, lance: SkyLance): void {
     this.reticle ??= document.getElementById('sky-lance-reticle');
     this.updateLineWidth(camera);
-    if (!this.reticle) return;
+    if (!this.reticle || this.reticle.hidden || this.reticle.closest('[hidden]')) return;
     camera.getWorldDirection(this.aimDirection);
     this.previewOrigin.copy(feet).addScaledVector(UP,LANCE.harnessHeight);
     const now=performance.now();
