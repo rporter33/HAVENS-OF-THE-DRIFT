@@ -1,7 +1,7 @@
 // Assembles one rider look into a skinned mesh: body + outfit + hair + headgear + neckwear, all in
 // one geometry (one draw call) on a fresh rig. Moving cloth is set up separately (cloth specs).
 
-import { Color, MeshToonMaterial, SkinnedMesh, Vector2, type BufferAttribute, type BufferGeometry } from 'three';
+import { Color, DoubleSide, FrontSide, MeshToonMaterial, SkinnedMesh, Vector2, type BufferAttribute, type BufferGeometry } from 'three';
 import type { RiderLook } from '../../core/types';
 import { applyPainterly, toonRamp } from '../../render/painterly';
 import { creatureUniforms } from '../../render/uniforms';
@@ -58,7 +58,9 @@ export function riderMaterial(maps?: ProofMaps, size: ProofAtlasSize = 1024): Me
   const cached = maps ? proofMaterials.get(cacheKey) : bodyMaterial;
   if (cached) return cached;
   const textures = maps && maps !== 'off' ? proofAtlas(size) : undefined;
-  const m = new MeshToonMaterial({ vertexColors: true, gradientMap: toonRamp(),
+  // Raised shoulders can expose the inside of the connected garment fold. Render that
+  // lining instead of culling a hole; keep the existing exterior-only shadow pass.
+  const m = new MeshToonMaterial({ vertexColors: true, gradientMap: toonRamp(), side: DoubleSide, shadowSide: FrontSide,
     map: textures?.color ?? null, normalMap: maps === 'normal' ? textures!.normal : null,
     normalScale: new Vector2(.3, .3),
   });
