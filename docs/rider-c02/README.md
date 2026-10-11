@@ -2,6 +2,8 @@
 
 ## Latest: localized clothing refinement
 
+Current integrated review: **1,239 tests in 117 files; typecheck/build; 15 smoke, 32 outfit-mixing, 30 clothing and 12 local-menu checks passed**. Windline gameplay and editor workflows passed. [24 fresh integrated captures and reports](evidence/clothing/integration/index.html). Normal menu: http://127.0.0.1:5193/?quality=high&tod=.42 ; separate outfit test profile: http://127.0.0.1:5198/?quality=high&tod=.42 . Existing saves are preserved. Hosted snapshot is unchanged.
+
 Robert requested a major pass on blocky clothing, disconnected mixes and rigid lower tops. Hanging tunic, coat, robe, tabard and chiton panels now use localized cloth with attached waist seams, body/mount/ground contacts and bounded movement. Cartographer sash ends and sewn bell sleeves move too. Leg wraps and cuffs fit the selected trousers and share joint weights. Rounded hems, straps, pouches and knee guards soften the silhouette. All seven complete outfits now share the reference-derived fabric/leather atlas and existing 1K/2K/3K/4K tiers.
 
 [Matched comparisons and 24 final engine captures](evidence/clothing/index.html), [wind measurements](evidence/clothing/final/verification.json), [source scope](evidence/clothing/scope-verification.json) and [review/limits](CLOTHING_REVIEW.md). Pre-integration: **114 files / 1,201 tests, typecheck/build, 15 smoke, 32 outfit-mixing and 30 clothing browser checks passed**. Current branch integration/review status is at the top of [AI_HANDOFF](../AI_HANDOFF.md). Older sections describe preserved historical checkpoints.

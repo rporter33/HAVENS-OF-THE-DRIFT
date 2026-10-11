@@ -32,6 +32,14 @@ No new wardrobe/save fields or unlock IDs are added in this pass.
 
 ## Verification
 
+Current integrated review: **117 files / 1,239 tests**, typecheck/build, production smoke
+15/15, Stable mixing 32/32, clothing 30/30 with 24 fresh captures and local menu/launcher
+12/12 passed. Reviewed main `a7adb45` is included in branch integration `f287267`.
+Windline gameplay/controller and editor authoring/save-isolation workflows passed too.
+[Current captures and exact reports](evidence/clothing/integration/index.html) include the
+integrated source hashes. Flight/traversal, shared world geometry and rider animator/IK
+match reviewed main. The normal local menu serves this verified compiled release.
+
 Three implementation/capture passes follow preserved source checkpoint
 `60755b4f968db58b77210000cb9e6e8c7c91d129a90c3bc10555f3be95db5e89`.
 [Scope hashes](evidence/clothing/scope-verification.json) compare every source file. Flight,
@@ -54,8 +62,8 @@ brake, wave and walk. Browser gust reversals move free panels while seams remain
 maximum sampled guide travel is 7 cm and measured seam drift is zero. Posed captures are
 separate from actual flight tests. [Gallery](evidence/clothing/index.html), [measurements](evidence/clothing/final/verification.json).
 
-These counts precede integration of current reviewed main. See the latest
-[handoff](../AI_HANDOFF.md) for subsequent integration verification and review status.
+The checkpoint counts immediately above precede main integration. The current counts at
+the start of this section and the latest [handoff](../AI_HANDOFF.md) record integrated status.
 
 ## Art-direction categories
 

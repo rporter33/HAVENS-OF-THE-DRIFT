@@ -1,0 +1,151 @@
+{
+  "evidence": {
+    "boot": {
+      "screen": "title",
+      "mode": "onFoot",
+      "equipped": true,
+      "ship": false,
+      "sources": [
+        "structures",
+        "forest",
+        "decks",
+        "race-gates",
+        "relics",
+        "first-lead"
+      ],
+      "practice": false,
+      "tutorial": false
+    },
+    "pause": {
+      "frozen": true,
+      "equipment": "ready",
+      "replay": false
+    },
+    "leap": {
+      "mode": "traversing",
+      "heldMode": "traversing",
+      "rider": "bracer",
+      "cameraRoll": 0.0002899406678369687
+    },
+    "boost": {
+      "first": {
+        "remaining": 0.27166666666666667,
+        "vy": 11.846457042987334
+      },
+      "paused": true,
+      "available": true,
+      "remaining": 0
+    },
+    "recall": {
+      "called": "falling",
+      "caught": "flying",
+      "equipment": "ready"
+    },
+    "aim": {
+      "screen": "play",
+      "mode": "traversing",
+      "captures": false,
+      "hidden": false,
+      "parentHidden": false,
+      "target": {
+        "state": "reachable",
+        "point": {
+          "x": 59.09590176229664,
+          "y": 105.76669962201417,
+          "z": -0.011804508910422628
+        },
+        "distance": 16.16429266078031,
+        "anchorId": "rock-island-0"
+      },
+      "direction": [
+        -0.024672802274959882,
+        0.9996953202650245,
+        -0.0007207413621874714
+      ]
+    },
+    "tether": {
+      "anchor": "rock-island-0",
+      "length": 16.647125721711255,
+      "retained": true,
+      "mode": "traversing"
+    },
+    "pull": {
+      "length": 13.263085604154893,
+      "mode": "traversing",
+      "boostCooldown": 0,
+      "label": "TETHER PULL",
+      "distance": 13.123757293172517
+    },
+    "interruptions": {
+      "results": [
+        {
+          "leap": "traversing",
+          "boosted": true,
+          "reset": "onFoot",
+          "equipment": "ready",
+          "rope": false
+        },
+        {
+          "leap": "traversing",
+          "boosted": true,
+          "reset": "onFoot",
+          "equipment": "ready",
+          "rope": false
+        },
+        {
+          "leap": "traversing",
+          "boosted": true,
+          "reset": "onFoot",
+          "equipment": "ready",
+          "rope": false
+        }
+      ],
+      "raceReset": true,
+      "resetGround": true,
+      "ship": false
+    },
+    "save": {
+      "research": {
+        "entries": [
+          "survey:gullrest-shrine:site",
+          "survey:gullrest-shrine:inscription"
+        ],
+        "points": {
+          "nature": 0,
+          "antiquity": 15,
+          "winds": 3
+        }
+      },
+      "guide": "skipped",
+      "collected": []
+    },
+    "reload": {
+      "research": {
+        "entries": [
+          "survey:gullrest-shrine:site",
+          "survey:gullrest-shrine:inscription"
+        ],
+        "points": {
+          "nature": 0,
+          "antiquity": 15,
+          "winds": 3
+        }
+      },
+      "guide": "skipped",
+      "collected": [],
+      "interaction": "toggle",
+      "equipped": true,
+      "rope": false,
+      "grounded": true
+    },
+    "controller": {
+      "flightRole": true,
+      "leap": "traversing",
+      "heldFlapNoCast": true,
+      "cast": "projectile",
+      "retained": true,
+      "detached": true
+    }
+  },
+  "errors": []
+}
