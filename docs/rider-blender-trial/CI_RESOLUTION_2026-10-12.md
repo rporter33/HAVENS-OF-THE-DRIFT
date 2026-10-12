@@ -137,3 +137,46 @@ The isolated local run passed all scenarios: painted UI 58.131 callbacks/s,
 0.0111 ms mean reticle CPU. Its raw evidence is included. This QA-only change
 does not modify the reticle implementation, flight, geometry, wardrobe or assets.
 Final-head CI remains required; no historical failure is removed or called passed.
+
+## Follow-up: compositor acknowledgement and pinned browser
+
+At a7ae710 the full authored Linux job 38236337062 passed again. Integration
+38236337104 still failed the painted-UI rate (24.331/s), and editor run
+38236337064 timed out at the unchanged 180-second sandbox readiness deadline.
+The latter code was unchanged from its prior successful runs. Its complete
+artifact is preserved with SHA-256
+`007dc935fb4fb8d27e4a609f14e99a59e16ad6a1f1fec32da437548c58761503`;
+the integration artifact is
+`85e4586fbdb22ba93657f0dc8ad524ba3a4624ab0f62e299790959c502e907d5`.
+Whole-frame instrumentation found a 960.7 ms first-callback delay, while the
+largest recorded Game.frame duration was 48.3 ms. Scenario isolation alone
+therefore did not resolve the initial presentation delay.
+
+CI uses Playwright 1.56.1's pinned Chromium 141.0.7390.37. Earlier explicit local
+Chromium was 149.0.7827.55, with the same Playwright package. The pinned Windows
+browser was downloaded from Playwright's official CDN into isolated task storage,
+then CRC-verified and extracted after the Node installer stalled. No global
+installation, package/lockfile change or system setting change occurred. Download
+ZIP SHA-256: `bc65aed7bded748e267bd4d5d21f19459fa6e47464370a923fb6d87ebb22d7fb`.
+
+The reticle harness now captures one initial compositor screenshot before the
+unchanged settling/timing window. GL finish and native RAF boundaries did not
+acknowledge actual presentation. This screenshot has a 30-second deadline,
+records its time separately, and asserts no extra 3D frames were submitted.
+The 500 ms settling, two-second timed sample, >=45 callbacks/s, <=2.5 ms CPU,
+all movement/visibility/query assertions and full-3D phases remain unchanged.
+This measures an already-presented UI; startup presentation cost remains explicit
+in uiPresentation rather than being claimed as steady-state performance.
+
+Pinned-browser before/after local results: first callback 277.8 -> 11.7 ms;
+rate 52.262 -> 60.118/s; mean reticle CPU 0.00952 -> 0.00744 ms. Initial
+presentation acknowledgement took 736.95 ms and submitted zero extra 3D frames.
+These results support the bounded presentation-readiness correction, but Linux
+CI must verify it; they do not prove the sole cause of historical host stalls.
+
+Editor QA now explicitly selects full Chromium, as authored and reticle QA do,
+instead of the separate headless shell. Its existing 180-second deadline and
+all assertions remain unchanged. Pinned-browser local validation passed all
+three edit/undo/redo/save/load/playtest/return cycles, manual placement,
+collision validation, export/import and save/ghost isolation. Runtime, assets,
+flight, saves and release workflows are untouched. Final-head CI is still required.

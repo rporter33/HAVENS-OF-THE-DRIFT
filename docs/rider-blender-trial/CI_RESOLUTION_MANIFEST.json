@@ -90,6 +90,26 @@
       "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/reticle-isolated-local.json",
       "bytes": 202589,
       "sha256": "7dfd92b3bf78eea1fd050f60c38e7978e38ca1dac56aba7ba9f0825a289440d7"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/integration-a7-reticle-failure.json",
+      "bytes": 89854,
+      "sha256": "4a5273bba1197cf509e05c17e7eb946c834aa001cbff9dde8e27887c1d6200aa"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/reticle-pinned-before.json",
+      "bytes": 185876,
+      "sha256": "1ebefc41dc6f394f509e8a57ec494fe7616c2dfca99845c1bed0b42792436eb0"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/reticle-pinned-presented.json",
+      "bytes": 206574,
+      "sha256": "49cc4e8196e15abfa5441dc6a28fe2238b34763617eb47c5206108a8f90efd53"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/editor-pinned-full.json",
+      "bytes": 4636,
+      "sha256": "db23f0aeda0012e0f736075a6bfe4799f4bba1655c6e035ab233f5134574836a"
     }
   ],
   "hashNote": "Evidence raw-byte SHA256; prior PR_PACKAGE_MANIFEST identifies original published Git blobs. This supplement does not replace historical manifests.",
@@ -105,5 +125,12 @@
     "runtimeAndAssetsUnchanged": true,
     "checksUnweakened": true,
     "scriptSha256": "ebfa19607491bac579b581097106513a454357cb4ed61d0200acfa37d4e2b2b5"
+  },
+  "presentationReadiness": {
+    "base": "a7ae710f9a31f3630e88098ecf373cb51c432eba",
+    "runtimeAndAssetsUnchanged": true,
+    "checksUnweakened": true,
+    "scripts/windline-reticle-motion-check.mjs": "88034714b15d72f9ac8e38b49e1ca94168f3bab40324e88410cb0322f4cd4b98",
+    "scripts/editor-check.mjs": "335375d4fb87101ab15e4b23d060c338872de9bc2ec893acf37b775bdf97c9a6"
   }
 }

@@ -1,3 +1,12 @@
+## CI continuation — pinned-browser presentation readiness (12 October 2026)
+
+Authored Linux CI passed twice; reticle scenario isolation alone did not clear
+the first-presentation timing failure. QA now acknowledges the compositor with
+a separately timed initial screenshot; editor QA uses full Chromium. Pinned
+Chromium 141 local reticle/editor checks pass with unchanged gates. See the
+CI resolution record for failures, browser setup provenance and raw evidence.
+Runtime/assets remain unchanged. PR #14 stays unmerged/undeployed pending final CI.
+
 ## CI continuation — independent reticle scenarios (12 October 2026)
 
 The unchanged painted-UI gate failed again at f1d98fd. The QA now isolates each

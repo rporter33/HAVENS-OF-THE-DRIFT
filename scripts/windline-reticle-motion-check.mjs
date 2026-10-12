@@ -64,6 +64,13 @@ try{
    finally{clearTimeout(transitionTimer);}
    console.log('UI compositor transition:',JSON.stringify({method:evidence.uiTransition.method,elapsedMs:evidence.uiTransition.elapsedMs,frames:evidence.uiTransition.frames.length,forecasts:evidence.uiTransition.forecasts,renderFrame:evidence.uiTransition.renderFrame}));
    assert.ok(evidence.uiTransition.frames.length>=2);assert.equal(evidence.uiTransition.forecasts,0);assert.ok(evidence.uiTransition.frames.every(f=>f.state==='aiming'&&f.target===null&&!f.valid&&f.color==='rgb(168, 221, 236)'&&Math.abs(f.centre[0]-320)<.25&&Math.abs(f.centre[1]-180)<.25&&f.renderFrame===initial.renderFrame&&f.visibility==='visible'));
+   // A screenshot acknowledges an actual compositor surface, unlike GL finish
+   // or RAF alone. Record the initial painted UI before starting the unchanged
+   // timed window; keep 3D submission suppressed throughout this handoff.
+   const presentationStart=performance.now(),presentationFile=`${shots}/painted-ui-ready.png`;
+   await page.screenshot({path:presentationFile,timeout:30000});
+   evidence.uiPresentation={method:'Initial compositor screenshot before timed UI',file:presentationFile,elapsedMs:performance.now()-presentationStart,renderFrame:await page.evaluate(()=>__dw.game.renderer.gl.info.render.frame)};
+   assert.equal(evidence.uiPresentation.renderFrame,initial.renderFrame,'presentation acknowledgement submits no additional 3D frame');
    await page.waitForTimeout(500);await page.evaluate(()=>{const p=window.__motionPhase;p.frames=[];p.gameFrames=[];p.reticleMs=0;p.updates=0;p.forecasts=0;p.physicsSweeps=0;p.start=performance.now();p.settlingMs=500;});
   }
   if(scenario.includes('painted-ui'))await page.waitForTimeout(2000);

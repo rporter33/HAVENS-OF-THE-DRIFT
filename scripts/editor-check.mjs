@@ -11,6 +11,8 @@ const base = new URL(process.argv[2] ?? 'http://127.0.0.1:5399/');
 const evidenceDir = process.env.EDITOR_EVIDENCE_DIR ?? '/tmp/driftwing-editor-evidence';
 fs.mkdirSync(evidenceDir, { recursive: true });
 const browser = await chromium.launch({
+  // Match the full-browser compositor used by authored and RAF CI.
+  channel: 'chromium',
   executablePath: process.env.CHROMIUM_PATH,
   args: ['--no-sandbox', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--enable-webgl'],
 });
