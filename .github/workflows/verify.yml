@@ -27,6 +27,8 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm test -- --maxWorkers=2
+      - name: Verify pairwise rider garment clearance
+        run: npm run test:rider-qa
       - run: GITHUB_SHA="$(git rev-parse HEAD)" npm run build
       - run: npx playwright install --with-deps chromium
       - run: GITHUB_SHA="$(git rev-parse HEAD)" node scripts/smoke.mjs --no-build

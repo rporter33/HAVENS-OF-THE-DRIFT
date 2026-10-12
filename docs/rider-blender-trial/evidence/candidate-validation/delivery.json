@@ -1,0 +1,50 @@
+{
+  "origin": "http://127.0.0.1:5217",
+  "prefix": "/rider-trial/",
+  "profile": "fresh nonpersistent context",
+  "renderer": "CHROMIUM_PATH browser SwiftShader, no hardware certification",
+  "checks": [
+    {
+      "name": "production hashed GLB and loader resolve under a subpath",
+      "passed": true
+    },
+    {
+      "name": "all delivery requests stay on the isolated local server",
+      "passed": true
+    },
+    {
+      "name": "cached GLB supports dyes and look round-trips while offline",
+      "passed": true
+    },
+    {
+      "name": "production import has no console/page errors",
+      "passed": true
+    }
+  ],
+  "requests": [
+    "http://127.0.0.1:5217/rider-trial/?manual=1&quality=low&riderTrial=blender",
+    "http://127.0.0.1:5217/rider-trial/assets/game-CSmgBWPV.js",
+    "http://127.0.0.1:5217/rider-trial/assets/three-DaoEPmFj.js",
+    "http://127.0.0.1:5217/rider-trial/assets/catalog-Czg1gLi_.js",
+    "http://127.0.0.1:5217/rider-trial/assets/renderer-bnKYPOy1.js",
+    "http://127.0.0.1:5217/rider-trial/assets/colliderKit-BeXlNXbT.js",
+    "http://127.0.0.1:5217/rider-trial/assets/save-D9Qk1Pdg.js",
+    "http://127.0.0.1:5217/rider-trial/assets/FlightModel-BRT6TS7F.js",
+    "http://127.0.0.1:5217/rider-trial/assets/light-CN3VIzqh.js",
+    "http://127.0.0.1:5217/rider-trial/assets/showRigs-j_Gni-uZ.js",
+    "http://127.0.0.1:5217/rider-trial/assets/Game-lfI4pE9x.js",
+    "http://127.0.0.1:5217/rider-trial/assets/Game-vFz8x8Bb.css",
+    "http://127.0.0.1:5217/rider-trial/assets/aoWorker-Bc7bJM6X.js",
+    "http://127.0.0.1:5217/rider-trial/assets/rider-trial-DlaxQL_1.glb",
+    "http://127.0.0.1:5217/rider-trial/assets/cinzel-latin-600-normal-Dd5YO2UX.woff2",
+    "http://127.0.0.1:5217/rider-trial/assets/cinzel-latin-700-normal-Dkw14w9r.woff2",
+    "http://127.0.0.1:5217/rider-trial/assets/cinzel-latin-500-normal-B-2dbOfA.woff2",
+    "http://127.0.0.1:5217/rider-trial/assets/alegreya-sans-latin-400-normal-DtLlO8BS.woff2",
+    "http://127.0.0.1:5217/rider-trial/assets/alegreya-sans-latin-400-italic-rmlAbObI.woff2",
+    "http://127.0.0.1:5217/rider-trial/assets/alegreya-sans-latin-700-normal-DEbcy2sF.woff2",
+    "http://127.0.0.1:5217/rider-trial/assets/alegreya-sans-latin-800-normal-CpHsWMQ0.woff2",
+    "http://127.0.0.1:5217/rider-trial/assets/hooks-B9zYp2Tx.js"
+  ],
+  "errors": [],
+  "browser": "155.0.4283.45"
+}

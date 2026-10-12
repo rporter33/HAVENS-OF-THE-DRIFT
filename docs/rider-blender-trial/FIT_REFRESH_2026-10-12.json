@@ -1,0 +1,2478 @@
+{
+  "status": "Bounded local visual refresh completed; open CPU gate and artistic/hardware acceptance remain",
+  "generatedUtc": "2026-10-12T06:39:30.817Z",
+  "localDate": "2026-10-12",
+  "timezone": "America/Denver",
+  "scope": "Continuation of the same uncommitted rider trial: refresh actual Stable/gameplay fit evidence for naturally resting selected Windkeel and thin connected shoulder cloth. No runtime or geometry amendment in this refresh.",
+  "source": {
+    "root": "C:/Users/Robert/.codex/worktrees/rider-blender-trial/Driftwing",
+    "branch": "codex/rider-blender-trial",
+    "head": "8e055069703c83308d5508ee72e5ad1d15ef348e",
+    "dirty": true,
+    "committed": false,
+    "pushed": false,
+    "merged": false,
+    "deployed": false,
+    "asset": {
+      "file": "src/assets/rider-blender/rider-trial.glb",
+      "bytes": 19110536,
+      "sha256": "d6f2ffa790d43e8217ab6d64bdfdf994b424d1d5cb1d1b8685403b2001d40dc8",
+      "sourceSha256": "0b69bcbb74153a0f0bc993ee756f59048db22e5fc0d5e7a7990c39465b9fa9c4"
+    },
+    "runtimeSourceHashes": [
+      {
+        "file": "package.json",
+        "bytes": 1095,
+        "sha256": "b05fb8de3bef9ef9a731d7276a5adc96a24a889666fdbda0935c02eab46b8dd0"
+      },
+      {
+        "file": "package-lock.json",
+        "bytes": 43101,
+        "sha256": "da1634c540f1ffab597f6f2b51e18d1e79f0b8511e012f02c0075629d15417ef"
+      },
+      {
+        "file": "docs/rider-blender-trial/ASSET_MANIFEST.json",
+        "bytes": 18328,
+        "sha256": "37619689c983b508bc7dff5d4608e16ac02756a666682c0593323f24daf697be"
+      },
+      {
+        "file": "src/assets/rider-blender/rider-trial.glb",
+        "bytes": 19110536,
+        "sha256": "d6f2ffa790d43e8217ab6d64bdfdf994b424d1d5cb1d1b8685403b2001d40dc8"
+      },
+      {
+        "file": "assets/rider-blender/source/rider-trial.blend",
+        "bytes": 23009874,
+        "sha256": "0b69bcbb74153a0f0bc993ee756f59048db22e5fc0d5e7a7990c39465b9fa9c4"
+      },
+      {
+        "file": "src/creatures/rider/Rider.ts",
+        "bytes": 26136,
+        "sha256": "53dab52367b056f4d079e52ce4b8fcc4966d0e3ee2e831ced9f84404a198f972"
+      },
+      {
+        "file": "src/creatures/rider/model.ts",
+        "bytes": 11509,
+        "sha256": "dab03fad3b9fdae5ee53417a6b43e97ec21dc4cc2b779bd48d7634a6e8267a6c"
+      },
+      {
+        "file": "src/creatures/rider/windkeelHarness.ts",
+        "bytes": 11905,
+        "sha256": "eba47b4f39b323701f4288f64f4fb36af28c81d94292c26cfbd1a4bd070563d8"
+      },
+      {
+        "file": "src/creatures/rider/windkeelContact.ts",
+        "bytes": 10244,
+        "sha256": "4cafde4cb9e6214d033a08ff1f0553535848c0511edcb1f24ea2d30d361bf14c"
+      },
+      {
+        "file": "src/creatures/rider/authoredConstruction.ts",
+        "bytes": 6726,
+        "sha256": "c33ba75910092d9a47cf515fb6e097458dba3d4c3fd4076cdb35d82f88dfa53f"
+      },
+      {
+        "file": "src/debug/hooks.ts",
+        "bytes": 2848,
+        "sha256": "196452b87ed95c01662aa0fab36f2fdba8582dd7e0db33709c32468b7a9fe257"
+      },
+      {
+        "file": "src/input/Input.ts",
+        "bytes": 33318,
+        "sha256": "671a3c40b27ce50ad4a8d7bef1b05a5edf746035199204b564e8c9b0afc2524f"
+      },
+      {
+        "file": "src/camera/CameraRig.ts",
+        "bytes": 23295,
+        "sha256": "bbe62d0a1f9e1ea3bf83d9c42810e3fb4e80d00a35f40de67ec1d4c1886e3e38"
+      },
+      {
+        "file": "src/camera/followRigs.ts",
+        "bytes": 27070,
+        "sha256": "6e97b59f449151427618a643215f9270335fd99e78a8cbfef7be9e22d4463ea8"
+      },
+      {
+        "file": "src/player/Player.ts",
+        "bytes": 78861,
+        "sha256": "99c8254c20acc4034c24b03ef841f53688162ce4634c749da360498e9f0f16c3"
+      },
+      {
+        "file": "src/player/foot.ts",
+        "bytes": 8404,
+        "sha256": "f391cc7192768fe87ae58b5ac2c0ce10810b50429d6c541a3bcc25235b5f2b86"
+      }
+    ]
+  },
+  "checkpoint": {
+    "file": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\CHECKPOINT_VERIFICATION.json",
+    "reportSha256": "261cad26b810437a52fca70b7e40dba53d6d3c7d573522a15241d6ba17c934c6",
+    "verifiedAtUtc": "2026-10-12T06:27:22.348366+00:00",
+    "archive": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\trial-recovery-final-complete\\rider-blender-trial-overlay.zip",
+    "archiveSha256": "de374da88b996d17f36cfc9c7b7335fcc2a3a68ce2cc713e412d99fd2bf25cb6",
+    "archiveEntriesVerified": 1112,
+    "currentDifferences": [],
+    "qualification": "Readback comparison covers the existing recovery overlay entries, including relevant uncommitted/ignored assets. It does not make Git HEAD alone a source identity."
+  },
+  "fullFit": {
+    "report": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\report.json",
+    "reportSha256": "3c7470da56a08b57aa218791ed2d8b318645f275fdabd0a39251f01905935e88",
+    "startedUtc": "2026-10-12T06:27:36.296Z",
+    "finishedUtc": "2026-10-12T06:30:45.617Z",
+    "browser": "155.0.4283.45",
+    "renderer": "Headless Edge SwiftShader; appearance/function only, no hardware certification or physical controller playtest.",
+    "sourceHashes": [
+      {
+        "file": "scripts/rider-blender-fit-qa.mjs",
+        "bytes": 21525,
+        "sha256": "cb029fa6145328ae0dba6b9b0f19e04dffe31b0f1923bcb926c99dd3b3c0844d"
+      },
+      {
+        "file": "src/creatures/rider/windkeelHarness.ts",
+        "bytes": 11905,
+        "sha256": "eba47b4f39b323701f4288f64f4fb36af28c81d94292c26cfbd1a4bd070563d8"
+      },
+      {
+        "file": "src/creatures/rider/windkeelContact.ts",
+        "bytes": 10244,
+        "sha256": "4cafde4cb9e6214d033a08ff1f0553535848c0511edcb1f24ea2d30d361bf14c"
+      },
+      {
+        "file": "src/creatures/rider/authoredConstruction.ts",
+        "bytes": 6726,
+        "sha256": "c33ba75910092d9a47cf515fb6e097458dba3d4c3fd4076cdb35d82f88dfa53f"
+      },
+      {
+        "file": "src/assets/rider-blender/rider-trial.glb",
+        "bytes": 19110536,
+        "sha256": "d6f2ffa790d43e8217ab6d64bdfdf994b424d1d5cb1d1b8685403b2001d40dc8"
+      }
+    ],
+    "cases": [
+      {
+        "id": "medium-travel",
+        "build": "medium",
+        "mixedPieces": false,
+        "flight": false,
+        "samples": 8,
+        "transitions": [
+          {
+            "name": "actual-takeoff",
+            "mode": "flying"
+          },
+          {
+            "name": "actual-landing-and-dismount",
+            "landed": "landed",
+            "dismount": "dismounting",
+            "finished": "onFoot"
+          }
+        ],
+        "assetVerification": {
+          "method": "Separate same-URL API GET after runtime ready",
+          "url": "http://127.0.0.1:5210/src/assets/rider-blender/rider-trial.glb",
+          "status": 200,
+          "bytes": 19110536,
+          "sha256": "d6f2ffa790d43e8217ab6d64bdfdf994b424d1d5cb1d1b8685403b2001d40dc8"
+        }
+      },
+      {
+        "id": "slight-travel",
+        "build": "slight",
+        "mixedPieces": true,
+        "flight": false,
+        "samples": 8,
+        "transitions": [
+          {
+            "name": "actual-takeoff",
+            "mode": "flying"
+          },
+          {
+            "name": "actual-landing-and-dismount",
+            "landed": "landed",
+            "dismount": "dismounting",
+            "finished": "onFoot"
+          }
+        ],
+        "assetVerification": {
+          "method": "Separate same-URL API GET after runtime ready",
+          "url": "http://127.0.0.1:5210/src/assets/rider-blender/rider-trial.glb",
+          "status": 200,
+          "bytes": 19110536,
+          "sha256": "d6f2ffa790d43e8217ab6d64bdfdf994b424d1d5cb1d1b8685403b2001d40dc8"
+        }
+      },
+      {
+        "id": "broad-travel",
+        "build": "broad",
+        "mixedPieces": true,
+        "flight": false,
+        "samples": 8,
+        "transitions": [
+          {
+            "name": "actual-takeoff",
+            "mode": "flying"
+          },
+          {
+            "name": "actual-landing-and-dismount",
+            "landed": "landed",
+            "dismount": "dismounting",
+            "finished": "onFoot"
+          }
+        ],
+        "assetVerification": {
+          "method": "Separate same-URL API GET after runtime ready",
+          "url": "http://127.0.0.1:5210/src/assets/rider-blender/rider-trial.glb",
+          "status": 200,
+          "bytes": 19110536,
+          "sha256": "d6f2ffa790d43e8217ab6d64bdfdf994b424d1d5cb1d1b8685403b2001d40dc8"
+        }
+      },
+      {
+        "id": "medium-flight",
+        "build": "medium",
+        "mixedPieces": false,
+        "flight": true,
+        "samples": 8,
+        "transitions": [
+          {
+            "name": "actual-takeoff",
+            "mode": "flying"
+          },
+          {
+            "name": "actual-landing-and-dismount",
+            "landed": "landed",
+            "dismount": "dismounting",
+            "finished": "onFoot"
+          }
+        ],
+        "assetVerification": {
+          "method": "Separate same-URL API GET after runtime ready",
+          "url": "http://127.0.0.1:5210/src/assets/rider-blender/rider-trial.glb",
+          "status": 200,
+          "bytes": 19110536,
+          "sha256": "d6f2ffa790d43e8217ab6d64bdfdf994b424d1d5cb1d1b8685403b2001d40dc8"
+        }
+      }
+    ],
+    "counts": {
+      "cases": 4,
+      "captures": 32,
+      "stable": 16,
+      "mountedBothSides": 8,
+      "acceptedStableMounted": 24,
+      "onFootExcludedFromVisibleFit": 8
+    },
+    "guards": {
+      "activeReadyWindkeel": true,
+      "sharedSkeleton": true,
+      "harnessVisible": true,
+      "fourAvailableSockets": true,
+      "finite": true,
+      "browserErrors": []
+    },
+    "visibleReview": "24 Stable/mounted views independently inspected and accepted for bounded visible-fit evidence. Eight original on-foot frames excluded from visible-fit proof.",
+    "captures": [
+      {
+        "name": "medium-travel-stable-front",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-travel-stable-front.png",
+        "sha256": "c462e9bf2b7bb381adbf0f807b0b44e052a0600600a4d764006aaadaf18a244a",
+        "camera": "stable",
+        "screen": "stable",
+        "mode": "onFoot",
+        "readbackSha256": "c462e9bf2b7bb381adbf0f807b0b44e052a0600600a4d764006aaadaf18a244a",
+        "hashVerified": true,
+        "visibleEvidence": true,
+        "visualDisposition": "root reports accepted Stable/mounted view; no independent subagent pixel certification"
+      },
+      {
+        "name": "medium-travel-stable-left",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-travel-stable-left.png",
+        "sha256": "322bb265a39b05d9c0893cd9899ad7b2aa956f3ae7a436f76f55f6f3ceb2dbb6",
+        "camera": "stable",
+        "screen": "stable",
+        "mode": "onFoot",
+        "readbackSha256": "322bb265a39b05d9c0893cd9899ad7b2aa956f3ae7a436f76f55f6f3ceb2dbb6",
+        "hashVerified": true,
+        "visibleEvidence": true,
+        "visualDisposition": "root reports accepted Stable/mounted view; no independent subagent pixel certification"
+      },
+      {
+        "name": "medium-travel-stable-right",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-travel-stable-right.png",
+        "sha256": "84d542ecbbf93ccf34fdedfbd44e338e1f2e84312660989f33e5efb6e3a6ccde",
+        "camera": "stable",
+        "screen": "stable",
+        "mode": "onFoot",
+        "readbackSha256": "84d542ecbbf93ccf34fdedfbd44e338e1f2e84312660989f33e5efb6e3a6ccde",
+        "hashVerified": true,
+        "visibleEvidence": true,
+        "visualDisposition": "root reports accepted Stable/mounted view; no independent subagent pixel certification"
+      },
+      {
+        "name": "medium-travel-stable-back",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-travel-stable-back.png",
+        "sha256": "c414c80ed454c4d82c75b0697e85c1426ec4761ebec723f2b3a915dedd8256ac",
+        "camera": "stable",
+        "screen": "stable",
+        "mode": "onFoot",
+        "readbackSha256": "c414c80ed454c4d82c75b0697e85c1426ec4761ebec723f2b3a915dedd8256ac",
+        "hashVerified": true,
+        "visibleEvidence": true,
+        "visualDisposition": "root reports accepted Stable/mounted view; no independent subagent pixel certification"
+      },
+      {
+        "name": "medium-travel-gameplay-mounted-left",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-travel-gameplay-mounted-left.png",
+        "sha256": "03590061f1c1571a7ca1362ada52b812473fdb877f913675b6ba803027d612af",
+        "camera": "flight",
+        "screen": "play",
+        "mode": "flying",
+        "readbackSha256": "03590061f1c1571a7ca1362ada52b812473fdb877f913675b6ba803027d612af",
+        "hashVerified": true,
+        "visibleEvidence": true,
+        "visualDisposition": "root reports accepted Stable/mounted view; no independent subagent pixel certification"
+      },
+      {
+        "name": "medium-travel-gameplay-mounted-right",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-travel-gameplay-mounted-right.png",
+        "sha256": "b9573e2de2fbfc11ac2e928ba446f289a03785f29926b21ff1b78b26ec7b9e4a",
+        "camera": "flight",
+        "screen": "play",
+        "mode": "flying",
+        "readbackSha256": "b9573e2de2fbfc11ac2e928ba446f289a03785f29926b21ff1b78b26ec7b9e4a",
+        "hashVerified": true,
+        "visibleEvidence": true,
+        "visualDisposition": "root reports accepted Stable/mounted view; no independent subagent pixel certification"
+      },
+      {
+        "name": "medium-travel-gameplay-walk",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-travel-gameplay-walk.png",
+        "sha256": "6ef40f6ba8aabc19355dcbaabff4d497e3719e5d563dcff1e836d878bddef0fa",
+        "camera": "foot",
+        "screen": "play",
+        "mode": "onFoot",
+        "readbackSha256": "6ef40f6ba8aabc19355dcbaabff4d497e3719e5d563dcff1e836d878bddef0fa",
+        "hashVerified": true,
+        "visibleEvidence": false,
+        "visualDisposition": "excluded from visible fit: waiting-companion obstruction; state evidence retained"
+      },
+      {
+        "name": "medium-travel-gameplay-run",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-travel-gameplay-run.png",
+        "sha256": "51bcc09c796aefc0e7c95342efebac419ecbad0ecbcc9970be64a04cd89ed7db",
+        "camera": "foot",
+        "screen": "play",
+        "mode": "onFoot",
+        "readbackSha256": "51bcc09c796aefc0e7c95342efebac419ecbad0ecbcc9970be64a04cd89ed7db",
+        "hashVerified": true,
+        "visibleEvidence": false,
+        "visualDisposition": "excluded from visible fit: waiting-companion obstruction; state evidence retained"
+      },
+      {
+        "name": "slight-travel-stable-front",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\slight-travel-stable-front.png",
+        "sha256": "8dfaa0e14e2d3fe8ce8a011e0f4ef49827faaef272aee44469166dfe2963edd1",
+        "camera": "stable",
+        "screen": "stable",
+        "mode": "onFoot",
+        "readbackSha256": "8dfaa0e14e2d3fe8ce8a011e0f4ef49827faaef272aee44469166dfe2963edd1",
+        "hashVerified": true,
+        "visibleEvidence": true,
+        "visualDisposition": "root reports accepted Stable/mounted view; no independent subagent pixel certification"
+      },
+      {
+        "name": "slight-travel-stable-left",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\slight-travel-stable-left.png",
+        "sha256": "e3211cfb722e72d420b333270c7eb42cdae43d3dec510fddf6ebc9dd2292387a",
+        "camera": "stable",
+        "screen": "stable",
+        "mode": "onFoot",
+        "readbackSha256": "e3211cfb722e72d420b333270c7eb42cdae43d3dec510fddf6ebc9dd2292387a",
+        "hashVerified": true,
+        "visibleEvidence": true,
+        "visualDisposition": "root reports accepted Stable/mounted view; no independent subagent pixel certification"
+      },
+      {
+        "name": "slight-travel-stable-right",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\slight-travel-stable-right.png",
+        "sha256": "6cef3f15b3c1f0a496b9fb27577c8dfe0838f43dffeb8c28bfff584f6dc02b91",
+        "camera": "stable",
+        "screen": "stable",
+        "mode": "onFoot",
+        "readbackSha256": "6cef3f15b3c1f0a496b9fb27577c8dfe0838f43dffeb8c28bfff584f6dc02b91",
+        "hashVerified": true,
+        "visibleEvidence": true,
+        "visualDisposition": "root reports accepted Stable/mounted view; no independent subagent pixel certification"
+      },
+      {
+        "name": "slight-travel-stable-back",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\slight-travel-stable-back.png",
+        "sha256": "784180a94aa59a03031674b279269b58ecf27a4c4bf93833a659f2e805075e0b",
+        "camera": "stable",
+        "screen": "stable",
+        "mode": "onFoot",
+        "readbackSha256": "784180a94aa59a03031674b279269b58ecf27a4c4bf93833a659f2e805075e0b",
+        "hashVerified": true,
+        "visibleEvidence": true,
+        "visualDisposition": "root reports accepted Stable/mounted view; no independent subagent pixel certification"
+      },
+      {
+        "name": "slight-travel-gameplay-mounted-left",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\slight-travel-gameplay-mounted-left.png",
+        "sha256": "973e35724b9906ef925784439cebbcfad4512a0a0b3219300a209bc6899bcd95",
+        "camera": "flight",
+        "screen": "play",
+        "mode": "flying",
+        "readbackSha256": "973e35724b9906ef925784439cebbcfad4512a0a0b3219300a209bc6899bcd95",
+        "hashVerified": true,
+        "visibleEvidence": true,
+        "visualDisposition": "root reports accepted Stable/mounted view; no independent subagent pixel certification"
+      },
+      {
+        "name": "slight-travel-gameplay-mounted-right",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\slight-travel-gameplay-mounted-right.png",
+        "sha256": "08faadecaf694a46958ae9b214e6f98f8710aaca199186543fe51068db50c895",
+        "camera": "flight",
+        "screen": "play",
+        "mode": "flying",
+        "readbackSha256": "08faadecaf694a46958ae9b214e6f98f8710aaca199186543fe51068db50c895",
+        "hashVerified": true,
+        "visibleEvidence": true,
+        "visualDisposition": "root reports accepted Stable/mounted view; no independent subagent pixel certification"
+      },
+      {
+        "name": "slight-travel-gameplay-walk",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\slight-travel-gameplay-walk.png",
+        "sha256": "7525f1f999437782d28c26e3795b318c26b3a60d9497259863b61108f3204311",
+        "camera": "foot",
+        "screen": "play",
+        "mode": "onFoot",
+        "readbackSha256": "7525f1f999437782d28c26e3795b318c26b3a60d9497259863b61108f3204311",
+        "hashVerified": true,
+        "visibleEvidence": false,
+        "visualDisposition": "excluded from visible fit: waiting-companion obstruction; state evidence retained"
+      },
+      {
+        "name": "slight-travel-gameplay-run",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\slight-travel-gameplay-run.png",
+        "sha256": "cbeaf3df0f5791f5c0f9ea1079c228bf1ce37a54e985b7d6a981c6990125b5f5",
+        "camera": "foot",
+        "screen": "play",
+        "mode": "onFoot",
+        "readbackSha256": "cbeaf3df0f5791f5c0f9ea1079c228bf1ce37a54e985b7d6a981c6990125b5f5",
+        "hashVerified": true,
+        "visibleEvidence": false,
+        "visualDisposition": "excluded from visible fit: waiting-companion obstruction; state evidence retained"
+      },
+      {
+        "name": "broad-travel-stable-front",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\broad-travel-stable-front.png",
+        "sha256": "6698927185a9a1ea0e549aedc25dd8f0cbe449702255cfaaa7e6f42b2bb4edce",
+        "camera": "stable",
+        "screen": "stable",
+        "mode": "onFoot",
+        "readbackSha256": "6698927185a9a1ea0e549aedc25dd8f0cbe449702255cfaaa7e6f42b2bb4edce",
+        "hashVerified": true,
+        "visibleEvidence": true,
+        "visualDisposition": "root reports accepted Stable/mounted view; no independent subagent pixel certification"
+      },
+      {
+        "name": "broad-travel-stable-left",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\broad-travel-stable-left.png",
+        "sha256": "ca2c3090b5afb38ee3f1954e5e150916a66b1a0d022d57705ab57914bd5f9ea6",
+        "camera": "stable",
+        "screen": "stable",
+        "mode": "onFoot",
+        "readbackSha256": "ca2c3090b5afb38ee3f1954e5e150916a66b1a0d022d57705ab57914bd5f9ea6",
+        "hashVerified": true,
+        "visibleEvidence": true,
+        "visualDisposition": "root reports accepted Stable/mounted view; no independent subagent pixel certification"
+      },
+      {
+        "name": "broad-travel-stable-right",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\broad-travel-stable-right.png",
+        "sha256": "5d0b63aed210b55a9c8219dcbbd52b928e3f010db5298c3bd267916f6f26e531",
+        "camera": "stable",
+        "screen": "stable",
+        "mode": "onFoot",
+        "readbackSha256": "5d0b63aed210b55a9c8219dcbbd52b928e3f010db5298c3bd267916f6f26e531",
+        "hashVerified": true,
+        "visibleEvidence": true,
+        "visualDisposition": "root reports accepted Stable/mounted view; no independent subagent pixel certification"
+      },
+      {
+        "name": "broad-travel-stable-back",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\broad-travel-stable-back.png",
+        "sha256": "f9995475c2c089d58008accc6d4ab8a65e1fff9d6c0014ed3a3383a73f98fd06",
+        "camera": "stable",
+        "screen": "stable",
+        "mode": "onFoot",
+        "readbackSha256": "f9995475c2c089d58008accc6d4ab8a65e1fff9d6c0014ed3a3383a73f98fd06",
+        "hashVerified": true,
+        "visibleEvidence": true,
+        "visualDisposition": "root reports accepted Stable/mounted view; no independent subagent pixel certification"
+      },
+      {
+        "name": "broad-travel-gameplay-mounted-left",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\broad-travel-gameplay-mounted-left.png",
+        "sha256": "85ac9d97eeec279b10581b66dad03c16c4c0e9f30e726abc1ef0f49c78e0f485",
+        "camera": "flight",
+        "screen": "play",
+        "mode": "flying",
+        "readbackSha256": "85ac9d97eeec279b10581b66dad03c16c4c0e9f30e726abc1ef0f49c78e0f485",
+        "hashVerified": true,
+        "visibleEvidence": true,
+        "visualDisposition": "root reports accepted Stable/mounted view; no independent subagent pixel certification"
+      },
+      {
+        "name": "broad-travel-gameplay-mounted-right",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\broad-travel-gameplay-mounted-right.png",
+        "sha256": "2411894d5a72aa6e11434a661f7d03ca4d3201a69985a8f5887d52d75579e873",
+        "camera": "flight",
+        "screen": "play",
+        "mode": "flying",
+        "readbackSha256": "2411894d5a72aa6e11434a661f7d03ca4d3201a69985a8f5887d52d75579e873",
+        "hashVerified": true,
+        "visibleEvidence": true,
+        "visualDisposition": "root reports accepted Stable/mounted view; no independent subagent pixel certification"
+      },
+      {
+        "name": "broad-travel-gameplay-walk",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\broad-travel-gameplay-walk.png",
+        "sha256": "31feeb40188a8ca047a4a4629a025e3dff62dbfe4a3af661fd8067b4bb764aa2",
+        "camera": "foot",
+        "screen": "play",
+        "mode": "onFoot",
+        "readbackSha256": "31feeb40188a8ca047a4a4629a025e3dff62dbfe4a3af661fd8067b4bb764aa2",
+        "hashVerified": true,
+        "visibleEvidence": false,
+        "visualDisposition": "excluded from visible fit: waiting-companion obstruction; state evidence retained"
+      },
+      {
+        "name": "broad-travel-gameplay-run",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\broad-travel-gameplay-run.png",
+        "sha256": "5ae3118cff26d57a6634c50894393b13953c814770226dd390081e07e11e2815",
+        "camera": "foot",
+        "screen": "play",
+        "mode": "onFoot",
+        "readbackSha256": "5ae3118cff26d57a6634c50894393b13953c814770226dd390081e07e11e2815",
+        "hashVerified": true,
+        "visibleEvidence": false,
+        "visualDisposition": "excluded from visible fit: waiting-companion obstruction; state evidence retained"
+      },
+      {
+        "name": "medium-flight-stable-front",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-flight-stable-front.png",
+        "sha256": "10a40ff66de66b31417ae48ab82eff8cb2f3577d0d4a66ba6a5b7092aebec48b",
+        "camera": "stable",
+        "screen": "stable",
+        "mode": "onFoot",
+        "readbackSha256": "10a40ff66de66b31417ae48ab82eff8cb2f3577d0d4a66ba6a5b7092aebec48b",
+        "hashVerified": true,
+        "visibleEvidence": true,
+        "visualDisposition": "root reports accepted Stable/mounted view; no independent subagent pixel certification"
+      },
+      {
+        "name": "medium-flight-stable-left",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-flight-stable-left.png",
+        "sha256": "213df153f0bc53cfc7ab7c53fbcadb81c8802f0ec2f328223914631aaf58a351",
+        "camera": "stable",
+        "screen": "stable",
+        "mode": "onFoot",
+        "readbackSha256": "213df153f0bc53cfc7ab7c53fbcadb81c8802f0ec2f328223914631aaf58a351",
+        "hashVerified": true,
+        "visibleEvidence": true,
+        "visualDisposition": "root reports accepted Stable/mounted view; no independent subagent pixel certification"
+      },
+      {
+        "name": "medium-flight-stable-right",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-flight-stable-right.png",
+        "sha256": "ec5289d85ba4affc1a9ea6edacf93cc71c51f0b1425151699b47fa092274d3cb",
+        "camera": "stable",
+        "screen": "stable",
+        "mode": "onFoot",
+        "readbackSha256": "ec5289d85ba4affc1a9ea6edacf93cc71c51f0b1425151699b47fa092274d3cb",
+        "hashVerified": true,
+        "visibleEvidence": true,
+        "visualDisposition": "root reports accepted Stable/mounted view; no independent subagent pixel certification"
+      },
+      {
+        "name": "medium-flight-stable-back",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-flight-stable-back.png",
+        "sha256": "62478eddf571b97595669592f137a28affc645ce2bda09a52eb99bae320820b3",
+        "camera": "stable",
+        "screen": "stable",
+        "mode": "onFoot",
+        "readbackSha256": "62478eddf571b97595669592f137a28affc645ce2bda09a52eb99bae320820b3",
+        "hashVerified": true,
+        "visibleEvidence": true,
+        "visualDisposition": "root reports accepted Stable/mounted view; no independent subagent pixel certification"
+      },
+      {
+        "name": "medium-flight-gameplay-mounted-left",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-flight-gameplay-mounted-left.png",
+        "sha256": "cf58c29153ae0712f3deda360a9b9e468a6a28c7dc08b80e392b0e94cd71866b",
+        "camera": "flight",
+        "screen": "play",
+        "mode": "flying",
+        "readbackSha256": "cf58c29153ae0712f3deda360a9b9e468a6a28c7dc08b80e392b0e94cd71866b",
+        "hashVerified": true,
+        "visibleEvidence": true,
+        "visualDisposition": "root reports accepted Stable/mounted view; no independent subagent pixel certification"
+      },
+      {
+        "name": "medium-flight-gameplay-mounted-right",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-flight-gameplay-mounted-right.png",
+        "sha256": "1e5346f988a0f7904de55bed839db0e04c078f64c3807913fb1e119a835e2373",
+        "camera": "flight",
+        "screen": "play",
+        "mode": "flying",
+        "readbackSha256": "1e5346f988a0f7904de55bed839db0e04c078f64c3807913fb1e119a835e2373",
+        "hashVerified": true,
+        "visibleEvidence": true,
+        "visualDisposition": "root reports accepted Stable/mounted view; no independent subagent pixel certification"
+      },
+      {
+        "name": "medium-flight-gameplay-walk",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-flight-gameplay-walk.png",
+        "sha256": "ed7796ac3ba72f9d05e28081cfd3f093e0f973a2e97ac78d5f788f9e81458c03",
+        "camera": "foot",
+        "screen": "play",
+        "mode": "onFoot",
+        "readbackSha256": "ed7796ac3ba72f9d05e28081cfd3f093e0f973a2e97ac78d5f788f9e81458c03",
+        "hashVerified": true,
+        "visibleEvidence": false,
+        "visualDisposition": "excluded from visible fit: waiting-companion obstruction; state evidence retained"
+      },
+      {
+        "name": "medium-flight-gameplay-run",
+        "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-flight-gameplay-run.png",
+        "sha256": "a81a9091a8d4d98a71c05ddc9da747278464a7eda938ed90b49c83be4cf6fefc",
+        "camera": "foot",
+        "screen": "play",
+        "mode": "onFoot",
+        "readbackSha256": "a81a9091a8d4d98a71c05ddc9da747278464a7eda938ed90b49c83be4cf6fefc",
+        "hashVerified": true,
+        "visibleEvidence": false,
+        "visualDisposition": "excluded from visible fit: waiting-companion obstruction; state evidence retained"
+      }
+    ]
+  },
+  "supplement": {
+    "report": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\walk-run-supplement\\2026-10-12T06-35-35-372Z-94884439\\report.json",
+    "reportSha256": "0a7f5c9f7e916e3b936c223c4d081647a839362f47ddd88b064a25bc588116f2",
+    "startedUtc": "2026-10-12T06:35:35.375Z",
+    "finishedUtc": "2026-10-12T06:36:58.981Z",
+    "tools": {
+      "node": "v26.11.1",
+      "nodeExecutable": "C:\\Program Files\\nodejs\\node.exe",
+      "platform": "win32",
+      "playwright": "1.56.1",
+      "script": {
+        "file": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\qa-walk-run-supplement.mjs",
+        "sha256": "e7816c41b756ca21ee1f6842bde211822c2ad7f348a33af027e04a1ea295a143"
+      },
+      "browser": "155.0.4283.45"
+    },
+    "scope": "Eight supplemental scripted on-foot gameplay captures: Medium Travel and Flight, walk/run, front/back; actual follow rig without override. The separate full-fit report owns actual takeoff, landing, dismount and both mounted sides.",
+    "profile": "Fresh nonpersistent Edge context per outfit; no owner profile or existing saves opened.",
+    "staging": "Existing terrain standingPoint at spawn +24,+4, normal Player.teleport to onFoot. No world, terrain, companion, camera tuning or runtime asset edits.",
+    "input": "Every advance receives explicit scripted input: {} while settling; declared foot controls while moving. Every render receives explicit {} and restores live input afterward.",
+    "cameraContract": "Actual on-foot follow rig; yaw/pitch orbit only; collisions enabled; no camera override or custom camera matrix.",
+    "counts": {
+      "cases": 2,
+      "captures": 8,
+      "travel": 4,
+      "flight": 4
+    },
+    "sourcesUnchanged": true,
+    "browserErrors": [],
+    "visualReview": {
+      "status": "All eight inspected and accepted for bounded visible-fit evidence",
+      "accepted": true,
+      "reviewedByRoot": [
+        "medium-travel-drape-walk-front",
+        "medium-travel-drape-walk-back",
+        "medium-travel-drape-run-front",
+        "medium-travel-drape-run-back",
+        "medium-flight-walk-front",
+        "medium-flight-walk-back",
+        "medium-flight-run-front",
+        "medium-flight-run-back"
+      ],
+      "independentReview": {
+        "reviewedUtc": "2026-10-12T06:47:07.162Z",
+        "reviewers": [
+          "root",
+          "independent fit_audit"
+        ],
+        "acceptedStableMounted": 24,
+        "acceptedSupplement": 8,
+        "retainedExcludedOriginalOnFoot": 8,
+        "independentRecord": "inspection/INDEPENDENT_VISUAL_REVIEW.json",
+        "independentRecordSha256": "336df8808ac5abc59205b7cd6eaf9a74175cefddba2886cbc7e6dd8f8f631025",
+        "rootReview": "All eight supplemental raw PNGs directly inspected; four Stable build/outfit sheets and mounted full-frame sheet inspected, supplementing direct fresh Stable and mounted image inspections. Independent reviewer inspected all32 accepted raw images.",
+        "finding": "Thin connected Travel cloth covers both shoulders; selected Windkeel main straps rest close to torso across inspected Stable builds and gameplay poses. No gross floating main strap, detached shoulder cap or bulky shoulder shell observed. Flight fit remains close to jacket. Original eight on-foot frames retained/excluded for companion obstruction.",
+        "limits": [
+          "Mounted and follow-camera distance supports broad fit only, not millimetre clearances or hidden contacts",
+          "Scripted SwiftShader evidence does not certify physical controller or hardware performance",
+          "Original CPU gate remains unresolved",
+          "Final concept likeness and exhaustive cloth/layer collisions remain unverified"
+        ],
+        "runtimeOrAssetChanges": false
+      },
+      "qualification": "Actual follow-camera distance supports broad fit; no millimetre, hidden-surface, physical-controller or final-concept certification."
+    },
+    "captures": [
+      {
+        "name": "medium-travel-drape-walk-front",
+        "file": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\walk-run-supplement\\2026-10-12T06-35-35-372Z-94884439\\medium-travel-drape-walk-front.png",
+        "sha256": "6be95860e3ff34b687708cf5bad413d8027ec4f3acd82f98cf1b9006cb34210a",
+        "readbackSha256": "6be95860e3ff34b687708cf5bad413d8027ec4f3acd82f98cf1b9006cb34210a",
+        "hashVerified": true,
+        "camera": "foot",
+        "screen": "play",
+        "mode": "onFoot",
+        "actualBuild": "medium",
+        "outfit": "travel-drape",
+        "action": "walk",
+        "view": "front",
+        "finite": true,
+        "harness": {
+          "kind": "windkeel",
+          "visible": true,
+          "sharedSkeleton": true,
+          "sockets": {
+            "AN_SOCKET_WINDLINE_DORSAL": {
+              "available": true,
+              "world": [
+                33.991790134076076,
+                241.19858817383732,
+                35.525252175537574
+              ]
+            },
+            "AN_SOCKET_GUIDE_LEFT": {
+              "available": true,
+              "world": [
+                34.09130100935041,
+                241.43026747031902,
+                35.65924488257175
+              ]
+            },
+            "AN_SOCKET_RIDING_LEFT": {
+              "available": true,
+              "world": [
+                34.092060899763496,
+                240.99580576491786,
+                35.76975580929676
+              ]
+            },
+            "AN_SOCKET_RIDING_RIGHT": {
+              "available": true,
+              "world": [
+                33.855829950059146,
+                240.99720957616586,
+                35.72329055410861
+              ]
+            }
+          }
+        },
+        "importedRegions": [
+          "upper",
+          "handL",
+          "legL",
+          "barefootL",
+          "handR",
+          "legR",
+          "barefootR",
+          "head",
+          "piece:top:aerie",
+          "piece:chest:aerie",
+          "piece:shoulderDrape:aerie",
+          "piece:waist:aerie",
+          "piece:armWraps:aerie",
+          "piece:legWraps:aerie",
+          "piece:footwear:aerie",
+          "ponytail-crown"
+        ],
+        "clothPanels": 4,
+        "errors": [],
+        "movement": {
+          "seconds": 0.45,
+          "start": [
+            34,
+            240,
+            34
+          ],
+          "finish": [
+            34,
+            240,
+            35.638055555555425
+          ],
+          "displacement": 1.6380555555554253,
+          "controls": {
+            "foot": {
+              "moveX": 0,
+              "moveY": -1,
+              "sprint": false
+            }
+          },
+          "speed": 4.2,
+          "velocity": [
+            5.143516556418884e-16,
+            0,
+            4.2
+          ],
+          "grounded": true,
+          "poseAction": "walk",
+          "poseActionTime": 0.45000000000000007
+        },
+        "player": {
+          "position": [
+            34,
+            240,
+            35.60305555555543
+          ],
+          "yaw": 0,
+          "velocity": [
+            5.143516556418884e-16,
+            0,
+            4.2
+          ],
+          "mounted": false
+        },
+        "cameraState": {
+          "position": [
+            34.55,
+            242.1758151000622,
+            40.75353341472196
+          ],
+          "quaternion": [
+            -0.06994284733752751,
+            0,
+            0,
+            0.99755100025328
+          ],
+          "projection": [
+            1.2482096117628885,
+            0,
+            0,
+            0,
+            0,
+            1.664279482350518,
+            0,
+            0,
+            0,
+            0,
+            -1.0001428673476678,
+            -1,
+            0,
+            0,
+            -1.0000714336738339,
+            0
+          ],
+          "facingDot": 0.9943466572521418,
+          "orbit": {
+            "yaw": -3.141592653589793,
+            "pitch": 0.14,
+            "lookIdle": 0.5666666666666667,
+            "recenterT": 0
+          },
+          "terrainCollision": "Existing actual follow rig enabled; no tuning replacement or override"
+        },
+        "renderer": {
+          "vendor": "Google Inc. (Google)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "stats": {
+            "calls": 163,
+            "triangles": 1457440,
+            "points": 55,
+            "programs": 76,
+            "width": 1440,
+            "height": 1080,
+            "pixelRatio": 1,
+            "compiling": 0
+          }
+        },
+        "visualDisposition": "Root reports clear actual follow view, without floating strap/disconnected bulky shoulder; independent full-set review pending"
+      },
+      {
+        "name": "medium-travel-drape-walk-back",
+        "file": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\walk-run-supplement\\2026-10-12T06-35-35-372Z-94884439\\medium-travel-drape-walk-back.png",
+        "sha256": "c53b0457e76ef575667cbf352390473b262cdaa49f16f6a8a8171e59c07fd8ad",
+        "readbackSha256": "c53b0457e76ef575667cbf352390473b262cdaa49f16f6a8a8171e59c07fd8ad",
+        "hashVerified": true,
+        "camera": "foot",
+        "screen": "play",
+        "mode": "onFoot",
+        "actualBuild": "medium",
+        "outfit": "travel-drape",
+        "action": "walk",
+        "view": "back",
+        "finite": true,
+        "harness": {
+          "kind": "windkeel",
+          "visible": true,
+          "sharedSkeleton": true,
+          "sockets": {
+            "AN_SOCKET_WINDLINE_DORSAL": {
+              "available": true,
+              "world": [
+                33.99313033041698,
+                241.19869288096305,
+                35.52600378764336
+              ]
+            },
+            "AN_SOCKET_GUIDE_LEFT": {
+              "available": true,
+              "world": [
+                34.09340942101041,
+                241.42969919171745,
+                35.66058441268219
+              ]
+            },
+            "AN_SOCKET_RIDING_LEFT": {
+              "available": true,
+              "world": [
+                34.09705462751278,
+                240.99580579859827,
+                35.76752782461709
+              ]
+            },
+            "AN_SOCKET_RIDING_RIGHT": {
+              "available": true,
+              "world": [
+                33.8595278484289,
+                240.99720961002083,
+                35.72821992775824
+              ]
+            }
+          }
+        },
+        "importedRegions": [
+          "upper",
+          "handL",
+          "legL",
+          "barefootL",
+          "handR",
+          "legR",
+          "barefootR",
+          "head",
+          "piece:top:aerie",
+          "piece:chest:aerie",
+          "piece:shoulderDrape:aerie",
+          "piece:waist:aerie",
+          "piece:armWraps:aerie",
+          "piece:legWraps:aerie",
+          "piece:footwear:aerie",
+          "ponytail-crown"
+        ],
+        "clothPanels": 4,
+        "errors": [],
+        "movement": {
+          "seconds": 0.45,
+          "start": [
+            34,
+            240,
+            34
+          ],
+          "finish": [
+            34,
+            240,
+            35.638055555555425
+          ],
+          "displacement": 1.6380555555554253,
+          "controls": {
+            "foot": {
+              "moveX": 0,
+              "moveY": 1,
+              "sprint": false
+            }
+          },
+          "speed": 4.2,
+          "velocity": [
+            0,
+            0,
+            4.2
+          ],
+          "grounded": true,
+          "poseAction": "walk",
+          "poseActionTime": 0.4499999999999984
+        },
+        "player": {
+          "position": [
+            34,
+            240,
+            35.60305555555543
+          ],
+          "yaw": 0,
+          "velocity": [
+            0,
+            0,
+            4.2
+          ],
+          "mounted": false
+        },
+        "cameraState": {
+          "position": [
+            33.45,
+            242.1758151000622,
+            30.4525776963889
+          ],
+          "quaternion": [
+            0,
+            0.9975510002532799,
+            0.06994284733752777,
+            0
+          ],
+          "projection": [
+            1.2482096117628885,
+            0,
+            0,
+            0,
+            0,
+            1.664279482350518,
+            0,
+            0,
+            0,
+            0,
+            -1.0001428673476678,
+            -1,
+            0,
+            0,
+            -1.0000714336738339,
+            0
+          ],
+          "facingDot": -0.9943466572521418,
+          "orbit": {
+            "yaw": 0,
+            "pitch": 0.14,
+            "lookIdle": 0.5666666666666667,
+            "recenterT": 0
+          },
+          "terrainCollision": "Existing actual follow rig enabled; no tuning replacement or override"
+        },
+        "renderer": {
+          "vendor": "Google Inc. (Google)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "stats": {
+            "calls": 164,
+            "triangles": 1530276,
+            "points": 55,
+            "programs": 76,
+            "width": 1440,
+            "height": 1080,
+            "pixelRatio": 1,
+            "compiling": 0
+          }
+        },
+        "visualDisposition": "State guards and capture hashes pass; not yet visually reviewed in this draft"
+      },
+      {
+        "name": "medium-travel-drape-run-front",
+        "file": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\walk-run-supplement\\2026-10-12T06-35-35-372Z-94884439\\medium-travel-drape-run-front.png",
+        "sha256": "5a5587b3d6534dc630173ddc627a01d6a2310aac466dff44e6e246196d3fbed8",
+        "readbackSha256": "5a5587b3d6534dc630173ddc627a01d6a2310aac466dff44e6e246196d3fbed8",
+        "hashVerified": true,
+        "camera": "foot",
+        "screen": "play",
+        "mode": "onFoot",
+        "actualBuild": "medium",
+        "outfit": "travel-drape",
+        "action": "run",
+        "view": "front",
+        "finite": true,
+        "harness": {
+          "kind": "windkeel",
+          "visible": true,
+          "sharedSkeleton": true,
+          "sockets": {
+            "AN_SOCKET_WINDLINE_DORSAL": {
+              "available": true,
+              "world": [
+                33.98687467903457,
+                241.19843511051502,
+                36.30940511976362
+              ]
+            },
+            "AN_SOCKET_GUIDE_LEFT": {
+              "available": true,
+              "world": [
+                34.083501602515916,
+                241.43237966190608,
+                36.441560107514405
+              ]
+            },
+            "AN_SOCKET_RIDING_LEFT": {
+              "available": true,
+              "world": [
+                34.073291482128184,
+                240.99583144903252,
+                36.56324171514232
+              ]
+            },
+            "AN_SOCKET_RIDING_RIGHT": {
+              "available": true,
+              "world": [
+                33.84354666958442,
+                240.9972366011818,
+                36.49125978073784
+              ]
+            }
+          }
+        },
+        "importedRegions": [
+          "upper",
+          "handL",
+          "legL",
+          "barefootL",
+          "handR",
+          "legR",
+          "barefootR",
+          "head",
+          "piece:top:aerie",
+          "piece:chest:aerie",
+          "piece:shoulderDrape:aerie",
+          "piece:waist:aerie",
+          "piece:armWraps:aerie",
+          "piece:legWraps:aerie",
+          "piece:footwear:aerie",
+          "ponytail-crown"
+        ],
+        "clothPanels": 4,
+        "errors": [],
+        "movement": {
+          "seconds": 0.45,
+          "start": [
+            34,
+            240,
+            34
+          ],
+          "finish": [
+            34,
+            240,
+            36.44930555555556
+          ],
+          "displacement": 2.4493055555555614,
+          "controls": {
+            "foot": {
+              "moveX": 0,
+              "moveY": -1,
+              "sprint": true
+            }
+          },
+          "speed": 7.5,
+          "velocity": [
+            9.18485099360515e-16,
+            0,
+            7.5
+          ],
+          "grounded": true,
+          "poseAction": "run",
+          "poseActionTime": 0.2416666666666658
+        },
+        "player": {
+          "position": [
+            34,
+            240,
+            36.38680555555556
+          ],
+          "yaw": 0,
+          "velocity": [
+            9.18485099360515e-16,
+            0,
+            7.5
+          ],
+          "mounted": false
+        },
+        "cameraState": {
+          "position": [
+            34.55,
+            242.19282147591812,
+            41.65796285815491
+          ],
+          "quaternion": [
+            -0.06994284733752751,
+            0,
+            0,
+            0.99755100025328
+          ],
+          "projection": [
+            1.2482096117628885,
+            0,
+            0,
+            0,
+            0,
+            1.664279482350518,
+            0,
+            0,
+            0,
+            0,
+            -1.0001428673476678,
+            -1,
+            0,
+            0,
+            -1.0000714336738339,
+            0
+          ],
+          "facingDot": 0.9946004839311893,
+          "orbit": {
+            "yaw": -3.141592653589793,
+            "pitch": 0.14,
+            "lookIdle": 0.5666666666666667,
+            "recenterT": 0
+          },
+          "terrainCollision": "Existing actual follow rig enabled; no tuning replacement or override"
+        },
+        "renderer": {
+          "vendor": "Google Inc. (Google)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "stats": {
+            "calls": 192,
+            "triangles": 1520368,
+            "points": 55,
+            "programs": 76,
+            "width": 1440,
+            "height": 1080,
+            "pixelRatio": 1,
+            "compiling": 0
+          }
+        },
+        "visualDisposition": "Root reports clear actual follow view, without floating strap/disconnected bulky shoulder; independent full-set review pending"
+      },
+      {
+        "name": "medium-travel-drape-run-back",
+        "file": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\walk-run-supplement\\2026-10-12T06-35-35-372Z-94884439\\medium-travel-drape-run-back.png",
+        "sha256": "2c96c2ee12cc6d4b34f0bd549a6680b6264145f9d0eb9b95d8a64516d7dbf2f9",
+        "readbackSha256": "2c96c2ee12cc6d4b34f0bd549a6680b6264145f9d0eb9b95d8a64516d7dbf2f9",
+        "hashVerified": true,
+        "camera": "foot",
+        "screen": "play",
+        "mode": "onFoot",
+        "actualBuild": "medium",
+        "outfit": "travel-drape",
+        "action": "run",
+        "view": "back",
+        "finite": true,
+        "harness": {
+          "kind": "windkeel",
+          "visible": true,
+          "sharedSkeleton": true,
+          "sockets": {
+            "AN_SOCKET_WINDLINE_DORSAL": {
+              "available": true,
+              "world": [
+                33.99043128940618,
+                241.06027041193693,
+                36.310198990948265
+              ]
+            },
+            "AN_SOCKET_GUIDE_LEFT": {
+              "available": true,
+              "world": [
+                34.08913158292602,
+                241.29232398640306,
+                36.44414355743395
+              ]
+            },
+            "AN_SOCKET_RIDING_LEFT": {
+              "available": true,
+              "world": [
+                34.08718086049468,
+                240.85725024522844,
+                36.557091741552746
+              ]
+            },
+            "AN_SOCKET_RIDING_RIGHT": {
+              "available": true,
+              "world": [
+                33.852395044778675,
+                240.85865539737773,
+                36.503802919929946
+              ]
+            }
+          }
+        },
+        "importedRegions": [
+          "upper",
+          "handL",
+          "legL",
+          "barefootL",
+          "handR",
+          "legR",
+          "barefootR",
+          "head",
+          "piece:top:aerie",
+          "piece:chest:aerie",
+          "piece:shoulderDrape:aerie",
+          "piece:waist:aerie",
+          "piece:armWraps:aerie",
+          "piece:legWraps:aerie",
+          "piece:footwear:aerie",
+          "ponytail-crown"
+        ],
+        "clothPanels": 4,
+        "errors": [],
+        "movement": {
+          "seconds": 0.45,
+          "start": [
+            34,
+            240,
+            34
+          ],
+          "finish": [
+            34,
+            240,
+            36.44930555555556
+          ],
+          "displacement": 2.4493055555555614,
+          "controls": {
+            "foot": {
+              "moveX": 0,
+              "moveY": 1,
+              "sprint": true
+            }
+          },
+          "speed": 7.5,
+          "velocity": [
+            0,
+            0,
+            7.5
+          ],
+          "grounded": true,
+          "poseAction": "run",
+          "poseActionTime": 0.2416666666666658
+        },
+        "player": {
+          "position": [
+            34,
+            240,
+            36.38680555555556
+          ],
+          "yaw": 0,
+          "velocity": [
+            0,
+            0,
+            7.5
+          ],
+          "mounted": false
+        },
+        "cameraState": {
+          "position": [
+            33.45,
+            242.19282147591812,
+            31.115648252956216
+          ],
+          "quaternion": [
+            0,
+            0.9975510002532799,
+            0.06994284733752777,
+            0
+          ],
+          "projection": [
+            1.2482096117628885,
+            0,
+            0,
+            0,
+            0,
+            1.664279482350518,
+            0,
+            0,
+            0,
+            0,
+            -1.0001428673476678,
+            -1,
+            0,
+            0,
+            -1.0000714336738339,
+            0
+          ],
+          "facingDot": -0.994600483931189,
+          "orbit": {
+            "yaw": 0,
+            "pitch": 0.14,
+            "lookIdle": 0.5666666666666667,
+            "recenterT": 0
+          },
+          "terrainCollision": "Existing actual follow rig enabled; no tuning replacement or override"
+        },
+        "renderer": {
+          "vendor": "Google Inc. (Google)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "stats": {
+            "calls": 176,
+            "triangles": 1543704,
+            "points": 55,
+            "programs": 76,
+            "width": 1440,
+            "height": 1080,
+            "pixelRatio": 1,
+            "compiling": 0
+          }
+        },
+        "visualDisposition": "Root reports clear actual follow view, without floating strap/disconnected bulky shoulder; independent full-set review pending"
+      },
+      {
+        "name": "medium-flight-walk-front",
+        "file": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\walk-run-supplement\\2026-10-12T06-35-35-372Z-94884439\\medium-flight-walk-front.png",
+        "sha256": "108295915c87a39ad6a33384d88f0789fb6a62bfc70887bd1a85b8a018c0431d",
+        "readbackSha256": "108295915c87a39ad6a33384d88f0789fb6a62bfc70887bd1a85b8a018c0431d",
+        "hashVerified": true,
+        "camera": "foot",
+        "screen": "play",
+        "mode": "onFoot",
+        "actualBuild": "medium",
+        "outfit": "flight",
+        "action": "walk",
+        "view": "front",
+        "finite": true,
+        "harness": {
+          "kind": "windkeel",
+          "visible": true,
+          "sharedSkeleton": true,
+          "sockets": {
+            "AN_SOCKET_WINDLINE_DORSAL": {
+              "available": true,
+              "world": [
+                33.99186285241822,
+                241.19806706510022,
+                35.527408427193556
+              ]
+            },
+            "AN_SOCKET_GUIDE_LEFT": {
+              "available": true,
+              "world": [
+                34.09126348106853,
+                241.431327312587,
+                35.65935021726989
+              ]
+            },
+            "AN_SOCKET_RIDING_LEFT": {
+              "available": true,
+              "world": [
+                34.07304993600115,
+                240.99698250349158,
+                35.756495494079125
+              ]
+            },
+            "AN_SOCKET_RIDING_RIGHT": {
+              "available": true,
+              "world": [
+                33.867027179239734,
+                240.9964200678187,
+                35.72072195511023
+              ]
+            }
+          }
+        },
+        "importedRegions": [
+          "upper",
+          "handL",
+          "footL",
+          "handR",
+          "footR",
+          "head",
+          "ponytail-crown"
+        ],
+        "clothPanels": 0,
+        "errors": [],
+        "movement": {
+          "seconds": 0.45,
+          "start": [
+            34,
+            240,
+            34
+          ],
+          "finish": [
+            34,
+            240,
+            35.638055555555425
+          ],
+          "displacement": 1.6380555555554253,
+          "controls": {
+            "foot": {
+              "moveX": 0,
+              "moveY": -1,
+              "sprint": false
+            }
+          },
+          "speed": 4.2,
+          "velocity": [
+            5.143516556418884e-16,
+            0,
+            4.2
+          ],
+          "grounded": true,
+          "poseAction": "walk",
+          "poseActionTime": 0.45000000000000007
+        },
+        "player": {
+          "position": [
+            34,
+            240,
+            35.60305555555543
+          ],
+          "yaw": 0,
+          "velocity": [
+            5.143516556418884e-16,
+            0,
+            4.2
+          ],
+          "mounted": false
+        },
+        "cameraState": {
+          "position": [
+            34.55,
+            242.1758151000622,
+            40.75353341472196
+          ],
+          "quaternion": [
+            -0.06994284733752751,
+            0,
+            0,
+            0.99755100025328
+          ],
+          "projection": [
+            1.2482096117628885,
+            0,
+            0,
+            0,
+            0,
+            1.664279482350518,
+            0,
+            0,
+            0,
+            0,
+            -1.0001428673476678,
+            -1,
+            0,
+            0,
+            -1.0000714336738339,
+            0
+          ],
+          "facingDot": 0.9943466572521418,
+          "orbit": {
+            "yaw": -3.141592653589793,
+            "pitch": 0.14,
+            "lookIdle": 0.5666666666666667,
+            "recenterT": 0
+          },
+          "terrainCollision": "Existing actual follow rig enabled; no tuning replacement or override"
+        },
+        "renderer": {
+          "vendor": "Google Inc. (Google)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "stats": {
+            "calls": 155,
+            "triangles": 1392928,
+            "points": 55,
+            "programs": 75,
+            "width": 1440,
+            "height": 1080,
+            "pixelRatio": 1,
+            "compiling": 0
+          }
+        },
+        "visualDisposition": "Root reports clear actual follow view, without floating strap/disconnected bulky shoulder; independent full-set review pending"
+      },
+      {
+        "name": "medium-flight-walk-back",
+        "file": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\walk-run-supplement\\2026-10-12T06-35-35-372Z-94884439\\medium-flight-walk-back.png",
+        "sha256": "8ce5e0df7e238e7592619b2ad757f1ee42c3109c839001ffd01507ef8eaa7c89",
+        "readbackSha256": "8ce5e0df7e238e7592619b2ad757f1ee42c3109c839001ffd01507ef8eaa7c89",
+        "hashVerified": true,
+        "camera": "foot",
+        "screen": "play",
+        "mode": "onFoot",
+        "actualBuild": "medium",
+        "outfit": "flight",
+        "action": "walk",
+        "view": "back",
+        "finite": true,
+        "harness": {
+          "kind": "windkeel",
+          "visible": true,
+          "sharedSkeleton": true,
+          "sockets": {
+            "AN_SOCKET_WINDLINE_DORSAL": {
+              "available": true,
+              "world": [
+                33.99319145229908,
+                241.19816964847874,
+                35.52815988489535
+              ]
+            },
+            "AN_SOCKET_GUIDE_LEFT": {
+              "available": true,
+              "world": [
+                34.093377455732124,
+                241.4307591446787,
+                35.66069046618047
+              ]
+            },
+            "AN_SOCKET_RIDING_LEFT": {
+              "available": true,
+              "world": [
+                34.07765176735357,
+                240.9969825384756,
+                35.75484785153279
+              ]
+            },
+            "AN_SOCKET_RIDING_RIGHT": {
+              "available": true,
+              "world": [
+                33.87064237427396,
+                240.99642010231162,
+                35.72531425083474
+              ]
+            }
+          }
+        },
+        "importedRegions": [
+          "upper",
+          "handL",
+          "footL",
+          "handR",
+          "footR",
+          "head",
+          "ponytail-crown"
+        ],
+        "clothPanels": 0,
+        "errors": [],
+        "movement": {
+          "seconds": 0.45,
+          "start": [
+            34,
+            240,
+            34
+          ],
+          "finish": [
+            34,
+            240,
+            35.638055555555425
+          ],
+          "displacement": 1.6380555555554253,
+          "controls": {
+            "foot": {
+              "moveX": 0,
+              "moveY": 1,
+              "sprint": false
+            }
+          },
+          "speed": 4.2,
+          "velocity": [
+            0,
+            0,
+            4.2
+          ],
+          "grounded": true,
+          "poseAction": "walk",
+          "poseActionTime": 0.4499999999999984
+        },
+        "player": {
+          "position": [
+            34,
+            240,
+            35.60305555555543
+          ],
+          "yaw": 0,
+          "velocity": [
+            0,
+            0,
+            4.2
+          ],
+          "mounted": false
+        },
+        "cameraState": {
+          "position": [
+            33.45,
+            242.1758151000622,
+            30.4525776963889
+          ],
+          "quaternion": [
+            0,
+            0.9975510002532799,
+            0.06994284733752777,
+            0
+          ],
+          "projection": [
+            1.2482096117628885,
+            0,
+            0,
+            0,
+            0,
+            1.664279482350518,
+            0,
+            0,
+            0,
+            0,
+            -1.0001428673476678,
+            -1,
+            0,
+            0,
+            -1.0000714336738339,
+            0
+          ],
+          "facingDot": -0.9943466572521418,
+          "orbit": {
+            "yaw": 0,
+            "pitch": 0.14,
+            "lookIdle": 0.5666666666666667,
+            "recenterT": 0
+          },
+          "terrainCollision": "Existing actual follow rig enabled; no tuning replacement or override"
+        },
+        "renderer": {
+          "vendor": "Google Inc. (Google)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "stats": {
+            "calls": 156,
+            "triangles": 1465764,
+            "points": 55,
+            "programs": 75,
+            "width": 1440,
+            "height": 1080,
+            "pixelRatio": 1,
+            "compiling": 0
+          }
+        },
+        "visualDisposition": "State guards and capture hashes pass; not yet visually reviewed in this draft"
+      },
+      {
+        "name": "medium-flight-run-front",
+        "file": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\walk-run-supplement\\2026-10-12T06-35-35-372Z-94884439\\medium-flight-run-front.png",
+        "sha256": "44d82bc6b110ba66248ad55d1d487691e3d3b2597c91bd6892876183fecf851b",
+        "readbackSha256": "44d82bc6b110ba66248ad55d1d487691e3d3b2597c91bd6892876183fecf851b",
+        "hashVerified": true,
+        "camera": "foot",
+        "screen": "play",
+        "mode": "onFoot",
+        "actualBuild": "medium",
+        "outfit": "flight",
+        "action": "run",
+        "view": "front",
+        "finite": true,
+        "harness": {
+          "kind": "windkeel",
+          "visible": true,
+          "sharedSkeleton": true,
+          "sockets": {
+            "AN_SOCKET_WINDLINE_DORSAL": {
+              "available": true,
+              "world": [
+                33.986989471757084,
+                241.19791975625273,
+                36.31156092497104
+              ]
+            },
+            "AN_SOCKET_GUIDE_LEFT": {
+              "available": true,
+              "world": [
+                34.08344366861373,
+                241.43343870151182,
+                36.441664262111196
+              ]
+            },
+            "AN_SOCKET_RIDING_LEFT": {
+              "available": true,
+              "world": [
+                34.05584183638675,
+                240.99701820544428,
+                36.54798593298496
+              ]
+            },
+            "AN_SOCKET_RIDING_RIGHT": {
+              "available": true,
+              "world": [
+                33.854957670703925,
+                240.99645199592078,
+                36.489928460489956
+              ]
+            }
+          }
+        },
+        "importedRegions": [
+          "upper",
+          "handL",
+          "footL",
+          "handR",
+          "footR",
+          "head",
+          "ponytail-crown"
+        ],
+        "clothPanels": 0,
+        "errors": [],
+        "movement": {
+          "seconds": 0.45,
+          "start": [
+            34,
+            240,
+            34
+          ],
+          "finish": [
+            34,
+            240,
+            36.44930555555556
+          ],
+          "displacement": 2.4493055555555614,
+          "controls": {
+            "foot": {
+              "moveX": 0,
+              "moveY": -1,
+              "sprint": true
+            }
+          },
+          "speed": 7.5,
+          "velocity": [
+            9.18485099360515e-16,
+            0,
+            7.5
+          ],
+          "grounded": true,
+          "poseAction": "run",
+          "poseActionTime": 0.2416666666666658
+        },
+        "player": {
+          "position": [
+            34,
+            240,
+            36.38680555555556
+          ],
+          "yaw": 0,
+          "velocity": [
+            9.18485099360515e-16,
+            0,
+            7.5
+          ],
+          "mounted": false
+        },
+        "cameraState": {
+          "position": [
+            34.55,
+            242.19282147591812,
+            41.65796285815491
+          ],
+          "quaternion": [
+            -0.06994284733752751,
+            0,
+            0,
+            0.99755100025328
+          ],
+          "projection": [
+            1.2482096117628885,
+            0,
+            0,
+            0,
+            0,
+            1.664279482350518,
+            0,
+            0,
+            0,
+            0,
+            -1.0001428673476678,
+            -1,
+            0,
+            0,
+            -1.0000714336738339,
+            0
+          ],
+          "facingDot": 0.9946004839311893,
+          "orbit": {
+            "yaw": -3.141592653589793,
+            "pitch": 0.14,
+            "lookIdle": 0.5666666666666667,
+            "recenterT": 0
+          },
+          "terrainCollision": "Existing actual follow rig enabled; no tuning replacement or override"
+        },
+        "renderer": {
+          "vendor": "Google Inc. (Google)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "stats": {
+            "calls": 188,
+            "triangles": 1459940,
+            "points": 55,
+            "programs": 75,
+            "width": 1440,
+            "height": 1080,
+            "pixelRatio": 1,
+            "compiling": 0
+          }
+        },
+        "visualDisposition": "State guards and capture hashes pass; not yet visually reviewed in this draft"
+      },
+      {
+        "name": "medium-flight-run-back",
+        "file": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\walk-run-supplement\\2026-10-12T06-35-35-372Z-94884439\\medium-flight-run-back.png",
+        "sha256": "7c9e9e71aff93f4deef17c799bc243dce9381991fff84174e50f924e41d17228",
+        "readbackSha256": "7c9e9e71aff93f4deef17c799bc243dce9381991fff84174e50f924e41d17228",
+        "hashVerified": true,
+        "camera": "foot",
+        "screen": "play",
+        "mode": "onFoot",
+        "actualBuild": "medium",
+        "outfit": "flight",
+        "action": "run",
+        "view": "back",
+        "finite": true,
+        "harness": {
+          "kind": "windkeel",
+          "visible": true,
+          "sharedSkeleton": true,
+          "sockets": {
+            "AN_SOCKET_WINDLINE_DORSAL": {
+              "available": true,
+              "world": [
+                33.99051533387493,
+                241.05974663815442,
+                36.31235418491382
+              ]
+            },
+            "AN_SOCKET_GUIDE_LEFT": {
+              "available": true,
+              "world": [
+                34.089088394010595,
+                241.29338344406128,
+                36.44425057888781
+              ]
+            },
+            "AN_SOCKET_RIDING_LEFT": {
+              "available": true,
+              "world": [
+                34.06856181012423,
+                240.8584370016402,
+                36.54328739480844
+              ]
+            },
+            "AN_SOCKET_RIDING_RIGHT": {
+              "available": true,
+              "world": [
+                33.86366217563979,
+                240.8578707921167,
+                36.5015590121087
+              ]
+            }
+          }
+        },
+        "importedRegions": [
+          "upper",
+          "handL",
+          "footL",
+          "handR",
+          "footR",
+          "head",
+          "ponytail-crown"
+        ],
+        "clothPanels": 0,
+        "errors": [],
+        "movement": {
+          "seconds": 0.45,
+          "start": [
+            34,
+            240,
+            34
+          ],
+          "finish": [
+            34,
+            240,
+            36.44930555555556
+          ],
+          "displacement": 2.4493055555555614,
+          "controls": {
+            "foot": {
+              "moveX": 0,
+              "moveY": 1,
+              "sprint": true
+            }
+          },
+          "speed": 7.5,
+          "velocity": [
+            0,
+            0,
+            7.5
+          ],
+          "grounded": true,
+          "poseAction": "run",
+          "poseActionTime": 0.2416666666666658
+        },
+        "player": {
+          "position": [
+            34,
+            240,
+            36.38680555555556
+          ],
+          "yaw": 0,
+          "velocity": [
+            0,
+            0,
+            7.5
+          ],
+          "mounted": false
+        },
+        "cameraState": {
+          "position": [
+            33.45,
+            242.19282147591812,
+            31.115648252956216
+          ],
+          "quaternion": [
+            0,
+            0.9975510002532799,
+            0.06994284733752777,
+            0
+          ],
+          "projection": [
+            1.2482096117628885,
+            0,
+            0,
+            0,
+            0,
+            1.664279482350518,
+            0,
+            0,
+            0,
+            0,
+            -1.0001428673476678,
+            -1,
+            0,
+            0,
+            -1.0000714336738339,
+            0
+          ],
+          "facingDot": -0.994600483931189,
+          "orbit": {
+            "yaw": 0,
+            "pitch": 0.14,
+            "lookIdle": 0.5666666666666667,
+            "recenterT": 0
+          },
+          "terrainCollision": "Existing actual follow rig enabled; no tuning replacement or override"
+        },
+        "renderer": {
+          "vendor": "Google Inc. (Google)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "stats": {
+            "calls": 168,
+            "triangles": 1479192,
+            "points": 55,
+            "programs": 75,
+            "width": 1440,
+            "height": 1080,
+            "pixelRatio": 1,
+            "compiling": 0
+          }
+        },
+        "visualDisposition": "Root reports clear actual follow view, without floating strap/disconnected bulky shoulder; independent full-set review pending"
+      }
+    ],
+    "visibleReview": "All eight captures inspected by root and independent reviewer; accepted for bounded visible-fit evidence at the actual follow-camera distance."
+  },
+  "verification": {
+    "fresh": "Full-fit and on-foot supplement state/asset/camera checks only; all40capture hashes independently read back.",
+    "historicalUnchanged": "Previously recorded 1310 tests/124files, typecheck, existing/authored garment audits and production build passed on these unchanged source bytes. Not rerun in this refresh.",
+    "softwareCpuGate": "Unresolved and baseline-reproduced; previous software swinging CPU assertion failures remain retained. This fit refresh does not resolve or reclassify them.",
+    "unverified": [
+      "Physical controller play",
+      "Integrated-GPU Low suitability",
+      "Isolated GPU time and total VRAM",
+      "Exhaustive cloth/layer collision",
+      "Final near-indistinguishable concept likeness"
+    ],
+    "noAllGreenReleaseClaim": true
+  },
+  "reviewLinks": {
+    "comparison": "http://127.0.0.1:5210/docs/rider-blender-trial/review.html",
+    "normalTrial": "http://127.0.0.1:5210/?riderTrial=blender&quality=low",
+    "preservedBaseline": "http://127.0.0.1:5211/?quality=low"
+  },
+  "authority": "Local trial only. No commits, pushes, merges, deployments, normal-build replacement or broader asset work. Earlier files/evidence, services and saves preserved.",
+  "next": "Local review only. No commit/push/merge/deploy. CPU profiling, physical-controller/IGP testing and final artistic acceptance remain separate decisions.",
+  "preservationAfterQa": {
+    "file": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\PRESERVATION_AFTER_QA.json",
+    "sha256": "40c9fbd5fc630d8cee745ce4f99398db8ddec5034042e2bf1cc76d61267d619b",
+    "verifiedUtc": "2026-10-12T06:39:32.087931+00:00",
+    "originalFilesChecked": 1851,
+    "originalDifferences": [],
+    "originalStatusUnchanged": true,
+    "trialCheckpointFilesChecked": 1112,
+    "trialDifferences": [],
+    "scope": "Read-only verification after fresh QA, before documentation/evidence additions. No files or services changed by this verifier.",
+    "qualification": "Before documentation/evidence additions; does not claim later documentation bytes still equal the old checkpoint."
+  },
+  "finalizedUtc": "2026-10-12T06:47:32.999996+00:00",
+  "visualReview": {
+    "reviewedUtc": "2026-10-12T06:47:07.162Z",
+    "reviewers": [
+      "root",
+      "independent fit_audit"
+    ],
+    "acceptedStableMounted": 24,
+    "acceptedSupplement": 8,
+    "retainedExcludedOriginalOnFoot": 8,
+    "independentRecord": "inspection/INDEPENDENT_VISUAL_REVIEW.json",
+    "independentRecordSha256": "336df8808ac5abc59205b7cd6eaf9a74175cefddba2886cbc7e6dd8f8f631025",
+    "rootReview": "All eight supplemental raw PNGs directly inspected; four Stable build/outfit sheets and mounted full-frame sheet inspected, supplementing direct fresh Stable and mounted image inspections. Independent reviewer inspected all32 accepted raw images.",
+    "finding": "Thin connected Travel cloth covers both shoulders; selected Windkeel main straps rest close to torso across inspected Stable builds and gameplay poses. No gross floating main strap, detached shoulder cap or bulky shoulder shell observed. Flight fit remains close to jacket. Original eight on-foot frames retained/excluded for companion obstruction.",
+    "limits": [
+      "Mounted and follow-camera distance supports broad fit only, not millimetre clearances or hidden contacts",
+      "Scripted SwiftShader evidence does not certify physical controller or hardware performance",
+      "Original CPU gate remains unresolved",
+      "Final concept likeness and exhaustive cloth/layer collisions remain unverified"
+    ],
+    "runtimeOrAssetChanges": false
+  },
+  "copiedEvidence": [
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\report.json",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/report.json",
+      "bytes": 5094402,
+      "sha256": "3c7470da56a08b57aa218791ed2d8b318645f275fdabd0a39251f01905935e88"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-travel-stable-front.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-travel-stable-front.png",
+      "bytes": 1152774,
+      "sha256": "c462e9bf2b7bb381adbf0f807b0b44e052a0600600a4d764006aaadaf18a244a"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-travel-stable-left.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-travel-stable-left.png",
+      "bytes": 1080498,
+      "sha256": "322bb265a39b05d9c0893cd9899ad7b2aa956f3ae7a436f76f55f6f3ceb2dbb6"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-travel-stable-right.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-travel-stable-right.png",
+      "bytes": 1160131,
+      "sha256": "84d542ecbbf93ccf34fdedfbd44e338e1f2e84312660989f33e5efb6e3a6ccde"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-travel-stable-back.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-travel-stable-back.png",
+      "bytes": 1147162,
+      "sha256": "c414c80ed454c4d82c75b0697e85c1426ec4761ebec723f2b3a915dedd8256ac"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-travel-gameplay-mounted-left.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-travel-gameplay-mounted-left.png",
+      "bytes": 1490817,
+      "sha256": "03590061f1c1571a7ca1362ada52b812473fdb877f913675b6ba803027d612af"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-travel-gameplay-mounted-right.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-travel-gameplay-mounted-right.png",
+      "bytes": 1490554,
+      "sha256": "b9573e2de2fbfc11ac2e928ba446f289a03785f29926b21ff1b78b26ec7b9e4a"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-travel-gameplay-walk.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-travel-gameplay-walk.png",
+      "bytes": 1566698,
+      "sha256": "6ef40f6ba8aabc19355dcbaabff4d497e3719e5d563dcff1e836d878bddef0fa"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-travel-gameplay-run.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-travel-gameplay-run.png",
+      "bytes": 1474692,
+      "sha256": "51bcc09c796aefc0e7c95342efebac419ecbad0ecbcc9970be64a04cd89ed7db"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\slight-travel-stable-front.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/slight-travel-stable-front.png",
+      "bytes": 1151468,
+      "sha256": "8dfaa0e14e2d3fe8ce8a011e0f4ef49827faaef272aee44469166dfe2963edd1"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\slight-travel-stable-left.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/slight-travel-stable-left.png",
+      "bytes": 1075059,
+      "sha256": "e3211cfb722e72d420b333270c7eb42cdae43d3dec510fddf6ebc9dd2292387a"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\slight-travel-stable-right.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/slight-travel-stable-right.png",
+      "bytes": 1158017,
+      "sha256": "6cef3f15b3c1f0a496b9fb27577c8dfe0838f43dffeb8c28bfff584f6dc02b91"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\slight-travel-stable-back.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/slight-travel-stable-back.png",
+      "bytes": 1146652,
+      "sha256": "784180a94aa59a03031674b279269b58ecf27a4c4bf93833a659f2e805075e0b"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\slight-travel-gameplay-mounted-left.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/slight-travel-gameplay-mounted-left.png",
+      "bytes": 1490702,
+      "sha256": "973e35724b9906ef925784439cebbcfad4512a0a0b3219300a209bc6899bcd95"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\slight-travel-gameplay-mounted-right.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/slight-travel-gameplay-mounted-right.png",
+      "bytes": 1463872,
+      "sha256": "08faadecaf694a46958ae9b214e6f98f8710aaca199186543fe51068db50c895"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\slight-travel-gameplay-walk.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/slight-travel-gameplay-walk.png",
+      "bytes": 1512339,
+      "sha256": "7525f1f999437782d28c26e3795b318c26b3a60d9497259863b61108f3204311"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\slight-travel-gameplay-run.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/slight-travel-gameplay-run.png",
+      "bytes": 1443805,
+      "sha256": "cbeaf3df0f5791f5c0f9ea1079c228bf1ce37a54e985b7d6a981c6990125b5f5"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\broad-travel-stable-front.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/broad-travel-stable-front.png",
+      "bytes": 1155929,
+      "sha256": "6698927185a9a1ea0e549aedc25dd8f0cbe449702255cfaaa7e6f42b2bb4edce"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\broad-travel-stable-left.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/broad-travel-stable-left.png",
+      "bytes": 1091049,
+      "sha256": "ca2c3090b5afb38ee3f1954e5e150916a66b1a0d022d57705ab57914bd5f9ea6"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\broad-travel-stable-right.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/broad-travel-stable-right.png",
+      "bytes": 1160361,
+      "sha256": "5d0b63aed210b55a9c8219dcbbd52b928e3f010db5298c3bd267916f6f26e531"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\broad-travel-stable-back.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/broad-travel-stable-back.png",
+      "bytes": 1145385,
+      "sha256": "f9995475c2c089d58008accc6d4ab8a65e1fff9d6c0014ed3a3383a73f98fd06"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\broad-travel-gameplay-mounted-left.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/broad-travel-gameplay-mounted-left.png",
+      "bytes": 1491123,
+      "sha256": "85ac9d97eeec279b10581b66dad03c16c4c0e9f30e726abc1ef0f49c78e0f485"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\broad-travel-gameplay-mounted-right.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/broad-travel-gameplay-mounted-right.png",
+      "bytes": 1490619,
+      "sha256": "2411894d5a72aa6e11434a661f7d03ca4d3201a69985a8f5887d52d75579e873"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\broad-travel-gameplay-walk.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/broad-travel-gameplay-walk.png",
+      "bytes": 1485739,
+      "sha256": "31feeb40188a8ca047a4a4629a025e3dff62dbfe4a3af661fd8067b4bb764aa2"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\broad-travel-gameplay-run.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/broad-travel-gameplay-run.png",
+      "bytes": 1402145,
+      "sha256": "5ae3118cff26d57a6634c50894393b13953c814770226dd390081e07e11e2815"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-flight-stable-front.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-flight-stable-front.png",
+      "bytes": 1145167,
+      "sha256": "10a40ff66de66b31417ae48ab82eff8cb2f3577d0d4a66ba6a5b7092aebec48b"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-flight-stable-left.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-flight-stable-left.png",
+      "bytes": 1074825,
+      "sha256": "213df153f0bc53cfc7ab7c53fbcadb81c8802f0ec2f328223914631aaf58a351"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-flight-stable-right.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-flight-stable-right.png",
+      "bytes": 1157800,
+      "sha256": "ec5289d85ba4affc1a9ea6edacf93cc71c51f0b1425151699b47fa092274d3cb"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-flight-stable-back.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-flight-stable-back.png",
+      "bytes": 1144319,
+      "sha256": "62478eddf571b97595669592f137a28affc645ce2bda09a52eb99bae320820b3"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-flight-gameplay-mounted-left.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-flight-gameplay-mounted-left.png",
+      "bytes": 1490357,
+      "sha256": "cf58c29153ae0712f3deda360a9b9e468a6a28c7dc08b80e392b0e94cd71866b"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-flight-gameplay-mounted-right.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-flight-gameplay-mounted-right.png",
+      "bytes": 1694475,
+      "sha256": "1e5346f988a0f7904de55bed839db0e04c078f64c3807913fb1e119a835e2373"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-flight-gameplay-walk.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-flight-gameplay-walk.png",
+      "bytes": 1683197,
+      "sha256": "ed7796ac3ba72f9d05e28081cfd3f093e0f973a2e97ac78d5f788f9e81458c03"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T06-27-36-293Z\\medium-flight-gameplay-run.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-flight-gameplay-run.png",
+      "bytes": 1452597,
+      "sha256": "a81a9091a8d4d98a71c05ddc9da747278464a7eda938ed90b49c83be4cf6fefc"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\walk-run-supplement\\2026-10-12T06-35-35-372Z-94884439\\report.json",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/report.json",
+      "bytes": 52868,
+      "sha256": "0a7f5c9f7e916e3b936c223c4d081647a839362f47ddd88b064a25bc588116f2"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\walk-run-supplement\\2026-10-12T06-35-35-372Z-94884439\\medium-travel-drape-walk-front.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/medium-travel-drape-walk-front.png",
+      "bytes": 1433004,
+      "sha256": "6be95860e3ff34b687708cf5bad413d8027ec4f3acd82f98cf1b9006cb34210a"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\walk-run-supplement\\2026-10-12T06-35-35-372Z-94884439\\medium-travel-drape-walk-back.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/medium-travel-drape-walk-back.png",
+      "bytes": 1620448,
+      "sha256": "c53b0457e76ef575667cbf352390473b262cdaa49f16f6a8a8171e59c07fd8ad"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\walk-run-supplement\\2026-10-12T06-35-35-372Z-94884439\\medium-travel-drape-run-front.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/medium-travel-drape-run-front.png",
+      "bytes": 1495029,
+      "sha256": "5a5587b3d6534dc630173ddc627a01d6a2310aac466dff44e6e246196d3fbed8"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\walk-run-supplement\\2026-10-12T06-35-35-372Z-94884439\\medium-travel-drape-run-back.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/medium-travel-drape-run-back.png",
+      "bytes": 1687832,
+      "sha256": "2c96c2ee12cc6d4b34f0bd549a6680b6264145f9d0eb9b95d8a64516d7dbf2f9"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\walk-run-supplement\\2026-10-12T06-35-35-372Z-94884439\\medium-flight-walk-front.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/medium-flight-walk-front.png",
+      "bytes": 1429999,
+      "sha256": "108295915c87a39ad6a33384d88f0789fb6a62bfc70887bd1a85b8a018c0431d"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\walk-run-supplement\\2026-10-12T06-35-35-372Z-94884439\\medium-flight-walk-back.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/medium-flight-walk-back.png",
+      "bytes": 1619225,
+      "sha256": "8ce5e0df7e238e7592619b2ad757f1ee42c3109c839001ffd01507ef8eaa7c89"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\walk-run-supplement\\2026-10-12T06-35-35-372Z-94884439\\medium-flight-run-front.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/medium-flight-run-front.png",
+      "bytes": 1490451,
+      "sha256": "44d82bc6b110ba66248ad55d1d487691e3d3b2597c91bd6892876183fecf851b"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\walk-run-supplement\\2026-10-12T06-35-35-372Z-94884439\\medium-flight-run-back.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/medium-flight-run-back.png",
+      "bytes": 1687037,
+      "sha256": "7c9e9e71aff93f4deef17c799bc243dce9381991fff84174e50f924e41d17228"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\CHECKPOINT_VERIFICATION.json",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/provenance/CHECKPOINT_VERIFICATION.json",
+      "bytes": 415228,
+      "sha256": "261cad26b810437a52fca70b7e40dba53d6d3c7d573522a15241d6ba17c934c6"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\PRESERVATION_AFTER_QA.json",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/provenance/PRESERVATION_AFTER_QA.json",
+      "bytes": 75714,
+      "sha256": "40c9fbd5fc630d8cee745ce4f99398db8ddec5034042e2bf1cc76d61267d619b"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\VISUAL_REVIEW.json",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/provenance/VISUAL_REVIEW.json",
+      "bytes": 1394,
+      "sha256": "fa97c04699b241633b092d60995fb4998a40462e154783dc89f978cc4ea88faf"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\qa-walk-run-supplement.mjs",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/provenance/qa-walk-run-supplement.mjs",
+      "bytes": 14066,
+      "sha256": "e7816c41b756ca21ee1f6842bde211822c2ad7f348a33af027e04a1ea295a143"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\verify_checkpoint.py",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/provenance/verify_checkpoint.py",
+      "bytes": 1900,
+      "sha256": "79da221d54b8ec50ab80098bbdb5652d72511ea15beebdbf4f31e07738e16b5f"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\verify_preservation.py",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/provenance/verify_preservation.py",
+      "bytes": 2878,
+      "sha256": "9e98a86e2d219898e8970d5a343e0c44dd575c6714e86404e0b0add87c703414"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\finalize_fit_refresh.py",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/provenance/finalize_fit_refresh.py",
+      "bytes": 21308,
+      "sha256": "d2288eb8f6ac95cc6189370c8252256528a939c64c794b8e33c30044813577fa"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\scripts\\rider-blender-fit-qa.mjs",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/provenance/rider-blender-fit-qa.mjs",
+      "bytes": 21525,
+      "sha256": "cb029fa6145328ae0dba6b9b0f19e04dffe31b0f1923bcb926c99dd3b3c0844d"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\inspection\\INDEPENDENT_VISUAL_REVIEW.json",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/inspection/INDEPENDENT_VISUAL_REVIEW.json",
+      "bytes": 35863,
+      "sha256": "336df8808ac5abc59205b7cd6eaf9a74175cefddba2886cbc7e6dd8f8f631025"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\inspection\\make-independent-review.py",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/inspection/make-independent-review.py",
+      "bytes": 6366,
+      "sha256": "4ddc60fed867b8ce6a06c5646cff7eb47346e89a56700de426fc684a385a93f7"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\inspection\\mounted-all-full-frames.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/inspection/mounted-all-full-frames.png",
+      "bytes": 3927775,
+      "sha256": "7fd71e05d8fac46d1227c62c4eaea3ab7a2b2abcc833994462bbc8cf543ffc81"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\inspection\\stable-broad-travel.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/inspection/stable-broad-travel.png",
+      "bytes": 787724,
+      "sha256": "b0ab851148fdd7a3064080a41eb36ef7cb9ce8f7a50cfec35f2379a7da3fc95f"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\inspection\\stable-medium-flight.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/inspection/stable-medium-flight.png",
+      "bytes": 775467,
+      "sha256": "bf4ca78da191309693e22a1d55875cf36dd0893d3ee6dff0f4bd8dcb86d6e7e1"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\inspection\\stable-medium-travel.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/inspection/stable-medium-travel.png",
+      "bytes": 789467,
+      "sha256": "a9f05762ec292f71cb042ea8bfefbec40270f82cc3236a178918f9c79f503fd2"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\inspection\\stable-slight-travel.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/inspection/stable-slight-travel.png",
+      "bytes": 787898,
+      "sha256": "5447c913cbb435df560270e6f64816b447ec280fa6dfe7bd81f0f915dd2eca84"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\inspection\\walk-run-medium-flight-full-frames.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/inspection/walk-run-medium-flight-full-frames.png",
+      "bytes": 1841799,
+      "sha256": "a55ff67eaa5955153c3ca1e68102951a537f0ffd668124f88d526aee6d49cfe4"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\inspection\\walk-run-medium-travel-drape-full-frames.png",
+      "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/inspection/walk-run-medium-travel-drape-full-frames.png",
+      "bytes": 1844931,
+      "sha256": "f9a2148aa4133ebd30701909e8854dd404bce838400af7b7bba8c0cd4aae7265"
+    }
+  ]
+}

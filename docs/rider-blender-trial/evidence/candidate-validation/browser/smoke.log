@@ -1,0 +1,18 @@
+serving C:\Users\Robert\.codex\worktrees\rider-merge-review\Driftwing\dist at http://127.0.0.1:5217/driftwing/
+ok    boot: splash gone, game ready  (6.3 s)
+ok    first frame steps are never negative  (min dt 0.000 s)
+ok    camera is calm at boot  (max trauma 0.00)
+ok    starts on the title
+ok    Enter starts play
+ok    flies under keyboard control  (flying, moved 54 m)
+ok    Esc pauses
+ok    pause menu shows the build stamp  (Build 81761be · 12 Oct 2026, 07:48 UTC)
+ok    time of day holds still while paused  (0.36210 -> 0.36210)
+ok    Esc resumes
+ok    switch quality to high at runtime  (msaa 4)
+ok    switch quality to low at runtime  (msaa 0)
+ok    no errors (debug run)
+ok    production boot has no window.__dw
+ok    no errors (production run)
+
+15/15 checks passed

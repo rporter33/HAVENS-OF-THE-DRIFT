@@ -6,7 +6,7 @@ import { STABLE_TABS, looksDiffer, nextTab, withBreed } from './stableModel';
 describe('stable tabs', () => {
   it('offer every cosmetic slot in the catalog', () => {
     const slots = new Set<CosmeticSlot>();
-    for (const t of STABLE_TABS) for (const s of t.sections) if (s.kind === 'options') slots.add(s.slot);
+    for (const t of STABLE_TABS) for (const s of t.sections) if (s.kind === 'options' || s.kind === 'garment') slots.add(s.slot);
     for (const c of COSMETICS) expect(slots.has(c.slot)).toBe(true);
   });
   it('edit every field of both looks', () => {
@@ -15,6 +15,7 @@ describe('stable tabs', () => {
     for (const t of STABLE_TABS) {
       for (const s of t.sections) {
         if (s.kind === 'options' || s.kind === 'swatches') (s.target === 'wyvern' ? wyvern : rider).add(s.key);
+        if (s.kind === 'garment' && s.key in DEFAULT_RIDER) rider.add(s.key);
         if (s.kind === 'build') rider.add('build');
       }
     }

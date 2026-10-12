@@ -13,17 +13,30 @@ import type { EventBus } from '../../core/events';
 import type { RiderRenderable } from '../../game/contracts';
 import type { QualityProfile } from '../../render/quality';
 import { PLAYER_TUNING } from '../../player/tuning';
-import { buildRiderModel, recolorRiderModel, type RiderModel } from './model';
+import { buildRiderModel, recolorRiderModel, riderMaterial, type RiderModel } from './model';
 import { riderShapeKey } from './palette';
 import { RiderAnimator, type AnimContext, type SaddleFlank } from './animator';
 import { ClothRig, type ClothLod } from './clothRig';
-import { allClothSpecs, type ColliderName } from './accessories';
-import type { Capsule } from './cloth';
+import type { ColliderName } from './accessories';
+import type { Capsule, Cloth } from './cloth';
 import { B } from './rig';
+import type { RiderProof } from './proof';
+import { riderClothSpecs } from './wardrobeModel';
+import { proofTextureSize, type ProofMaps } from './proofMaterials';
+import { loadImportedRider, type ImportedRiderAsset, type TrialSelection } from './importContract';
+import {authoredClothSurface} from './authoredProvider';
 
 const P = PLAYER_TUNING;
 
 export interface RiderOptions {
+  /** Explicit local development trial. Never serialized into RiderLook. */
+  trial?: TrialSelection;
+  /** Explicit C02 study selection; never stored in RiderLook or save data. */
+  proof?: RiderProof;
+  proofMaps?: ProofMaps;
+  /** High-only comparison; Low/Medium retain their fixed memory budgets. */
+  proofHighSize?: 3072 | 4096;
+  proofTextureLimit?: number;
   /** Ground for foot placement on slopes (optional: flat at pose.position otherwise). */
   terrain?: Pick<TerrainQuery, 'groundAt'>;
   /**
@@ -39,9 +52,12 @@ export interface RiderOptions {
   quality?: QualityProfile;
 }
 
-function clothLod(q: QualityProfile | undefined): ClothLod {
-  if (!q) return { detail: 1, shadows: true };
-  return { detail: q.level === 'low' ? 0.5 : q.level === 'medium' ? 0.75 : 1, shadows: q.shadows };
+function clothLod(q: QualityProfile | undefined, highSize?: 3072 | 4096, textureLimit?: number): ClothLod {
+  if (!q) return { detail: 1, shadows: true, proofAtlasSize: 1024 };
+  // Increase only the drawn surface subdivisions. The cloth particles, contacts, tethers
+  // and fixed-step solver stay identical across quality levels.
+  return { detail: q.level === 'low' ? 0.5 : q.level === 'medium' ? 1 : q.level === 'high' ? 4 / 3 : 2, shadows: q.shadows,
+    proofAtlasSize: proofTextureSize(q.level, highSize, textureLimit) };
 }
 
 const smooth = (e0: number, e1: number, x: number) => {
@@ -71,11 +87,31 @@ interface ColliderDef {
 }
 
 export class Rider implements RiderRenderable {
+  readonly trialState: { selection?: TrialSelection; status: 'off'|'loading'|'ready'|'failed'|'disposed'; error?: string } = {status:'off'};
+  private importedAsset?: ImportedRiderAsset;
+  private disposed=false;
+  private trialRequest=0;
   /** Render-only sockets, resolved against the current rig after animation and model rebuilds. */
   equipmentFrame(socket: 'bracer' | 'harness' | 'waist', out: Matrix4): Matrix4 {
     const { bones, dims } = this.model.rig;
     out.copy(bones[socket === 'bracer' ? B.foreArmL : socket === 'waist' ? B.hips : B.chest].matrixWorld);
     return out.scale(_v.set(socket === 'bracer' ? dims.g : dims.w, dims.h, dims.g));
+  }
+  /** Fitted visual anchors only; fixed-step Windline physics never reads these. */
+  equipmentFittedPoint(socket:'dorsal'|'leftBack'|'leftFront',out:Vector3):boolean {
+    const fit=this.model.harness;if(!fit)return false;
+    const anchor=fit.anchors[socket],rig=this.model.rig;out.set(0,0,0);
+    for(let i=0;i<anchor.skin.length;i+=2){const bone=anchor.skin[i],weight=anchor.skin[i+1];
+      _v.copy(anchor.p).applyMatrix4(rig.skeleton.boneInverses[bone]).applyMatrix4(rig.bones[bone].matrixWorld);out.addScaledVector(_v,weight);
+    }
+    return true;
+  }
+  get hasRestingHarness():boolean{return !!this.model.harness;}
+  equipmentSocket(name:string,out:Vector3):boolean {
+    const anchor=this.model.harness?.sockets?.[name];if(!anchor)return false;
+    const rig=this.model.rig;out.set(0,0,0);
+    for(let i=0;i<anchor.skin.length;i+=2){const bone=anchor.skin[i];_v.copy(anchor.p).applyMatrix4(rig.skeleton.boneInverses[bone]).applyMatrix4(rig.bones[bone].matrixWorld);out.addScaledVector(_v,anchor.skin[i+1]);}
+    return true;
   }
 
   readonly group = new Group();
@@ -125,7 +161,8 @@ export class Rider implements RiderRenderable {
     this.opts = opts;
     this.look = { ...look };
     this.saddleRef = opts.saddle ?? null;
-    this.model = buildRiderModel(this.look);
+    this.lod = clothLod(opts.quality, opts.proofHighSize, opts.proofTextureLimit);
+    this.model = buildRiderModel(this.look, { proof: opts.proof, maps: opts.proofMaps, atlasSize: this.lod.proofAtlasSize });
     this.group.add(this.model.mesh);
     this.animator = new RiderAnimator(this.model.rig);
     const cap = (): Capsule => ({ ax: 0, ay: -1e4, az: 0, bx: 0, by: -1e4, bz: 0, r: 0.01 });
@@ -135,6 +172,8 @@ export class Rider implements RiderRenderable {
       shoulders: cap(),
       armL: cap(),
       armR: cap(),
+      foreArmL: cap(),
+      foreArmR: cap(),
       thighL: cap(),
       thighR: cap(),
       shinL: cap(),
@@ -144,7 +183,7 @@ export class Rider implements RiderRenderable {
       mount: cap(),
     };
     this.defineColliders();
-    this.lod = clothLod(opts.quality);
+    this.lod = clothLod(opts.quality, opts.proofHighSize, opts.proofTextureLimit);
     this.cloth = this.makeCloth();
     const ground = (x: number, z: number, nearY: number) => {
       const g = this.opts.terrain?.groundAt(x, z, nearY + 0.6);
@@ -169,10 +208,28 @@ export class Rider implements RiderRenderable {
         }),
       );
     }
+    if(opts.trial)void this.loadTrial(opts.trial);
+  }
+
+  private async loadTrial(selection:TrialSelection):Promise<void>{
+    const request=++this.trialRequest;
+    this.trialState.selection=selection;this.trialState.status='loading';
+    try{
+      const url=selection==='compatibility'?new URL('../../assets/rider-blender/compatibility.glb',import.meta.url):new URL('../../assets/rider-blender/rider-trial.glb',import.meta.url);
+      const asset=await loadImportedRider(url.href);
+      if(asset.kind!==(selection==='blender'?'blender-authored':'compatibility-fixture'))throw Error('Rider import: selected provider does not match the loaded asset');
+      if(this.disposed||request!==this.trialRequest)return;
+      const prior=this.importedAsset;
+      this.importedAsset=asset;
+      // Use the current preview/Revert result, never the look captured when loading began.
+      try{this.rebuildModel();}catch(error){this.importedAsset=prior;throw error;}
+      this.trialState.status='ready';delete this.trialState.error;
+    }catch(error){if(!this.disposed&&request===this.trialRequest){this.trialState.status='failed';this.trialState.error=String(error);}}
   }
 
   setLook(look: RiderLook): void {
     const sameShape = riderShapeKey(look) === riderShapeKey(this.look);
+    const previousLook=this.look;
     this.look = { ...look };
     if (sameShape) {
       // Colors only (every swatch click in the Stable): retint in place, no rebuild.
@@ -180,30 +237,52 @@ export class Rider implements RiderRenderable {
       this.cloth.recolor(this.look);
       return;
     }
+    try{this.rebuildModel();}catch(error){this.look=previousLook;throw error;}
+  }
+
+  private rebuildModel():void {
+    // Construct before disposing the working comparison so an import error is recoverable.
+    const next=buildRiderModel(this.look,{proof:this.opts.proof,maps:this.opts.proofMaps,atlasSize:this.lod.proofAtlasSize,importedAsset:this.importedAsset});
+    let nextCloth:ClothRig;
+    try{nextCloth=this.makeCloth(undefined,next);}
+    catch(error){next.harness?.geometry.dispose();next.geometry.dispose();next.rig.skeleton.dispose();throw error;}
     const old = this.model;
     this.group.remove(old.mesh);
+    old.harness?.mesh.removeFromParent();old.harness?.geometry.dispose();
     old.geometry.dispose();
-    this.model = buildRiderModel(this.look);
+    this.model = next;
     this.group.add(this.model.mesh);
+    if(this.model.harness)this.group.add(this.model.harness.mesh);
     this.animator.setRig(this.model.rig);
     old.rig.skeleton.dispose();
     this.cloth.dispose();
     this.defineColliders();
-    this.cloth = this.makeCloth();
+    this.cloth = nextCloth;
     this.ctx.standHeight = this.model.rig.dims.hipsY;
     this.clothFresh = true;
   }
 
   /** Optional: follow graphics quality changes (cloth detail, cloth shadows). */
   setQuality(q: QualityProfile): void {
-    this.lod = clothLod(q);
+    this.lod = clothLod(q, this.opts.proofHighSize, this.opts.proofTextureLimit);
+    if (this.model.textured) this.model.mesh.material = riderMaterial(this.opts.proofMaps ?? 'color', this.lod.proofAtlasSize);
+    if(this.model.harness)this.model.harness.mesh.material=this.model.mesh.material;
+    const states = this.model.textured ? new Map(this.cloth.pieces.map(pc => [pc.spec.name, pc.cloth])) : undefined;
     this.cloth.dispose();
-    this.cloth = this.makeCloth();
-    this.clothFresh = true;
+    this.cloth = this.makeCloth(states);
+    if (!states) this.clothFresh = true;
   }
 
-  private makeCloth(): ClothRig {
-    return new ClothRig(allClothSpecs(this.model.ctx, this.look), this.model.rig.bindPos, this.group, this.capsules, this.lod);
+  private makeCloth(states?: ReadonlyMap<string, Cloth>,model=this.model): ClothRig {
+    const specs = riderClothSpecs(model.ctx, model.proof);
+    return new ClothRig(specs, model.rig.bindPos, this.group, this.capsules,
+      model.textured ? { ...this.lod, proofMaps: this.opts.proofMaps ?? 'color', compatibilitySurface:this.opts.trial==='compatibility'&&!!this.importedAsset,
+        authoredSurface:this.importedAsset?.kind==='blender-authored'?spec=>authoredClothSurface(this.importedAsset!,model.ctx.d.build,model.proof,spec):undefined } : this.lod,
+      this.opts.terrain ? (x, _y, z) => {
+        const ground = this.opts.terrain!.groundAt(x, z, this.origin.y - this.model.rig.dims.hipsY + .3);
+        // Reject an overhead ledge/deck; the same terrain query supplies walking and foot IK.
+        return ground && ground.y < this.origin.y + .2 ? ground.y : null;
+      } : undefined, states);
   }
 
   private defineColliders(): void {
@@ -218,6 +297,8 @@ export class Rider implements RiderRenderable {
       { name: 'shoulders', bone: B.chest, a: bp[B.upperArmL].clone().add(v(-0.02, 0.015, -0.01)), b: bp[B.upperArmR].clone().add(v(0.02, 0.015, -0.01)) },
       { name: 'armL', bone: B.upperArmL, a: bp[B.upperArmL].clone(), b: bp[B.foreArmL].clone() },
       { name: 'armR', bone: B.upperArmR, a: bp[B.upperArmR].clone(), b: bp[B.foreArmR].clone() },
+      { name: 'foreArmL', bone: B.foreArmL, a: bp[B.foreArmL].clone(), b: bp[B.handL].clone() },
+      { name: 'foreArmR', bone: B.foreArmR, a: bp[B.foreArmR].clone(), b: bp[B.handR].clone() },
       { name: 'thighL', bone: B.thighL, a: bp[B.thighL].clone().add(v(0, -0.03, 0)), b: bp[B.shinL].clone() },
       { name: 'thighR', bone: B.thighR, a: bp[B.thighR].clone().add(v(0, -0.03, 0)), b: bp[B.shinR].clone() },
       { name: 'shinL', bone: B.shinL, a: bp[B.shinL].clone(), b: bp[B.footL].clone() },
@@ -231,6 +312,8 @@ export class Rider implements RiderRenderable {
       shoulders: 0.06 * g,
       armL: 0.055 * g,
       armR: 0.055 * g,
+      foreArmL: 0.045 * g,
+      foreArmR: 0.045 * g,
       thighL: 0.088 * g,
       thighR: 0.088 * g,
       shinL: 0.062 * g,
@@ -242,6 +325,7 @@ export class Rider implements RiderRenderable {
   }
 
   update(dt: number, pose: RiderPose, saddle: Object3D | null): void {
+    if(this.model.harness)this.model.harness.mesh.visible=this.model.harness.kind==='windkeel'||!pose.mounted;
     dt = Math.min(0.1, Math.max(0, dt));
     this.time += dt;
     if (saddle) this.saddleRef = saddle;
@@ -373,6 +457,7 @@ export class Rider implements RiderRenderable {
       this.frameVel.add(this.dv);
     }
     this.cloth.update(dt, bones, this.origin, this.dv, pose.airflow, this.time);
+    this.model.harness?.correctSurface?.(this.cloth.pieces,this.model.rig);
     this.lastAction = action;
   }
 
@@ -473,11 +558,13 @@ export class Rider implements RiderRenderable {
   }
 
   dispose(): void {
+    this.disposed=true;this.trialRequest++;this.trialState.status='disposed';
     for (const u of this.unsub) u();
     this.unsub.length = 0;
     this.cloth.dispose();
     this.group.removeFromParent();
     this.model.geometry.dispose();
+    this.model.harness?.geometry.dispose();
     this.model.rig.skeleton.dispose();
   }
 }

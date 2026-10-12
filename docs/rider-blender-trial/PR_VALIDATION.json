@@ -1,0 +1,747 @@
+{
+  "verifiedUtc": "2026-10-12T08:13:32.740952+00:00",
+  "branch": "codex/rider-windkeel-review",
+  "parents": {
+    "releasedMain": "81761be3a4ce53ee1c90cdd9957a3171fe704a8a",
+    "riderPrerequisite": "8e055069703c83308d5508ee72e5ad1d15ef348e"
+  },
+  "scope": "Current candidate working/index source; final publication commit is the PR head. Precommit production build stamp identifies81761be and runnerDirty=true; runtime hashes disambiguate the overlay. Exact-head CI follows publication.",
+  "technical": {
+    "startedUtc": "2026-10-12T07:41:07.311Z",
+    "reason": "Full unit retry after original 1321/1322 run timed out on unchanged legacy atlas test; isolated unchanged proof.test.ts passed15/15 in19.24s. No tolerance changes. Remaining required audits/build did not run in the first fail-fast runner.",
+    "checks": [
+      {
+        "id": "unit-retry",
+        "args": [
+          "node_modules/vitest/vitest.mjs",
+          "run",
+          "--maxWorkers=1",
+          "--reporter=dot"
+        ],
+        "exitCode": 0,
+        "elapsedMs": 233380
+      },
+      {
+        "id": "legacy-audit",
+        "args": [
+          "node_modules/vitest/vitest.mjs",
+          "run",
+          "--config",
+          "scripts/rider-qa.config.mjs",
+          "--maxWorkers=1"
+        ],
+        "exitCode": 0,
+        "elapsedMs": 83634
+      },
+      {
+        "id": "authored-audit",
+        "args": [
+          "node_modules/vitest/vitest.mjs",
+          "run",
+          "--config",
+          "scripts/rider-blender-qa.config.mjs",
+          "--maxWorkers=1"
+        ],
+        "exitCode": 0,
+        "elapsedMs": 154368
+      },
+      {
+        "id": "build",
+        "args": [
+          "node_modules/vite/bin/vite.js",
+          "build"
+        ],
+        "exitCode": 0,
+        "elapsedMs": 2324
+      }
+    ]
+  },
+  "initialUnitFailure": {
+    "testsPassed": 1321,
+    "testsFailed": 1,
+    "files": 125,
+    "test": "proof.test.ts shared1K/2K/3K/4K atlas/cloth case",
+    "failure": "unchanged30000ms timeout",
+    "isolatedRetry": {
+      "tests": 15,
+      "exitCode": 0,
+      "durationSeconds": 19.24,
+      "timedCaseMilliseconds": 12340
+    },
+    "fullRetry": {
+      "tests": 1322,
+      "files": 125,
+      "passed": true,
+      "durationSeconds": 232.83
+    },
+    "tolerancesChanged": false
+  },
+  "browser": {
+    "startedUtc": "2026-10-12T07:54:24.892Z",
+    "source": "Isolated current-main+rider candidate; original trial/runtime/assets preserved.",
+    "origin": "http://127.0.0.1:5216",
+    "production": "http://127.0.0.1:5218",
+    "contexts": "Fresh nonpersistent browser contexts; owner saves not opened.",
+    "checks": [
+      {
+        "id": "gameplay-lifecycle",
+        "args": [
+          "scripts/rider-blender-gameplay-qa.mjs",
+          "http://127.0.0.1:5216"
+        ],
+        "exitCode": 0,
+        "elapsedMs": 277315
+      },
+      {
+        "id": "stable",
+        "args": [
+          "scripts/rider-blender-stable-qa.mjs",
+          "http://127.0.0.1:5216"
+        ],
+        "exitCode": 0,
+        "elapsedMs": 22821
+      },
+      {
+        "id": "motion-regression",
+        "args": [
+          "scripts/rider-blender-windkeel-qa.mjs",
+          "http://127.0.0.1:5216"
+        ],
+        "exitCode": 0,
+        "elapsedMs": 53599
+      },
+      {
+        "id": "delivery",
+        "args": [
+          "scripts/rider-blender-delivery-check.mjs",
+          "--port=5217"
+        ],
+        "exitCode": 0,
+        "elapsedMs": 7895
+      },
+      {
+        "id": "smoke",
+        "args": [
+          "scripts/smoke.mjs",
+          "--no-build",
+          "--port",
+          "5217"
+        ],
+        "exitCode": 0,
+        "elapsedMs": 30428
+      },
+      {
+        "id": "existing-browser",
+        "args": [
+          "scripts/rider-blender-full-browser.mjs",
+          "--production=http://127.0.0.1:5218",
+          "--dev=http://127.0.0.1:5216",
+          "--comparison=http://127.0.0.1:5211"
+        ],
+        "exitCode": 1,
+        "elapsedMs": 455623
+      }
+    ]
+  },
+  "fit": {
+    "cases": 4,
+    "captures": 32,
+    "errors": [],
+    "transitions": [
+      {
+        "id": "medium-travel",
+        "build": "medium",
+        "transitions": [
+          {
+            "name": "actual-takeoff",
+            "mode": "flying"
+          },
+          {
+            "name": "actual-landing-and-dismount",
+            "landed": "landed",
+            "dismount": "dismounting",
+            "finished": "onFoot"
+          }
+        ],
+        "assetVerification": {
+          "method": "Separate same-URL API GET after runtime ready",
+          "url": "http://127.0.0.1:5216/src/assets/rider-blender/rider-trial.glb",
+          "status": 200,
+          "bytes": 19110536,
+          "sha256": "d6f2ffa790d43e8217ab6d64bdfdf994b424d1d5cb1d1b8685403b2001d40dc8"
+        }
+      },
+      {
+        "id": "slight-travel",
+        "build": "slight",
+        "transitions": [
+          {
+            "name": "actual-takeoff",
+            "mode": "flying"
+          },
+          {
+            "name": "actual-landing-and-dismount",
+            "landed": "landed",
+            "dismount": "dismounting",
+            "finished": "onFoot"
+          }
+        ],
+        "assetVerification": {
+          "method": "Separate same-URL API GET after runtime ready",
+          "url": "http://127.0.0.1:5216/src/assets/rider-blender/rider-trial.glb",
+          "status": 200,
+          "bytes": 19110536,
+          "sha256": "d6f2ffa790d43e8217ab6d64bdfdf994b424d1d5cb1d1b8685403b2001d40dc8"
+        }
+      },
+      {
+        "id": "broad-travel",
+        "build": "broad",
+        "transitions": [
+          {
+            "name": "actual-takeoff",
+            "mode": "flying"
+          },
+          {
+            "name": "actual-landing-and-dismount",
+            "landed": "landed",
+            "dismount": "dismounting",
+            "finished": "onFoot"
+          }
+        ],
+        "assetVerification": {
+          "method": "Separate same-URL API GET after runtime ready",
+          "url": "http://127.0.0.1:5216/src/assets/rider-blender/rider-trial.glb",
+          "status": 200,
+          "bytes": 19110536,
+          "sha256": "d6f2ffa790d43e8217ab6d64bdfdf994b424d1d5cb1d1b8685403b2001d40dc8"
+        }
+      },
+      {
+        "id": "medium-flight",
+        "build": "medium",
+        "transitions": [
+          {
+            "name": "actual-takeoff",
+            "mode": "flying"
+          },
+          {
+            "name": "actual-landing-and-dismount",
+            "landed": "landed",
+            "dismount": "dismounting",
+            "finished": "onFoot"
+          }
+        ],
+        "assetVerification": {
+          "method": "Separate same-URL API GET after runtime ready",
+          "url": "http://127.0.0.1:5216/src/assets/rider-blender/rider-trial.glb",
+          "status": 200,
+          "bytes": 19110536,
+          "sha256": "d6f2ffa790d43e8217ab6d64bdfdf994b424d1d5cb1d1b8685403b2001d40dc8"
+        }
+      }
+    ]
+  },
+  "gameplay": {
+    "checks": 26,
+    "passed": 26,
+    "expectedFailedLoad404": [
+      {
+        "phase": "failed-load",
+        "error": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      }
+    ],
+    "captures": 23
+  },
+  "stable": {
+    "checks": 14,
+    "allPassed": true
+  },
+  "delivery": {
+    "checks": 4,
+    "allPassed": true,
+    "expectedMissingBrowserProbe": "exit1, report written, owned5217 listener released; separate expected-launch-failure.json"
+  },
+  "motion": {
+    "cases": 3,
+    "errors": [],
+    "fixture": "Scripted seat; not controller/dragon contact certification"
+  },
+  "smoke": {
+    "passed": 15,
+    "total": 15
+  },
+  "existingBrowser": {
+    "primaryPassed": 14,
+    "primaryTotal": 15,
+    "failed": [
+      "09-windline-performance-check"
+    ]
+  },
+  "cpu": {
+    "gate": "swinging p95<20ms; query budgets unchanged",
+    "candidate": [
+      {
+        "depth": 18,
+        "p50Ms": 2.9000000059604645,
+        "p95Ms": 7.199999995529652,
+        "p99Ms": 10.5,
+        "queriesPerStep": 474,
+        "sweepsPerStep": 25
+      },
+      {
+        "depth": 55,
+        "p50Ms": 4.799999997019768,
+        "p95Ms": 23,
+        "p99Ms": 55.5,
+        "queriesPerStep": 1439,
+        "sweepsPerStep": 25
+      }
+    ],
+    "correctedBaseline": [
+      {
+        "depth": 18,
+        "p50Ms": 4.199999995529652,
+        "p95Ms": 65.5,
+        "p99Ms": 867.1000000014901,
+        "queriesPerStep": 474,
+        "sweepsPerStep": 25
+      },
+      {
+        "depth": 55,
+        "p50Ms": 6.899999998509884,
+        "p95Ms": 34.29999999701977,
+        "p99Ms": 84.19999999552965,
+        "queriesPerStep": 1439,
+        "sweepsPerStep": 25
+      }
+    ],
+    "correctedBaselineExitCode": 1,
+    "qualification": "Both are generated-provider opt-out. First automatic baseline attempt failed head identity before CPU; retained, not counted as CPU result. Corrected run explicitly expected8e05506. Historical standalone baselinePASS/trialFAIL still retained. This does not establish cause, authored-provider performance or physical GPU/IGP/VRAM certification."
+  },
+  "visualReview": {
+    "root": "MediumTravel Stablefront and bothmounted sides directly inspected; no new gross detached/suspended main straps.",
+    "independent": "20original PNGs:12Stable left/right/back and8mounted frames across4cases. Thinconnected shoulders/mainstraps follow torso; no new gross fit defect. Rear equipment housings intentionally project. Mounted50\u201370px rider supports silhouette/attachment only; no obstructed onfoot acceptance, final concept likeness or exhaustive fit claim."
+  },
+  "runtimeHashes": [
+    {
+      "path": "src/assets/rider-blender/compatibility.glb",
+      "bytes": 138576,
+      "sha256": "8abf6d08a5f4fc1a0b06a28d9aa74bae478eb53ce9f9e8a3724bc890ba5a8d0f",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "src/assets/rider-blender/rider-trial.glb",
+      "bytes": 19110536,
+      "sha256": "d6f2ffa790d43e8217ab6d64bdfdf994b424d1d5cb1d1b8685403b2001d40dc8",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "src/creatures/rider/Rider.ts",
+      "bytes": 26136,
+      "sha256": "53dab52367b056f4d079e52ce4b8fcc4966d0e3ee2e831ced9f84404a198f972",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "src/creatures/rider/authoredConstruction.ts",
+      "bytes": 6726,
+      "sha256": "c33ba75910092d9a47cf515fb6e097458dba3d4c3fd4076cdb35d82f88dfa53f",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "src/creatures/rider/authoredProvider.ts",
+      "bytes": 11355,
+      "sha256": "61c35d56db421e49c30c1297bac3bcdac2717ad343ff93d9db6f164a15b67545",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "src/creatures/rider/body.ts",
+      "bytes": 23509,
+      "sha256": "3dfd77b6d2edff0225205827143b578874474c5faf2eefe3c96bc5579d81fd7b",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "src/creatures/rider/clothBinding.test.ts",
+      "bytes": 5513,
+      "sha256": "c4283c2d054160c046ef1ba581b874a91dc5bc974cc1f595cdff6f16a7562055",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "src/creatures/rider/clothBinding.ts",
+      "bytes": 5927,
+      "sha256": "8792bfcc0412a2dd946d94ecfa8bdfa84c81f1a62c85192a65e1920564ed593f",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "src/creatures/rider/clothRig.ts",
+      "bytes": 36791,
+      "sha256": "e7a67509eec2696e9a8866c4c82e5e280ef423f6f3e384de16ac5f675007034b",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "src/creatures/rider/hair.ts",
+      "bytes": 11762,
+      "sha256": "7a1bf3eb9f3b54beceae290e341eba7d4c0c82479cdcb476aa75893021706ed7",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "src/creatures/rider/importContract.test.ts",
+      "bytes": 7564,
+      "sha256": "979ca69855016e246929fb454575de9c14ff53aadea86e15c4bcfe81da3a735d",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "src/creatures/rider/importContract.ts",
+      "bytes": 17868,
+      "sha256": "ba9383c586e4c90bd355cae20d80374febebb8323a87adffc609dd8ff696aff9",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "src/creatures/rider/meshKit.ts",
+      "bytes": 16741,
+      "sha256": "6faeda6d5254c00a9529aa8b4002d2a403d06b4afa4d38b33ce6d09957b37d02",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "src/creatures/rider/model.ts",
+      "bytes": 11509,
+      "sha256": "dab03fad3b9fdae5ee53417a6b43e97ec21dc4cc2b779bd48d7634a6e8267a6c",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "src/creatures/rider/restingHarness.test.ts",
+      "bytes": 6119,
+      "sha256": "f0d64e80caf57856063f1baf4bb4dc29439f22306eafa57b41e5fcd0e8322b13",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "src/creatures/rider/restingHarness.ts",
+      "bytes": 8307,
+      "sha256": "73fca657dfa2b0ba29bb083aebd1abcf00d73e925b845a555a27275b69fefdae",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "src/creatures/rider/wardrobeModel.ts",
+      "bytes": 7486,
+      "sha256": "ef12398bfdf6f403afec012c2ba948bcd04d44106462e16a66415bd9ef580dd0",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "src/creatures/rider/windkeelContact.test.ts",
+      "bytes": 8314,
+      "sha256": "94a561af6e9a9f89ad06bb84e59e48cd344cb141102976d494d075bf8dde73a9",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "src/creatures/rider/windkeelContact.ts",
+      "bytes": 10244,
+      "sha256": "4cafde4cb9e6214d033a08ff1f0553535848c0511edcb1f24ea2d30d361bf14c",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "src/creatures/rider/windkeelHarness.test.ts",
+      "bytes": 8268,
+      "sha256": "486a735b66e7ab09cb7da228d078f621bac526c5505e8f4c08433b354994d622",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "src/creatures/rider/windkeelHarness.ts",
+      "bytes": 11905,
+      "sha256": "eba47b4f39b323701f4288f64f4fb36af28c81d94292c26cfbd1a4bd070563d8",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "src/debug/params.ts",
+      "bytes": 3723,
+      "sha256": "185b66eabcf82d43430f34a793e76ad56807c887b6a9b184b563ca28cd49dd34",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "src/debug/showcases/rider.ts",
+      "bytes": 19813,
+      "sha256": "0d725fdae3f54a878aa0df9b24c5cc4f57733780ba5fec49f94b0d63f6c03822",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "src/game/Game.ts",
+      "bytes": 24975,
+      "sha256": "f74d4a3d76810797c1dda75b84859bf7a74cc9f91da3381e4ad461417df20956",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "src/traversal/SkyLanceVisuals.ts",
+      "bytes": 15622,
+      "sha256": "16b64199d2b9b2c7d3d31dfbe8d6917106023a7900b1c28d95330dee32a0199b",
+      "matchesPlaytestedTrial": true
+    },
+    {
+      "path": "vite.config.ts",
+      "bytes": 1943,
+      "sha256": "b14e6cced25905ccda8129cd3a81f08bc2522f8e30d490020b1211b4254e3e6e",
+      "matchesPlaytestedTrial": true
+    }
+  ],
+  "evidence": [
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/initial-fail-fast/windkeel-resting-final-checks.json",
+      "bytes": 797,
+      "sha256": "ec80f5fb600ea116ac609ced3d26c485f06df46c8ba0277aa187470072ad76f8"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/initial-fail-fast/windkeel-resting-final-typecheck.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/initial-fail-fast/windkeel-resting-final-unit.log",
+      "bytes": 9081,
+      "sha256": "65f139f9ddabac0713691e2bbb359cb0afab7a756f7dc0c0253e544742a98e2f"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/technical/authored-audit.log",
+      "bytes": 200,
+      "sha256": "38bdf1996a04ebfa1a21b5c083de7ef6b2a51a7a24e85f57e98527260c26bf2e"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/technical/build.log",
+      "bytes": 7542,
+      "sha256": "1d547e518f92a78ff14fd55964b88c0af110da3f66463fe6cce887b56adfd0c1"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/technical/legacy-audit.log",
+      "bytes": 199,
+      "sha256": "b8001eda6e520bd94f72f99e2530965a902a34d7d8657b183067485205aa893f"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/technical/report.json",
+      "bytes": 1215,
+      "sha256": "1430f321b60a2b2fc1e8e7f874d4fc90fb69f2777d7121025b4b02ca4f0a4d92"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/technical/unit-retry.log",
+      "bytes": 8293,
+      "sha256": "4b6febdd10c3521cebb8ff6fe55f2f93a91bfa611533fde5c0a8306831c83c24"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/browser/delivery.log",
+      "bytes": 238,
+      "sha256": "bff58bd64d762a8c1de5477fb609dd668773c4200dbac26b81321d464d314686"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/browser/existing-browser.log",
+      "bytes": 1784,
+      "sha256": "86424f99b1c6fdb4c7e0d114e631aa3e4d1cda0fb0b7bc2af7b8878ce2a308de"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/browser/gameplay-lifecycle.log",
+      "bytes": 7740,
+      "sha256": "250e291553fd4da3153fbbefb5c8d0a3e3fc5a0987c14381e20177646e4ec672"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/browser/motion-regression.log",
+      "bytes": 1174,
+      "sha256": "03f466b4270f27d57cf48477d6473741841d88c0cd41536b984686059f0ddf49"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/browser/report.json",
+      "bytes": 1566,
+      "sha256": "aa2db07f8bece8146074895df871c20eb77547fad4a303eeee93018eb3844f32"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/browser/smoke.log",
+      "bytes": 776,
+      "sha256": "7e5a6f257c1e6777c3b307c094c4f1e1c808b3753e4acabc4f308a44d62595a2"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/browser/stable.log",
+      "bytes": 708,
+      "sha256": "b3def15f5b30a09351ef0f83474b03c97fcb1ac7ca1be9b3648436bf6b09595c"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/gameplay-lifecycle.json",
+      "bytes": 26362,
+      "sha256": "0478b7cbf95b30ff3282b7df3e56c49cdb145a46e0481ee36b541aa872d75514"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/stable-transactions.json",
+      "bytes": 17459,
+      "sha256": "9763517975d269b871277f552028f1e2967eaaee77d84ec32a4d0c41fe193a05"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/delivery.json",
+      "bytes": 2366,
+      "sha256": "8080d699a60eabb3be5e065073b4e8caee014f817e4acb35767dcf0018381b4c"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/expected-launch-failure.json",
+      "bytes": 391,
+      "sha256": "c6042d77c8e39f40e38a84057b9c4bef6cfa440702e9012ab272323e35282e17"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser.json",
+      "bytes": 5604,
+      "sha256": "5d89057f047e89c4d2b038e60c238c583e778bf6a378649009e776a90ac0d96c"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/01-windline-gameplay-check.log",
+      "bytes": 2087,
+      "sha256": "c89a42521ac8e278dafffeb5dac7a230bb280371aeeed4e8b22d89e2398a2651"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/02-windline-flow-check.log",
+      "bytes": 1731,
+      "sha256": "232fe02693fb8360af24c053f2932cd4a656275c135c5a42c5b50247f3165ed6"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/03-windline-reticle-check.log",
+      "bytes": 7617,
+      "sha256": "960b5239b78d735e0d052727dfde7a984d7d30c8a1be03f41a392121af038afd"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/04-windline-reticle-motion-check.log",
+      "bytes": 2242,
+      "sha256": "335b47167addcbc03543ac20c68a7549c8e2f991321a5dbe258fc20eb7ac0ac6"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/05-editor-check.log",
+      "bytes": 167,
+      "sha256": "ea8718fb6b79977249e9b7351199a69d857452cfbcaab5e9a67c69e3bdffe9d8"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/06-audio-qa.log",
+      "bytes": 2885,
+      "sha256": "2bd207c76b43232517b6c7d2eb07a8ca81d822b014d13f9b21c4013b9f256cec"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/07-windline-hud-layout-check.log",
+      "bytes": 64,
+      "sha256": "f428648ecfca441eabca2e24e2e8647f46d19631c26236f52f8b940434fec8e6"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/08-windline-hud-layout-check.log",
+      "bytes": 64,
+      "sha256": "b045a7b22b917bee37228549fb064ac8b0cc7a61514c49fdedaf9db989616662"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/09-windline-performance-check.log",
+      "bytes": 452,
+      "sha256": "86972f99e92a9070c88327bb22070ac8bc883ac5e17a16e21056b18a63e262ba"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/10-windhaven-smoke.log",
+      "bytes": 1230,
+      "sha256": "c4ea74d66a7812abc3c9c1670e98c480a7aaee8e99de0b139d808dd234e2523a"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/11-sky-lance-check.log",
+      "bytes": 6733,
+      "sha256": "a0023e804fe228bcf80f505237705b7e94ddea0dd21617801f7662172781369a"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/12-sky-lance-check.log",
+      "bytes": 1594,
+      "sha256": "73a33fa7f53507094c8f5a1cddf5938cde3c3250763243e3848c1ed683144c8c"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/13-sky-lance-check.log",
+      "bytes": 3057,
+      "sha256": "87c2142a44a93734788d1f29729915ed1f5c059144d5df220e877104d154b32b"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/14-sky-lance-check.log",
+      "bytes": 471,
+      "sha256": "f5844be482f0dacb80460c9775ca13cf653301394a03c937f42039ff1b712c3e"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/15-sky-lance-check.log",
+      "bytes": 1942,
+      "sha256": "be533c0622f7cb1d186ef85399b6e211f0a67b755e6877f530d035607c1d5d09"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/baseline-09-windline-performance-check.log",
+      "bytes": 620,
+      "sha256": "2049504ff8249b5a3aa9ea9069415d165d0efb9b0804a87fd8ed63bb3697d0bd"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/candidate-cpu.json",
+      "bytes": 8638,
+      "sha256": "b4737af24899cdb4bc7d3cc159b832ef9b6fcd5f39bdf984e079a7d944278e53"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/baseline-cpu-corrected.json",
+      "bytes": 8662,
+      "sha256": "7290e51625b9667660643712c8c6c88802bdebc13c1b69a98c034b6ac36bb191"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/baseline-cpu-corrected.log",
+      "bytes": 452,
+      "sha256": "86972f99e92a9070c88327bb22070ac8bc883ac5e17a16e21056b18a63e262ba"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/audits/legacy-audit/clearance.json",
+      "bytes": 1122699,
+      "sha256": "fe6579fbc33e9c20a1c830967445445cadd7934133bd056927d465929368a2dd"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/audits/legacy-audit/contact-cpu-cost.json",
+      "bytes": 4234,
+      "sha256": "2f65e5c842904888059cc86df2de0b7e618894b296db19ec5fbc59ed820ad0b4"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/audits/authored-audit/clearance.json",
+      "bytes": 1122699,
+      "sha256": "ba5f2d9208291327ea55aee9e6a8e812bb83ec41c84c07c754e1517b3f137c9d"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/audits/authored-audit/contact-cpu-cost.json",
+      "bytes": 4217,
+      "sha256": "62238174234abefa30f4c5e259ac698b2df4cada3e511a22cd5a4c117354aed4"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/motion-regression.json",
+      "bytes": 26102,
+      "sha256": "e4302ce184afc12d5993ae0a69cff3cf5a382f9fa3c5034c9a4725998bf24a7a"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/motion/broad-12.4.png",
+      "bytes": 950679,
+      "sha256": "f5b58e39e656b09aacfa1fdf61ed2152e62c2cf4aaa2b7f8e7b710f14d60097b"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/motion/medium-12.4.png",
+      "bytes": 948177,
+      "sha256": "ed7afed45f33d0aa124bf306cd8d8020abd4dcf616d25ef21f20c7c0a0af0ba0"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/motion/slight-12.4.png",
+      "bytes": 939300,
+      "sha256": "da3219a96a2ec09348427262445a65c0049373991202981a33f6c48932f68ea2"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/fit-report.json",
+      "bytes": 5095034,
+      "sha256": "370ed6361986be186d98ba1ea8198e94ead229f923d0e89a9a30422ea85655f2"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/fit/medium-travel-stable-front.png",
+      "bytes": 1152774,
+      "sha256": "c462e9bf2b7bb381adbf0f807b0b44e052a0600600a4d764006aaadaf18a244a"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/fit/medium-travel-gameplay-mounted-left.png",
+      "bytes": 1490817,
+      "sha256": "03590061f1c1571a7ca1362ada52b812473fdb877f913675b6ba803027d612af"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/fit/medium-travel-gameplay-mounted-right.png",
+      "bytes": 1510943,
+      "sha256": "ec3820ba46afe8e8f062ea03bc908d992e940f585b648650155708d81bc662db"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/candidate-validation/ci-helper-syntax.json",
+      "bytes": 3895,
+      "sha256": "01df1c7a294faecac05838ff43066706d8c06ee9f8f72ccfaf4b3801c7363c61"
+    }
+  ],
+  "deployment": "No merge, main push, workflow_dispatch or deployment; session guide excluded; PR13 separate."
+}

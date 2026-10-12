@@ -15,8 +15,8 @@ export interface QualityProfile {
   fxaa?: boolean;
   shadows: boolean;
   /**
-   * Shadow map resolution. Ultra uses 3072 (36 MB instead of 64 MB at 4096; 9 cm texels over
-   * its 140 m half-extent, indistinguishable in captures).
+   * Shadow map resolution. Dedicated-GPU tiers use 2048/3072/4096 while keeping each
+   * level's existing coverage, so extra texels improve contact and costume-edge definition.
    */
   shadowMapSize: number;
   /**
@@ -45,18 +45,18 @@ export const QUALITY: Record<QualityLevel, QualityProfile> = {
     particles: 0.4, clouds: 0,
   },
   medium: {
-    level: 'medium', pixelRatioCap: 1.25, msaa: 2, bloom: true, bloomLevels: 5, shadows: true, shadowMapSize: 1024,
-    shadowExtent: 80, grassDensity: 0.6, grassRadius: 110, propDensity: 0.8, drawDistance: 5500,
+    level: 'medium', pixelRatioCap: 1.5, msaa: 2, bloom: true, bloomLevels: 5, shadows: true, shadowMapSize: 2048,
+    shadowExtent: 80, grassDensity: 0.8, grassRadius: 130, propDensity: 0.8, drawDistance: 5500,
     particles: 0.7, clouds: 1,
   },
   high: {
-    level: 'high', pixelRatioCap: 1.5, msaa: 4, bloom: true, bloomLevels: 6, shadows: true, shadowMapSize: 2048,
-    shadowExtent: 110, grassDensity: 1, grassRadius: 150, propDensity: 1, drawDistance: 7000,
+    level: 'high', pixelRatioCap: 1.75, msaa: 4, bloom: true, bloomLevels: 6, shadows: true, shadowMapSize: 3072,
+    shadowExtent: 110, grassDensity: 1.25, grassRadius: 180, propDensity: 1, drawDistance: 7000,
     particles: 1, clouds: 2,
   },
   ultra: {
-    level: 'ultra', pixelRatioCap: 2, msaa: 4, bloom: true, bloomLevels: 6, shadows: true, shadowMapSize: 3072,
-    shadowExtent: 140, grassDensity: 1.5, grassRadius: 200, propDensity: 1.3, drawDistance: 8000,
+    level: 'ultra', pixelRatioCap: 2, msaa: 4, bloom: true, bloomLevels: 6, shadows: true, shadowMapSize: 4096,
+    shadowExtent: 140, grassDensity: 1.75, grassRadius: 220, propDensity: 1.3, drawDistance: 8000,
     particles: 1.4, clouds: 2,
   },
 };

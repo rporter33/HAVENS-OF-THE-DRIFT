@@ -1,0 +1,135 @@
+{
+  "passed": true,
+  "commit": "a7ae710f9a31f3630e88098ecf373cb51c432eba",
+  "dirty": "M scripts/editor-check.mjs\n M scripts/windline-reticle-motion-check.mjs\n?? README_SESSION.md",
+  "browser": "141.0.7390.37",
+  "url": "http://127.0.0.1:5218/",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "cycles": [
+    {
+      "cycle": 0,
+      "activation": "repeated-enter",
+      "singleSandbox": true,
+      "mode": "flying",
+      "race": "authored-region",
+      "islands": 2,
+      "authoredInTerrain": 2,
+      "assetCount": 3,
+      "shrine": true,
+      "roost": "roost",
+      "storage": [],
+      "databases": [],
+      "sentinel": "{\"sentinel\":\"player progress untouched\"}"
+    },
+    {
+      "cycle": 1,
+      "activation": "pointer-double-click",
+      "singleSandbox": true,
+      "mode": "flying",
+      "race": "authored-region",
+      "islands": 2,
+      "authoredInTerrain": 2,
+      "assetCount": 3,
+      "shrine": true,
+      "roost": "roost",
+      "storage": [],
+      "databases": [],
+      "sentinel": "{\"sentinel\":\"player progress untouched\"}"
+    },
+    {
+      "cycle": 2,
+      "activation": "single-click",
+      "singleSandbox": true,
+      "mode": "flying",
+      "race": "authored-region",
+      "islands": 2,
+      "authoredInTerrain": 2,
+      "assetCount": 3,
+      "shrine": true,
+      "roost": "roost",
+      "storage": [],
+      "databases": [],
+      "sentinel": "{\"sentinel\":\"player progress untouched\"}"
+    }
+  ],
+  "captures": [
+    {
+      "name": "editor-overview",
+      "file": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-merge-prep-20261012\\editor-pinned-full\\editor-overview.png",
+      "sha256": "63eb27611ff7516052251e1ad116e60dd2701434c7033119e7a8259bb1ac6121"
+    },
+    {
+      "name": "playtest-on-foot",
+      "file": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-merge-prep-20261012\\editor-pinned-full\\playtest-on-foot.png",
+      "sha256": "ec13ba4b16988354b2596f47588fbbed1b32933f1714e77d6966eee17e5f10b9"
+    },
+    {
+      "name": "playtest-mounted",
+      "file": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-merge-prep-20261012\\editor-pinned-full\\playtest-mounted.png",
+      "sha256": "6286d7e0e28c2582d0d77e4d111367d92e947a4a7dc4b94bbaee60044b2ae739"
+    },
+    {
+      "name": "editor-column",
+      "file": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-merge-prep-20261012\\editor-pinned-full\\editor-column.png",
+      "sha256": "630ca8a86f452b50002ca64718a592d1389afa7c2ce6ac82d606100620ef4123"
+    }
+  ],
+  "errors": [],
+  "reload": {
+    "documentReadyMs": 765,
+    "editorReadyMs": 1191,
+    "state": {
+      "readyState": "complete",
+      "renderFrame": 6,
+      "navigation": {
+        "name": "http://127.0.0.1:5218/editor.html?debug=1",
+        "entryType": "navigation",
+        "startTime": 0,
+        "duration": 1163.4000000059605,
+        "initiatorType": "navigation",
+        "deliveryType": "cache",
+        "nextHopProtocol": "",
+        "renderBlockingStatus": "non-blocking",
+        "workerStart": 0,
+        "workerRouterEvaluationStart": 0,
+        "workerCacheLookupStart": 0,
+        "workerMatchedSourceType": "",
+        "workerFinalSourceType": "",
+        "redirectStart": 0,
+        "redirectEnd": 0,
+        "fetchStart": 0.4000000059604645,
+        "domainLookupStart": 0.4000000059604645,
+        "domainLookupEnd": 0.4000000059604645,
+        "connectStart": 0.4000000059604645,
+        "secureConnectionStart": 0,
+        "connectEnd": 0.4000000059604645,
+        "requestStart": 125.40000000596046,
+        "responseStart": 126.70000000298023,
+        "firstInterimResponseStart": 0,
+        "finalResponseHeadersStart": 126.70000000298023,
+        "responseEnd": 127,
+        "transferSize": 300,
+        "encodedBodySize": 579,
+        "decodedBodySize": 1230,
+        "responseStatus": 200,
+        "serverTiming": [],
+        "unloadEventStart": 136.90000000596046,
+        "unloadEventEnd": 136.90000000596046,
+        "domInteractive": 684.9000000059605,
+        "domContentLoadedEventStart": 761.2000000029802,
+        "domContentLoadedEventEnd": 761.2999999970198,
+        "domComplete": 1163.2999999970198,
+        "loadEventStart": 1163.4000000059605,
+        "loadEventEnd": 1163.4000000059605,
+        "type": "reload",
+        "redirectCount": 0,
+        "activationStart": 0,
+        "criticalCHRestart": 0,
+        "notRestoredReasons": null
+      }
+    }
+  }
+}

@@ -1,0 +1,728 @@
+{
+  "blender": "4.5.14 LTS",
+  "buildHash": "62c1db4208e8",
+  "source": "assets/rider-blender/source/rider-trial.blend",
+  "sourceSha256": "0b69bcbb74153a0f0bc993ee756f59048db22e5fc0d5e7a7990c39465b9fa9c4",
+  "export": "src/assets/rider-blender/rider-trial.glb",
+  "bytes": 19110536,
+  "sha256": "d6f2ffa790d43e8217ab6d64bdfdf994b424d1d5cb1d1b8685403b2001d40dc8",
+  "compression": "none",
+  "axes": "X-left/Y-up/Z-forward",
+  "units": "meters",
+  "animations": 0,
+  "maps": "shared runtime painterly atlas; no embedded images",
+  "binding": "regenerated from final editable mesh topology; no optimizer follows",
+  "parts": [
+    {
+      "id": "piece:top:aerie",
+      "build": "slight",
+      "method": "bound",
+      "vertices": 502,
+      "triangles": 920,
+      "topology": "cb043ea5",
+      "sourceTopology": "0737a8d2"
+    },
+    {
+      "id": "piece:chest:aerie",
+      "build": "slight",
+      "method": "bound",
+      "vertices": 1337,
+      "triangles": 2610,
+      "topology": "33600851",
+      "sourceTopology": "b553ec83"
+    },
+    {
+      "id": "piece:shoulderDrape:aerie",
+      "build": "slight",
+      "method": "bound",
+      "vertices": 12007,
+      "triangles": 24156,
+      "topology": "3d469b03",
+      "sourceTopology": "666e8f80"
+    },
+    {
+      "id": "piece:waist:aerie",
+      "build": "slight",
+      "method": "bound",
+      "vertices": 324,
+      "triangles": 456,
+      "topology": "cbb079f5",
+      "sourceTopology": "fa232e93"
+    },
+    {
+      "id": "piece:armWraps:aerie",
+      "build": "slight",
+      "method": "bound",
+      "vertices": 252,
+      "triangles": 400,
+      "topology": "cf790aa1",
+      "sourceTopology": "cf790aa1"
+    },
+    {
+      "id": "piece:legWraps:aerie",
+      "build": "slight",
+      "method": "bound",
+      "vertices": 952,
+      "triangles": 1664,
+      "topology": "282af4ac",
+      "sourceTopology": "282af4ac"
+    },
+    {
+      "id": "piece:footwear:aerie",
+      "build": "slight",
+      "method": "bound",
+      "vertices": 530,
+      "triangles": 880,
+      "topology": "1837a911",
+      "sourceTopology": "1837a911"
+    },
+    {
+      "id": "cloth:garment-travel-drape-0:aerie",
+      "build": "slight",
+      "method": "cloth",
+      "vertices": 143,
+      "triangles": 240,
+      "topology": "ae8a9e99",
+      "sourceTopology": "63261380"
+    },
+    {
+      "id": "cloth:garment-travel-drape-1:aerie",
+      "build": "slight",
+      "method": "cloth",
+      "vertices": 143,
+      "triangles": 240,
+      "topology": "0fb12be5",
+      "sourceTopology": "f8ea0e63"
+    },
+    {
+      "id": "cloth:garment-travel-drape-2:aerie",
+      "build": "slight",
+      "method": "cloth",
+      "vertices": 143,
+      "triangles": 240,
+      "topology": "1e940219",
+      "sourceTopology": "a34fc960"
+    },
+    {
+      "id": "cloth:garment-travel-drape-3:aerie",
+      "build": "slight",
+      "method": "cloth",
+      "vertices": 143,
+      "triangles": 240,
+      "topology": "35e4dda2",
+      "sourceTopology": "d96e0945"
+    },
+    {
+      "id": "piece:top:wanderer",
+      "build": "slight",
+      "method": "bound",
+      "vertices": 502,
+      "triangles": 920,
+      "topology": "cb043ea5",
+      "sourceTopology": "0737a8d2"
+    },
+    {
+      "id": "piece:chest:wanderer",
+      "build": "slight",
+      "method": "bound",
+      "vertices": 1337,
+      "triangles": 2610,
+      "topology": "33600851",
+      "sourceTopology": "b553ec83"
+    },
+    {
+      "id": "piece:shoulderDrape:wanderer",
+      "build": "slight",
+      "method": "bound",
+      "vertices": 12007,
+      "triangles": 24156,
+      "topology": "7b1a43e6",
+      "sourceTopology": "854262ab"
+    },
+    {
+      "id": "piece:waist:wanderer",
+      "build": "slight",
+      "method": "bound",
+      "vertices": 268,
+      "triangles": 360,
+      "topology": "fd656fe6",
+      "sourceTopology": "3c603999"
+    },
+    {
+      "id": "piece:armWraps:wanderer",
+      "build": "slight",
+      "method": "bound",
+      "vertices": 252,
+      "triangles": 400,
+      "topology": "cf790aa1",
+      "sourceTopology": "cf790aa1"
+    },
+    {
+      "id": "piece:legWraps:wanderer",
+      "build": "slight",
+      "method": "bound",
+      "vertices": 952,
+      "triangles": 1664,
+      "topology": "282af4ac",
+      "sourceTopology": "282af4ac"
+    },
+    {
+      "id": "piece:footwear:wanderer",
+      "build": "slight",
+      "method": "bound",
+      "vertices": 530,
+      "triangles": 880,
+      "topology": "1837a911",
+      "sourceTopology": "1837a911"
+    },
+    {
+      "id": "cloth:garment-travel-drape-0:wanderer",
+      "build": "slight",
+      "method": "cloth",
+      "vertices": 143,
+      "triangles": 240,
+      "topology": "05ad1329",
+      "sourceTopology": "1c6eec84"
+    },
+    {
+      "id": "cloth:garment-travel-drape-1:wanderer",
+      "build": "slight",
+      "method": "cloth",
+      "vertices": 143,
+      "triangles": 240,
+      "topology": "e324f265",
+      "sourceTopology": "38320362"
+    },
+    {
+      "id": "cloth:garment-travel-drape-2:wanderer",
+      "build": "slight",
+      "method": "cloth",
+      "vertices": 143,
+      "triangles": 240,
+      "topology": "ea9c7103",
+      "sourceTopology": "39950410"
+    },
+    {
+      "id": "cloth:garment-travel-drape-3:wanderer",
+      "build": "slight",
+      "method": "cloth",
+      "vertices": 143,
+      "triangles": 240,
+      "topology": "dfd48517",
+      "sourceTopology": "e96aef31"
+    },
+    {
+      "id": "upper",
+      "build": "medium",
+      "method": "delta",
+      "vertices": 1336,
+      "triangles": 2560,
+      "topology": "51b77789",
+      "sourceTopology": "7d88debb"
+    },
+    {
+      "id": "head",
+      "build": "medium",
+      "method": "direct",
+      "vertices": 8166,
+      "triangles": 16248,
+      "topology": "03283734",
+      "sourceTopology": "dd6b1f83"
+    },
+    {
+      "id": "ponytail-crown",
+      "build": "medium",
+      "method": "bound",
+      "vertices": 2432,
+      "triangles": 4812,
+      "topology": "cea5b91a",
+      "sourceTopology": "f2830235"
+    },
+    {
+      "id": "handL",
+      "build": "medium",
+      "method": "direct",
+      "vertices": 854,
+      "triangles": 1708,
+      "topology": "fce45a31",
+      "sourceTopology": "b6073cda"
+    },
+    {
+      "id": "legL",
+      "build": "medium",
+      "method": "delta",
+      "vertices": 640,
+      "triangles": 1172,
+      "topology": "a099ee7f",
+      "sourceTopology": "fc594970"
+    },
+    {
+      "id": "footL",
+      "build": "medium",
+      "method": "delta",
+      "vertices": 128,
+      "triangles": 252,
+      "topology": "ed77fb3c",
+      "sourceTopology": "d0ba2e87"
+    },
+    {
+      "id": "barefootL",
+      "build": "medium",
+      "method": "direct",
+      "vertices": 703,
+      "triangles": 1402,
+      "topology": "bddfacdb",
+      "sourceTopology": "d0ba2e87"
+    },
+    {
+      "id": "handR",
+      "build": "medium",
+      "method": "direct",
+      "vertices": 854,
+      "triangles": 1708,
+      "topology": "c0d28541",
+      "sourceTopology": "49d91134"
+    },
+    {
+      "id": "legR",
+      "build": "medium",
+      "method": "delta",
+      "vertices": 640,
+      "triangles": 1172,
+      "topology": "ad228c98",
+      "sourceTopology": "49b21c99"
+    },
+    {
+      "id": "footR",
+      "build": "medium",
+      "method": "delta",
+      "vertices": 128,
+      "triangles": 252,
+      "topology": "90831574",
+      "sourceTopology": "025e674f"
+    },
+    {
+      "id": "barefootR",
+      "build": "medium",
+      "method": "direct",
+      "vertices": 704,
+      "triangles": 1404,
+      "topology": "15605b52",
+      "sourceTopology": "025e674f"
+    },
+    {
+      "id": "piece:top:aerie",
+      "build": "medium",
+      "method": "bound",
+      "vertices": 529,
+      "triangles": 968,
+      "topology": "70a003da",
+      "sourceTopology": "8a6656e8"
+    },
+    {
+      "id": "piece:chest:aerie",
+      "build": "medium",
+      "method": "bound",
+      "vertices": 1337,
+      "triangles": 2610,
+      "topology": "4939a363",
+      "sourceTopology": "11beaf6d"
+    },
+    {
+      "id": "piece:shoulderDrape:aerie",
+      "build": "medium",
+      "method": "bound",
+      "vertices": 12007,
+      "triangles": 24156,
+      "topology": "cce4fff4",
+      "sourceTopology": "a5ea2c85"
+    },
+    {
+      "id": "piece:waist:aerie",
+      "build": "medium",
+      "method": "bound",
+      "vertices": 333,
+      "triangles": 472,
+      "topology": "ea0a71f3",
+      "sourceTopology": "ee29e47a"
+    },
+    {
+      "id": "piece:armWraps:aerie",
+      "build": "medium",
+      "method": "bound",
+      "vertices": 252,
+      "triangles": 400,
+      "topology": "8b59e839",
+      "sourceTopology": "8b59e839"
+    },
+    {
+      "id": "piece:legWraps:aerie",
+      "build": "medium",
+      "method": "bound",
+      "vertices": 952,
+      "triangles": 1664,
+      "topology": "34d6ce6b",
+      "sourceTopology": "34d6ce6b"
+    },
+    {
+      "id": "piece:footwear:aerie",
+      "build": "medium",
+      "method": "bound",
+      "vertices": 530,
+      "triangles": 880,
+      "topology": "aac3b611",
+      "sourceTopology": "aac3b611"
+    },
+    {
+      "id": "cloth:garment-travel-drape-0:aerie",
+      "build": "medium",
+      "method": "cloth",
+      "vertices": 143,
+      "triangles": 240,
+      "topology": "87e4efb1",
+      "sourceTopology": "6da637fb"
+    },
+    {
+      "id": "cloth:garment-travel-drape-1:aerie",
+      "build": "medium",
+      "method": "cloth",
+      "vertices": 143,
+      "triangles": 240,
+      "topology": "771a8ade",
+      "sourceTopology": "7eadbab9"
+    },
+    {
+      "id": "cloth:garment-travel-drape-2:aerie",
+      "build": "medium",
+      "method": "cloth",
+      "vertices": 143,
+      "triangles": 240,
+      "topology": "f4b40a26",
+      "sourceTopology": "b8dce961"
+    },
+    {
+      "id": "cloth:garment-travel-drape-3:aerie",
+      "build": "medium",
+      "method": "cloth",
+      "vertices": 143,
+      "triangles": 240,
+      "topology": "a31082ce",
+      "sourceTopology": "0533f2dd"
+    },
+    {
+      "id": "piece:top:wanderer",
+      "build": "medium",
+      "method": "bound",
+      "vertices": 529,
+      "triangles": 968,
+      "topology": "70a003da",
+      "sourceTopology": "8a6656e8"
+    },
+    {
+      "id": "piece:chest:wanderer",
+      "build": "medium",
+      "method": "bound",
+      "vertices": 1337,
+      "triangles": 2610,
+      "topology": "4939a363",
+      "sourceTopology": "11beaf6d"
+    },
+    {
+      "id": "piece:shoulderDrape:wanderer",
+      "build": "medium",
+      "method": "bound",
+      "vertices": 12007,
+      "triangles": 24156,
+      "topology": "d1c37a9f",
+      "sourceTopology": "71f0ba53"
+    },
+    {
+      "id": "piece:waist:wanderer",
+      "build": "medium",
+      "method": "bound",
+      "vertices": 268,
+      "triangles": 360,
+      "topology": "3fb7cb80",
+      "sourceTopology": "43ec8eb8"
+    },
+    {
+      "id": "piece:armWraps:wanderer",
+      "build": "medium",
+      "method": "bound",
+      "vertices": 252,
+      "triangles": 400,
+      "topology": "8b59e839",
+      "sourceTopology": "8b59e839"
+    },
+    {
+      "id": "piece:legWraps:wanderer",
+      "build": "medium",
+      "method": "bound",
+      "vertices": 952,
+      "triangles": 1664,
+      "topology": "34d6ce6b",
+      "sourceTopology": "34d6ce6b"
+    },
+    {
+      "id": "piece:footwear:wanderer",
+      "build": "medium",
+      "method": "bound",
+      "vertices": 530,
+      "triangles": 880,
+      "topology": "aac3b611",
+      "sourceTopology": "aac3b611"
+    },
+    {
+      "id": "cloth:garment-travel-drape-0:wanderer",
+      "build": "medium",
+      "method": "cloth",
+      "vertices": 143,
+      "triangles": 240,
+      "topology": "8d7f54b7",
+      "sourceTopology": "21cf842b"
+    },
+    {
+      "id": "cloth:garment-travel-drape-1:wanderer",
+      "build": "medium",
+      "method": "cloth",
+      "vertices": 143,
+      "triangles": 240,
+      "topology": "69ef7c58",
+      "sourceTopology": "649c3549"
+    },
+    {
+      "id": "cloth:garment-travel-drape-2:wanderer",
+      "build": "medium",
+      "method": "cloth",
+      "vertices": 143,
+      "triangles": 240,
+      "topology": "06bd18ea",
+      "sourceTopology": "c5098160"
+    },
+    {
+      "id": "cloth:garment-travel-drape-3:wanderer",
+      "build": "medium",
+      "method": "cloth",
+      "vertices": 143,
+      "triangles": 240,
+      "topology": "685979b8",
+      "sourceTopology": "49ff89c4"
+    },
+    {
+      "id": "piece:top:aerie",
+      "build": "broad",
+      "method": "bound",
+      "vertices": 547,
+      "triangles": 1000,
+      "topology": "6f897b0b",
+      "sourceTopology": "7fd3fb7e"
+    },
+    {
+      "id": "piece:chest:aerie",
+      "build": "broad",
+      "method": "bound",
+      "vertices": 1337,
+      "triangles": 2610,
+      "topology": "fa2e042e",
+      "sourceTopology": "37d048e3"
+    },
+    {
+      "id": "piece:shoulderDrape:aerie",
+      "build": "broad",
+      "method": "bound",
+      "vertices": 12007,
+      "triangles": 24156,
+      "topology": "b46829a6",
+      "sourceTopology": "c2a74cd9"
+    },
+    {
+      "id": "piece:waist:aerie",
+      "build": "broad",
+      "method": "bound",
+      "vertices": 333,
+      "triangles": 472,
+      "topology": "55d094c4",
+      "sourceTopology": "a7d8a163"
+    },
+    {
+      "id": "piece:armWraps:aerie",
+      "build": "broad",
+      "method": "bound",
+      "vertices": 252,
+      "triangles": 400,
+      "topology": "f409be69",
+      "sourceTopology": "f409be69"
+    },
+    {
+      "id": "piece:legWraps:aerie",
+      "build": "broad",
+      "method": "bound",
+      "vertices": 952,
+      "triangles": 1664,
+      "topology": "5fd84998",
+      "sourceTopology": "5fd84998"
+    },
+    {
+      "id": "piece:footwear:aerie",
+      "build": "broad",
+      "method": "bound",
+      "vertices": 530,
+      "triangles": 880,
+      "topology": "66e00185",
+      "sourceTopology": "66e00185"
+    },
+    {
+      "id": "cloth:garment-travel-drape-0:aerie",
+      "build": "broad",
+      "method": "cloth",
+      "vertices": 143,
+      "triangles": 240,
+      "topology": "001d0726",
+      "sourceTopology": "d40a51ac"
+    },
+    {
+      "id": "cloth:garment-travel-drape-1:aerie",
+      "build": "broad",
+      "method": "cloth",
+      "vertices": 143,
+      "triangles": 240,
+      "topology": "eec7d2f2",
+      "sourceTopology": "6d1502f7"
+    },
+    {
+      "id": "cloth:garment-travel-drape-2:aerie",
+      "build": "broad",
+      "method": "cloth",
+      "vertices": 143,
+      "triangles": 240,
+      "topology": "bee5e1c5",
+      "sourceTopology": "3b26a9f8"
+    },
+    {
+      "id": "cloth:garment-travel-drape-3:aerie",
+      "build": "broad",
+      "method": "cloth",
+      "vertices": 143,
+      "triangles": 240,
+      "topology": "206a3811",
+      "sourceTopology": "2019bcb3"
+    },
+    {
+      "id": "piece:top:wanderer",
+      "build": "broad",
+      "method": "bound",
+      "vertices": 547,
+      "triangles": 1000,
+      "topology": "6f897b0b",
+      "sourceTopology": "7fd3fb7e"
+    },
+    {
+      "id": "piece:chest:wanderer",
+      "build": "broad",
+      "method": "bound",
+      "vertices": 1337,
+      "triangles": 2610,
+      "topology": "fa2e042e",
+      "sourceTopology": "37d048e3"
+    },
+    {
+      "id": "piece:shoulderDrape:wanderer",
+      "build": "broad",
+      "method": "bound",
+      "vertices": 12007,
+      "triangles": 24156,
+      "topology": "c602522d",
+      "sourceTopology": "706ffb16"
+    },
+    {
+      "id": "piece:waist:wanderer",
+      "build": "broad",
+      "method": "bound",
+      "vertices": 268,
+      "triangles": 360,
+      "topology": "171f796f",
+      "sourceTopology": "0f3f662c"
+    },
+    {
+      "id": "piece:armWraps:wanderer",
+      "build": "broad",
+      "method": "bound",
+      "vertices": 252,
+      "triangles": 400,
+      "topology": "f409be69",
+      "sourceTopology": "f409be69"
+    },
+    {
+      "id": "piece:legWraps:wanderer",
+      "build": "broad",
+      "method": "bound",
+      "vertices": 952,
+      "triangles": 1664,
+      "topology": "5fd84998",
+      "sourceTopology": "5fd84998"
+    },
+    {
+      "id": "piece:footwear:wanderer",
+      "build": "broad",
+      "method": "bound",
+      "vertices": 530,
+      "triangles": 880,
+      "topology": "66e00185",
+      "sourceTopology": "66e00185"
+    },
+    {
+      "id": "cloth:garment-travel-drape-0:wanderer",
+      "build": "broad",
+      "method": "cloth",
+      "vertices": 143,
+      "triangles": 240,
+      "topology": "ac282a4a",
+      "sourceTopology": "2e030480"
+    },
+    {
+      "id": "cloth:garment-travel-drape-1:wanderer",
+      "build": "broad",
+      "method": "cloth",
+      "vertices": 143,
+      "triangles": 240,
+      "topology": "b5210e25",
+      "sourceTopology": "3222a211"
+    },
+    {
+      "id": "cloth:garment-travel-drape-2:wanderer",
+      "build": "broad",
+      "method": "cloth",
+      "vertices": 143,
+      "triangles": 240,
+      "topology": "9d3c3abc",
+      "sourceTopology": "17c1d2c9"
+    },
+    {
+      "id": "cloth:garment-travel-drape-3:wanderer",
+      "build": "broad",
+      "method": "cloth",
+      "vertices": 143,
+      "triangles": 240,
+      "topology": "af70b0ab",
+      "sourceTopology": "108f1b18"
+    },
+    {
+      "id": "equipment:windkeel-aerie",
+      "build": "medium",
+      "method": "direct",
+      "vertices": 1286,
+      "triangles": 2504,
+      "topology": "459a4f28",
+      "sourceTopology": "459a4f28"
+    },
+    {
+      "id": "equipment:windkeel-flight",
+      "build": "medium",
+      "method": "direct",
+      "vertices": 1286,
+      "triangles": 2504,
+      "topology": "ff26f2ed",
+      "sourceTopology": "ff26f2ed"
+    }
+  ]
+}

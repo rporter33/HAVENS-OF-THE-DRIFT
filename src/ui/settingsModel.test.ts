@@ -69,6 +69,6 @@ describe('qualityFacts', () => {
     expect(low['Anti-aliasing']).toBe('Off');
     const high = Object.fromEntries(qualityFacts(QUALITY.high).map((f) => [f.label, f.value]));
     expect(high['View distance']).toBe('7.0 km');
-    expect(high['Grass']).toBe('Lush · 150 m');
+    expect(high['Grass']).toBe('Very lush · 180 m');
   });
 });

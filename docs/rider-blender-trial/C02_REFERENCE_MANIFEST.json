@@ -1,0 +1,42 @@
+{
+  "role": "approved visual reference only; not runtime textures or measured orthographics",
+  "files": [
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12849-3937-7751-9312-e47a7490a343\\rider-review\\DESIGN_BRIEF.md",
+      "preserved": "assets/rider-blender/references/c02-approved/DESIGN_BRIEF.md",
+      "bytes": 43138,
+      "sha256": "95ef0e100aa1c6340da1361c847bd079b68a0da1fbae65e29cd4d5ff0235cd1d"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12849-3937-7751-9312-e47a7490a343\\rider-review\\APPROVAL_RECORD.json",
+      "preserved": "assets/rider-blender/references/c02-approved/APPROVAL_RECORD.json",
+      "bytes": 7654,
+      "sha256": "22c1cb0676d9b9bec7454b69ebb3960c9b639eb657e40c472385f7a7250efc24"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12849-3937-7751-9312-e47a7490a343\\rider-review\\01-rider-design-v2.png",
+      "preserved": "assets/rider-blender/references/c02-approved/01-rider-design-v2.png",
+      "bytes": 1952370,
+      "sha256": "b94cd2321f1a264dc933f415d437f28c015fb442f7ea4b59a913dfd5f65af9bd"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12849-3937-7751-9312-e47a7490a343\\rider-review\\02-wardrobe-v2.png",
+      "preserved": "assets/rider-blender/references/c02-approved/02-wardrobe-v2.png",
+      "bytes": 2120881,
+      "sha256": "18a260f0210f91624951090b8172c7ae3576ce147f37c4b5f6da21c32bfd2efb"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12849-3937-7751-9312-e47a7490a343\\rider-review\\03-materials.png",
+      "preserved": "assets/rider-blender/references/c02-approved/03-materials.png",
+      "bytes": 2281642,
+      "sha256": "5e3cb178f82762ce2f2b2e894316557c19eb937260cc3ea710e76fab9d1f0514"
+    },
+    {
+      "source": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12849-3937-7751-9312-e47a7490a343\\rider-review\\04-mounted-v2.png",
+      "preserved": "assets/rider-blender/references/c02-approved/04-mounted-v2.png",
+      "bytes": 2168987,
+      "sha256": "60b36371e444f14f69236ca2549c0550d12dbd2461501cc6db6ebad014aee061"
+    }
+  ],
+  "prPublicationNote": "Historical inventory of the complete preserved local trial, including excluded local-only files. Current published contents and hashes: PR_PACKAGE_MANIFEST.json; current candidate validation: MERGE_REVIEW.md."
+}

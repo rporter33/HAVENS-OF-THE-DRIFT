@@ -1,0 +1,459 @@
+{
+  "browser": "149.0.7827.55",
+  "renderer": "Headless CHROMIUM_PATH browser SwiftShader; appearance/function only, no hardware certification or physical controller playtest.",
+  "cases": [
+    {
+      "id": "medium-travel",
+      "build": "medium",
+      "transitions": [
+        {
+          "name": "actual-takeoff",
+          "mode": "flying"
+        },
+        {
+          "name": "actual-landing-and-dismount",
+          "landed": "landed",
+          "dismount": "dismounting",
+          "finished": "onFoot"
+        }
+      ]
+    },
+    {
+      "id": "slight-travel",
+      "build": "slight",
+      "transitions": [
+        {
+          "name": "actual-takeoff",
+          "mode": "flying"
+        },
+        {
+          "name": "actual-landing-and-dismount",
+          "landed": "landed",
+          "dismount": "dismounting",
+          "finished": "onFoot"
+        }
+      ]
+    },
+    {
+      "id": "broad-travel",
+      "build": "broad",
+      "transitions": [
+        {
+          "name": "actual-takeoff",
+          "mode": "flying"
+        },
+        {
+          "name": "actual-landing-and-dismount",
+          "landed": "landed",
+          "dismount": "dismounting",
+          "finished": "onFoot"
+        }
+      ]
+    },
+    {
+      "id": "medium-flight",
+      "build": "medium",
+      "transitions": [
+        {
+          "name": "actual-takeoff",
+          "mode": "flying"
+        },
+        {
+          "name": "actual-landing-and-dismount",
+          "landed": "landed",
+          "dismount": "dismounting",
+          "finished": "onFoot"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "captures": [
+    {
+      "name": "medium-travel-stable-front",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\medium-travel-stable-front.png",
+      "sha256": "8c230be2e3f7287bba280a87feeb067116eeabf08037e78f4c686e4ae3ea91c0",
+      "camera": "stable",
+      "screen": "stable",
+      "mode": "onFoot",
+      "captureTiming": {
+        "screenshotMs": 3356.2667999999994,
+        "totalMs": 5546.9907
+      }
+    },
+    {
+      "name": "medium-travel-stable-left",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\medium-travel-stable-left.png",
+      "sha256": "09c968bd0a5cd07fb34b436f7e5c1dc1aba887c20233e67afd4f5ba53415b612",
+      "camera": "stable",
+      "screen": "stable",
+      "mode": "onFoot",
+      "captureTiming": {
+        "screenshotMs": 1300.389299999999,
+        "totalMs": 2097.4421999999995
+      }
+    },
+    {
+      "name": "medium-travel-stable-right",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\medium-travel-stable-right.png",
+      "sha256": "84d542ecbbf93ccf34fdedfbd44e338e1f2e84312660989f33e5efb6e3a6ccde",
+      "camera": "stable",
+      "screen": "stable",
+      "mode": "onFoot",
+      "captureTiming": {
+        "screenshotMs": 1330.4558000000015,
+        "totalMs": 2154.384399999999
+      }
+    },
+    {
+      "name": "medium-travel-stable-back",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\medium-travel-stable-back.png",
+      "sha256": "9e913f7aef9da05d952613f71611822db1254116ca9faf2330daf5560e523e8f",
+      "camera": "stable",
+      "screen": "stable",
+      "mode": "onFoot",
+      "captureTiming": {
+        "screenshotMs": 1708.0995000000003,
+        "totalMs": 2512.5422
+      }
+    },
+    {
+      "name": "medium-travel-gameplay-mounted-left",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\medium-travel-gameplay-mounted-left.png",
+      "sha256": "bc542cdcf54dbd9303bbce8ce2af2c96ac213c261dda241b261f0de9d7305e2c",
+      "camera": "flight",
+      "screen": "play",
+      "mode": "flying",
+      "captureTiming": {
+        "screenshotMs": 2185.418300000001,
+        "totalMs": 2615.5426000000007
+      }
+    },
+    {
+      "name": "medium-travel-gameplay-mounted-right",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\medium-travel-gameplay-mounted-right.png",
+      "sha256": "f76123d5dda85e34afd359f18ad7fc791a55a900831c65ad0959632cbbf80057",
+      "camera": "flight",
+      "screen": "play",
+      "mode": "flying",
+      "captureTiming": {
+        "screenshotMs": 1294.0085999999974,
+        "totalMs": 2190.3763
+      }
+    },
+    {
+      "name": "medium-travel-gameplay-walk",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\medium-travel-gameplay-walk.png",
+      "sha256": "f9e3d7e80cdcf0f4cc7087979772f18684e96205aeefb12b6332039954143f95",
+      "camera": "foot",
+      "screen": "play",
+      "mode": "onFoot",
+      "captureTiming": {
+        "screenshotMs": 1368.761599999998,
+        "totalMs": 2585.5027999999984
+      }
+    },
+    {
+      "name": "medium-travel-gameplay-run",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\medium-travel-gameplay-run.png",
+      "sha256": "a98b0c3909689917f641734d120914cb19986fe3803f7d0289ff1e54748eab57",
+      "camera": "foot",
+      "screen": "play",
+      "mode": "onFoot",
+      "captureTiming": {
+        "screenshotMs": 2334.2871000000014,
+        "totalMs": 2732.356100000001
+      }
+    },
+    {
+      "name": "slight-travel-stable-front",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\slight-travel-stable-front.png",
+      "sha256": "d074631c7513378594e729888e94253564abfd92250cc4c807a705b5a4669711",
+      "camera": "stable",
+      "screen": "stable",
+      "mode": "onFoot",
+      "captureTiming": {
+        "screenshotMs": 3208.936099999999,
+        "totalMs": 5607.602899999998
+      }
+    },
+    {
+      "name": "slight-travel-stable-left",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\slight-travel-stable-left.png",
+      "sha256": "dda93e43812cbf6d29b017edd3153f36d8217a61bafeb14b6551c11fcfeb8767",
+      "camera": "stable",
+      "screen": "stable",
+      "mode": "onFoot",
+      "captureTiming": {
+        "screenshotMs": 1271.8525000000009,
+        "totalMs": 2028.2796999999991
+      }
+    },
+    {
+      "name": "slight-travel-stable-right",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\slight-travel-stable-right.png",
+      "sha256": "6cef3f15b3c1f0a496b9fb27577c8dfe0838f43dffeb8c28bfff584f6dc02b91",
+      "camera": "stable",
+      "screen": "stable",
+      "mode": "onFoot",
+      "captureTiming": {
+        "screenshotMs": 1400.906200000005,
+        "totalMs": 2082.901699999995
+      }
+    },
+    {
+      "name": "slight-travel-stable-back",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\slight-travel-stable-back.png",
+      "sha256": "784180a94aa59a03031674b279269b58ecf27a4c4bf93833a659f2e805075e0b",
+      "camera": "stable",
+      "screen": "stable",
+      "mode": "onFoot",
+      "captureTiming": {
+        "screenshotMs": 1915.6763999999966,
+        "totalMs": 2649.191399999996
+      }
+    },
+    {
+      "name": "slight-travel-gameplay-mounted-left",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\slight-travel-gameplay-mounted-left.png",
+      "sha256": "9c4680c14b9da8bc145b832070d67adf9f9f5c326914f69243a889c2b76cbec6",
+      "camera": "flight",
+      "screen": "play",
+      "mode": "flying",
+      "captureTiming": {
+        "screenshotMs": 1592.9309999999969,
+        "totalMs": 2345.493999999999
+      }
+    },
+    {
+      "name": "slight-travel-gameplay-mounted-right",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\slight-travel-gameplay-mounted-right.png",
+      "sha256": "a99b63747ba4e0c9da1322ac8f52babe59792053c1803ff0ac42daf3ce424bab",
+      "camera": "flight",
+      "screen": "play",
+      "mode": "flying",
+      "captureTiming": {
+        "screenshotMs": 1549.9544000000024,
+        "totalMs": 2109.7634000000035
+      }
+    },
+    {
+      "name": "slight-travel-gameplay-walk",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\slight-travel-gameplay-walk.png",
+      "sha256": "fa062dcccb8bd1f8bf9f4f7a8bb1735f786381a19c1a160cb4340529ba5e1599",
+      "camera": "foot",
+      "screen": "play",
+      "mode": "onFoot",
+      "captureTiming": {
+        "screenshotMs": 1617.3574999999983,
+        "totalMs": 2357.668899999997
+      }
+    },
+    {
+      "name": "slight-travel-gameplay-run",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\slight-travel-gameplay-run.png",
+      "sha256": "150bb066d77e1e893eb70b169475fb091780b4edcf33fb3b37edbe2f9381e02f",
+      "camera": "foot",
+      "screen": "play",
+      "mode": "onFoot",
+      "captureTiming": {
+        "screenshotMs": 1856.2897000000012,
+        "totalMs": 2525.6880999999994
+      }
+    },
+    {
+      "name": "broad-travel-stable-front",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\broad-travel-stable-front.png",
+      "sha256": "b043ca10ea89d34cb8ca811c8a80e95b7d15cd664eac9591682295f715d415d8",
+      "camera": "stable",
+      "screen": "stable",
+      "mode": "onFoot",
+      "captureTiming": {
+        "screenshotMs": 3012.4983999999968,
+        "totalMs": 5361.407299999992
+      }
+    },
+    {
+      "name": "broad-travel-stable-left",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\broad-travel-stable-left.png",
+      "sha256": "3d885283cc9003fc6fc6cc1a0a4915451f87f3ef0ad3329154a800cc92db9e06",
+      "camera": "stable",
+      "screen": "stable",
+      "mode": "onFoot",
+      "captureTiming": {
+        "screenshotMs": 1338.3529000000126,
+        "totalMs": 2168.2810000000027
+      }
+    },
+    {
+      "name": "broad-travel-stable-right",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\broad-travel-stable-right.png",
+      "sha256": "9b23f65532132c8ce438674bc85503daadd608243dc4eeb5d02ac1c62fcc642f",
+      "camera": "stable",
+      "screen": "stable",
+      "mode": "onFoot",
+      "captureTiming": {
+        "screenshotMs": 1300.8010000000068,
+        "totalMs": 2026.1080000000075
+      }
+    },
+    {
+      "name": "broad-travel-stable-back",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\broad-travel-stable-back.png",
+      "sha256": "016f03f7d0450442b9f3f394156aef24850b286531eb77e75983dd27a02bb50a",
+      "camera": "stable",
+      "screen": "stable",
+      "mode": "onFoot",
+      "captureTiming": {
+        "screenshotMs": 1774.566399999996,
+        "totalMs": 2580.3583999999973
+      }
+    },
+    {
+      "name": "broad-travel-gameplay-mounted-left",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\broad-travel-gameplay-mounted-left.png",
+      "sha256": "892d59e087adf1c9a36d50fef695f1d220e073ce11db4565962cd5ab47dc69e1",
+      "camera": "flight",
+      "screen": "play",
+      "mode": "flying",
+      "captureTiming": {
+        "screenshotMs": 1538.327700000009,
+        "totalMs": 2072.069300000003
+      }
+    },
+    {
+      "name": "broad-travel-gameplay-mounted-right",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\broad-travel-gameplay-mounted-right.png",
+      "sha256": "f5fdedbf187eb54da1ce02d9c543aafdc871059fbf40c47f9eb271a94484bf9b",
+      "camera": "flight",
+      "screen": "play",
+      "mode": "flying",
+      "captureTiming": {
+        "screenshotMs": 1606.8905999999988,
+        "totalMs": 2194.232899999988
+      }
+    },
+    {
+      "name": "broad-travel-gameplay-walk",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\broad-travel-gameplay-walk.png",
+      "sha256": "0b370bc1da43ac623dfbc68af1c60efa8086c14e865dd6b59700697dd522174c",
+      "camera": "foot",
+      "screen": "play",
+      "mode": "onFoot",
+      "captureTiming": {
+        "screenshotMs": 1461.5063999999984,
+        "totalMs": 2248.037799999991
+      }
+    },
+    {
+      "name": "broad-travel-gameplay-run",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\broad-travel-gameplay-run.png",
+      "sha256": "65ba043799b08f3f97d915845415ae104e570717e05c61801709ec4d29b6feb3",
+      "camera": "foot",
+      "screen": "play",
+      "mode": "onFoot",
+      "captureTiming": {
+        "screenshotMs": 2372.0215000000026,
+        "totalMs": 2763.771000000008
+      }
+    },
+    {
+      "name": "medium-flight-stable-front",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\medium-flight-stable-front.png",
+      "sha256": "56a27d94561aab8f224c122f6fb2d1434db3555d26064d4869c13601bb49fae1",
+      "camera": "stable",
+      "screen": "stable",
+      "mode": "onFoot",
+      "captureTiming": {
+        "screenshotMs": 2871.0430999999953,
+        "totalMs": 5070.128899999996
+      }
+    },
+    {
+      "name": "medium-flight-stable-left",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\medium-flight-stable-left.png",
+      "sha256": "213df153f0bc53cfc7ab7c53fbcadb81c8802f0ec2f328223914631aaf58a351",
+      "camera": "stable",
+      "screen": "stable",
+      "mode": "onFoot",
+      "captureTiming": {
+        "screenshotMs": 1613.6517000000022,
+        "totalMs": 2127.068100000004
+      }
+    },
+    {
+      "name": "medium-flight-stable-right",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\medium-flight-stable-right.png",
+      "sha256": "ec5289d85ba4affc1a9ea6edacf93cc71c51f0b1425151699b47fa092274d3cb",
+      "camera": "stable",
+      "screen": "stable",
+      "mode": "onFoot",
+      "captureTiming": {
+        "screenshotMs": 1478.9413000000059,
+        "totalMs": 2051.404800000004
+      }
+    },
+    {
+      "name": "medium-flight-stable-back",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\medium-flight-stable-back.png",
+      "sha256": "62478eddf571b97595669592f137a28affc645ce2bda09a52eb99bae320820b3",
+      "camera": "stable",
+      "screen": "stable",
+      "mode": "onFoot",
+      "captureTiming": {
+        "screenshotMs": 2094.5590000000084,
+        "totalMs": 2669.786100000012
+      }
+    },
+    {
+      "name": "medium-flight-gameplay-mounted-left",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\medium-flight-gameplay-mounted-left.png",
+      "sha256": "3167054631d6c2a0187804514ec531eea6c6027f165369ed7553e83e51450c27",
+      "camera": "flight",
+      "screen": "play",
+      "mode": "flying",
+      "captureTiming": {
+        "screenshotMs": 1852.0862000000052,
+        "totalMs": 2236.7918000000063
+      }
+    },
+    {
+      "name": "medium-flight-gameplay-mounted-right",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\medium-flight-gameplay-mounted-right.png",
+      "sha256": "36b4d4463343589738e55b1614d7ee22bcebafe89a50369bbd1e11fbab64a9fe",
+      "camera": "flight",
+      "screen": "play",
+      "mode": "flying",
+      "captureTiming": {
+        "screenshotMs": 1796.804799999998,
+        "totalMs": 2215.491300000009
+      }
+    },
+    {
+      "name": "medium-flight-gameplay-walk",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\medium-flight-gameplay-walk.png",
+      "sha256": "f0d6b1cccb8ca38c5cfcd4228756a6d004856dd0c166a985f812153d81abf6f5",
+      "camera": "foot",
+      "screen": "play",
+      "mode": "onFoot",
+      "captureTiming": {
+        "screenshotMs": 1780.7758999999933,
+        "totalMs": 2315.696000000011
+      }
+    },
+    {
+      "name": "medium-flight-gameplay-run",
+      "file": "shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\medium-flight-gameplay-run.png",
+      "sha256": "f88854431d81c0afa5b61b4bfdb834963ffa5cac2d35880a219eb9762c16f08a",
+      "camera": "foot",
+      "screen": "play",
+      "mode": "onFoot",
+      "captureTiming": {
+        "screenshotMs": 1895.4900000000052,
+        "totalMs": 2380.7964999999967
+      }
+    }
+  ],
+  "fullReportSha256": "99f4f8e9580320a5936d9b109196d2ea4978216c5b206d944b3d8d7130ef8d76",
+  "fullReportLocalPath": "C:\\Users\\Robert\\.codex\\worktrees\\rider-merge-review\\Driftwing\\shots\\rider-blender\\windkeel-resting-fit\\2026-10-12T09-47-34-374Z\\report.json"
+}

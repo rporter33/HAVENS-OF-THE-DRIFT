@@ -1,0 +1,280 @@
+PASS normal boot does not request the trial GLB
+PASS explicit opt-in reaches the normal title
+PASS real Stable mixes legacy top, imported trousers and different footwear
+PASS preview leaves saved appearance intact
+PASS Stable dyes keep geometry, skeleton and material in place
+PASS real Revert restores full look and leaves saves intact
+PASS trial adds no saved fields
+PASS saved mix reloads through opt-in
+PASS imported mix completes actual takeoff, landing and dismount
+PASS authored Travel Drape walks and runs through real movement
+PASS authored rider survives actual banks, dive, brake and teleport
+PASS mixed-front reports its actual imported coverage
+PASS mixed-side reports its actual imported coverage
+PASS mixed-back reports its actual imported coverage
+PASS travel-front reports its actual imported coverage
+PASS mounted-left reports its actual imported coverage
+PASS mounted-right reports its actual imported coverage
+PASS live cloth survives reversals, calm, hitches, dyes and all quality tiers
+PASS loaded fixture supports offline local changes without additional fetches
+PASS authored cloth retains shared existing deck support during walking
+PASS authored Travel Drape retains real bracer Windline attachment and release
+PASS sustained updates and 70 preset replacements stay finite with bounded live resources
+PASS locked parent still blocks its piece
+PASS late GLB completion honors actual Stable Revert
+PASS failed load retains generated surfaces and reports failure
+PASS no unexpected browser errors
+{
+  "checks": 26,
+  "captures": 23,
+  "errors": [
+    {
+      "phase": "failed-load",
+      "error": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    }
+  ],
+  "measurements": [
+    {
+      "name": "mixed-front",
+      "variant": "current",
+      "trial": {
+        "status": "off"
+      },
+      "regions": [],
+      "bodyTriangles": 13012,
+      "bodyVertices": 7104,
+      "patches": [],
+      "cpu": {
+        "median": 1.6999999955296516,
+        "p95": 2.5,
+        "samples": 240,
+        "unit": "one 30Hz presentation update / four 120Hz fixed steps; excludes rendering"
+      },
+      "render": {
+        "frame": 9,
+        "calls": 111,
+        "triangles": 370640,
+        "points": 55,
+        "lines": 0
+      },
+      "memory": {
+        "geometries": 111,
+        "textures": 8,
+        "programs": 63
+      },
+      "cachedAssetBytes": 0,
+      "cachedMetadataSerializedBytes": 0,
+      "chromiumHeapSnapshot": {
+        "usedJSHeapSize": 333063763,
+        "totalJSHeapSize": 410979459
+      },
+      "encodedAssetBytes": 0,
+      "bodyBytes": 617976,
+      "clothBytes": 4896,
+      "harness": null
+    },
+    {
+      "name": "mixed-front",
+      "variant": "proof",
+      "trial": {
+        "status": "ready",
+        "selection": "blender"
+      },
+      "regions": [
+        "upper",
+        "handL",
+        "legL",
+        "footL",
+        "handR",
+        "legR",
+        "footR",
+        "head",
+        "ponytail-crown"
+      ],
+      "bodyTriangles": 32176,
+      "bodyVertices": 16628,
+      "patches": [],
+      "cpu": {
+        "median": 5.700000002980232,
+        "p95": 7.800000004470348,
+        "samples": 240,
+        "unit": "one 30Hz presentation update / four 120Hz fixed steps; excludes rendering"
+      },
+      "render": {
+        "frame": 9,
+        "calls": 112,
+        "triangles": 392308,
+        "points": 55,
+        "lines": 0
+      },
+      "memory": {
+        "geometries": 112,
+        "textures": 8,
+        "programs": 63
+      },
+      "cachedAssetBytes": 16491136,
+      "cachedMetadataSerializedBytes": 347532,
+      "chromiumHeapSnapshot": {
+        "usedJSHeapSize": 405528086,
+        "totalJSHeapSize": 500009382
+      },
+      "encodedAssetBytes": 19110536,
+      "bodyBytes": 1456784,
+      "clothBytes": 4896,
+      "harness": {
+        "kind": "windkeel",
+        "bytes": 112760,
+        "triangles": 2504,
+        "vertices": 1286,
+        "visible": true,
+        "sharedSkeleton": true,
+        "fit": {
+          "samples": 1150,
+          "misses": 0,
+          "maxSurfaceOffset": 0.007500000000000001
+        }
+      }
+    },
+    {
+      "name": "travel-front",
+      "variant": "current",
+      "trial": {
+        "status": "off"
+      },
+      "regions": [],
+      "bodyTriangles": 17718,
+      "bodyVertices": 9624,
+      "patches": [],
+      "cpu": {
+        "median": 2.5999999940395355,
+        "p95": 3.3000000044703484,
+        "samples": 240,
+        "unit": "one 30Hz presentation update / four 120Hz fixed steps; excludes rendering"
+      },
+      "render": {
+        "frame": 9,
+        "calls": 115,
+        "triangles": 375586,
+        "points": 55,
+        "lines": 0
+      },
+      "memory": {
+        "geometries": 115,
+        "textures": 8,
+        "programs": 63
+      },
+      "cachedAssetBytes": 0,
+      "cachedMetadataSerializedBytes": 0,
+      "chromiumHeapSnapshot": {
+        "usedJSHeapSize": 426759647,
+        "totalJSHeapSize": 542500359
+      },
+      "encodedAssetBytes": 0,
+      "bodyBytes": 837732,
+      "clothBytes": 15072,
+      "harness": null
+    },
+    {
+      "name": "travel-front",
+      "variant": "proof",
+      "trial": {
+        "status": "ready",
+        "selection": "blender"
+      },
+      "regions": [
+        "upper",
+        "handL",
+        "legL",
+        "barefootL",
+        "handR",
+        "legR",
+        "barefootR",
+        "head",
+        "piece:top:aerie",
+        "piece:chest:aerie",
+        "piece:shoulderDrape:aerie",
+        "piece:waist:aerie",
+        "piece:armWraps:aerie",
+        "piece:legWraps:aerie",
+        "piece:footwear:aerie",
+        "ponytail-crown"
+      ],
+      "bodyTriangles": 63464,
+      "bodyVertices": 32333,
+      "patches": [
+        {
+          "name": "garment-travel-drape-0",
+          "particles": 42,
+          "vertices": 143,
+          "triangles": 240,
+          "controlSignature": "1a3a5ccd",
+          "surfaceSignature": "386a115c"
+        },
+        {
+          "name": "garment-travel-drape-1",
+          "particles": 42,
+          "vertices": 143,
+          "triangles": 240,
+          "controlSignature": "5de21824",
+          "surfaceSignature": "41550b13"
+        },
+        {
+          "name": "garment-travel-drape-2",
+          "particles": 42,
+          "vertices": 143,
+          "triangles": 240,
+          "controlSignature": "b8480274",
+          "surfaceSignature": "fff55e73"
+        },
+        {
+          "name": "garment-travel-drape-3",
+          "particles": 42,
+          "vertices": 143,
+          "triangles": 240,
+          "controlSignature": "6bdccf6b",
+          "surfaceSignature": "72fd7ed3"
+        }
+      ],
+      "cpu": {
+        "median": 14,
+        "p95": 18.69999999552965,
+        "samples": 240,
+        "unit": "one 30Hz presentation update / four 120Hz fixed steps; excludes rendering"
+      },
+      "render": {
+        "frame": 9,
+        "calls": 116,
+        "triangles": 424556,
+        "points": 55,
+        "lines": 0
+      },
+      "memory": {
+        "geometries": 116,
+        "textures": 8,
+        "programs": 63
+      },
+      "cachedAssetBytes": 16491136,
+      "cachedMetadataSerializedBytes": 347532,
+      "chromiumHeapSnapshot": {
+        "usedJSHeapSize": 202371035,
+        "totalJSHeapSize": 372699703
+      },
+      "encodedAssetBytes": 19110536,
+      "bodyBytes": 2838092,
+      "clothBytes": 40400,
+      "harness": {
+        "kind": "windkeel",
+        "bytes": 112760,
+        "triangles": 2504,
+        "vertices": 1286,
+        "visible": true,
+        "sharedSkeleton": true,
+        "fit": {
+          "samples": 1150,
+          "misses": 0,
+          "maxSurfaceOffset": 0.007500000000000001
+        }
+      }
+    }
+  ]
+}

@@ -28,6 +28,27 @@ function ghost(raceId = 'roost-loop', n = 10): GhostRecording {
 }
 
 describe('save migration and sanitizing', () => {
+  it('backfills itemized pieces in old saves without changing legacy outfit, finds or unlocks', () => {
+    const old = { version: 1, rider: { outfit: 'courier', hair: 'braids', outfitPrimary: '#112233' },
+      collected: ['feather-01'], unlocked: ['stripes'] };
+    const s = migrateSave(old);
+    expect(s.rider).toEqual({ ...DEFAULT_RIDER, outfit: 'courier', hair: 'braids', outfitPrimary: '#112233' });
+    expect(s.collected).toEqual(old.collected); expect(s.unlocked).toEqual(old.unlocked);
+    expect(migrateSave(s)).toEqual(s);
+  });
+
+  it('round-trips removed pieces and dyes; repairs unknown components within their own slots', () => {
+    const s = defaultSave();
+    s.rider = { ...s.rider, outfit: 'travel-drape', chest: 'none', shoulderDrape: 'none', waist: 'none',
+      armWraps: 'none', legWraps: 'none', footwear: 'none', armorColor: '#112233', leatherColor: '#aabbcc' };
+    expect(migrateSave(JSON.parse(JSON.stringify(s)))).toEqual(s);
+    const repaired = migrateSave({ ...s, rider: { ...s.rider, build: 'broad', chest: 'sandals', waist: 5, leatherColor: 'red' } });
+    expect(repaired.rider.build).toBe('medium');
+    expect(repaired.rider.chest).toBe(DEFAULT_RIDER.chest);
+    expect(repaired.rider.waist).toBe(DEFAULT_RIDER.waist);
+    expect(repaired.rider.leatherColor).toBe(DEFAULT_RIDER.leatherColor);
+    expect(repaired.rider.footwear).toBe('none');
+  });
   it('repairs research ids and ignores forged totals while preserving existing finds', () => {
     const s = migrateSave({ version: 1, collected: ['relic-ember'], discovered: ['roost'],
       research: { entries: ['survey:gullrest-shrine:inscription', 'survey:gullrest-shrine:inscription', 'bogus', 7],

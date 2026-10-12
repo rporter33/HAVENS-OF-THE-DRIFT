@@ -1,0 +1,247 @@
+{
+  "startedUtc": "2026-10-12T06:48:05.269Z",
+  "url": "http://127.0.0.1:5210/docs/rider-blender-trial/fit-refresh-2026-10-12.html",
+  "scope": "Local additive review gallery and entry links only; existing gameplay QA owns rider behavior",
+  "checks": [
+    {
+      "title": "Play trial → Stable → Outfit → Travel Drape",
+      "url": "http://127.0.0.1:5210/?riderTrial=blender&quality=low",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "title": "Preserved current",
+      "url": "http://127.0.0.1:5211/?quality=low",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "title": "Earlier matched comparisons",
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/review.html",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "title": "QA / hashes / restart steps",
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/FIT_REFRESH_2026-10-12.md",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "title": "All40 gallery images decode at original dimensions",
+      "passed": true
+    }
+  ],
+  "errors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "images": [
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-travel-stable-front.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-travel-stable-left.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-travel-stable-right.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-travel-stable-back.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/slight-travel-stable-front.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/slight-travel-stable-left.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/slight-travel-stable-right.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/slight-travel-stable-back.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/broad-travel-stable-front.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/broad-travel-stable-left.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/broad-travel-stable-right.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/broad-travel-stable-back.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-flight-stable-front.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-flight-stable-left.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-flight-stable-right.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-flight-stable-back.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-travel-gameplay-mounted-left.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-travel-gameplay-mounted-right.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/slight-travel-gameplay-mounted-left.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/slight-travel-gameplay-mounted-right.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/broad-travel-gameplay-mounted-left.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/broad-travel-gameplay-mounted-right.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-flight-gameplay-mounted-left.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-flight-gameplay-mounted-right.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/medium-travel-drape-walk-front.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/medium-travel-drape-walk-back.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/medium-travel-drape-run-front.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/medium-travel-drape-run-back.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/medium-flight-walk-front.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/medium-flight-walk-back.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/medium-flight-run-front.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/medium-flight-run-back.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-travel-gameplay-walk.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-travel-gameplay-run.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/slight-travel-gameplay-walk.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/slight-travel-gameplay-run.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/broad-travel-gameplay-walk.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/broad-travel-gameplay-run.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-flight-gameplay-walk.png",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "url": "http://127.0.0.1:5210/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-flight-gameplay-run.png",
+      "width": 1440,
+      "height": 1080
+    }
+  ],
+  "screenshot": {
+    "file": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-fit-refresh-20261012\\delivery-2026-10-12T06-48-05-268Z\\review-entry.png",
+    "sha256": "752e72d61b2ac64c501390d083d19ddc201631cf38519c2511753c06ee761d8e"
+  },
+  "browser": "155.0.4283.45",
+  "failure": "Error: Review page errors",
+  "finishedUtc": "2026-10-12T06:48:10.041Z"
+}

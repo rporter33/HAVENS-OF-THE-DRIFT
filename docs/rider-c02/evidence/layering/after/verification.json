@@ -1,0 +1,163 @@
+{
+  "phase": "after",
+  "renderer": "Production WebGL / Edge SwiftShader; posed art evidence, not GPU timing",
+  "captures": [
+    {
+      "name": "light-front",
+      "url": "http://127.0.0.1:5197/?view=rider&manual=1&quality=medium&weather=clear&tod=.42&outfit=travel-drape&headgear=none&scarf=none&cape=none&primary=f2eada&secondary=7fa8c4&chest=none&shoulderDrape=none&legWraps=none&angle=18&dist=2.7&height=.95&camUp=.15",
+      "state": {
+        "triangles": 14336,
+        "bones": 27,
+        "finite": true,
+        "texture": 2048,
+        "errors": []
+      }
+    },
+    {
+      "name": "light-top",
+      "url": "http://127.0.0.1:5197/?view=rider&manual=1&quality=medium&weather=clear&tod=.42&outfit=travel-drape&headgear=none&scarf=none&cape=none&primary=f2eada&secondary=7fa8c4&chest=none&shoulderDrape=none&legWraps=none&angle=18&dist=1.05&height=1.32&camUp=0",
+      "state": {
+        "triangles": 14336,
+        "bones": 27,
+        "finite": true,
+        "texture": 2048,
+        "errors": []
+      }
+    },
+    {
+      "name": "shoulders-back",
+      "url": "http://127.0.0.1:5197/?view=rider&manual=1&quality=medium&weather=clear&tod=.42&outfit=travel-drape&headgear=none&scarf=none&cape=none&primary=f2eada&secondary=7fa8c4&chest=none&shoulderDrape=none&legWraps=none&angle=170&dist=1.05&height=1.32&camUp=0",
+      "state": {
+        "triangles": 14336,
+        "bones": 27,
+        "finite": true,
+        "texture": 2048,
+        "errors": []
+      }
+    },
+    {
+      "name": "ankles",
+      "url": "http://127.0.0.1:5197/?view=rider&manual=1&quality=medium&weather=clear&tod=.42&outfit=travel-drape&headgear=none&scarf=none&cape=none&primary=f2eada&secondary=7fa8c4&chest=none&shoulderDrape=none&legWraps=none&angle=30&dist=.8&height=.19&camUp=.08",
+      "state": {
+        "triangles": 14336,
+        "bones": 27,
+        "finite": true,
+        "texture": 2048,
+        "errors": []
+      }
+    },
+    {
+      "name": "ankle-side",
+      "url": "http://127.0.0.1:5197/?view=rider&manual=1&quality=medium&weather=clear&tod=.42&outfit=travel-drape&headgear=none&scarf=none&cape=none&primary=f2eada&secondary=7fa8c4&chest=none&shoulderDrape=none&legWraps=none&angle=90&dist=.8&height=.19&camUp=.08",
+      "state": {
+        "triangles": 14336,
+        "bones": 27,
+        "finite": true,
+        "texture": 2048,
+        "errors": []
+      }
+    },
+    {
+      "name": "wave",
+      "url": "http://127.0.0.1:5197/?view=rider&manual=1&quality=medium&weather=clear&tod=.42&outfit=travel-drape&headgear=none&scarf=none&cape=none&primary=f2eada&secondary=7fa8c4&chest=none&shoulderDrape=none&legWraps=none&action=wave&t=.4&angle=315&dist=1.8&height=1.22&camUp=0",
+      "state": {
+        "triangles": 14336,
+        "bones": 27,
+        "finite": true,
+        "texture": 2048,
+        "errors": []
+      }
+    },
+    {
+      "name": "full-outfit",
+      "url": "http://127.0.0.1:5197/?view=rider&manual=1&quality=medium&weather=clear&tod=.42&outfit=travel-drape&headgear=none&scarf=none&cape=none&primary=f2eada&secondary=7fa8c4&angle=18&dist=2.7&height=.95&camUp=.15",
+      "state": {
+        "triangles": 17590,
+        "bones": 27,
+        "finite": true,
+        "texture": 2048,
+        "errors": []
+      }
+    },
+    {
+      "name": "mounted-left",
+      "url": "http://127.0.0.1:5197/?view=rider&manual=1&quality=medium&weather=clear&tod=.42&outfit=travel-drape&headgear=none&scarf=none&cape=none&primary=f2eada&secondary=7fa8c4&chest=none&shoulderDrape=none&legWraps=none&real=1&angle=90&speed=40&dist=2.7&height=.4&camUp=.15",
+      "state": {
+        "triangles": 14336,
+        "bones": 27,
+        "finite": true,
+        "texture": 2048,
+        "errors": []
+      }
+    },
+    {
+      "name": "mounted-right",
+      "url": "http://127.0.0.1:5197/?view=rider&manual=1&quality=medium&weather=clear&tod=.42&outfit=travel-drape&headgear=none&scarf=none&cape=none&primary=f2eada&secondary=7fa8c4&chest=none&shoulderDrape=none&legWraps=none&real=1&angle=270&speed=40&dist=2.7&height=.4&camUp=.15",
+      "state": {
+        "triangles": 14336,
+        "bones": 27,
+        "finite": true,
+        "texture": 2048,
+        "errors": []
+      }
+    },
+    {
+      "name": "mounted-bank",
+      "url": "http://127.0.0.1:5197/?view=rider&manual=1&quality=medium&weather=clear&tod=.42&outfit=travel-drape&headgear=none&scarf=none&cape=none&primary=f2eada&secondary=7fa8c4&chest=none&shoulderDrape=none&legWraps=none&real=1&angle=135&speed=70&lean=.9&crouch=.25&dist=2.7&height=.4&camUp=.15",
+      "state": {
+        "triangles": 14336,
+        "bones": 27,
+        "finite": true,
+        "texture": 2048,
+        "errors": []
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "light-front: finite model/cloth, existing rig and 2K material",
+      "passed": true
+    },
+    {
+      "name": "light-top: finite model/cloth, existing rig and 2K material",
+      "passed": true
+    },
+    {
+      "name": "shoulders-back: finite model/cloth, existing rig and 2K material",
+      "passed": true
+    },
+    {
+      "name": "ankles: finite model/cloth, existing rig and 2K material",
+      "passed": true
+    },
+    {
+      "name": "ankle-side: finite model/cloth, existing rig and 2K material",
+      "passed": true
+    },
+    {
+      "name": "wave: finite model/cloth, existing rig and 2K material",
+      "passed": true
+    },
+    {
+      "name": "full-outfit: finite model/cloth, existing rig and 2K material",
+      "passed": true
+    },
+    {
+      "name": "mounted-left: finite model/cloth, existing rig and 2K material",
+      "passed": true
+    },
+    {
+      "name": "mounted-right: finite model/cloth, existing rig and 2K material",
+      "passed": true
+    },
+    {
+      "name": "mounted-bank: finite model/cloth, existing rig and 2K material",
+      "passed": true
+    },
+    {
+      "name": "no page or shader errors",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

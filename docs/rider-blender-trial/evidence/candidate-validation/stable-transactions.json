@@ -1,0 +1,634 @@
+{
+  "origin": "http://127.0.0.1:5216",
+  "browser": "155.0.4283.45",
+  "renderer": "CHROMIUM_PATH browser SwiftShader; no hardware certification",
+  "profile": "fresh nonpersistent context; unlock fixtures affect this context only",
+  "checks": [
+    {
+      "name": "all parent outfits consistently gate their individual pieces",
+      "passed": true,
+      "detail": [
+        {
+          "id": "travel-drape",
+          "name": "Travel Drape",
+          "locked": false,
+          "pieces": [
+            {
+              "id": "travel-drape-top",
+              "name": "Linen Chiton",
+              "slot": "riderTop",
+              "locked": false
+            },
+            {
+              "id": "travel-drape-trousers",
+              "name": "Gathered Linen Trousers",
+              "slot": "riderTrousers",
+              "locked": false
+            }
+          ]
+        },
+        {
+          "id": "flight",
+          "name": "Flight Leathers",
+          "locked": false,
+          "pieces": [
+            {
+              "id": "flight-top",
+              "name": "Flight Jacket",
+              "slot": "riderTop",
+              "locked": false
+            },
+            {
+              "id": "flight-trousers",
+              "name": "Flight Trousers",
+              "slot": "riderTrousers",
+              "locked": false
+            },
+            {
+              "id": "flight-chest",
+              "name": "Flight Harness",
+              "slot": "riderChest",
+              "locked": false
+            },
+            {
+              "id": "flight-shoulderDrape",
+              "name": "Shearling Collar",
+              "slot": "riderDrape",
+              "locked": false
+            },
+            {
+              "id": "flight-waist",
+              "name": "Flight Belt & Pouch",
+              "slot": "riderWaist",
+              "locked": false
+            },
+            {
+              "id": "flight-armWraps",
+              "name": "Flight Gloves",
+              "slot": "riderArmWraps",
+              "locked": false
+            },
+            {
+              "id": "flight-footwear",
+              "name": "Flight Boots",
+              "slot": "riderFootwear",
+              "locked": false
+            }
+          ]
+        },
+        {
+          "id": "scout",
+          "name": "Scout's Tunic",
+          "locked": false,
+          "pieces": [
+            {
+              "id": "scout-top",
+              "name": "Scout's Tunic",
+              "slot": "riderTop",
+              "locked": false
+            },
+            {
+              "id": "scout-trousers",
+              "name": "Scout Trousers",
+              "slot": "riderTrousers",
+              "locked": false
+            },
+            {
+              "id": "scout-chest",
+              "name": "Scout Jerkin",
+              "slot": "riderChest",
+              "locked": false
+            },
+            {
+              "id": "scout-shoulderDrape",
+              "name": "Scout Collar",
+              "slot": "riderDrape",
+              "locked": false
+            },
+            {
+              "id": "scout-waist",
+              "name": "Scout Belt & Pouches",
+              "slot": "riderWaist",
+              "locked": false
+            },
+            {
+              "id": "scout-armWraps",
+              "name": "Scout Bracers",
+              "slot": "riderArmWraps",
+              "locked": false
+            },
+            {
+              "id": "scout-legWraps",
+              "name": "Scout Calf Wraps",
+              "slot": "riderLegWraps",
+              "locked": false
+            },
+            {
+              "id": "scout-footwear",
+              "name": "Scout Boots",
+              "slot": "riderFootwear",
+              "locked": false
+            }
+          ]
+        },
+        {
+          "id": "courier",
+          "name": "Courier's Coat",
+          "locked": true,
+          "pieces": [
+            {
+              "id": "courier-top",
+              "name": "Courier's Coat",
+              "slot": "riderTop",
+              "locked": true
+            },
+            {
+              "id": "courier-trousers",
+              "name": "Courier Trousers",
+              "slot": "riderTrousers",
+              "locked": true
+            },
+            {
+              "id": "courier-shoulderDrape",
+              "name": "Courier Collar & Epaulettes",
+              "slot": "riderDrape",
+              "locked": true
+            },
+            {
+              "id": "courier-waist",
+              "name": "Courier Sash",
+              "slot": "riderWaist",
+              "locked": true
+            },
+            {
+              "id": "courier-armWraps",
+              "name": "Courier Cuffs & Gloves",
+              "slot": "riderArmWraps",
+              "locked": true
+            },
+            {
+              "id": "courier-footwear",
+              "name": "Courier Boots",
+              "slot": "riderFootwear",
+              "locked": true
+            }
+          ]
+        },
+        {
+          "id": "racer",
+          "name": "Racing Suit",
+          "locked": true,
+          "pieces": [
+            {
+              "id": "racer-top",
+              "name": "Racing Top",
+              "slot": "riderTop",
+              "locked": true
+            },
+            {
+              "id": "racer-trousers",
+              "name": "Racing Trousers",
+              "slot": "riderTrousers",
+              "locked": true
+            },
+            {
+              "id": "racer-chest",
+              "name": "Racing Chevron & Patch",
+              "slot": "riderChest",
+              "locked": true
+            },
+            {
+              "id": "racer-shoulderDrape",
+              "name": "Racing Collar",
+              "slot": "riderDrape",
+              "locked": true
+            },
+            {
+              "id": "racer-waist",
+              "name": "Racing Belt",
+              "slot": "riderWaist",
+              "locked": true
+            },
+            {
+              "id": "racer-armWraps",
+              "name": "Racing Gloves",
+              "slot": "riderArmWraps",
+              "locked": true
+            },
+            {
+              "id": "racer-footwear",
+              "name": "Racing Boots",
+              "slot": "riderFootwear",
+              "locked": true
+            }
+          ]
+        },
+        {
+          "id": "cartographer",
+          "name": "Cartographer's Robes",
+          "locked": true,
+          "pieces": [
+            {
+              "id": "cartographer-top",
+              "name": "Cartographer's Robes",
+              "slot": "riderTop",
+              "locked": true
+            },
+            {
+              "id": "cartographer-trousers",
+              "name": "Cartographer Trousers",
+              "slot": "riderTrousers",
+              "locked": true
+            },
+            {
+              "id": "cartographer-chest",
+              "name": "Map Case & Strap",
+              "slot": "riderChest",
+              "locked": true
+            },
+            {
+              "id": "cartographer-shoulderDrape",
+              "name": "Compass Mantle Collar",
+              "slot": "riderDrape",
+              "locked": true
+            },
+            {
+              "id": "cartographer-waist",
+              "name": "Cartographer Sash",
+              "slot": "riderWaist",
+              "locked": true
+            },
+            {
+              "id": "cartographer-armWraps",
+              "name": "Embroidered Bell Sleeves",
+              "slot": "riderArmWraps",
+              "locked": true
+            },
+            {
+              "id": "cartographer-footwear",
+              "name": "Cartographer Boots",
+              "slot": "riderFootwear",
+              "locked": true
+            }
+          ]
+        },
+        {
+          "id": "skyknight",
+          "name": "Skyknight Plate",
+          "locked": true,
+          "pieces": [
+            {
+              "id": "skyknight-top",
+              "name": "Skyknight Tabard",
+              "slot": "riderTop",
+              "locked": true
+            },
+            {
+              "id": "skyknight-trousers",
+              "name": "Skyknight Underlayers",
+              "slot": "riderTrousers",
+              "locked": true
+            },
+            {
+              "id": "skyknight-chest",
+              "name": "Skyknight Cuirass & Faulds",
+              "slot": "riderChest",
+              "locked": true
+            },
+            {
+              "id": "skyknight-shoulderDrape",
+              "name": "Skyknight Gorget & Pauldrons",
+              "slot": "riderDrape",
+              "locked": true
+            },
+            {
+              "id": "skyknight-waist",
+              "name": "Skyknight Belt",
+              "slot": "riderWaist",
+              "locked": true
+            },
+            {
+              "id": "skyknight-armWraps",
+              "name": "Skyknight Vambraces & Gloves",
+              "slot": "riderArmWraps",
+              "locked": true
+            },
+            {
+              "id": "skyknight-legWraps",
+              "name": "Skyknight Knee Guards",
+              "slot": "riderLegWraps",
+              "locked": true
+            },
+            {
+              "id": "skyknight-footwear",
+              "name": "Skyknight Greaves & Boots",
+              "slot": "riderFootwear",
+              "locked": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "locked courier top cannot change actual preview",
+      "passed": true
+    },
+    {
+      "name": "locked racer top cannot change actual preview",
+      "passed": true
+    },
+    {
+      "name": "locked cartographer top cannot change actual preview",
+      "passed": true
+    },
+    {
+      "name": "locked skyknight top cannot change actual preview",
+      "passed": true
+    },
+    {
+      "name": "actual complete preset restoration: travel-drape",
+      "passed": true,
+      "detail": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "travel-drape",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "goggles",
+          "scarf": "long",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "status": "ready",
+        "regions": [
+          "upper",
+          "handL",
+          "legL",
+          "barefootL",
+          "handR",
+          "legR",
+          "barefootR",
+          "head",
+          "piece:top:aerie",
+          "piece:chest:aerie",
+          "piece:shoulderDrape:aerie",
+          "piece:waist:aerie",
+          "piece:armWraps:aerie",
+          "piece:legWraps:aerie",
+          "piece:footwear:aerie",
+          "ponytail-crown"
+        ]
+      }
+    },
+    {
+      "name": "actual complete preset restoration: flight",
+      "passed": true,
+      "detail": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "flight",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "goggles",
+          "scarf": "long",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "status": "ready",
+        "regions": [
+          "upper",
+          "handL",
+          "footL",
+          "handR",
+          "footR",
+          "head",
+          "ponytail-crown"
+        ]
+      }
+    },
+    {
+      "name": "actual complete preset restoration: scout",
+      "passed": true,
+      "detail": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "scout",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "goggles",
+          "scarf": "long",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "status": "ready",
+        "regions": [
+          "upper",
+          "handL",
+          "footL",
+          "handR",
+          "footR",
+          "head",
+          "ponytail-crown"
+        ]
+      }
+    },
+    {
+      "name": "actual complete preset restoration: courier",
+      "passed": true,
+      "detail": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "courier",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "goggles",
+          "scarf": "long",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "status": "ready",
+        "regions": [
+          "upper",
+          "handL",
+          "footL",
+          "handR",
+          "footR",
+          "head",
+          "ponytail-crown"
+        ]
+      }
+    },
+    {
+      "name": "actual complete preset restoration: racer",
+      "passed": true,
+      "detail": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "racer",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "goggles",
+          "scarf": "long",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "status": "ready",
+        "regions": [
+          "upper",
+          "handL",
+          "footL",
+          "handR",
+          "footR",
+          "head",
+          "ponytail-crown"
+        ]
+      }
+    },
+    {
+      "name": "actual complete preset restoration: cartographer",
+      "passed": true,
+      "detail": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "cartographer",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "goggles",
+          "scarf": "long",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "status": "ready",
+        "regions": [
+          "upper",
+          "handL",
+          "footL",
+          "handR",
+          "footR",
+          "head",
+          "ponytail-crown"
+        ]
+      }
+    },
+    {
+      "name": "actual complete preset restoration: skyknight",
+      "passed": true,
+      "detail": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "skyknight",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "goggles",
+          "scarf": "long",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "status": "ready",
+        "regions": [
+          "upper",
+          "handL",
+          "footL",
+          "handR",
+          "footR",
+          "head",
+          "ponytail-crown"
+        ]
+      }
+    },
+    {
+      "name": "restored complete preset saves and reloads intact",
+      "passed": true
+    },
+    {
+      "name": "no page errors",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "errors": []
+}

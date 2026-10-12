@@ -459,7 +459,17 @@ export type CosmeticSlot =
   | 'riderOutfit'
   | 'riderHeadgear'
   | 'riderScarf'
-  | 'riderCape';
+  | 'riderCape'
+  | 'riderChest'
+  | 'riderDrape'
+  | 'riderWaist'
+  | 'riderArmWraps'
+  | 'riderLegWraps'
+  | 'riderFootwear'
+  | 'riderTop'
+  | 'riderTrousers';
+
+export type RiderGarmentSlot = 'top' | 'trousers' | 'chest' | 'shoulderDrape' | 'waist' | 'armWraps' | 'legWraps' | 'footwear';
 
 export interface WyvernLook {
   breed: BreedId;
@@ -490,6 +500,17 @@ export interface RiderLook {
   scarfColor: string;
   cape: string;
   capeColor: string;
+  /** Travel Drape pieces; retained while wearing another complete outfit. */
+  chest: string;
+  shoulderDrape: string;
+  waist: string;
+  armWraps: string;
+  legWraps: string;
+  footwear: string;
+  armorColor: string;
+  leatherColor: string;
+  /** Sparse overrides over the selected complete outfit. Never mutate this map in place. */
+  wardrobe?: Partial<Record<RiderGarmentSlot, string>>;
 }
 
 // ---------------------------------------------------------------------------------------------

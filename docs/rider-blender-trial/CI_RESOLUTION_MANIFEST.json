@@ -1,0 +1,136 @@
+{
+  "createdUtc": "2026-10-12T09:22:59.471609+00:00",
+  "previousPublication": "25faa147f5b70f207f6bd92132bfe89866b49e9e",
+  "runtimeAndAssetsUnchanged": true,
+  "releasedMainFilesPreserved": 14,
+  "fitCaptures": 32,
+  "stableMeasurementComparisons": 8,
+  "measurementDifferences": 0,
+  "qaHarnessSha256": "b73a100b68a243305fd710b79e029b1bcd79db8fecf7040acd9184dc0385de6e",
+  "evidence": [
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/fit-report.json",
+      "bytes": 5102439,
+      "sha256": "81ce8371a32a11fbe3c1c139010e585241dd2972dd7f03178e2b03e6ba0e7468"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/medium-travel-stable-front.png",
+      "bytes": 1152773,
+      "sha256": "e70bde7528d3ad1a70622de4ae594a96352b5f8aff742d161690d940e65d942a"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/medium-travel-gameplay-mounted-left.png",
+      "bytes": 1490817,
+      "sha256": "03590061f1c1571a7ca1362ada52b812473fdb877f913675b6ba803027d612af"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/medium-travel-gameplay-mounted-right.png",
+      "bytes": 1510943,
+      "sha256": "26823978b4db473cfa637545f0ef24c22a72d36ea060bf517ab7bc772d4b47b4"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/candidate-a.json",
+      "bytes": 8627,
+      "sha256": "47ddf6a3343787354be17ca710076ee4436cf28a0847c5131dd9c5a46230c9ae"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/baseline-b.json",
+      "bytes": 8626,
+      "sha256": "b78637bedd52fa7dd228966cfc27288e9e35c46b1d07d1bb2bc056a34e57dffa"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/candidate-b.json",
+      "bytes": 8513,
+      "sha256": "e140ad247b7e054a044023e39dd1a215c2f03af665c25cb2abd4d4de386ef573"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/integration-ci-cpu.json",
+      "bytes": 8596,
+      "sha256": "33682a3125b8a80067530583beab8cae82fade02d04be46f62c1065dd0ccbea8",
+      "sourceArchive": "pr14-integration-ci-evidence.zip"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/original-authored-ci-checks.json",
+      "bytes": 515,
+      "sha256": "95d5565c82df589888c6c76e4dd9674ee1ea3dae6bec3c139b97f132ba8ca5f1",
+      "sourceArchive": "pr14-authored-ci-attempt1-evidence.zip"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/original-fit-failure.log",
+      "bytes": 786,
+      "sha256": "06b134563f85d66c0f33f49e63f68d282e958f71877c4b3b16fbe14348fb347d",
+      "sourceArchive": "pr14-authored-ci-attempt1-evidence.zip"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/integration-346-reticle-failure.json",
+      "bytes": 90816,
+      "sha256": "b554f7b92a3bd08affc5de98b7bf1f22a6fbb2c5980e3895e8e29db28021f7db"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/authored-346-checks.json",
+      "bytes": 515,
+      "sha256": "7aeb3c5d21d1ff891324cf039d94777e5242eb519f57c10a91c6735659c22f86"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/full-chromium-fit-summary.json",
+      "bytes": 16781,
+      "sha256": "36467e4528fab35f507bc5f31faa5321c995349e7edbdda114dc9f3fb57b6835"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/full-chromium-gameplay-report.json",
+      "bytes": 26360,
+      "sha256": "2817ebe2c8ff4fa6cdac25722bdf615cf2b3df22aac03448c0f6b67d4f4d8067"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/integration-f1-reticle-failure.json",
+      "bytes": 90851,
+      "sha256": "d9e36b443c520cde3b60b65973c1b9be6797421d3f1da1d1e0e7465f35754d98"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/reticle-isolated-local.json",
+      "bytes": 202589,
+      "sha256": "7dfd92b3bf78eea1fd050f60c38e7978e38ca1dac56aba7ba9f0825a289440d7"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/integration-a7-reticle-failure.json",
+      "bytes": 89854,
+      "sha256": "4a5273bba1197cf509e05c17e7eb946c834aa001cbff9dde8e27887c1d6200aa"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/reticle-pinned-before.json",
+      "bytes": 185876,
+      "sha256": "1ebefc41dc6f394f509e8a57ec494fe7616c2dfca99845c1bed0b42792436eb0"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/reticle-pinned-presented.json",
+      "bytes": 206574,
+      "sha256": "49cc4e8196e15abfa5441dc6a28fe2238b34763617eb47c5206108a8f90efd53"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/editor-pinned-full.json",
+      "bytes": 4636,
+      "sha256": "db23f0aeda0012e0f736075a6bfe4799f4bba1655c6e035ab233f5134574836a"
+    }
+  ],
+  "hashNote": "Evidence raw-byte SHA256; prior PR_PACKAGE_MANIFEST identifies original published Git blobs. This supplement does not replace historical manifests.",
+  "browserFollowup": {
+    "base": "346e2334a1ec019e2d8f715bcffa4e0457886ba0",
+    "runtimeAndAssetsUnchanged": true,
+    "checksUnweakened": true,
+    "scripts/rider-blender-browser.mjs": "fc9b1c16eec52101468460aa8b319da243bb0c72075a20d3b36b2b9f2d3f03a1",
+    "scripts/rider-blender-gameplay-qa.mjs": "daaa7d003d6b56257d3bea6aff9ca62b7b4231913f1c05c12285d55326996bc1"
+  },
+  "reticleIsolation": {
+    "base": "f1d98fdf5d1b8a1129751f907f9c8fe4d40055b1",
+    "runtimeAndAssetsUnchanged": true,
+    "checksUnweakened": true,
+    "scriptSha256": "ebfa19607491bac579b581097106513a454357cb4ed61d0200acfa37d4e2b2b5"
+  },
+  "presentationReadiness": {
+    "base": "a7ae710f9a31f3630e88098ecf373cb51c432eba",
+    "runtimeAndAssetsUnchanged": true,
+    "checksUnweakened": true,
+    "scripts/windline-reticle-motion-check.mjs": "88034714b15d72f9ac8e38b49e1ca94168f3bab40324e88410cb0322f4cd4b98",
+    "scripts/editor-check.mjs": "335375d4fb87101ab15e4b23d060c338872de9bc2ec893acf37b775bdf97c9a6"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "startedUtc": "2026-10-12T07:41:07.311Z",
+  "reason": "Full unit retry after original 1321/1322 run timed out on unchanged legacy atlas test; isolated unchanged proof.test.ts passed15/15 in19.24s. No tolerance changes. Remaining required audits/build did not run in the first fail-fast runner.",
+  "checks": [
+    {
+      "id": "unit-retry",
+      "args": [
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--maxWorkers=1",
+        "--reporter=dot"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 233380
+    },
+    {
+      "id": "legacy-audit",
+      "args": [
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "scripts/rider-qa.config.mjs",
+        "--maxWorkers=1"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 83634
+    },
+    {
+      "id": "authored-audit",
+      "args": [
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "scripts/rider-blender-qa.config.mjs",
+        "--maxWorkers=1"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 154368
+    },
+    {
+      "id": "build",
+      "args": [
+        "node_modules/vite/bin/vite.js",
+        "build"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 2324
+    }
+  ]
+}

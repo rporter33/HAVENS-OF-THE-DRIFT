@@ -1,0 +1,890 @@
+{
+  "browser": "149.0.7827.55",
+  "scope": "Authored Blender rider trial: gameplay, lifecycle and software-renderer CPU measurements",
+  "asset": "d6f2ffa790d43e8217ab6d64bdfdf994b424d1d5cb1d1b8685403b2001d40dc8",
+  "renderer": "CHROMIUM_PATH browser SwiftShader; no hardware certification",
+  "origin": "http://127.0.0.1:5216",
+  "profile": "fresh nonpersistent context",
+  "checks": [
+    {
+      "name": "normal boot does not request the trial GLB",
+      "passed": true
+    },
+    {
+      "name": "explicit opt-in reaches the normal title",
+      "passed": true
+    },
+    {
+      "name": "real Stable mixes legacy top, imported trousers and different footwear",
+      "passed": true,
+      "detail": {
+        "trial": {
+          "status": "ready",
+          "selection": "blender"
+        },
+        "regions": [
+          "upper",
+          "handL",
+          "legL",
+          "footL",
+          "handR",
+          "legR",
+          "footR",
+          "head",
+          "ponytail-crown"
+        ],
+        "bodyTriangles": 33356,
+        "bodyVertices": 17328,
+        "patches": []
+      }
+    },
+    {
+      "name": "preview leaves saved appearance intact",
+      "passed": true
+    },
+    {
+      "name": "Stable dyes keep geometry, skeleton and material in place",
+      "passed": true
+    },
+    {
+      "name": "real Revert restores full look and leaves saves intact",
+      "passed": true
+    },
+    {
+      "name": "trial adds no saved fields",
+      "passed": true
+    },
+    {
+      "name": "saved mix reloads through opt-in",
+      "passed": true
+    },
+    {
+      "name": "imported mix completes actual takeoff, landing and dismount",
+      "passed": true,
+      "detail": {
+        "takeoff": "flying",
+        "landing": "landed",
+        "dismount": "dismounting",
+        "finished": "onFoot",
+        "finite": true,
+        "regions": [
+          "upper",
+          "handL",
+          "legL",
+          "footL",
+          "handR",
+          "legR",
+          "footR",
+          "head",
+          "ponytail-crown"
+        ]
+      }
+    },
+    {
+      "name": "authored Travel Drape walks and runs through real movement",
+      "passed": true,
+      "detail": {
+        "walk": 1.7780085798286565,
+        "run": 3.5541655165373762,
+        "mode": "onFoot",
+        "regions": [
+          "upper",
+          "handL",
+          "legL",
+          "barefootL",
+          "handR",
+          "legR",
+          "barefootR",
+          "head",
+          "piece:top:aerie",
+          "piece:chest:aerie",
+          "piece:shoulderDrape:aerie",
+          "piece:waist:aerie",
+          "piece:armWraps:aerie",
+          "piece:legWraps:aerie",
+          "piece:footwear:aerie",
+          "ponytail-crown"
+        ],
+        "finite": true
+      }
+    },
+    {
+      "name": "authored rider survives actual banks, dive, brake and teleport",
+      "passed": true,
+      "detail": {
+        "rows": [
+          {
+            "name": "bank-left",
+            "mode": "flying",
+            "position": [
+              0.7176753228526818,
+              899.1779721341511,
+              -66.23593581499337
+            ],
+            "velocity": [
+              2.765433672565249,
+              -2.12440605365687,
+              29.457823207163056
+            ],
+            "finite": true
+          },
+          {
+            "name": "bank-right",
+            "mode": "flying",
+            "position": [
+              5.085271884894055,
+              896.4518553205003,
+              -42.953688496009676
+            ],
+            "velocity": [
+              7.375815771187001,
+              -3.592951220608208,
+              28.867856845756613
+            ],
+            "finite": true
+          },
+          {
+            "name": "dive",
+            "mode": "flying",
+            "position": [
+              11.045554615173982,
+              891.6768006377762,
+              -20.026998319270422
+            ],
+            "velocity": [
+              7.389375064791205,
+              -9.622362920588957,
+              28.283804223115265
+            ],
+            "finite": true
+          },
+          {
+            "name": "brake",
+            "mode": "flying",
+            "position": [
+              16.71308979885938,
+              883.8014899446621,
+              1.0533588967894705
+            ],
+            "velocity": [
+              6.876332982502972,
+              -7.209246128842992,
+              24.56068071828969
+            ],
+            "finite": true
+          }
+        ],
+        "teleportFinite": true
+      }
+    },
+    {
+      "name": "mixed-front reports its actual imported coverage",
+      "passed": true,
+      "detail": {
+        "trial": {
+          "status": "ready",
+          "selection": "blender"
+        },
+        "regions": [
+          "upper",
+          "handL",
+          "legL",
+          "footL",
+          "handR",
+          "legR",
+          "footR",
+          "head",
+          "ponytail-crown"
+        ],
+        "bodyTriangles": 32176,
+        "bodyVertices": 16628,
+        "patches": []
+      }
+    },
+    {
+      "name": "mixed-side reports its actual imported coverage",
+      "passed": true,
+      "detail": {
+        "trial": {
+          "status": "ready",
+          "selection": "blender"
+        },
+        "regions": [
+          "upper",
+          "handL",
+          "legL",
+          "footL",
+          "handR",
+          "legR",
+          "footR",
+          "head",
+          "ponytail-crown"
+        ],
+        "bodyTriangles": 32176,
+        "bodyVertices": 16628,
+        "patches": []
+      }
+    },
+    {
+      "name": "mixed-back reports its actual imported coverage",
+      "passed": true,
+      "detail": {
+        "trial": {
+          "status": "ready",
+          "selection": "blender"
+        },
+        "regions": [
+          "upper",
+          "handL",
+          "legL",
+          "footL",
+          "handR",
+          "legR",
+          "footR",
+          "head",
+          "ponytail-crown"
+        ],
+        "bodyTriangles": 32176,
+        "bodyVertices": 16628,
+        "patches": []
+      }
+    },
+    {
+      "name": "travel-front reports its actual imported coverage",
+      "passed": true,
+      "detail": {
+        "trial": {
+          "status": "ready",
+          "selection": "blender"
+        },
+        "regions": [
+          "upper",
+          "handL",
+          "legL",
+          "barefootL",
+          "handR",
+          "legR",
+          "barefootR",
+          "head",
+          "piece:top:aerie",
+          "piece:chest:aerie",
+          "piece:shoulderDrape:aerie",
+          "piece:waist:aerie",
+          "piece:armWraps:aerie",
+          "piece:legWraps:aerie",
+          "piece:footwear:aerie",
+          "ponytail-crown"
+        ],
+        "bodyTriangles": 63464,
+        "bodyVertices": 32333,
+        "patches": [
+          {
+            "name": "garment-travel-drape-0",
+            "particles": 42,
+            "vertices": 143,
+            "triangles": 240,
+            "controlSignature": "1a3a5ccd",
+            "surfaceSignature": "386a115c"
+          },
+          {
+            "name": "garment-travel-drape-1",
+            "particles": 42,
+            "vertices": 143,
+            "triangles": 240,
+            "controlSignature": "5de21824",
+            "surfaceSignature": "41550b13"
+          },
+          {
+            "name": "garment-travel-drape-2",
+            "particles": 42,
+            "vertices": 143,
+            "triangles": 240,
+            "controlSignature": "b8480274",
+            "surfaceSignature": "fff55e73"
+          },
+          {
+            "name": "garment-travel-drape-3",
+            "particles": 42,
+            "vertices": 143,
+            "triangles": 240,
+            "controlSignature": "6bdccf6b",
+            "surfaceSignature": "72fd7ed3"
+          }
+        ]
+      }
+    },
+    {
+      "name": "mounted-left reports its actual imported coverage",
+      "passed": true,
+      "detail": {
+        "trial": {
+          "status": "ready",
+          "selection": "blender"
+        },
+        "regions": [
+          "upper",
+          "handL",
+          "legL",
+          "footL",
+          "handR",
+          "legR",
+          "footR",
+          "head",
+          "ponytail-crown"
+        ],
+        "bodyTriangles": 32176,
+        "bodyVertices": 16628,
+        "patches": []
+      }
+    },
+    {
+      "name": "mounted-right reports its actual imported coverage",
+      "passed": true,
+      "detail": {
+        "trial": {
+          "status": "ready",
+          "selection": "blender"
+        },
+        "regions": [
+          "upper",
+          "handL",
+          "legL",
+          "footL",
+          "handR",
+          "legR",
+          "footR",
+          "head",
+          "ponytail-crown"
+        ],
+        "bodyTriangles": 32176,
+        "bodyVertices": 16628,
+        "patches": []
+      }
+    },
+    {
+      "name": "live cloth survives reversals, calm, hitches, dyes and all quality tiers",
+      "passed": true,
+      "detail": {
+        "finite": true,
+        "maxMotion": 0.07000000000000005,
+        "maxSeam": 0,
+        "gustDisplacement": 4.999593826830144,
+        "calmDisplacement": 2.5915939983241763,
+        "continuity": true,
+        "atlasMemory": [
+          {
+            "size": 1024,
+            "cpuColorBytes": 4194304,
+            "uploaded": true,
+            "rgba8MipBytesIfUploaded": 5592404
+          },
+          {
+            "size": 2048,
+            "cpuColorBytes": 16777216,
+            "uploaded": true,
+            "rgba8MipBytesIfUploaded": 22369620
+          },
+          {
+            "size": 3072,
+            "cpuColorBytes": 37748736,
+            "uploaded": true,
+            "rgba8MipBytesIfUploaded": 50331640
+          },
+          {
+            "size": 4096,
+            "cpuColorBytes": 67108864,
+            "uploaded": true,
+            "rgba8MipBytesIfUploaded": 89478484
+          }
+        ],
+        "normalMaps": "color-only path; optional lazy normal maps not requested",
+        "rendererTextureCount": 11,
+        "skinned": false,
+        "patchVertices": 143,
+        "controls": 42
+      }
+    },
+    {
+      "name": "loaded fixture supports offline local changes without additional fetches",
+      "passed": true
+    },
+    {
+      "name": "authored cloth retains shared existing deck support during walking",
+      "passed": true,
+      "detail": {
+        "distance": 1.7430453965016603,
+        "height": 650,
+        "mode": "onFoot",
+        "trial": "ready",
+        "finite": true
+      }
+    },
+    {
+      "name": "authored Travel Drape retains real bracer Windline attachment and release",
+      "passed": true,
+      "detail": {
+        "attached": true,
+        "momentum": true,
+        "released": true,
+        "finite": true,
+        "regions": [
+          "upper",
+          "handL",
+          "legL",
+          "barefootL",
+          "handR",
+          "legR",
+          "barefootR",
+          "head",
+          "piece:top:aerie",
+          "piece:chest:aerie",
+          "piece:shoulderDrape:aerie",
+          "piece:waist:aerie",
+          "piece:armWraps:aerie",
+          "piece:legWraps:aerie",
+          "piece:footwear:aerie",
+          "ponytail-crown"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "name": "sustained updates and 70 preset replacements stay finite with bounded live resources",
+      "passed": true,
+      "detail": {
+        "presentationSteps": 1200,
+        "fixedSteps": 4800,
+        "simulatedSeconds": 40,
+        "medianMs": 8.599999994039536,
+        "p95Ms": 15,
+        "before": {
+          "geometries": 111,
+          "textures": 8
+        },
+        "after": {
+          "geometries": 111,
+          "textures": 8
+        },
+        "finite": true,
+        "ready": true
+      }
+    },
+    {
+      "name": "locked parent still blocks its piece",
+      "passed": true
+    },
+    {
+      "name": "late GLB completion honors actual Stable Revert",
+      "passed": true
+    },
+    {
+      "name": "failed load retains generated surfaces and reports failure",
+      "passed": true,
+      "detail": {
+        "trial": {
+          "status": "failed",
+          "selection": "blender",
+          "error": "Error: Rider import: HTTP 404"
+        },
+        "regions": [],
+        "bodyTriangles": 13012,
+        "bodyVertices": 7104,
+        "patches": []
+      }
+    },
+    {
+      "name": "no unexpected browser errors",
+      "passed": true,
+      "detail": [
+        {
+          "phase": "failed-load",
+          "error": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        }
+      ]
+    }
+  ],
+  "captures": [
+    {
+      "name": "normal-menu-current",
+      "url": "http://127.0.0.1:5216/?manual=1&quality=low&weather=clear&tod=.42&",
+      "sha256": "89e0e014b9a9725ffde55168ec020af08748026124749b424d33f53a2460f896"
+    },
+    {
+      "name": "normal-menu-opt-in",
+      "url": "http://127.0.0.1:5216/?manual=1&quality=low&weather=clear&tod=.42&riderTrial=blender",
+      "sha256": "0f75fb4bd316e6c3c546681ee8a8c5143547766298db74eae0482c0bbccbd309"
+    },
+    {
+      "name": "stable-import-mix",
+      "url": "http://127.0.0.1:5216/?manual=1&quality=low&weather=clear&tod=.42&riderTrial=blender",
+      "sha256": "fefdf5b03ddd0dd77999d18e83af9965a1c29ecd4c76761246a1017f3ac9a6f3"
+    },
+    {
+      "name": "gameplay-after-dismount",
+      "url": "http://127.0.0.1:5216/?manual=1&quality=low&weather=clear&tod=.42&riderTrial=blender",
+      "sha256": "ba7b5e0ab6dc5973ef29f9cbd704b99bb9f3e52ca0b5c934cc76b6c03911f88c"
+    },
+    {
+      "name": "gameplay-running",
+      "url": "http://127.0.0.1:5216/?manual=1&quality=low&weather=clear&tod=.42&riderTrial=blender",
+      "sha256": "60fcfebe6a2357ef36e254a5e19106ac660d9c6b19fcd56d79469af8ec9367a6"
+    },
+    {
+      "name": "gameplay-flight-brake",
+      "url": "http://127.0.0.1:5216/?manual=1&quality=low&weather=clear&tod=.42&riderTrial=blender",
+      "sha256": "8f91c272b36a13f0c3736ecee84c99c4a4b9c686969a720eb319a80895f30854"
+    },
+    {
+      "name": "actual-gameplay-mounted-left",
+      "url": "http://127.0.0.1:5216/?manual=1&quality=low&weather=clear&tod=.42&riderTrial=blender",
+      "sha256": "7f498c3215e29d9a79233f3903a0e943e6340b79b0a83196f88996217e065d0e"
+    },
+    {
+      "name": "actual-gameplay-mounted-right",
+      "url": "http://127.0.0.1:5216/?manual=1&quality=low&weather=clear&tod=.42&riderTrial=blender",
+      "sha256": "57898302560faa95f8fb4e418cac952f029dd2040cb82579fd540260fc054964"
+    },
+    {
+      "name": "mixed-front-current",
+      "url": "http://127.0.0.1:5216/?manual=1&quality=low&weather=clear&tod=.42&view=rider&outfit=flight&pieceTrousers=travel-drape-trousers&pieceFootwear=scout-footwear&headgear=none&scarf=none&cape=none&dist=2.7&height=.95&angle=0",
+      "sha256": "6250d6178e14dbc8e3f818657f053770149535b3b67f58c34159ac60f8a6a287"
+    },
+    {
+      "name": "mixed-front-proof",
+      "url": "http://127.0.0.1:5216/?manual=1&quality=low&weather=clear&tod=.42&view=rider&outfit=flight&pieceTrousers=travel-drape-trousers&pieceFootwear=scout-footwear&headgear=none&scarf=none&cape=none&dist=2.7&height=.95&angle=0&riderTrial=blender",
+      "sha256": "bd0ec9d890259a240499e8b638ae2a300e7140ac3e85a57113c24a96c56443af"
+    },
+    {
+      "name": "mixed-side-current",
+      "url": "http://127.0.0.1:5216/?manual=1&quality=low&weather=clear&tod=.42&view=rider&outfit=flight&pieceTrousers=travel-drape-trousers&pieceFootwear=scout-footwear&headgear=none&scarf=none&cape=none&dist=2.7&height=.95&angle=90",
+      "sha256": "77aa25adc5cab3aa9eaab940e24e79b303aba2759b33a4b4c360f77da28894c3"
+    },
+    {
+      "name": "mixed-side-proof",
+      "url": "http://127.0.0.1:5216/?manual=1&quality=low&weather=clear&tod=.42&view=rider&outfit=flight&pieceTrousers=travel-drape-trousers&pieceFootwear=scout-footwear&headgear=none&scarf=none&cape=none&dist=2.7&height=.95&angle=90&riderTrial=blender",
+      "sha256": "e4123c8b5bd45160f1e6ed80b4d88d56fbcaa6d0b756fd7259a17110c8e48767"
+    },
+    {
+      "name": "mixed-back-current",
+      "url": "http://127.0.0.1:5216/?manual=1&quality=low&weather=clear&tod=.42&view=rider&outfit=flight&pieceTrousers=travel-drape-trousers&pieceFootwear=scout-footwear&headgear=none&scarf=none&cape=none&dist=2.7&height=.95&angle=180",
+      "sha256": "3e71dc2ebfdf52c8bf6ea0792bcdeaed9942e1a3a1c26b39918b78970790b4c1"
+    },
+    {
+      "name": "mixed-back-proof",
+      "url": "http://127.0.0.1:5216/?manual=1&quality=low&weather=clear&tod=.42&view=rider&outfit=flight&pieceTrousers=travel-drape-trousers&pieceFootwear=scout-footwear&headgear=none&scarf=none&cape=none&dist=2.7&height=.95&angle=180&riderTrial=blender",
+      "sha256": "9858256c35b1562cc987e6a236f3bdffbbb4cb307446a0bc75fb34100e6d330c"
+    },
+    {
+      "name": "travel-front-current",
+      "url": "http://127.0.0.1:5216/?manual=1&quality=low&weather=clear&tod=.42&view=rider&outfit=travel-drape&headgear=none&scarf=none&cape=none&angle=0&dist=2.7&height=.95",
+      "sha256": "9b3b3a879673347b6a660dca39574e10b5563d735dd7b362ba5de8e4319f35c2"
+    },
+    {
+      "name": "travel-front-proof",
+      "url": "http://127.0.0.1:5216/?manual=1&quality=low&weather=clear&tod=.42&view=rider&outfit=travel-drape&headgear=none&scarf=none&cape=none&angle=0&dist=2.7&height=.95&riderTrial=blender",
+      "sha256": "e65327d7108a92b4368e4cba173bea521e2d10fa528fdd4eb56bdaab3b658198"
+    },
+    {
+      "name": "mounted-left-current",
+      "url": "http://127.0.0.1:5216/?manual=1&quality=low&weather=clear&tod=.42&view=rider&outfit=flight&pieceTrousers=travel-drape-trousers&pieceFootwear=scout-footwear&headgear=none&scarf=none&cape=none&dist=2.7&height=.95&real=1&angle=90&height=-.1&dist=4.6",
+      "sha256": "dfdbbb04ca24c7f72fcd21653032cb1f6cae828eeb351bef849f121901ab39c0"
+    },
+    {
+      "name": "mounted-left-proof",
+      "url": "http://127.0.0.1:5216/?manual=1&quality=low&weather=clear&tod=.42&view=rider&outfit=flight&pieceTrousers=travel-drape-trousers&pieceFootwear=scout-footwear&headgear=none&scarf=none&cape=none&dist=2.7&height=.95&real=1&angle=90&height=-.1&dist=4.6&riderTrial=blender",
+      "sha256": "ab73d0a26d39a5495b98d0863760a80cecbb8fee4a60455702541e2032db3c32"
+    },
+    {
+      "name": "mounted-right-current",
+      "url": "http://127.0.0.1:5216/?manual=1&quality=low&weather=clear&tod=.42&view=rider&outfit=flight&pieceTrousers=travel-drape-trousers&pieceFootwear=scout-footwear&headgear=none&scarf=none&cape=none&dist=2.7&height=.95&real=1&angle=270&height=-.1&dist=4.6",
+      "sha256": "89c456f9d425c8b2cf68373bc092800a31711d1da2f8aeb49a7ea860aef797f9"
+    },
+    {
+      "name": "mounted-right-proof",
+      "url": "http://127.0.0.1:5216/?manual=1&quality=low&weather=clear&tod=.42&view=rider&outfit=flight&pieceTrousers=travel-drape-trousers&pieceFootwear=scout-footwear&headgear=none&scarf=none&cape=none&dist=2.7&height=.95&real=1&angle=270&height=-.1&dist=4.6&riderTrial=blender",
+      "sha256": "d861621c08ecbb5f240154d0732a28c9ec631f598b2e064448c6b619db7447bc"
+    },
+    {
+      "name": "cloth-after-motion",
+      "url": "http://127.0.0.1:5216/?manual=1&quality=low&weather=clear&tod=.42&view=rider&outfit=travel-drape&headgear=none&scarf=none&cape=none&riderTrial=blender",
+      "sha256": "c209a51b890d59ab7af6dc81903b89e456107a613fcea08034f746b647e598db"
+    },
+    {
+      "name": "existing-deck-contact",
+      "url": "http://127.0.0.1:5216/?manual=1&quality=low&weather=clear&tod=.42&view=windhaven&riderTrial=blender",
+      "sha256": "a555ebd965f6b24cef27b5626bf0a60e3045871fef5b04627c0fe851ec96362e"
+    },
+    {
+      "name": "actual-Windline-release",
+      "url": "http://127.0.0.1:5216/?manual=1&quality=low&weather=clear&tod=.42&view=skyLance&play=1&riderTrial=blender",
+      "sha256": "d093a4e2b127565aea327153a0545fc703446ae7985a24084889d7b8cc1b5c69"
+    }
+  ],
+  "errors": [
+    {
+      "phase": "failed-load",
+      "error": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    }
+  ],
+  "measurements": [
+    {
+      "name": "mixed-front",
+      "variant": "current",
+      "trial": {
+        "status": "off"
+      },
+      "regions": [],
+      "bodyTriangles": 13012,
+      "bodyVertices": 7104,
+      "patches": [],
+      "cpu": {
+        "median": 1.2000000029802322,
+        "p95": 1.7000000029802322,
+        "samples": 240,
+        "unit": "one 30Hz presentation update / four 120Hz fixed steps; excludes rendering"
+      },
+      "render": {
+        "frame": 6,
+        "calls": 111,
+        "triangles": 370640,
+        "points": 55,
+        "lines": 0
+      },
+      "memory": {
+        "geometries": 111,
+        "textures": 8,
+        "programs": 63
+      },
+      "cachedAssetBytes": 0,
+      "cachedMetadataSerializedBytes": 0,
+      "chromiumHeapSnapshot": {
+        "usedJSHeapSize": 295045627,
+        "totalJSHeapSize": 366121883
+      },
+      "encodedAssetBytes": 0,
+      "bodyBytes": 617976,
+      "clothBytes": 4896,
+      "harness": null
+    },
+    {
+      "name": "mixed-front",
+      "variant": "proof",
+      "trial": {
+        "status": "ready",
+        "selection": "blender"
+      },
+      "regions": [
+        "upper",
+        "handL",
+        "legL",
+        "footL",
+        "handR",
+        "legR",
+        "footR",
+        "head",
+        "ponytail-crown"
+      ],
+      "bodyTriangles": 32176,
+      "bodyVertices": 16628,
+      "patches": [],
+      "cpu": {
+        "median": 4.300000011920929,
+        "p95": 9.600000008940697,
+        "samples": 240,
+        "unit": "one 30Hz presentation update / four 120Hz fixed steps; excludes rendering"
+      },
+      "render": {
+        "frame": 6,
+        "calls": 112,
+        "triangles": 392308,
+        "points": 55,
+        "lines": 0
+      },
+      "memory": {
+        "geometries": 112,
+        "textures": 8,
+        "programs": 63
+      },
+      "cachedAssetBytes": 16491136,
+      "cachedMetadataSerializedBytes": 347532,
+      "chromiumHeapSnapshot": {
+        "usedJSHeapSize": 364612777,
+        "totalJSHeapSize": 448949205
+      },
+      "encodedAssetBytes": 19110536,
+      "bodyBytes": 1456784,
+      "clothBytes": 4896,
+      "harness": {
+        "kind": "windkeel",
+        "bytes": 112760,
+        "triangles": 2504,
+        "vertices": 1286,
+        "visible": true,
+        "sharedSkeleton": true,
+        "fit": {
+          "samples": 1150,
+          "misses": 0,
+          "maxSurfaceOffset": 0.007500000000000001
+        }
+      }
+    },
+    {
+      "name": "travel-front",
+      "variant": "current",
+      "trial": {
+        "status": "off"
+      },
+      "regions": [],
+      "bodyTriangles": 17718,
+      "bodyVertices": 9624,
+      "patches": [],
+      "cpu": {
+        "median": 1.7000000029802322,
+        "p95": 2.5,
+        "samples": 240,
+        "unit": "one 30Hz presentation update / four 120Hz fixed steps; excludes rendering"
+      },
+      "render": {
+        "frame": 6,
+        "calls": 115,
+        "triangles": 375586,
+        "points": 55,
+        "lines": 0
+      },
+      "memory": {
+        "geometries": 115,
+        "textures": 8,
+        "programs": 63
+      },
+      "cachedAssetBytes": 0,
+      "cachedMetadataSerializedBytes": 0,
+      "chromiumHeapSnapshot": {
+        "usedJSHeapSize": 304838808,
+        "totalJSHeapSize": 378108876
+      },
+      "encodedAssetBytes": 0,
+      "bodyBytes": 837732,
+      "clothBytes": 15072,
+      "harness": null
+    },
+    {
+      "name": "travel-front",
+      "variant": "proof",
+      "trial": {
+        "status": "ready",
+        "selection": "blender"
+      },
+      "regions": [
+        "upper",
+        "handL",
+        "legL",
+        "barefootL",
+        "handR",
+        "legR",
+        "barefootR",
+        "head",
+        "piece:top:aerie",
+        "piece:chest:aerie",
+        "piece:shoulderDrape:aerie",
+        "piece:waist:aerie",
+        "piece:armWraps:aerie",
+        "piece:legWraps:aerie",
+        "piece:footwear:aerie",
+        "ponytail-crown"
+      ],
+      "bodyTriangles": 63464,
+      "bodyVertices": 32333,
+      "patches": [
+        {
+          "name": "garment-travel-drape-0",
+          "particles": 42,
+          "vertices": 143,
+          "triangles": 240,
+          "controlSignature": "1a3a5ccd",
+          "surfaceSignature": "386a115c"
+        },
+        {
+          "name": "garment-travel-drape-1",
+          "particles": 42,
+          "vertices": 143,
+          "triangles": 240,
+          "controlSignature": "5de21824",
+          "surfaceSignature": "41550b13"
+        },
+        {
+          "name": "garment-travel-drape-2",
+          "particles": 42,
+          "vertices": 143,
+          "triangles": 240,
+          "controlSignature": "b8480274",
+          "surfaceSignature": "fff55e73"
+        },
+        {
+          "name": "garment-travel-drape-3",
+          "particles": 42,
+          "vertices": 143,
+          "triangles": 240,
+          "controlSignature": "6bdccf6b",
+          "surfaceSignature": "72fd7ed3"
+        }
+      ],
+      "cpu": {
+        "median": 8,
+        "p95": 10.299999997019768,
+        "samples": 240,
+        "unit": "one 30Hz presentation update / four 120Hz fixed steps; excludes rendering"
+      },
+      "render": {
+        "frame": 6,
+        "calls": 116,
+        "triangles": 424556,
+        "points": 55,
+        "lines": 0
+      },
+      "memory": {
+        "geometries": 116,
+        "textures": 8,
+        "programs": 63
+      },
+      "cachedAssetBytes": 16491136,
+      "cachedMetadataSerializedBytes": 347532,
+      "chromiumHeapSnapshot": {
+        "usedJSHeapSize": 379718382,
+        "totalJSHeapSize": 441685646
+      },
+      "encodedAssetBytes": 19110536,
+      "bodyBytes": 2838092,
+      "clothBytes": 40400,
+      "harness": {
+        "kind": "windkeel",
+        "bytes": 112760,
+        "triangles": 2504,
+        "vertices": 1286,
+        "visible": true,
+        "sharedSkeleton": true,
+        "fit": {
+          "samples": 1150,
+          "misses": 0,
+          "maxSurfaceOffset": 0.007500000000000001
+        }
+      }
+    }
+  ],
+  "sustained": {
+    "presentationSteps": 1200,
+    "fixedSteps": 4800,
+    "simulatedSeconds": 40,
+    "medianMs": 8.599999994039536,
+    "p95Ms": 15,
+    "before": {
+      "geometries": 111,
+      "textures": 8
+    },
+    "after": {
+      "geometries": 111,
+      "textures": 8
+    },
+    "finite": true,
+    "ready": true
+  }
+}

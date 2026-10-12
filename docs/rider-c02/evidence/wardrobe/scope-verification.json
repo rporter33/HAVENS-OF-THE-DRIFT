@@ -1,0 +1,39 @@
+{
+  "baselineSourceSha256": "b868dee47d7d57aafe9656060c365c09b6b9e14a4e40be430c4d2111fe94ba5d",
+  "sourceSha256": "3cfbbe381d5c1fbf6b3a7a68d05e7a46b17be7cf0d0959ceb0d94cfebe3c408f",
+  "changed": [
+    "src/core/types.ts",
+    "src/cosmetics/catalog.ts",
+    "src/creatures/rider/model.ts",
+    "src/creatures/rider/palette.ts",
+    "src/creatures/rider/proof.ts",
+    "src/creatures/rider/wardrobe.test.ts",
+    "src/debug/showcases/rider.ts",
+    "src/progression/save.test.ts",
+    "src/progression/save.ts",
+    "src/progression/unlocks.ts",
+    "src/ui/Stable.ts",
+    "src/ui/stableModel.ts"
+  ],
+  "unchanged": 379,
+  "removed": [],
+  "checks": {
+    "unitFiles": 111,
+    "unitTests": 1168,
+    "typecheck": "passed",
+    "build": "passed",
+    "smoke": "15/15",
+    "wardrobe": "24/24",
+    "localLauncher": "9/9"
+  },
+  "unchangedContracts": [
+    "flight simulation",
+    "player movement",
+    "world geometry",
+    "rider animator/IK",
+    "saddle/stirrups",
+    "cloth solver/contact",
+    "graphics quality tiers",
+    "dragon runtime"
+  ]
+}

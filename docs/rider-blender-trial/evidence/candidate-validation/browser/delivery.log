@@ -1,0 +1,4 @@
+PASS production hashed GLB and loader resolve under a subpath
+PASS all delivery requests stay on the isolated local server
+PASS cached GLB supports dyes and look round-trips while offline
+PASS production import has no console/page errors

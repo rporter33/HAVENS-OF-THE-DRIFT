@@ -68,7 +68,7 @@ describe('unlock evaluation', () => {
       races: Object.fromEntries(['roost-loop', 'cascade-run', 'archway-thread', 'underspan', 'needle-slalom', 'lantern-dash', 'long-drift'].map((id) => [id, 'gold'])),
     });
     const fresh = evaluateUnlocks(all);
-    const locked = COSMETICS.filter((c) => c.unlock.type !== 'default');
+    const locked = COSMETICS.filter((c) => c.unlock.type !== 'default' && !c.sourceOutfit);
     expect(fresh.length).toBe(locked.length);
     // Every relic the catalog names exists.
     for (const c of COSMETICS) if (c.unlock.type === 'relic') expect(RELICS.some((r) => r.id === (c.unlock as { relicId: string }).relicId)).toBe(true);

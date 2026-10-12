@@ -1,0 +1,33 @@
+{
+  "verifiedUtc": "2026-10-12T02:13:22.659391+00:00",
+  "authority": "Robert explicitly selected: Use the shown Windkeel design. This supersedes the earlier brown-for-now choice. His latest continuation asks for the Windkeel harness to rest naturally against the rider, with thin connected shoulder cloth, verified in gameplay and Stable. No commits, pushes, merges or deployment.",
+  "authorityHistory": [
+    {
+      "statement": "Robert supplied these as the fidelity he liked. Subsequent direct answer: The brown is good for now. Preserve the brown runtime harness and improve its rest fit; do not enable Windkeel based on these images alone.",
+      "status": "historical; superseded by explicit Windkeel selection",
+      "originalRecordVerifiedUtc": "2026-10-12T02:13:22.659391+00:00"
+    },
+    {
+      "question": "For the trial’s harness, should I use the blue/linen/bronze Windkeel design shown in your images, fitted closely to the rider, or keep the current brown Windline straps and correct their fit?",
+      "answer": "Use the shown Windkeel design",
+      "source": "Robert's explicit request_user_input_async reply in this chat",
+      "status": "current selected harness identity; does not certify fit or gameplay acceptance"
+    }
+  ],
+  "role": "visual quality references; not orthographic measurements, runtime textures or gameplay certification",
+  "currentTrialStatus": "Selected Windkeel is a bounded opt-in compatibility fixture in the rider trial. The corrected rear-link/Travel-skirt motion regression passes all three builds at the recorded 26 samples per build, including exact 12.4 seconds. Four-pass gameplay/Stable and final delivery evidence are recorded separately in QA.md; this visual-reference record is not artistic acceptance. Preserve the original brown presentation and fitted brown predecessor for comparison and recovery.",
+  "files": [
+    {
+      "source": "C:\\Users\\Robert\\AppData\\Local\\Temp\\codex-clipboard-e6382430-4ab5-46e5-adaa-ab12a6395ca9.png",
+      "preserved": "assets/rider-blender/references/owner-feedback/travel-fidelity.png",
+      "bytes": 859149,
+      "sha256": "dc822f81f3241f4dbcdb6e0462d5db3bd9bea234bace32b32ee841df6f9745d8"
+    },
+    {
+      "source": "C:\\Users\\Robert\\AppData\\Local\\Temp\\codex-clipboard-4354835c-eda1-48db-808f-2add00362038.png",
+      "preserved": "assets/rider-blender/references/owner-feedback/flight-fidelity.png",
+      "bytes": 836087,
+      "sha256": "481c64b190a2b2682a96d9674c53cff5322dc3a80a53fe52f67f195f73ca0eef"
+    }
+  ]
+}

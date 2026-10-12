@@ -1,0 +1,2127 @@
+{
+  "phase": "production",
+  "renderer": "WebGL 2 / Edge SwiftShader; appearance and function only",
+  "checks": [
+    {
+      "name": "flight-front: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "scout-front: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "courier-front: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "racer-front: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "cartographer-front: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "skyknight-front: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "travel-drape-front: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "cartographer-back: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "courier-back: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "skyknight-back: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "travel-drape-back: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "bell-sleeve-wave: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "cartographer-mounted-left: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "cartographer-mounted-right: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "courier-mounted-left: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "courier-mounted-right: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "skyknight-mounted-left: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "skyknight-mounted-right: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "travel-drape-mounted-left: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "travel-drape-mounted-right: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "mixed-broad-bank: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "linen-low: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "low: expected shared atlas dimension",
+      "passed": true
+    },
+    {
+      "name": "linen-medium: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "medium: expected shared atlas dimension",
+      "passed": true
+    },
+    {
+      "name": "linen-ultra: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "ultra: expected shared atlas dimension",
+      "passed": true
+    },
+    {
+      "name": "linen-night: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "metal-night: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "worn-leather-close: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "linen-material-close: finite cloth, shared rig, no runtime errors",
+      "passed": true
+    },
+    {
+      "name": "high: 3K shared atlas",
+      "passed": true
+    },
+    {
+      "name": "no browser or shader errors",
+      "passed": true
+    }
+  ],
+  "captures": [
+    {
+      "name": "flight-front",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "flight",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 12812,
+        "bones": 27,
+        "surfaces": [
+          2190,
+          906,
+          0,
+          3798,
+          114
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "scout-front",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "scout",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 13604,
+        "bones": 27,
+        "surfaces": [
+          2904,
+          2170,
+          0,
+          2118,
+          80
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          },
+          {
+            "name": "garment-scout-0",
+            "particles": 49,
+            "triangles": 648,
+            "guided": true
+          },
+          {
+            "name": "garment-scout-1",
+            "particles": 49,
+            "triangles": 648,
+            "guided": true
+          },
+          {
+            "name": "garment-scout-2",
+            "particles": 49,
+            "triangles": 648,
+            "guided": true
+          },
+          {
+            "name": "garment-scout-3",
+            "particles": 49,
+            "triangles": 648,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "courier-front",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "courier",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 12136,
+        "bones": 27,
+        "surfaces": [
+          2190,
+          2449,
+          0,
+          1670,
+          272
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          },
+          {
+            "name": "coatL",
+            "particles": 24,
+            "triangles": 480,
+            "guided": true
+          },
+          {
+            "name": "coatR",
+            "particles": 24,
+            "triangles": 480,
+            "guided": true
+          },
+          {
+            "name": "garment-courier-0",
+            "particles": 56,
+            "triangles": 756,
+            "guided": true
+          },
+          {
+            "name": "garment-courier-1",
+            "particles": 56,
+            "triangles": 756,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "racer-front",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "racer",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 13304,
+        "bones": 27,
+        "surfaces": [
+          2190,
+          0,
+          0,
+          5014,
+          0
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "cartographer-front",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "cartographer",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 11784,
+        "bones": 27,
+        "surfaces": [
+          2712,
+          2484,
+          0,
+          989,
+          136
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          },
+          {
+            "name": "garment-cartographer-0",
+            "particles": 63,
+            "triangles": 864,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-1",
+            "particles": 63,
+            "triangles": 864,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-2",
+            "particles": 63,
+            "triangles": 864,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-3",
+            "particles": 63,
+            "triangles": 864,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-4",
+            "particles": 21,
+            "triangles": 216,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-5",
+            "particles": 21,
+            "triangles": 216,
+            "guided": true
+          },
+          {
+            "name": "sleeve-cartographer-1",
+            "particles": 78,
+            "triangles": 1080,
+            "guided": true
+          },
+          {
+            "name": "sleeve-cartographer--1",
+            "particles": 78,
+            "triangles": 1080,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "skyknight-front",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "skyknight",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 14000,
+        "bones": 27,
+        "surfaces": [
+          2190,
+          1138,
+          968,
+          402,
+          2846
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          },
+          {
+            "name": "garment-skyknight-0",
+            "particles": 49,
+            "triangles": 648,
+            "guided": true
+          },
+          {
+            "name": "garment-skyknight-1",
+            "particles": 49,
+            "triangles": 648,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "travel-drape-front",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "travel-drape",
+          "outfitPrimary": "#f2eada",
+          "outfitSecondary": "#7fa8c4",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 17718,
+        "bones": 27,
+        "surfaces": [
+          4288,
+          2958,
+          576,
+          1640,
+          162
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          },
+          {
+            "name": "garment-travel-drape-0",
+            "particles": 42,
+            "triangles": 540,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-1",
+            "particles": 42,
+            "triangles": 540,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-2",
+            "particles": 42,
+            "triangles": 540,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-3",
+            "particles": 42,
+            "triangles": 540,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "cartographer-back",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "cartographer",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 11784,
+        "bones": 27,
+        "surfaces": [
+          2712,
+          2484,
+          0,
+          989,
+          136
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          },
+          {
+            "name": "garment-cartographer-0",
+            "particles": 63,
+            "triangles": 864,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-1",
+            "particles": 63,
+            "triangles": 864,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-2",
+            "particles": 63,
+            "triangles": 864,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-3",
+            "particles": 63,
+            "triangles": 864,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-4",
+            "particles": 21,
+            "triangles": 216,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-5",
+            "particles": 21,
+            "triangles": 216,
+            "guided": true
+          },
+          {
+            "name": "sleeve-cartographer-1",
+            "particles": 78,
+            "triangles": 1080,
+            "guided": true
+          },
+          {
+            "name": "sleeve-cartographer--1",
+            "particles": 78,
+            "triangles": 1080,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "courier-back",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "courier",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 12136,
+        "bones": 27,
+        "surfaces": [
+          2190,
+          2449,
+          0,
+          1670,
+          272
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          },
+          {
+            "name": "coatL",
+            "particles": 24,
+            "triangles": 480,
+            "guided": true
+          },
+          {
+            "name": "coatR",
+            "particles": 24,
+            "triangles": 480,
+            "guided": true
+          },
+          {
+            "name": "garment-courier-0",
+            "particles": 56,
+            "triangles": 756,
+            "guided": true
+          },
+          {
+            "name": "garment-courier-1",
+            "particles": 56,
+            "triangles": 756,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "skyknight-back",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "skyknight",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 14000,
+        "bones": 27,
+        "surfaces": [
+          2190,
+          1138,
+          968,
+          402,
+          2846
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          },
+          {
+            "name": "garment-skyknight-0",
+            "particles": 49,
+            "triangles": 648,
+            "guided": true
+          },
+          {
+            "name": "garment-skyknight-1",
+            "particles": 49,
+            "triangles": 648,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "travel-drape-back",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "travel-drape",
+          "outfitPrimary": "#f2eada",
+          "outfitSecondary": "#7fa8c4",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 17718,
+        "bones": 27,
+        "surfaces": [
+          4288,
+          2958,
+          576,
+          1640,
+          162
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          },
+          {
+            "name": "garment-travel-drape-0",
+            "particles": 42,
+            "triangles": 540,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-1",
+            "particles": 42,
+            "triangles": 540,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-2",
+            "particles": 42,
+            "triangles": 540,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-3",
+            "particles": 42,
+            "triangles": 540,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "bell-sleeve-wave",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "cartographer",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 11784,
+        "bones": 27,
+        "surfaces": [
+          2712,
+          2484,
+          0,
+          989,
+          136
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          },
+          {
+            "name": "garment-cartographer-0",
+            "particles": 63,
+            "triangles": 864,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-1",
+            "particles": 63,
+            "triangles": 864,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-2",
+            "particles": 63,
+            "triangles": 864,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-3",
+            "particles": 63,
+            "triangles": 864,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-4",
+            "particles": 21,
+            "triangles": 216,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-5",
+            "particles": 21,
+            "triangles": 216,
+            "guided": true
+          },
+          {
+            "name": "sleeve-cartographer-1",
+            "particles": 78,
+            "triangles": 1080,
+            "guided": true
+          },
+          {
+            "name": "sleeve-cartographer--1",
+            "particles": 78,
+            "triangles": 1080,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "cartographer-mounted-left",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "cartographer",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 11784,
+        "bones": 27,
+        "surfaces": [
+          2712,
+          2484,
+          0,
+          989,
+          136
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          },
+          {
+            "name": "garment-cartographer-0",
+            "particles": 63,
+            "triangles": 864,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-1",
+            "particles": 63,
+            "triangles": 864,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-2",
+            "particles": 63,
+            "triangles": 864,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-3",
+            "particles": 63,
+            "triangles": 864,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-4",
+            "particles": 21,
+            "triangles": 216,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-5",
+            "particles": 21,
+            "triangles": 216,
+            "guided": true
+          },
+          {
+            "name": "sleeve-cartographer-1",
+            "particles": 78,
+            "triangles": 1080,
+            "guided": true
+          },
+          {
+            "name": "sleeve-cartographer--1",
+            "particles": 78,
+            "triangles": 1080,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "cartographer-mounted-right",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "cartographer",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 11784,
+        "bones": 27,
+        "surfaces": [
+          2712,
+          2484,
+          0,
+          989,
+          136
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          },
+          {
+            "name": "garment-cartographer-0",
+            "particles": 63,
+            "triangles": 864,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-1",
+            "particles": 63,
+            "triangles": 864,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-2",
+            "particles": 63,
+            "triangles": 864,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-3",
+            "particles": 63,
+            "triangles": 864,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-4",
+            "particles": 21,
+            "triangles": 216,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-5",
+            "particles": 21,
+            "triangles": 216,
+            "guided": true
+          },
+          {
+            "name": "sleeve-cartographer-1",
+            "particles": 78,
+            "triangles": 1080,
+            "guided": true
+          },
+          {
+            "name": "sleeve-cartographer--1",
+            "particles": 78,
+            "triangles": 1080,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "courier-mounted-left",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "courier",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 12136,
+        "bones": 27,
+        "surfaces": [
+          2190,
+          2449,
+          0,
+          1670,
+          272
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          },
+          {
+            "name": "coatL",
+            "particles": 24,
+            "triangles": 480,
+            "guided": true
+          },
+          {
+            "name": "coatR",
+            "particles": 24,
+            "triangles": 480,
+            "guided": true
+          },
+          {
+            "name": "garment-courier-0",
+            "particles": 56,
+            "triangles": 756,
+            "guided": true
+          },
+          {
+            "name": "garment-courier-1",
+            "particles": 56,
+            "triangles": 756,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "courier-mounted-right",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "courier",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 12136,
+        "bones": 27,
+        "surfaces": [
+          2190,
+          2449,
+          0,
+          1670,
+          272
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          },
+          {
+            "name": "coatL",
+            "particles": 24,
+            "triangles": 480,
+            "guided": true
+          },
+          {
+            "name": "coatR",
+            "particles": 24,
+            "triangles": 480,
+            "guided": true
+          },
+          {
+            "name": "garment-courier-0",
+            "particles": 56,
+            "triangles": 756,
+            "guided": true
+          },
+          {
+            "name": "garment-courier-1",
+            "particles": 56,
+            "triangles": 756,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "skyknight-mounted-left",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "skyknight",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 14000,
+        "bones": 27,
+        "surfaces": [
+          2190,
+          1138,
+          968,
+          402,
+          2846
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          },
+          {
+            "name": "garment-skyknight-0",
+            "particles": 49,
+            "triangles": 648,
+            "guided": true
+          },
+          {
+            "name": "garment-skyknight-1",
+            "particles": 49,
+            "triangles": 648,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "skyknight-mounted-right",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "skyknight",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 14000,
+        "bones": 27,
+        "surfaces": [
+          2190,
+          1138,
+          968,
+          402,
+          2846
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          },
+          {
+            "name": "garment-skyknight-0",
+            "particles": 49,
+            "triangles": 648,
+            "guided": true
+          },
+          {
+            "name": "garment-skyknight-1",
+            "particles": 49,
+            "triangles": 648,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "travel-drape-mounted-left",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "travel-drape",
+          "outfitPrimary": "#f2eada",
+          "outfitSecondary": "#7fa8c4",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 17718,
+        "bones": 27,
+        "surfaces": [
+          4288,
+          2958,
+          576,
+          1640,
+          162
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          },
+          {
+            "name": "garment-travel-drape-0",
+            "particles": 42,
+            "triangles": 540,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-1",
+            "particles": 42,
+            "triangles": 540,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-2",
+            "particles": 42,
+            "triangles": 540,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-3",
+            "particles": 42,
+            "triangles": 540,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "travel-drape-mounted-right",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "travel-drape",
+          "outfitPrimary": "#f2eada",
+          "outfitSecondary": "#7fa8c4",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 17718,
+        "bones": 27,
+        "surfaces": [
+          4288,
+          2958,
+          576,
+          1640,
+          162
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          },
+          {
+            "name": "garment-travel-drape-0",
+            "particles": 42,
+            "triangles": 540,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-1",
+            "particles": 42,
+            "triangles": 540,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-2",
+            "particles": 42,
+            "triangles": 540,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-3",
+            "particles": 42,
+            "triangles": 540,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "mixed-broad-bank",
+      "state": {
+        "look": {
+          "build": "broad",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "courier",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d",
+          "wardrobe": {
+            "top": "cartographer-top",
+            "trousers": "racer-trousers",
+            "chest": "flight-chest",
+            "shoulderDrape": "scout-shoulderDrape",
+            "waist": "woven-sash",
+            "armWraps": "flight-armWraps",
+            "legWraps": "skyknight-legWraps",
+            "footwear": "none"
+          }
+        },
+        "triangles": 13796,
+        "bones": 27,
+        "surfaces": [
+          2566,
+          1509,
+          0,
+          3098,
+          234
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          },
+          {
+            "name": "garment-cartographer-0",
+            "particles": 63,
+            "triangles": 864,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-1",
+            "particles": 63,
+            "triangles": 864,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-2",
+            "particles": 63,
+            "triangles": 864,
+            "guided": true
+          },
+          {
+            "name": "garment-cartographer-3",
+            "particles": 63,
+            "triangles": 864,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "linen-low",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "travel-drape",
+          "outfitPrimary": "#f2eada",
+          "outfitSecondary": "#7fa8c4",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 17718,
+        "bones": 27,
+        "surfaces": [
+          4288,
+          2958,
+          576,
+          1640,
+          162
+        ],
+        "atlas": 1024,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 192,
+            "guided": false
+          },
+          {
+            "name": "garment-travel-drape-0",
+            "particles": 42,
+            "triangles": 60,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-1",
+            "particles": 42,
+            "triangles": 60,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-2",
+            "particles": 42,
+            "triangles": 60,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-3",
+            "particles": 42,
+            "triangles": 60,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "linen-medium",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "travel-drape",
+          "outfitPrimary": "#f2eada",
+          "outfitSecondary": "#7fa8c4",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 17718,
+        "bones": 27,
+        "surfaces": [
+          4288,
+          2958,
+          576,
+          1640,
+          162
+        ],
+        "atlas": 2048,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 384,
+            "guided": false
+          },
+          {
+            "name": "garment-travel-drape-0",
+            "particles": 42,
+            "triangles": 240,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-1",
+            "particles": 42,
+            "triangles": 240,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-2",
+            "particles": 42,
+            "triangles": 240,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-3",
+            "particles": 42,
+            "triangles": 240,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "linen-ultra",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "travel-drape",
+          "outfitPrimary": "#f2eada",
+          "outfitSecondary": "#7fa8c4",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 17718,
+        "bones": 27,
+        "surfaces": [
+          4288,
+          2958,
+          576,
+          1640,
+          162
+        ],
+        "atlas": 4096,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 768,
+            "guided": false
+          },
+          {
+            "name": "garment-travel-drape-0",
+            "particles": 42,
+            "triangles": 960,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-1",
+            "particles": 42,
+            "triangles": 960,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-2",
+            "particles": 42,
+            "triangles": 960,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-3",
+            "particles": 42,
+            "triangles": 960,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "linen-night",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "travel-drape",
+          "outfitPrimary": "#f2eada",
+          "outfitSecondary": "#7fa8c4",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 17718,
+        "bones": 27,
+        "surfaces": [
+          4288,
+          2958,
+          576,
+          1640,
+          162
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          },
+          {
+            "name": "garment-travel-drape-0",
+            "particles": 42,
+            "triangles": 540,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-1",
+            "particles": 42,
+            "triangles": 540,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-2",
+            "particles": 42,
+            "triangles": 540,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-3",
+            "particles": 42,
+            "triangles": 540,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "metal-night",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "skyknight",
+          "outfitPrimary": "#2f4a6a",
+          "outfitSecondary": "#c89048",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 14000,
+        "bones": 27,
+        "surfaces": [
+          2190,
+          1138,
+          968,
+          402,
+          2846
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          },
+          {
+            "name": "garment-skyknight-0",
+            "particles": 49,
+            "triangles": 648,
+            "guided": true
+          },
+          {
+            "name": "garment-skyknight-1",
+            "particles": 49,
+            "triangles": 648,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "worn-leather-close",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "flight",
+          "outfitPrimary": "#80634d",
+          "outfitSecondary": "#c89048",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 12812,
+        "bones": 27,
+        "surfaces": [
+          2190,
+          906,
+          0,
+          3798,
+          114
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "linen-material-close",
+      "state": {
+        "look": {
+          "build": "medium",
+          "skin": "#d09a74",
+          "hair": "ponytail",
+          "hairColor": "#3a2a20",
+          "outfit": "travel-drape",
+          "outfitPrimary": "#f2eada",
+          "outfitSecondary": "#7fa8c4",
+          "headgear": "none",
+          "scarf": "none",
+          "scarfColor": "#a8582a",
+          "cape": "none",
+          "capeColor": "#8a2a3a",
+          "chest": "slate-scales",
+          "shoulderDrape": "chlamys",
+          "waist": "woven-sash",
+          "armWraps": "linen-wraps",
+          "legWraps": "leather-wraps",
+          "footwear": "sandals",
+          "armorColor": "#586875",
+          "leatherColor": "#80634d"
+        },
+        "triangles": 17718,
+        "bones": 27,
+        "surfaces": [
+          4288,
+          2958,
+          576,
+          1640,
+          162
+        ],
+        "atlas": 3072,
+        "cloth": [
+          {
+            "name": "ponytail",
+            "particles": 7,
+            "triangles": 480,
+            "guided": false
+          },
+          {
+            "name": "garment-travel-drape-0",
+            "particles": 42,
+            "triangles": 540,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-1",
+            "particles": 42,
+            "triangles": 540,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-2",
+            "particles": 42,
+            "triangles": 540,
+            "guided": true
+          },
+          {
+            "name": "garment-travel-drape-3",
+            "particles": 42,
+            "triangles": 540,
+            "guided": true
+          }
+        ],
+        "finite": true,
+        "errors": []
+      }
+    }
+  ],
+  "errors": []
+}

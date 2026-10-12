@@ -1,0 +1,518 @@
+{
+  "verifiedUtc": "2026-10-12T05:18:27.932608+00:00",
+  "sourceHead": "8e055069703c83308d5508ee72e5ad1d15ef348e",
+  "branch": "codex/rider-blender-trial",
+  "files": [
+    {
+      "path": "assets/rider-blender/source/BIND_MESH_REFERENCE.json",
+      "bytes": 1428314,
+      "sha256": "10373e4d5c60765720c8961fcdc9f2008485cd87320f640aedf09d9116806996"
+    },
+    {
+      "path": "assets/rider-blender/source/CONSTRUCTION.json",
+      "bytes": 63227,
+      "sha256": "df2b7da2c7b2c4b1759042e42630be7186efbac5b97c7b1b35827106f4e9b91c"
+    },
+    {
+      "path": "assets/rider-blender/source/FITTING_CAGES.json",
+      "bytes": 10464733,
+      "sha256": "b729579ea738440d75309f42118df18e52019f0947d12485c416d4ed1d22f5ce"
+    },
+    {
+      "path": "assets/rider-blender/source/MEASURED_CONSTRUCTION.svg",
+      "bytes": 417936,
+      "sha256": "0d460a85d4ce6aa1c1938cc272cdd1a3ad5d9607059d7aead34d6b3000854165"
+    },
+    {
+      "path": "assets/rider-blender/source/rider-trial.blend",
+      "bytes": 23009874,
+      "sha256": "0b69bcbb74153a0f0bc993ee756f59048db22e5fc0d5e7a7990c39465b9fa9c4"
+    },
+    {
+      "path": "assets/rider-blender/source/rider-trial.blend1",
+      "bytes": 22603530,
+      "sha256": "ce201f93cf1edaa487a4234c6c61edfbade5f86f254bd63a9f554fbd08e617c4"
+    },
+    {
+      "path": "assets/rider-blender/source/TEXTURE_SOURCE.json",
+      "bytes": 462,
+      "sha256": "a386c86ae774632fd1cde44408ded3490a1f1956b1320356e3a8a443309e2fea"
+    },
+    {
+      "path": "assets/rider-blender/source/WINDKEEL_FITTING.json",
+      "bytes": 588724,
+      "sha256": "9312d94388de10f226cbb9f15ce620e64a95913af18007232d9b4328ab87752a"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 43101,
+      "sha256": "da1634c540f1ffab597f6f2b51e18d1e79f0b8511e012f02c0075629d15417ef"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1095,
+      "sha256": "b05fb8de3bef9ef9a731d7276a5adc96a24a889666fdbda0935c02eab46b8dd0"
+    },
+    {
+      "path": "scripts/rider-blender-accessory-qa.mjs",
+      "bytes": 3031,
+      "sha256": "1afa52fe72f66456ee10296dd38752d5697a153dd27629d97da1a8162ca36d06"
+    },
+    {
+      "path": "scripts/rider-blender-audit.py",
+      "bytes": 3162,
+      "sha256": "af434b9615e5b8e712be42077bfceeb98ddb2eb05d173d9cd5c9b8ff000180eb"
+    },
+    {
+      "path": "scripts/rider-blender-author.py",
+      "bytes": 19413,
+      "sha256": "4b5b076703b959b652fce838dd3f2bbd714b8588a2ea407902dd98fccd305805"
+    },
+    {
+      "path": "scripts/rider-blender-baseline.mjs",
+      "bytes": 8596,
+      "sha256": "f33c0c9c8a664874ea0f7e79d7319d70b010c406c8232b70e39831a38d0ae7f0"
+    },
+    {
+      "path": "scripts/rider-blender-collect-evidence.py",
+      "bytes": 5916,
+      "sha256": "8b5aeec27772e32c87a5112ef72203b8997aa4ed571c101edd4c6306ce69f8a6"
+    },
+    {
+      "path": "scripts/rider-blender-contact-sheets.py",
+      "bytes": 1818,
+      "sha256": "9bb2f3565958f5a5583c4cda3cff97e44beb88a99caed5c3259e7010441cb5ae"
+    },
+    {
+      "path": "scripts/rider-blender-delivery-check.mjs",
+      "bytes": 3906,
+      "sha256": "add08325056bf0e88629aeeaf33d4a8b20045fc2e6b7073c57dc2a7c5e920e78"
+    },
+    {
+      "path": "scripts/rider-blender-export.py",
+      "bytes": 13387,
+      "sha256": "c3cfe34bb0482ace2a4dc4f099a4043a4f65d57c9ec12311ece65d624f875a8e"
+    },
+    {
+      "path": "scripts/rider-blender-final-checks.mjs",
+      "bytes": 2436,
+      "sha256": "0fc420174c3f8b0c793c433bca60f47defe438380b1f4bbd14ab4d0b77dff71a"
+    },
+    {
+      "path": "scripts/rider-blender-final-visuals.mjs",
+      "bytes": 2368,
+      "sha256": "389ba2c897f87887d53037b24575d7e734a5a01f4f123795f662b7f845c92ab9"
+    },
+    {
+      "path": "scripts/rider-blender-finalize.py",
+      "bytes": 7559,
+      "sha256": "07601d85b5cc24e0422bbdfe4bdc434df0a52c4276a186e34447258dbe2b1f9a"
+    },
+    {
+      "path": "scripts/rider-blender-fit-qa.mjs",
+      "bytes": 21525,
+      "sha256": "cb029fa6145328ae0dba6b9b0f19e04dffe31b0f1923bcb926c99dd3b3c0844d"
+    },
+    {
+      "path": "scripts/rider-blender-full-browser.mjs",
+      "bytes": 3720,
+      "sha256": "d2e51a510ad84205be9cf74893d6a68baf920aa713fd2527b9f823ccd341df1f"
+    },
+    {
+      "path": "scripts/rider-blender-gameplay-qa.mjs",
+      "bytes": 20524,
+      "sha256": "8ec03af2cbc45c05789bb1656ccfe61bc3ee209504b63066d5d60c65c84a65e8"
+    },
+    {
+      "path": "scripts/rider-blender-hardware-qa.mjs",
+      "bytes": 16620,
+      "sha256": "e0784b530072e53066159cb5c488c56a1acade8086e8c7bff2e4980e722a3eae"
+    },
+    {
+      "path": "scripts/rider-blender-owner-references.py",
+      "bytes": 1562,
+      "sha256": "0b95d3a6bc0df562db11db2aa2ffccd646af3d1b23f29472ce601eb9c3d791f6"
+    },
+    {
+      "path": "scripts/rider-blender-performance-repeat.mjs",
+      "bytes": 3132,
+      "sha256": "d1d927d88a50210c02bfe8e4ec59d5eb1d69c886eb9f615a494c5b01745a90d3"
+    },
+    {
+      "path": "scripts/rider-blender-performance-summary.py",
+      "bytes": 5147,
+      "sha256": "9812b056c8c70a4bfc0c2b9255784119b9bb56c3d499c03dd53aca37ec22f5d2"
+    },
+    {
+      "path": "scripts/rider-blender-post-visual-checks.mjs",
+      "bytes": 1844,
+      "sha256": "53da91f2632831a210d5dea539ad9137aa13d5150da1c2207c2fcd4fa81877b7"
+    },
+    {
+      "path": "scripts/rider-blender-preserve-fastened-predecessor.py",
+      "bytes": 1542,
+      "sha256": "3e29e173fed14468e79d212278fb76002e8471daf58e4ac0a7b41666c3b9e5dd"
+    },
+    {
+      "path": "scripts/rider-blender-preserve-pre-harness.py",
+      "bytes": 1402,
+      "sha256": "dd939c8c485a9b4bc05206420457eb205446f71be0bd66ea0f8dedd9bea67c2f"
+    },
+    {
+      "path": "scripts/rider-blender-probe.mjs",
+      "bytes": 1426,
+      "sha256": "b25368435f290ade930bf9bf3d9d030fa36fcebf7d3ad28900abb3d9269d78a3"
+    },
+    {
+      "path": "scripts/rider-blender-proof.mjs",
+      "bytes": 12680,
+      "sha256": "acdd65fb5c89e1396da4c752082e4628c00bdea8c03aec4a161b928076215dbc"
+    },
+    {
+      "path": "scripts/rider-blender-provenance.py",
+      "bytes": 4185,
+      "sha256": "76f10449dd9c20246a8cf18b1079c453bb77e4c62fc68cf1de091087cee8de18"
+    },
+    {
+      "path": "scripts/rider-blender-qa-output.cjs",
+      "bytes": 1066,
+      "sha256": "191a4df5afd21eca3146a0b12240daddf13b6e98f5fa7d2851973c87add2e93a"
+    },
+    {
+      "path": "scripts/rider-blender-qa.config.mjs",
+      "bytes": 136,
+      "sha256": "15328950f301ed4038148052de003dc7759f2472d9005dd59fb1b96c16dd2151"
+    },
+    {
+      "path": "scripts/rider-blender-quality.test.ts",
+      "bytes": 8835,
+      "sha256": "5a01d93f35990702c792809591c2a2a03e13ffb2f62cbe0ff57dfa90b4269ad5"
+    },
+    {
+      "path": "scripts/rider-blender-review-check.mjs",
+      "bytes": 4043,
+      "sha256": "e92527424185cd8efaeaab54451ca18fe51d20d7a4d0c6056d313eeba2e06ad5"
+    },
+    {
+      "path": "scripts/rider-blender-review-data.py",
+      "bytes": 28757,
+      "sha256": "5578e703f4ba8d7cec82fd693e8d634a8e5144a795c52ac17a0cfa04d2ea1778"
+    },
+    {
+      "path": "scripts/rider-blender-shoulder-qa.mjs",
+      "bytes": 2024,
+      "sha256": "3b536a6d60275424a4993112b9642280a2d617b1f53f13055d501f7ac5fb5a66"
+    },
+    {
+      "path": "scripts/rider-blender-source.mjs",
+      "bytes": 4763,
+      "sha256": "608b05374c9872099c7a2ba462223f55c2ab59eddbbc8bd7811092f6ddcfaf46"
+    },
+    {
+      "path": "scripts/rider-blender-stable-qa.mjs",
+      "bytes": 4502,
+      "sha256": "0006c1184560c5abe38b3a2a71d76843bee7009c91978e0506b191ce8f5b7559"
+    },
+    {
+      "path": "scripts/rider-blender-views.mjs",
+      "bytes": 9109,
+      "sha256": "3bdaeeb1f2eace0e8de4a0a3b886190302f8a58c8fa2e79e8d8907c5a86e150e"
+    },
+    {
+      "path": "scripts/rider-blender-visual-qa.mjs",
+      "bytes": 14722,
+      "sha256": "02f3b65bbfa56c7e6c7510385c51a2723b0bd89e4500648867da7a1b908d0c76"
+    },
+    {
+      "path": "scripts/rider-blender-windkeel-qa.mjs",
+      "bytes": 13084,
+      "sha256": "430c230e832ec930fb933f0ce617db69dfbc33c366c4a1fe1c9837b110dcdf2a"
+    },
+    {
+      "path": "scripts/rider-blender-windkeel.py",
+      "bytes": 6113,
+      "sha256": "7577cdd12236403d7bc164573e47c0773c484ca918d28452d9bb35204baf47d5"
+    },
+    {
+      "path": "src/assets/rider-blender/compatibility.glb",
+      "bytes": 138576,
+      "sha256": "8abf6d08a5f4fc1a0b06a28d9aa74bae478eb53ce9f9e8a3724bc890ba5a8d0f"
+    },
+    {
+      "path": "src/assets/rider-blender/rider-trial.glb",
+      "bytes": 19110536,
+      "sha256": "d6f2ffa790d43e8217ab6d64bdfdf994b424d1d5cb1d1b8685403b2001d40dc8"
+    },
+    {
+      "path": "src/creatures/rider/accessories.ts",
+      "bytes": 16377,
+      "sha256": "541c04977ee605a6dd582fb2b05d7aa02ff8b615dacf61ec716e5c8634313242"
+    },
+    {
+      "path": "src/creatures/rider/animator.ts",
+      "bytes": 39927,
+      "sha256": "6e3a672176e8c7c0d20281e06322e9538851c9c1e51921e1b9710b62f7e77854"
+    },
+    {
+      "path": "src/creatures/rider/attachment.test.ts",
+      "bytes": 12307,
+      "sha256": "9595f334dd0d84a8e832df262cfd7a44ad373c67ef0659e6c8f3f5b82ed45a1f"
+    },
+    {
+      "path": "src/creatures/rider/authoredConstruction.ts",
+      "bytes": 6726,
+      "sha256": "c33ba75910092d9a47cf515fb6e097458dba3d4c3fd4076cdb35d82f88dfa53f"
+    },
+    {
+      "path": "src/creatures/rider/authoredProvider.ts",
+      "bytes": 11355,
+      "sha256": "61c35d56db421e49c30c1297bac3bcdac2717ad343ff93d9db6f164a15b67545"
+    },
+    {
+      "path": "src/creatures/rider/body.ts",
+      "bytes": 23509,
+      "sha256": "3dfd77b6d2edff0225205827143b578874474c5faf2eefe3c96bc5579d81fd7b"
+    },
+    {
+      "path": "src/creatures/rider/cloth.test.ts",
+      "bytes": 8483,
+      "sha256": "19185bd0857102abca58bd28824241ed3f97e11d5e7c5101bc1772df77f38c53"
+    },
+    {
+      "path": "src/creatures/rider/cloth.ts",
+      "bytes": 21878,
+      "sha256": "5e7cc1662945d0f1223a81073ea28a10bfe67d5bf0a39973e251d8598c213cd0"
+    },
+    {
+      "path": "src/creatures/rider/clothBinding.test.ts",
+      "bytes": 5513,
+      "sha256": "c4283c2d054160c046ef1ba581b874a91dc5bc974cc1f595cdff6f16a7562055"
+    },
+    {
+      "path": "src/creatures/rider/clothBinding.ts",
+      "bytes": 5927,
+      "sha256": "8792bfcc0412a2dd946d94ecfa8bdfa84c81f1a62c85192a65e1920564ed593f"
+    },
+    {
+      "path": "src/creatures/rider/clothContact.ts",
+      "bytes": 1881,
+      "sha256": "81141023fbefc44adae924761de715de085e3d2621568645cdc60814024e0abf"
+    },
+    {
+      "path": "src/creatures/rider/clothRig.ts",
+      "bytes": 36791,
+      "sha256": "e7a67509eec2696e9a8866c4c82e5e280ef423f6f3e384de16ac5f675007034b"
+    },
+    {
+      "path": "src/creatures/rider/gait.test.ts",
+      "bytes": 3939,
+      "sha256": "bc0e0fe2f8cdab74daa2db71217d6a2cf27dd44e2e854944736dac54dd182be1"
+    },
+    {
+      "path": "src/creatures/rider/gait.ts",
+      "bytes": 9631,
+      "sha256": "c9713ed9f6688dbd104781edc609de91c04c080de99e714e0841e79b760d5152"
+    },
+    {
+      "path": "src/creatures/rider/garmentBehavior.test.ts",
+      "bytes": 6062,
+      "sha256": "46709c29effb335c807422c74c778814be1bbbc9ee8f5654ac75a36be0b546c2"
+    },
+    {
+      "path": "src/creatures/rider/garmentCloth.test.ts",
+      "bytes": 6952,
+      "sha256": "799cfeb4e7f30f7f6c28bffa6e9cd9b01508b2ba48a77a78aebf3eb964ea9ea2"
+    },
+    {
+      "path": "src/creatures/rider/garments.ts",
+      "bytes": 14679,
+      "sha256": "18bd9db5d237304664f88c5a23bc42ef720b47a4d3a1bb8125565f4881e7c17e"
+    },
+    {
+      "path": "src/creatures/rider/hair.ts",
+      "bytes": 11762,
+      "sha256": "7a1bf3eb9f3b54beceae290e341eba7d4c0c82479cdcb476aa75893021706ed7"
+    },
+    {
+      "path": "src/creatures/rider/headgear.ts",
+      "bytes": 13128,
+      "sha256": "5f11227ce001ec8671ddea8218f1c9b6e498c8688666b0afa7fc73c8571ec12b"
+    },
+    {
+      "path": "src/creatures/rider/ik.test.ts",
+      "bytes": 2338,
+      "sha256": "5e5927416295ccc7070d680b4caf844a0ae46843a331ff319fc58c4b2233226e"
+    },
+    {
+      "path": "src/creatures/rider/ik.ts",
+      "bytes": 3777,
+      "sha256": "4277edb113f6ae5a1f549397c55e46284ed7d98f634bb9340e1b701337a81f85"
+    },
+    {
+      "path": "src/creatures/rider/importContract.test.ts",
+      "bytes": 7564,
+      "sha256": "979ca69855016e246929fb454575de9c14ff53aadea86e15c4bcfe81da3a735d"
+    },
+    {
+      "path": "src/creatures/rider/importContract.ts",
+      "bytes": 17868,
+      "sha256": "ba9383c586e4c90bd355cae20d80374febebb8323a87adffc609dd8ff696aff9"
+    },
+    {
+      "path": "src/creatures/rider/legFit.ts",
+      "bytes": 1873,
+      "sha256": "38b1eb1820f9fa74f961585aa7c35b34cf51a1a4af0a39b90a7a365460d1a84a"
+    },
+    {
+      "path": "src/creatures/rider/materialIdentity.test.ts",
+      "bytes": 2701,
+      "sha256": "acae38c8ba363cbdc4ef5ecd90b337db2f570514cf53be678b9689f2f8782c09"
+    },
+    {
+      "path": "src/creatures/rider/meshKit.ts",
+      "bytes": 16741,
+      "sha256": "6faeda6d5254c00a9529aa8b4002d2a403d06b4afa4d38b33ce6d09957b37d02"
+    },
+    {
+      "path": "src/creatures/rider/mixedWardrobe.test.ts",
+      "bytes": 7585,
+      "sha256": "762f8e95fb3e4ab665e6f65dbc35f7cb9af3829fcab193551b0a3aef1128817b"
+    },
+    {
+      "path": "src/creatures/rider/model.test.ts",
+      "bytes": 9188,
+      "sha256": "2bc1548db8bb11d7ac88d88611fa9db8c5ac00518e457b97cb585127d1de2ed2"
+    },
+    {
+      "path": "src/creatures/rider/model.ts",
+      "bytes": 11509,
+      "sha256": "dab03fad3b9fdae5ee53417a6b43e97ec21dc4cc2b779bd48d7634a6e8267a6c"
+    },
+    {
+      "path": "src/creatures/rider/mountedFit.test.ts",
+      "bytes": 6702,
+      "sha256": "a971bac2801c4298522ebab153b2ff8dd9c6971c0bd1a517c07861a020412c90"
+    },
+    {
+      "path": "src/creatures/rider/outfits.ts",
+      "bytes": 30004,
+      "sha256": "3093acccdf7a30b23fa314b665b63c1e64b8215ddb325017c76523a6104c2027"
+    },
+    {
+      "path": "src/creatures/rider/palette.ts",
+      "bytes": 8213,
+      "sha256": "c68c327e00aba6782b6a2240197cb3cf6f8c3c01ba20e62994c490436db2e77b"
+    },
+    {
+      "path": "src/creatures/rider/proof.test.ts",
+      "bytes": 16435,
+      "sha256": "9d837e27369bf8b94d65162255118d6d3f97fa50b4ca4ecf9b0a079fc3bc3d42"
+    },
+    {
+      "path": "src/creatures/rider/proof.ts",
+      "bytes": 19725,
+      "sha256": "ceacbb339e210965912334c2ad9bb92009c00b399b9d6832688af265d090007f"
+    },
+    {
+      "path": "src/creatures/rider/proofMaterials.ts",
+      "bytes": 5989,
+      "sha256": "3e7792bd5d2ea58822258c39c1f1c31357e484b27874fd5d19c0c62a40edd966"
+    },
+    {
+      "path": "src/creatures/rider/random.ts",
+      "bytes": 392,
+      "sha256": "ba0a802e61629eb4e48fad724703d1228b7209add0e9e9812cf327c6f91b0bf7"
+    },
+    {
+      "path": "src/creatures/rider/restingHarness.test.ts",
+      "bytes": 6119,
+      "sha256": "f0d64e80caf57856063f1baf4bb4dc29439f22306eafa57b41e5fcd0e8322b13"
+    },
+    {
+      "path": "src/creatures/rider/restingHarness.ts",
+      "bytes": 8307,
+      "sha256": "73fca657dfa2b0ba29bb083aebd1abcf00d73e925b845a555a27275b69fefdae"
+    },
+    {
+      "path": "src/creatures/rider/Rider.ts",
+      "bytes": 26136,
+      "sha256": "53dab52367b056f4d079e52ce4b8fcc4966d0e3ee2e831ced9f84404a198f972"
+    },
+    {
+      "path": "src/creatures/rider/rig.ts",
+      "bytes": 6159,
+      "sha256": "0136dc0a689e03e7a2cb68f22cf6cc29240c526d54374af66ce17e409be3d462"
+    },
+    {
+      "path": "src/creatures/rider/sharedBody.test.ts",
+      "bytes": 3650,
+      "sha256": "83ae4fe659df126ce9fb715637b9b96e0fc1ff7cb5f084c452b3977bb926a53d"
+    },
+    {
+      "path": "src/creatures/rider/softBody.ts",
+      "bytes": 12111,
+      "sha256": "dd4408e0eee9a55a1625d5ff15e22de074d6995d5102d496d4f8d8bc33c93c8e"
+    },
+    {
+      "path": "src/creatures/rider/wardrobe.test.ts",
+      "bytes": 4658,
+      "sha256": "6a97b1c5f45e9b7f5648d9929e2bd928755970808116ca791a06828927b06a2e"
+    },
+    {
+      "path": "src/creatures/rider/wardrobeModel.ts",
+      "bytes": 7486,
+      "sha256": "ef12398bfdf6f403afec012c2ba948bcd04d44106462e16a66415bd9ef580dd0"
+    },
+    {
+      "path": "src/creatures/rider/windkeelContact.test.ts",
+      "bytes": 8314,
+      "sha256": "94a561af6e9a9f89ad06bb84e59e48cd344cb141102976d494d075bf8dde73a9"
+    },
+    {
+      "path": "src/creatures/rider/windkeelContact.ts",
+      "bytes": 10244,
+      "sha256": "4cafde4cb9e6214d033a08ff1f0553535848c0511edcb1f24ea2d30d361bf14c"
+    },
+    {
+      "path": "src/creatures/rider/windkeelHarness.test.ts",
+      "bytes": 8268,
+      "sha256": "486a735b66e7ab09cb7da228d078f621bac526c5505e8f4c08433b354994d622"
+    },
+    {
+      "path": "src/creatures/rider/windkeelHarness.ts",
+      "bytes": 11905,
+      "sha256": "eba47b4f39b323701f4288f64f4fb36af28c81d94292c26cfbd1a4bd070563d8"
+    },
+    {
+      "path": "src/debug/params.ts",
+      "bytes": 3723,
+      "sha256": "185b66eabcf82d43430f34a793e76ad56807c887b6a9b184b563ca28cd49dd34"
+    },
+    {
+      "path": "src/debug/showcases/rider.ts",
+      "bytes": 19813,
+      "sha256": "0d725fdae3f54a878aa0df9b24c5cc4f57733780ba5fec49f94b0d63f6c03822"
+    },
+    {
+      "path": "src/game/Game.ts",
+      "bytes": 24975,
+      "sha256": "f74d4a3d76810797c1dda75b84859bf7a74cc9f91da3381e4ad461417df20956"
+    },
+    {
+      "path": "src/traversal/presentation.test.ts",
+      "bytes": 10086,
+      "sha256": "b1d615f5541bdc77e114b8e9a3ff1910db25bd465b6c1db06bf8537a92c95aee"
+    },
+    {
+      "path": "src/traversal/SkyLanceVisuals.ts",
+      "bytes": 15622,
+      "sha256": "16b64199d2b9b2c7d3d31dfbe8d6917106023a7900b1c28d95330dee32a0199b"
+    },
+    {
+      "path": "vite.config.ts",
+      "bytes": 1943,
+      "sha256": "b14e6cced25905ccda8129cd3a81f08bc2522f8e30d490020b1211b4254e3e6e"
+    }
+  ],
+  "prPublicationNote": "Historical inventory of the complete preserved local trial, including excluded local-only files. Current published contents and hashes: PR_PACKAGE_MANIFEST.json; current candidate validation: MERGE_REVIEW.md."
+}
