@@ -1,3 +1,11 @@
+## CI continuation — independent reticle scenarios (12 October 2026)
+
+The unchanged painted-UI gate failed again at f1d98fd. The QA now isolates each
+real-RAF scenario in a fresh Chromium process and records whole-frame timing;
+all windows/assertions remain unchanged. Local focused validation passed.
+See CI_RESOLUTION_2026-10-12.md for exact failures and evidence. Runtime/assets
+and released gameplay remain unchanged. Final CI still gates merge readiness.
+
 ## CI continuation — full Chromium alignment (12 October 2026)
 
 PR #14 remains unmerged and undeployed. Head 346e233 failed screenshot and

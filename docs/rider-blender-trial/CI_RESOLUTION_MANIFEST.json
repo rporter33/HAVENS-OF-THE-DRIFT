@@ -80,6 +80,16 @@
       "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/full-chromium-gameplay-report.json",
       "bytes": 26360,
       "sha256": "2817ebe2c8ff4fa6cdac25722bdf615cf2b3df22aac03448c0f6b67d4f4d8067"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/integration-f1-reticle-failure.json",
+      "bytes": 90851,
+      "sha256": "d9e36b443c520cde3b60b65973c1b9be6797421d3f1da1d1e0e7465f35754d98"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/reticle-isolated-local.json",
+      "bytes": 202589,
+      "sha256": "7dfd92b3bf78eea1fd050f60c38e7978e38ca1dac56aba7ba9f0825a289440d7"
     }
   ],
   "hashNote": "Evidence raw-byte SHA256; prior PR_PACKAGE_MANIFEST identifies original published Git blobs. This supplement does not replace historical manifests.",
@@ -89,5 +99,11 @@
     "checksUnweakened": true,
     "scripts/rider-blender-browser.mjs": "fc9b1c16eec52101468460aa8b319da243bb0c72075a20d3b36b2b9f2d3f03a1",
     "scripts/rider-blender-gameplay-qa.mjs": "daaa7d003d6b56257d3bea6aff9ca62b7b4231913f1c05c12285d55326996bc1"
+  },
+  "reticleIsolation": {
+    "base": "f1d98fdf5d1b8a1129751f907f9c8fe4d40055b1",
+    "runtimeAndAssetsUnchanged": true,
+    "checksUnweakened": true,
+    "scriptSha256": "ebfa19607491bac579b581097106513a454357cb4ed61d0200acfa37d4e2b2b5"
   }
 }

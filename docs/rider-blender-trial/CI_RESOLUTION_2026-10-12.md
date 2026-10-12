@@ -105,3 +105,35 @@ result must be reported separately. The failed 29-entry artifact has SHA-256
 Both complete archives and job logs are retained in the external recovery folder.
 
 The local full-Chromium lifecycle follow-up passed 26 checks and 23 captures, including failed-load fallback, late-load Revert, offline changes and sustained replacements, with no unexpected browser errors (the intentional failed-load 404 is retained). Full fit screenshots peaked at 3.357 seconds. Stable measurement fields matched the prior Edge run; dynamic floating-point samples are not claimed byte-identical across browser versions.
+
+## Follow-up: independent real-RAF scenarios
+
+Integration run 38233027057 at f1d98fd reproduced the unchanged painted-UI
+failure (32.393 callbacks/s; mean reticle CPU 0.0185 ms). Typecheck, all units,
+legacy garment audit, build, smoke and the preceding Windline checks passed.
+The later integration checks did not run. The complete failure archive is
+preserved with SHA-256
+`e844b2b57c0ba26e16bcf03774d0a882b7cf6603e20c6f5bd2085d2ed821e1f9`.
+A separate local diagnostic under 4x CPU throttling still passed at 59.996/s;
+this does not explain or dismiss the Linux failure.
+
+The reticle QA now gives each of the same three scenarios its own fresh full
+Chromium process. Each still boots the normal game, runs its actual RAF/input/
+physics/camera/DOM path, and collects all existing rendered and UI evidence.
+The UI scenario therefore no longer inherits GPU/compositor queues or adaptive
+resolution history from the two preceding slow software-3D benchmarks. This
+removes cross-scenario state as a measurement confounder; it does not establish
+the precise cause of either historical scheduling gap. Whole Game.frame CPU
+durations, dynamic resolution and dressing readiness are recorded for diagnosis.
+
+All assertions and the 500 ms settling / 2-second UI window are unchanged:
+>=45 callbacks/s, <=2.5 ms reticle CPU, native pad movement, neutral centred dot,
+zero forecast queries, visible document and no 3D submissions during UI timing.
+Full-3D scenarios retain >10 rendered samples, >=4 seconds and the 120-second
+collection deadline. Startup GL drain and two native RAF transition checks also
+remain. Each context checks its browser errors before disposal.
+
+The isolated local run passed all scenarios: painted UI 58.131 callbacks/s,
+0.0111 ms mean reticle CPU. Its raw evidence is included. This QA-only change
+does not modify the reticle implementation, flight, geometry, wardrobe or assets.
+Final-head CI remains required; no historical failure is removed or called passed.
