@@ -1,0 +1,66 @@
+{
+  "createdUtc": "2026-10-12T09:22:59.471609+00:00",
+  "previousPublication": "25faa147f5b70f207f6bd92132bfe89866b49e9e",
+  "runtimeAndAssetsUnchanged": true,
+  "releasedMainFilesPreserved": 14,
+  "fitCaptures": 32,
+  "stableMeasurementComparisons": 8,
+  "measurementDifferences": 0,
+  "qaHarnessSha256": "b73a100b68a243305fd710b79e029b1bcd79db8fecf7040acd9184dc0385de6e",
+  "evidence": [
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/fit-report.json",
+      "bytes": 5102439,
+      "sha256": "81ce8371a32a11fbe3c1c139010e585241dd2972dd7f03178e2b03e6ba0e7468"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/medium-travel-stable-front.png",
+      "bytes": 1152773,
+      "sha256": "e70bde7528d3ad1a70622de4ae594a96352b5f8aff742d161690d940e65d942a"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/medium-travel-gameplay-mounted-left.png",
+      "bytes": 1490817,
+      "sha256": "03590061f1c1571a7ca1362ada52b812473fdb877f913675b6ba803027d612af"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/medium-travel-gameplay-mounted-right.png",
+      "bytes": 1510943,
+      "sha256": "26823978b4db473cfa637545f0ef24c22a72d36ea060bf517ab7bc772d4b47b4"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/candidate-a.json",
+      "bytes": 8627,
+      "sha256": "47ddf6a3343787354be17ca710076ee4436cf28a0847c5131dd9c5a46230c9ae"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/baseline-b.json",
+      "bytes": 8626,
+      "sha256": "b78637bedd52fa7dd228966cfc27288e9e35c46b1d07d1bb2bc056a34e57dffa"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/candidate-b.json",
+      "bytes": 8513,
+      "sha256": "e140ad247b7e054a044023e39dd1a215c2f03af665c25cb2abd4d4de386ef573"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/integration-ci-cpu.json",
+      "bytes": 8596,
+      "sha256": "33682a3125b8a80067530583beab8cae82fade02d04be46f62c1065dd0ccbea8",
+      "sourceArchive": "pr14-integration-ci-evidence.zip"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/original-authored-ci-checks.json",
+      "bytes": 515,
+      "sha256": "95d5565c82df589888c6c76e4dd9674ee1ea3dae6bec3c139b97f132ba8ca5f1",
+      "sourceArchive": "pr14-authored-ci-attempt1-evidence.zip"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/original-fit-failure.log",
+      "bytes": 786,
+      "sha256": "06b134563f85d66c0f33f49e63f68d282e958f71877c4b3b16fbe14348fb347d",
+      "sourceArchive": "pr14-authored-ci-attempt1-evidence.zip"
+    }
+  ],
+  "hashNote": "Evidence raw-byte SHA256; prior PR_PACKAGE_MANIFEST identifies original published Git blobs. This supplement does not replace historical manifests."
+}

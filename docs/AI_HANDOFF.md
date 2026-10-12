@@ -1,5 +1,23 @@
 # Driftwing — AI Development Handoff
 
+## PR #14 CI/performance follow-up — 2026-10-12 UTC
+
+- Authorized: resolve remaining checks and prepare for merge; no deployment or merge.
+- Starting branch/head: codex/rider-windkeel-review / 25faa147. The only executable
+  change is in fit QA: retain every zero-dt pose update while drawing once per
+  capture, removing duplicate queued high-quality GPU work. No timeout/quality/
+  clearance/CPU gate relaxed. Game runtime, assets and released main files match.
+- Local full fit: four cases, 32 captures, zero errors, all real mount transitions;
+  maximum screenshot 3.087 s. Eight unchanged/revised Stable views have identical
+  geometric/attachment measurements. Selected images visually inspected.
+- Original integration/editor CI passed. CPU gate passed twice on candidate and
+  once on preserved baseline, with unchanged source/assertions. Earlier failures
+  retained; timing variance cause and physical GPU coverage remain qualified.
+- See docs/rider-blender-trial/CI_RESOLUTION_2026-10-12.md and its raw evidence.
+  Final corrected-head CI remains the publication gate; status is on PR #14.
+  Keep session guide PR #13 separate. Existing main-push Pages workflow remains;
+  stop before merge/deployment. Original worktrees/services/saves are intact.
+
 ## Separate authored rider/Windkeel PR preparation — 2026-10-12 UTC
 
 - Robert selected prepare PR; stop before merge. Commit/push only the separate

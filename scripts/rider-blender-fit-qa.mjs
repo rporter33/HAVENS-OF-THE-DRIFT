@@ -132,6 +132,7 @@ async function measure(page){return page.evaluate(async()=>{
 });}
 
 async function capture(page,row,name){
+  const captureStarted=performance.now();
   await page.evaluate(neutral=>{const h=window.__dw;if(neutral)h.game.input.setScripted({});try{h.render();}finally{if(neutral)h.game.input.setScripted(null);}},!!row.mixedProof);
   const measured=await measure(page);
   if(!measured.finite||!measured.sharedSkeleton||!measured.harnessVisible||measured.errors.length)throw Error('Invalid authored rendered state in '+name);
@@ -146,9 +147,10 @@ async function capture(page,row,name){
     row.mixedSelectionVerification={legacyTop:true,importedLegs:['legL','legR'],importedTop:false,footwear:'scout-footwear',screen:measured.screen,camera:measured.camera,qualification:'Selection/region guards plus actual Stable images; visual review required for gaps and overlaps.'};
   }
   if(!Object.values(measured.sockets).every(s=>s.available)||Object.keys(measured.sockets).length!==4)throw Error('Missing selected equipment sockets');
-  const file=path.join(output,name+'.png');await page.screenshot({path:file,animations:'disabled'});
-  const entry={name,file:path.relative(process.cwd(),file),sha256:hash(await fs.readFile(file)),url:page.url(),...measured};
-  row.samples.push(entry);report.captures.push({name,file:entry.file,sha256:entry.sha256,camera:measured.camera,screen:measured.screen,mode:measured.mode});
+  const file=path.join(output,name+'.png'),screenshotStarted=performance.now();await page.screenshot({path:file,animations:'disabled'});
+  const captureTiming={screenshotMs:performance.now()-screenshotStarted,totalMs:performance.now()-captureStarted};
+  const entry={name,file:path.relative(process.cwd(),file),sha256:hash(await fs.readFile(file)),url:page.url(),captureTiming,...measured};
+  row.samples.push(entry);report.captures.push({name,file:entry.file,sha256:entry.sha256,camera:measured.camera,screen:measured.screen,mode:measured.mode,captureTiming});
   await fs.writeFile(path.join(output,'report.json'),JSON.stringify(report,null,2));
   console.log('CAPTURE '+name+' ('+measured.actualBuild+'/'+measured.mode+')');
 }
@@ -182,28 +184,30 @@ try{
         const look={...DEFAULT_RIDER,outfit:item.flight||item.mix?'flight':'travel-drape',build:item.build,hair:'ponytail',headgear:'none',scarf:'none',cape:'none',outfitPrimary:'#f2eada',outfitSecondary:'#7fa8c4'};
         if(item.mix)look.wardrobe={top:'travel-drape-top',trousers:'travel-drape-trousers',chest:'slate-scales',shoulderDrape:'chlamys',waist:'woven-sash',armWraps:'linen-wraps',legWraps:'leather-wraps',footwear:'sandals'};
         if(item.mixedProof)look.wardrobe={trousers:'travel-drape-trousers',footwear:'scout-footwear'};
-        g.setRiderLook(look);g.openStable();g.frame(0,true);g.cameraRig.setStableFocus('rider');window.__dw.advance(2,item.mixedProof?{}:undefined);
+        g.setRiderLook(look);g.openStable();g.frame(0,false);g.cameraRig.setStableFocus('rider');window.__dw.advance(2,item.mixedProof?{}:undefined);
       },item);
       if(item.mixedProof){
         await page.locator('.dw-tab').filter({hasText:/^Outfit Pieces$/}).click();
         await page.evaluate(()=>{const h=window.__dw;h.game.cameraRig.setStableFocus('rider');h.advance(1.5,{});});
       }
+      // Preserve zero-dt presentation updates, but submit only capture()'s final GPU draw.
+      // Queuing redundant high-quality SwiftShader frames can stall the screenshot compositor.
       for(const [view,degrees] of [['front',0],['left',90],['right',270],['back',180]]){
-        await page.evaluate(({deg,neutral})=>{const h=window.__dw,g=h.game,rig=g.cameraRig.stableRig;rig.view.yaw=g.player.riderPose.yaw+deg*Math.PI/180;rig.view.pitch=.14;rig.refocus=0;rig.idle=0;rig.lookIdle=0;h.advance(.1,neutral?{}:undefined);if(neutral)g.input.setScripted({});try{h.render();}finally{if(neutral)g.input.setScripted(null);}},{deg:degrees,neutral:!!item.mixedProof});
+        await page.evaluate(({deg,neutral})=>{const h=window.__dw,g=h.game,rig=g.cameraRig.stableRig;rig.view.yaw=g.player.riderPose.yaw+deg*Math.PI/180;rig.view.pitch=.14;rig.refocus=0;rig.idle=0;rig.lookIdle=0;h.advance(.1,neutral?{}:undefined);if(neutral)g.input.setScripted({});try{g.frame(0,false);}finally{if(neutral)g.input.setScripted(null);}},{deg:degrees,neutral:!!item.mixedProof});
         await capture(page,row,item.id+'-stable-'+view);
       }
       if(stableOnly)continue;
       const takeoff=await page.evaluate(()=>{const h=window.__dw,g=h.game,p=g.player,spawn=g.world.layout.spawn.position,at=p.foot.position.clone();g.setScreen('play');g.world.terrain.standingPoint(spawn[0],spawn[2],at);p.teleport(at,0,'landed');g.cameraRig.setOverride(null);g.cameraRig.snap(p);h.advance(.6,{flight:{flap:1}});return {mode:p.mode};});
       row.transitions.push({name:'actual-takeoff',...takeoff});if(takeoff.mode!=='flying')throw Error('Actual takeoff failed');
       for(const [side,sign] of [['left',1],['right',-1]]){
-        await page.evaluate(sign=>{const h=window.__dw,g=h.game,rig=g.cameraRig.rigs.flight;rig.look.yaw=sign*Math.PI/2;rig.lookIdle=0;h.advance(.1);h.render();},sign);
+        await page.evaluate(sign=>{const h=window.__dw,g=h.game,rig=g.cameraRig.rigs.flight;rig.look.yaw=sign*Math.PI/2;rig.lookIdle=0;h.advance(.1);g.frame(0,false);},sign);
         await capture(page,row,item.id+'-gameplay-mounted-'+side);
       }
       const landing=await page.evaluate(()=>{const h=window.__dw,g=h.game,p=g.player,spawn=g.world.layout.spawn.position,at=p.foot.position.clone();g.world.terrain.standingPoint(spawn[0]-6,spawn[2]+4,at);at.y+=p.breed.standHeight+3;p.teleport(at,0,'flying',4);p.model.state.velocity.y=-2;
-        for(let i=0;i<180&&p.mode==='flying';i++)h.advance(1/30,{flight:{flare:1}});const landed=p.mode;h.advance(1);h.advance(.25,{pressed:{interact:true}});const dismount=p.mode;h.advance(1);h.render();return {landed,dismount,finished:p.mode};});
+        for(let i=0;i<180&&p.mode==='flying';i++)h.advance(1/30,{flight:{flare:1}});const landed=p.mode;h.advance(1);h.advance(.25,{pressed:{interact:true}});const dismount=p.mode;h.advance(1);g.frame(0,false);return {landed,dismount,finished:p.mode};});
       row.transitions.push({name:'actual-landing-and-dismount',...landing});if(landing.landed!=='landed'||landing.dismount!=='dismounting'||landing.finished!=='onFoot')throw Error('Actual landing/dismount failed');
       for(const [action,sprint] of [['walk',false],['run',true]]){
-        await page.evaluate(sprint=>{const h=window.__dw;h.advance(.45,{foot:{moveX:0,moveY:1,sprint}});h.render();},sprint);
+        await page.evaluate(sprint=>{const h=window.__dw;h.advance(.45,{foot:{moveX:0,moveY:1,sprint}});h.game.frame(0,false);},sprint);
         await capture(page,row,item.id+'-gameplay-'+action);
       }
     }finally{await context.close();}

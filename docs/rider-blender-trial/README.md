@@ -1,5 +1,8 @@
 # Authored rider and Windkeel trial
 
+Latest CI/performance follow-up: [12 October resolution](CI_RESOLUTION_2026-10-12.md).
+The earlier failure records below remain historical evidence.
+
 This is a separate review candidate combining released Lantern Dash main
 `81761be3a4ce53ee1c90cdd9957a3171fe704a8a`, the required shared rider/wardrobe
 baseline `8e055069703c83308d5508ee72e5ad1d15ef348e` (PR #11), and the playtested

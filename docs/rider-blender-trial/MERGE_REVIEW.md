@@ -1,5 +1,8 @@
 # Rider/Windkeel PR preparation — October 12, 2026
 
+Latest CI/performance follow-up: [12 October resolution](CI_RESOLUTION_2026-10-12.md).
+The earlier failure records below remain historical evidence.
+
 Robert requested a separate PR and explicitly selected **prepare PR; stop before
 merge**. This supersedes the trial's earlier no-commit/no-push boundary only for
 preparing this review branch. No merge, deployment or production-default change
