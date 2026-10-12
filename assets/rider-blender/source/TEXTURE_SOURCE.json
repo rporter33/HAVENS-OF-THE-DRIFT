@@ -1,0 +1,13 @@
+{
+  "kind": "existing procedural painterly atlas; no new raster texture",
+  "file": "src/creatures/rider/proofMaterials.ts",
+  "sha256": "3e7792bd5d2ea58822258c39c1f1c31357e484b27874fd5d19c0c62a40edd966",
+  "sizes": [
+    1024,
+    2048,
+    3072,
+    4096
+  ],
+  "normal": "existing optional lazy map; default color mode allocates no normal map",
+  "blenderPreview": "vertex-color material nodes are editable previews, not runtime shader graphs"
+}

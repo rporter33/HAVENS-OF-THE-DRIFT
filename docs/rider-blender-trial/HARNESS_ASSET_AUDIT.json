@@ -1,0 +1,262 @@
+{
+  "rider-compatibility": {
+    "path": "src/assets/rider-blender/compatibility.glb",
+    "bytes": 138576,
+    "sha256": "8abf6d08a5f4fc1a0b06a28d9aa74bae478eb53ce9f9e8a3724bc890ba5a8d0f",
+    "meshes": 2,
+    "primitives": 2,
+    "materials": 2,
+    "vertices": 1382,
+    "triangles": 2536,
+    "jointNames": [
+      [
+        "hips",
+        "spine",
+        "chest",
+        "neck",
+        "head",
+        "clavL",
+        "upperArmL",
+        "foreArmL",
+        "handL",
+        "fingersL",
+        "fingers2L",
+        "thumbL",
+        "clavR",
+        "upperArmR",
+        "foreArmR",
+        "handR",
+        "fingersR",
+        "fingers2R",
+        "thumbR",
+        "thighL",
+        "shinL",
+        "footL",
+        "toeL",
+        "thighR",
+        "shinR",
+        "footR",
+        "toeR"
+      ],
+      [
+        "hips",
+        "spine",
+        "chest",
+        "neck",
+        "head",
+        "clavL",
+        "upperArmL",
+        "foreArmL",
+        "handL",
+        "fingersL",
+        "fingers2L",
+        "thumbL",
+        "clavR",
+        "upperArmR",
+        "foreArmR",
+        "handR",
+        "fingersR",
+        "fingers2R",
+        "thumbR",
+        "thighL",
+        "shinL",
+        "footL",
+        "toeL",
+        "thighR",
+        "shinR",
+        "footR",
+        "toeR"
+      ]
+    ],
+    "sockets": [],
+    "images": [],
+    "animations": 0,
+    "requiredExtensions": [],
+    "normalMapsInExport": 0,
+    "ormMapsInExport": 0
+  },
+  "balanced-base": {
+    "path": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/assets/Windkeel_BALANCED_BASECOLOR.glb",
+    "bytes": 473584,
+    "sha256": "d17c8fb50e5ec033ffbc44746f297e2ffe484c0f6af4fba4f601d86efd4bf4e9",
+    "meshes": 1,
+    "primitives": 1,
+    "materials": 1,
+    "vertices": 1286,
+    "triangles": 2504,
+    "jointNames": [
+      [
+        "hips",
+        "spine",
+        "chest",
+        "neck",
+        "head",
+        "clavL",
+        "upperArmL",
+        "foreArmL",
+        "handL",
+        "fingersL",
+        "fingers2L",
+        "thumbL",
+        "clavR",
+        "upperArmR",
+        "foreArmR",
+        "handR",
+        "fingersR",
+        "fingers2R",
+        "thumbR",
+        "thighL",
+        "shinL",
+        "footL",
+        "toeL",
+        "thighR",
+        "shinR",
+        "footR",
+        "toeR"
+      ]
+    ],
+    "sockets": [
+      "AN_SOCKET_WINDLINE_DORSAL",
+      "AN_SOCKET_GUIDE_LEFT",
+      "AN_SOCKET_RIDING_LEFT",
+      "AN_SOCKET_RIDING_RIGHT"
+    ],
+    "images": [
+      {
+        "bytes": 384313,
+        "size": [
+          1024,
+          1024
+        ],
+        "sha256": "7cb4ae86ec0e0c2fab45fa0d468ca1047f30441855f3c3f1fc5e58863057bbed"
+      }
+    ],
+    "animations": 0,
+    "requiredExtensions": [],
+    "normalMapsInExport": 0,
+    "ormMapsInExport": 0
+  },
+  "balanced-aerie": {
+    "path": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/assets/Windkeel_C02_AERIE_FITTED_BASECOLOR.glb",
+    "bytes": 473908,
+    "sha256": "9b11f0a11240671856584949e8d9bc4c12eec3d76555834c68db613f579596c3",
+    "meshes": 1,
+    "primitives": 1,
+    "materials": 1,
+    "vertices": 1286,
+    "triangles": 2504,
+    "jointNames": [
+      [
+        "hips",
+        "spine",
+        "chest",
+        "neck",
+        "head",
+        "clavL",
+        "upperArmL",
+        "foreArmL",
+        "handL",
+        "fingersL",
+        "fingers2L",
+        "thumbL",
+        "clavR",
+        "upperArmR",
+        "foreArmR",
+        "handR",
+        "fingersR",
+        "fingers2R",
+        "thumbR",
+        "thighL",
+        "shinL",
+        "footL",
+        "toeL",
+        "thighR",
+        "shinR",
+        "footR",
+        "toeR"
+      ]
+    ],
+    "sockets": [
+      "AN_SOCKET_WINDLINE_DORSAL",
+      "AN_SOCKET_GUIDE_LEFT",
+      "AN_SOCKET_RIDING_LEFT",
+      "AN_SOCKET_RIDING_RIGHT"
+    ],
+    "images": [
+      {
+        "bytes": 384313,
+        "size": [
+          1024,
+          1024
+        ],
+        "sha256": "7cb4ae86ec0e0c2fab45fa0d468ca1047f30441855f3c3f1fc5e58863057bbed"
+      }
+    ],
+    "animations": 0,
+    "requiredExtensions": [],
+    "normalMapsInExport": 0,
+    "ormMapsInExport": 0
+  },
+  "motion-flight": {
+    "path": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/Windkeel_FLIGHT_MOTION_FIT_BASECOLOR.glb",
+    "bytes": 474364,
+    "sha256": "4c9036514fe90aa61759bf4ee1d9fb884f0096a2516b3b4d4bb4fb6adbb76a6e",
+    "meshes": 1,
+    "primitives": 1,
+    "materials": 1,
+    "vertices": 1286,
+    "triangles": 2504,
+    "jointNames": [
+      [
+        "hips",
+        "spine",
+        "chest",
+        "neck",
+        "head",
+        "clavL",
+        "upperArmL",
+        "foreArmL",
+        "handL",
+        "fingersL",
+        "fingers2L",
+        "thumbL",
+        "clavR",
+        "upperArmR",
+        "foreArmR",
+        "handR",
+        "fingersR",
+        "fingers2R",
+        "thumbR",
+        "thighL",
+        "shinL",
+        "footL",
+        "toeL",
+        "thighR",
+        "shinR",
+        "footR",
+        "toeR"
+      ]
+    ],
+    "sockets": [
+      "AN_SOCKET_GUIDE_LEFT",
+      "AN_SOCKET_WINDLINE_DORSAL",
+      "AN_SOCKET_RIDING_LEFT",
+      "AN_SOCKET_RIDING_RIGHT"
+    ],
+    "images": [
+      {
+        "bytes": 384313,
+        "size": [
+          1024,
+          1024
+        ],
+        "sha256": "7cb4ae86ec0e0c2fab45fa0d468ca1047f30441855f3c3f1fc5e58863057bbed"
+      }
+    ],
+    "animations": 0,
+    "requiredExtensions": [],
+    "normalMapsInExport": 0,
+    "ormMapsInExport": 0
+  },
+  "scope": "Binary/source preservation evidence. No harness attached to trial gameplay. Flight fit already baked; no second fit applied."
+}

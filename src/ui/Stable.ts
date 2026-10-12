@@ -6,7 +6,8 @@
 // visible with what they ask of you.
 
 import type { BreedId, InputPresses, RiderLook, WyvernLook } from '../core/types';
-import { PALETTES, cosmeticsFor, type CosmeticOption } from '../cosmetics/catalog';
+import { DEFAULT_RIDER, PALETTES, cosmeticsFor, type CosmeticOption } from '../cosmetics/catalog';
+import { garmentChoice, withGarment } from '../cosmetics/wardrobe';
 import { BREEDS, BREED_ORDER } from '../flight/breeds';
 import { STABLE_UI_FRACTION } from '../camera/showRigs';
 import { div, fromHtml, h } from './dom';
@@ -228,6 +229,16 @@ export class Stable extends Panel {
 
   private buildTab(tab: StableTab): HTMLElement[] {
     const out: HTMLElement[] = [];
+    if (tab.id === 'gear') {
+      const reset = div('dw-btn dw-btn--quiet', h('span', { text: 'Restore all outfit pieces' }));
+      this.scope.add({ el: reset, onFocus: () => this.setDetail('Restore all outfit pieces', 'Restore your selected complete outfit, keeping your colors, hair and accessories.'), activate: () => {
+        const { chest, shoulderDrape, waist, armWraps, legWraps, footwear } = DEFAULT_RIDER;
+        this.rider = { ...this.rider, chest, shoulderDrape, waist, armWraps, legWraps, footwear, wardrobe: undefined };
+        this.previewRider(this.rider);
+        this.refreshMarks();
+      } });
+      out.push(h('p', { text: 'Mix pieces from any outfit you have unlocked. Match Outfit follows the preset. Tops and trousers stay covered; outer pieces can be removed. Main color and Trim dye cloth; scale and leather dyes color mixed gear.' }), reset);
+    }
     for (const s of tab.sections) out.push(...this.buildSection(s));
     return out;
   }
@@ -239,6 +250,7 @@ export class Stable extends Panel {
       case 'build':
         return this.buildBuild();
       case 'options':
+      case 'garment':
         return this.buildOptions(s);
       case 'swatches':
         return this.buildSwatches(s);
@@ -331,11 +343,20 @@ export class Stable extends Panel {
     const tiles: HTMLElement[] = [];
     for (const b of BUILDS) {
       const tile = div('dw-opt', div('dw-opt-name', h('span', { text: b.label })), h('div', { class: 'dw-opt-desc', text: b.description }), div('dw-opt-check', fromHtml(ICONS.check)));
+      if (this.rider.outfit === 'travel-drape' && b.value !== 'medium') {
+        tile.classList.add('is-locked');
+        tile.querySelector('.dw-opt-desc')!.textContent = 'Choose another outfit to use this build.';
+      }
       tiles.push(tile);
       this.scope.add({
         el: tile,
         onFocus: () => this.setDetail(b.label, b.description),
         activate: () => {
+          if (this.rider.outfit === 'travel-drape' && b.value !== 'medium') {
+            this.setDetail('Travel Drape uses Medium', 'Choose another outfit in the Outfit tab to use Slight or Broad.');
+            this.deny(tile);
+            return;
+          }
           this.ctx.sound('select');
           if (this.rider.build === b.value) return;
           this.rider = { ...this.rider, build: b.value };
@@ -351,13 +372,13 @@ export class Stable extends Panel {
 
   // --- Shapes (markings, horns, outfits...) ----------------------------------------------------
 
-  private buildOptions(s: Extract<StableSection, { kind: 'options' }>): HTMLElement[] {
+  private buildOptions(s: Extract<StableSection, { kind: 'options' | 'garment' }>): HTMLElement[] {
     const view = this.ctx.view;
     const ctxU = unlockContext(view);
     const grid = div('dw-options');
     const opts = cosmeticsFor(s.slot);
     const tiles: HTMLElement[] = [];
-    const current = () => (s.target === 'wyvern' ? this.wyvern[s.key] : this.rider[s.key]);
+    const current = () => s.kind === 'garment' ? garmentChoice(this.rider, s.key) : s.target === 'wyvern' ? this.wyvern[s.key] : this.rider[s.key];
     for (const opt of opts) {
       const unlocked = isOptionUnlocked(view.save, opt);
       const req = unlocked ? null : describeUnlock(opt.unlock, ctxU);
@@ -372,12 +393,17 @@ export class Stable extends Panel {
             return;
           }
           this.ctx.sound('select');
-          if (current() === opt.id) return;
-          if (s.target === 'wyvern') {
+          if (current() === opt.id && !(s.kind === 'options' && s.target === 'rider' && s.key === 'outfit' && this.rider.wardrobe)) return;
+          if (s.kind === 'garment') {
+            this.rider = withGarment(this.rider, s.key, opt.id);
+            this.previewRider(this.rider);
+          } else if (s.target === 'wyvern') {
             this.wyvern = { ...this.wyvern, [s.key]: opt.id };
             this.previewWyvern(this.wyvern);
           } else {
             this.rider = { ...this.rider, [s.key]: opt.id };
+            if (s.key === 'outfit') this.rider.wardrobe = undefined;
+            if (s.key === 'outfit' && opt.id === 'travel-drape') this.rider.build = 'medium';
             this.previewRider(this.rider);
           }
           this.refreshMarks();

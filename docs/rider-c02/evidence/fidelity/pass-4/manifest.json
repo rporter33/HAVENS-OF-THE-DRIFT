@@ -1,0 +1,71 @@
+{
+  "pass": "pass-4",
+  "renderer": "SwiftShader WebGL; no hardware timing",
+  "captures": [
+    {
+      "name": "front",
+      "url": "http://127.0.0.1:5187/?view=rider&manual=1&quality=low&weather=clear&tod=.42&riderProof=wanderer&angle=18&dist=2.55&height=.92",
+      "triangles": 15554,
+      "vertices": 8410,
+      "finite": true,
+      "errors": []
+    },
+    {
+      "name": "face",
+      "url": "http://127.0.0.1:5187/?view=rider&manual=1&quality=low&weather=clear&tod=.42&riderProof=wanderer&focus=head&dist=.8&height=1.64&camUp=-.10&angle=12",
+      "triangles": 15554,
+      "vertices": 8410,
+      "finite": true,
+      "errors": []
+    },
+    {
+      "name": "costume",
+      "url": "http://127.0.0.1:5187/?view=rider&manual=1&quality=low&weather=clear&tod=.42&riderProof=wanderer&angle=18&dist=1.35&height=1.2",
+      "triangles": 15554,
+      "vertices": 8410,
+      "finite": true,
+      "errors": []
+    },
+    {
+      "name": "back",
+      "url": "http://127.0.0.1:5187/?view=rider&manual=1&quality=low&weather=clear&tod=.42&riderProof=wanderer&angle=170&dist=2.55&height=.92",
+      "triangles": 15554,
+      "vertices": 8410,
+      "finite": true,
+      "errors": []
+    },
+    {
+      "name": "material",
+      "url": "http://127.0.0.1:5187/?view=rider&manual=1&quality=low&weather=clear&tod=.42&riderProof=wanderer&riderMaps=normal&angle=18&dist=.75&height=1.28",
+      "triangles": 15554,
+      "vertices": 8410,
+      "finite": true,
+      "errors": []
+    },
+    {
+      "name": "mounted-left",
+      "url": "http://127.0.0.1:5187/?view=rider&manual=1&quality=low&weather=clear&tod=.42&riderProof=aerie&real=1&ground=1&angle=90&dist=2.7&height=.4&speed=0",
+      "triangles": 15982,
+      "vertices": 8665,
+      "finite": true,
+      "errors": []
+    },
+    {
+      "name": "mounted-right",
+      "url": "http://127.0.0.1:5187/?view=rider&manual=1&quality=low&weather=clear&tod=.42&riderProof=aerie&real=1&ground=1&angle=270&dist=2.7&height=.4&speed=0",
+      "triangles": 15982,
+      "vertices": 8665,
+      "finite": true,
+      "errors": []
+    },
+    {
+      "name": "wave",
+      "url": "http://127.0.0.1:5187/?view=rider&manual=1&quality=low&weather=clear&tod=.42&riderProof=wanderer&action=wave&t=.4&angle=315&dist=2.2&height=1.1",
+      "triangles": 15554,
+      "vertices": 8410,
+      "finite": true,
+      "errors": []
+    }
+  ],
+  "errors": []
+}

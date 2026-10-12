@@ -3,6 +3,7 @@
 // The wyvern and rider renderers must support every id listed for their slots.
 
 import type { BreedId, CosmeticSlot, Medal, RiderLook, WyvernLook } from '../core/types';
+import { garmentOptions } from './wardrobe';
 
 export type Unlock =
   | { type: 'default' }
@@ -17,6 +18,8 @@ export interface CosmeticOption {
   name: string;
   description: string;
   unlock: Unlock;
+  /** Component inherits availability from this complete outfit. */
+  sourceOutfit?: string;
 }
 
 const opt = (slot: CosmeticSlot, id: string, name: string, description: string, unlock: Unlock = { type: 'default' }): CosmeticOption => ({
@@ -74,12 +77,27 @@ export const COSMETICS: CosmeticOption[] = [
   opt('riderHair', 'long', 'Long & Loose', 'A mane that flies everywhere at speed.', { type: 'feathers', count: 6 }),
 
   // Rider outfits
+  opt('riderOutfit', 'travel-drape', 'Travel Drape', 'Ivory chiton and gathered trousers, with individually selectable gear. Medium build; drape secured for flight.'),
   opt('riderOutfit', 'flight', 'Flight Leathers', 'Fitted jacket, gloves and riding boots.'),
   opt('riderOutfit', 'scout', "Scout's Tunic", 'Light, layered and full of pockets.'),
   opt('riderOutfit', 'courier', "Courier's Coat", 'A long coat with a high collar.', { type: 'feathers', count: 10 }),
   opt('riderOutfit', 'racer', 'Racing Suit', 'Close-fitting, striped, unmistakably fast.', { type: 'medals', medal: 'silver', count: 3 }),
   opt('riderOutfit', 'cartographer', "Cartographer's Robes", 'Embroidered with the old wind charts.', { type: 'relic', relicId: 'relic-charts' }),
   opt('riderOutfit', 'skyknight', 'Skyknight Plate', 'Polished pauldrons and a tabard. Ceremonial.', { type: 'medals', medal: 'gold', count: 5 }),
+
+  // Approved Travel Drape components. The base chiton/trousers always remain covered.
+  opt('riderChest', 'slate-scales', 'Slate Scale Panel', 'Four broad rows of matte scales over the chiton.'),
+  opt('riderChest', 'none', 'No Chest Armor', 'Keep the soft linen chiton.'),
+  opt('riderDrape', 'chlamys', 'Shoulder Drape & Brooch', 'Folded linen fastened with an antique bronze spiral.'),
+  opt('riderDrape', 'none', 'No Shoulder Drape', 'Leave the shoulders free of the outer drape.'),
+  opt('riderWaist', 'woven-sash', 'Woven Sash', 'A broad dyed sash and hip knot.'),
+  opt('riderWaist', 'none', 'No Sash', 'A simple uninterrupted chiton.'),
+  opt('riderArmWraps', 'linen-wraps', 'Linen Arm Wraps', 'Soft forearm wraps; leather palm wraps in the riding cut.'),
+  opt('riderArmWraps', 'none', 'No Arm Wraps', 'Bare forearms; the Windline tool remains separate.'),
+  opt('riderLegWraps', 'leather-wraps', 'Leather Leg Wraps', 'Crossed leather straps over the calves.'),
+  opt('riderLegWraps', 'none', 'No Leg Wraps', 'Leave the calves unwrapped.'),
+  opt('riderFootwear', 'sandals', 'Riding Sandals', 'Leather straps, reinforced sole and heel.'),
+  opt('riderFootwear', 'none', 'Bare Feet', 'Remove the sandals.'),
 
   // Rider headgear
   opt('riderHeadgear', 'goggles', 'Flight Goggles', 'Brass goggles pushed up on the forehead.'),
@@ -102,6 +120,8 @@ export const COSMETICS: CosmeticOption[] = [
   opt('riderCape', 'tattered', 'Tattered Cape', 'Frayed ends that whip in the wind.', { type: 'medal', raceId: 'underspan', medal: 'silver' }),
   opt('riderCape', 'feathered', 'Feathered Mantle', 'Layered feathers from every corner of the Drift.', { type: 'feathers', count: 40 }),
 ];
+
+COSMETICS.push(...garmentOptions(COSMETICS));
 
 export function cosmeticsFor(slot: CosmeticSlot): CosmeticOption[] {
   return COSMETICS.filter((c) => c.slot === slot);
@@ -172,4 +192,12 @@ export const DEFAULT_RIDER: RiderLook = {
   scarfColor: '#a8582a',
   cape: 'none',
   capeColor: '#8a2a3a',
+  chest: 'slate-scales',
+  shoulderDrape: 'chlamys',
+  waist: 'woven-sash',
+  armWraps: 'linen-wraps',
+  legWraps: 'leather-wraps',
+  footwear: 'sandals',
+  armorColor: '#586875',
+  leatherColor: '#80634d',
 };

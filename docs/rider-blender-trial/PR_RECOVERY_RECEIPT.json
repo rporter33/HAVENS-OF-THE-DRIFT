@@ -1,0 +1,31 @@
+{
+  "createdUtc": "2026-10-12T08:36:24.407359+00:00",
+  "archive": "C:\\Users\\Robert\\.codex\\visualizations\\2026\\10\\11\\01a12d01-df73-7353-bddb-5533013056c8\\rider-merge-prep-20261012\\rider-windkeel-pr-candidate-overlay.zip",
+  "archiveBytes": 98331595,
+  "archiveSha256": "caadb8ee25f734bbae38d3611ec3782485d8e624c195f519e9c512e963066297",
+  "zipEntries": 264,
+  "zipCRC": "all entries passed ZipFile.testzip",
+  "readback": "all entries SHA-256 matched source working bytes",
+  "contains": "all staged changes against released main except 676 docs/rider-c02 prerequisite paths, plus PR_PACKAGE_MANIFEST.json",
+  "notSelfArchived": "This receipt records the ZIP and is intentionally stored beside it and in the PR, rather than recursively archived.",
+  "prerequisiteSource": {
+    "head": "8e055069703c83308d5508ee72e5ad1d15ef348e",
+    "manifest": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\baseline-8e05506\\verification.json",
+    "recordedFiles": 1851,
+    "verifiedArchives": [
+      {
+        "kind": "archive",
+        "path": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\baseline-8e05506\\rider-live-baseline.zip",
+        "bytes": 1404750873,
+        "sha256": "f75f60c9664ba2912bac6d539b04fbad433f9fdf631230e2a51167a765b702f6"
+      },
+      {
+        "kind": "bundle",
+        "path": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\baseline-8e05506\\rider-history.bundle",
+        "bytes": 571664066,
+        "sha256": "1d531b9f27c056d29a15220a421fb0e9e43e2eed16a8a368af19e52e8c835c0f"
+      }
+    ]
+  },
+  "excluded": "ignored generated QA originals and portable Blender remain preserved in the trial's complete recovery ZIP; representative raw logs/captures are in candidate docs/evidence"
+}

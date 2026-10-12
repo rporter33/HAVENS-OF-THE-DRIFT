@@ -1,0 +1,10 @@
+{
+  "origin": "http://127.0.0.1:5217",
+  "prefix": "/rider-trial/",
+  "profile": "fresh nonpersistent context",
+  "renderer": "CHROMIUM_PATH browser SwiftShader, no hardware certification",
+  "checks": [],
+  "requests": [],
+  "errors": [],
+  "failure": "Error: browserType.launch: Failed to launch chromium because executable doesn't exist at C:\\Driftwing-QA-missing-browser-20261012.exe"
+}

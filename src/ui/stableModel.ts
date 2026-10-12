@@ -2,20 +2,21 @@
 // (switching breed carries default colors along only if you never changed them). Pure,
 // unit-tested; Stable.ts renders it.
 
-import type { BreedId, CosmeticSlot, RiderLook, WyvernLook } from '../core/types';
+import type { BreedId, CosmeticSlot, RiderGarmentSlot, RiderLook, WyvernLook } from '../core/types';
 import { BREED_DEFAULT_COLORS, PALETTES } from '../cosmetics/catalog';
 
 export type LookTarget = 'wyvern' | 'rider';
 export type StableFocus = 'wyvern' | 'rider' | 'both';
 
 export type WyvernColorKey = 'primary' | 'secondary' | 'belly' | 'membrane' | 'eyes' | 'saddleColor';
-export type RiderColorKey = 'skin' | 'hairColor' | 'outfitPrimary' | 'outfitSecondary' | 'scarfColor' | 'capeColor';
+export type RiderColorKey = 'skin' | 'hairColor' | 'outfitPrimary' | 'outfitSecondary' | 'scarfColor' | 'capeColor' | 'armorColor' | 'leatherColor';
 export type WyvernShapeKey = 'pattern' | 'horns' | 'frill' | 'tail' | 'saddle';
-export type RiderShapeKey = 'hair' | 'outfit' | 'headgear' | 'scarf' | 'cape';
+export type RiderShapeKey = 'hair' | 'outfit' | 'headgear' | 'scarf' | 'cape' | 'chest' | 'shoulderDrape' | 'waist' | 'armWraps' | 'legWraps' | 'footwear';
 
 export type StableSection =
   | { kind: 'breeds'; title: string }
   | { kind: 'build'; title: string }
+  | { kind: 'garment'; title: string; target: 'rider'; key: RiderGarmentSlot; slot: CosmeticSlot }
   | { kind: 'options'; title: string; target: 'wyvern'; key: WyvernShapeKey; slot: CosmeticSlot }
   | { kind: 'options'; title: string; target: 'rider'; key: RiderShapeKey; slot: CosmeticSlot }
   | { kind: 'swatches'; title: string; target: 'wyvern'; key: WyvernColorKey; palette: readonly string[] }
@@ -97,6 +98,21 @@ export const STABLE_TABS: StableTab[] = [
     ],
   },
   {
+    id: 'gear', label: 'Outfit Pieces', group: 'rider', focus: 'rider',
+    sections: [
+      { kind: 'garment', title: 'Top', target: 'rider', key: 'top', slot: 'riderTop' },
+      { kind: 'garment', title: 'Trousers', target: 'rider', key: 'trousers', slot: 'riderTrousers' },
+      { kind: 'garment', title: 'Chest layer', target: 'rider', key: 'chest', slot: 'riderChest' },
+      { kind: 'swatches', title: 'Scale color', target: 'rider', key: 'armorColor', palette: PALETTES.cloth },
+      { kind: 'garment', title: 'Shoulders & collar', target: 'rider', key: 'shoulderDrape', slot: 'riderDrape' },
+      { kind: 'garment', title: 'Belt & sash', target: 'rider', key: 'waist', slot: 'riderWaist' },
+      { kind: 'garment', title: 'Sleeves & gloves', target: 'rider', key: 'armWraps', slot: 'riderArmWraps' },
+      { kind: 'garment', title: 'Leg wraps & guards', target: 'rider', key: 'legWraps', slot: 'riderLegWraps' },
+      { kind: 'garment', title: 'Footwear', target: 'rider', key: 'footwear', slot: 'riderFootwear' },
+      { kind: 'swatches', title: 'Leather color', target: 'rider', key: 'leatherColor', palette: PALETTES.cloth },
+    ],
+  },
+  {
     id: 'headgear',
     label: 'Headgear',
     group: 'rider',
@@ -139,7 +155,13 @@ export function withBreed(look: WyvernLook, breed: BreedId): WyvernLook {
 
 /** True if two looks differ in any field. */
 export function looksDiffer<T extends object>(a: T, b: T): boolean {
-  for (const k in a) if (a[k] !== b[k]) return true;
+  for (const key of new Set([...Object.keys(a), ...Object.keys(b)])) {
+    const x = (a as Record<string, unknown>)[key], y = (b as Record<string, unknown>)[key];
+    if (x === y) continue;
+    if (x && y && typeof x === 'object' && typeof y === 'object') {
+      if (looksDiffer(x, y)) return true;
+    } else return true;
+  }
   return false;
 }
 

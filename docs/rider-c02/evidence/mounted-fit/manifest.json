@@ -1,0 +1,740 @@
+{
+  "renderer": "production WebGL; Edge/SwiftShader; not hardware timing",
+  "captures": [
+    {
+      "name": "ground-left",
+      "url": "http://127.0.0.1:5188/?view=rider&manual=1&quality=low&weather=clear&tod=.42&riderProof=aerie&real=1&dist=2.3&height=.23&camUp=.06&ground=1&speed=0&angle=90",
+      "kind": "posed real-wyvern showcase",
+      "fit": [
+        {
+          "side": "L",
+          "minKneeCalfFlapGap": 0.10492535330741457,
+          "samples": 852,
+          "soleToTreadCentre": 0.017999999999997147
+        },
+        {
+          "side": "R",
+          "minKneeCalfFlapGap": 0.10492541011569563,
+          "samples": 852,
+          "soleToTreadCentre": 0.017999999999997147
+        }
+      ],
+      "mode": "landed",
+      "proof": "aerie",
+      "mountW": 1,
+      "errors": [],
+      "stats": {
+        "calls": 114,
+        "triangles": 431636,
+        "points": 55,
+        "programs": 61,
+        "width": 1440,
+        "height": 1000,
+        "pixelRatio": 1,
+        "compiling": 0
+      }
+    },
+    {
+      "name": "ground-right",
+      "url": "http://127.0.0.1:5188/?view=rider&manual=1&quality=low&weather=clear&tod=.42&riderProof=aerie&real=1&dist=2.3&height=.23&camUp=.06&ground=1&speed=0&angle=270",
+      "kind": "posed real-wyvern showcase",
+      "fit": [
+        {
+          "side": "L",
+          "minKneeCalfFlapGap": 0.10492535330741457,
+          "samples": 852,
+          "soleToTreadCentre": 0.017999999999997147
+        },
+        {
+          "side": "R",
+          "minKneeCalfFlapGap": 0.10492541011569563,
+          "samples": 852,
+          "soleToTreadCentre": 0.017999999999997147
+        }
+      ],
+      "mode": "landed",
+      "proof": "aerie",
+      "mountW": 1,
+      "errors": [],
+      "stats": {
+        "calls": 119,
+        "triangles": 453558,
+        "points": 55,
+        "programs": 61,
+        "width": 1440,
+        "height": 1000,
+        "pixelRatio": 1,
+        "compiling": 0
+      }
+    },
+    {
+      "name": "glide-left",
+      "url": "http://127.0.0.1:5188/?view=rider&manual=1&quality=low&weather=clear&tod=.42&riderProof=aerie&real=1&dist=2.3&height=.23&camUp=.06&speed=40&angle=90",
+      "kind": "posed real-wyvern showcase",
+      "fit": [
+        {
+          "side": "L",
+          "minKneeCalfFlapGap": 0.10492785951865827,
+          "samples": 852,
+          "soleToTreadCentre": 0.018000000000000682
+        },
+        {
+          "side": "R",
+          "minKneeCalfFlapGap": 0.10492791632713042,
+          "samples": 852,
+          "soleToTreadCentre": 0.018000000000000682
+        }
+      ],
+      "mode": "landed",
+      "proof": "aerie",
+      "mountW": 1,
+      "errors": [],
+      "stats": {
+        "calls": 114,
+        "triangles": 431514,
+        "points": 55,
+        "programs": 61,
+        "width": 1440,
+        "height": 1000,
+        "pixelRatio": 1,
+        "compiling": 0
+      }
+    },
+    {
+      "name": "glide-right",
+      "url": "http://127.0.0.1:5188/?view=rider&manual=1&quality=low&weather=clear&tod=.42&riderProof=aerie&real=1&dist=2.3&height=.23&camUp=.06&speed=40&angle=270",
+      "kind": "posed real-wyvern showcase",
+      "fit": [
+        {
+          "side": "L",
+          "minKneeCalfFlapGap": 0.10492785951865827,
+          "samples": 852,
+          "soleToTreadCentre": 0.018000000000000682
+        },
+        {
+          "side": "R",
+          "minKneeCalfFlapGap": 0.10492791632713042,
+          "samples": 852,
+          "soleToTreadCentre": 0.018000000000000682
+        }
+      ],
+      "mode": "landed",
+      "proof": "aerie",
+      "mountW": 1,
+      "errors": [],
+      "stats": {
+        "calls": 119,
+        "triangles": 453434,
+        "points": 55,
+        "programs": 61,
+        "width": 1440,
+        "height": 1000,
+        "pixelRatio": 1,
+        "compiling": 0
+      }
+    },
+    {
+      "name": "bank-left-left",
+      "url": "http://127.0.0.1:5188/?view=rider&manual=1&quality=low&weather=clear&tod=.42&riderProof=aerie&real=1&dist=2.3&height=.23&camUp=.06&lean=-.9&crouch=.25&speed=40&angle=90",
+      "kind": "posed real-wyvern showcase",
+      "fit": [
+        {
+          "side": "L",
+          "minKneeCalfFlapGap": 0.1086560951242106,
+          "samples": 852,
+          "soleToTreadCentre": 0.017999999999999836
+        },
+        {
+          "side": "R",
+          "minKneeCalfFlapGap": 0.08063111914901586,
+          "samples": 852,
+          "soleToTreadCentre": 0.01799999999997318
+        }
+      ],
+      "mode": "landed",
+      "proof": "aerie",
+      "mountW": 1,
+      "errors": [],
+      "stats": {
+        "calls": 114,
+        "triangles": 431806,
+        "points": 55,
+        "programs": 61,
+        "width": 1440,
+        "height": 1000,
+        "pixelRatio": 1,
+        "compiling": 0
+      }
+    },
+    {
+      "name": "bank-left-right",
+      "url": "http://127.0.0.1:5188/?view=rider&manual=1&quality=low&weather=clear&tod=.42&riderProof=aerie&real=1&dist=2.3&height=.23&camUp=.06&lean=-.9&crouch=.25&speed=40&angle=270",
+      "kind": "posed real-wyvern showcase",
+      "fit": [
+        {
+          "side": "L",
+          "minKneeCalfFlapGap": 0.1086560951242106,
+          "samples": 852,
+          "soleToTreadCentre": 0.017999999999999836
+        },
+        {
+          "side": "R",
+          "minKneeCalfFlapGap": 0.08063111914901586,
+          "samples": 852,
+          "soleToTreadCentre": 0.01799999999997318
+        }
+      ],
+      "mode": "landed",
+      "proof": "aerie",
+      "mountW": 1,
+      "errors": [],
+      "stats": {
+        "calls": 119,
+        "triangles": 453848,
+        "points": 55,
+        "programs": 61,
+        "width": 1440,
+        "height": 1000,
+        "pixelRatio": 1,
+        "compiling": 0
+      }
+    },
+    {
+      "name": "bank-right-left",
+      "url": "http://127.0.0.1:5188/?view=rider&manual=1&quality=low&weather=clear&tod=.42&riderProof=aerie&real=1&dist=2.3&height=.23&camUp=.06&lean=.9&crouch=.25&speed=40&angle=90",
+      "kind": "posed real-wyvern showcase",
+      "fit": [
+        {
+          "side": "L",
+          "minKneeCalfFlapGap": 0.08063107234216722,
+          "samples": 852,
+          "soleToTreadCentre": 0.01800000000001542
+        },
+        {
+          "side": "R",
+          "minKneeCalfFlapGap": 0.10865612956564616,
+          "samples": 852,
+          "soleToTreadCentre": 0.017999999999998604
+        }
+      ],
+      "mode": "landed",
+      "proof": "aerie",
+      "mountW": 1,
+      "errors": [],
+      "stats": {
+        "calls": 118,
+        "triangles": 435268,
+        "points": 55,
+        "programs": 61,
+        "width": 1440,
+        "height": 1000,
+        "pixelRatio": 1,
+        "compiling": 0
+      }
+    },
+    {
+      "name": "bank-right-right",
+      "url": "http://127.0.0.1:5188/?view=rider&manual=1&quality=low&weather=clear&tod=.42&riderProof=aerie&real=1&dist=2.3&height=.23&camUp=.06&lean=.9&crouch=.25&speed=40&angle=270",
+      "kind": "posed real-wyvern showcase",
+      "fit": [
+        {
+          "side": "L",
+          "minKneeCalfFlapGap": 0.08063107234216722,
+          "samples": 852,
+          "soleToTreadCentre": 0.01800000000001542
+        },
+        {
+          "side": "R",
+          "minKneeCalfFlapGap": 0.10865612956564616,
+          "samples": 852,
+          "soleToTreadCentre": 0.017999999999998604
+        }
+      ],
+      "mode": "landed",
+      "proof": "aerie",
+      "mountW": 1,
+      "errors": [],
+      "stats": {
+        "calls": 119,
+        "triangles": 456314,
+        "points": 55,
+        "programs": 61,
+        "width": 1440,
+        "height": 1000,
+        "pixelRatio": 1,
+        "compiling": 0
+      }
+    },
+    {
+      "name": "dive-left",
+      "url": "http://127.0.0.1:5188/?view=rider&manual=1&quality=low&weather=clear&tod=.42&riderProof=aerie&real=1&dist=2.3&height=.23&camUp=.06&pitch=55&crouch=.8&speed=70&angle=90",
+      "kind": "posed real-wyvern showcase",
+      "fit": [
+        {
+          "side": "L",
+          "minKneeCalfFlapGap": 0.07462965798308577,
+          "samples": 852,
+          "soleToTreadCentre": 0.017999999999994774
+        },
+        {
+          "side": "R",
+          "minKneeCalfFlapGap": 0.07462971652770205,
+          "samples": 853,
+          "soleToTreadCentre": 0.017999999999994774
+        }
+      ],
+      "mode": "landed",
+      "proof": "aerie",
+      "mountW": 1,
+      "errors": [],
+      "stats": {
+        "calls": 114,
+        "triangles": 432198,
+        "points": 55,
+        "programs": 61,
+        "width": 1440,
+        "height": 1000,
+        "pixelRatio": 1,
+        "compiling": 0
+      }
+    },
+    {
+      "name": "dive-right",
+      "url": "http://127.0.0.1:5188/?view=rider&manual=1&quality=low&weather=clear&tod=.42&riderProof=aerie&real=1&dist=2.3&height=.23&camUp=.06&pitch=55&crouch=.8&speed=70&angle=270",
+      "kind": "posed real-wyvern showcase",
+      "fit": [
+        {
+          "side": "L",
+          "minKneeCalfFlapGap": 0.07462965798308577,
+          "samples": 852,
+          "soleToTreadCentre": 0.017999999999994774
+        },
+        {
+          "side": "R",
+          "minKneeCalfFlapGap": 0.07462971652770205,
+          "samples": 853,
+          "soleToTreadCentre": 0.017999999999994774
+        }
+      ],
+      "mode": "landed",
+      "proof": "aerie",
+      "mountW": 1,
+      "errors": [],
+      "stats": {
+        "calls": 121,
+        "triangles": 458918,
+        "points": 55,
+        "programs": 61,
+        "width": 1440,
+        "height": 1000,
+        "pixelRatio": 1,
+        "compiling": 0
+      }
+    },
+    {
+      "name": "brake-left",
+      "url": "http://127.0.0.1:5188/?view=rider&manual=1&quality=low&weather=clear&tod=.42&riderProof=aerie&real=1&dist=2.3&height=.23&camUp=.06&brace=1&speed=12&angle=90",
+      "kind": "posed real-wyvern showcase",
+      "fit": [
+        {
+          "side": "L",
+          "minKneeCalfFlapGap": 0.12771010531353832,
+          "samples": 852,
+          "soleToTreadCentre": 0.018000000000035255
+        },
+        {
+          "side": "R",
+          "minKneeCalfFlapGap": 0.12771016344190797,
+          "samples": 852,
+          "soleToTreadCentre": 0.018000000000035255
+        }
+      ],
+      "mode": "landed",
+      "proof": "aerie",
+      "mountW": 1,
+      "errors": [],
+      "stats": {
+        "calls": 114,
+        "triangles": 431494,
+        "points": 55,
+        "programs": 61,
+        "width": 1440,
+        "height": 1000,
+        "pixelRatio": 1,
+        "compiling": 0
+      }
+    },
+    {
+      "name": "brake-right",
+      "url": "http://127.0.0.1:5188/?view=rider&manual=1&quality=low&weather=clear&tod=.42&riderProof=aerie&real=1&dist=2.3&height=.23&camUp=.06&brace=1&speed=12&angle=270",
+      "kind": "posed real-wyvern showcase",
+      "fit": [
+        {
+          "side": "L",
+          "minKneeCalfFlapGap": 0.12771010531353832,
+          "samples": 852,
+          "soleToTreadCentre": 0.018000000000035255
+        },
+        {
+          "side": "R",
+          "minKneeCalfFlapGap": 0.12771016344190797,
+          "samples": 852,
+          "soleToTreadCentre": 0.018000000000035255
+        }
+      ],
+      "mode": "landed",
+      "proof": "aerie",
+      "mountW": 1,
+      "errors": [],
+      "stats": {
+        "calls": 119,
+        "triangles": 453360,
+        "points": 55,
+        "programs": 61,
+        "width": 1440,
+        "height": 1000,
+        "pixelRatio": 1,
+        "compiling": 0
+      }
+    },
+    {
+      "name": "tread-left-oblique",
+      "url": "http://127.0.0.1:5188/?view=rider&manual=1&quality=low&weather=clear&tod=.42&riderProof=aerie&real=1&dist=2.3&height=.23&camUp=.06&ground=1&speed=0&angle=45",
+      "kind": "posed real-wyvern showcase",
+      "fit": [
+        {
+          "side": "L",
+          "minKneeCalfFlapGap": 0.10492535330741457,
+          "samples": 852,
+          "soleToTreadCentre": 0.017999999999997147
+        },
+        {
+          "side": "R",
+          "minKneeCalfFlapGap": 0.10492541011569563,
+          "samples": 852,
+          "soleToTreadCentre": 0.017999999999997147
+        }
+      ],
+      "mode": "landed",
+      "proof": "aerie",
+      "mountW": 1,
+      "errors": [],
+      "stats": {
+        "calls": 116,
+        "triangles": 410458,
+        "points": 55,
+        "programs": 61,
+        "width": 1440,
+        "height": 1000,
+        "pixelRatio": 1,
+        "compiling": 0
+      }
+    },
+    {
+      "name": "tread-right-oblique",
+      "url": "http://127.0.0.1:5188/?view=rider&manual=1&quality=low&weather=clear&tod=.42&riderProof=aerie&real=1&dist=2.3&height=.23&camUp=.06&ground=1&speed=0&angle=315",
+      "kind": "posed real-wyvern showcase",
+      "fit": [
+        {
+          "side": "L",
+          "minKneeCalfFlapGap": 0.10492535330741457,
+          "samples": 852,
+          "soleToTreadCentre": 0.017999999999997147
+        },
+        {
+          "side": "R",
+          "minKneeCalfFlapGap": 0.10492541011569563,
+          "samples": 852,
+          "soleToTreadCentre": 0.017999999999997147
+        }
+      ],
+      "mode": "landed",
+      "proof": "aerie",
+      "mountW": 1,
+      "errors": [],
+      "stats": {
+        "calls": 128,
+        "triangles": 437326,
+        "points": 55,
+        "programs": 61,
+        "width": 1440,
+        "height": 1000,
+        "pixelRatio": 1,
+        "compiling": 0
+      }
+    },
+    {
+      "name": "gameplay-left",
+      "url": "http://127.0.0.1:5188/?manual=1&quality=low&weather=clear&tod=.42&riderProof=aerie&real=1&dist=2.3&height=.23&camUp=.06&angle=90",
+      "kind": "actual landed player simulation; inspection camera",
+      "fit": [
+        {
+          "side": "L",
+          "minKneeCalfFlapGap": 0.10492535067743841,
+          "samples": 852,
+          "soleToTreadCentre": 0.017999999999997365
+        },
+        {
+          "side": "R",
+          "minKneeCalfFlapGap": 0.10492540748571931,
+          "samples": 852,
+          "soleToTreadCentre": 0.017999999999997365
+        }
+      ],
+      "mode": "landed",
+      "proof": "aerie",
+      "mountW": 1,
+      "errors": [],
+      "stats": {
+        "calls": 112,
+        "triangles": 430008,
+        "points": 55,
+        "programs": 61,
+        "width": 1440,
+        "height": 1000,
+        "pixelRatio": 1,
+        "compiling": 0
+      }
+    },
+    {
+      "name": "gameplay-right",
+      "url": "http://127.0.0.1:5188/?manual=1&quality=low&weather=clear&tod=.42&riderProof=aerie&real=1&dist=2.3&height=.23&camUp=.06&angle=270",
+      "kind": "actual landed player simulation; inspection camera",
+      "fit": [
+        {
+          "side": "L",
+          "minKneeCalfFlapGap": 0.10492535067743841,
+          "samples": 852,
+          "soleToTreadCentre": 0.017999999999997365
+        },
+        {
+          "side": "R",
+          "minKneeCalfFlapGap": 0.10492540748571931,
+          "samples": 852,
+          "soleToTreadCentre": 0.017999999999997365
+        }
+      ],
+      "mode": "landed",
+      "proof": "aerie",
+      "mountW": 1,
+      "errors": [],
+      "stats": {
+        "calls": 119,
+        "triangles": 453558,
+        "points": 55,
+        "programs": 61,
+        "width": 1440,
+        "height": 1000,
+        "pixelRatio": 1,
+        "compiling": 0
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "ground-left: both knee/calf surfaces clear the actual flap",
+      "passed": true
+    },
+    {
+      "name": "ground-left: both soles supported on current stirrup sockets",
+      "passed": true
+    },
+    {
+      "name": "ground-left: no game errors",
+      "passed": true
+    },
+    {
+      "name": "ground-right: both knee/calf surfaces clear the actual flap",
+      "passed": true
+    },
+    {
+      "name": "ground-right: both soles supported on current stirrup sockets",
+      "passed": true
+    },
+    {
+      "name": "ground-right: no game errors",
+      "passed": true
+    },
+    {
+      "name": "glide-left: both knee/calf surfaces clear the actual flap",
+      "passed": true
+    },
+    {
+      "name": "glide-left: both soles supported on current stirrup sockets",
+      "passed": true
+    },
+    {
+      "name": "glide-left: no game errors",
+      "passed": true
+    },
+    {
+      "name": "glide-right: both knee/calf surfaces clear the actual flap",
+      "passed": true
+    },
+    {
+      "name": "glide-right: both soles supported on current stirrup sockets",
+      "passed": true
+    },
+    {
+      "name": "glide-right: no game errors",
+      "passed": true
+    },
+    {
+      "name": "bank-left-left: both knee/calf surfaces clear the actual flap",
+      "passed": true
+    },
+    {
+      "name": "bank-left-left: both soles supported on current stirrup sockets",
+      "passed": true
+    },
+    {
+      "name": "bank-left-left: no game errors",
+      "passed": true
+    },
+    {
+      "name": "bank-left-right: both knee/calf surfaces clear the actual flap",
+      "passed": true
+    },
+    {
+      "name": "bank-left-right: both soles supported on current stirrup sockets",
+      "passed": true
+    },
+    {
+      "name": "bank-left-right: no game errors",
+      "passed": true
+    },
+    {
+      "name": "bank-right-left: both knee/calf surfaces clear the actual flap",
+      "passed": true
+    },
+    {
+      "name": "bank-right-left: both soles supported on current stirrup sockets",
+      "passed": true
+    },
+    {
+      "name": "bank-right-left: no game errors",
+      "passed": true
+    },
+    {
+      "name": "bank-right-right: both knee/calf surfaces clear the actual flap",
+      "passed": true
+    },
+    {
+      "name": "bank-right-right: both soles supported on current stirrup sockets",
+      "passed": true
+    },
+    {
+      "name": "bank-right-right: no game errors",
+      "passed": true
+    },
+    {
+      "name": "dive-left: both knee/calf surfaces clear the actual flap",
+      "passed": true
+    },
+    {
+      "name": "dive-left: both soles supported on current stirrup sockets",
+      "passed": true
+    },
+    {
+      "name": "dive-left: no game errors",
+      "passed": true
+    },
+    {
+      "name": "dive-right: both knee/calf surfaces clear the actual flap",
+      "passed": true
+    },
+    {
+      "name": "dive-right: both soles supported on current stirrup sockets",
+      "passed": true
+    },
+    {
+      "name": "dive-right: no game errors",
+      "passed": true
+    },
+    {
+      "name": "brake-left: both knee/calf surfaces clear the actual flap",
+      "passed": true
+    },
+    {
+      "name": "brake-left: both soles supported on current stirrup sockets",
+      "passed": true
+    },
+    {
+      "name": "brake-left: no game errors",
+      "passed": true
+    },
+    {
+      "name": "brake-right: both knee/calf surfaces clear the actual flap",
+      "passed": true
+    },
+    {
+      "name": "brake-right: both soles supported on current stirrup sockets",
+      "passed": true
+    },
+    {
+      "name": "brake-right: no game errors",
+      "passed": true
+    },
+    {
+      "name": "tread-left-oblique: both knee/calf surfaces clear the actual flap",
+      "passed": true
+    },
+    {
+      "name": "tread-left-oblique: both soles supported on current stirrup sockets",
+      "passed": true
+    },
+    {
+      "name": "tread-left-oblique: no game errors",
+      "passed": true
+    },
+    {
+      "name": "tread-right-oblique: both knee/calf surfaces clear the actual flap",
+      "passed": true
+    },
+    {
+      "name": "tread-right-oblique: both soles supported on current stirrup sockets",
+      "passed": true
+    },
+    {
+      "name": "tread-right-oblique: no game errors",
+      "passed": true
+    },
+    {
+      "name": "gameplay-left: both knee/calf surfaces clear the actual flap",
+      "passed": true
+    },
+    {
+      "name": "gameplay-left: both soles supported on current stirrup sockets",
+      "passed": true
+    },
+    {
+      "name": "gameplay-left: no game errors",
+      "passed": true
+    },
+    {
+      "name": "gameplay-left: actual landed simulation",
+      "passed": true
+    },
+    {
+      "name": "gameplay-right: both knee/calf surfaces clear the actual flap",
+      "passed": true
+    },
+    {
+      "name": "gameplay-right: both soles supported on current stirrup sockets",
+      "passed": true
+    },
+    {
+      "name": "gameplay-right: no game errors",
+      "passed": true
+    },
+    {
+      "name": "gameplay-right: actual landed simulation",
+      "passed": true
+    },
+    {
+      "name": "browser page/console errors",
+      "passed": true
+    }
+  ],
+  "browserErrors": []
+}

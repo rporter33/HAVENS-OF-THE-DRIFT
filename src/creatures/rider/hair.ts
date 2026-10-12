@@ -58,7 +58,8 @@ export function hairThickness(style: string): number {
   }
 }
 
-export function buildHair(ctx: BodyCtx, look: RiderLook, covered: boolean): void {
+export function buildHair(ctx: BodyCtx, look: RiderLook, covered: boolean, proof = false, fittedFace = false): void {
+  if (proof && look.hair === 'ponytail' && !covered) return buildProofPony(ctx);
   const { b, pal, head } = ctx;
   const style = look.hair;
   const hb = sk(B.head);
@@ -81,7 +82,9 @@ export function buildHair(ctx: BodyCtx, look: RiderLook, covered: boolean): void
         const line = hairline(phi, style);
         const inside = 1 - Math.min(1, Math.max(0, (u.y - line) / 0.06));
         shapeHead(u);
-        const k = 1 - inside * (t + 0.012) / 0.1;
+        // The authored medium face is shallower below the preserved cranium.
+        // Sink only the invisible cap interior; retain every visible hairline/lock.
+        const k = (1 - inside * (t + 0.012) / 0.1) * (fittedFace ? 1 - .5 * inside : 1);
         u.multiplyScalar(k);
         // Parting for braids.
         if (style === 'braids' && Math.abs(u.x) < 0.06 && u.y > 0.3) u.multiplyScalar(0.985);
@@ -97,7 +100,7 @@ export function buildHair(ctx: BodyCtx, look: RiderLook, covered: boolean): void
       lon: 8,
       deform: (u) => {
         if (u.y < 0) {
-          const k = 1 + u.y * 0.9;
+          const k = 1 + u.y * (proof && style === 'ponytail' ? .48 : .9);
           u.x *= k;
           u.z *= k;
           u.x += curl * u.y * u.y * 0.6;
@@ -152,7 +155,7 @@ export function buildHair(ctx: BodyCtx, look: RiderLook, covered: boolean): void
       const root = capPoint(dir, t * 0.4);
       const nrm = root.clone().sub(head.center).normalize();
       const back = new Vector3(0, -0.35, -1).addScaledVector(nrm, -nrm.dot(new Vector3(0, -0.35, -1))).normalize();
-      const len = style === 'short' ? 0.075 : 0.09;
+      const len = style === 'short' ? 0.075 : proof && style === 'ponytail' ? .065 : 0.09;
       lock(root, back, len, style === 'short' ? 0.024 : 0.026, tone(base, 0.9 + 0.15 * rnd()));
     }
   }
@@ -187,6 +190,58 @@ export function buildHair(ctx: BodyCtx, look: RiderLook, covered: boolean): void
       });
       b.ellipsoid(r.p.clone().addScaledVector(r.dir, -0.015), new Vector3(0.026, 0.02, 0.026), hb, base, { rot: new Quaternion().setFromUnitVectors(UPV, r.dir), lat: 5, lon: 8 });
     }
+  }
+}
+
+/** Broad swept waves, rather than separate pointed cones. The moving pony is still hairSpecs. */
+function buildProofPony(ctx: BodyCtx): void {
+  const { b, head, pal } = ctx, bone = sk(B.head);
+  b.ellipsoid(head.center, head.radii.clone().addScalar(.014), bone,
+    u => tone(pal.hair, .82 + .15 * Math.max(0, u.y)), {
+      lat: 12, lon: 20, deform: u => {
+        const phi = Math.atan2(u.x, u.z), line = hairline(phi, 'ponytail');
+        const fade = Math.min(1, Math.max(0, (u.y - line) / .07));
+        shapeHead(u); u.multiplyScalar(.78 + .22 * fade);
+      },
+    });
+  for (let lock = 0; lock < 7; lock++) {
+    const phi = -1.05 + lock / 6 * 2.1;
+    const points = Array.from({ length: 7 }, (_, i) => {
+      const t = i / 6, a = phi + .32 * Math.sin(t * Math.PI * 2 + lock * .45);
+      const lat = .48 + .77 * Math.sin(t * Math.PI * .9) - .95 * t;
+      const dir = new Vector3(Math.sin(a) * Math.cos(lat), Math.sin(lat), Math.cos(a) * Math.cos(lat));
+      // Sweep over the crown toward the tied back hair mass.
+      dir.z -= 1.75 * t * t; dir.normalize();
+      return head.surface(dir, new Vector3(), .019 + .009 * Math.sin(t * Math.PI));
+    });
+    b.loft(points.map((c, i) => {
+      const tangent = points[Math.min(6, i + 1)].clone().sub(points[Math.max(0, i - 1)]).normalize();
+      const normal = c.clone().sub(head.center).normalize();
+      const ax = new Vector3().crossVectors(tangent, normal).normalize();
+      const ay = new Vector3().crossVectors(ax, tangent).normalize();
+      return { c, ax, ay, rx: .020 + .006 * Math.sin(i / 6 * Math.PI), ry: .009,
+        skin: bone, color: tone(pal.hair, .88 + .08 * Math.sin(lock * 1.7 + i * .5)) };
+    }), 8, { capStart: true, capEnd: true, capBulge: .1 });
+  }
+  // Three loose, curved forehead/temple waves break the cap's uniform edge.
+  for (const [side, offset] of [[-1, 0], [1, 0], [1, -.55]]) {
+    const points = Array.from({ length: 6 }, (_, i) => {
+      const t = i / 5;
+      const center = offset !== 0;
+      return head.surface(new Vector3(center ? .35 + .15 * Math.sin(t * Math.PI) - .35 * t : side * (.66 + .13 * Math.sin(t * Math.PI)),
+        center ? .85 - .48 * t : .65 - .58 * t + .08 * Math.sin(t * Math.PI * 2),
+        .68 + .11 * Math.sin(t * Math.PI)), new Vector3(), .023);
+    });
+    b.loft(points.map((c, i) => {
+      const tan = points[Math.min(5, i + 1)].clone().sub(points[Math.max(0, i - 1)]).normalize();
+      const n = c.clone().sub(head.center).normalize(), ax = new Vector3().crossVectors(tan, n).normalize();
+      return { c, ax, ay: new Vector3().crossVectors(ax, tan).normalize(),
+        rx: .017 * (1 - .65 * i / 5), ry: .009 * (1 - .45 * i / 5), skin: bone, color: tone(pal.hair, .94) };
+    }), 6, { capStart: true, capEnd: true, capBulge: .1 });
+  }
+  for (const root of hairRoots(ctx, ctx.look)) {
+    b.ellipsoid(root.p.clone().addScaledVector(root.dir, -.012), new Vector3(.032, .026, .03), bone, pal.hair, { lat: 6, lon: 10 });
+    b.ellipsoid(root.p, new Vector3(.025, .017, .025), bone, tone(pal.leather, .85), { lat: 5, lon: 8 });
   }
 }
 

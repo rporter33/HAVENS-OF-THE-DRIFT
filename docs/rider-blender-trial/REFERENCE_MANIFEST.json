@@ -1,0 +1,2081 @@
+{
+  "createdUtc": "2026-10-11T22:35:59.234523+00:00",
+  "purpose": "Preserved review/reference inputs only. No artifact branch merged; no harness runtime enabled.",
+  "sources": [
+    {
+      "label": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "metadata": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54\nRobert Porter\nRobert Porter\n2026-10-11T20:50:22Z\n2026-10-11T20:50:22Z\nCenter Windkeel motif and add isolated shape-fit material review\n\n",
+      "paths": [
+        "docs/art-pilots/windkeel-balanced-review-20261011"
+      ]
+    },
+    {
+      "label": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "metadata": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686\nRobert Porter\nRobert Porter\n2026-10-11T21:35:04Z\n2026-10-11T21:35:04Z\nComplete pinned Windkeel motion package with upright tether and contact limits\n\n",
+      "paths": [
+        "docs/art-pilots/windkeel-motion-fit-20261011"
+      ]
+    },
+    {
+      "label": "earlier-integration",
+      "commit": "56399240064f394b51a310bd9f28cffaaa92b1cb",
+      "metadata": "56399240064f394b51a310bd9f28cffaaa92b1cb\nRobert Porter\nRobert Porter\n2026-10-11T16:50:18Z\n2026-10-11T16:50:18Z\nRecord Windkeel fitting revision and exact-build failure-path evidence\n\n",
+      "paths": [
+        "src/debug/windkeelEquipment.ts",
+        "src/debug/windkeelEquipment.test.ts",
+        "src/debug/showcases/windkeel.ts",
+        "src/creatures/rider/Rider.ts",
+        "src/debug/assets/windkeel",
+        "docs/qa/windkeel-fit-r2/QA.md"
+      ]
+    }
+  ],
+  "files": [
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/ARTIFACT_MANIFEST.json",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/ARTIFACT_MANIFEST.json",
+      "gitBlob": "8604e7b6d4011ceacb3b0c49cab8bcf4d7378109",
+      "bytes": 14133,
+      "sha256": "7d53289eb9012432e4ebe384e64844b4ea9285827b20ce6aa754b12dcfe7bf64"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/README.md",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/README.md",
+      "gitBlob": "2be6d21c46e82e1c9c1ea8f15864fe261e1015be",
+      "bytes": 9007,
+      "sha256": "8378fdf8d456f208f729629f8836fa0c6a96fc253b043e10443ffa904a2a34e0"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/Windkeel_BALANCED_CHARACTER_REVIEW.blend",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/Windkeel_BALANCED_CHARACTER_REVIEW.blend",
+      "gitBlob": "d136e1a1c06ccab504dc6061c99ffee7ceb34f31",
+      "bytes": 17264693,
+      "sha256": "df4082078af3da96e8e7339d51ed9d22cb99e87f0ed2d8373da2b131ba7e3f9c"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/Windkeel_BALANCED_SOURCE.blend",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/Windkeel_BALANCED_SOURCE.blend",
+      "gitBlob": "6064b6245b3d21d4eeb0a12ec6d01603d6676a3d",
+      "bytes": 1083271,
+      "sha256": "72aa6bc9004acbe9d62c692564f6c1886286edcf8447c6a5490080b7cb59c5bd"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/assets/ORM_balanced.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/assets/ORM_balanced.png",
+      "gitBlob": "cc05f2d12724def2aa248c284edb10453c6af9ab",
+      "bytes": 42458,
+      "sha256": "fe222b9c398680e3c84b835fe2fdb0b242340f5c175c7b633aaf7018915a8d0f"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/assets/Windkeel_BALANCED_BASECOLOR.glb",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/assets/Windkeel_BALANCED_BASECOLOR.glb",
+      "gitBlob": "89ff59461709480aaf0a3dc146cc275e4cfd80e6",
+      "bytes": 473584,
+      "sha256": "d17c8fb50e5ec033ffbc44746f297e2ffe484c0f6af4fba4f601d86efd4bf4e9"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/assets/Windkeel_BALANCED_PBR.glb",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/assets/Windkeel_BALANCED_PBR.glb",
+      "gitBlob": "8c0c968a6ac3bd73a8ca2c6a8d226860cf3da3dd",
+      "bytes": 657136,
+      "sha256": "c597f51acdf7d71c3276ae3d12e454f88a99ed2fa26477b8af186a79e8d50eed"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/assets/Windkeel_C02_AERIE_FITTED_BASECOLOR.glb",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/assets/Windkeel_C02_AERIE_FITTED_BASECOLOR.glb",
+      "gitBlob": "cab8693d2e7a467f7031956fcd3e39373763c6ff",
+      "bytes": 473908,
+      "sha256": "9b11f0a11240671856584949e8d9bc4c12eec3d76555834c68db613f579596c3"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/assets/Windkeel_C02_AERIE_FITTED_PBR.glb",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/assets/Windkeel_C02_AERIE_FITTED_PBR.glb",
+      "gitBlob": "e538e0a5d82f217d7673068009dcc3dc92deeca4",
+      "bytes": 657460,
+      "sha256": "0ac4b5a2e06a00dba333a409bd022ce20ddd1f049ef367cc7f238bce123a8a57"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/Windkeel_AB_Before_After.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/Windkeel_AB_Before_After.png",
+      "gitBlob": "389600d3db652791f13aca287a20287ea40aea8e",
+      "bytes": 1113558,
+      "sha256": "dbae7e437bd010e3a69c07084904cb6e3ea55a612a47926d0306cc8f5beddafb"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/Windkeel_Motion_Back_Comparison.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/Windkeel_Motion_Back_Comparison.png",
+      "gitBlob": "a5198a4b7d457c7bb2212c64b37649b8b1be305d",
+      "bytes": 809200,
+      "sha256": "f03098fdf6f8efb1380df97bfba2a21bc21e453971718e03823cf34d66bfa964"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/Windkeel_Worn_Before_After.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/Windkeel_Worn_Before_After.png",
+      "gitBlob": "81bf458aec28d78daf70a5d3143e816c79492072",
+      "bytes": 832122,
+      "sha256": "63516eca7a25a47f907c3ad88d5322c39f4c51a5a13b1a6a42854fd8dd91d56a"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-back-after.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-back-after.png",
+      "gitBlob": "863406056a16871a8ff5b71c1da8b687aee93547",
+      "bytes": 839838,
+      "sha256": "0b4c4d9a422e2c782793f19dd52360e2c0d686e7c62681e4caf62a805772bd44"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-back-before.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-back-before.png",
+      "gitBlob": "b45e5f5a91b1b18ad498ddb0a0434a73fbcc2475",
+      "bytes": 841499,
+      "sha256": "180a6bdcfae044c4031b6e314ab823e0673da61066fd265144c907ae050246c0"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-freefall-after.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-freefall-after.png",
+      "gitBlob": "8fe6702a3a221e7a0a579144c72783b8f2536f99",
+      "bytes": 719050,
+      "sha256": "39030f38553f5ec16487b38ab3864eefd913e430f2f74686a6c3c4c6833dcb74"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-freefall-before.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-freefall-before.png",
+      "gitBlob": "723a54410e821294cb9aec42b35f2ab51dacbe41",
+      "bytes": 718418,
+      "sha256": "bebae7c743108b8ff39feece55b95e8c767cf58a88d33e5ba00cd6b07266c9fc"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-front-after.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-front-after.png",
+      "gitBlob": "0b4ec8e52e203d2b4c1860a8b15b696c03798a28",
+      "bytes": 845462,
+      "sha256": "2aac2effc9317a32c1731df633a7d6f72fa8d0ac2ff21fe517fd2099df9c8e6f"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-front-before.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-front-before.png",
+      "gitBlob": "bc28900201f44248742b8988e8ce3ea6d2858526",
+      "bytes": 842132,
+      "sha256": "a7a1671c6edc2971415369e15d57826936c9bafd05e20faeef5d2cc24b81ab42"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-mounted-back-after.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-mounted-back-after.png",
+      "gitBlob": "4de2aad51cb9858a7f6718951fac72fd6b8ecfae",
+      "bytes": 884226,
+      "sha256": "4232987db2f492d5d56e270f14cd7e2c3d7dcfb09e8a15c83c41fec920fdc1b5"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-mounted-back-before.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-mounted-back-before.png",
+      "gitBlob": "76fa7560c00a90e89196d78ea3d4b0afd9027786",
+      "bytes": 885872,
+      "sha256": "9e08399f3007a24e09d095b8e8a179712fbfd99e988591aada5c387b350cd8ba"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-mounted-front-after.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-mounted-front-after.png",
+      "gitBlob": "8c03e3468f4e29489dafd75ccd410e88c86f0953",
+      "bytes": 914899,
+      "sha256": "f0188bb4715777c626a043ac9c8773e728fa9ea76975385cbbe81a0a92623386"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-mounted-front-before.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-mounted-front-before.png",
+      "gitBlob": "f19354227e1417cda107db185de0dfde27324ffc",
+      "bytes": 911474,
+      "sha256": "95603ae01fd9b67a5c9963670a47542a26f83a64107418a4894e06a43ac64f58"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-profile-after.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-profile-after.png",
+      "gitBlob": "e9b579865b68d2bacd12af2d21501371a9c700f7",
+      "bytes": 787041,
+      "sha256": "cd5c3e269c5d6abec502aff89b3b48c11d5128d286dcd915548116e1525f74a9"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-profile-before.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-profile-before.png",
+      "gitBlob": "47d65a7ba211a845331fc5640ea1e5b3ecf47151",
+      "bytes": 785486,
+      "sha256": "39b297dd9934ded40f46fbfcdaf343149ca54700d1db2a1d459189a4aae2d6a4"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-tether-back-after.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-tether-back-after.png",
+      "gitBlob": "5f72f982277e64a2c575d6a705ffbb98dd9eee40",
+      "bytes": 853989,
+      "sha256": "949f513f0294ab5c7a462ac9b727a301ad5b4ce9ca83273e6310d595108d0728"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-tether-back-before.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-tether-back-before.png",
+      "gitBlob": "142f5b707c1d11db4b29af6f497b4cda70af32b2",
+      "bytes": 855370,
+      "sha256": "6325575f70aa6fa7d4e294727518ad3717b8a4f4a2264f5fe664f260c85d8e52"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-tether-front-after.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-tether-front-after.png",
+      "gitBlob": "6835b0fc84e1a6630573a0d94a836c31f3396ea0",
+      "bytes": 859915,
+      "sha256": "a48c355f17e455ebf33d37512e91f404cee0a2d2d7c6422eb0877a07f71cbfb5"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-tether-front-before.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-tether-front-before.png",
+      "gitBlob": "907e89592e7156bb6256f8cdafde5f31d5ff18a7",
+      "bytes": 857748,
+      "sha256": "c78b29a7b99139a7a129dcac270892278671f7f66cd4d62f8f41e6bb700e22c0"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-walk-after.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-walk-after.png",
+      "gitBlob": "d756beb2da64ab1d0eb59b9e9a52977d5e30b26a",
+      "bytes": 847743,
+      "sha256": "4f1ce730aedd208b9101e9b848ff7032284279245bb569000aa400a29494b3e4"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-walk-before.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/aerie-walk-before.png",
+      "gitBlob": "52d3a8c869bee2962df8ea667a67cba42c586c31",
+      "bytes": 849384,
+      "sha256": "d23b3860148c25392360ad18f0a94381ed9e292c7d0aafe61249c49e686c0c4b"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/character-comparison-manifest.json",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/character-comparison-manifest.json",
+      "gitBlob": "896c768864f34b1196bda0da578721eb677dd098",
+      "bytes": 8230,
+      "sha256": "4739068997422afd167867e822d3b26124e957d54dd3ede40ded316eda329b07"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/export-verification.json",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/export-verification.json",
+      "gitBlob": "f010c120c00fcf3f511e11a8142260fe248b7313",
+      "bytes": 3873,
+      "sha256": "57683debe9e2b601d791f66b19f3d1537be42b225cc455c49d1e74ed563bd3e1"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/fit-comparison-diagnostic.json",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/fit-comparison-diagnostic.json",
+      "gitBlob": "72d8e053adffb53dcefa0b327516a6850e14c8eb",
+      "bytes": 9371,
+      "sha256": "403791b53f89737aec69b864c81d3c9c2122b7a8d8ae66d1d63172d367b420f7"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/fit-provenance.json",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/fit-provenance.json",
+      "gitBlob": "0fc18184f24c1d017129de29424b9cc886a0e2aa",
+      "bytes": 2523,
+      "sha256": "f060bb4c154d4c06f550ec895e4b246d8bb3da53ad269f27bd416bae37c67ec6"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/flight-front-after.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/flight-front-after.png",
+      "gitBlob": "982e72f473f2b4ce000cdd17e2626d2b14aa4c4a",
+      "bytes": 824033,
+      "sha256": "69e3e7540615d2607060d606fd6e173d09c9aa78e9bfbc82b9fe13a83164068d"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/flight-front-before.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/flight-front-before.png",
+      "gitBlob": "b8b94479afc336f0a6ae33df8ea5963a9148a2cd",
+      "bytes": 824576,
+      "sha256": "32680b395ca08d9aec0bbe99570eb1a0bbe24b6d827adf5ba39c12d91a46f2c9"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/matched-motif-manifest.json",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/matched-motif-manifest.json",
+      "gitBlob": "c1680ae81379c39818118a806e5af30bab5802bd",
+      "bytes": 1354,
+      "sha256": "5e59448ed98c226954610693c6d7326b797753d9d5c0b243790cad2de18e7dac"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/mixed-broad-after.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/mixed-broad-after.png",
+      "gitBlob": "e8baa0e79495ea58b6228d73d486ceb8c7bd545d",
+      "bytes": 858887,
+      "sha256": "755e02bd80b9f569d46c03bc398ad12bb6a2167194ae51b784b11e625011364e"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/mixed-broad-before.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/mixed-broad-before.png",
+      "gitBlob": "4203d6f9852581baffa2413cc2a76a84a015c98d",
+      "bytes": 856009,
+      "sha256": "895fe247306c915998dfb9a3397e7016265a665c6521ee661d3cbc37c5f270f1"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/motif-after.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/motif-after.png",
+      "gitBlob": "557b9c51032da9086a7ba8c1b9dcf5c6ba95309a",
+      "bytes": 852306,
+      "sha256": "98e97117096a83c4be09edfd8b2abe1e4c690b6b1c1a6bc8f65b15fd7b497858"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/motif-before.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/motif-before.png",
+      "gitBlob": "e255793d1e1413ffd13565fab1f2624c3108a649",
+      "bytes": 863724,
+      "sha256": "7744d3f13b9dfaae0000d43cf1885ada6c63025fe96f080e341aaeab33c9bf65"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/motif-quarter-after.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/motif-quarter-after.png",
+      "gitBlob": "d50c0d9892cf7d8bea548690dd7488f6d2f31e48",
+      "bytes": 914942,
+      "sha256": "854a73a578e048b1aca9f1944f0428a60be52a62d7d46a366710b8e569dbf79e"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/motif-quarter-before.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/motif-quarter-before.png",
+      "gitBlob": "50765175f2c230f19af0eca07244fa20cb23c8ab",
+      "bytes": 922167,
+      "sha256": "49dbc2b5deedb57ca8715c28c8ff86d349f188fa65fb9495ad2ac7d568a079a6"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/native-reopen-verification.json",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/native-reopen-verification.json",
+      "gitBlob": "f2db380414ec4017156341d7984364f7aef8e1bb",
+      "bytes": 1565,
+      "sha256": "d6723b28a6571b54b7512c0d31d6b35571bbd322e66fb1b4f77c00301133a2d1"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/review-import-verification.json",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/review-import-verification.json",
+      "gitBlob": "10857566c17f134946755564eefee73f6794d3c8",
+      "bytes": 2658,
+      "sha256": "ae8692d84b4a67c56d6d9f3918ce2c7388066ecd1bee943801de70cc612c8be6"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/scout-slight-after.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/scout-slight-after.png",
+      "gitBlob": "4f96c9c6e394e7c6900a65c23a3bb484a902e5e4",
+      "bytes": 835349,
+      "sha256": "4c048c66304fe404d4885dec1551def94a5d26f0f2824e735bbeca9818cfd7c7"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/scout-slight-before.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/scout-slight-before.png",
+      "gitBlob": "ce9fb56a52da749544cc91ea6915d88bfc39f236",
+      "bytes": 835202,
+      "sha256": "0730f855be986f21dc5bc4dc47039580d29b3eeb7cc0958c0f827d0499d22127"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/shape-metrics.json",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/shape-metrics.json",
+      "gitBlob": "0337ba36f1828db626374ee2cc026b3f32df4ab7",
+      "bytes": 1030,
+      "sha256": "d53b47eb46b3bcfad2275c79b6c33ea649bf234a34308299476f92103d857b86"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/wanderer-back-after.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/wanderer-back-after.png",
+      "gitBlob": "f17dc0ab072ce6efc6b09dd99d2e3667ad27fa51",
+      "bytes": 855042,
+      "sha256": "debaa0a52d0d9c38190f285b9707e48c149431127dda4fc6cfc653ce50111b46"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/review/wanderer-back-before.png",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/review/wanderer-back-before.png",
+      "gitBlob": "78473aec18c20920935ef2e2a1e9d2e7261b4ba8",
+      "bytes": 855397,
+      "sha256": "2ec02da3dde8415bf6e8bb375ca141ed6b3f50f2d1d68eacaf036cc6aa456413"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/scripts/build-balanced-review.py",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/scripts/build-balanced-review.py",
+      "gitBlob": "5f59466b65f8dcd217acb8dd9e9ddf735c47e08b",
+      "bytes": 6635,
+      "sha256": "5b4b228bd38ee15b4db275317dc3312592de8f0040f0c5b12f01e098360f5594"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/scripts/build-balanced.py",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/scripts/build-balanced.py",
+      "gitBlob": "d5b97ab94bb1b75dd8b99cb3dae28cbe0850f865",
+      "bytes": 10244,
+      "sha256": "d3079399ff5d0f372485c533b2f1c265df7f453d1945ab532568cc0aebdebf5b"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/scripts/diagnose-fit-comparison.mjs",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/scripts/diagnose-fit-comparison.mjs",
+      "gitBlob": "e26815b5e1e6cf7cd613e0667183329be797d66e",
+      "bytes": 2627,
+      "sha256": "eb459ed33768aeed0eade6278d517cbe200ed372dea51896dc4c7a06dd731b56"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/scripts/export-fit-targets.mjs",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/scripts/export-fit-targets.mjs",
+      "gitBlob": "cd0586fa3ddcf6b3571de18ca9dd020ba387b0ed",
+      "bytes": 1667,
+      "sha256": "a53aed214138b777a2e742e05bbcd0c9dee48a041d101f170ee57dda5df166c1"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/scripts/fit-and-pose.mjs",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/scripts/fit-and-pose.mjs",
+      "gitBlob": "671c167f8db54c9b0393e15b8ba9d92ba1eac10f",
+      "bytes": 8379,
+      "sha256": "531f417001603a31b55a714474a838d4054db47dd41678e13e944764044799a2"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/scripts/make-comparison-boards.py",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/scripts/make-comparison-boards.py",
+      "gitBlob": "8da8b2beed1c9eb8428f4b3fdfb20850f8fa4362",
+      "bytes": 2965,
+      "sha256": "c2340804782fa5a59919b3e75cd63bd4d0bf82035518af7736db35f10c64c787"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/scripts/render-character-comparison.py",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/scripts/render-character-comparison.py",
+      "gitBlob": "df68fa856c74875e84013c662af9fa6bf7466e71",
+      "bytes": 2967,
+      "sha256": "9835927a5983b3833f3f411f222f858ffa308d9878230640454b21850eb8ae4c"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/scripts/render-motif.py",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/scripts/render-motif.py",
+      "gitBlob": "7bca1bc7126a431c2b36bbd41a2b1d7bec5cc77f",
+      "bytes": 2153,
+      "sha256": "e69aa8576ccf6befd994b7c71c11b7a4ca47a52f59b72954ac9db42cda02a424"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/scripts/verify-balanced-exports.py",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/scripts/verify-balanced-exports.py",
+      "gitBlob": "63d02fd09483526f52cff3a48c0103ea256deb78",
+      "bytes": 3606,
+      "sha256": "920f353c8f1820cd512c1df5f58017c84f2fe3bffd29a23db87cf91c074e7a04"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/scripts/verify-balanced-native.py",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/scripts/verify-balanced-native.py",
+      "gitBlob": "57b46f12bf6ef2ed7053d902c514c38741bddd2b",
+      "bytes": 2594,
+      "sha256": "d783b66449c9b2f7e0af1d1eead7eb31f6a192705c25de64e3ffb94e0badf8e1"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/source/aerie-medium-balanced.json.gz",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/source/aerie-medium-balanced.json.gz",
+      "gitBlob": "25da5fef571d16ae712d2cf889cb70bfc82bfa4b",
+      "bytes": 543147,
+      "sha256": "5dd3a80481b61e91565c58ffbe27e6fdda95f75af9dca536aec2e9c585139df3"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/source/aerie-medium-fit-target.json.gz",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/source/aerie-medium-fit-target.json.gz",
+      "gitBlob": "9a71007dafaa6e31b920454ccf7d0b9cda6bdea4",
+      "bytes": 375950,
+      "sha256": "1a482b3ea089bd29c396743a3c34eebfbad2178c764c566c3e32c4c0b718d3b8"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/source/balanced-components.json",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/source/balanced-components.json",
+      "gitBlob": "6dad92334a6acbfd6325699d68b1e5efdcdbd0d7",
+      "bytes": 304812,
+      "sha256": "b81dda420f6941019282a8bbf99124bc49d19f864d3b6c643d0416163eb12675"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/source/cartographer-medium-balanced.json.gz",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/source/cartographer-medium-balanced.json.gz",
+      "gitBlob": "8317657856ef64d1c12fa9258b0060f3e07fc787",
+      "bytes": 226105,
+      "sha256": "0841b6972cd9b29c6e0c3c46e167a42358a76ce226ab27d86736e4ba8b9dbf92"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/source/cartographer-medium-fit-target.json.gz",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/source/cartographer-medium-fit-target.json.gz",
+      "gitBlob": "3b7ae01814132c4527108eef2e9054943302fa11",
+      "bytes": 262269,
+      "sha256": "523cb6da6c2d86f4cffee0797d5957621af61ad305d25bf0c6adbfb691fb500c"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/source/courier-medium-balanced.json.gz",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/source/courier-medium-balanced.json.gz",
+      "gitBlob": "22e9c7a8379c1970b92d5f8be42fb2b973ac8953",
+      "bytes": 224868,
+      "sha256": "dc71b593ae5bc613eca063efdc96b08848592db8a463aa9029cba0da15bbc2f3"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/source/courier-medium-fit-target.json.gz",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/source/courier-medium-fit-target.json.gz",
+      "gitBlob": "27592fc5e9c1ce19b7d139be4fa5841702b52677",
+      "bytes": 261285,
+      "sha256": "59be9d0ded21f184d890d6ada9438f7720095f98be1670f80265fb7f8f19099f"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/source/flight-medium-balanced.json.gz",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/source/flight-medium-balanced.json.gz",
+      "gitBlob": "a7f0827705461548dd96471af1345dc0ca6e6639",
+      "bytes": 539974,
+      "sha256": "4a45a26ae6dd8c0c2bcf035b9eb958eff9568600daabbf6ed4fe637425bb9957"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/source/flight-medium-fit-target.json.gz",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/source/flight-medium-fit-target.json.gz",
+      "gitBlob": "5019c394a29e2bd927efafbd7c26cfddfba7fabf",
+      "bytes": 284663,
+      "sha256": "4a0492914b187fbe842def339c6b0066b7be85cfdeb74a517221abdfc7421514"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/source/mixed-broad-balanced.json.gz",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/source/mixed-broad-balanced.json.gz",
+      "gitBlob": "e3d5a4bde1af4ccbee4a07f1b983bcbfcef526ea",
+      "bytes": 384479,
+      "sha256": "5538ddd0e382f7761a2eed4106b364406601888605584f00b3ac1f9dc3f48a98"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/source/mixed-broad-fit-target.json.gz",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/source/mixed-broad-fit-target.json.gz",
+      "gitBlob": "9d12e8cbf7a57656837f97658af486398b066693",
+      "bytes": 382993,
+      "sha256": "ac3e140df538cdb941538d65396634c9d131833692ba44836228bfd751ffa616"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/source/racer-medium-balanced.json.gz",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/source/racer-medium-balanced.json.gz",
+      "gitBlob": "de92059270507a16d0ba22f8b2944990df07a37d",
+      "bytes": 224922,
+      "sha256": "b4e0f6797c939ce58305e228acb0f72a244753274d8fba5094adcef173bc8a47"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/source/racer-medium-fit-target.json.gz",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/source/racer-medium-fit-target.json.gz",
+      "gitBlob": "fd28229f7c31e07f05340e5edee0ba422a48e97f",
+      "bytes": 285115,
+      "sha256": "a1449ff8fc36e55e3515817b77397608452eebbc02a380699310ef85371de2d0"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/source/scout-medium-balanced.json.gz",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/source/scout-medium-balanced.json.gz",
+      "gitBlob": "856778dfd936f6b4274210be9a2f08aac960cc5f",
+      "bytes": 224867,
+      "sha256": "f84a71e3ea9371d79642fe6617d18380f69f29298d08328b5769ef5989ff8ca6"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/source/scout-medium-fit-target.json.gz",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/source/scout-medium-fit-target.json.gz",
+      "gitBlob": "0ab6f486959a44c87a11784766b19fcff6c7bd28",
+      "bytes": 288335,
+      "sha256": "8e9a201f11bab1e34fb9da7b18d7fee744cb77f0d356c3268d7195f4476eb002"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/source/scout-slight-balanced.json.gz",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/source/scout-slight-balanced.json.gz",
+      "gitBlob": "e8c9aecce3956aa6f451755b019b631b8530b1bf",
+      "bytes": 299151,
+      "sha256": "d01c89cf0dea538701e880c1f77c20d00afd4c007652d2698803f55211720b57"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/source/scout-slight-fit-target.json.gz",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/source/scout-slight-fit-target.json.gz",
+      "gitBlob": "3da3f36e37c0e59d42adc7a3c928222aeb0efec3",
+      "bytes": 284593,
+      "sha256": "2468b2e3846362f2ae51959c5005b4405aaa9ac3d2936d49bcbc4209d4d2c3c3"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/source/skyknight-medium-balanced.json.gz",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/source/skyknight-medium-balanced.json.gz",
+      "gitBlob": "533a12b09024f8742a9d4369902de3663fd60fa6",
+      "bytes": 227632,
+      "sha256": "d579232dd9b243c9a5efad0bc6cc3f2a640d463ab963be2be4cc7c29d7e8e374"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/source/skyknight-medium-fit-target.json.gz",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/source/skyknight-medium-fit-target.json.gz",
+      "gitBlob": "82c21036ee59c2291d9aa6be741f13450274d3c0",
+      "bytes": 283128,
+      "sha256": "853c9cffc52de0baaf1e4e54fca0b1fe49b33bdd211d15d62327a2d27e4d48bb"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/source/wanderer-medium-balanced.json.gz",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/source/wanderer-medium-balanced.json.gz",
+      "gitBlob": "6898d040b61be9ba128dc8c5b74683631e4ed9de",
+      "bytes": 389543,
+      "sha256": "d8ff58f9d850fb05cbd186e5688e25f103934b8c082791310eff411a176700c5"
+    },
+    {
+      "source": "balanced",
+      "commit": "caa8be1701fc6ceb22ed2aa48a153fbcc3f57a54",
+      "path": "docs/art-pilots/windkeel-balanced-review-20261011/source/wanderer-medium-fit-target.json.gz",
+      "copy": "assets/rider-blender/references/balanced/docs/art-pilots/windkeel-balanced-review-20261011/source/wanderer-medium-fit-target.json.gz",
+      "gitBlob": "44848d721d569ddcf89a4a95d2a8a54d88717ad4",
+      "bytes": 373259,
+      "sha256": "060b350ddab3541e8d4c0e0080a43fae30a09cd4fbdaf2c15687aea55f8607a6"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/DELIVERY_MANIFEST.json",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/DELIVERY_MANIFEST.json",
+      "gitBlob": "5ada51ffccf341881a486f9e968ed9d19d0e048b",
+      "bytes": 24685,
+      "sha256": "4d14bdbaeaea6757501a7c6c7240fe8beb876e68beef1817f1a30525880a7c97"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/README.md",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/README.md",
+      "gitBlob": "50653afc34a2add2c9c23ce80aeb921b2d564503",
+      "bytes": 8046,
+      "sha256": "7704c031c84fbe640f0d3ce8aa29dc761c6ade48a62383131c25c5410b0a1e6e"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/Windkeel_FLIGHT_MOTION_FIT_BASECOLOR.glb",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/Windkeel_FLIGHT_MOTION_FIT_BASECOLOR.glb",
+      "gitBlob": "4947a3a732b96e37c0642e77db9ac4df6920aed9",
+      "bytes": 474364,
+      "sha256": "4c9036514fe90aa61759bf4ee1d9fb884f0096a2516b3b4d4bb4fb6adbb76a6e"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/Windkeel_MOTION_FIT_PACKAGE.zip",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/Windkeel_MOTION_FIT_PACKAGE.zip",
+      "gitBlob": "9190764d59dba04933dc23da7152a13e32e6a8f0",
+      "bytes": 24290079,
+      "sha256": "e8f6e1e7be496e8a8eeb2b7d88a72c0fd23fee8aea18fc44b7e79c76273a8eea"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/Windkeel_MOTION_FIT_REVIEW.blend",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/Windkeel_MOTION_FIT_REVIEW.blend",
+      "gitBlob": "c14c5d3cba99c0275fe289723108d0a24504ae7c",
+      "bytes": 17347798,
+      "sha256": "737bf7cbd0f6e0d952e233d99108568c3bff5dea5a2fc09a329077851f87d86a"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/browser-preview/assets/harness-motion-f-e3vtVl.js",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/browser-preview/assets/harness-motion-f-e3vtVl.js",
+      "gitBlob": "d9b3a02c1ef035d4a812212cb016d3ac98a42d73",
+      "bytes": 777581,
+      "sha256": "d46f8d05277f7ddfbdda391fdd1ed29206af5a6f16eeb9ade588477cbc2df777"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/browser-preview/harness-motion.html",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/browser-preview/harness-motion.html",
+      "gitBlob": "2c8c6f840a3d90a68f0ae80f89aec521473101b4",
+      "bytes": 2029,
+      "sha256": "61fcfe595f5751f2416320816bf654d26e03690eee781c852deb96a87eabbedc"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/browser-preview/windkeel-motion/Windkeel_BALANCED_BASECOLOR.glb",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/browser-preview/windkeel-motion/Windkeel_BALANCED_BASECOLOR.glb",
+      "gitBlob": "89ff59461709480aaf0a3dc146cc275e4cfd80e6",
+      "bytes": 473584,
+      "sha256": "d17c8fb50e5ec033ffbc44746f297e2ffe484c0f6af4fba4f601d86efd4bf4e9"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/browser-preview/windkeel-motion/Windkeel_FLIGHT_MOTION_FIT_BASECOLOR.glb",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/browser-preview/windkeel-motion/Windkeel_FLIGHT_MOTION_FIT_BASECOLOR.glb",
+      "gitBlob": "4947a3a732b96e37c0642e77db9ac4df6920aed9",
+      "bytes": 474364,
+      "sha256": "4c9036514fe90aa61759bf4ee1d9fb884f0096a2516b3b4d4bb4fb6adbb76a6e"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/browser-preview/windkeel-motion/aerie-medium.json",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/browser-preview/windkeel-motion/aerie-medium.json",
+      "gitBlob": "d330b241fd5cc59d25a92f1dc04e00c8d48b1e8f",
+      "bytes": 284896,
+      "sha256": "12cf30dfc04f170028b1902557b1026dcf2b326dec77392feaacaf7ef5cdf7b4"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/browser-preview/windkeel-motion/flight-medium-motion.json",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/browser-preview/windkeel-motion/flight-medium-motion.json",
+      "gitBlob": "8f039a896f904ecb01b141e07b44d9904966fe2d",
+      "bytes": 289630,
+      "sha256": "f9b5231fb9d43f797537ebeda29201710e3385d25450bdf2a990324c0bfa0a48"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/browser-preview/windkeel-motion/flight-medium.json",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/browser-preview/windkeel-motion/flight-medium.json",
+      "gitBlob": "0c864ddf13d8ecc47df75be4028664708fba26ae",
+      "bytes": 284995,
+      "sha256": "376f88994488cd38f4280216287ad25ebdc6615ae9fc14aa4c57a04691f53f3c"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/Windkeel_Motion_Contact_Review.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/Windkeel_Motion_Contact_Review.png",
+      "gitBlob": "2c281828b542f23e71d237f62e38a12b4fd85448",
+      "bytes": 592390,
+      "sha256": "76515bced45dfa60d5cd9726f3b2638ce46818ba77a66ad8473860db08aa3067"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/Windkeel_Motion_Overview.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/Windkeel_Motion_Overview.png",
+      "gitBlob": "c9afcab4f44b8bf6289a7af0e76b075ea76e99bd",
+      "bytes": 282706,
+      "sha256": "881ffaa12125e5faa28d186d536b8bb5ba193ec2cea3b80dc39dc8f2bfa0b088"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-bank-left-0-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-bank-left-0-after.png",
+      "gitBlob": "8266d376db2e5a08953de5e226b8eb540d45cd4f",
+      "bytes": 222550,
+      "sha256": "56b6233b7e99d22d4f64008507acfc6da5cc754664cd55b31e93ee42c8d19d29"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-bank-left-0-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-bank-left-0-before.png",
+      "gitBlob": "7864049e5489e71026c0c20bf75c34f1dbff4b12",
+      "bytes": 223528,
+      "sha256": "d4ff559dc9c2845caf8da724d341197dc486b708125abbde1c9deac3d01bcbd1"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-bank-left-180-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-bank-left-180-after.png",
+      "gitBlob": "cc8fc35e5427a94cc5861972e2a14c211bfea653",
+      "bytes": 212089,
+      "sha256": "8b7cbab874ce27e3509e4ef7ec116d06008b691dd9a9e0fb11b37c2d9515ed2d"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-bank-left-180-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-bank-left-180-before.png",
+      "gitBlob": "9ab9e09b6c24a9ef181fc7552aff4e6dc1b18b69",
+      "bytes": 213008,
+      "sha256": "919f81e106f6a54424f5934b780373a3649f4182692e5130baab0cfbd44ebf2f"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-bank-right-0-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-bank-right-0-after.png",
+      "gitBlob": "2781f8cdfe8915e680b617d3bafce60a33348f92",
+      "bytes": 217001,
+      "sha256": "7e744e4f3a6fe0535f8b463aac3d50f40f1c70e2c842fd704bd8b3e41e4cb827"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-bank-right-0-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-bank-right-0-before.png",
+      "gitBlob": "d63af981f98029de526504f5035a9b86120d6bf3",
+      "bytes": 217989,
+      "sha256": "ccdb7cd9002b608052a5479e488813e511f9ba735f9f6d448c25db391cb0ba87"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-bank-right-180-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-bank-right-180-after.png",
+      "gitBlob": "3a9d8f29b020d1e9e8400a34a9d67538e63b6400",
+      "bytes": 209853,
+      "sha256": "cad4c85eafe928cb462d8c4bd2acd430ed90afc752c055dcb9012e4ad9917677"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-bank-right-180-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-bank-right-180-before.png",
+      "gitBlob": "e5ed654a4ab5d230adc0f04c87c0b493e020dfa7",
+      "bytes": 210755,
+      "sha256": "d98d795f07b4757fcdeeb5d97bd33d0ca3cb0a12e290ef197d9b55ce1fc18f28"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-freefall-0-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-freefall-0-after.png",
+      "gitBlob": "f3fcb8752ef0681849af50f2ae6b1e8512c75d45",
+      "bytes": 133021,
+      "sha256": "35a4d0daf7287007db142b3d687c2c1a9ff6daaeea71c317516b5cea5720c3e5"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-freefall-0-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-freefall-0-before.png",
+      "gitBlob": "cc741ee90157f51c0cf263fb354ca28f7e455518",
+      "bytes": 133922,
+      "sha256": "95c9a896976d8c18ea0682229e04834820b337b48776bb780a0a95817df3695b"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-freefall-180-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-freefall-180-after.png",
+      "gitBlob": "50c549078725d7e7bc989e1f9e074793fa7d0f17",
+      "bytes": 156714,
+      "sha256": "dd6952ed7b3b4c2d24560bbaa203406fe03b151747a97336d4f8439afea01837"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-freefall-180-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-freefall-180-before.png",
+      "gitBlob": "e906d6d413e9d401a9b9e2ed8c72ba88de36765d",
+      "bytes": 157625,
+      "sha256": "068466880402cbb2a56ba55b9b4b7aacb2f8996e8f8cb3d3836891802e1c4ae4"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-hip-contact-0-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-hip-contact-0-after.png",
+      "gitBlob": "6f4fd50d5b72e264b44564110a78b2c0dd21af4b",
+      "bytes": 215881,
+      "sha256": "6929dae12b70344b908d68ba289673261e6820e0e6665b3746ef8e55e1457ad6"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-hip-contact-0-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-hip-contact-0-before.png",
+      "gitBlob": "0b65f5d603345d14bca8cde26d405b41919a7d4b",
+      "bytes": 216851,
+      "sha256": "c0026202c30942f5eeef199c0f219d932b50ac7632d1a9666e433339c091f993"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-hip-contact-180-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-hip-contact-180-after.png",
+      "gitBlob": "53d529436eb3464d548e20d1fc68c850d8555c15",
+      "bytes": 202245,
+      "sha256": "f8d9b7e0ab1ed8c649682a58119d7266348421fbb55384b8e37db5fb8bc80849"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-hip-contact-180-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-hip-contact-180-before.png",
+      "gitBlob": "85cfec7a2564812728b7f4368348969c1612929d",
+      "bytes": 203250,
+      "sha256": "6263b263a5b9b9e887c6bbd3da86dc5eac7da71d0d654aaab8a89bb9c8b26172"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-hip-contact-35-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-hip-contact-35-after.png",
+      "gitBlob": "39c4a3751a1d1dc4010488986011e73ada6dd1ef",
+      "bytes": 210968,
+      "sha256": "b97920796699fac1969b896704b635f9248345143f94a4bf60870189bba305a4"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-hip-contact-35-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-hip-contact-35-before.png",
+      "gitBlob": "c7edabee6b12367a278b9665d8124af26730160e",
+      "bytes": 211957,
+      "sha256": "a4a620e25b739acba2638140366216db3a62401f2e542f06a1f48ba69dbe7dc1"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-hip-contact-90-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-hip-contact-90-after.png",
+      "gitBlob": "8ed378d60aa012b66d8617a65b373827790810dd",
+      "bytes": 179470,
+      "sha256": "ca7fd40bc5b7ef9888e0513238af38259395169f86b68aab0ce1af02391191c2"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-hip-contact-90-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-hip-contact-90-before.png",
+      "gitBlob": "b85ea6373c2ec4d5470f99cfb7b524bcf4988805",
+      "bytes": 180443,
+      "sha256": "c3653dec819666e26cc9699f2a8b21a452b39c07bc49bd96d8bec1f6683c27f7"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-idle-0-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-idle-0-after.png",
+      "gitBlob": "b41e5223d6a774a28facdb666fb1f88dc25effb9",
+      "bytes": 183958,
+      "sha256": "6095b2270dd07d84e90bbd557f23e9d48347d4e47c08563fbe349443feddcca8"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-idle-0-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-idle-0-before.png",
+      "gitBlob": "1a879eb7b6141d585acf70e2849cf30a95da4eec",
+      "bytes": 184903,
+      "sha256": "649330e4594c3a334db6278aea857ae1b3f07cb91983124b8f42afef4b0c4cbd"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-idle-180-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-idle-180-after.png",
+      "gitBlob": "3b1cb9600ccb14fcc9f2315ba3c15ce386286d0a",
+      "bytes": 194043,
+      "sha256": "a8e3bdfa72f26b50f7b84d8364780978b7fdd719e5bfcef8f38a9b43589d1d02"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-idle-180-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-idle-180-before.png",
+      "gitBlob": "813d51b7cf7474f5eeb151a693c2d0401dc6579f",
+      "bytes": 194920,
+      "sha256": "4057bd44fee8f676491c490c5a6d30fd71784df23ad94f26210927c007fce489"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-left-shoulder-contact-0-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-left-shoulder-contact-0-after.png",
+      "gitBlob": "5ecb9c1edf570d3795421b49b7baeb87fcbc6f44",
+      "bytes": 217043,
+      "sha256": "215b24cbee3ec43778de5a92a740f69156876534030dfcf48e4db2cb4b93e3f6"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-left-shoulder-contact-0-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-left-shoulder-contact-0-before.png",
+      "gitBlob": "2ca487150154b409c9e78e9079422fcb9505805b",
+      "bytes": 218045,
+      "sha256": "0edc76462e4b27d7f93a269ce51cb849430648be4ac05e50daecf7b0fd0e9352"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-left-shoulder-contact-180-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-left-shoulder-contact-180-after.png",
+      "gitBlob": "efa2afc782212e3500085e4a9ab6768f492d5e3e",
+      "bytes": 208336,
+      "sha256": "86f4fc1ee8f49bbd4253bdc9394431dbe95c31aae0b2fb71e8715d9003770da9"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-left-shoulder-contact-180-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-left-shoulder-contact-180-before.png",
+      "gitBlob": "7d6e03d0f65d3a3201773069be7632a03af7309a",
+      "bytes": 209267,
+      "sha256": "639746274398cca51fc44416fdb8f71f8a15aef9c3c6dc032780574393cc4d6b"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-left-shoulder-contact-35-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-left-shoulder-contact-35-after.png",
+      "gitBlob": "d9e54fcf38072953947f477397c247d2fa000ba2",
+      "bytes": 203979,
+      "sha256": "2e82a71be948936b2932aaff02a04320560d488da471128418d71ac51b9c3e7e"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-left-shoulder-contact-35-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-left-shoulder-contact-35-before.png",
+      "gitBlob": "105ce701beff15db0ff7d0eab3c28ddef9776501",
+      "bytes": 204987,
+      "sha256": "accc930f499531e041af254c9df988cfd389f470d57dddb178f346822a009cd5"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-left-shoulder-contact-90-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-left-shoulder-contact-90-after.png",
+      "gitBlob": "a86f87b0948835f7e0d78ac43fa55cee190c7142",
+      "bytes": 177388,
+      "sha256": "ac9fce9853cefadd48239c689020bd5aa145bc516bde2de7be013c6abed206bb"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-left-shoulder-contact-90-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-left-shoulder-contact-90-before.png",
+      "gitBlob": "0b7a4d9a36c5f0094e181d1e7b6b49484fa3d510",
+      "bytes": 178394,
+      "sha256": "ccdf4fcc169d3aa9483fe4299be55b83613a242f666fa54dffe19bbfdae750d6"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-motion-before-after.mp4",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-motion-before-after.mp4",
+      "gitBlob": "1ab368da5a4dcce3decacd0d81ee535c98ecf098",
+      "bytes": 1092585,
+      "sha256": "c9f8fef5300ef4c72f2a26802fb26abfce54aa8ed5f566e7d01167003a1bb4fd"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-mount-0-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-mount-0-after.png",
+      "gitBlob": "c3842e298375725e9b0b4f8cb2f8f9082b53e26b",
+      "bytes": 210871,
+      "sha256": "05fcd4a3ca91ffa1663b1b923199e7522e2f08757fdf5f8f5275f4ea9eae7efd"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-mount-0-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-mount-0-before.png",
+      "gitBlob": "20f8d102021c3839a9c4a6dbe672a370fc530a1b",
+      "bytes": 211793,
+      "sha256": "bcb53e383568d0ba3689aee65364e8f34974a3d971a91f844a8ac609bdd36ce5"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-mount-180-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-mount-180-after.png",
+      "gitBlob": "3699552c897d75c8e80ac91be7a8d4b1479797f7",
+      "bytes": 193173,
+      "sha256": "bd31a6dbd31610eefeea449a57d4591b5a0665d5d6683866353621e307e6c79a"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-mount-180-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-mount-180-before.png",
+      "gitBlob": "d4cf31e3261bb00f82ee03820d9cb4d52c40d2aa",
+      "bytes": 194080,
+      "sha256": "d1224dd6c330ff41811d31bfe305ab23629f835ea9b206a89db684279fdc9d6c"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-mount-contact-0-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-mount-contact-0-after.png",
+      "gitBlob": "c57b65f0ba843f82bfe77d451521c9b0249e6dae",
+      "bytes": 207694,
+      "sha256": "35f1fd22c80efee765c6c4dad4256eb139c81282d3becca5835053f0aaefae54"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-mount-contact-0-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-mount-contact-0-before.png",
+      "gitBlob": "8efc45de24174cb23a96851e574c963ada2a0b3c",
+      "bytes": 208631,
+      "sha256": "0a9867c4326c9c09b17cf000308dbf5561a5375d3ee1949a97ef7c48da5dcc9a"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-mount-contact-180-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-mount-contact-180-after.png",
+      "gitBlob": "c9c2dedf1e987f97a36a982638f9ce116bf0aa39",
+      "bytes": 189709,
+      "sha256": "6a24966a3b9ba3719da03397376bec8df180edde8edda68c8901c4fcb708f7f9"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-mount-contact-180-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-mount-contact-180-before.png",
+      "gitBlob": "3f664d3da10627f7fb51d9a56fa829d937e96425",
+      "bytes": 190640,
+      "sha256": "dffcd67241209d076564f5962d6d198eb5a01836c2eb1d95a9bbfe1c4c24f3a7"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-mount-contact-35-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-mount-contact-35-after.png",
+      "gitBlob": "3e8ddf3f47a9f4b72070b065243aad096c1293e1",
+      "bytes": 208285,
+      "sha256": "62ae2011d7608351e5de5b5ae123833c4f0fd5708442274fbdc016c48a2c48a2"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-mount-contact-35-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-mount-contact-35-before.png",
+      "gitBlob": "f725e3ca2524702613f701280e4d9d8346315a41",
+      "bytes": 209222,
+      "sha256": "5efa2365baccce5a76737bc14e3ff13c0dc554104d7887ce0f41a41cc87e5071"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-mount-contact-90-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-mount-contact-90-after.png",
+      "gitBlob": "dd92d5d59cdb6226eec5c7ea229e1c08c8dd1292",
+      "bytes": 202813,
+      "sha256": "40c61c57b8265626f9cb3fa65af6e8e4f709c369dd22461c1db1cd46e4269e9f"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-mount-contact-90-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-mount-contact-90-before.png",
+      "gitBlob": "f6817c0e00e762e30bbef3efe50cc29cbaff1636",
+      "bytes": 203769,
+      "sha256": "46254bde74fc756f306538b0d9cd65f517658767a613344bfa77c2aa3bd2e961"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-swing-0-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-swing-0-after.png",
+      "gitBlob": "ba630a8e30b4265b154b8b3470f8b17797e84335",
+      "bytes": 198698,
+      "sha256": "6aa813b9eddf0556d860f0ca16044cd561f6b2d0771c7a7276e78d689d57f9ca"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-swing-0-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-swing-0-before.png",
+      "gitBlob": "a8ff8f3983753dd10982c041bcac97d57e6ddab9",
+      "bytes": 199455,
+      "sha256": "5b24516b2965dae9a092b5485313cdbbecf352d697c39a531f0ad8ebd1a2374e"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-swing-180-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-swing-180-after.png",
+      "gitBlob": "dd3a5d16c69a20840a1965c06d0293d7765d690d",
+      "bytes": 202898,
+      "sha256": "2d53ac893d7ab772d02792ef84c5487af96e798c7d1fb9e220d116ea34d267b8"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-swing-180-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-swing-180-before.png",
+      "gitBlob": "9fbe2ec4e6acfa68c0eff3adc56cfd1025d4bbec",
+      "bytes": 203853,
+      "sha256": "88380e53ccc30faed23bfde7c59690d16829fe7263e47527bf44df0f2e44d652"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-swing-180-rider-only.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-swing-180-rider-only.png",
+      "gitBlob": "9de46874bfce122788c75a01a5c554836d34b562",
+      "bytes": 195047,
+      "sha256": "4938079cbd83402a94b65b8a140972bb16e09ce5a9ea04509f9e2bf6123b106e"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-walk-0-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-walk-0-after.png",
+      "gitBlob": "7fdc96770007e772632dddaeeaf1688b2ccfd6a9",
+      "bytes": 186282,
+      "sha256": "6b74d7a52aada2df0073c77bf0323e8a2239a54d1c0e49f405cd847a0b9ccfac"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-walk-0-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-walk-0-before.png",
+      "gitBlob": "971b501333460e2751684b293d5ab42594f480af",
+      "bytes": 187180,
+      "sha256": "fd34bbe71e17b3b5ee0b3e4593a03a6e97c546bf3169c5a548a2f0083343ea1a"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-walk-180-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-walk-180-after.png",
+      "gitBlob": "5c947053a816386635841b38d5c69e7bf4b9c8bd",
+      "bytes": 187353,
+      "sha256": "8fdf6373c7327f7d5b8074e9ce6a456b38680ac2a1b383d4910c412629182106"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-walk-180-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/aerie-medium-walk-180-before.png",
+      "gitBlob": "75e204d4faf1f27bfc9b6b7ee50181b10f840c58",
+      "bytes": 188286,
+      "sha256": "6bc43fb84efbeeec21db24a92de12aeb9dfdc49024dc672749f1378b88af63b9"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/capture-manifest.json",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/capture-manifest.json",
+      "gitBlob": "a0f5361f9313d714c022ceef788a8fe671839bcb",
+      "bytes": 33266,
+      "sha256": "3d0fd5edced042fc546f8265f0334cc6d894e6c685b9d95cb5c99e737b0141c4"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/check-matrix.json",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/check-matrix.json",
+      "gitBlob": "c40faa794845927ed7ae14592b76e4ae730522f6",
+      "bytes": 1185,
+      "sha256": "81c655b553c6a6318f1386f5ae741d6a9ebb1e819015506d9481aed3dfc38976"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/contact-candidates-after.json",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/contact-candidates-after.json",
+      "gitBlob": "f28fa0cc7842f0bed602f3fca5a46a4de7a4f7a4",
+      "bytes": 414914,
+      "sha256": "8a9588cd0002b15e3b0a86d39d5349fc08ea002814c71a7289fff76808d2318e"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/contact-candidates-before.json",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/contact-candidates-before.json",
+      "gitBlob": "5fb93ba269ff7ca7812b19ba5ca1df622aaaf25d",
+      "bytes": 414898,
+      "sha256": "7d9d71c506450b49c0981e1039e00bcae7f464d83e9bbbaae0a4533a1200d90c"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/contact-capture-manifest.json",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/contact-capture-manifest.json",
+      "gitBlob": "7b927e91700d6ab92c2419ed4fcce80624889144",
+      "bytes": 28906,
+      "sha256": "a5fba46fbda8a5541b29dd950b6d99f12f2d3fda4cef2c712e92540ca9d0f2f2"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/cpu-summary.json",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/cpu-summary.json",
+      "gitBlob": "cba3a25b5c5775fc321a43e032c01edbc7aa546c",
+      "bytes": 1096,
+      "sha256": "bb598cf5850239fad85cf54d276add25ec5989c99c07a83b5f1db60f1c4da04e"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/export-browser-parity.json",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/export-browser-parity.json",
+      "gitBlob": "6f30be3c9a5481483515e8db934559aff3ed73fc",
+      "bytes": 1422,
+      "sha256": "4cad31247226b76f65c464bd531213d40736c23182f9b553894ca4753ec5980e"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/export-verification.json",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/export-verification.json",
+      "gitBlob": "895fe69c7723a87da55978cf1a87c734520f7c2f",
+      "bytes": 716,
+      "sha256": "a96947a5e8ff80e23a3718ad8fa29e75962b34eb95a134f859803926799e7f81"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/first-draw-allocation.json",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/first-draw-allocation.json",
+      "gitBlob": "d219787ed8b0526307d41f5d8b1499468c3c7237",
+      "bytes": 1251,
+      "sha256": "6a77bb8b47d81d2474d4bf55872978ed5b4ef9781849e3a7401a503ca2868424"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/fit-change.json",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/fit-change.json",
+      "gitBlob": "ff0e12696691ba28b0f69fe3775066c9b7d82399",
+      "bytes": 7083,
+      "sha256": "3eff15f8f2474f7205fe1d69d545f4c92d5d209592dcb97cf67fcd8d69fa5999"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-bank-left-0-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-bank-left-0-after.png",
+      "gitBlob": "c9af0a45a440d19e4ad65088ae8a40107104ef57",
+      "bytes": 210590,
+      "sha256": "7c820b46ea6d017de62aaf670885dda9d68412d256b52d888d2943f5215f6acf"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-bank-left-0-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-bank-left-0-before.png",
+      "gitBlob": "75da1f415c259b8f78c2cee2ba3ce3b0977e9022",
+      "bytes": 211622,
+      "sha256": "a3658ebeaa24585aeeccb3a0d5ae1e0c20e69e0aa8b3338cc5bdf68d1fd0a81b"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-bank-left-180-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-bank-left-180-after.png",
+      "gitBlob": "33ee30e7ef08a9111340d1dc69472ad3de1056b7",
+      "bytes": 198202,
+      "sha256": "fe92dfffc17aeeba1438ad53efee47c3fe91e379800eca42f51d007e94b36094"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-bank-left-180-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-bank-left-180-before.png",
+      "gitBlob": "c2dd969f5967b3dc4c034ecd366b4346914f84fb",
+      "bytes": 198954,
+      "sha256": "4a1ba1f26d4d8651536f72f75fbbf5e668334bb6037e031efd2249d52c09bcc0"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-bank-right-0-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-bank-right-0-after.png",
+      "gitBlob": "f516e246d429fcf2ed5066bb68f647588f8ac3c9",
+      "bytes": 209262,
+      "sha256": "5e40ff35e7934ce084708fc3b4038a3c119a398873a94f904111a8fd69b96540"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-bank-right-0-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-bank-right-0-before.png",
+      "gitBlob": "340ac73f5fcc568579fb37f7dee1b49e0ad4dad7",
+      "bytes": 210383,
+      "sha256": "35f86b599d13468d0528b9434135edfab91b7a5642802958404940a056166105"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-bank-right-180-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-bank-right-180-after.png",
+      "gitBlob": "afe5d620994b2e3bc24cdb2521f5dcec3da995d1",
+      "bytes": 197060,
+      "sha256": "f10c0c99e42776794806d6483b1bd2e3505ab0b8a3801823907379f99e92a2fa"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-bank-right-180-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-bank-right-180-before.png",
+      "gitBlob": "6bb6f25668ae88b0c3dd296cf9043505d32ba916",
+      "bytes": 197887,
+      "sha256": "7ad79560e9149fab0c20912f01a94ce27b416348c004be245c2e2d054fee52c8"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-freefall-0-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-freefall-0-after.png",
+      "gitBlob": "db1755c845e058c7a6747e54b909afeecb6f3759",
+      "bytes": 137667,
+      "sha256": "c8f8f801a09341495c67c2d1ff771cd12dec5bea1c51525556d5cee09ef36003"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-freefall-0-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-freefall-0-before.png",
+      "gitBlob": "132ca694ad289536909b107a6a8127e490f98760",
+      "bytes": 138394,
+      "sha256": "8b5b45a75d9fd185faf47a31ada67f4e067cf5b9d7678a591f273fbb82051c66"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-freefall-180-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-freefall-180-after.png",
+      "gitBlob": "b06410e73e014b05c483e5fcd861fa58dda40689",
+      "bytes": 135861,
+      "sha256": "fccbc8c5598e1d14d01d0e1b924844e9571daa09757cef04b9c0406ab80b9483"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-freefall-180-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-freefall-180-before.png",
+      "gitBlob": "121c6fe1e47103c920e1dcbfea07d6d3204458b7",
+      "bytes": 136750,
+      "sha256": "f9cfd43f8d356c6fe42ef439866dd073fa0c695464e8340f6236176dffa5bb10"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-hip-contact-0-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-hip-contact-0-after.png",
+      "gitBlob": "4235b10478a99826f669ff95f9f592f45055d1e1",
+      "bytes": 207574,
+      "sha256": "8a1c5f61d4d8dff88352defcbe4a4d1dd8537f8033b0a9bceddc8fe51159bf3a"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-hip-contact-0-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-hip-contact-0-before.png",
+      "gitBlob": "6ccc1bfad0cb5efb2185bc8b3af25e41fa38473a",
+      "bytes": 208328,
+      "sha256": "0b6d4c4a849ee161b95c2f1392f4dfe5ea40d626f8de723a9ad2934ed59ba588"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-hip-contact-180-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-hip-contact-180-after.png",
+      "gitBlob": "be99485501d5a8e95c83fcff5281b6efdd355692",
+      "bytes": 191491,
+      "sha256": "a901ec09500bf08188be1c8704c1601407940108e0cae8df12414d25a40544c9"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-hip-contact-180-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-hip-contact-180-before.png",
+      "gitBlob": "2d6bf9cabf98d2a51d39ce98ccb636f60d333e70",
+      "bytes": 192355,
+      "sha256": "1c9d6ec0f06dd387e8849ea43e53f83ea0c0d69be535cd1276b73779c2637348"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-hip-contact-35-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-hip-contact-35-after.png",
+      "gitBlob": "6af527974dc67d3ec5a5b354fdb19ea0cc89f134",
+      "bytes": 204410,
+      "sha256": "a2d0cb932dc3e6d6f100b99a9dcc7924bd9657bd9cb9c8a49f2ca8f3fca8647a"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-hip-contact-35-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-hip-contact-35-before.png",
+      "gitBlob": "d1699fb15be35065115f03ee81607dedf58ffd19",
+      "bytes": 205255,
+      "sha256": "a7bc9eb89952ce678e9d591f8f35915c6efe7f2f6e89d4b023d2bf8e67beae07"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-hip-contact-90-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-hip-contact-90-after.png",
+      "gitBlob": "ea5d4c29b6a7bf62f30cb50c2d1396f15dddea93",
+      "bytes": 181786,
+      "sha256": "3353798c04b46cefc24b69524bfc6eb1f62fe10bfb635bd464d24b806b21e7d8"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-hip-contact-90-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-hip-contact-90-before.png",
+      "gitBlob": "6d4926dcbe438196ec249f55869dc6837218931a",
+      "bytes": 182860,
+      "sha256": "8f7c964aa683fec1d193493b31a5a1031ac078a80a738197b749088e81a4af01"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-idle-0-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-idle-0-after.png",
+      "gitBlob": "0fc3d4e8a531a63e6c31c16de34665e94d49982c",
+      "bytes": 184739,
+      "sha256": "45e1dace4c1fdc51be6aea46c4aa0f89713a450b44905d5dafa59d05cf912169"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-idle-0-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-idle-0-before.png",
+      "gitBlob": "0aa915049466ccddc43f4be8cfafdf79fa36aff5",
+      "bytes": 185858,
+      "sha256": "2c7c3c33f3d3f92aed4a4c7d2452d94ad71de40cd6ea3983df7630f2bd3d6a2c"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-idle-180-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-idle-180-after.png",
+      "gitBlob": "39458ac78951608fc85a0968541b469ae414203d",
+      "bytes": 179623,
+      "sha256": "1d7328bc14563f06d22d8497a33508cbea887024e7f964e61dcee1daf010fbfc"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-idle-180-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-idle-180-before.png",
+      "gitBlob": "3414d7e44220f6140b8c9b1eec60d67dea537f9d",
+      "bytes": 180750,
+      "sha256": "fc5ed5c98d0fc84b6e8b58d452603a526373a1e60047ea47149c76e7da8be2d9"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-left-shoulder-contact-0-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-left-shoulder-contact-0-after.png",
+      "gitBlob": "1a4cd03afc0f82b334704e1501ccf13c44f6625a",
+      "bytes": 208775,
+      "sha256": "872a646c7975b93ba5b5015f8fcfedf674905182bf89a2f2a1ca302cbdf059ca"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-left-shoulder-contact-0-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-left-shoulder-contact-0-before.png",
+      "gitBlob": "0c39bd5c48d595a82a53f67ea6a801b4c7044b4b",
+      "bytes": 209899,
+      "sha256": "3a54881ed2ab4b1632f491c2924bdc2fec2db336077eea4735e285fcbe566b39"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-left-shoulder-contact-180-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-left-shoulder-contact-180-after.png",
+      "gitBlob": "82dfa78b4d10515958d70e3cb5a689c98d126465",
+      "bytes": 196011,
+      "sha256": "dd99fd48b580862747223db528fb788a99722aa9d0b61d76a06dba3815b7c44f"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-left-shoulder-contact-180-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-left-shoulder-contact-180-before.png",
+      "gitBlob": "55b76dd1ccc0eb889ca52225e350b56248ee205c",
+      "bytes": 196926,
+      "sha256": "942ec1dc8df510464e1cf6ed28f4bcda023f83d2f85ec096d7567c333f558107"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-left-shoulder-contact-35-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-left-shoulder-contact-35-after.png",
+      "gitBlob": "b2206a84b54e883adb30721333827f2fba813c59",
+      "bytes": 200709,
+      "sha256": "a47a1da3fa4b18fdb7cb981dc369f75c106dea344e0a7949342f260821a717d4"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-left-shoulder-contact-35-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-left-shoulder-contact-35-before.png",
+      "gitBlob": "796012a4d44f83bfa7a9865196d5d97e6374ab8f",
+      "bytes": 201523,
+      "sha256": "b1bdfe69c7cbbfffd4c08d9c04d5a9df46438f9c082a2e2f80c58cb625554f0d"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-left-shoulder-contact-90-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-left-shoulder-contact-90-after.png",
+      "gitBlob": "9db85947d700f9d6f6a62e27967beab1c8575600",
+      "bytes": 176269,
+      "sha256": "d2d5dd79b83ddefd834705c9bbb2436c68771b052091b4d3c2c775db2843966b"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-left-shoulder-contact-90-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-left-shoulder-contact-90-before.png",
+      "gitBlob": "371635f166eaef67718825a6f1f71db84b3de813",
+      "bytes": 177377,
+      "sha256": "7eef39b633c78609dcdd05429f2ace37fe763858712b8c2aa1341f5b7535cd3f"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-motion-before-after.mp4",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-motion-before-after.mp4",
+      "gitBlob": "5bc10ea39c1b775d6d7266f04c9382bf31a460a9",
+      "bytes": 1112268,
+      "sha256": "ce922a8b97e79a7a7066e2622e64a7cc401aaea4e1256543a19b37816d9f5c12"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-mount-0-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-mount-0-after.png",
+      "gitBlob": "0beea621604e72a5fe76036a74de1e32114dae92",
+      "bytes": 204603,
+      "sha256": "571be7043266e52801502fb39c4ee275f734be8eb59cf3f464eef2a840be92bd"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-mount-0-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-mount-0-before.png",
+      "gitBlob": "86a9c578cb6675896f32267c7dcbdb1cd8d613ea",
+      "bytes": 205546,
+      "sha256": "d624005526d392937509918fc30f62860759487921b0664ae685293f9122661f"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-mount-180-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-mount-180-after.png",
+      "gitBlob": "94f163dad673174f224776b758feb1f5941e032c",
+      "bytes": 181360,
+      "sha256": "1d0a35830dd2fe70cf69ec2a907fda7b17794bfacc0ab77ee350399ea6787306"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-mount-180-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-mount-180-before.png",
+      "gitBlob": "c95420720b713b750dd698d5c67efa3e511de3e9",
+      "bytes": 182127,
+      "sha256": "43f8169314fc159bb86e83958196c2c122cca880f94e3c8abb5fdbdf9a3ae1a0"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-mount-contact-0-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-mount-contact-0-after.png",
+      "gitBlob": "18a974da644691b324fa48666cfbebbffdee11b1",
+      "bytes": 199824,
+      "sha256": "6246d590ab2c8079f300089a2a6109c242ca19f922918b58875854a70ed61ee2"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-mount-contact-0-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-mount-contact-0-before.png",
+      "gitBlob": "53e2abdef1cf3e01a8ff489f508c4b35d4e6d26a",
+      "bytes": 200208,
+      "sha256": "281cc503aa13a429c0a57b5f7b10396da1426f63b8c52af8fa712de6c35d3fb9"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-mount-contact-180-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-mount-contact-180-after.png",
+      "gitBlob": "500c84b2c369b6157c5ee04cbd06f6b1c992eeec",
+      "bytes": 174638,
+      "sha256": "f59295be24d8850e5071a78de96a08553566b472ae0a516a3c4a1820b06d2b2d"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-mount-contact-180-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-mount-contact-180-before.png",
+      "gitBlob": "9d10b3edf2e8e94c4509ebe37ce62bc2ff4cf50f",
+      "bytes": 175263,
+      "sha256": "d6d3236eeafad140e95b99abd8068af05bb7d08bb503bb62cf86cfc69bfefd76"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-mount-contact-35-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-mount-contact-35-after.png",
+      "gitBlob": "d290207e8e13f406c156edeab2633b7524623c82",
+      "bytes": 206400,
+      "sha256": "2c0d804dfb9f4d3619aa7a1fa2381a792e80202a765ec847f437b27d2cb8ddf6"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-mount-contact-35-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-mount-contact-35-before.png",
+      "gitBlob": "aae00e85a32d7cae64395f9c487c825bbf7be885",
+      "bytes": 207115,
+      "sha256": "1604fc094b954ef8fecf24d5ee19c27cf96fe3b79a34f2d54f520d0da303ea07"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-mount-contact-90-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-mount-contact-90-after.png",
+      "gitBlob": "a37d7ac43497db91b45f7f2ba53668a8afab7efe",
+      "bytes": 197446,
+      "sha256": "6d16577346ff8f731dd3136c93e8c1ab6efd5e7247167e258104df15cf9cbc92"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-mount-contact-90-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-mount-contact-90-before.png",
+      "gitBlob": "099242bb6c0a6eaf9442c64efd79254495e94235",
+      "bytes": 198287,
+      "sha256": "0ecb16e50153fb40557b8639b67f2f879052c422d439e7eafa9b5ee68b9e29c0"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-swing-0-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-swing-0-after.png",
+      "gitBlob": "54c3e03382a41c3ff1fe23c37fd16207ba27a57d",
+      "bytes": 194703,
+      "sha256": "2675ef54cd0c5c1c599bb6ce7bbdcce33c1fe3359fd81af09ad0b135488ed7c6"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-swing-0-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-swing-0-before.png",
+      "gitBlob": "8131be6d41cbb9ca9853ae37384d749c64729d20",
+      "bytes": 194957,
+      "sha256": "c6656e07c6f235f69c7aa41cd2ef1c40bb9696e675fe2f6f23e3f44a0389a442"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-swing-180-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-swing-180-after.png",
+      "gitBlob": "1fc50b22ea572ef12015760186a7b846899be599",
+      "bytes": 187483,
+      "sha256": "c641fd9d31f41bb714acd022937c2e9a1edf891313e6d8854e554560475bc10b"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-swing-180-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-swing-180-before.png",
+      "gitBlob": "ab07d688d57f52dd768738a5091e1c3c873eec80",
+      "bytes": 187935,
+      "sha256": "d7f7b2069d692aaf77353107123ece17d863411fad0f60e34a19f0dda210017b"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-walk-0-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-walk-0-after.png",
+      "gitBlob": "412c226108eec81e55d17d7883b1ee2c5fb58a34",
+      "bytes": 187817,
+      "sha256": "665e229d698ef240deab6735b046af99700ba038fc8681752135ccce051addf2"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-walk-0-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-walk-0-before.png",
+      "gitBlob": "4d424ebb81c1dbc06d0aff3da4c58c12a35964a1",
+      "bytes": 189090,
+      "sha256": "d7befedef6a91ba11ef506b2b56cf5794df8993cc6443aada11b4d064a09d6ea"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-walk-180-after.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-walk-180-after.png",
+      "gitBlob": "4106a4833956c2ddc045f6a52dac5ec1cab424ca",
+      "bytes": 176293,
+      "sha256": "bdda6ec2b20311ae3452fbc186a531cfc8f0617ac4967fbc59aff5d9f752aac8"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-walk-180-before.png",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/flight-medium-walk-180-before.png",
+      "gitBlob": "908519fb32bb9a39109b6f6208ec0e3b2cc2b861",
+      "bytes": 176807,
+      "sha256": "17c27be998886c7aae96f8640ae810364c2a9d0846f43bf8f7bbbca4936ff293"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/motion-manifest.json",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/motion-manifest.json",
+      "gitBlob": "7dcbb67cc279eb3d4ce6f939f6bcf63d33cb172b",
+      "bytes": 32761,
+      "sha256": "a770caff7b6e1890781bf4460eef68a149d600a4cb22213d73bd1561dea2df24"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/native-build.log",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/native-build.log",
+      "gitBlob": "e501234558da26689acd3aa258150ad467b578e9",
+      "bytes": 578,
+      "sha256": "ec9e274d210381353b5dc663715c8bfb192527ebd6fd2b60948ae2b9be1b886f"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/native-verification.json",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/native-verification.json",
+      "gitBlob": "651c093a0f03c343a27c668c252077edc0abe6a8",
+      "bytes": 1282,
+      "sha256": "717c2949601d11ea71945bf01e265c2d9c62828c2aff432780735703b5c44a64"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/native-verification.log",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/native-verification.log",
+      "gitBlob": "a3d2ee9abfd9de0426c57ac8ff39bce4adc5ab64",
+      "bytes": 1540,
+      "sha256": "2d1aab907cb6f5325b0d13bcf189717c8595556e5a11e69ee5aebacf6de89e27"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/runtime-verification.json",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/runtime-verification.json",
+      "gitBlob": "fef006b88e8695d75566ecb6d219cb8356ca7e22",
+      "bytes": 13200,
+      "sha256": "06ae0aef37847f69a7cd5b26352e9014db32af7b730010f1eb2dc6b4fbca8f8f"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "docs/art-pilots/windkeel-motion-fit-20261011/review/video-verification.json",
+      "copy": "assets/rider-blender/references/motion-fit/docs/art-pilots/windkeel-motion-fit-20261011/review/video-verification.json",
+      "gitBlob": "cd9aa0a9c17db09f4649d5643cb6870b51c07e5c",
+      "bytes": 747,
+      "sha256": "f4086bdc3d1e210d4127f6fff188e4f8a08eb8418be693751cb47741d75c19c5"
+    },
+    {
+      "source": "earlier-integration",
+      "commit": "56399240064f394b51a310bd9f28cffaaa92b1cb",
+      "path": "docs/qa/windkeel-fit-r2/QA.md",
+      "copy": "assets/rider-blender/references/earlier-integration/docs/qa/windkeel-fit-r2/QA.md",
+      "gitBlob": "61109bf08cd9fab961377cde42db7c64f0c715a2",
+      "bytes": 4138,
+      "sha256": "e97bf8f0f64a3a387001be03878962882f2e1892938f07b7d5adf1fb283ca6d1"
+    },
+    {
+      "source": "earlier-integration",
+      "commit": "56399240064f394b51a310bd9f28cffaaa92b1cb",
+      "path": "src/creatures/rider/Rider.ts",
+      "copy": "assets/rider-blender/references/earlier-integration/src/creatures/rider/Rider.ts",
+      "gitBlob": "cf2daf8000180c5bd6e5754f5efb8a680ab755c0",
+      "bytes": 20780,
+      "sha256": "dae2163b68031743a743b8ac3a423eca6745cb47d0d039ca76454fab0ea49d6c"
+    },
+    {
+      "source": "earlier-integration",
+      "commit": "56399240064f394b51a310bd9f28cffaaa92b1cb",
+      "path": "src/debug/assets/windkeel/BaseColor.png",
+      "copy": "assets/rider-blender/references/earlier-integration/src/debug/assets/windkeel/BaseColor.png",
+      "gitBlob": "f0f90ec44f9599f3ba96faca0f3f6110eefce694",
+      "bytes": 384313,
+      "sha256": "7cb4ae86ec0e0c2fab45fa0d468ca1047f30441855f3c3f1fc5e58863057bbed"
+    },
+    {
+      "source": "earlier-integration",
+      "commit": "56399240064f394b51a310bd9f28cffaaa92b1cb",
+      "path": "src/debug/assets/windkeel/Normal.png",
+      "copy": "assets/rider-blender/references/earlier-integration/src/debug/assets/windkeel/Normal.png",
+      "gitBlob": "8edef3b5c91bfa3c8e55ed97cd65c5bcd071b5d4",
+      "bytes": 140779,
+      "sha256": "a011c349fdfceed737690f6b29bae8a5f522bedeb77fd4ec1f48d97e0b61f063"
+    },
+    {
+      "source": "earlier-integration",
+      "commit": "56399240064f394b51a310bd9f28cffaaa92b1cb",
+      "path": "src/debug/assets/windkeel/ORM.png",
+      "copy": "assets/rider-blender/references/earlier-integration/src/debug/assets/windkeel/ORM.png",
+      "gitBlob": "674b345867af4e4deef6fe5bcf3b60badd789932",
+      "bytes": 42459,
+      "sha256": "3056e1ef00aea455f7a098b0ca6f4bb63403d5de7292f9298cad8cc63edb4ccd"
+    },
+    {
+      "source": "earlier-integration",
+      "commit": "56399240064f394b51a310bd9f28cffaaa92b1cb",
+      "path": "src/debug/assets/windkeel/Windkeel.glb",
+      "copy": "assets/rider-blender/references/earlier-integration/src/debug/assets/windkeel/Windkeel.glb",
+      "gitBlob": "1bc687cd63b8c6ce31988696c47e4778f721a979",
+      "bytes": 451916,
+      "sha256": "4b758f031a7179266bad5177a7198ca7ed7ff67cd23413911441945ff8cbd6c7"
+    },
+    {
+      "source": "earlier-integration",
+      "commit": "56399240064f394b51a310bd9f28cffaaa92b1cb",
+      "path": "src/debug/showcases/windkeel.ts",
+      "copy": "assets/rider-blender/references/earlier-integration/src/debug/showcases/windkeel.ts",
+      "gitBlob": "68f30ec48adf929b8fd2b8dc6b9700751761b506",
+      "bytes": 6166,
+      "sha256": "6294b906162dd137d0dfbb8c1c36363b716993ffdc5fce58a82f8ce833a6b380"
+    },
+    {
+      "source": "earlier-integration",
+      "commit": "56399240064f394b51a310bd9f28cffaaa92b1cb",
+      "path": "src/debug/windkeelEquipment.test.ts",
+      "copy": "assets/rider-blender/references/earlier-integration/src/debug/windkeelEquipment.test.ts",
+      "gitBlob": "a5e3972643af87746de5fbd191a0c1e6233f4d6b",
+      "bytes": 8884,
+      "sha256": "a41a2658b4fdeb5c403141caf742d0c16148bfc06bf301af3da177419d7addab"
+    },
+    {
+      "source": "earlier-integration",
+      "commit": "56399240064f394b51a310bd9f28cffaaa92b1cb",
+      "path": "src/debug/windkeelEquipment.ts",
+      "copy": "assets/rider-blender/references/earlier-integration/src/debug/windkeelEquipment.ts",
+      "gitBlob": "24464cc782efa32add49bcd0d9c5c4c4c1c40710",
+      "bytes": 5624,
+      "sha256": "aae8d2a74f4ee548757b577572a88a594b2281f9f0166b9030f019cc48c12bf5"
+    }
+  ],
+  "prPublicationNote": "Historical inventory of the complete preserved local trial, including excluded local-only files. Current published contents and hashes: PR_PACKAGE_MANIFEST.json; current candidate validation: MERGE_REVIEW.md."
+}

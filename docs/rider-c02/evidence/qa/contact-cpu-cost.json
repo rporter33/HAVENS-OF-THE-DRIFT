@@ -1,0 +1,161 @@
+{
+  "scope": "Node CPU Rider.update only; no WebGL, GPU, memory or end-to-end frame-rate claim",
+  "rows": [
+    {
+      "quality": "low",
+      "outfit": "courier",
+      "withoutSurfaceContactMs": {
+        "median": 0.3944999999948777,
+        "p95": 5.136499999993248
+      },
+      "withSurfaceContactMs": {
+        "median": 0.477100000003702,
+        "p95": 0.8310000000055879
+      },
+      "medianIncrementMs": 0.08260000000882428
+    },
+    {
+      "quality": "low",
+      "outfit": "cartographer",
+      "withoutSurfaceContactMs": {
+        "median": 0.6438999999954831,
+        "p95": 1.0760000000009313
+      },
+      "withSurfaceContactMs": {
+        "median": 0.9765000000043074,
+        "p95": 2.065099999992526
+      },
+      "medianIncrementMs": 0.3326000000088243
+    },
+    {
+      "quality": "low",
+      "outfit": "travel-drape",
+      "withoutSurfaceContactMs": {
+        "median": 0.2195999999967171,
+        "p95": 0.34170000000449363
+      },
+      "withSurfaceContactMs": {
+        "median": 0.39750000000640284,
+        "p95": 0.6403000000136672
+      },
+      "medianIncrementMs": 0.17790000000968575
+    },
+    {
+      "quality": "medium",
+      "outfit": "courier",
+      "withoutSurfaceContactMs": {
+        "median": 0.2581999999965774,
+        "p95": 0.4210000000020955
+      },
+      "withSurfaceContactMs": {
+        "median": 1.3644999999960419,
+        "p95": 2.0895999999920605
+      },
+      "medianIncrementMs": 1.1062999999994645
+    },
+    {
+      "quality": "medium",
+      "outfit": "cartographer",
+      "withoutSurfaceContactMs": {
+        "median": 0.59419999999227,
+        "p95": 0.8306999999913387
+      },
+      "withSurfaceContactMs": {
+        "median": 2.4230999999999767,
+        "p95": 3.3594000000011874
+      },
+      "medianIncrementMs": 1.8289000000077067
+    },
+    {
+      "quality": "medium",
+      "outfit": "travel-drape",
+      "withoutSurfaceContactMs": {
+        "median": 0.2327999999979511,
+        "p95": 0.28970000000845175
+      },
+      "withSurfaceContactMs": {
+        "median": 0.9737999999924796,
+        "p95": 1.6239000000059605
+      },
+      "medianIncrementMs": 0.7409999999945285
+    },
+    {
+      "quality": "high",
+      "outfit": "courier",
+      "withoutSurfaceContactMs": {
+        "median": 0.2537999999913154,
+        "p95": 0.30039999999280553
+      },
+      "withSurfaceContactMs": {
+        "median": 2.4095000000088476,
+        "p95": 3.049700000003213
+      },
+      "medianIncrementMs": 2.155700000017532
+    },
+    {
+      "quality": "high",
+      "outfit": "cartographer",
+      "withoutSurfaceContactMs": {
+        "median": 0.6603000000031898,
+        "p95": 0.906200000012177
+      },
+      "withSurfaceContactMs": {
+        "median": 4.894499999994878,
+        "p95": 5.731200000009267
+      },
+      "medianIncrementMs": 4.234199999991688
+    },
+    {
+      "quality": "high",
+      "outfit": "travel-drape",
+      "withoutSurfaceContactMs": {
+        "median": 0.25639999999839347,
+        "p95": 0.31260000000474975
+      },
+      "withSurfaceContactMs": {
+        "median": 1.8932999999960884,
+        "p95": 2.2378999999928055
+      },
+      "medianIncrementMs": 1.636899999997695
+    },
+    {
+      "quality": "ultra",
+      "outfit": "courier",
+      "withoutSurfaceContactMs": {
+        "median": 0.2903000000078464,
+        "p95": 0.4236000000091735
+      },
+      "withSurfaceContactMs": {
+        "median": 4.391699999992852,
+        "p95": 5.4443000000028405
+      },
+      "medianIncrementMs": 4.101399999985006
+    },
+    {
+      "quality": "ultra",
+      "outfit": "cartographer",
+      "withoutSurfaceContactMs": {
+        "median": 0.7088999999978114,
+        "p95": 1.022499999991851
+      },
+      "withSurfaceContactMs": {
+        "median": 8.577900000003865,
+        "p95": 9.711800000004587
+      },
+      "medianIncrementMs": 7.869000000006054
+    },
+    {
+      "quality": "ultra",
+      "outfit": "travel-drape",
+      "withoutSurfaceContactMs": {
+        "median": 0.2783999999955995,
+        "p95": 0.32950000000710133
+      },
+      "withSurfaceContactMs": {
+        "median": 3.101699999999255,
+        "p95": 3.909299999999348
+      },
+      "medianIncrementMs": 2.8233000000036554
+    }
+  ]
+}

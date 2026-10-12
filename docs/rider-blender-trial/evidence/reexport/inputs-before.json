@@ -1,0 +1,33 @@
+{
+  "branch": "codex/rider-blender-trial",
+  "inputs": [
+    {
+      "path": "assets/rider-blender/source/rider-trial.blend",
+      "bytes": 23009874,
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\assets\\rider-blender\\source\\rider-trial.blend",
+      "sha256": "0b69bcbb74153a0f0bc993ee756f59048db22e5fc0d5e7a7990c39465b9fa9c4"
+    },
+    {
+      "path": "assets/rider-blender/source/FITTING_CAGES.json",
+      "bytes": 10464733,
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\assets\\rider-blender\\source\\FITTING_CAGES.json",
+      "sha256": "b729579ea738440d75309f42118df18e52019f0947d12485c416d4ed1d22f5ce"
+    },
+    {
+      "path": "assets/rider-blender/source/WINDKEEL_FITTING.json",
+      "bytes": 588724,
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\assets\\rider-blender\\source\\WINDKEEL_FITTING.json",
+      "sha256": "9312d94388de10f226cbb9f15ce620e64a95913af18007232d9b4328ab87752a"
+    },
+    {
+      "path": "scripts/rider-blender-export.py",
+      "bytes": 13387,
+      "source": "C:\\Users\\Robert\\.codex\\worktrees\\rider-blender-trial\\Driftwing\\scripts\\rider-blender-export.py",
+      "sha256": "c3cfe34bb0482ace2a4dc4f099a4043a4f65d57c9ec12311ece65d624f875a8e"
+    }
+  ],
+  "expectedGlbSha256": "d6f2ffa790d43e8217ab6d64bdfdf994b424d1d5cb1d1b8685403b2001d40dc8",
+  "sourceRoot": "C:/Users/Robert/.codex/worktrees/rider-blender-trial/Driftwing",
+  "sourceHashesMustRemainUnchanged": true,
+  "head": "8e055069703c83308d5508ee72e5ad1d15ef348e"
+}

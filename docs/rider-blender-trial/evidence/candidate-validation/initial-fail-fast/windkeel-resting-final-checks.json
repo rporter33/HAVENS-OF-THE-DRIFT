@@ -1,0 +1,28 @@
+{
+  "reason": "Continuation: naturally resting selected Windkeel and thin connected shoulder cloth. Original legacy and authored garment audits remain separate required checks.",
+  "startedUtc": "2026-10-12T07:32:00.210Z",
+  "output": "shots\\rider-blender\\windkeel-resting-checks\\2026-10-12T07-32-00-206Z",
+  "assetSha256": "d6f2ffa790d43e8217ab6d64bdfdf994b424d1d5cb1d1b8685403b2001d40dc8",
+  "checks": [
+    {
+      "id": "typecheck",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 10567
+    },
+    {
+      "id": "unit",
+      "args": [
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--maxWorkers=1",
+        "--reporter=dot"
+      ],
+      "exitCode": 1,
+      "elapsedMs": 402734
+    }
+  ]
+}

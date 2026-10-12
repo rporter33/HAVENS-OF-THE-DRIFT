@@ -1,0 +1,8 @@
+--- a/docs/rider-blender-trial/fit-refresh-2026-10-12.html
++++ b/docs/rider-blender-trial/fit-refresh-2026-10-12.html
+@@ -1,4 +1,4 @@
+-<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Driftwing rider fit — local October 12 review</title>
++<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Cpath d=%22M4 36 Q20 14 32 30 Q44 14 60 36 Q44 28 32 44 Q20 28 4 36Z%22 fill=%22%23e8b85a%22/%3E%3C/svg%3E" /><title>Driftwing rider fit — local October 12 review</title>
+ <style>body{margin:0;background:#17252d;color:#f0eadc;font:17px/1.5 system-ui,sans-serif}main{max-width:1250px;margin:auto;padding:24px}a{color:#a9d8ee}nav{display:flex;gap:20px;flex-wrap:wrap}h1{font-size:2rem}h2{margin-top:2rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}figure{margin:0;background:#243740;padding:8px;border-radius:6px}img{width:100%;height:auto;display:block}figcaption{font-size:14px;padding:8px 0;overflow-wrap:anywhere}.note{border-left:3px solid #c1a06b;padding:10px 16px;background:#243740}summary{cursor:pointer}</style>
+ <main><h1>Rider fit — local October 12 review</h1>
+ <nav><a href="/?riderTrial=blender&amp;quality=low">Play trial → Stable → Outfit → Travel Drape</a><a href="http://127.0.0.1:5211/?quality=low">Preserved current</a><a href="review.html">Earlier matched comparisons</a><a href="FIT_REFRESH_2026-10-12.md">QA / hashes / restart steps</a></nav>

@@ -5,3 +5,6 @@ dist/
 shots/
 test-results/
 .vite/
+# Portable tool added for this isolated trial; source/art manifests record its checksum.
+/tools/blender/
+/scripts/__pycache__/

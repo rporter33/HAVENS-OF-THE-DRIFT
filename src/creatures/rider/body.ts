@@ -3,11 +3,12 @@
 // through an OutfitStyle and add their own garment pieces (outfits.ts).
 
 import { Color, Quaternion, Vector3 } from 'three';
-import type { RiderLook } from '../../core/types';
+import type { RiderGarmentSlot, RiderLook } from '../../core/types';
 import { B, bindPositions, type BoneName, type RigDims } from './rig';
 import { SkinBuilder, sk, sk2, type RingSpec, type SkinSpec } from './meshKit';
 import type { RiderPalette } from './palette';
 import { mixSrgb } from './palette';
+import type { ClothSpec } from './accessories';
 
 const X = new Vector3(1, 0, 0);
 const Y = new Vector3(0, 1, 0);
@@ -26,16 +27,27 @@ export interface OutfitStyle {
     inflate(y: number, th: number): number;
     /** Heights (bind y) of crisp horizontal color/inflation edges. */
     bounds: number[];
+    surface?: 'linen' | 'leather';
   };
   /** s = meters down the arm from the shoulder joint. */
-  arm: { color(s: number, th: number, side: Side): Color; inflate(s: number): number; bounds: number[] };
+  arm: { color(s: number, th: number, side: Side): Color; inflate(s: number): number; bounds: number[]; surface?: 'linen' | 'leather' };
   /** s = meters down the leg from the hip joint. */
-  leg: { color(s: number, th: number, side: Side): Color; inflate(s: number): number; bounds: number[] };
+  leg: { color(s: number, th: number, side: Side): Color; inflate(s: number): number; bounds: number[]; gatherHem?: number; clothEnd?: number; bootStart?: number };
+  modular?: boolean;
   hand: Color;
   /** Glove cuff color if gloved. */
   cuff?: Color;
   foot: { color: Color; sole: Color };
-  extras(ctx: BodyCtx): void;
+  extras(ctx: BodyCtx, part?: RiderGarmentSlot): void;
+  /** Face builder; normal rider models use the shared refined sculpt. */
+  head?(ctx: BodyCtx): void;
+  /** Body surface builders. Outfit colors, inflation and garments remain independent. */
+  shape?: {
+    upperBody(ctx: BodyCtx, style: OutfitStyle): void;
+    hand(ctx: BodyCtx, style: OutfitStyle, side: Side): void;
+    foot(ctx: BodyCtx, style: OutfitStyle, side: Side): void;
+    leg?(ctx: BodyCtx, style: OutfitStyle, side: Side): void;
+  };
 }
 
 export interface BodyCtx {
@@ -44,6 +56,15 @@ export interface BodyCtx {
   bp: Record<BoneName, Vector3>;
   look: RiderLook;
   pal: RiderPalette;
+  /** Local cloth panels collected by garment builders; never duplicate the static panels. */
+  garmentCloth: ClothSpec[];
+  /** Explicit trial provider; normal wardrobe builders never install this callback. */
+  authoredGarment?: (ctx:BodyCtx,part:RiderGarmentSlot,draw:(ctx:BodyCtx)=>void)=>void;
+  /** Explicit bind-layer exclusions: equipment passes under loose shoulder drapes. */
+  equipmentUnderlayers?:{start:number;end:number}[];
+  /** Waist overlays are above the rear leather fastening, unlike the supporting trousers. */
+  equipmentWaistLayers?:{start:number;end:number}[];
+  legStyle?: OutfitStyle['leg'];
   /** Torso surface (bind space) for garments that hug it. */
   torsoAt(y: number): TorsoSection;
   /** Leg radius at s meters below the hip joint. */
@@ -167,7 +188,7 @@ export function stops(a: number, b: number, step: number, bounds: readonly numbe
 
 // --- Builder ----------------------------------------------------------------------------------
 
-export function makeBodyCtx(b: SkinBuilder, d: RigDims, look: RiderLook, pal: RiderPalette): BodyCtx {
+export function makeBodyCtx(b: SkinBuilder, d: RigDims, look: RiderLook, pal: RiderPalette, headShape = shapeHead): BodyCtx {
   const bp = bindPositions(d);
   const torsoAt = (y: number): TorsoSection => {
     const ym = y / d.h;
@@ -195,11 +216,11 @@ export function makeBodyCtx(b: SkinBuilder, d: RigDims, look: RiderLook, pal: Ri
     radii: hr,
     surface(dir, out, inflate = 0) {
       const u = dir.clone().normalize();
-      shapeHead(u);
+      headShape(u);
       return out.set(u.x * (hr.x + inflate), u.y * (hr.y + inflate), u.z * (hr.z + inflate)).add(hc);
     },
   };
-  return { b, d, bp, look, pal, torsoAt, legAt, armAt, head };
+  return { b, d, bp, look, pal, torsoAt, legAt, armAt, head, garmentCloth: [] };
 }
 
 /** Sculpt the unit cranium sphere into a soft stylized head: tapered jaw, rounded back. */
@@ -221,15 +242,16 @@ export function shapeHead(u: Vector3): void {
 }
 
 export function buildBody(ctx: BodyCtx, style: OutfitStyle): void {
-  buildTorso(ctx, style);
-  buildNeck(ctx);
+  ctx.legStyle = style.leg;
+  if (style.shape) style.shape.upperBody(ctx, style);
+  else { buildTorso(ctx, style); buildNeck(ctx); }
   for (const side of [1, -1] as const) {
-    buildArm(ctx, style, side);
-    buildHand(ctx, style, side);
-    buildLeg(ctx, style, side);
-    buildFoot(ctx, style, side);
+    if (style.shape) style.shape.hand(ctx, style, side);
+    else { buildArm(ctx, style, side); buildHand(ctx, style, side); }
+    (style.shape?.leg ?? buildLeg)(ctx, style, side);
+    (style.shape?.foot ?? buildFoot)(ctx, style, side);
   }
-  buildHead(ctx);
+  (style.head ?? buildHead)(ctx);
   style.extras(ctx);
 }
 
@@ -429,7 +451,7 @@ function buildHand(ctx: BodyCtx, style: OutfitStyle, side: Side): void {
   }
 }
 
-function legSkin(d: RigDims, s: number, side: Side): SkinSpec {
+export function legSkin(d: RigDims, s: number, side: Side): SkinSpec {
   const th = side > 0 ? B.thighL : B.thighR;
   const sh = side > 0 ? B.shinL : B.shinR;
   const ft = side > 0 ? B.footL : B.footR;

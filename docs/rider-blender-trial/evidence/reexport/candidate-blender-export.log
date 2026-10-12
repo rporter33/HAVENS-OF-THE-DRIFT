@@ -1,0 +1,5 @@
+{"blender": "4.5.14 LTS", "buildHash": "62c1db4208e8", "source": "assets/rider-blender/source/rider-trial.blend", "sourceSha256": "0b69bcbb74153a0f0bc993ee756f59048db22e5fc0d5e7a7990c39465b9fa9c4", "export": "src/assets/rider-blender/rider-trial.glb", "bytes": 19110536, "sha256": "d6f2ffa790d43e8217ab6d64bdfdf994b424d1d5cb1d1b8685403b2001d40dc8", "compression": "none", "axes": "X-left/Y-up/Z-forward", "units": "meters", "animations": 0, "maps": "shared runtime painterly atlas; no embedded images", "binding": "regenerated from final editable mesh topology; no optimizer follows"}
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:33:49)
+Read blend: "C:\Users\Robert\.codex\visualizations\2026\10\11\01a12d01-df73-7353-bddb-5533013056c8\rider-merge-prep-20261012\reexport-candidate\assets\rider-blender\source\rider-trial.blend"
+
+Blender quit

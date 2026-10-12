@@ -8,6 +8,16 @@ Robert approved a bracer-fired magical tether in place of the thrown lance, plus
 
 ## Authority and scope
 
+### Blender authoring direction — planning only
+
+Read [the shared Blender asset plan](BLENDER_ASSET_PLAN.md) before proposing authored
+riders, garments, dragons or props. It records Robert's accepted workflow direction,
+the C02/M01 reference index, missing production decisions and trial acceptance criteria.
+It does not authorize asset creation/import or supersede the visual source hierarchy.
+Current explicit rider/wardrobe and quality decisions take precedence over the older
+pack's P1-only scope and provisional 1K estimates. Blender renders are intermediate
+evidence; final acceptance requires actual-engine views and preserved customization.
+
 1. Robert's explicit current direction takes precedence.
 2. Read the revised master and pack introduction together. The introduction updates the lance's function to a thrown javelin/grappling anchor; the master defines its visual language.
 3. Apply specific armor/prop specifications and imagery only where compatible with those sources. Older wardrobe text about different colors, bow/staff equipment or boots does not override the revised direction. Concept images also contain details the written master explicitly corrects.

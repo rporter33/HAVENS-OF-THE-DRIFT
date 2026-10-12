@@ -15,6 +15,7 @@ import { BREEDS } from '../flight/breeds';
 import { isCollectibleId } from './relics';
 import { cosmeticKey, medalAtLeast, medalTally, recordedUnlocked } from './unlocks';
 import { researchState } from '../research/state';
+import { GARMENT_SLOTS } from '../cosmetics/wardrobe';
 
 export const SAVE_KEY = 'driftwing.save.v1';
 /** Where pre-release builds kept their (unversioned) save. Migrated once, then removed. */
@@ -147,8 +148,13 @@ function sanitizeRider(v: unknown): RiderLook {
   const r = isObject(v) ? v : {};
   const d = DEFAULT_RIDER;
   const builds: RiderLook['build'][] = ['slight', 'medium', 'broad'];
+  const wardrobe: NonNullable<RiderLook['wardrobe']> = {};
+  if (isObject(r.wardrobe)) for (const [part, slot] of Object.entries(GARMENT_SLOTS)) {
+    const value = r.wardrobe[part];
+    if (typeof value === 'string' && cosmeticById(value, slot)) wardrobe[part as keyof typeof wardrobe] = value;
+  }
   return {
-    build: builds.includes(r.build as RiderLook['build']) ? (r.build as RiderLook['build']) : d.build,
+    build: r.outfit === 'travel-drape' ? 'medium' : builds.includes(r.build as RiderLook['build']) ? (r.build as RiderLook['build']) : d.build,
     skin: color(r.skin, d.skin),
     hair: cosmetic(r.hair, 'riderHair', d.hair),
     hairColor: color(r.hairColor, d.hairColor),
@@ -160,6 +166,15 @@ function sanitizeRider(v: unknown): RiderLook {
     scarfColor: color(r.scarfColor, d.scarfColor),
     cape: cosmetic(r.cape, 'riderCape', d.cape),
     capeColor: color(r.capeColor, d.capeColor),
+    chest: cosmetic(r.chest, 'riderChest', d.chest),
+    shoulderDrape: cosmetic(r.shoulderDrape, 'riderDrape', d.shoulderDrape),
+    waist: cosmetic(r.waist, 'riderWaist', d.waist),
+    armWraps: cosmetic(r.armWraps, 'riderArmWraps', d.armWraps),
+    legWraps: cosmetic(r.legWraps, 'riderLegWraps', d.legWraps),
+    footwear: cosmetic(r.footwear, 'riderFootwear', d.footwear),
+    armorColor: color(r.armorColor, d.armorColor),
+    leatherColor: color(r.leatherColor, d.leatherColor),
+    ...(Object.keys(wardrobe).length ? { wardrobe } : {}),
   };
 }
 
@@ -454,6 +469,7 @@ export class LocalSaveStore implements SaveStore {
   isUnlocked(cosmeticId: string, slot?: CosmeticSlot): boolean {
     const c = cosmeticById(cosmeticId, slot);
     if (!c) return false;
+    if (c.sourceOutfit) return this.isUnlocked(c.sourceOutfit, 'riderOutfit') || recordedUnlocked(this.data, c);
     return c.unlock.type === 'default' || recordedUnlocked(this.data, c);
   }
 

@@ -38,8 +38,19 @@ src/debug/       URL params, window.__dw automation handle, showcases
   `applyPainterly`) for the soft toon ramp, rim light and the shared height fog. Custom shaders
   include `FOG_PARS_GLSL` and apply `dwApplyFog`. Shared lighting/fog/wind/time uniforms live in
   `render/uniforms.ts`; the sky writes them, everyone reads them.
-- **Everything is procedural.** No downloaded models, textures or fonts at runtime; the build is
-  self-contained and works offline.
+- **Self-contained delivery.** The normal rider/world providers are procedural. The explicit
+  `?riderTrial=blender` development selection loads a bundled uncompressed rider GLB;
+  it uses the existing painterly materials, rig, wardrobe and live cloth. No external
+  model, texture or decoder service is required at runtime.
+
+## Bounded asset authoring trial
+
+Robert authorized one hybrid Blender rider trial after the October 11 planning
+proposal; see [the shared asset plan](docs/BLENDER_ASSET_PLAN.md) and
+[trial integration](docs/rider-blender-trial/INTEGRATION.md). Its provider remains an
+explicit development selection, preserving renderer, animator/IK authority,
+deterministic simulation, shared geometry, save IDs and self-contained delivery.
+The trial does not authorize wider asset production or a normal-build rollout.
 
 ## Automation
 

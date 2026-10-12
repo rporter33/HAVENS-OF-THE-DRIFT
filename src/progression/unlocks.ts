@@ -76,6 +76,8 @@ export function recordedUnlocked(save: Pick<SaveData, 'unlocked'>, c: Pick<Cosme
 export function evaluateUnlocks(save: Pick<SaveData, 'collected' | 'races' | 'unlocked'>, catalog: readonly CosmeticOption[] = COSMETICS): CosmeticOption[] {
   const out: CosmeticOption[] = [];
   for (const c of catalog) {
+    // Garment availability is derived from the outfit; do not spam separate reward toasts.
+    if (c.sourceOutfit) continue;
     if (c.unlock.type === 'default') continue;
     if (recordedUnlocked(save, c)) continue;
     if (unlockSatisfied(c.unlock, save)) out.push(c);
@@ -100,6 +102,14 @@ const SLOT_LABEL: Record<CosmeticSlot, string> = {
   riderHeadgear: 'Rider headgear',
   riderScarf: 'Rider scarf',
   riderCape: 'Rider cape',
+  riderChest: 'Rider chest armor',
+  riderDrape: 'Rider shoulder drape',
+  riderWaist: 'Rider waist',
+  riderArmWraps: 'Rider arm wraps',
+  riderLegWraps: 'Rider leg wraps',
+  riderFootwear: 'Rider footwear',
+  riderTop: 'Rider top',
+  riderTrousers: 'Rider trousers',
 };
 
 export function slotLabel(slot: CosmeticSlot): string {

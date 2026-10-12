@@ -1,0 +1,161 @@
+{
+  "scope": "Node CPU Rider.update only; no WebGL, GPU, memory or end-to-end frame-rate claim",
+  "rows": [
+    {
+      "quality": "low",
+      "outfit": "courier",
+      "withoutSurfaceContactMs": {
+        "median": 0.26580000002286397,
+        "p95": 0.37460000001010485
+      },
+      "withSurfaceContactMs": {
+        "median": 0.5217999999877065,
+        "p95": 0.8237999999837484
+      },
+      "medianIncrementMs": 0.2559999999648426
+    },
+    {
+      "quality": "low",
+      "outfit": "cartographer",
+      "withoutSurfaceContactMs": {
+        "median": 0.6407999999937601,
+        "p95": 0.9680999999982305
+      },
+      "withSurfaceContactMs": {
+        "median": 1.3114000000059605,
+        "p95": 1.77290000001085
+      },
+      "medianIncrementMs": 0.6706000000122003
+    },
+    {
+      "quality": "low",
+      "outfit": "travel-drape",
+      "withoutSurfaceContactMs": {
+        "median": 4.295100000017555,
+        "p95": 5.662099999986822
+      },
+      "withSurfaceContactMs": {
+        "median": 5.534000000014203,
+        "p95": 7.02379999999539
+      },
+      "medianIncrementMs": 1.2388999999966472
+    },
+    {
+      "quality": "medium",
+      "outfit": "courier",
+      "withoutSurfaceContactMs": {
+        "median": 0.26660000000265427,
+        "p95": 0.3947000000043772
+      },
+      "withSurfaceContactMs": {
+        "median": 1.4851999999955297,
+        "p95": 2.099099999992177
+      },
+      "medianIncrementMs": 1.2185999999928754
+    },
+    {
+      "quality": "medium",
+      "outfit": "cartographer",
+      "withoutSurfaceContactMs": {
+        "median": 0.7348999999812804,
+        "p95": 0.9919999999983702
+      },
+      "withSurfaceContactMs": {
+        "median": 2.8916000000026543,
+        "p95": 3.5608999999822117
+      },
+      "medianIncrementMs": 2.156700000021374
+    },
+    {
+      "quality": "medium",
+      "outfit": "travel-drape",
+      "withoutSurfaceContactMs": {
+        "median": 4.802400000015041,
+        "p95": 6.115399999980582
+      },
+      "withSurfaceContactMs": {
+        "median": 5.389999999984866,
+        "p95": 6.624099999986356
+      },
+      "medianIncrementMs": 0.5875999999698251
+    },
+    {
+      "quality": "high",
+      "outfit": "courier",
+      "withoutSurfaceContactMs": {
+        "median": 0.2664000000222586,
+        "p95": 0.3963999999978114
+      },
+      "withSurfaceContactMs": {
+        "median": 3.0804000000061933,
+        "p95": 3.7801999999792315
+      },
+      "medianIncrementMs": 2.8139999999839347
+    },
+    {
+      "quality": "high",
+      "outfit": "cartographer",
+      "withoutSurfaceContactMs": {
+        "median": 0.717899999988731,
+        "p95": 0.9651999999769032
+      },
+      "withSurfaceContactMs": {
+        "median": 5.6414999999979045,
+        "p95": 6.66380000000936
+      },
+      "medianIncrementMs": 4.9236000000091735
+    },
+    {
+      "quality": "high",
+      "outfit": "travel-drape",
+      "withoutSurfaceContactMs": {
+        "median": 4.553199999994831,
+        "p95": 5.8791999999957625
+      },
+      "withSurfaceContactMs": {
+        "median": 5.203799999988405,
+        "p95": 6.6260999999940395
+      },
+      "medianIncrementMs": 0.6505999999935739
+    },
+    {
+      "quality": "ultra",
+      "outfit": "courier",
+      "withoutSurfaceContactMs": {
+        "median": 0.2991000000038184,
+        "p95": 0.4569999999948777
+      },
+      "withSurfaceContactMs": {
+        "median": 5.137300000002142,
+        "p95": 6.361699999979464
+      },
+      "medianIncrementMs": 4.838199999998324
+    },
+    {
+      "quality": "ultra",
+      "outfit": "cartographer",
+      "withoutSurfaceContactMs": {
+        "median": 0.8549000000057276,
+        "p95": 1.259699999995064
+      },
+      "withSurfaceContactMs": {
+        "median": 10.733700000011595,
+        "p95": 12.992599999997765
+      },
+      "medianIncrementMs": 9.878800000005867
+    },
+    {
+      "quality": "ultra",
+      "outfit": "travel-drape",
+      "withoutSurfaceContactMs": {
+        "median": 4.4434000000183005,
+        "p95": 5.772499999991851
+      },
+      "withSurfaceContactMs": {
+        "median": 5.459000000002561,
+        "p95": 7.5873999999894295
+      },
+      "medianIncrementMs": 1.0155999999842606
+    }
+  ]
+}

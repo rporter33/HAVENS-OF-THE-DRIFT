@@ -1,0 +1,3 @@
+# Generated measurement records remain available but collapse in code review.
+docs/rider-blender-trial/evidence/**/*.json linguist-generated=true
+docs/rider-blender-trial/*MANIFEST.json linguist-generated=true

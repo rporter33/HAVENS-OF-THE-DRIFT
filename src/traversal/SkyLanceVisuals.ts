@@ -173,6 +173,8 @@ export class SkyLanceVisuals {
   }
   update(lance: SkyLance, rider: Rider, pose: RiderPose, alpha: number): void {
     this.bracer.visible = this.harness.visible = this.waist.visible = !pose.mounted;
+    // Keep the original recovery visuals until the authored provider has a fitted harness.
+    if(rider.hasRestingHarness)this.harness.visible=false;
     rider.equipmentFrame('bracer', this.bracer.matrix);
     rider.equipmentFrame('harness', this.harness.matrix);
     rider.equipmentFrame('waist', this.waist.matrix);
@@ -189,6 +191,7 @@ export class SkyLanceVisuals {
     this.bracer.matrixWorldNeedsUpdate = this.harness.matrixWorldNeedsUpdate = true;
     this.bracerPoint.set(0,-.17,.065).applyMatrix4(this.bracer.matrix);
     this.harnessPoint.set(0,-.04,-.145).applyMatrix4(this.harness.matrix);
+    rider.equipmentFittedPoint('dorsal',this.harnessPoint);
     this.seed.visible = !pose.mounted && (lance.state === 'projectile' || lance.state === 'anchored');
     this.seed.position.lerpVectors(lance.previous, lance.position, lance.state === 'projectile' ? alpha : 1);
     const pulse = lance.state === 'spent' ? 1 + .3 * Math.sin(Math.PI * lance.age / LANCE.recoveryTime) : 1;
@@ -202,7 +205,9 @@ export class SkyLanceVisuals {
     this.harnessPoint.toArray(this.loadPoints,0);
     // Route the render-only strop over the left shoulder rather than through the torso.
     this.grip.set(.14,.16,-.14).applyMatrix4(this.harness.matrix).toArray(this.loadPoints,3);
+    if(rider.equipmentFittedPoint('leftBack',this.grip))this.grip.toArray(this.loadPoints,3);
     this.grip.set(.14,.16,.15).applyMatrix4(this.harness.matrix).toArray(this.loadPoints,6);
+    if(rider.equipmentFittedPoint('leftFront',this.grip))this.grip.toArray(this.loadPoints,6);
     this.bracerPoint.toArray(this.loadPoints,9);
     this.loadGeometry.attributes.position.needsUpdate = true;
     const target = rope?.anchor ?? this.seed.position;

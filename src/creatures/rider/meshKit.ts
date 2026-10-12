@@ -4,7 +4,8 @@
 // smoothed per part so separate pieces keep crisp silhouettes where they overlap.
 
 import { BufferAttribute, BufferGeometry, Color, Quaternion, Vector3 } from 'three';
-import { mixLinear, recipeOf, scaleLinear, type ColorRecipe } from './palette';
+import { mixLinear, recipeOf, scaleLinear, surfaceOf, type ColorRecipe } from './palette';
+import { proofUV, type ProofSurface } from './proofMaterials';
 
 /** Up to four [bone, weight] pairs; weights are normalized on write. */
 export type SkinSpec = readonly number[];
@@ -36,6 +37,8 @@ export interface RingSpec {
   radial?: (theta: number) => number;
   /** Extra offset applied along ay for θ in the back half (asymmetric depth): ry for sinθ < 0. */
   ryBack?: number;
+  /** Proof-only tile for a ring in a mixed cloth/skin loft. */
+  surface?: ProofSurface;
 }
 
 const _p = new Vector3();
@@ -46,6 +49,16 @@ const _c3 = new Vector3();
 const _d3 = new Vector3();
 
 export class SkinBuilder {
+  constructor(private readonly textured = false) {}
+  private U: number[] = [];
+  private S: number[] = [];
+  private materialSurface: ProofSurface = 'neutral';
+  /** Component-local UVs, confined to a shared padded tile. Legacy builders stay unchanged. */
+  surface(kind: ProofSurface, draw: () => void): void {
+    const previous = this.materialSurface;
+    this.materialSurface = kind;
+    try { draw(); } finally { this.materialSurface = previous; }
+  }
   private P: number[] = [];
   private N: number[] = [];
   private C: number[] = [];
@@ -100,12 +113,17 @@ export class SkinBuilder {
     this.partI = this.I.length;
   }
 
-  vertex(p: Vector3, color: Color, skin: SkinSpec, glow = 0): number {
+  vertex(p: Vector3, color: Color, skin: SkinSpec, glow = 0, uv: readonly number[] = [.5, .5], surface = this.materialSurface): number {
+    if(surface==='neutral')surface=surfaceOf(color)??surface;
     this.P.push(p.x, p.y, p.z);
     this.N.push(0, 1, 0);
     this.C.push(color.r, color.g, color.b);
     this.recipes.push(recipeOf(color) ?? null);
     this.G.push(glow);
+    if (this.textured) {
+      this.U.push(...proofUV(surface, uv[0], uv[1]));
+      this.S.push(['neutral', 'linen', 'scale', 'leather', 'bronze'].indexOf(surface));
+    }
     let sum = 0;
     for (let k = 1; k < skin.length; k += 2) sum += skin[k];
     for (let k = 0; k < 4; k++) {
@@ -163,7 +181,7 @@ export class SkinBuilder {
       for (let i = 0; i <= cols; i++) {
         at(i / cols, j / rows, p, n);
         normals.push(n.clone());
-        this.vertex(p, color(i / cols, j / rows, false), skin(i / cols, j / rows), glow);
+        this.vertex(p, color(i / cols, j / rows, false), skin(i / cols, j / rows), glow, [i / cols, j / rows]);
       }
     }
     const inner = this.vertexCount;
@@ -171,7 +189,7 @@ export class SkinBuilder {
       for (let i = 0; i <= cols; i++) {
         at(i / cols, j / rows, p, n);
         p.addScaledVector(n, -thickness);
-        this.vertex(p, color(i / cols, j / rows, true), skin(i / cols, j / rows), glow);
+        this.vertex(p, color(i / cols, j / rows, true), skin(i / cols, j / rows), glow, [i / cols, j / rows]);
       }
     }
     const neg = new Vector3();
@@ -208,10 +226,13 @@ export class SkinBuilder {
   loft(rings: RingSpec[], seg: number, opts: { capStart?: boolean; capEnd?: boolean; capBulge?: number } = {}): void {
     this.begin();
     const base = this.vertexCount;
+    const seam = this.textured && (this.materialSurface !== 'neutral' || rings.some((r,i) =>
+      (r.surface && r.surface !== 'neutral') || !!surfaceOf(typeof r.color==='function'?r.color(0,i,r.c):r.color)));
+    const stride = seg + (seam ? 1 : 0);
     for (let i = 0; i < rings.length; i++) {
       const r = rings[i];
       const e = r.exp ?? 2;
-      for (let j = 0; j < seg; j++) {
+      for (let j = 0; j < stride; j++) {
         const th = (j / seg) * Math.PI * 2;
         const cs = Math.cos(th);
         const sn = Math.sin(th);
@@ -222,7 +243,7 @@ export class SkinBuilder {
         _p.copy(r.c).addScaledVector(r.ax, ux * r.rx * m).addScaledVector(r.ay, uy * ry * m);
         const col = typeof r.color === 'function' ? r.color(th, i, _p) : r.color;
         const s = typeof r.skin === 'function' ? r.skin(th, i, _p) : r.skin;
-        this.vertex(_p, col, s, r.glow ?? 0);
+        this.vertex(_p, col, s, r.glow ?? 0, [j / seg, i / Math.max(1, rings.length - 1)], r.surface ?? this.materialSurface);
       }
     }
     // Orientation: does ax × ay point along the path?
@@ -231,10 +252,10 @@ export class SkinBuilder {
     const flip = _b.crossVectors(rings[0].ax, rings[0].ay).dot(d) < 0;
     for (let i = 0; i < rings.length - 1; i++) {
       for (let j = 0; j < seg; j++) {
-        const a = base + i * seg + j;
-        const b = base + i * seg + ((j + 1) % seg);
-        const c = a + seg;
-        const dd = b + seg;
+        const a = base + i * stride + j;
+        const b = base + i * stride + (seam ? j + 1 : (j + 1) % seg);
+        const c = a + stride;
+        const dd = b + stride;
         if (!flip) {
           this.tri(a, b, c);
           this.tri(b, dd, c);
@@ -252,10 +273,10 @@ export class SkinBuilder {
       const col = typeof r.color === 'function' ? r.color(0, ri, _p) : r.color;
       const s = typeof r.skin === 'function' ? r.skin(0, ri, _p) : r.skin;
       const center = this.vertex(_p, col, s, r.glow ?? 0);
-      const start = base + ri * seg;
+      const start = base + ri * stride;
       for (let j = 0; j < seg; j++) {
         const a = start + j;
-        const b = start + ((j + 1) % seg);
+        const b = start + (seam ? j + 1 : (j + 1) % seg);
         // dir < 0 (start cap) faces backward along the path.
         if ((dir < 0) !== flip) this.tri(center, b, a);
         else this.tri(center, a, b);
@@ -264,6 +285,11 @@ export class SkinBuilder {
     if (opts.capStart) cap(0, -1);
     if (opts.capEnd) cap(rings.length - 1, 1);
     this.end();
+    if (seam) for (let i = 0; i < rings.length; i++) {
+      const a = (base + i * stride) * 3, b = a + seg * 3;
+      _n.set(this.N[a] + this.N[b], this.N[a + 1] + this.N[b + 1], this.N[a + 2] + this.N[b + 2]).normalize();
+      for (const k of [a, b]) { this.N[k] = _n.x; this.N[k + 1] = _n.y; this.N[k + 2] = _n.z; }
+    }
   }
 
   /**
@@ -282,7 +308,7 @@ export class SkinBuilder {
     const lon = opts.lon ?? 12;
     const base = this.vertexCount;
     const u = new Vector3();
-    const emit = (x: number, y: number, z: number) => {
+    const emit = (x: number, y: number, z: number, uv: readonly number[] = [.5, .5]) => {
       u.set(x, y, z);
       const col = typeof color === 'function' ? color(u) : color;
       const s = typeof skin === 'function' ? skin(u) : skin;
@@ -291,7 +317,7 @@ export class SkinBuilder {
       _p.set(u.x * r.x, u.y * r.y, u.z * r.z);
       if (opts.rot) _p.applyQuaternion(opts.rot);
       _p.add(c);
-      return this.vertex(_p, col, s, g);
+      return this.vertex(_p, col, s, g, uv);
     };
     const top = emit(0, 1, 0);
     for (let i = 1; i < lat; i++) {
@@ -300,7 +326,7 @@ export class SkinBuilder {
       const s = Math.sin(phi);
       for (let j = 0; j < lon; j++) {
         const th = (j / lon) * Math.PI * 2;
-        emit(Math.sin(th) * s, y, Math.cos(th) * s);
+        emit(Math.sin(th) * s, y, Math.cos(th) * s, [j / lon, i / lat]);
       }
     }
     const bottom = emit(0, -1, 0);
@@ -339,6 +365,17 @@ export class SkinBuilder {
     this.loft([ring(from.clone()), ring(to.clone())], opts.seg ?? 8, { capStart: opts.caps ?? true, capEnd: opts.caps ?? true, capBulge: 0.05 });
   }
 
+  /** Imported regions retain authored atlas addresses, material identity and seam normals. */
+  setImportedSurface(base: number, geometry: BufferGeometry): void {
+    if (!this.textured) throw Error('Imported rider regions require the painterly surface contract');
+    const uv=geometry.getAttribute('uv'),surface=geometry.getAttribute('_dw_surface'),normal=geometry.getAttribute('normal');
+    for(let i=0;i<uv.count;i++){
+      const v=base+i;
+      this.U[v*2]=uv.getX(i);this.U[v*2+1]=uv.getY(i);this.S[v]=surface.getX(i);
+      if(normal){this.N[v*3]=normal.getX(i);this.N[v*3+1]=normal.getY(i);this.N[v*3+2]=normal.getZ(i);}
+    }
+  }
+
   build(): BufferGeometry {
     const g = new BufferGeometry();
     g.setAttribute('position', new BufferAttribute(new Float32Array(this.P), 3));
@@ -347,6 +384,10 @@ export class SkinBuilder {
     g.setAttribute('glow', new BufferAttribute(new Float32Array(this.G), 1));
     g.setAttribute('skinIndex', new BufferAttribute(new Uint16Array(this.SI), 4));
     g.setAttribute('skinWeight', new BufferAttribute(new Float32Array(this.SW), 4));
+    if (this.textured) {
+      g.setAttribute('uv', new BufferAttribute(new Float32Array(this.U), 2));
+      g.setAttribute('c02Surface', new BufferAttribute(new Float32Array(this.S), 1));
+    }
     const n = this.vertexCount;
     g.setIndex(n > 65535 ? new BufferAttribute(new Uint32Array(this.I), 1) : new BufferAttribute(new Uint16Array(this.I), 1));
     g.computeBoundingSphere();

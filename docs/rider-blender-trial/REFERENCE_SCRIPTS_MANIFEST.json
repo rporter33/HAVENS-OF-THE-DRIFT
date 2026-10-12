@@ -1,0 +1,181 @@
+{
+  "createdUtc": "2026-10-11T22:38:24.859275+00:00",
+  "purpose": "Preserved review/reference inputs only. No artifact branch merged; no harness runtime enabled.",
+  "sources": [
+    {
+      "label": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "metadata": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686\nRobert Porter\nRobert Porter\n2026-10-11T21:35:04Z\n2026-10-11T21:35:04Z\nComplete pinned Windkeel motion package with upright tether and contact limits\n\n",
+      "paths": [
+        "scripts/art/windkeel-motion",
+        "src/debug/windkeelMotion",
+        "harness-motion.html"
+      ]
+    }
+  ],
+  "files": [
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "harness-motion.html",
+      "copy": "assets/rider-blender/references/motion-fit/harness-motion.html",
+      "gitBlob": "ded62997234e222fdb7b4d16b6e000053b3993a0",
+      "bytes": 2017,
+      "sha256": "b4dbcea2021d7cf6cd0ea3016dfaf7587e9e292b7ae5a2413c849b90f52965c0"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "scripts/art/windkeel-motion/build-native.py",
+      "copy": "assets/rider-blender/references/motion-fit/scripts/art/windkeel-motion/build-native.py",
+      "gitBlob": "3280ddb1c0c218234514bb2dd69d8e92387398fc",
+      "bytes": 4481,
+      "sha256": "f95113d2c228047dc3dfdc92f3505e1cd1b4d8bba57283a9d962d41e08ab0a56"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "scripts/art/windkeel-motion/capture-motion.mjs",
+      "copy": "assets/rider-blender/references/motion-fit/scripts/art/windkeel-motion/capture-motion.mjs",
+      "gitBlob": "ce99e70ae6195f11bf345fb8f9a8c6a2910680be",
+      "bytes": 1563,
+      "sha256": "695e5953040add23425a92e788b6c6203d2fd46b1029dff083ed125c71185e47"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "scripts/art/windkeel-motion/capture.mjs",
+      "copy": "assets/rider-blender/references/motion-fit/scripts/art/windkeel-motion/capture.mjs",
+      "gitBlob": "4c4b033456304182b605dcaf3b3815d2550bce61",
+      "bytes": 2399,
+      "sha256": "f63eb4f8bb7e9b904984b21d16a1e01fe7c1ecb1dd76520d0f533d66a017728f"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "scripts/art/windkeel-motion/diagnose.mjs",
+      "copy": "assets/rider-blender/references/motion-fit/scripts/art/windkeel-motion/diagnose.mjs",
+      "gitBlob": "3f16223b59488768d3de586679362fc91ba2852d",
+      "bytes": 2020,
+      "sha256": "6b3dfc9a2fc10f224de02a8bb8ed7313addcba48d5794eca9332da65dcc29a4a"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "scripts/art/windkeel-motion/encode-clips.py",
+      "copy": "assets/rider-blender/references/motion-fit/scripts/art/windkeel-motion/encode-clips.py",
+      "gitBlob": "7577cfa92bbbad4b09c2695f6814b7a97c44b1d2",
+      "bytes": 1387,
+      "sha256": "9d0255f0a2756b370ee3447bb36f2ec6562e8408198af162b9013bd1016afe8c"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "scripts/art/windkeel-motion/export-fit.mjs",
+      "copy": "assets/rider-blender/references/motion-fit/scripts/art/windkeel-motion/export-fit.mjs",
+      "gitBlob": "fe656d45f844abf67f3f66de8478920b608ed68f",
+      "bytes": 2253,
+      "sha256": "b3414e684f19517257cef8ba2e67cfd318a0db179f95e6f3ee944a6389ad153f"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "scripts/art/windkeel-motion/make-board.py",
+      "copy": "assets/rider-blender/references/motion-fit/scripts/art/windkeel-motion/make-board.py",
+      "gitBlob": "e8904d646dfc5b73feef135ebf52cf3a53944521",
+      "bytes": 2736,
+      "sha256": "029d9b0f0503fd987f58ae2ebf99605a7db42213423cac2886751102ab371a67"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "scripts/art/windkeel-motion/measure-allocation.mjs",
+      "copy": "assets/rider-blender/references/motion-fit/scripts/art/windkeel-motion/measure-allocation.mjs",
+      "gitBlob": "f2754b224055770cd5c21d41a43b70109a68c425",
+      "bytes": 1281,
+      "sha256": "b112c2a79c16124bbe7fa18c3ded90e8f9082ffcb1d7b62ead054358bf0277fb"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "scripts/art/windkeel-motion/nearest-surface.mjs",
+      "copy": "assets/rider-blender/references/motion-fit/scripts/art/windkeel-motion/nearest-surface.mjs",
+      "gitBlob": "3258e9ab06bf376b9ec93fe814e2c933fef87830",
+      "bytes": 3832,
+      "sha256": "b95798fb9038d42a237f690e74921baf87e250fd5fb1ae1f7a60e1cf9156f91e"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "scripts/art/windkeel-motion/package-review.py",
+      "copy": "assets/rider-blender/references/motion-fit/scripts/art/windkeel-motion/package-review.py",
+      "gitBlob": "a7a1a1035d3ee6628128ea164bae06672003cf02",
+      "bytes": 3296,
+      "sha256": "f96fc323ab8eadb9c00572673f75b440f8aff0770aa43e6925c737a63b3a3ca9"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "scripts/art/windkeel-motion/preview-vite.config.mjs",
+      "copy": "assets/rider-blender/references/motion-fit/scripts/art/windkeel-motion/preview-vite.config.mjs",
+      "gitBlob": "13530924b0518f6525e16b4f7cb5a9dd5f3bf991",
+      "bytes": 216,
+      "sha256": "f7794999bdf362388b24c32d71cea9520040335d4752a328479e3f49fe58c041"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "scripts/art/windkeel-motion/verify-delivery.py",
+      "copy": "assets/rider-blender/references/motion-fit/scripts/art/windkeel-motion/verify-delivery.py",
+      "gitBlob": "326f97f80809c9a7168e0f675b7d597bb2033596",
+      "bytes": 3182,
+      "sha256": "7732ab072fb4ca6be8a12a42e088b743982e23be682afb48113154aa3f8f286a"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "scripts/art/windkeel-motion/verify-export-in-browser.mjs",
+      "copy": "assets/rider-blender/references/motion-fit/scripts/art/windkeel-motion/verify-export-in-browser.mjs",
+      "gitBlob": "11ac012beab01fe29ddc9a00fc0fe9ade0a2316f",
+      "bytes": 988,
+      "sha256": "f96bf9ae1d54b73e074c13c428d192a451c414c0da56ef2f697eb0e46b08e2f5"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "scripts/art/windkeel-motion/verify-native.py",
+      "copy": "assets/rider-blender/references/motion-fit/scripts/art/windkeel-motion/verify-native.py",
+      "gitBlob": "60db19945503d8bf9b75ff2e306655ac5e8e8f6d",
+      "bytes": 1909,
+      "sha256": "1c497997c3fca5faa354ce9eef30f5cac7273769a73736eeed342e6756ac0b6b"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "scripts/art/windkeel-motion/verify-runtime.mjs",
+      "copy": "assets/rider-blender/references/motion-fit/scripts/art/windkeel-motion/verify-runtime.mjs",
+      "gitBlob": "0fc7e8149572d5ffbb3b61c70d9f0bbc21a560cb",
+      "bytes": 6036,
+      "sha256": "3e5ac87b1c090c86d8e205b556ce17cde55407c7746cefb2503325432fdb986b"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "src/debug/windkeelMotion/asset.ts",
+      "copy": "assets/rider-blender/references/motion-fit/src/debug/windkeelMotion/asset.ts",
+      "gitBlob": "fab558e4036083aa8fd0e8e1be8173335a443937",
+      "bytes": 5969,
+      "sha256": "aa8961f1865ddd538d9e3e3081242eccab6720fdbe1dd3560f137b88fdafde82"
+    },
+    {
+      "source": "motion-fit",
+      "commit": "5efe2bbaa7154aab9af158d3f87c3694d2e5e686",
+      "path": "src/debug/windkeelMotion/preview.ts",
+      "copy": "assets/rider-blender/references/motion-fit/src/debug/windkeelMotion/preview.ts",
+      "gitBlob": "fc7da1dcdbdcb09dd2184aa34a312fc6a4b5e1af",
+      "bytes": 9839,
+      "sha256": "b432c063c244547fdd87e177dffced7dc92f9713e54f2e923056dda71bc022c5"
+    }
+  ],
+  "prPublicationNote": "Historical inventory of the complete preserved local trial, including excluded local-only files. Current published contents and hashes: PR_PACKAGE_MANIFEST.json; current candidate validation: MERGE_REVIEW.md."
+}

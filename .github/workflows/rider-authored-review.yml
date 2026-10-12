@@ -1,0 +1,93 @@
+name: Verify authored rider trial
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rider-authored-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  authored-rider:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      RIDER_REVIEW_EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Verify authored garment and contact matrix
+        run: node node_modules/vitest/vitest.mjs run --config scripts/rider-blender-qa.config.mjs --maxWorkers=1
+      - name: Build the exact authored-review head
+        run: GITHUB_SHA="$(git rev-parse HEAD)" npm run build
+      - run: npx playwright install --with-deps chromium
+      - name: Verify selected rider fit, lifecycle and delivery
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$RIDER_REVIEW_EXPECTED_HEAD"
+          mkdir -p shots/rider-blender/authored-ci
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import crypto from 'node:crypto';
+          import {execFileSync} from 'node:child_process';
+          const git=(...args)=>execFileSync('git',args,{encoding:'utf8'}).trim();
+          const asset='src/assets/rider-blender/rider-trial.glb';
+          fs.writeFileSync('shots/rider-blender/authored-ci/source.json',JSON.stringify({
+            head:git('rev-parse','HEAD'),tree:git('rev-parse','HEAD^{tree}'),expectedHead:process.env.RIDER_REVIEW_EXPECTED_HEAD,
+            node:process.version,recordedUtc:new Date().toISOString(),asset,
+            assetSha256:crypto.createHash('sha256').update(fs.readFileSync(asset)).digest('hex'),
+            scope:'Exact-head authored garment/contact audit, opted-in fit and lifecycle, bounded motion regression and production/subpath delivery. Software-browser CI is not final art or hardware/controller certification.'
+          },null,2));
+          NODE
+          npm run dev -- --host 127.0.0.1 --port 5210 --strictPort > shots/rider-blender/authored-ci/dev.log 2>&1 &
+          dev_pid=$!
+          trap 'kill "$dev_pid" 2>/dev/null || true' EXIT
+          for attempt in {1..60}; do
+            if curl --fail --silent http://127.0.0.1:5210/ > /dev/null; then break; fi
+            sleep 1
+          done
+          curl --fail --silent http://127.0.0.1:5210/ > /dev/null
+          failures=0
+          run_check() {
+            local name="$1"
+            shift
+            local status=0
+            if "$@" 2>&1 | tee "shots/rider-blender/authored-ci/$name.log"; then
+              status=0
+            else
+              status=$?
+              failures=$((failures + 1))
+            fi
+            node --input-type=module - "$name" "$status" <<'NODE'
+          import fs from 'node:fs';
+          const file='shots/rider-blender/authored-ci/checks.json';
+          const checks=fs.existsSync(file)?JSON.parse(fs.readFileSync(file,'utf8')):[];
+          checks.push({name:process.argv[2],exitCode:Number(process.argv[3]),finishedUtc:new Date().toISOString()});
+          fs.writeFileSync(file,JSON.stringify(checks,null,2));
+          NODE
+          }
+          run_check fit node scripts/rider-blender-fit-qa.mjs http://127.0.0.1:5210
+          run_check gameplay-lifecycle node scripts/rider-blender-gameplay-qa.mjs http://127.0.0.1:5210
+          run_check stable node scripts/rider-blender-stable-qa.mjs http://127.0.0.1:5210
+          run_check motion-regression node scripts/rider-blender-windkeel-qa.mjs http://127.0.0.1:5210
+          run_check production-delivery node scripts/rider-blender-delivery-check.mjs --port=5213
+          test "$failures" -eq 0
+      - name: Preserve authored review evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: authored-rider-review-evidence
+          path: shots/rider-blender/
+          retention-days: 30

@@ -1,0 +1,603 @@
+{
+  "success": true,
+  "files": 119,
+  "passed": 1260,
+  "failed": 0,
+  "results": [
+    {
+      "file": "src/audio/dsp.test.ts",
+      "status": "passed",
+      "tests": 6
+    },
+    {
+      "file": "src/audio/mix.test.ts",
+      "status": "passed",
+      "tests": 16
+    },
+    {
+      "file": "src/audio/notes.test.ts",
+      "status": "passed",
+      "tests": 7
+    },
+    {
+      "file": "src/audio/sequencer.test.ts",
+      "status": "passed",
+      "tests": 9
+    },
+    {
+      "file": "src/audio/titleMusic.test.ts",
+      "status": "passed",
+      "tests": 3
+    },
+    {
+      "file": "src/audio/traversalCues.test.ts",
+      "status": "passed",
+      "tests": 4
+    },
+    {
+      "file": "src/camera/cameraMath.test.ts",
+      "status": "passed",
+      "tests": 22
+    },
+    {
+      "file": "src/camera/CameraRig.feel.test.ts",
+      "status": "passed",
+      "tests": 12
+    },
+    {
+      "file": "src/camera/CameraRig.test.ts",
+      "status": "passed",
+      "tests": 16
+    },
+    {
+      "file": "src/camera/creatureLight.test.ts",
+      "status": "passed",
+      "tests": 4
+    },
+    {
+      "file": "src/camera/orbitClearance.test.ts",
+      "status": "passed",
+      "tests": 12
+    },
+    {
+      "file": "src/camera/shake.test.ts",
+      "status": "passed",
+      "tests": 2
+    },
+    {
+      "file": "src/core/build.test.ts",
+      "status": "passed",
+      "tests": 3
+    },
+    {
+      "file": "src/creatures/mounted.test.ts",
+      "status": "passed",
+      "tests": 6
+    },
+    {
+      "file": "src/flight/breeds.test.ts",
+      "status": "passed",
+      "tests": 11
+    },
+    {
+      "file": "src/flight/FlightModel.test.ts",
+      "status": "passed",
+      "tests": 60
+    },
+    {
+      "file": "src/editor/region.test.ts",
+      "status": "passed",
+      "tests": 17
+    },
+    {
+      "file": "src/fx/drifters.test.ts",
+      "status": "passed",
+      "tests": 2
+    },
+    {
+      "file": "src/fx/fxMath.test.ts",
+      "status": "passed",
+      "tests": 17
+    },
+    {
+      "file": "src/fx/thermals.test.ts",
+      "status": "passed",
+      "tests": 10
+    },
+    {
+      "file": "src/fx/timeWrap.test.ts",
+      "status": "passed",
+      "tests": 3
+    },
+    {
+      "file": "src/game/frameGuard.test.ts",
+      "status": "passed",
+      "tests": 5
+    },
+    {
+      "file": "src/game/interactables.test.ts",
+      "status": "passed",
+      "tests": 4
+    },
+    {
+      "file": "src/game/settings.test.ts",
+      "status": "passed",
+      "tests": 14
+    },
+    {
+      "file": "src/input/haptics.test.ts",
+      "status": "passed",
+      "tests": 12
+    },
+    {
+      "file": "src/input/Input.test.ts",
+      "status": "passed",
+      "tests": 14
+    },
+    {
+      "file": "src/input/scheme.test.ts",
+      "status": "passed",
+      "tests": 6
+    },
+    {
+      "file": "src/input/shaping.test.ts",
+      "status": "passed",
+      "tests": 31
+    },
+    {
+      "file": "src/player/collision.test.ts",
+      "status": "passed",
+      "tests": 6
+    },
+    {
+      "file": "src/player/Player.test.ts",
+      "status": "passed",
+      "tests": 49
+    },
+    {
+      "file": "src/race/breedBalance.test.ts",
+      "status": "passed",
+      "tests": 7
+    },
+    {
+      "file": "src/race/courses.test.ts",
+      "status": "passed",
+      "tests": 17
+    },
+    {
+      "file": "src/race/ghost.test.ts",
+      "status": "passed",
+      "tests": 4
+    },
+    {
+      "file": "src/race/Races.test.ts",
+      "status": "passed",
+      "tests": 24
+    },
+    {
+      "file": "src/race/ringMath.test.ts",
+      "status": "passed",
+      "tests": 10
+    },
+    {
+      "file": "src/render/adaptiveResolution.test.ts",
+      "status": "passed",
+      "tests": 5
+    },
+    {
+      "file": "src/render/renderer.test.ts",
+      "status": "passed",
+      "tests": 5
+    },
+    {
+      "file": "src/render/shadowOnly.test.ts",
+      "status": "passed",
+      "tests": 2
+    },
+    {
+      "file": "src/render/warmup.test.ts",
+      "status": "passed",
+      "tests": 7
+    },
+    {
+      "file": "src/research/registry.test.ts",
+      "status": "passed",
+      "tests": 3
+    },
+    {
+      "file": "src/research/Research.test.ts",
+      "status": "passed",
+      "tests": 2
+    },
+    {
+      "file": "src/research/state.test.ts",
+      "status": "passed",
+      "tests": 5
+    },
+    {
+      "file": "src/progression/collectibleDefs.test.ts",
+      "status": "passed",
+      "tests": 4
+    },
+    {
+      "file": "src/progression/Collectibles.test.ts",
+      "status": "passed",
+      "tests": 13
+    },
+    {
+      "file": "src/progression/save.test.ts",
+      "status": "passed",
+      "tests": 15
+    },
+    {
+      "file": "src/progression/unlocks.test.ts",
+      "status": "passed",
+      "tests": 10
+    },
+    {
+      "file": "src/sky/cloudBankField.test.ts",
+      "status": "passed",
+      "tests": 7
+    },
+    {
+      "file": "src/sky/skyDome.test.ts",
+      "status": "passed",
+      "tests": 5
+    },
+    {
+      "file": "src/sky/skyFixes.test.ts",
+      "status": "passed",
+      "tests": 13
+    },
+    {
+      "file": "src/sky/sunPath.test.ts",
+      "status": "passed",
+      "tests": 9
+    },
+    {
+      "file": "src/sky/vibrance.test.ts",
+      "status": "passed",
+      "tests": 3
+    },
+    {
+      "file": "src/sky/weatherModel.test.ts",
+      "status": "passed",
+      "tests": 9
+    },
+    {
+      "file": "src/sky/windField.test.ts",
+      "status": "passed",
+      "tests": 20
+    },
+    {
+      "file": "src/traversal/air.test.ts",
+      "status": "passed",
+      "tests": 14
+    },
+    {
+      "file": "src/traversal/companion.test.ts",
+      "status": "passed",
+      "tests": 4
+    },
+    {
+      "file": "src/traversal/freefall.test.ts",
+      "status": "passed",
+      "tests": 6
+    },
+    {
+      "file": "src/traversal/lifecycle.test.ts",
+      "status": "passed",
+      "tests": 7
+    },
+    {
+      "file": "src/traversal/player.test.ts",
+      "status": "passed",
+      "tests": 61
+    },
+    {
+      "file": "src/traversal/presentation.test.ts",
+      "status": "passed",
+      "tests": 11
+    },
+    {
+      "file": "src/traversal/SkyLance.test.ts",
+      "status": "passed",
+      "tests": 30
+    },
+    {
+      "file": "src/traversal/sweep.test.ts",
+      "status": "passed",
+      "tests": 7
+    },
+    {
+      "file": "src/traversal/target.test.ts",
+      "status": "passed",
+      "tests": 4
+    },
+    {
+      "file": "src/traversal/terrain-contact.test.ts",
+      "status": "passed",
+      "tests": 1
+    },
+    {
+      "file": "src/traversal/tether.test.ts",
+      "status": "passed",
+      "tests": 12
+    },
+    {
+      "file": "src/traversal/windhaven.test.ts",
+      "status": "passed",
+      "tests": 2
+    },
+    {
+      "file": "src/ui/colorName.test.ts",
+      "status": "passed",
+      "tests": 3
+    },
+    {
+      "file": "src/ui/compass.test.ts",
+      "status": "passed",
+      "tests": 7
+    },
+    {
+      "file": "src/ui/firstLeadGuide.test.ts",
+      "status": "passed",
+      "tests": 5
+    },
+    {
+      "file": "src/ui/format.test.ts",
+      "status": "passed",
+      "tests": 11
+    },
+    {
+      "file": "src/ui/glyphs.test.ts",
+      "status": "passed",
+      "tests": 10
+    },
+    {
+      "file": "src/ui/hudPlacement.test.ts",
+      "status": "passed",
+      "tests": 4
+    },
+    {
+      "file": "src/ui/nav.test.ts",
+      "status": "passed",
+      "tests": 7
+    },
+    {
+      "file": "src/ui/notices.test.ts",
+      "status": "passed",
+      "tests": 11
+    },
+    {
+      "file": "src/ui/settingsModel.test.ts",
+      "status": "passed",
+      "tests": 9
+    },
+    {
+      "file": "src/ui/stableModel.test.ts",
+      "status": "passed",
+      "tests": 8
+    },
+    {
+      "file": "src/ui/tutor.test.ts",
+      "status": "passed",
+      "tests": 13
+    },
+    {
+      "file": "src/ui/unlocks.test.ts",
+      "status": "passed",
+      "tests": 5
+    },
+    {
+      "file": "src/world/colliders.test.ts",
+      "status": "passed",
+      "tests": 13
+    },
+    {
+      "file": "src/world/convexDistance.test.ts",
+      "status": "passed",
+      "tests": 2
+    },
+    {
+      "file": "src/world/islandShape.test.ts",
+      "status": "passed",
+      "tests": 3
+    },
+    {
+      "file": "src/world/terrain.test.ts",
+      "status": "passed",
+      "tests": 13
+    },
+    {
+      "file": "src/world/World.test.ts",
+      "status": "passed",
+      "tests": 3
+    },
+    {
+      "file": "src/creatures/rider/attachment.test.ts",
+      "status": "passed",
+      "tests": 22
+    },
+    {
+      "file": "src/creatures/rider/cloth.test.ts",
+      "status": "passed",
+      "tests": 10
+    },
+    {
+      "file": "src/creatures/rider/gait.test.ts",
+      "status": "passed",
+      "tests": 6
+    },
+    {
+      "file": "src/creatures/rider/garmentBehavior.test.ts",
+      "status": "passed",
+      "tests": 12
+    },
+    {
+      "file": "src/creatures/rider/garmentCloth.test.ts",
+      "status": "passed",
+      "tests": 14
+    },
+    {
+      "file": "src/creatures/rider/ik.test.ts",
+      "status": "passed",
+      "tests": 5
+    },
+    {
+      "file": "src/creatures/rider/materialIdentity.test.ts",
+      "status": "passed",
+      "tests": 9
+    },
+    {
+      "file": "src/creatures/rider/mixedWardrobe.test.ts",
+      "status": "passed",
+      "tests": 9
+    },
+    {
+      "file": "src/creatures/rider/model.test.ts",
+      "status": "passed",
+      "tests": 7
+    },
+    {
+      "file": "src/creatures/rider/mountedFit.test.ts",
+      "status": "passed",
+      "tests": 16
+    },
+    {
+      "file": "src/creatures/rider/proof.test.ts",
+      "status": "passed",
+      "tests": 15
+    },
+    {
+      "file": "src/creatures/rider/sharedBody.test.ts",
+      "status": "passed",
+      "tests": 9
+    },
+    {
+      "file": "src/creatures/rider/wardrobe.test.ts",
+      "status": "passed",
+      "tests": 5
+    },
+    {
+      "file": "src/creatures/wyvern/ao.test.ts",
+      "status": "passed",
+      "tests": 3
+    },
+    {
+      "file": "src/creatures/wyvern/wyvern.anatomy.test.ts",
+      "status": "passed",
+      "tests": 41
+    },
+    {
+      "file": "src/creatures/wyvern/wyvern.flight.test.ts",
+      "status": "passed",
+      "tests": 32
+    },
+    {
+      "file": "src/creatures/wyvern/wyvern.golden.test.ts",
+      "status": "passed",
+      "tests": 2
+    },
+    {
+      "file": "src/creatures/wyvern/wyvern.ground.test.ts",
+      "status": "passed",
+      "tests": 40
+    },
+    {
+      "file": "src/creatures/wyvern/wyvern.hide.test.ts",
+      "status": "passed",
+      "tests": 18
+    },
+    {
+      "file": "src/creatures/wyvern/wyvern.tail.test.ts",
+      "status": "passed",
+      "tests": 8
+    },
+    {
+      "file": "src/world/airship/SailCloth.test.ts",
+      "status": "passed",
+      "tests": 3
+    },
+    {
+      "file": "src/world/airship/windhaven.test.ts",
+      "status": "passed",
+      "tests": 27
+    },
+    {
+      "file": "src/world/airship/windhavenHull.test.ts",
+      "status": "passed",
+      "tests": 2
+    },
+    {
+      "file": "src/world/dressing/Dressing.test.ts",
+      "status": "passed",
+      "tests": 7
+    },
+    {
+      "file": "src/world/dressing/exclusions.test.ts",
+      "status": "passed",
+      "tests": 3
+    },
+    {
+      "file": "src/world/dressing/geom.test.ts",
+      "status": "passed",
+      "tests": 4
+    },
+    {
+      "file": "src/world/mesh/features.test.ts",
+      "status": "passed",
+      "tests": 13
+    },
+    {
+      "file": "src/world/mesh/islandMesh.test.ts",
+      "status": "passed",
+      "tests": 7
+    },
+    {
+      "file": "src/world/dressing/grass/fieldChunk.test.ts",
+      "status": "passed",
+      "tests": 6
+    },
+    {
+      "file": "src/world/dressing/roots/rootPlan.test.ts",
+      "status": "passed",
+      "tests": 4
+    },
+    {
+      "file": "src/world/dressing/structures/roostPlan.test.ts",
+      "status": "passed",
+      "tests": 3
+    },
+    {
+      "file": "src/world/dressing/structures/ruinShadows.test.ts",
+      "status": "passed",
+      "tests": 2
+    },
+    {
+      "file": "src/world/dressing/trees/colliderFit.test.ts",
+      "status": "passed",
+      "tests": 9
+    },
+    {
+      "file": "src/world/dressing/trees/placement.test.ts",
+      "status": "passed",
+      "tests": 5
+    },
+    {
+      "file": "src/world/dressing/water/waterfallPlan.test.ts",
+      "status": "passed",
+      "tests": 4
+    },
+    {
+      "file": "src/world/dressing/ventari/FirstLead.test.ts",
+      "status": "passed",
+      "tests": 6
+    },
+    {
+      "file": "src/world/dressing/ventari/plan.test.ts",
+      "status": "passed",
+      "tests": 4
+    }
+  ]
+}

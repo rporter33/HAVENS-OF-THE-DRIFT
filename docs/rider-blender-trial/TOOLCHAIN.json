@@ -1,0 +1,40 @@
+{
+  "blender": {
+    "version": "4.5.14 LTS",
+    "buildHash": "62c1db4208e8",
+    "buildDate": "2026-09-15",
+    "executable": "tools/blender/blender-4.5.14-windows-x64/blender.exe",
+    "portable": true,
+    "archiveBytes": 398661046,
+    "archiveSha256": "b9533d2397ac1984db4466fb23a7a4649391cca93f6e84209f9bcc60d071c8b9",
+    "officialChecksum": "https://mirror.blender.org/release/Blender4.5/blender-4.5.14.sha256",
+    "download": "https://ftp.halifax.rwth-aachen.de/blender/release/Blender4.5/blender-4.5.14-windows-x64.zip",
+    "verification": "official and university checksums agreed; ZIP SHA256 checked before unpack; executable version/build read live"
+  },
+  "node": "26.11.1",
+  "python": "3.14.8",
+  "three": "0.186.1",
+  "vite": "8.3.4",
+  "typescript": "6.0.2",
+  "packageLock": {
+    "sha256": "da1634c540f1ffab597f6f2b51e18d1e79f0b8511e012f02c0075629d15417ef",
+    "unchangedFromBaseline": true
+  },
+  "installation": "Only portable Blender added locally after notification/authorization. No global install/settings/LFS/npm dependency change.",
+  "inspectionOnly": {
+    "python": "3.12.14",
+    "pillow": "12.3.0",
+    "provider": "existing Codex bundled runtime; no installation",
+    "purpose": "QA contact sheets; original captures remain authoritative"
+  },
+  "browserQA": {
+    "browser": "155.0.4283.45",
+    "backendRequest": "ANGLE D3D11, headless Edge; no SwiftShader flag",
+    "viewport": {
+      "width": 1440,
+      "height": 1080
+    },
+    "deviceScaleFactor": 1,
+    "limits": "Dedicated local GPU only if renderer confirms it; no integrated GPU certification, no GPU timer query, no total VRAM measurement"
+  }
+}
