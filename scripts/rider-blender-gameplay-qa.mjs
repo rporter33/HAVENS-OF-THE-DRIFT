@@ -15,8 +15,9 @@ async function boot(query=''){
  await page.goto(origin+'/?manual=1&quality=low&weather=clear&tod=.42&'+query,{waitUntil:'networkidle',timeout:120000});
  await page.waitForFunction(()=>window.__dw?.ready,null,{timeout:120000});
  if(query.includes('riderTrial='))await page.waitForFunction(()=>{const r=window.__riderShow?.actors?.[0]?.rider??window.__dw.game.rider;return r.trialState.status!=='loading';});
- await page.evaluate(()=>{window.__dw.advance(.5);window.__dw.render();});
+ await page.evaluate(()=>{window.__dw.advance(.5);window.__dw.game.frame(0,false);});
 }
+// Capture submits the final frame; adjacent setup does not queue a duplicate draw.
 async function capture(name){await page.evaluate(()=>window.__dw.render());const file=path.join(output,name+'.png');await page.screenshot({path:file,animations:'disabled'});report.captures.push({name,url:page.url(),sha256:crypto.createHash('sha256').update(await fs.readFile(file)).digest('hex')});}
 const state=()=>page.evaluate(()=>{const r=window.__riderShow?.actors?.[0]?.rider??window.__dw.game.rider;return {trial:r.trialState,regions:r.model.importedRegions,bodyTriangles:r.model.geometry.index.count/3,bodyVertices:r.model.geometry.attributes.position.count,patches:r.cloth.pieces.filter(p=>p.boundSurface).map(p=>({name:p.spec.name,particles:p.cloth.n,vertices:p.pos.length/3,triangles:p.geo.index.count/3,controlSignature:p.boundSurface.controlSignature,surfaceSignature:p.boundSurface.surfaceSignature}))};});
 const tab=label=>page.locator('.dw-tab').filter({hasText:new RegExp('^'+label+'$')}).click();
@@ -48,7 +49,7 @@ try{
    h.advance(.6,{flight:{flap:1}});const takeoff=p.mode;
    g.world.terrain.standingPoint(spawn[0]-6,spawn[2]+4,at);at.y+=p.breed.standHeight+3;p.teleport(at,0,'flying',4);p.model.state.velocity.y=-2;
    for(let i=0;i<180&&p.mode==='flying';i++)h.advance(1/30,{flight:{flare:1}});
-   const landing=p.mode;h.advance(1);h.advance(.25,{pressed:{interact:true}});const dismount=p.mode;h.advance(1);h.render();
+   const landing=p.mode;h.advance(1);h.advance(.25,{pressed:{interact:true}});const dismount=p.mode;h.advance(1);g.frame(0,false);
    return {takeoff,landing,dismount,finished:p.mode,finite:g.rider.cloth.pieces.every(pc=>Array.from(pc.pos).every(Number.isFinite)),regions:g.rider.model.importedRegions};
  });check('imported mix completes actual takeoff, landing and dismount',gameplay.takeoff==='flying'&&gameplay.landing==='landed'&&gameplay.dismount==='dismounting'&&gameplay.finished==='onFoot'&&gameplay.finite,gameplay);await capture('gameplay-after-dismount');
  phase='walking-running';const locomotion=await page.evaluate(()=>{
@@ -61,7 +62,7 @@ try{
    for(const [name,input] of [['bank-left',{roll:-.8}],['bank-right',{roll:.8}],['dive',{pitch:-.6,tuck:1}],['brake',{pitch:.3,flare:1}]]){h.advance(.8,{flight:input});h.render();rows.push({name,mode:p.mode,position:p.position.toArray(),velocity:p.model.state.velocity.toArray(),finite:g.rider.cloth.pieces.every(pc=>Array.from(pc.pos).every(Number.isFinite))});}
    p.teleport(at,Math.PI,'flying',15);h.advance(.2);return {rows,teleportFinite:g.rider.cloth.pieces.every(pc=>Array.from(pc.pos).every(Number.isFinite))};
  });check('authored rider survives actual banks, dive, brake and teleport',flying.rows.every(r=>r.mode==='flying'&&r.finite&&r.position.every(Number.isFinite))&&flying.teleportFinite,flying);await capture('gameplay-flight-brake');
- for(const [side,sign] of [['left',1],['right',-1]]){await page.evaluate(sign=>{const h=window.__dw,g=h.game,rig=g.cameraRig.rigs.flight;rig.look.yaw=sign*Math.PI/2;rig.lookIdle=0;h.advance(.1);h.render();},sign);await capture('actual-gameplay-mounted-'+side);}
+ for(const [side,sign] of [['left',1],['right',-1]]){await page.evaluate(sign=>{const h=window.__dw,g=h.game,rig=g.cameraRig.rigs.flight;rig.look.yaw=sign*Math.PI/2;rig.lookIdle=0;h.advance(.1);g.frame(0,false);},sign);await capture('actual-gameplay-mounted-'+side);}
  // Same code, look, pose, camera and software renderer; only the explicit provider changes.
  for(const [name,query] of [['mixed-front',mixed+'&angle=0'],['mixed-side',mixed+'&angle=90'],['mixed-back',mixed+'&angle=180'],['travel-front','view=rider&outfit=travel-drape&headgear=none&scarf=none&cape=none&angle=0&dist=2.7&height=.95'],['mounted-left',mixed+'&real=1&angle=90&height=-.1&dist=4.6'],['mounted-right',mixed+'&real=1&angle=270&height=-.1&dist=4.6']]){
    for(const variant of ['current','proof']){phase=name+'-'+variant;await boot(query+(variant==='proof'?'&riderTrial=blender':''));await capture(phase);

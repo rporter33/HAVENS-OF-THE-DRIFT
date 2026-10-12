@@ -69,3 +69,39 @@ not counted as a successful corrected-head result. Current CI status belongs in
 PR #14; no merge/deployment action is authorized by this document. The existing
 main-push Pages workflow is unchanged and would require release authorization
 before a future merge is performed.
+
+## Follow-up: browser selection and retained failures
+
+Head `346e233` did not clear final CI. Authored run 38229652284 completed
+23 fit captures before a 30-second screenshot timeout, then 11 lifecycle checks
+before another screenshot timeout. Stable, motion and delivery passed. Its
+52-entry artifact is retained with SHA-256
+`f413d81eb421d90d6626d549235e768cc76677e699b3ea8b3e56679fae10435e`.
+The completed CI screenshots took 8.37–28.68 seconds. Removing duplicate draws
+alone did not resolve this runner's capture bottleneck.
+
+The authored browser helper now explicitly selects full Chromium on Linux,
+matching the existing integration RAF check and the full-browser local Edge
+path. Playwright's default headless selection instead uses its separate
+chromium-headless-shell executable (verified in the installed Playwright source).
+This is a browser-environment alignment, not proof that shell choice alone
+caused the failures. Three adjacent gameplay capture setups also stop submitting
+duplicate GPU draws; their zero-dt presentation updates and the final actual
+capture remain. All other motion, quality, disposal and sustained draws remain.
+No assertions, screenshot deadlines, quality, viewport or runtime code changed.
+
+Full installed Chromium locally passed all four fit cases and 32 captures with
+zero errors. The supplemental summary records per-capture timing, source report
+hash and transition evidence. Linux CI must independently pass this configuration.
+
+Integration run 38229652228 also failed the unchanged >=45 callbacks/s painted-UI
+gate: 32.39/s, a 228 ms first callback and one 727.9 ms gap, while median/p95
+intervals were 16.7/21 ms and mean reticle CPU was 0.0246 ms. The prior passing
+run measured 59.92/s. This does not prove the host or compositor caused the gap.
+The original 2-second window, 500 ms settling, >=45 rate and <=2.5 ms CPU
+assertions are unchanged. One unchanged diagnostic retry was requested; its
+result must be reported separately. The failed 29-entry artifact has SHA-256
+`c24f3c88a636b49a8b1183dc907bbfb31cf905dace2b8d67fad53b951f39232e`.
+Both complete archives and job logs are retained in the external recovery folder.
+
+The local full-Chromium lifecycle follow-up passed 26 checks and 23 captures, including failed-load fallback, late-load Revert, offline changes and sustained replacements, with no unexpected browser errors (the intentional failed-load 404 is retained). Full fit screenshots peaked at 3.357 seconds. Stable measurement fields matched the prior Edge run; dynamic floating-point samples are not claimed byte-identical across browser versions.

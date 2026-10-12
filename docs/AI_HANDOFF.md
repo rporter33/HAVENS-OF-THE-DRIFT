@@ -1,3 +1,11 @@
+## CI continuation � full Chromium alignment (12 October 2026)
+
+PR #14 remains unmerged and undeployed. Head 346e233 failed screenshot and
+painted-UI scheduling gates; see the CI resolution document for exact evidence.
+The follow-up changes only QA browser selection and redundant pre-capture draws.
+All runtime/assets and completed release work remain intact. Final-head CI must
+pass before marking ready; session guide PR #13 remains separate.
+
 # Driftwing — AI Development Handoff
 
 ## PR #14 CI/performance follow-up — 2026-10-12 UTC

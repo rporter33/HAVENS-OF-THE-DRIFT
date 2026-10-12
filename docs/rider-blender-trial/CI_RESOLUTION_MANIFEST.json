@@ -60,7 +60,34 @@
       "bytes": 786,
       "sha256": "06b134563f85d66c0f33f49e63f68d282e958f71877c4b3b16fbe14348fb347d",
       "sourceArchive": "pr14-authored-ci-attempt1-evidence.zip"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/integration-346-reticle-failure.json",
+      "bytes": 90816,
+      "sha256": "b554f7b92a3bd08affc5de98b7bf1f22a6fbb2c5980e3895e8e29db28021f7db"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/authored-346-checks.json",
+      "bytes": 515,
+      "sha256": "7aeb3c5d21d1ff891324cf039d94777e5242eb519f57c10a91c6735659c22f86"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/full-chromium-fit-summary.json",
+      "bytes": 16781,
+      "sha256": "36467e4528fab35f507bc5f31faa5321c995349e7edbdda114dc9f3fb57b6835"
+    },
+    {
+      "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/full-chromium-gameplay-report.json",
+      "bytes": 26360,
+      "sha256": "2817ebe2c8ff4fa6cdac25722bdf615cf2b3df22aac03448c0f6b67d4f4d8067"
     }
   ],
-  "hashNote": "Evidence raw-byte SHA256; prior PR_PACKAGE_MANIFEST identifies original published Git blobs. This supplement does not replace historical manifests."
+  "hashNote": "Evidence raw-byte SHA256; prior PR_PACKAGE_MANIFEST identifies original published Git blobs. This supplement does not replace historical manifests.",
+  "browserFollowup": {
+    "base": "346e2334a1ec019e2d8f715bcffa4e0457886ba0",
+    "runtimeAndAssetsUnchanged": true,
+    "checksUnweakened": true,
+    "scripts/rider-blender-browser.mjs": "fc9b1c16eec52101468460aa8b319da243bb0c72075a20d3b36b2b9f2d3f03a1",
+    "scripts/rider-blender-gameplay-qa.mjs": "daaa7d003d6b56257d3bea6aff9ca62b7b4231913f1c05c12285d55326996bc1"
+  }
 }
