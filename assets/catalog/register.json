@@ -1,0 +1,331 @@
+{
+  "schema_version": 1,
+  "recorded_on": "2026-10-14",
+  "baseline_commit": "88764f93e4c54e7b28ff8d0951c963e8b12c6db0",
+  "hash_convention": "SHA-256 of exact committed Git-blob bytes for committed source_files only; external unknowns remain null/unrecorded.",
+  "archive_destination": null,
+  "archive_state": "destination_pending",
+  "entries": [
+    {
+      "asset_id": "supplied-art-reference-pack",
+      "version": null,
+      "category": "reference_pack",
+      "availability_state": "committed",
+      "repository_paths": [
+        "docs/art/Driftwing_Codex_Complete_Art_Reference_Pack.zip"
+      ],
+      "provenance_evidence_paths": [
+        "docs/art/README.md",
+        "docs/ART_DIRECTION.md"
+      ],
+      "source_files": [
+        {
+          "path": "docs/art/Driftwing_Codex_Complete_Art_Reference_Pack.zip",
+          "sha256": "5d52b540aedc8fbf3bc73f1591e34010ee43bbe86659003b2b43a835bbcfdfd9",
+          "source_commit": "88764f93e4c54e7b28ff8d0951c963e8b12c6db0"
+        }
+      ],
+      "rights": {
+        "status": "unverified",
+        "creator": null,
+        "license": null,
+        "attribution": null,
+        "evidence": []
+      },
+      "archive": {
+        "state": "not_applicable_to_committed_copy",
+        "destination": null,
+        "restore_verification": null
+      },
+      "qa": {
+        "status": "not_established_by_hash",
+        "evidence_paths": [
+          "docs/art/README.md",
+          "docs/ART_DIRECTION.md"
+        ],
+        "limitations": [
+          "32 extracted files and 31-entry manifest retained under docs/art/Driftwing_Codex_Handoff/; written visual authority is proposed and subject to owner direction.",
+          "Asset-specific input rights and shipping attribution are not established by preservation."
+        ]
+      },
+      "verification": {
+        "date": "2026-10-14",
+        "method": "SHA-256 of exact Git-blob bytes",
+        "scope": "Committed file identity only; no rights, runtime or external-master certification"
+      },
+      "unresolved_issues": [
+        "32 extracted files and 31-entry manifest retained under docs/art/Driftwing_Codex_Handoff/; written visual authority is proposed and subject to owner direction.",
+        "Asset-specific input rights and shipping attribution are not established by preservation."
+      ]
+    },
+    {
+      "asset_id": "windline-mechanics-diagram",
+      "version": null,
+      "category": "reference",
+      "availability_state": "committed",
+      "repository_paths": [
+        "assets/concepts/windline_bracer_mechanics.svg"
+      ],
+      "provenance_evidence_paths": [
+        "docs/concepts/WINDLINE_BRACER_SWINGING.md"
+      ],
+      "source_files": [
+        {
+          "path": "assets/concepts/windline_bracer_mechanics.svg",
+          "sha256": "6be0780c786c03276d0926c9495969f1e26e3d19ba254acf0fdf9b544aee065d",
+          "source_commit": "88764f93e4c54e7b28ff8d0951c963e8b12c6db0"
+        }
+      ],
+      "rights": {
+        "status": "unverified",
+        "creator": null,
+        "license": null,
+        "attribution": null,
+        "evidence": []
+      },
+      "archive": {
+        "state": "not_applicable_to_committed_copy",
+        "destination": null,
+        "restore_verification": null
+      },
+      "qa": {
+        "status": "not_established_by_hash",
+        "evidence_paths": [
+          "docs/concepts/WINDLINE_BRACER_SWINGING.md"
+        ],
+        "limitations": [
+          "Repo-authored schematic described in the concept brief; historical mechanics may be superseded. Not a runtime asset."
+        ]
+      },
+      "verification": {
+        "date": "2026-10-14",
+        "method": "SHA-256 of exact Git-blob bytes",
+        "scope": "Committed file identity only; no rights, runtime or external-master certification"
+      },
+      "unresolved_issues": [
+        "Repo-authored schematic described in the concept brief; historical mechanics may be superseded. Not a runtime asset."
+      ]
+    },
+    {
+      "asset_id": "navigators-grapple-preview",
+      "version": null,
+      "category": "reference",
+      "availability_state": "committed",
+      "repository_paths": [
+        "assets/concepts/navigators_grapple_poster_preview.webp"
+      ],
+      "provenance_evidence_paths": [
+        "docs/concepts/WINDLINE_BRACER_CODEX_PROMPT.md",
+        "docs/ART_DIRECTION.md"
+      ],
+      "source_files": [
+        {
+          "path": "assets/concepts/navigators_grapple_poster_preview.webp",
+          "sha256": "cb0eb4b66acb213960d10399de05003052d379c8e0b17f13d5936377471fda76",
+          "source_commit": "88764f93e4c54e7b28ff8d0951c963e8b12c6db0"
+        }
+      ],
+      "rights": {
+        "status": "unverified",
+        "creator": null,
+        "license": null,
+        "attribution": null,
+        "evidence": []
+      },
+      "archive": {
+        "state": "not_applicable_to_committed_copy",
+        "destination": null,
+        "restore_verification": null
+      },
+      "qa": {
+        "status": "not_established_by_hash",
+        "evidence_paths": [
+          "docs/concepts/WINDLINE_BRACER_CODEX_PROMPT.md",
+          "docs/ART_DIRECTION.md"
+        ],
+        "limitations": [
+          "Only the small preview is committed; high-resolution original is reported available separately from owner.",
+          "Supplemental mood reference, not authoritative anatomy/mechanics or a runtime texture."
+        ]
+      },
+      "verification": {
+        "date": "2026-10-14",
+        "method": "SHA-256 of exact Git-blob bytes",
+        "scope": "Committed file identity only; no rights, runtime or external-master certification"
+      },
+      "unresolved_issues": [
+        "Only the small preview is committed; high-resolution original is reported available separately from owner.",
+        "Supplemental mood reference, not authoritative anatomy/mechanics or a runtime texture."
+      ]
+    },
+    {
+      "asset_id": "driftwing-title-music",
+      "version": null,
+      "category": "runtime_audio",
+      "availability_state": "committed",
+      "repository_paths": [
+        "src/audio/assets/driftwing-intro.mp3"
+      ],
+      "provenance_evidence_paths": [
+        "src/audio/Audio.ts",
+        "src/ui/CreditsMenu.ts",
+        "docs/qa/reports/AUDIO_QA_2026-10-11.md"
+      ],
+      "source_files": [
+        {
+          "path": "src/audio/assets/driftwing-intro.mp3",
+          "sha256": "7fc19baf65629b3615f4e69ac7b29777613ce7db8458d44df6e7ee3ce852726d",
+          "source_commit": "88764f93e4c54e7b28ff8d0951c963e8b12c6db0"
+        }
+      ],
+      "rights": {
+        "status": "unverified",
+        "creator": null,
+        "license": null,
+        "attribution": null,
+        "evidence": []
+      },
+      "archive": {
+        "state": "not_applicable_to_committed_copy",
+        "destination": null,
+        "restore_verification": null
+      },
+      "qa": {
+        "status": "not_established_by_hash",
+        "evidence_paths": [
+          "src/audio/Audio.ts",
+          "src/ui/CreditsMenu.ts",
+          "docs/qa/reports/AUDIO_QA_2026-10-11.md"
+        ],
+        "limitations": [
+          "Existing runtime import/path retained; creator, original source and asset-specific license/attribution evidence require confirmation.",
+          "No fresh audio audition or runtime test is established by this metadata change."
+        ]
+      },
+      "verification": {
+        "date": "2026-10-14",
+        "method": "SHA-256 of exact Git-blob bytes",
+        "scope": "Committed file identity only; no rights, runtime or external-master certification"
+      },
+      "unresolved_issues": [
+        "Existing runtime import/path retained; creator, original source and asset-specific license/attribution evidence require confirmation.",
+        "No fresh audio audition or runtime test is established by this metadata change."
+      ]
+    },
+    {
+      "asset_id": "female-wyvern-tail-study",
+      "version": null,
+      "category": "external_art_study",
+      "availability_state": "external_reported",
+      "repository_paths": [],
+      "provenance_evidence_paths": [
+        "Art and Assets/Lessons Learned/LESSONS_LEARNED_BLENDER_ASSET_STUDIES.md"
+      ],
+      "generation": {
+        "generator": "Tripo (reported in lessons)",
+        "actual_model_version": null,
+        "task_id": null,
+        "settings": null
+      },
+      "source_files": [],
+      "rights": {
+        "status": "unverified",
+        "creator": null,
+        "license": null,
+        "attribution": null,
+        "evidence": []
+      },
+      "archive": {
+        "state": "destination_pending",
+        "destination": null,
+        "archive_id": null,
+        "versioned_relative_keys": [],
+        "reported_locator": {
+          "kind": "workstation_only",
+          "workspace": "C:\\Users\\Robert\\Documents\\ChatGPT\\Dragon Circuit",
+          "master_relative_path": "ArtStudies/Wyvern_TailCleanup_v01/DragonCircuit_FemaleWyvern_TailStudy.blend"
+        },
+        "backup_verification": null,
+        "restore_verification": null
+      },
+      "qa": {
+        "status": "historical_study_report_only",
+        "evidence_paths": [
+          "Art and Assets/Lessons Learned/LESSONS_LEARNED_BLENDER_ASSET_STUDIES.md"
+        ],
+        "limitations": [
+          "Lessons report a static lookdev study; no verified rig, animation, export, LOD or runtime performance."
+        ]
+      },
+      "verification": {
+        "date": null,
+        "method": null,
+        "scope": "No external file/hash/rights/backup verification performed by this organization change."
+      },
+      "unresolved_issues": [
+        "Raw/master hashes, asset version, dependencies and archive/restore verification pending; do not relabel original Tripo provenance as Meshy.",
+        "Workstation locator is not a portable build dependency or evidence of an archive copy."
+      ]
+    },
+    {
+      "asset_id": "website-storyboard-chapter-01",
+      "version": null,
+      "category": "website_reference",
+      "availability_state": "missing_from_repository",
+      "repository_paths": [],
+      "provenance_evidence_paths": [
+        "docs/website/README.md",
+        "docs/website/storyboard/chapter-01/README.md"
+      ],
+      "source_files": [],
+      "rights": {
+        "status": "unverified",
+        "creator": null,
+        "license": null,
+        "attribution": null,
+        "evidence": []
+      },
+      "archive": {
+        "state": "destination_pending",
+        "destination": null,
+        "archive_id": null,
+        "versioned_relative_keys": [],
+        "reported_locator": {
+          "kind": "private_library_download",
+          "url": "https://chatgpt.com/api/library/files/libfile_f6c6f7c5904881918f5693c4820948a0/download",
+          "requires_owner_access": true
+        },
+        "backup_verification": null,
+        "restore_verification": null
+      },
+      "reported_filenames": [
+        "01-arrival.png",
+        "02-the-two-elders.png",
+        "03-an-old-rivalry.png",
+        "04-two-ways-to-fly.png",
+        "05-the-start.png",
+        "06-the-wind-turns.png",
+        "07-through-together.png",
+        "08-beyond-the-circuit.png"
+      ],
+      "qa": {
+        "status": "draft_reference_only",
+        "evidence_paths": [
+          "docs/website/storyboard/chapter-01/README.md"
+        ],
+        "limitations": [
+          "Exploratory v1 images are reported, not committed; some draft anatomy and elder-platform compositions require revision."
+        ]
+      },
+      "verification": {
+        "date": null,
+        "method": null,
+        "scope": "No private package download, external hash, rights or restore verification performed."
+      },
+      "unresolved_issues": [
+        "All eight original PNG imports pending; private locator availability unverified and not a public runtime URL.",
+        "Same-repository website ownership selected; no website application or release readiness implied."
+      ]
+    }
+  ]
+}

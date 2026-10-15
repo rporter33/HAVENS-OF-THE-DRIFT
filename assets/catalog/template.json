@@ -1,0 +1,64 @@
+{
+  "asset_id": null,
+  "version": null,
+  "category": null,
+  "availability_state": null,
+  "repository_paths": [],
+  "provenance_evidence_paths": [],
+  "generation": {
+    "generator": null,
+    "ui_or_api_route": null,
+    "actual_model_version": null,
+    "date": null,
+    "task_id": null,
+    "prompts": null,
+    "settings": null,
+    "input_references_and_hashes": []
+  },
+  "source_files": [],
+  "rights": {
+    "status": "unverified",
+    "creator": null,
+    "license": null,
+    "attribution": null,
+    "evidence": []
+  },
+  "archive": {
+    "state": "destination_pending",
+    "destination": null,
+    "archive_id": null,
+    "versioned_relative_keys": [],
+    "reported_locator": null,
+    "companion_dependencies": [],
+    "backup_verification": null,
+    "restore_verification": null
+  },
+  "authoring": {
+    "tool_and_version": null,
+    "master_paths_and_hashes": [],
+    "changes": null
+  },
+  "exports": {
+    "repository_paths_and_hashes": [],
+    "settings": null,
+    "measured_triangles": null,
+    "vertices": null,
+    "materials": null,
+    "texture_dimensions": null,
+    "bones": null,
+    "units": null,
+    "axes": null
+  },
+  "qa": {
+    "status": "not_verified",
+    "source_commit": null,
+    "evidence_paths": [],
+    "limitations": []
+  },
+  "verification": {
+    "date": null,
+    "method": null,
+    "scope": null
+  },
+  "unresolved_issues": []
+}

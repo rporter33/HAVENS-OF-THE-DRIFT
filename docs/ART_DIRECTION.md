@@ -4,7 +4,7 @@ Claude and Codex must use this same guide for art direction, costumes, themes, c
 
 ## Current Windline override — 2026-10-11
 
-Robert approved a bracer-fired magical tether in place of the thrown lance, plus deliberate A/Space inward pulls, and subsequently requested integration of the completed Windline systems into normal gameplay. The older lance/anchor and no-powered-pull references below remain historical design context; they do not override those explicit requests. The harness still carries the load, animation never drives physics, and there is no automatic winch. Updated character models, wardrobes, moving anchors and broader production art remain deferred. See [the cloud handoff](CLOUD_HANDOFF_2026-10-11.md) for the implemented scope.
+Robert approved a bracer-fired magical tether in place of the thrown lance, plus deliberate A/Space inward pulls, and subsequently requested integration of the completed Windline systems into normal gameplay. The older lance/anchor and no-powered-pull references below remain historical design context; they do not override those explicit requests. The harness still carries the load, animation never drives physics, and there is no automatic winch. Updated character models, wardrobes, moving anchors and broader production art remain deferred. See [the cloud handoff](history/CLOUD_HANDOFF_2026-10-11.md) for the implemented scope.
 
 ## Authority and scope
 

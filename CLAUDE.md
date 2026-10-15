@@ -1,10 +1,12 @@
-﻿# Driftwing — Claude Code Instructions
+# Havens of the Drift — Claude Code Instructions
 
 Read AGENTS.md before beginning work.
 
 Follow the same architecture, safety, testing, and handoff rules as Codex.
 
 Read ARCHITECTURE.md and the relevant sections of docs/ROADMAP.md before proposing changes.
+
+This checkout is Havens of the Drift, continuing the Driftwing baseline and the Dragon Circuit documentation. Read [the documentation map](docs/README.md), [production status](docs/production/STATUS.md), [owner decisions](docs/production/DECISIONS.md) and [asset records](assets/README.md). Reverify dated status and follow the current task; historical handoffs do not authorize new work. Runtime paths and save identifiers retain their established names.
 
 ## Model usage guidance
 - Use Sonnet for routine implementation, focused debugging, and tests.
