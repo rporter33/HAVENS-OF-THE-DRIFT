@@ -1,0 +1,34 @@
+{
+  "passes": [
+    {
+      "pass": 1,
+      "name": "Silhouette and identity",
+      "findings": "Fuller arm profiles, stronger jaw/brow forms, smaller eye opening and broad swept ponytail hair masses. Existing skeleton and animation remain in place.",
+      "evidence": "pass-1/manifest.json"
+    },
+    {
+      "pass": 2,
+      "name": "Garment construction",
+      "findings": "Diagonal rolled drape, larger rounded scale hems, overlapping folded chiton panels, gathered trouser hems and crossed calf wraps. The longer Aerie trouser test reduced Skimmer bank clearance; compact flight hems restored the unchanged fit thresholds in the following pass.",
+      "evidence": "pass-2/manifest.json"
+    },
+    {
+      "pass": 3,
+      "name": "M01 surface finish",
+      "findings": "Shared 1K linen weave, slate grain, worn leather and restrained bronze. Atlas applied to body cloth and moving drape/sash as well as overlays. Drape/scale intersection corrected. Color-only dyes keep shared maps and geometry.",
+      "evidence": "pass-3/manifest.json"
+    },
+    {
+      "pass": 4,
+      "name": "Face and hair sculpt",
+      "findings": "Nose grown into the head mesh, socket/cheek color, curved brows/lips and loose hair waves. The close capture exposed an overlong central fringe.",
+      "evidence": "pass-4/manifest.json"
+    },
+    {
+      "pass": 5,
+      "name": "Final polish",
+      "findings": "Shortened the loose fringe to clear the eyes, added rear shoulder folds and seated the brooch above the rolled cloth. Reallocated hair detail to retain the original triangle cap. Final production evidence is below.",
+      "evidence": "pass-5/manifest.json"
+    }
+  ]
+}

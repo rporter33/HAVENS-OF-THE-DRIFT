@@ -1,0 +1,161 @@
+{
+  "scope": "Node CPU Rider.update only; no WebGL, GPU, memory or end-to-end frame-rate claim",
+  "rows": [
+    {
+      "quality": "low",
+      "outfit": "courier",
+      "withoutSurfaceContactMs": {
+        "median": 0.2402999999903841,
+        "p95": 0.28470000000379514
+      },
+      "withSurfaceContactMs": {
+        "median": 0.46979999999166466,
+        "p95": 0.6206999999994878
+      },
+      "medianIncrementMs": 0.22950000000128057
+    },
+    {
+      "quality": "low",
+      "outfit": "cartographer",
+      "withoutSurfaceContactMs": {
+        "median": 0.5788999999931548,
+        "p95": 0.7539000000106171
+      },
+      "withSurfaceContactMs": {
+        "median": 0.9348000000027241,
+        "p95": 1.185299999997369
+      },
+      "medianIncrementMs": 0.35590000000956934
+    },
+    {
+      "quality": "low",
+      "outfit": "travel-drape",
+      "withoutSurfaceContactMs": {
+        "median": 0.22699999999895226,
+        "p95": 0.24540000001434237
+      },
+      "withSurfaceContactMs": {
+        "median": 0.4029000000009546,
+        "p95": 0.43219999999564607
+      },
+      "medianIncrementMs": 0.17590000000200234
+    },
+    {
+      "quality": "medium",
+      "outfit": "courier",
+      "withoutSurfaceContactMs": {
+        "median": 0.2370000000082655,
+        "p95": 0.24390000000130385
+      },
+      "withSurfaceContactMs": {
+        "median": 1.2505999999993946,
+        "p95": 1.4637000000075204
+      },
+      "medianIncrementMs": 1.0135999999911292
+    },
+    {
+      "quality": "medium",
+      "outfit": "cartographer",
+      "withoutSurfaceContactMs": {
+        "median": 0.6174999999930151,
+        "p95": 0.6533000000054017
+      },
+      "withSurfaceContactMs": {
+        "median": 2.3876000000018394,
+        "p95": 2.6596000000135973
+      },
+      "medianIncrementMs": 1.7701000000088243
+    },
+    {
+      "quality": "medium",
+      "outfit": "travel-drape",
+      "withoutSurfaceContactMs": {
+        "median": 0.23970000000554137,
+        "p95": 0.2510000000038417
+      },
+      "withSurfaceContactMs": {
+        "median": 0.9723999999987427,
+        "p95": 1.155400000003283
+      },
+      "medianIncrementMs": 0.7326999999932013
+    },
+    {
+      "quality": "high",
+      "outfit": "courier",
+      "withoutSurfaceContactMs": {
+        "median": 0.25509999999485444,
+        "p95": 0.2682000000058906
+      },
+      "withSurfaceContactMs": {
+        "median": 2.405299999998533,
+        "p95": 2.873199999987264
+      },
+      "medianIncrementMs": 2.1502000000036787
+    },
+    {
+      "quality": "high",
+      "outfit": "cartographer",
+      "withoutSurfaceContactMs": {
+        "median": 0.6728000000002794,
+        "p95": 1.0150999999896158
+      },
+      "withSurfaceContactMs": {
+        "median": 4.784099999989849,
+        "p95": 7.856399999989662
+      },
+      "medianIncrementMs": 4.111299999989569
+    },
+    {
+      "quality": "high",
+      "outfit": "travel-drape",
+      "withoutSurfaceContactMs": {
+        "median": 0.2681999999913387,
+        "p95": 0.5051000000094064
+      },
+      "withSurfaceContactMs": {
+        "median": 1.8104000000021188,
+        "p95": 2.020199999999022
+      },
+      "medianIncrementMs": 1.54220000001078
+    },
+    {
+      "quality": "ultra",
+      "outfit": "courier",
+      "withoutSurfaceContactMs": {
+        "median": 0.2841000000044005,
+        "p95": 0.4125999999960186
+      },
+      "withSurfaceContactMs": {
+        "median": 4.180299999992712,
+        "p95": 5.110899999999674
+      },
+      "medianIncrementMs": 3.896199999988312
+    },
+    {
+      "quality": "ultra",
+      "outfit": "cartographer",
+      "withoutSurfaceContactMs": {
+        "median": 0.7281999999977415,
+        "p95": 0.9204000000027008
+      },
+      "withSurfaceContactMs": {
+        "median": 8.089500000001863,
+        "p95": 9.221900000004098
+      },
+      "medianIncrementMs": 7.361300000004121
+    },
+    {
+      "quality": "ultra",
+      "outfit": "travel-drape",
+      "withoutSurfaceContactMs": {
+        "median": 0.3479000000079395,
+        "p95": 0.38160000000789296
+      },
+      "withSurfaceContactMs": {
+        "median": 3.079700000002049,
+        "p95": 3.8479000000079395
+      },
+      "medianIncrementMs": 2.7317999999941094
+    }
+  ]
+}

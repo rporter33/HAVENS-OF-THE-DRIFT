@@ -1,0 +1,53 @@
+PASS no audio context before gesture
+PASS title: finite and unclipped
+PASS title: nonzero playback
+title {"seconds":2.986666666666667,"peakDb":-19.021633832501404,"rmsDb":-29.71695612398214,"nonfinite":0,"clipped":0}
+PASS title loops across multiple recording lengths
+PASS title music continues through Settings sheet
+PASS Master slider applies mute through the actual Settings sheet
+PASS title source stopped on gameplay entry
+PASS gameplay-ground: finite and unclipped
+PASS gameplay-ground: nonzero playback
+gameplay-ground {"seconds":3.1573333333333333,"peakDb":-18.042279854688065,"rmsDb":-33.06803027583714,"nonfinite":0,"clipped":0}
+PASS flight: finite and unclipped
+PASS flight: nonzero playback
+flight {"seconds":3.1573333333333333,"peakDb":-5.4711041263926505,"rmsDb":-24.728981368329727,"nonfinite":0,"clipped":0}
+PASS pause: finite and unclipped
+PASS pause: nonzero playback
+pause {"seconds":2.048,"peakDb":-13.432163070430596,"rmsDb":-26.550900150887507,"nonfinite":0,"clipped":0}
+PASS pause retains running audio
+PASS musicVolume: gain approaches zero
+PASS sfxVolume: gain approaches zero
+PASS masterVolume: gain approaches zero
+PASS muted: finite and unclipped
+PASS muted: silent
+muted {"seconds":2.986666666666667,"peakDb":-130.51075771004258,"rmsDb":-156.2358281869332,"nonfinite":0,"clipped":0}
+PASS all mute settings persist after reload
+PASS restored volumes remain applied after unlock fade
+PASS grapple-attach: finite and unclipped
+PASS grapple-attach: nonzero playback
+grapple-attach {"seconds":2.048,"peakDb":-13.782273037449999,"rmsDb":-32.86163682711721,"nonfinite":0,"clipped":0}
+PASS sustained tether does not add repeated SFX voices
+PASS grapple-pull: finite and unclipped
+PASS grapple-pull: nonzero playback
+grapple-pull {"seconds":2.048,"peakDb":-19.466174107721976,"rmsDb":-33.88748169807319,"nonfinite":0,"clipped":0}
+PASS grapple-release: finite and unclipped
+PASS grapple-release: nonzero playback
+grapple-release {"seconds":2.048,"peakDb":-15.127127072850362,"rmsDb":-33.561930688969916,"nonfinite":0,"clipped":0}
+PASS boost: finite and unclipped
+PASS boost: nonzero playback
+boost {"seconds":2.048,"peakDb":-17.9231834068447,"rmsDb":-32.179108467462434,"nonfinite":0,"clipped":0}
+PASS recall: finite and unclipped
+PASS recall: nonzero playback
+recall {"seconds":3.1573333333333333,"peakDb":-5.32111193421044,"rmsDb":-26.88683009097462,"nonfinite":0,"clipped":0}
+PASS recall triggers existing rescue cues
+PASS castAndAttachStrips: cue supplied
+PASS pullStrips: cue supplied
+PASS releaseStrips: cue supplied
+PASS boostStrips: cue supplied
+action strips {"castAndAttachStrips":2,"pullStrips":1,"releaseStrips":1,"boostStrips":1,"recallStrips":2}
+PASS repeat cycle 1: one cue per action
+PASS repeat cycle 2: one cue per action
+PASS repeat cycle 3: one cue per action
+PASS all existing offline scenes audible, finite and unclipped
+PASS no browser errors

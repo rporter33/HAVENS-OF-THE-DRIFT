@@ -1,0 +1,173 @@
+{
+  "label": "baseline",
+  "base": "http://127.0.0.1:5193",
+  "scope": "One 2560x1440 Roost scene; rAF cadence includes CPU/GPU/vsync/browser. Not a representative minimum-hardware certification.",
+  "samples": [
+    {
+      "quality": "low",
+      "renderer": "ANGLE (AMD, AMD Radeon RX 9070 XT (0x00007550) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "meanFrameMs": 8.358692628650903,
+      "p50FrameMs": 6.100000000000364,
+      "p95FrameMs": 18.200000000000728,
+      "frames": 719,
+      "stats": {
+        "calls": 123,
+        "triangles": 404376,
+        "points": 55,
+        "programs": 65,
+        "width": 2560,
+        "height": 1440,
+        "pixelRatio": 1,
+        "compiling": 0
+      },
+      "dynamicResolution": 1,
+      "mapSize": 1024,
+      "anisotropy": 2,
+      "clothTriangles": [
+        {
+          "name": "ponytail",
+          "triangles": 192
+        },
+        {
+          "name": "scarf",
+          "triangles": 48
+        },
+        {
+          "name": "c02-chlamys",
+          "triangles": 40
+        },
+        {
+          "name": "c02-sash",
+          "triangles": 8
+        }
+      ],
+      "errors": []
+    },
+    {
+      "quality": "medium",
+      "renderer": "ANGLE (AMD, AMD Radeon RX 9070 XT (0x00007550) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "meanFrameMs": 16.683611111111112,
+      "p50FrameMs": 18.19999999999891,
+      "p95FrameMs": 18.299999999999272,
+      "frames": 360,
+      "stats": {
+        "calls": 159,
+        "triangles": 895667,
+        "points": 55,
+        "programs": 72,
+        "width": 2560,
+        "height": 1440,
+        "pixelRatio": 1,
+        "compiling": 0
+      },
+      "dynamicResolution": 1,
+      "mapSize": 2048,
+      "anisotropy": 2,
+      "clothTriangles": [
+        {
+          "name": "ponytail",
+          "triangles": 288
+        },
+        {
+          "name": "scarf",
+          "triangles": 48
+        },
+        {
+          "name": "c02-chlamys",
+          "triangles": 160
+        },
+        {
+          "name": "c02-sash",
+          "triangles": 16
+        }
+      ],
+      "errors": []
+    },
+    {
+      "quality": "high",
+      "renderer": "ANGLE (AMD, AMD Radeon RX 9070 XT (0x00007550) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "meanFrameMs": 16.696378830083564,
+      "p50FrameMs": 18.100000000000364,
+      "p95FrameMs": 18.399999999999636,
+      "frames": 359,
+      "stats": {
+        "calls": 187,
+        "triangles": 1242187,
+        "points": 55,
+        "programs": 71,
+        "width": 2560,
+        "height": 1440,
+        "pixelRatio": 1,
+        "compiling": 0
+      },
+      "dynamicResolution": 1,
+      "mapSize": 3072,
+      "anisotropy": 2,
+      "clothTriangles": [
+        {
+          "name": "ponytail",
+          "triangles": 384
+        },
+        {
+          "name": "scarf",
+          "triangles": 72
+        },
+        {
+          "name": "c02-chlamys",
+          "triangles": 160
+        },
+        {
+          "name": "c02-sash",
+          "triangles": 16
+        }
+      ],
+      "errors": []
+    },
+    {
+      "quality": "ultra",
+      "renderer": "ANGLE (AMD, AMD Radeon RX 9070 XT (0x00007550) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "meanFrameMs": 8.527659574468085,
+      "p50FrameMs": 6.100000000000364,
+      "p95FrameMs": 18.200000000000728,
+      "frames": 705,
+      "stats": {
+        "calls": 215,
+        "triangles": 1727003,
+        "points": 55,
+        "programs": 71,
+        "width": 2560,
+        "height": 1440,
+        "pixelRatio": 1,
+        "compiling": 0
+      },
+      "dynamicResolution": 1,
+      "mapSize": 4096,
+      "anisotropy": 2,
+      "clothTriangles": [
+        {
+          "name": "ponytail",
+          "triangles": 384
+        },
+        {
+          "name": "scarf",
+          "triangles": 72
+        },
+        {
+          "name": "c02-chlamys",
+          "triangles": 160
+        },
+        {
+          "name": "c02-sash",
+          "triangles": 16
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "errors": [],
+  "petalEvidence": {
+    "count": 110,
+    "shader": true,
+    "thinCards": 1
+  }
+}

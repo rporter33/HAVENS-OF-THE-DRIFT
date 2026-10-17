@@ -1,0 +1,142 @@
+{
+  "passed": true,
+  "commit": "f287267a3e29f5c0eaa2cdfa755ece94fa61a4a7",
+  "dirty": "",
+  "browser": "155.0.4283.45",
+  "url": "http://127.0.0.1:5202/",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "cycles": [
+    {
+      "cycle": 0,
+      "activation": "repeated-enter",
+      "singleSandbox": true,
+      "mode": "flying",
+      "race": "authored-region",
+      "islands": 2,
+      "authoredInTerrain": 2,
+      "assetCount": 3,
+      "shrine": true,
+      "roost": "roost",
+      "storage": [],
+      "databases": [],
+      "sentinel": "{\"sentinel\":\"player progress untouched\"}"
+    },
+    {
+      "cycle": 1,
+      "activation": "pointer-double-click",
+      "singleSandbox": true,
+      "mode": "flying",
+      "race": "authored-region",
+      "islands": 2,
+      "authoredInTerrain": 2,
+      "assetCount": 3,
+      "shrine": true,
+      "roost": "roost",
+      "storage": [],
+      "databases": [],
+      "sentinel": "{\"sentinel\":\"player progress untouched\"}"
+    },
+    {
+      "cycle": 2,
+      "activation": "single-click",
+      "singleSandbox": true,
+      "mode": "flying",
+      "race": "authored-region",
+      "islands": 2,
+      "authoredInTerrain": 2,
+      "assetCount": 3,
+      "shrine": true,
+      "roost": "roost",
+      "storage": [],
+      "databases": [],
+      "sentinel": "{\"sentinel\":\"player progress untouched\"}"
+    }
+  ],
+  "captures": [
+    {
+      "name": "editor-overview",
+      "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-c02-proof\\Driftwing\\shots\\rider-clothing\\editor-integration\\editor-overview.png",
+      "sha256": "852e6be067ace1ee4a2b15e269d028c90d48a0e6bf05cb6c33d9b9401016b0d5"
+    },
+    {
+      "name": "playtest-on-foot",
+      "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-c02-proof\\Driftwing\\shots\\rider-clothing\\editor-integration\\playtest-on-foot.png",
+      "sha256": "d0e691cb4c72238096ea4217c40db734ca11498cea55e190927aa93400a3b023"
+    },
+    {
+      "name": "playtest-mounted",
+      "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-c02-proof\\Driftwing\\shots\\rider-clothing\\editor-integration\\playtest-mounted.png",
+      "sha256": "4f5c2ba0aa25408871c12183776c28e6ebf7371a770fba15dfc99267c50ca773"
+    },
+    {
+      "name": "editor-column",
+      "file": "C:\\Users\\Robert\\.codex\\worktrees\\rider-c02-proof\\Driftwing\\shots\\rider-clothing\\editor-integration\\editor-column.png",
+      "sha256": "f571ad61d63645616101c2346090f77521adaf92b2068c20dbc944fdf3a13ea5"
+    }
+  ],
+  "errors": [],
+  "reload": {
+    "documentReadyMs": 645,
+    "editorReadyMs": 1272,
+    "state": {
+      "readyState": "complete",
+      "renderFrame": 6,
+      "navigation": {
+        "name": "http://127.0.0.1:5202/editor.html?debug=1",
+        "entryType": "navigation",
+        "startTime": 0,
+        "duration": 1238.7000000011176,
+        "navigationId": 766,
+        "initiatorType": "navigation",
+        "deliveryType": "cache",
+        "nextHopProtocol": "",
+        "renderBlockingStatus": "non-blocking",
+        "contentType": "text/html",
+        "contentEncoding": "gzip",
+        "workerStart": 0,
+        "workerRouterEvaluationStart": 0,
+        "workerCacheLookupStart": 0,
+        "workerMatchedSourceType": "",
+        "workerFinalSourceType": "",
+        "redirectStart": 0,
+        "redirectEnd": 0,
+        "fetchStart": 1.5,
+        "domainLookupStart": 2.5,
+        "domainLookupEnd": 2.5,
+        "connectStart": 2.5,
+        "secureConnectionStart": 0,
+        "connectEnd": 9.900000000372529,
+        "requestStart": 10,
+        "responseStart": 11.599999999627471,
+        "firstInterimResponseStart": 0,
+        "finalResponseHeadersStart": 11.599999999627471,
+        "responseEnd": 12,
+        "transferSize": 300,
+        "encodedBodySize": 579,
+        "decodedBodySize": 1230,
+        "responseStatus": 200,
+        "serverTiming": [],
+        "unloadEventStart": 14.599999999627471,
+        "unloadEventEnd": 14.599999999627471,
+        "domInteractive": 580.4000000003725,
+        "domContentLoadedEventStart": 641.2000000011176,
+        "domContentLoadedEventEnd": 641.3000000007451,
+        "domComplete": 1238.5999999996275,
+        "loadEventStart": 1238.7000000011176,
+        "loadEventEnd": 1238.7000000011176,
+        "type": "reload",
+        "redirectCount": 0,
+        "activationStart": 0,
+        "criticalCHRestart": 0,
+        "notRestoredReasons": null,
+        "confidence": {
+          "randomizedTriggerRate": 0.4994798,
+          "value": "high"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "startedUtc": "2026-10-12T07:54:24.892Z",
+  "source": "Isolated current-main+rider candidate; original trial/runtime/assets preserved.",
+  "origin": "http://127.0.0.1:5216",
+  "production": "http://127.0.0.1:5218",
+  "contexts": "Fresh nonpersistent browser contexts; owner saves not opened.",
+  "checks": [
+    {
+      "id": "gameplay-lifecycle",
+      "args": [
+        "scripts/rider-blender-gameplay-qa.mjs",
+        "http://127.0.0.1:5216"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 277315
+    },
+    {
+      "id": "stable",
+      "args": [
+        "scripts/rider-blender-stable-qa.mjs",
+        "http://127.0.0.1:5216"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 22821
+    },
+    {
+      "id": "motion-regression",
+      "args": [
+        "scripts/rider-blender-windkeel-qa.mjs",
+        "http://127.0.0.1:5216"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 53599
+    },
+    {
+      "id": "delivery",
+      "args": [
+        "scripts/rider-blender-delivery-check.mjs",
+        "--port=5217"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 7895
+    },
+    {
+      "id": "smoke",
+      "args": [
+        "scripts/smoke.mjs",
+        "--no-build",
+        "--port",
+        "5217"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 30428
+    },
+    {
+      "id": "existing-browser",
+      "args": [
+        "scripts/rider-blender-full-browser.mjs",
+        "--production=http://127.0.0.1:5218",
+        "--dev=http://127.0.0.1:5216",
+        "--comparison=http://127.0.0.1:5211"
+      ],
+      "exitCode": 1,
+      "elapsedMs": 455623
+    }
+  ]
+}

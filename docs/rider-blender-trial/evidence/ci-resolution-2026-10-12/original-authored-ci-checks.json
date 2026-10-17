@@ -1,0 +1,27 @@
+[
+  {
+    "name": "fit",
+    "exitCode": 1,
+    "finishedUtc": "2026-10-12T08:45:18.221Z"
+  },
+  {
+    "name": "gameplay-lifecycle",
+    "exitCode": 0,
+    "finishedUtc": "2026-10-12T08:59:51.539Z"
+  },
+  {
+    "name": "stable",
+    "exitCode": 0,
+    "finishedUtc": "2026-10-12T09:00:48.946Z"
+  },
+  {
+    "name": "motion-regression",
+    "exitCode": 0,
+    "finishedUtc": "2026-10-12T09:02:17.905Z"
+  },
+  {
+    "name": "production-delivery",
+    "exitCode": 0,
+    "finishedUtc": "2026-10-12T09:02:36.551Z"
+  }
+]

@@ -1,0 +1,1703 @@
+{
+  "branch": "codex/rider-c02-proof",
+  "compiledCommit": "bd38cc6b341d0c80afc92e373e204752dbee1796",
+  "reviewedMain": "a7adb45c28dd252091b8c10e13ea357067071061",
+  "sourceSha256": "8443a9891c4f1f96d7348b432af85771a60b4053ba1370f4c1d43d5d57335cf7",
+  "sourceFiles": [
+    {
+      "path": "src/audio/assets/driftwing-intro.mp3",
+      "sha256": "7fc19baf65629b3615f4e69ac7b29777613ce7db8458d44df6e7ee3ce852726d"
+    },
+    {
+      "path": "src/audio/Audio.ts",
+      "sha256": "f73ba65b7d2aca30131571082e26d0846fabef0cc98fd0d98e437da2079c6e65"
+    },
+    {
+      "path": "src/audio/dsp.test.ts",
+      "sha256": "19661250b976672515f943e6c5ddd54de870881dea09e781e0a6ab81c1b03d46"
+    },
+    {
+      "path": "src/audio/dsp.ts",
+      "sha256": "b1929a8ad5bf57d446b545520fe635044fbbf8ae6774f408f86d6da78c15341f"
+    },
+    {
+      "path": "src/audio/engine.ts",
+      "sha256": "e287ed575aa34f4ac2abc7697a174429b4a824c25384b2994384d4a99ff16a12"
+    },
+    {
+      "path": "src/audio/layers.ts",
+      "sha256": "0b6d1fbb876d18957de7c4f7f182f546e0ea66ffb09d9753b24c0646de46c93f"
+    },
+    {
+      "path": "src/audio/mix.test.ts",
+      "sha256": "d9521c48060609fd2eedacd6da09262497baeb383d345dbc4adda912b8945e6a"
+    },
+    {
+      "path": "src/audio/mix.ts",
+      "sha256": "f144d3844684410949af5f445b160c584610f8e761aa5d85e6eddc65057b514e"
+    },
+    {
+      "path": "src/audio/music.ts",
+      "sha256": "31b6b648ce40b3097c83d8db80735634662b8c403ca476b90be804dad337471c"
+    },
+    {
+      "path": "src/audio/notes.test.ts",
+      "sha256": "fdea3e40f0bc9be33f13f25b2bb989b30395a585d8f7ac660c1d27f85aab64c1"
+    },
+    {
+      "path": "src/audio/notes.ts",
+      "sha256": "69a77f0f698661cbd9cda8939c95eabf5aeb5ab2fdfd2e4283524cfc5969a36b"
+    },
+    {
+      "path": "src/audio/offline.ts",
+      "sha256": "1a0868ed12ab6e81e976a677abaad082c5f4fce83e574a281a17c51bc9cbc8b4"
+    },
+    {
+      "path": "src/audio/sequencer.test.ts",
+      "sha256": "2b2ee00bee8f520cff819c829875aec7288c19d34e6a830185fa366e51f99f4c"
+    },
+    {
+      "path": "src/audio/sequencer.ts",
+      "sha256": "f4e481693e90246bd252f69291532c6c812308ae953a87c48be01122b35f7439"
+    },
+    {
+      "path": "src/audio/titleMusic.test.ts",
+      "sha256": "eb3c75656499ca314ad2eb85d22a87c9bbf4ba9df65188a9b8fb694ee1d82341"
+    },
+    {
+      "path": "src/audio/titleMusic.ts",
+      "sha256": "b46ce823cc6186d9e13f8950395748038a93785e1943e7e90f1f42ad5dbf9355"
+    },
+    {
+      "path": "src/audio/traversalCues.test.ts",
+      "sha256": "2f23003b5c0a71c3ce63399ad9fd63248726312815712a4d00579606f21c5ecd"
+    },
+    {
+      "path": "src/audio/traversalCues.ts",
+      "sha256": "36cd18cb8e5f558cad60ab63d2e5475ed4167408d7b0be46386d7809db920306"
+    },
+    {
+      "path": "src/audio/traversalVoices.ts",
+      "sha256": "db550aa5f46148cc383a7a7c7c6b7f118ddf8622cbd79f46f4e1347a5dbd5969"
+    },
+    {
+      "path": "src/audio/voices.ts",
+      "sha256": "813d79ac45dd8473db4e64508c9dc5884c315ac8846c86b3e076a8b18bb4edf2"
+    },
+    {
+      "path": "src/camera/cameraMath.test.ts",
+      "sha256": "eee765dca4df83b62234ea591b82be5d92f34a24b12ef3ca9571bc0d2fe4d792"
+    },
+    {
+      "path": "src/camera/cameraMath.ts",
+      "sha256": "0588627723d92dfac9b0de9c23cd778c0c57689b1afac31bf706788fc67ea17d"
+    },
+    {
+      "path": "src/camera/CameraRig.feel.test.ts",
+      "sha256": "d46d6d8b13572dcda4281e58cfd88b180017d18eef7b46b74b8a16d750f40a54"
+    },
+    {
+      "path": "src/camera/CameraRig.test.ts",
+      "sha256": "cea0207f3e7a900d72da11e358cf35641d92329ecd84af86ed63072a1830b99c"
+    },
+    {
+      "path": "src/camera/CameraRig.ts",
+      "sha256": "bbe62d0a1f9e1ea3bf83d9c42810e3fb4e80d00a35f40de67ec1d4c1886e3e38"
+    },
+    {
+      "path": "src/camera/collision.ts",
+      "sha256": "962f7df033bed9226807a213670688bda4838b34f8cf4e5845dcaafa560cff6f"
+    },
+    {
+      "path": "src/camera/creatureLight.test.ts",
+      "sha256": "4f2cc518f84adf01dd3826f44c26a3c5b69bbe6a95307d5e80d4688d384c8114"
+    },
+    {
+      "path": "src/camera/creatureLight.ts",
+      "sha256": "8157d6ff1398d8e8f227e6388531115a0c4b1f0d1ec3e353bc2b96b209353cec"
+    },
+    {
+      "path": "src/camera/debugStage.ts",
+      "sha256": "a7365b32a44f637e0b076e12c6be37e7e2a2d5dda0c3743355d2d8f1bc67c0b3"
+    },
+    {
+      "path": "src/camera/followRigs.ts",
+      "sha256": "6e97b59f449151427618a643215f9270335fd99e78a8cbfef7be9e22d4463ea8"
+    },
+    {
+      "path": "src/camera/orbitClearance.test.ts",
+      "sha256": "33717b0ca345fd470557b0af252f2167c8c4e553b0dc6fbd9060c97251605ab5"
+    },
+    {
+      "path": "src/camera/rigTypes.ts",
+      "sha256": "927916f7be460ba9180ba1ff7a8e8455f0396c5bba5c7269dadc6716637c4b46"
+    },
+    {
+      "path": "src/camera/shake.test.ts",
+      "sha256": "e34f4085561dd1d0f2ffedadc1395e1b31b256f3a15ef06a0ca9b7beaf4ce739"
+    },
+    {
+      "path": "src/camera/shake.ts",
+      "sha256": "4f89c13717da522e7fe4764a95dde695985770c3d0b796c6c9269a69dbdfe8c8"
+    },
+    {
+      "path": "src/camera/showRigs.ts",
+      "sha256": "8a366f95fdc287e2d11cacab59a998d03d1bb33a6ef0d53bf14e30d386f755f2"
+    },
+    {
+      "path": "src/core/build.test.ts",
+      "sha256": "1301620e346455e966e9bd2843187577aa670e69a7e65144aa5dd2559c2bd2ec"
+    },
+    {
+      "path": "src/core/build.ts",
+      "sha256": "f4a8869a70e28334dc644891e7ea4191d03586370664f658b7e781be8459c8c5"
+    },
+    {
+      "path": "src/core/events.ts",
+      "sha256": "50a7f6f7e278c4ee6414b96a874569d99627ab49221ed894de0aedb7e2affd1a"
+    },
+    {
+      "path": "src/core/gait.ts",
+      "sha256": "248823c73e32a0474dab30b9356a27b6d016c709f71bee7fc40cbe0c57567c77"
+    },
+    {
+      "path": "src/core/math.ts",
+      "sha256": "f5c8813103c165f44f32ed71dcf4dad34298a826f89ea341c637cbd216c0f741"
+    },
+    {
+      "path": "src/core/noise.ts",
+      "sha256": "a873d75806ba7598390efa96bc69dcca9668166a7bfcbb8d7b67253c3d30d0d5"
+    },
+    {
+      "path": "src/core/rng.ts",
+      "sha256": "5703f161c9420050394efbf673511f18559eaf419ba485942e1fad097666a366"
+    },
+    {
+      "path": "src/core/types.ts",
+      "sha256": "9991a602f6a0f7639db9ca54a035958d1ddaf010be7e6a70af9c030946a7364e"
+    },
+    {
+      "path": "src/cosmetics/catalog.ts",
+      "sha256": "cccd918a2fb8a807d13857197dacfff9bc64f3ce9d41ce253aceaff7f1a568c1"
+    },
+    {
+      "path": "src/cosmetics/wardrobe.ts",
+      "sha256": "aaedd824d067bdf18f169568a1b005d77a6b8f879308ed2d9cef4f4fedf16390"
+    },
+    {
+      "path": "src/creatures/mounted.test.ts",
+      "sha256": "020e152c555dc08f6882de3101f4c9c11686f6b7da3286fd76059f0408e210cc"
+    },
+    {
+      "path": "src/creatures/rider/accessories.ts",
+      "sha256": "541c04977ee605a6dd582fb2b05d7aa02ff8b615dacf61ec716e5c8634313242"
+    },
+    {
+      "path": "src/creatures/rider/animator.ts",
+      "sha256": "6e3a672176e8c7c0d20281e06322e9538851c9c1e51921e1b9710b62f7e77854"
+    },
+    {
+      "path": "src/creatures/rider/attachment.test.ts",
+      "sha256": "9595f334dd0d84a8e832df262cfd7a44ad373c67ef0659e6c8f3f5b82ed45a1f"
+    },
+    {
+      "path": "src/creatures/rider/body.ts",
+      "sha256": "d937b3c3638dd572b738f71204cf777360e5788829761f183ce1e74bb4cda827"
+    },
+    {
+      "path": "src/creatures/rider/cloth.test.ts",
+      "sha256": "19185bd0857102abca58bd28824241ed3f97e11d5e7c5101bc1772df77f38c53"
+    },
+    {
+      "path": "src/creatures/rider/cloth.ts",
+      "sha256": "5e7cc1662945d0f1223a81073ea28a10bfe67d5bf0a39973e251d8598c213cd0"
+    },
+    {
+      "path": "src/creatures/rider/clothContact.ts",
+      "sha256": "cdcb811359819d9d428615c5903fd54d8f8d4c3bbe081d9e5a32a617b498d6a9"
+    },
+    {
+      "path": "src/creatures/rider/clothRig.ts",
+      "sha256": "e3ede36fbabd862906d91861480413628f6c2fa4279051c3790ea27bbeefcbe6"
+    },
+    {
+      "path": "src/creatures/rider/gait.test.ts",
+      "sha256": "bc0e0fe2f8cdab74daa2db71217d6a2cf27dd44e2e854944736dac54dd182be1"
+    },
+    {
+      "path": "src/creatures/rider/gait.ts",
+      "sha256": "c9713ed9f6688dbd104781edc609de91c04c080de99e714e0841e79b760d5152"
+    },
+    {
+      "path": "src/creatures/rider/garmentBehavior.test.ts",
+      "sha256": "f9ad8ec7f09c8f613f5ef25a8c9c03475ecc940159d616aaa474ff7166a23887"
+    },
+    {
+      "path": "src/creatures/rider/garmentCloth.test.ts",
+      "sha256": "94bccf9d99ba11864e296b64dffd7120846d7a9cc019a7c8a18dfa6744263016"
+    },
+    {
+      "path": "src/creatures/rider/garments.ts",
+      "sha256": "18bd9db5d237304664f88c5a23bc42ef720b47a4d3a1bb8125565f4881e7c17e"
+    },
+    {
+      "path": "src/creatures/rider/hair.ts",
+      "sha256": "4661fbf5e53ee274e8abfac3a3880d5fb7b8aa97ef4938a883ef84aa239846b4"
+    },
+    {
+      "path": "src/creatures/rider/headgear.ts",
+      "sha256": "5f11227ce001ec8671ddea8218f1c9b6e498c8688666b0afa7fc73c8571ec12b"
+    },
+    {
+      "path": "src/creatures/rider/ik.test.ts",
+      "sha256": "5e5927416295ccc7070d680b4caf844a0ae46843a331ff319fc58c4b2233226e"
+    },
+    {
+      "path": "src/creatures/rider/ik.ts",
+      "sha256": "4277edb113f6ae5a1f549397c55e46284ed7d98f634bb9340e1b701337a81f85"
+    },
+    {
+      "path": "src/creatures/rider/legFit.ts",
+      "sha256": "6b670bc60795ca5caa5a2782d0cf013e42da364e30d26ecfbfd0cf13cbefc72f"
+    },
+    {
+      "path": "src/creatures/rider/materialIdentity.test.ts",
+      "sha256": "991f7f472f99940e98ccb37f83c712cef69099a7e6dc983247a829238b935e83"
+    },
+    {
+      "path": "src/creatures/rider/meshKit.ts",
+      "sha256": "4f5b5db64b5bb01c552c29769ad6dda961c1885fca7a784a07384c1812416398"
+    },
+    {
+      "path": "src/creatures/rider/mixedWardrobe.test.ts",
+      "sha256": "cb90ec8e551561318862666b14acb0e071b845513655146a3876dfdee739ef4a"
+    },
+    {
+      "path": "src/creatures/rider/model.test.ts",
+      "sha256": "2bc1548db8bb11d7ac88d88611fa9db8c5ac00518e457b97cb585127d1de2ed2"
+    },
+    {
+      "path": "src/creatures/rider/model.ts",
+      "sha256": "a617bae44377c2a49641da9484fb2f158733eac7c2358fab6c427cb35320097e"
+    },
+    {
+      "path": "src/creatures/rider/mountedFit.test.ts",
+      "sha256": "54d1e579cdb9bd68369d1bd71d3e22f337021dd2daa0687d415c8d9b201d3b41"
+    },
+    {
+      "path": "src/creatures/rider/outfits.ts",
+      "sha256": "c5a2790370239c7ab88171a129f54c8efc15ad32195dd3ddcf248f13d16f28d5"
+    },
+    {
+      "path": "src/creatures/rider/palette.ts",
+      "sha256": "c68c327e00aba6782b6a2240197cb3cf6f8c3c01ba20e62994c490436db2e77b"
+    },
+    {
+      "path": "src/creatures/rider/proof.test.ts",
+      "sha256": "5199a9027eb0a8836df0377f6a7b9e82abe8fd373beebfe0bd18676b36917cd9"
+    },
+    {
+      "path": "src/creatures/rider/proof.ts",
+      "sha256": "a14c716f9e9674c272b7d3fddfaa923042270e2a6f934d24abd42556c99c6683"
+    },
+    {
+      "path": "src/creatures/rider/proofMaterials.ts",
+      "sha256": "7762bc4cf637231ee521e177b41ece4da8e2a5bdb8e3cc889206b8b993b2ee61"
+    },
+    {
+      "path": "src/creatures/rider/random.ts",
+      "sha256": "ba0a802e61629eb4e48fad724703d1228b7209add0e9e9812cf327c6f91b0bf7"
+    },
+    {
+      "path": "src/creatures/rider/Rider.ts",
+      "sha256": "b0be184ddd91939b177a6d25221f2e1d3c8756c4f2544857cf1149be4f7a56aa"
+    },
+    {
+      "path": "src/creatures/rider/rig.ts",
+      "sha256": "0136dc0a689e03e7a2cb68f22cf6cc29240c526d54374af66ce17e409be3d462"
+    },
+    {
+      "path": "src/creatures/rider/sharedBody.test.ts",
+      "sha256": "d803d89328dce7aa8d96be26b9e5c9b4094f78b72d67426d76e008e5c9cd7ab5"
+    },
+    {
+      "path": "src/creatures/rider/softBody.ts",
+      "sha256": "e265780d722469e0ccbc71cedc3cf7ada26f92aa09df049916d6583d0e1168fd"
+    },
+    {
+      "path": "src/creatures/rider/wardrobe.test.ts",
+      "sha256": "528cd4ea106144ccb540672659bd4fddff174caa24980168d6cf018743679af2"
+    },
+    {
+      "path": "src/creatures/rider/wardrobeModel.ts",
+      "sha256": "4e179be5959c2231c4400912290e2c016e70c30aea3237b8a46a8b831427e261"
+    },
+    {
+      "path": "src/creatures/wyvern/__golden__/pose.golden.json",
+      "sha256": "a37d89ffee70703ffebed96ea4875c5da9b20afab67d03649bb5fac6dbe02ab0"
+    },
+    {
+      "path": "src/creatures/wyvern/anim/flight.ts",
+      "sha256": "a43a1e87a8623a76cc76f2312ab4bd7719776219c43d36d40416d7e5423609ba"
+    },
+    {
+      "path": "src/creatures/wyvern/anim/frame.ts",
+      "sha256": "68d870be3110fab167e8636ba06b262ca24fda566e417a3ce7fa5ee5c131f512"
+    },
+    {
+      "path": "src/creatures/wyvern/anim/ground.ts",
+      "sha256": "f9777dab316011cfae0b88c8026bb049b9e1af18565ef7d667b75d052d8d6f31"
+    },
+    {
+      "path": "src/creatures/wyvern/anim/groundPoses.ts",
+      "sha256": "9a302e0fa194cf2a9b9dcc862234650c8ebb6594120df4ce581ef99e12c5a19c"
+    },
+    {
+      "path": "src/creatures/wyvern/anim/life.ts",
+      "sha256": "e967e96cd365797b844ab43eecf5ac845e8b90f749f6e5a003018e8b01916b1e"
+    },
+    {
+      "path": "src/creatures/wyvern/anim/tail.ts",
+      "sha256": "259de67425b596d2145603adadd6d226d4e395c43376b1452d13eeb0547efa9e"
+    },
+    {
+      "path": "src/creatures/wyvern/animator.ts",
+      "sha256": "c1bbef8ad63da4bab5f4fcd231afb0915ccb2198d31c7da8d1af0391481c677b"
+    },
+    {
+      "path": "src/creatures/wyvern/ao.test.ts",
+      "sha256": "cfe802215b43961287e2e6190b44379d5871249cba1012b4002d93eb9bb10beb"
+    },
+    {
+      "path": "src/creatures/wyvern/ao.ts",
+      "sha256": "0385ab93d80dd21d498c1240b754debf14f968283e4a89a2ecc082825bd4b6e4"
+    },
+    {
+      "path": "src/creatures/wyvern/aoWorker.ts",
+      "sha256": "f0f4c87409cf877ae8d1f9f51e256a2e32a798614a3f72c8a0e91da0aea15af2"
+    },
+    {
+      "path": "src/creatures/wyvern/builder.ts",
+      "sha256": "a92142886926eea38b8f0b57fba33891a1adc2c7d325871563779675db2a5f64"
+    },
+    {
+      "path": "src/creatures/wyvern/collision.ts",
+      "sha256": "448e9d03db3f1a684da271dcd49c58164547dd9daf7e9d6965f6a09525db55bd"
+    },
+    {
+      "path": "src/creatures/wyvern/gait.ts",
+      "sha256": "cef37f539a7e6d9c6eef22c45e0d31356a96ae6c4fa56bec26d6accf53c022e6"
+    },
+    {
+      "path": "src/creatures/wyvern/geometry.ts",
+      "sha256": "fe5c7d07856f8f9095936c42e754c6591c1f35934a13fc4c343ddb025b6d10d2"
+    },
+    {
+      "path": "src/creatures/wyvern/ik.ts",
+      "sha256": "696a1999a7af4222f599a4127340430bb0b9c1ef05ca2ec35b1348b589ca4401"
+    },
+    {
+      "path": "src/creatures/wyvern/materials.ts",
+      "sha256": "ccb1ea2dcb343831b00c4d8a4f37d284113ff74b301c7d0498849dc420ecd2b0"
+    },
+    {
+      "path": "src/creatures/wyvern/parts/body.ts",
+      "sha256": "34946a5eba72624aed7278c626f50cd19a4cca1c155c18b82cacc9eefa88bd1b"
+    },
+    {
+      "path": "src/creatures/wyvern/parts/chain.ts",
+      "sha256": "73be7f73fc750c71edeedb4207be08c61891815c06d7af10e425e40c21bee39e"
+    },
+    {
+      "path": "src/creatures/wyvern/parts/cosmetics.ts",
+      "sha256": "04392c98ce4bc85602827ea80db14653481d00a1623b51f33fc8d62da03d2c79"
+    },
+    {
+      "path": "src/creatures/wyvern/parts/head.ts",
+      "sha256": "3bf040f64797786801ee0a38e631aa55392bbfdc9ba7efe74d3c6c809d361ab1"
+    },
+    {
+      "path": "src/creatures/wyvern/parts/legs.ts",
+      "sha256": "e75eea7ac6b1a694b123d5d8bcd3d7ea784ebfa63d1e97cba321779fa15c3086"
+    },
+    {
+      "path": "src/creatures/wyvern/parts/res.ts",
+      "sha256": "24277f59634cc9ea87bb21003b3266832815f697fe65c8d7edaa818617d06275"
+    },
+    {
+      "path": "src/creatures/wyvern/parts/saddle.ts",
+      "sha256": "7b79448ea77df124aa72582eb8fbdc0970cd2948e5feeb25642ac129b08211dc"
+    },
+    {
+      "path": "src/creatures/wyvern/parts/shape.ts",
+      "sha256": "0e528ed29718a5fc229c747862cac72226231009f24e777a4aeafdebd7a72831"
+    },
+    {
+      "path": "src/creatures/wyvern/parts/wings.ts",
+      "sha256": "824de75344e602ce103d0da92bc56a4cb3be2519ddb0a63ea8abde7489d57109"
+    },
+    {
+      "path": "src/creatures/wyvern/proportions.ts",
+      "sha256": "81d1990d0247f83a7a42926635670aea024a2a2d836b2841e01049f382ad9c4c"
+    },
+    {
+      "path": "src/creatures/wyvern/rig.ts",
+      "sha256": "df033adda4da55e06f4606360144f75a4315a8d4c03d49228283fca47e8e5e05"
+    },
+    {
+      "path": "src/creatures/wyvern/shading/light.ts",
+      "sha256": "880144dc450f8a7feb438e8fc27d221dac3e48e9e76c5fba74a4bf44686f5259"
+    },
+    {
+      "path": "src/creatures/wyvern/wingPoses.ts",
+      "sha256": "08159cb819d347c5fff5f006bad3fb2928fc1ba1651c44bdbc58429e278b72d3"
+    },
+    {
+      "path": "src/creatures/wyvern/wyvern.anatomy.test.ts",
+      "sha256": "00d8c157d1cf3366b019527f2e18985159c6b3dc571ba7d96b08b75183341583"
+    },
+    {
+      "path": "src/creatures/wyvern/wyvern.flight.test.ts",
+      "sha256": "bc735ee8dc3279323580c7b0029d76f6340ceb79b9be24818a8926372dad1a96"
+    },
+    {
+      "path": "src/creatures/wyvern/wyvern.golden.test.ts",
+      "sha256": "e529df6d6e22309773f762f26dcfc8f664e957b6f974d24aa34f9305bda1e753"
+    },
+    {
+      "path": "src/creatures/wyvern/wyvern.ground.test.ts",
+      "sha256": "b5aa2d88da9b2a10e2de0c4c331df1b8c3c2830eaf122ad4a22f8dd3202cd880"
+    },
+    {
+      "path": "src/creatures/wyvern/wyvern.hide.test.ts",
+      "sha256": "f3b378d62df058a68f5ffdd2a7ddfdb58f6df42c4a6a9df0a26ac52e98170b95"
+    },
+    {
+      "path": "src/creatures/wyvern/wyvern.realloop.ts",
+      "sha256": "ea2c86605bfdd3a14ef3cd4c3984a606155f9f2f0e1540f6de829ceffd43323f"
+    },
+    {
+      "path": "src/creatures/wyvern/wyvern.tail.test.ts",
+      "sha256": "d0ca91433d11106e8b64f5466dbb4957b5a611471487e5a890f8f92a6dd2910e"
+    },
+    {
+      "path": "src/creatures/wyvern/wyvern.testkit.ts",
+      "sha256": "e478c27d87321cc19c8f3f9ce273b3121a989d5d689b5ee90da8a7cfb37bbffd"
+    },
+    {
+      "path": "src/creatures/wyvern/Wyvern.ts",
+      "sha256": "72a7821eda398df03f9abf4b604e88830aca37ceebeacaf40691ed72c4a2d5a9"
+    },
+    {
+      "path": "src/debug/hooks.ts",
+      "sha256": "196452b87ed95c01662aa0fab36f2fdba8582dd7e0db33709c32468b7a9fe257"
+    },
+    {
+      "path": "src/debug/params.ts",
+      "sha256": "bcbc6138384c5d85945cd0d224ca9b757f0bedbb25344f9e4f1e4d7e33aec737"
+    },
+    {
+      "path": "src/debug/showcase.ts",
+      "sha256": "eb217cfb18bb126d506f34034849c04819da2c6a3b1eec0c84db0618e2f78ff8"
+    },
+    {
+      "path": "src/debug/showcases/audio.ts",
+      "sha256": "44a985fe665fc1e1516fe5459e199b5158f1e7248a4689b093dc2555502717ca"
+    },
+    {
+      "path": "src/debug/showcases/camera.ts",
+      "sha256": "a3444085d4d47776165bebaa5f37d9aa6d5eb3530860d4a4f3654e7442d53d35"
+    },
+    {
+      "path": "src/debug/showcases/collect.ts",
+      "sha256": "e8cc8a2acc73e784b769ea621d6f953649b9390c68b7bff91986e3203aad1b31"
+    },
+    {
+      "path": "src/debug/showcases/dressing.ts",
+      "sha256": "f35c0f5f39f2b7323da8702cbe6fab37b6c80488f7a10792ee8e31c5b54b9460"
+    },
+    {
+      "path": "src/debug/showcases/flightlab.ts",
+      "sha256": "eade09ed7967a3561045d6b0e7b16cf4b24c9c803e8b58f2708ac26ade3e669d"
+    },
+    {
+      "path": "src/debug/showcases/fx.ts",
+      "sha256": "c0b0e12948705ec190e507a2736361bd60c104ef83b228b6251421755bbb0c48"
+    },
+    {
+      "path": "src/debug/showcases/overview.ts",
+      "sha256": "1996e651bac9bea7d6731e8c8130f3fb93c211f0e7f637289a9af1bc93ff545c"
+    },
+    {
+      "path": "src/debug/showcases/race.ts",
+      "sha256": "429f8bec463c8a1f79c6fb99c0f71f80878b85457e6b3ec7cd77ff2ddcd64135"
+    },
+    {
+      "path": "src/debug/showcases/rider.ts",
+      "sha256": "fa770e2534152650bcb0c4cc0d839e97eb7b7b9ccc7dcc469054f8516503f820"
+    },
+    {
+      "path": "src/debug/showcases/sky.ts",
+      "sha256": "e32e2e741945f68f20e6ab793e0e51b23f8352232b464ad162fa4eb9ba00fdc8"
+    },
+    {
+      "path": "src/debug/showcases/skyLance.ts",
+      "sha256": "9ecc868a687e57c79aaeb187eadd3e3d1f5a830aa292fd12c154f70b453dd21b"
+    },
+    {
+      "path": "src/debug/showcases/terrain.ts",
+      "sha256": "891c460b2ad92861b84a5d166ad2f18117e4bff0fa2a79e1b59fae97bfe4ec73"
+    },
+    {
+      "path": "src/debug/showcases/uiHud.ts",
+      "sha256": "34ea7c991c0b40e5f644f86a28096dee1216efe29df83c26af9fe996a05ee672"
+    },
+    {
+      "path": "src/debug/showcases/uiMenu.ts",
+      "sha256": "9165d08bb8ee9d8355225154445142645aa47452ba5088d8e2ba46d2b39f861a"
+    },
+    {
+      "path": "src/debug/showcases/uiStable.ts",
+      "sha256": "e088a093446f862d38fec70fc79a5d11b5248c00e646f1e7d57a9d38267c0255"
+    },
+    {
+      "path": "src/debug/showcases/windhaven.ts",
+      "sha256": "b5094de2e722302206672bcfb264b2fb33b7f0e23135cd7dc052d4445ae3029a"
+    },
+    {
+      "path": "src/debug/showcases/wyvern.ts",
+      "sha256": "74a1e0908ac2032db295bec647f35b421ad7f48a08c00e9685ff338ccfde212b"
+    },
+    {
+      "path": "src/editor/assets.ts",
+      "sha256": "1b7dcb5d355594fb49fbf1599ca9e7af500a3d60ee0c32c47c482fde5bdc19ef"
+    },
+    {
+      "path": "src/editor/editor.css",
+      "sha256": "f23369cf754c0246bea5ca0a33e987a13baac21e9f8ce34f551fb2957aef4b76"
+    },
+    {
+      "path": "src/editor/editor.ts",
+      "sha256": "66c49176bae589d96ee21ac951d98c2a657e2c19be90746c7a150b3181797ed6"
+    },
+    {
+      "path": "src/editor/playtest.ts",
+      "sha256": "76d4690d3f8fc321a1b3e0e9579baa263e589a1e8b8474e4590aa8936a982fce"
+    },
+    {
+      "path": "src/editor/preview.ts",
+      "sha256": "3a385e9d6b0a550825f95bac7a0e21f66342cacb0e32dd3e3bc870d2be34e2d6"
+    },
+    {
+      "path": "src/editor/region.test.ts",
+      "sha256": "4d1c37c16307334e3c6808b014349a5b7b77858d42f9d0a9beb858ceb9b4904b"
+    },
+    {
+      "path": "src/editor/region.ts",
+      "sha256": "d0375117febc7e333e619faa377dc2873bf439d9ca77417893a89d6c5d957efd"
+    },
+    {
+      "path": "src/editor/storage.ts",
+      "sha256": "96f057a5d950732cdbb9474ebeabc36e928d669a054ad645d8966e5475bf56c9"
+    },
+    {
+      "path": "src/editor/validation.ts",
+      "sha256": "c83f22c9f0ecefd178c95b61eb42fdebba0d5d0a13cbae938d120daa719d87e2"
+    },
+    {
+      "path": "src/flight/breeds.test.ts",
+      "sha256": "9103feea8314a1ddf524bde1d7b933cdeda09fc9d14e0741af62e86715a037fb"
+    },
+    {
+      "path": "src/flight/breeds.ts",
+      "sha256": "f9480ddfb1cbb64195b09747ef3a9c450a07d4337c9fed07d63941031ad5582e"
+    },
+    {
+      "path": "src/flight/FlightModel.test.ts",
+      "sha256": "b84c98ee647f1ddf3682b90bfa6dc13857ff2fd71ffeb559ceb7cc4ef5566cec"
+    },
+    {
+      "path": "src/flight/FlightModel.ts",
+      "sha256": "242f2b2edd12f7b4f9461649dbfa24faf755b3cd59430937abe636a269d7808f"
+    },
+    {
+      "path": "src/flight/telemetry.ts",
+      "sha256": "efe21281113eea766baddd4c990929fed0609156164b324e62935e4d3e39df00"
+    },
+    {
+      "path": "src/fx/drifters.test.ts",
+      "sha256": "805613a9cfa5c12769cd4bdc13decbd52e25fa9fba09b7bce8bef58e46d3578b"
+    },
+    {
+      "path": "src/fx/drifters.ts",
+      "sha256": "adff950ef42244476d64c09fe5689f5effa210b5ae0b564c8cfa9192f6f442dc"
+    },
+    {
+      "path": "src/fx/fireflies.ts",
+      "sha256": "15e896192c34171f7bdfc7e69d2b4382e3e31514b0ebc35fdc87d43e1cd70bf9"
+    },
+    {
+      "path": "src/fx/Fx.ts",
+      "sha256": "ab1f56855fc2a7c0fd7b0f539e79b8ee60c21a623a4bb40f8dd0b51992460334"
+    },
+    {
+      "path": "src/fx/fxMath.test.ts",
+      "sha256": "fc80823361c6b90c55ff635bd4039a5b44a9cb2c6522b297db1e4349d9c711e7"
+    },
+    {
+      "path": "src/fx/fxMath.ts",
+      "sha256": "620113dc54420d4b1f1cbe14870d10186cb6a7d9e036d10fdbf8668e70bbf927"
+    },
+    {
+      "path": "src/fx/gust.ts",
+      "sha256": "1bb28e7f1d0ee53258d07a89a8f3ddcd502622c5ab446d4123273c1f76b811ce"
+    },
+    {
+      "path": "src/fx/particles.ts",
+      "sha256": "25b9ae2a4b53daf40b1e98276d3d6df56df6a777b18484a81548ed5382fb27eb"
+    },
+    {
+      "path": "src/fx/rings.ts",
+      "sha256": "2a881161a5d6fdd6ac7698e378470719734ef59ea7b5eb4ef5c24ea3b96c6c22"
+    },
+    {
+      "path": "src/fx/shaders.ts",
+      "sha256": "2be5497a53adfaba975252aa990dac788928d8d4073ab60fc8fe4717432d43a1"
+    },
+    {
+      "path": "src/fx/streaks.ts",
+      "sha256": "85170d944904e024e63aaf9ac24d0153749ac4d27a852a695246127d5fbc7817"
+    },
+    {
+      "path": "src/fx/thermals.test.ts",
+      "sha256": "0d8f5453f8c78aca8d12678fdde78f4bd3eb528e2f48f9bb047ab2f6ecac4efe"
+    },
+    {
+      "path": "src/fx/thermals.ts",
+      "sha256": "e61f42474a3467bf4b1a98e000e97e1d92494cf3c01fe5551ac54d56deeda418"
+    },
+    {
+      "path": "src/fx/timeWrap.test.ts",
+      "sha256": "98d31281b971ec8d107a53086d4b836db61623d3e7e81b189d791801e1d6dbff"
+    },
+    {
+      "path": "src/fx/trails.ts",
+      "sha256": "c433fc674b0032f0ba39fb9d77c1a5a3c25e42ee3c7a4445fd666f7a77b00753"
+    },
+    {
+      "path": "src/game/contracts.ts",
+      "sha256": "69ef1058a4acca1a0e4d940239ee8e696ded86acf3c9e9d18e42daea2cf20123"
+    },
+    {
+      "path": "src/game/frameGuard.test.ts",
+      "sha256": "7adfb965d07b12a4c691de1a913975d014c688778fa086558c3d6935d6333788"
+    },
+    {
+      "path": "src/game/frameGuard.ts",
+      "sha256": "1345490a72e63f29b1144c5f2ac5f8f7d8bf499c6626aceff2beebc87af8705a"
+    },
+    {
+      "path": "src/game/Game.ts",
+      "sha256": "192467f462db40ca4dfffc53a66df734d470458d3398a8ccbb84804fe4f32264"
+    },
+    {
+      "path": "src/game/interactables.test.ts",
+      "sha256": "7738eea78d9f5bb738c5fb50892af25c07e24139dba6ddfa6daa698f1db71b10"
+    },
+    {
+      "path": "src/game/interactables.ts",
+      "sha256": "733afa0bd407d0f1c1550a79b5f516d2b43eb37ef11d688b6310b972a62d9039"
+    },
+    {
+      "path": "src/game/settings.test.ts",
+      "sha256": "61c9cddf7c8196d87961f70403d3fa25ebeebb096bb7e50239123da20b1c5d80"
+    },
+    {
+      "path": "src/game/settings.ts",
+      "sha256": "757c18f76b25db8b3cde4e058f7aa68573dec870e7c7a12784f3af36615f2666"
+    },
+    {
+      "path": "src/input/haptics.test.ts",
+      "sha256": "71356fa25303c959a51b170a1d685ad4f29f46d217750b0f7b3bbf433a05b32d"
+    },
+    {
+      "path": "src/input/haptics.ts",
+      "sha256": "5bfe05dee5d937fde7387934a73965198e5bc7089bef75294bcdecd42fc00d2e"
+    },
+    {
+      "path": "src/input/Input.test.ts",
+      "sha256": "a9a0ebfa9f592f43d50db379d038117479570f1982f90be149993ee1e1320f98"
+    },
+    {
+      "path": "src/input/Input.ts",
+      "sha256": "85c00f0642bd5fb7ed0057080d7b954b4ead01268a9d61b56be90e3236807b56"
+    },
+    {
+      "path": "src/input/padMapping.ts",
+      "sha256": "9b0f6e6c163bb04bb2aef1bdc94b3ca762e11a011a7ae394a7cd0e9037ca701b"
+    },
+    {
+      "path": "src/input/scheme.test.ts",
+      "sha256": "6e77767bbe49395af2e41ff1f287724ad6a51db536387c1594a86f9db4f19c05"
+    },
+    {
+      "path": "src/input/scheme.ts",
+      "sha256": "cab7379a4220060613f9fd638f1052d04fd77d0309c4f49d428924a476284d56"
+    },
+    {
+      "path": "src/input/shaping.test.ts",
+      "sha256": "b505636735a66a3cb92c45b19d0a1c294df7066226ca639a1c2adea3e06cb9f0"
+    },
+    {
+      "path": "src/input/shaping.ts",
+      "sha256": "911a39183990b8aae9b061eb4599f3d9affa916a3be3de20d1bdca5a9c94b603"
+    },
+    {
+      "path": "src/main.ts",
+      "sha256": "e619ed05bef8b65581f9d9db6b2ce971960af6a61de373469bbb1a7f8f405cad"
+    },
+    {
+      "path": "src/player/collision.test.ts",
+      "sha256": "4dae4d365963e9a68c40a5c78ad61fbef95532d11f3f9130fdd0b2935f1960ed"
+    },
+    {
+      "path": "src/player/companion.ts",
+      "sha256": "3e0797dea63858353552176a9f330140599be391e11f8eed217314ae1b2a62f2"
+    },
+    {
+      "path": "src/player/foot.ts",
+      "sha256": "f391cc7192768fe87ae58b5ac2c0ce10810b50429d6c541a3bcc25235b5f2b86"
+    },
+    {
+      "path": "src/player/ground.ts",
+      "sha256": "db73f36bca1f097d484272ec08b2e59d38c4951c4228963f189a50fa35a2d5ee"
+    },
+    {
+      "path": "src/player/home.ts",
+      "sha256": "bdd5caf4ecdb04a64f270d308e59a8141d470c30a57cdb905c554a5e698415af"
+    },
+    {
+      "path": "src/player/Player.test.ts",
+      "sha256": "f6e27177b86c7148cc1b80968437567e825975bdd0c123269b4dee5a2900646b"
+    },
+    {
+      "path": "src/player/Player.ts",
+      "sha256": "c6d8084547b82f5b23dbfad68f283ae8f9f88269f1c404af7911785fd2b8dc9d"
+    },
+    {
+      "path": "src/player/poses.ts",
+      "sha256": "c68a3d1ad8fd882f96ba0937b5918ae8eead87e54959319ca1a500c297a5f1e5"
+    },
+    {
+      "path": "src/player/prompts.ts",
+      "sha256": "9cff052c98dbd64cddc79cba19a22af807a2f25e6f60d91770a8ca4f7b77c8bb"
+    },
+    {
+      "path": "src/player/tuning.ts",
+      "sha256": "22e0ba29d07d53f6daf6e94bca098bcaefdba8e0749cc6fc455c62ebe5230a88"
+    },
+    {
+      "path": "src/progression/collectibleDefs.test.ts",
+      "sha256": "23f76034a2c8d71052c53524e1ea8bece04bcc5bd0c784ca5bf9fdd30fa0f103"
+    },
+    {
+      "path": "src/progression/collectibleDefs.ts",
+      "sha256": "adf8ba2621de294d4a8525e2c0f2a56595c714459d6d572703da61833ad46507"
+    },
+    {
+      "path": "src/progression/Collectibles.test.ts",
+      "sha256": "9c17cf82e83a41081b56682de13faf03cdc0907dfa398d342e9fac21e891745d"
+    },
+    {
+      "path": "src/progression/Collectibles.ts",
+      "sha256": "faae37a8a0267357f7ee11fb3270830a372c85cf44657b927997c630ec87e144"
+    },
+    {
+      "path": "src/progression/collectibleVisuals.ts",
+      "sha256": "7a7c4dc6fe3fda93ad43c15e950272868a4a9df59ba3120c5034e38660802cc0"
+    },
+    {
+      "path": "src/progression/discovery.ts",
+      "sha256": "c414b7ac2250e2ad906beb403d070a08ca9421b34b92145178a65e7526bd9245"
+    },
+    {
+      "path": "src/progression/relics.ts",
+      "sha256": "0fe249dd58acdf041eeeb8c38afdd541a8ce886ee156e22c7e1ac551bebb3ce3"
+    },
+    {
+      "path": "src/progression/save.test.ts",
+      "sha256": "2ef602e0d5f7616e928fd7d93571c41c3d566eab1ffe1bca5b28a2aa3459cf51"
+    },
+    {
+      "path": "src/progression/save.ts",
+      "sha256": "289f983df63e526ca3cd0f52bd8fe8dd6935d9c381f0fbfcd3c307b222c776da"
+    },
+    {
+      "path": "src/progression/unlocks.test.ts",
+      "sha256": "f00c2441d953c987cbe3775d7748154f23859dcd54363cfd32d94df8b4e0f8fd"
+    },
+    {
+      "path": "src/progression/unlocks.ts",
+      "sha256": "66f418cb20fc526c812b294dcb7efe87f8c838350e487a5680ebb093b93a5957"
+    },
+    {
+      "path": "src/race/autopilot.ts",
+      "sha256": "b86b8128451d664dd684e1d66fe3769c48d0265e184020400d1a7985aba45caa"
+    },
+    {
+      "path": "src/race/breedBalance.test.ts",
+      "sha256": "b7293da9736f561f5e9c1af553c74d580564feb5b66b847b999f759e8b178ea0"
+    },
+    {
+      "path": "src/race/clearance.ts",
+      "sha256": "eab3a6807877991a123d64e79504f2a4c8e5683f4640046d196e37fd80d48e9c"
+    },
+    {
+      "path": "src/race/courseMath.ts",
+      "sha256": "79409b5ff54b49833db814d8e51bbeca5dda7b89d3c9c598bc54f47fa1b11082"
+    },
+    {
+      "path": "src/race/courses.test.ts",
+      "sha256": "87f5edcf42da3180660888bbaa91c13f6bce85224b2e85de28c687003e017796"
+    },
+    {
+      "path": "src/race/courses.ts",
+      "sha256": "a02846fcdbc0be7eb69d4b13c573a2463baef754207d162aafe0d7c54424a56d"
+    },
+    {
+      "path": "src/race/flyCourse.ts",
+      "sha256": "ce288d20e044d4a2dba7ac80efed15c3d87b5e7082c09473d6bdba1c31b37a5d"
+    },
+    {
+      "path": "src/race/gateMesh.ts",
+      "sha256": "7f3c7b1dbd7876006bf68a33a86baeaef5f0b60de540330a4bd803805d6766fd"
+    },
+    {
+      "path": "src/race/ghost.test.ts",
+      "sha256": "d58883e6863a11d2491921671647710df5b5581956ffa86ab4ee2c333a6aab9f"
+    },
+    {
+      "path": "src/race/ghost.ts",
+      "sha256": "84d45601db25991571c46a6126aed1479c8b747fc6983ccc7de8eb848ab2c589"
+    },
+    {
+      "path": "src/race/RaceGhost.ts",
+      "sha256": "0808b8cfdef6828bf2ee9a6408846ec4d489bd4d092f06728a4462c1594a20ad"
+    },
+    {
+      "path": "src/race/raceMaterials.ts",
+      "sha256": "20145a6c985eacea4c2fe72cc3c4219e08c480666428fca671b546e134e7d97a"
+    },
+    {
+      "path": "src/race/Races.test.ts",
+      "sha256": "82d7923d8437bcbfb530bb2cfc2efb5bd575fce4ade6855f80095afa37677a74"
+    },
+    {
+      "path": "src/race/Races.ts",
+      "sha256": "aa3a27127ecb6491e6919d464e5d22efb3f35b40a9e00b9be15db95014c72ae6"
+    },
+    {
+      "path": "src/race/RaceVisuals.ts",
+      "sha256": "f5655f22a1166c70cc7eef0b37d4146969d47880530bbec6f6fe5bd44a3d38e7"
+    },
+    {
+      "path": "src/race/ringMath.test.ts",
+      "sha256": "38306715f514d1c095950659da20300ef5e9469ffd5ac141d89974326a1ff97a"
+    },
+    {
+      "path": "src/race/ringMath.ts",
+      "sha256": "c6c236bb36505c53c3c946d4feef56aaefef4a95c880a155156369bfd58d9e62"
+    },
+    {
+      "path": "src/render/adaptiveResolution.test.ts",
+      "sha256": "314e3edd481887f151a8514870f76ecb1d759ea8f8152a75d9d3bdd7e28ac7a4"
+    },
+    {
+      "path": "src/render/adaptiveResolution.ts",
+      "sha256": "f99af3e7bd48b0d033f24e8a27468db899aa5c57b185bbcdc5da85f37406b8a1"
+    },
+    {
+      "path": "src/render/painterly.ts",
+      "sha256": "478e9bfd92f75e9e198a461360a177d4617b414933fc3bcf8dfd1c84f6dfe25a"
+    },
+    {
+      "path": "src/render/post/bloom.ts",
+      "sha256": "5c3d1e3abdeb67e3a3edb20c5e2467b906226eb3d638c5c95854aff3a4be97fb"
+    },
+    {
+      "path": "src/render/post/grade.ts",
+      "sha256": "07f4a41707863e7fb65a36dbf04472002454750b9e0776ef54818d502e97bba5"
+    },
+    {
+      "path": "src/render/post/quad.ts",
+      "sha256": "4c7a71e4ebc9b676ec252314e77859e67b8d20974712d369fdc7ac2b4b3f0e42"
+    },
+    {
+      "path": "src/render/quality.ts",
+      "sha256": "56b48be17c1ee9127fa8c6ff32d6e7cbb5b49171cf80581d50a2c5f630237ba1"
+    },
+    {
+      "path": "src/render/renderer.test.ts",
+      "sha256": "563cb4dc30bbc435f10b6941699a6400b36cbef1d594164cf2bc509f67c489ab"
+    },
+    {
+      "path": "src/render/renderer.ts",
+      "sha256": "9156838642764d0171494ad67808f8dd9cd90dc8bdde6423d62d69b765931459"
+    },
+    {
+      "path": "src/render/shadowOnly.test.ts",
+      "sha256": "600fb9e74facc83e52cc13578ff9005bf8cfcca11c6123534d783a4d74684d0b"
+    },
+    {
+      "path": "src/render/shadowOnly.ts",
+      "sha256": "3a148519c4b770209154a2a402b7ce765a2162f992af73c0d9056bf22b780851"
+    },
+    {
+      "path": "src/render/uniforms.ts",
+      "sha256": "e82632d29f3fe946d3aedfb31091c3de768c78d12b67fe71225afdb9a02d7960"
+    },
+    {
+      "path": "src/render/warmup.test.ts",
+      "sha256": "c49f235f35481390d4c2f77d8a0e51e13d94f8fa6aefcb708b785209a3dbbc77"
+    },
+    {
+      "path": "src/render/warmup.ts",
+      "sha256": "78773ce6021115fd9ea1d420b5f9b9f0b46c58aeb309718d95f54d73737a3e59"
+    },
+    {
+      "path": "src/research/firstLeadEncounter.ts",
+      "sha256": "c9f8278a17861a37682d20910d5acb31ff028499e489793839d82d239a19fe57"
+    },
+    {
+      "path": "src/research/firstLeadText.ts",
+      "sha256": "9579047372f387f75b158e64783f4c7504dcb71a682f921ffef1c49fd6806780"
+    },
+    {
+      "path": "src/research/registry.test.ts",
+      "sha256": "305ba679a2fe6857066b9b036d58e31d8e2f717b6028c2db67c09d7e437a01a6"
+    },
+    {
+      "path": "src/research/registry.ts",
+      "sha256": "cdba66664eab5d751ee9f0ce839b6893c67a7c1825163995bb51a263bc0bfa7f"
+    },
+    {
+      "path": "src/research/Research.test.ts",
+      "sha256": "854ed3f748e0d45ab55cf9dc11bbeaceef17be70aa6ef51915d02e0dee1ec68d"
+    },
+    {
+      "path": "src/research/Research.ts",
+      "sha256": "05b38af5c3f4196d51de0f7ab7295f65c329abfe1a46deb2f419099bed79eb44"
+    },
+    {
+      "path": "src/research/state.test.ts",
+      "sha256": "bf0ca4355c6891c1ba9c4ce01eb23e3608dec288da244089490a110b9f3feafb"
+    },
+    {
+      "path": "src/research/state.ts",
+      "sha256": "27758a8c42f2e7da8761f737c7e65bf7c43a9208da89b3a823d585e3a038154d"
+    },
+    {
+      "path": "src/sky/BoundaryWall.ts",
+      "sha256": "7d990c13467aa419e77b48705db3d2d0ca12b1c456ec436714d01befcacc713f"
+    },
+    {
+      "path": "src/sky/cloudBankField.test.ts",
+      "sha256": "bd3b2310b5c787e68405037bd2b45924f9b9f1f2808bfdc9efe8fb5e534c8ff3"
+    },
+    {
+      "path": "src/sky/cloudBankField.ts",
+      "sha256": "de55842cef0fbb3951ac6a9b616b60d0966a2c779e0384f9fd3dca6ecf40bbc7"
+    },
+    {
+      "path": "src/sky/CloudBanks.ts",
+      "sha256": "e4463b3ace38afd45013d4b945220e175639b494cf45f29888477afdef759426"
+    },
+    {
+      "path": "src/sky/CloudSea.ts",
+      "sha256": "0418e27d21d9264578597ef039d40f5cee12b756c9264c66e85133ac0b3cf6de"
+    },
+    {
+      "path": "src/sky/cloudTextures.ts",
+      "sha256": "452b1d82af74f87862ebfa5c8aec77f44abc5350a46ee3bf28354641dfbe6c08"
+    },
+    {
+      "path": "src/sky/glsl.ts",
+      "sha256": "af716fe7f548ae58a60ca9bf623df2b7631e5ff02278ea08c55a1ff3892f79ca"
+    },
+    {
+      "path": "src/sky/Lightning.ts",
+      "sha256": "36228f793e9d5569858e3948331523b1616b75b93b6441fc50b423b1a68e5288"
+    },
+    {
+      "path": "src/sky/palette.ts",
+      "sha256": "d46441ee9abb79ea21c946f0daceef27283aeed03cdc189f56751196822085ef"
+    },
+    {
+      "path": "src/sky/Rain.ts",
+      "sha256": "31700283741b9aae47e2da26f6cf0abdecb258c798729d459bfff87f63eb3383"
+    },
+    {
+      "path": "src/sky/shadowFade.ts",
+      "sha256": "10bc98f0a4aaf0aac3dfd5f289f5a728667535afea3cef8686554fe9f47333a0"
+    },
+    {
+      "path": "src/sky/Sky.ts",
+      "sha256": "d1556ebaf5cb8b051b72585e5b6d633b36eab1dd8869ed23cd79140c1d3faab0"
+    },
+    {
+      "path": "src/sky/skyDome.test.ts",
+      "sha256": "d795d0f42fbd9442bbc299374e52c84e3e56e205c42f7b6975c9886c6dc334be"
+    },
+    {
+      "path": "src/sky/SkyDome.ts",
+      "sha256": "6f40ea383ec12478024a811c33ca0f3d4c6d3186e08d800919b0a0a54624ad9a"
+    },
+    {
+      "path": "src/sky/skyFixes.test.ts",
+      "sha256": "dacdb822d704d24c4b6996aa2587a19c566fc2743c76321aafba761178fe4db6"
+    },
+    {
+      "path": "src/sky/sunPath.test.ts",
+      "sha256": "b4fb936ddccb19c465c823fd60f5665a107444f0f238c5d0be0dafccf7194099"
+    },
+    {
+      "path": "src/sky/sunPath.ts",
+      "sha256": "e094d27c5a8e75924412318d906d3066e09af8257c2b2dc1a08cec4277a11e85"
+    },
+    {
+      "path": "src/sky/vibrance.test.ts",
+      "sha256": "9b843b09a94fcf3b93160cd569186342482852a22ef188172cf917b1ce863d36"
+    },
+    {
+      "path": "src/sky/Weather.ts",
+      "sha256": "5a57780549098e2cfcb68e5bf98b1591eb10b518125111aff5d2e031b8b50d6b"
+    },
+    {
+      "path": "src/sky/weatherModel.test.ts",
+      "sha256": "417505e0c8bc1c3a401d0d0ffac5bf45367e30620fa779bc320748fd87f3d64b"
+    },
+    {
+      "path": "src/sky/weatherModel.ts",
+      "sha256": "1d0ca9c23998ee27d559fa8e8c12a7559abd8f06c3524c4774c3f981cc067b6b"
+    },
+    {
+      "path": "src/sky/windField.test.ts",
+      "sha256": "457eda9d15d89f9d332fff0dd267fb736de54b0e21dfc8febbefaad942de52af"
+    },
+    {
+      "path": "src/sky/windField.ts",
+      "sha256": "c42d7393b33f09d2cc55b343a0096e95d39b822b11978a655245dcea396ab873"
+    },
+    {
+      "path": "src/traversal/air.test.ts",
+      "sha256": "76478582274d48e0f600dddea283964e76c8a281aa605d6ddf8f04d2b83964cb"
+    },
+    {
+      "path": "src/traversal/air.ts",
+      "sha256": "df8ec4e0b72368557ce82043193afeba446653898720bee410f5f2a1747a06e8"
+    },
+    {
+      "path": "src/traversal/anchors.ts",
+      "sha256": "cc55e6de1081b53b3bf9083beb88dc70a7b0b271ae62fb416ed833477a713048"
+    },
+    {
+      "path": "src/traversal/companion.test.ts",
+      "sha256": "77121882299a5b47a612f361d4201addde619c4b6f829e5be8b95b8233c3fded"
+    },
+    {
+      "path": "src/traversal/freefall.test.ts",
+      "sha256": "26f13457519d43697e6ea1edf41f293b6ec33632fde2dd73cfe87b0fe7545a6c"
+    },
+    {
+      "path": "src/traversal/freefall.ts",
+      "sha256": "5f256d21b53da67db8a7c52deda2c49ad7da811c3902668fe4bca25adb67cc0f"
+    },
+    {
+      "path": "src/traversal/lifecycle.test.ts",
+      "sha256": "2a8972f19ada88411806c2b9f170d7bac5f5633477135a76d18393fbea8402fa"
+    },
+    {
+      "path": "src/traversal/player.test.ts",
+      "sha256": "27f62f2f94a93c62accc438f6e92c083f53f94fdf35bb905bcd8e2e60e6038e7"
+    },
+    {
+      "path": "src/traversal/presentation.test.ts",
+      "sha256": "db6ddf0882a99ebf48c2a75dc5d86cae91b7f7d419c7a4015e4230d32eb583d9"
+    },
+    {
+      "path": "src/traversal/SkyLance.test.ts",
+      "sha256": "9dac3fb5dd239f5ba389ea31b383b051828a8e751da8b90379484e78137bce88"
+    },
+    {
+      "path": "src/traversal/SkyLance.ts",
+      "sha256": "012223bcf1049087a4fafe10387dc3cb64bef7ebc56f5195048387a45ba5754f"
+    },
+    {
+      "path": "src/traversal/SkyLanceVisuals.ts",
+      "sha256": "fcd4630390aa458e2ace398729dead942130cd866ff1cc6dc7d7ab46dc638455"
+    },
+    {
+      "path": "src/traversal/sweep.test.ts",
+      "sha256": "687c5598066b7c1331a1ceb21594efe3d67fee77de1c1ca3c9bb8278ee571720"
+    },
+    {
+      "path": "src/traversal/sweep.ts",
+      "sha256": "c528f7994c84f05e92ab7bd6eee2f6c8347bd46919833a5b87f6800d8baf5c79"
+    },
+    {
+      "path": "src/traversal/target.test.ts",
+      "sha256": "0f0611f538c3975f2fdf978a97f424295f1e42e8eea1c4333d4db2fba9588cfa"
+    },
+    {
+      "path": "src/traversal/target.ts",
+      "sha256": "f0bf770d6f20d19cfaa6e3126f15a232650cfb00306bbea797a1a91049b5c120"
+    },
+    {
+      "path": "src/traversal/terrain-contact.test.ts",
+      "sha256": "a4e60ed0530291122b6faa7c1a372830ef24ce0f70029e94128e502ce3a18c8c"
+    },
+    {
+      "path": "src/traversal/tether.test.ts",
+      "sha256": "10ddfcba9dc38cac0354aea2bdef9e344066c70fd22d4684f08c3ecc4282333c"
+    },
+    {
+      "path": "src/traversal/tether.ts",
+      "sha256": "5d23cc7dcc706c55cb1f92108db35fced36456c6a9dcb8a14eb5c6d437060672"
+    },
+    {
+      "path": "src/traversal/tuning.ts",
+      "sha256": "55f4354b986bb4bab9587a881f8779f367d46b29af035575b24e390e09d444b9"
+    },
+    {
+      "path": "src/traversal/windhaven.test.ts",
+      "sha256": "7d0cd608db85b18c51fbfb837299a1961a5c1c8fda8f976ee67c8d2a3a25dc04"
+    },
+    {
+      "path": "src/ui/CollectionMenu.ts",
+      "sha256": "c8ac600b8701af037f5100a231b69278ef0f97a582d5dc9a5b5372d905baae95"
+    },
+    {
+      "path": "src/ui/colorName.test.ts",
+      "sha256": "c5bc70e7a909d80dc2ef83a48e4c65bafeaf831c67445d229f4f03d9d1a35dde"
+    },
+    {
+      "path": "src/ui/colorName.ts",
+      "sha256": "fa4e3d8bec871021383289481f1a2075b9d3aefa0d0b2d4a48c44139c1d1f826"
+    },
+    {
+      "path": "src/ui/compass.test.ts",
+      "sha256": "ddc06872dc98db882b33a624d18b082509b7a9864e9f74969cea4f1ce1bcde9d"
+    },
+    {
+      "path": "src/ui/compass.ts",
+      "sha256": "6f275b342f30ee4d11bcb748d377d7080015477fded2646f8d33578fa672ba39"
+    },
+    {
+      "path": "src/ui/ControlsMenu.ts",
+      "sha256": "63e0b5450ae1ea2952a6bc6f96b5836d3484af84cb31947e6026121ce9e0244b"
+    },
+    {
+      "path": "src/ui/CreditsMenu.ts",
+      "sha256": "0a4c43daf754153213313cf2704fe079f3bde8bba7b743ccdd7b2407e40e7d52"
+    },
+    {
+      "path": "src/ui/debug/fakes.ts",
+      "sha256": "ecc8f60603b22c64841e23acf19a0bc46f532fe1265623f7a9a1365060d460c7"
+    },
+    {
+      "path": "src/ui/debug/stage.ts",
+      "sha256": "a7326c0ea257f234cce18b67bb84482a043d4b30f6a6b498762ecc9991816e3f"
+    },
+    {
+      "path": "src/ui/Dialog.ts",
+      "sha256": "6d8fdea44e302a89a1c36205d2952d89486932a1a7222e6efce52c41054699cc"
+    },
+    {
+      "path": "src/ui/dom.ts",
+      "sha256": "31d7beff7b4f8e595c0c0b78be9c071b9969a3bd9635afb92124a0e2ca04f27f"
+    },
+    {
+      "path": "src/ui/firstLeadGuide.test.ts",
+      "sha256": "a29b8c9438de05056bdecbf213bea8dc98c8cef2b88554e3b06b72e9265a3c30"
+    },
+    {
+      "path": "src/ui/firstLeadGuide.ts",
+      "sha256": "b433acc2b54860ca37658ecb973c3a02e43487648aec6f7751aaac9010561f2a"
+    },
+    {
+      "path": "src/ui/focus.ts",
+      "sha256": "d10d8c3432620e1354e0410438c418d45f335a5c0eb137f64e90fbf4a29aa923"
+    },
+    {
+      "path": "src/ui/fonts.ts",
+      "sha256": "aab8b5cafff03f0d1d1b9c26d9b8a9d66361df6445467fea8ebd100cfc641837"
+    },
+    {
+      "path": "src/ui/format.test.ts",
+      "sha256": "18346f2c573ba7b35524d6355f2094123879cdd1fb3b12dc63304d686de8810c"
+    },
+    {
+      "path": "src/ui/format.ts",
+      "sha256": "e8ca172557210d8b87fb1bc0cdd050a0175b2304ffc62833c115d5e9b5ec0ed8"
+    },
+    {
+      "path": "src/ui/glyphs.test.ts",
+      "sha256": "bcc723d9651bc73708689357b0774ef2ce6b362317fe15aec8bfe2633c2bce4f"
+    },
+    {
+      "path": "src/ui/glyphs.ts",
+      "sha256": "f9ccb596987160b9208e902511eafad8ea37a272edd0d981c2aa8f2e141859c6"
+    },
+    {
+      "path": "src/ui/Hud.ts",
+      "sha256": "fe4c1bef0afbfc73c7577c51f62b8833c31647a9cde4445d2e1889c44bf032a7"
+    },
+    {
+      "path": "src/ui/hudPlacement.test.ts",
+      "sha256": "32465044ab1ce67745eeb477f99db1bd2581db0a2d7c1b7407a3ea2bb4e4c3e1"
+    },
+    {
+      "path": "src/ui/hudPlacement.ts",
+      "sha256": "9eb41828dc345aa555ea2c7106d06160f2c727d758a059420ef444ac55683acf"
+    },
+    {
+      "path": "src/ui/icons.ts",
+      "sha256": "428d47d23a176d2bc39622ceb4f05de6aacbbadb908ed8d1bb149643cdb9176f"
+    },
+    {
+      "path": "src/ui/nav.test.ts",
+      "sha256": "b2975a2b5e8af9172248e951ec7067e9a8947c1b7401c96a6a24818a779c5db8"
+    },
+    {
+      "path": "src/ui/nav.ts",
+      "sha256": "63495a5917596767ada4c78c3b18f866800bd975fe6981006742f838f7df671d"
+    },
+    {
+      "path": "src/ui/notices.test.ts",
+      "sha256": "1b3986dce2b88af4ac64cfb4c4f9e6604e1a3e105d53770ec7d78df2745e1e50"
+    },
+    {
+      "path": "src/ui/notices.ts",
+      "sha256": "6dd328775297a199ff6b697eb7967b5a70378b4591e961396ea6bbc5126b5278"
+    },
+    {
+      "path": "src/ui/panel.ts",
+      "sha256": "dacba48ccf6275dbbfa3d22b62a47c1e560cd83257df5daee5ac37b181fe14f4"
+    },
+    {
+      "path": "src/ui/Pause.ts",
+      "sha256": "2c67d78bc7b53277d51d42ffbc4a69f2294ff0a0bca27f1713252dab74fef0f4"
+    },
+    {
+      "path": "src/ui/PhotoMode.ts",
+      "sha256": "030a41a6c01bb03fb350fbbaabde85624f2f94b557c8b7b1556533c14fa1fa46"
+    },
+    {
+      "path": "src/ui/RaceHud.ts",
+      "sha256": "76c859a2e32a312ad64a6acd10333aeca2cc40ccde0481931d0a14510342ea03"
+    },
+    {
+      "path": "src/ui/RacesMenu.ts",
+      "sha256": "0eef9ba54adfadf8759c7f38db43f19223f510562ba86ca9067248817a57d980"
+    },
+    {
+      "path": "src/ui/Results.ts",
+      "sha256": "5f1c82903503df93c9e5cd026daebb9595eca70e5b1cd5a15b97d15794b69cff"
+    },
+    {
+      "path": "src/ui/SettingsMenu.ts",
+      "sha256": "e874162df950fea3f3cd918e71ce4fecced94506278555ebacb71d3014f0017b"
+    },
+    {
+      "path": "src/ui/settingsModel.test.ts",
+      "sha256": "221cfb0e004c322bc4ade4836c2e12f40d21725221e49094be505d8099bce862"
+    },
+    {
+      "path": "src/ui/settingsModel.ts",
+      "sha256": "27101125af7e33e817c0e6510be93b005e253f257f52e52da8c0937d8660b53e"
+    },
+    {
+      "path": "src/ui/Stable.ts",
+      "sha256": "3cc0a0216a9c78889472e30555d44af8859ca3542467aed27f70e45327e97b87"
+    },
+    {
+      "path": "src/ui/stableModel.test.ts",
+      "sha256": "0429753e868a8ea684ea86c1b3c7fc144e1c1115cecdacb1dd8284d5b039f54d"
+    },
+    {
+      "path": "src/ui/stableModel.ts",
+      "sha256": "586f117c8952cbac1e7e7fac64c230f9041ec4ee18db37e7b1753bfcabf7034e"
+    },
+    {
+      "path": "src/ui/Tips.ts",
+      "sha256": "af49b55a199d63e668b6663720a03a78702f381ecb377e4168c30ecb314ba3d4"
+    },
+    {
+      "path": "src/ui/Title.ts",
+      "sha256": "1e674f49b17a97e47c90ecbdbe0ca956f356ec9805456af3ee5fae38f6fe889e"
+    },
+    {
+      "path": "src/ui/tutor.test.ts",
+      "sha256": "5ecffc3884f0c079e567fd8bac445ebd7073938f725686ae6b23210e3afb77cf"
+    },
+    {
+      "path": "src/ui/tutor.ts",
+      "sha256": "fbe117a67ea1e35854426842ae4888270488ff786ab7af7a6d457b07a9b3d0c2"
+    },
+    {
+      "path": "src/ui/TutorialMap.ts",
+      "sha256": "db9c2ae99cb95f8dfad9ae52a3b438726c13e2363e4b75db2a87ebb91083ec77"
+    },
+    {
+      "path": "src/ui/ui.css",
+      "sha256": "abcad0dfeac119c85de196be138621346921c81b5b393d13e33d5381029641c6"
+    },
+    {
+      "path": "src/ui/Ui.ts",
+      "sha256": "3cd42aa944480f59897f95206498a23ce4f952d88cb7e6204c6a18be1a4df948"
+    },
+    {
+      "path": "src/ui/unlocks.test.ts",
+      "sha256": "f9767cef588e092bbeb6d0009ffb938ec09f645affc8ec498f6d3d5eb9f6ee70"
+    },
+    {
+      "path": "src/ui/unlocks.ts",
+      "sha256": "adbef9949f128d2a60c4f6d7dd03f28be1c712ee74054a5541bd538e5febb7ba"
+    },
+    {
+      "path": "src/ui/viewModel.ts",
+      "sha256": "cdafb5b728754161f85fd42e8cd57c4edede0e654cdad9aeb0858b61d1aa3d33"
+    },
+    {
+      "path": "src/ui/WindlineHud.ts",
+      "sha256": "30c2e97d9b302ebee2419fe879136299c2d72a5338546ab0e985905ce6a34ddb"
+    },
+    {
+      "path": "src/world/airship/roundedPrism.ts",
+      "sha256": "be366d3cc2185b9778645501464abe191e9a82c76e14b2c195976e709c16b588"
+    },
+    {
+      "path": "src/world/airship/SailCloth.test.ts",
+      "sha256": "45acc56f8957412d18778e929cdd73781e84ad797ffa6362bcb79eb7fd5586c1"
+    },
+    {
+      "path": "src/world/airship/SailCloth.ts",
+      "sha256": "3d4783f3503235929d0ccf2bfefd1f731b8aa52c2dff33f31a226cbf73df7d8b"
+    },
+    {
+      "path": "src/world/airship/windhaven.test.ts",
+      "sha256": "541b34d3b22d3d89e282ef915f4caab1874524e2b35f3c8c8a1c7dd16202ec75"
+    },
+    {
+      "path": "src/world/airship/Windhaven.ts",
+      "sha256": "8cee91a0b8651a678908981fc23def5c852398a4c2613d2a5ada00fa6dd89f8a"
+    },
+    {
+      "path": "src/world/airship/windhavenHull.test.ts",
+      "sha256": "d007b65d5d59b75a4a8a7496083a046de5f20cb098c090380b7896bfc3d07944"
+    },
+    {
+      "path": "src/world/airship/windhavenHull.ts",
+      "sha256": "b1a9d881e426a7f0e026b9a2b85f578ebd5809d77fcb3148be1dadf3eda2b02d"
+    },
+    {
+      "path": "src/world/airship/windhavenPlan.ts",
+      "sha256": "aab022732d1787b085b3c13081c64aa79fc58af570ec9348d4b742eb65f76197"
+    },
+    {
+      "path": "src/world/colliders.test.ts",
+      "sha256": "e27ea6ff6189ffd5e62ad9c33baf34884cc82d5b1f5769d8a1b2607b67cf92f8"
+    },
+    {
+      "path": "src/world/colliders.ts",
+      "sha256": "60ec7002c5f484f72cfee093e75dcd7f9a96ddb8a0d5257bfc3d6817bf8d8c09"
+    },
+    {
+      "path": "src/world/convexDistance.test.ts",
+      "sha256": "7b385b2415f50585d51e4edd337be1e6e28235e925ab20b36ff4d906eb3c434d"
+    },
+    {
+      "path": "src/world/convexDistance.ts",
+      "sha256": "ed208c5bcaaabaca722d184e39f74fde407f88f3cfc5efc67e38b3c35e1619ad"
+    },
+    {
+      "path": "src/world/dressing/colliderKit.ts",
+      "sha256": "6749efbc7dbc6f24090064cf18aff40ab4e2c279fe7a6f061c730e452a292495"
+    },
+    {
+      "path": "src/world/dressing/colliderView.ts",
+      "sha256": "e470d1071a0fa944d6e2a07f40f60da04fe3190a3cd70c9cb82cba58611b6982"
+    },
+    {
+      "path": "src/world/dressing/Dressing.test.ts",
+      "sha256": "19e305f5ebbcf23183ac8190c769cfbb996e9d3b2369798f5a9c50f9704d0ee0"
+    },
+    {
+      "path": "src/world/dressing/Dressing.ts",
+      "sha256": "48bec308ee3e7640af52ac8aa42af48ad5b0c920f2c07516171deed95d9bf94c"
+    },
+    {
+      "path": "src/world/dressing/exclusions.test.ts",
+      "sha256": "1e6d102824fd1c15ea0592b685665e46ccaccc88f2ea799f3fbb0b56e38cb25a"
+    },
+    {
+      "path": "src/world/dressing/exclusions.ts",
+      "sha256": "5970266c2b9045ff122ffcf7cd9a88d27d71e508d807f7b7a7ab66c4db1d0e4a"
+    },
+    {
+      "path": "src/world/dressing/geom.test.ts",
+      "sha256": "2aa7a55965525f697b773d0fc2d860b20b8971849ee4ca8be82272b83b1ec95d"
+    },
+    {
+      "path": "src/world/dressing/geom.ts",
+      "sha256": "28f9758c909d07d10266ca285b7745f24d93e940b388073334854466c4beec5f"
+    },
+    {
+      "path": "src/world/dressing/grass/fieldChunk.test.ts",
+      "sha256": "b460a2658d8ffc65a3bbf23e706c367c38744dbd60cb6a3f1e8d64c8a15d1580"
+    },
+    {
+      "path": "src/world/dressing/grass/fieldChunk.ts",
+      "sha256": "a6d8df363ec2fdc59a94c4a5835a579d24becd48d3ec354868a8c57cc0d6ec29"
+    },
+    {
+      "path": "src/world/dressing/grass/fieldGeometry.ts",
+      "sha256": "c45c01471e11db9a096e7aa7aac4e99e1edb8453611a7009cf83ee95c74fa3d4"
+    },
+    {
+      "path": "src/world/dressing/grass/fieldMaterial.ts",
+      "sha256": "10c8ce6be33e8d3af48584170b8cad2dcde0783c3bc5ba5c5ea053fe7b609eb4"
+    },
+    {
+      "path": "src/world/dressing/grass/fieldStyle.ts",
+      "sha256": "9f538790da2912821bcc9fdb4fe5beebedc63c19de4de38b2634c3bb65397aab"
+    },
+    {
+      "path": "src/world/dressing/grass/fieldWorker.ts",
+      "sha256": "f7dcbc193968bd4adf3a269bed192a57848c34954f9ad376441c38bcc26aae72"
+    },
+    {
+      "path": "src/world/dressing/grass/GrassField.ts",
+      "sha256": "95ab212f4f6f58269ec3018944bca483f52f4daf367415505db62b8067555d9b"
+    },
+    {
+      "path": "src/world/dressing/materials.ts",
+      "sha256": "6ee7d3d7d251d74303b22b74f9d799a794a6d12959de187f3b9cf624186b399e"
+    },
+    {
+      "path": "src/world/dressing/roots/HangingRoots.ts",
+      "sha256": "2b13d42c023a85932178aad9651e9dd26db53e178355ac5e02d31506d4a2455d"
+    },
+    {
+      "path": "src/world/dressing/roots/rootPlan.test.ts",
+      "sha256": "cbd68ed3851d24866e5a494a4537f050847dacbcfb6dd4f5f9404869dfbc840d"
+    },
+    {
+      "path": "src/world/dressing/roots/rootPlan.ts",
+      "sha256": "d63e3e1e33f4c1b242c8c70786c8e0ce78c4f6bddf9aeadf87532095f4ac9a04"
+    },
+    {
+      "path": "src/world/dressing/structures/courtyard.ts",
+      "sha256": "7d4aa2b2955c290d5fe7e59f10a413b0921375b155e890b15202e39269ae2a2c"
+    },
+    {
+      "path": "src/world/dressing/structures/kit.ts",
+      "sha256": "579b5fbc45e7dc8071a656cb5ecc124d0c2cfad8c42a33afeb20d8d38084c93e"
+    },
+    {
+      "path": "src/world/dressing/structures/Landmarks.ts",
+      "sha256": "afacc3f4512fd192eef2eb316cd1ccbfa3d7495c3aa53af4adf67bdf3a621999"
+    },
+    {
+      "path": "src/world/dressing/structures/lightPools.ts",
+      "sha256": "b4c3c9bec083bab1d9860f6192c94b4fd01969799c2284f8146df312e57cd971"
+    },
+    {
+      "path": "src/world/dressing/structures/Roost.ts",
+      "sha256": "acc24b58cc91a12801b3c943ef9034f822ac21c39ff608d9759ac838c6c49b81"
+    },
+    {
+      "path": "src/world/dressing/structures/roostPlan.test.ts",
+      "sha256": "3d7c5868000bd7ba7d03fad49df44f43c40ddf6aabed1326b7680ca35aeb7894"
+    },
+    {
+      "path": "src/world/dressing/structures/roostPlan.ts",
+      "sha256": "8e7f661f2df6416cc0d7735c56440c11399a199e97b9ed300d921f5a3c408950"
+    },
+    {
+      "path": "src/world/dressing/structures/Ruins.ts",
+      "sha256": "ce8595b49e96fb29cfbfc63b09ce442d98ae9d942f3bce694f57a6cbcc293fde"
+    },
+    {
+      "path": "src/world/dressing/structures/ruinShadows.test.ts",
+      "sha256": "44244ce368f7d9a821c2e39da19212a86ea15aed43730dd125555d7c4398e5b2"
+    },
+    {
+      "path": "src/world/dressing/structures/Structures.ts",
+      "sha256": "d2a8700b6c8483a3442f52ce5b71ae4ea273c1a291dc0e25825f44a5965156a5"
+    },
+    {
+      "path": "src/world/dressing/trees/colliderFit.test.ts",
+      "sha256": "64a78869453359657fa3b1035d88b57b91cf4d89b288b8cac2dbb0f50be7a2ff"
+    },
+    {
+      "path": "src/world/dressing/trees/Forest.ts",
+      "sha256": "ab2dff6111fea80c60fd29c80e3084219dc3fa85fe31ecd359de6e8730ae88b0"
+    },
+    {
+      "path": "src/world/dressing/trees/placement.test.ts",
+      "sha256": "e214a47cefa17581d4b330dd9207a6f0b026ea51f7b49adad6e047e062b1e065"
+    },
+    {
+      "path": "src/world/dressing/trees/placement.ts",
+      "sha256": "22633ff5cacaa1c3815d321294cd60147baf57de93c59656ae8e6123282b04cf"
+    },
+    {
+      "path": "src/world/dressing/trees/species.ts",
+      "sha256": "f7676df09163dde657d460c37620bd126f1cde33833e42f59e9872afe016356e"
+    },
+    {
+      "path": "src/world/dressing/ventari/FirstLead.test.ts",
+      "sha256": "d604f1bdbe3867c7e1590c310e9d4ccf25badb92dc4be4a6f7e5306de428c38b"
+    },
+    {
+      "path": "src/world/dressing/ventari/FirstLead.ts",
+      "sha256": "440a70610e4827239114bc171c7a542ff8a16596618a6befc43ccd15608ee7ca"
+    },
+    {
+      "path": "src/world/dressing/ventari/glyphs.ts",
+      "sha256": "d7b8e877b30f496ce19e08626df4cd09b1f9074cd9602d8043b7f64e8eb3ec26"
+    },
+    {
+      "path": "src/world/dressing/ventari/plan.test.ts",
+      "sha256": "26c7261969feb26028cd2c120efd656970d4256e31d2024a5ea19b138abbfd29"
+    },
+    {
+      "path": "src/world/dressing/ventari/plan.ts",
+      "sha256": "09d43efed9971d8875b5aaa0a5955bc74b8a9e5acd01c2ff81927943f83a542f"
+    },
+    {
+      "path": "src/world/dressing/water/waterfallPlan.test.ts",
+      "sha256": "151e0f194a62e9cd2670251cae3641e0fe0ef51b912918d6242d6ee1673cc42c"
+    },
+    {
+      "path": "src/world/dressing/water/waterfallPlan.ts",
+      "sha256": "037973401ca6600e5254a0e66e970ad6b000efc24346395e13085a94c4eede91"
+    },
+    {
+      "path": "src/world/dressing/water/Waterfalls.ts",
+      "sha256": "7f872e8c961a3dd9ca2792150684fa60757e20b4c0b4fae20ed9b1ee519cde1e"
+    },
+    {
+      "path": "src/world/dressing/water/waterMaterials.ts",
+      "sha256": "b200e417d10dc541bbf9ff6529b7cf15b0556390556b133b9c4472b50fe790a9"
+    },
+    {
+      "path": "src/world/islandShape.test.ts",
+      "sha256": "8498796b10882f55727dcdfb36a3b66e001434b08c81c0e3e50116dd9d2fd7fc"
+    },
+    {
+      "path": "src/world/islandShape.ts",
+      "sha256": "96df20c0774d8b29332b9c2d2883bff79b16a409ac6a0b35aef797cc24d2f4d1"
+    },
+    {
+      "path": "src/world/layout.ts",
+      "sha256": "1f9517cd0f1442ec31d1919595397300773d703b5de54a4f599991eca55b279b"
+    },
+    {
+      "path": "src/world/mesh/archMesh.ts",
+      "sha256": "a07b97598a8628cdc9f16c896f55a14c0bb1c6b61f3fb6eb91f44328962fb238"
+    },
+    {
+      "path": "src/world/mesh/BoundsLOD.ts",
+      "sha256": "bd7b78d02a9e88599ce2f0e11d9309fe5873ccbcf433e84a983cc6fbb3e37ef7"
+    },
+    {
+      "path": "src/world/mesh/debris.ts",
+      "sha256": "c971051a8d70b039bb41276c031ab1af0f9f145019263796d5f7ab40a7ee7b53"
+    },
+    {
+      "path": "src/world/mesh/features.test.ts",
+      "sha256": "44617dbf9ba553c8d5027e6be4069b3c99329579d94860c6b39861c069e9cc29"
+    },
+    {
+      "path": "src/world/mesh/islandMesh.test.ts",
+      "sha256": "b08397b050392a0ac54406fe41b5a68463af51a169368e2950c9c3a1001da842"
+    },
+    {
+      "path": "src/world/mesh/islandMesh.ts",
+      "sha256": "46ec95ef546d3c6fc47fac78097e61559edf6e27abfa9e55f31ec43851d5fc04"
+    },
+    {
+      "path": "src/world/mesh/islandPaint.ts",
+      "sha256": "76119c8cd6b1891d6de3fa6a9232d026bcacd344a3499a97300664993e4efa86"
+    },
+    {
+      "path": "src/world/mesh/MeshBuilder.ts",
+      "sha256": "9c95bba4228d555ee24e42ac7ffc5e966d80da91f398d00b38187f1b3d5683c2"
+    },
+    {
+      "path": "src/world/mesh/spireMesh.ts",
+      "sha256": "3f812fa1f3b2c31c828dc04d4d3ab9241b00cd59f9bec9a5ca809e2fb3394ff7"
+    },
+    {
+      "path": "src/world/mesh/strata.ts",
+      "sha256": "5618013af9328a2b1266adeb891b7101205b243c056f6ea327447aba0ee3d3e2"
+    },
+    {
+      "path": "src/world/mesh/terrainMaterial.ts",
+      "sha256": "32c5ed8f512160e532e06f76854ea148d4af293107ded1521c3cd091be9e637d"
+    },
+    {
+      "path": "src/world/terrain.test.ts",
+      "sha256": "b6089b513d744f0e75b7c20315cd4047874d398875fb4759a911d0cb73e053b9"
+    },
+    {
+      "path": "src/world/terrain.ts",
+      "sha256": "1cd6222553901b3da4407e129ab1da3a02094ead61652ee0f4dcc5758ca338c5"
+    },
+    {
+      "path": "src/world/World.test.ts",
+      "sha256": "8f6a38c500d5fff2ce7c048bca53005100782c49f3d1f5384c7f7cf9fe70920a"
+    },
+    {
+      "path": "src/world/World.ts",
+      "sha256": "01de6a8c06549ca2430dd0f70443579795f53411e55abc0ab73fff4b49736e79"
+    }
+  ],
+  "unchangedAgainstMain": [
+    "src/flight",
+    "src/traversal",
+    "src/world",
+    "src/creatures/rider/animator.ts",
+    "src/creatures/rider/ik.ts",
+    "src/creatures/rider/rig.ts"
+  ],
+  "unchangedAgainstPreviousReview": [
+    "src/progression",
+    "src/cosmetics",
+    "src/render",
+    "src/creatures/wyvern"
+  ],
+  "verification": {
+    "unitFiles": 119,
+    "unitTests": 1260,
+    "focusedMaterialBehaviorTests": 35,
+    "typecheck": "passed",
+    "build": "passed",
+    "dedicatedGeometryTests": 2,
+    "pairwiseLooks": 384,
+    "sampledPoses": 2304,
+    "smoke": 15,
+    "mixed": 32,
+    "browser": 33,
+    "captures": 28,
+    "localMenuChecks": 12
+  },
+  "limitations": [
+    "Capsule-proxy clearance with sewn seams excluded; sampled triangles are not exhaustive mesh intersection certification",
+    "No arbitrary wall/foliage, cloth self-collision, or stacking collision for every outer layer",
+    "Node CPU and Edge SwiftShader evidence do not certify real GPU performance; Ultra robe contact cost remains material",
+    "No main merge or hosted deployment"
+  ]
+}

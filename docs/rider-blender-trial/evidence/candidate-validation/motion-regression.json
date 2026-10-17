@@ -1,0 +1,1037 @@
+{
+  "origin": "http://127.0.0.1:5216",
+  "browser": "155.0.4283.45",
+  "renderer": "CHROMIUM_PATH browser SwiftShader; no hardware certification",
+  "scope": "Current animator and live cloth continuous playback of preserved motion-fit phases; scripted stand-in seat. Exact 12.4-second capture is taken during the first playback, never reconstructed by replay.",
+  "output": "shots/rider-blender/windkeel-resting-motion/2026-10-12T07-59-25-377Z",
+  "assetSha256": "d6f2ffa790d43e8217ab6d64bdfdf994b424d1d5cb1d1b8685403b2001d40dc8",
+  "cases": [
+    {
+      "build": "medium",
+      "finite": true,
+      "kind": "windkeel",
+      "frames": [
+        {
+          "time": 11,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0,
+            "maxApplied": 0,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 11.125,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.009473046743252667,
+            "maxApplied": 0.013587928200242213,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 11.25,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.023200104965127366,
+            "maxApplied": 0.03129619976327915,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 11.375,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.010579905057426231,
+            "maxApplied": 0.010579905057426231,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 11.5,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.004834649545891523,
+            "maxApplied": 0.0074200896054237905,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 11.625,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.02712113315193676,
+            "maxApplied": 0.038848428155847124,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 11.75,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.021646707049086444,
+            "maxApplied": 0.026889262786716633,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 11.875,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0,
+            "maxApplied": 0,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0,
+            "maxApplied": 0,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12.125,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0,
+            "maxApplied": 0,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12.25,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.023745913851499267,
+            "maxApplied": 0.035777018991769036,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12.375,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.012406150946915773,
+            "maxApplied": 0.015543711190818117,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12.4,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.027831427500778716,
+            "maxApplied": 0.047618133472407814,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12.5,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.028890802739134358,
+            "maxApplied": 0.04466829880869433,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12.625,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.007126683003598089,
+            "maxApplied": 0.008890670560198603,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12.75,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0,
+            "maxApplied": 0,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12.875,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0,
+            "maxApplied": 0,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 13,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0,
+            "maxApplied": 0,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 13.125,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.023385849249955015,
+            "maxApplied": 0.036386642350547574,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 13.25,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.02805523158384915,
+            "maxApplied": 0.04683047851148125,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 13.375,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.025807620398765607,
+            "maxApplied": 0.04587637384087935,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 13.5,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.0020064523423499736,
+            "maxApplied": 0.0021321406783200015,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 13.625,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0,
+            "maxApplied": 0,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 13.75,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0,
+            "maxApplied": 0,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 13.875,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.00038806079075470734,
+            "maxApplied": 0.0004545529719587793,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 14,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.011519454830235532,
+            "maxApplied": 0.01401110299041861,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        }
+      ],
+      "maxCrossings": 0,
+      "at12_4": {
+        "time": 12.4,
+        "crossings": 0,
+        "details": [],
+        "contact": {
+          "maxRequested": 0.027831427500778716,
+          "maxApplied": 0.047618133472407814,
+          "rejected": 0,
+          "pinned": 0,
+          "remaining": 0
+        }
+      },
+      "diagnostic12_4": {
+        "file": "shots/rider-blender/windkeel-resting-motion/2026-10-12T07-59-25-377Z/medium-12.4-binding.json"
+      },
+      "sockets": [
+        "AN_SOCKET_WINDLINE_DORSAL",
+        "AN_SOCKET_GUIDE_LEFT",
+        "AN_SOCKET_RIDING_LEFT",
+        "AN_SOCKET_RIDING_RIGHT"
+      ],
+      "clothPanels": 4
+    },
+    {
+      "build": "slight",
+      "finite": true,
+      "kind": "windkeel",
+      "frames": [
+        {
+          "time": 11,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0,
+            "maxApplied": 0,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 11.125,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.015589760302788136,
+            "maxApplied": 0.021592493420185713,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 11.25,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.021338350595954125,
+            "maxApplied": 0.03187839180690094,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 11.375,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.031295505372476384,
+            "maxApplied": 0.05071483172128435,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 11.5,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.026162674576546863,
+            "maxApplied": 0.04308785964793141,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 11.625,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.021782425081056545,
+            "maxApplied": 0.030492601931374406,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 11.75,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.026578529874946355,
+            "maxApplied": 0.04177053784682161,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 11.875,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.01337710203162601,
+            "maxApplied": 0.02041288086629832,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.012805660604698232,
+            "maxApplied": 0.018840044190463298,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12.125,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.016140807448294936,
+            "maxApplied": 0.024429513715991797,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12.25,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.035848319112915306,
+            "maxApplied": 0.05431285843179026,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12.375,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.012118596762718425,
+            "maxApplied": 0.018755182568322447,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12.4,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.019433355883386128,
+            "maxApplied": 0.03147092916481962,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12.5,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.027324294731528198,
+            "maxApplied": 0.047813256457304,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12.625,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.02507081895968355,
+            "maxApplied": 0.035226753268644447,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12.75,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.018291449188751585,
+            "maxApplied": 0.021714690848571763,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12.875,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.014482093868060986,
+            "maxApplied": 0.01718783810155454,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 13,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.029111040192070448,
+            "maxApplied": 0.0529128565456966,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 13.125,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.02701334873822958,
+            "maxApplied": 0.04265141012136576,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 13.25,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.029502444190733,
+            "maxApplied": 0.04467354958861919,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 13.375,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.028311114318732677,
+            "maxApplied": 0.04450231039386306,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 13.5,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.02969625016857691,
+            "maxApplied": 0.0425916159340007,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 13.625,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.012724490109256692,
+            "maxApplied": 0.013279444523735584,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 13.75,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.02659122609927067,
+            "maxApplied": 0.04338097073010186,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 13.875,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.02434653341662596,
+            "maxApplied": 0.04563591559452917,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 14,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.022530326461179584,
+            "maxApplied": 0.03231504375620025,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        }
+      ],
+      "maxCrossings": 0,
+      "at12_4": {
+        "time": 12.4,
+        "crossings": 0,
+        "details": [],
+        "contact": {
+          "maxRequested": 0.019433355883386128,
+          "maxApplied": 0.03147092916481962,
+          "rejected": 0,
+          "pinned": 0,
+          "remaining": 0
+        }
+      },
+      "diagnostic12_4": {
+        "file": "shots/rider-blender/windkeel-resting-motion/2026-10-12T07-59-25-377Z/slight-12.4-binding.json"
+      },
+      "sockets": [
+        "AN_SOCKET_WINDLINE_DORSAL",
+        "AN_SOCKET_GUIDE_LEFT",
+        "AN_SOCKET_RIDING_LEFT",
+        "AN_SOCKET_RIDING_RIGHT"
+      ],
+      "clothPanels": 4
+    },
+    {
+      "build": "broad",
+      "finite": true,
+      "kind": "windkeel",
+      "frames": [
+        {
+          "time": 11,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0,
+            "maxApplied": 0,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 11.125,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.003975456993977389,
+            "maxApplied": 0.0042150761101082375,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 11.25,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.016490728296062684,
+            "maxApplied": 0.024230744751906088,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 11.375,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.011657309472944632,
+            "maxApplied": 0.01571489602754892,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 11.5,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.002754914197012681,
+            "maxApplied": 0.003606631550258603,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 11.625,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0,
+            "maxApplied": 0,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 11.75,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0,
+            "maxApplied": 0,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 11.875,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0,
+            "maxApplied": 0,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.01316513613731729,
+            "maxApplied": 0.019061016467875645,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12.125,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0,
+            "maxApplied": 0,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12.25,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.01701576890122425,
+            "maxApplied": 0.028650318359925996,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12.375,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.02590803374909001,
+            "maxApplied": 0.040307313023241746,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12.4,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.028116463029746797,
+            "maxApplied": 0.04291908680959211,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12.5,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.029898291017467216,
+            "maxApplied": 0.04746308162178804,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12.625,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.011282401641217632,
+            "maxApplied": 0.011613515662188484,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12.75,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0,
+            "maxApplied": 0,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 12.875,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0,
+            "maxApplied": 0,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 13,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0,
+            "maxApplied": 0,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 13.125,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0,
+            "maxApplied": 0,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 13.25,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.02869261780803356,
+            "maxApplied": 0.045769077686392996,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 13.375,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.027035898454890628,
+            "maxApplied": 0.03726048175481008,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 13.5,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.005991276186222194,
+            "maxApplied": 0.007547195655234317,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 13.625,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0,
+            "maxApplied": 0,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 13.75,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0,
+            "maxApplied": 0,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 13.875,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.00894804162513907,
+            "maxApplied": 0.01170371832151414,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        },
+        {
+          "time": 14,
+          "crossings": 0,
+          "details": [],
+          "contact": {
+            "maxRequested": 0.017309585425486773,
+            "maxApplied": 0.0281205701438582,
+            "rejected": 0,
+            "pinned": 0,
+            "remaining": 0
+          }
+        }
+      ],
+      "maxCrossings": 0,
+      "at12_4": {
+        "time": 12.4,
+        "crossings": 0,
+        "details": [],
+        "contact": {
+          "maxRequested": 0.028116463029746797,
+          "maxApplied": 0.04291908680959211,
+          "rejected": 0,
+          "pinned": 0,
+          "remaining": 0
+        }
+      },
+      "diagnostic12_4": {
+        "file": "shots/rider-blender/windkeel-resting-motion/2026-10-12T07-59-25-377Z/broad-12.4-binding.json"
+      },
+      "sockets": [
+        "AN_SOCKET_WINDLINE_DORSAL",
+        "AN_SOCKET_GUIDE_LEFT",
+        "AN_SOCKET_RIDING_LEFT",
+        "AN_SOCKET_RIDING_RIGHT"
+      ],
+      "clothPanels": 4
+    }
+  ],
+  "errors": []
+}

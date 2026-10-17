@@ -1,0 +1,27 @@
+{
+  "unitFiles": 110,
+  "unitTests": 1161,
+  "typecheck": "passed",
+  "build": "passed",
+  "smoke": "15/15 passed",
+  "clothChecks": 17,
+  "clothCaptures": 13,
+  "proofChecks": 49,
+  "proofCaptures": 40,
+  "mountedChecks": 51,
+  "mountedCaptures": 16,
+  "browserErrors": 0,
+  "changedSourceFiles": 11,
+  "unchangedSourceFiles": 379,
+  "sourceState": "local uncommitted/unpushed/unmerged",
+  "baseline": "f9fc707d55cea36f62307d8a58ba9c00361be253",
+  "textureTier": {
+    "low": 1024,
+    "medium": 2048,
+    "high": 3072,
+    "highComparison": 4096,
+    "ultraExisting": 4096
+  },
+  "groundEvidence": "sloped walkable surface unit regression; actual player weather/mounted evidence; no exhaustive prop/terrain contact claim",
+  "settledMaxParticleSpeed": 0.010640946617345675
+}
