@@ -7,7 +7,7 @@ import { Panel, hintBar, sheet, type UiCtx } from './panel';
 import { emblemSvg } from './Title';
 
 const SECTIONS: [string, string[]][] = [
-  ['A GAME BY', ['The Driftwing team']],
+  ['A GAME CREATED BY', ['Oberon']],
   ['FLIGHT & FEEL', ['Weighty sim-lite flight model, stalls, dives and stamina', 'Player states: landing, walking, falling and the catch']],
   ['THE DRIFT', ['Floating islands, spires and the Eye of the Gale', 'Grass, groves, waterfalls and the Roost']],
   ['SKY & WEATHER', ['Golden hours, night skies, clouds and rain']],
