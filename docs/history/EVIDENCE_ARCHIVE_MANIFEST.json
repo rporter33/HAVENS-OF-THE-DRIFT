@@ -1,0 +1,4066 @@
+{
+ "source_commit": "18a7aabe7da52a85c538af7914a0c1e5a5cf73d1",
+ "moved_on": "2026-10-17",
+ "archive_branch": "archive/evidence-2026-10-17",
+ "folders": {
+  "docs/rider-c02/evidence": [
+   {
+    "path": "docs/rider-c02/evidence/aerie-back.png",
+    "bytes": 749341,
+    "sha256": "0013405d5598e94c632b7cf4401225136b47b3fd50e8dffe2dc016aa4acedb41"
+   },
+   {
+    "path": "docs/rider-c02/evidence/aerie-bank-left.png",
+    "bytes": 872742,
+    "sha256": "88274c2898e9f84c720a12fcc05c16048601e393c24d4e6efaaae83e20693ec2"
+   },
+   {
+    "path": "docs/rider-c02/evidence/aerie-bank-right.png",
+    "bytes": 929974,
+    "sha256": "7ba10212b191d0b9d5bbd249dc4766997d7c8ed8c0c7251068bf76c6f725de65"
+   },
+   {
+    "path": "docs/rider-c02/evidence/aerie-brace-close.png",
+    "bytes": 921554,
+    "sha256": "ab2cba206366f2589bb3ad4a8a487b19dabe71145452201a6db5d8773d672460"
+   },
+   {
+    "path": "docs/rider-c02/evidence/aerie-brake.png",
+    "bytes": 894171,
+    "sha256": "f577841115e7681bd80cd68508df5fb6066e9eaf61dc3a4f7c4862d2b29de5b1"
+   },
+   {
+    "path": "docs/rider-c02/evidence/aerie-dismount-gameplay.png",
+    "bytes": 894972,
+    "sha256": "512696c01913750c1b44896dd12fbbfe3b7f7b2944de6eb3f508d93e74b98714"
+   },
+   {
+    "path": "docs/rider-c02/evidence/aerie-dive.png",
+    "bytes": 939741,
+    "sha256": "0cc2dcaf821f66c521301fda1539a177aa1a5e161fda15d879b6bbb3dcfbec58"
+   },
+   {
+    "path": "docs/rider-c02/evidence/aerie-front.png",
+    "bytes": 732259,
+    "sha256": "654c4fbc01f72dced9de0f993eefc18d05fb796e0a4e5667dead65f3325e0bda"
+   },
+   {
+    "path": "docs/rider-c02/evidence/aerie-ground.png",
+    "bytes": 887441,
+    "sha256": "7d947a83740fa0ca5e33169f810f4d94e4eb982d71f47b1260388dcb14202e34"
+   },
+   {
+    "path": "docs/rider-c02/evidence/aerie-high-normal.png",
+    "bytes": 785454,
+    "sha256": "0bc7abf201fde1ff0339ab7e4018a0a44c89f4d6ca84fd838e43dfa27b5472f2"
+   },
+   {
+    "path": "docs/rider-c02/evidence/aerie-landing-gameplay.png",
+    "bytes": 933399,
+    "sha256": "19ba0aa261b9738ab5940c6072c2d9335159beb71c7868357b086cc8b779a6f2"
+   },
+   {
+    "path": "docs/rider-c02/evidence/aerie-mounted.png",
+    "bytes": 886014,
+    "sha256": "08ed7ec0b8f9cfb2212a11e727cfb5ee251f9f7269546742c64024da9329677b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/aerie-saddle-close.png",
+    "bytes": 857827,
+    "sha256": "072f364acedbfc54e5798774f0fb1a009ec94e41dc53257b91e59b23e382cc34"
+   },
+   {
+    "path": "docs/rider-c02/evidence/aerie-takeoff-gameplay.png",
+    "bytes": 859629,
+    "sha256": "6b5b5b8709639927eb6bc14f8c4b40535022f5f30013794bdd04b4b0ce950559"
+   },
+   {
+    "path": "docs/rider-c02/evidence/atlas-map.png",
+    "bytes": 349696,
+    "sha256": "245947923c637a549659c82789fe7f58919239dacb3d814bf7868f8a68eb384a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/atlas-normalMap.png",
+    "bytes": 608137,
+    "sha256": "13372c14b79ff96983ea4c1954738b842b135f29452d7c8b6f1d28015ec67a24"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/actual-weather.png",
+    "bytes": 1055532,
+    "sha256": "09e0a063c31174ee2820e8223600b0a12ac68150f08f31cecb5d50bed83a6321"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/aerie-back.png",
+    "bytes": 752323,
+    "sha256": "806249d9abced0b3e96543b34adbb1b057cbfb6ac8896c13a56259120d1bfd3a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/aerie-bank-left.png",
+    "bytes": 872619,
+    "sha256": "ef7f19a6d3d92791d5cdb6bbe2012f7c8faa174659c75a7956dbf344f9284640"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/aerie-bank-right.png",
+    "bytes": 930369,
+    "sha256": "e1dbdc987d0d0729673c9e0800ab194490672ca5cad263542188bcd915b6585a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/aerie-brace-close.png",
+    "bytes": 923234,
+    "sha256": "cc97b5a361678602feaad2fc11128ac944d413ab7c16125fa4ca7aa3618b917f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/aerie-brake.png",
+    "bytes": 894359,
+    "sha256": "3676923a0191b270c93017d210ddb80b567075a5d2342d22179365e4ef04b6de"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/aerie-dismount-gameplay.png",
+    "bytes": 894782,
+    "sha256": "72ca424530a1ec80a8d76111d7f6af3a91a8711b3389c2e194beccff1504c85f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/aerie-dive.png",
+    "bytes": 939906,
+    "sha256": "d431a135f6dd7df704423c767ad4cfa16172fa57c7ce15e97702d13f52713734"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/aerie-front.png",
+    "bytes": 733773,
+    "sha256": "f8ccd85674106e9ebf5225a162ecc151a69ad889be1e29434c97e81c151cf44e"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/aerie-ground.png",
+    "bytes": 887557,
+    "sha256": "1528c3ea6d1685e1974ced2ee0597057ddc7e8ba2a029431ae818e7d67081e42"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/aerie-high-normal.png",
+    "bytes": 793076,
+    "sha256": "5ad4a3e2ae4848e25314de4623638da9212c17cf43b51caf9232cdfd437ec89a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/aerie-landing-gameplay.png",
+    "bytes": 933129,
+    "sha256": "a85e08fde5dbbd981ae86a0729fb29e1854e86ebd73f3abf64b910c176a1656c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/aerie-mounted.png",
+    "bytes": 886488,
+    "sha256": "d52433cbe38772c2277b444dcfe755fcaef7bbdfe0ccb4f5e04237b689c9ac45"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/aerie-saddle-close.png",
+    "bytes": 860000,
+    "sha256": "2b8eab0fa0e479b6e6d6d584bfbff1ffd959fc5b214d87d82788c01262e603cd"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/aerie-takeoff-gameplay.png",
+    "bytes": 859812,
+    "sha256": "6a7899a938c30b8cf9ab969c78c8530bc8dcf3bd115555b2242ec337d3716042"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/atlas-map.png",
+    "bytes": 3549272,
+    "sha256": "7f0fcfad62d2aa09dec25a3163c04dabc87fd42e4b098421f98c38b1db818d1d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/atlas-normalMap.png",
+    "bytes": 8321822,
+    "sha256": "861320ef70bb33b49012ea22ff033c79c2008411cfbe03e6d9b9a603aacb6b73"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/index.html",
+    "bytes": 7699,
+    "sha256": "8a98c0dd48d5b1f937f17a2cf5319259e6b525fa54fc443a95a6b41f9da29785"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/legacy-default.png",
+    "bytes": 732810,
+    "sha256": "9b1b50aa2759bff18386dd864c993ba6b7c1161b22752226a61c382e6b1dc9ca"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/manifest.json",
+    "bytes": 41656,
+    "sha256": "7326f636abe85fd68854de221d790c9430367beb27910dbf006669ae40e43abd"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/material-color.png",
+    "bytes": 749034,
+    "sha256": "30542a99c9c8d50496b76a8190c7666ba3f986b99d6b19adfd5dded0bb4cb089"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/material-normal.png",
+    "bytes": 753593,
+    "sha256": "9eefd4516a958c2a95389d603fb2b79fa9b1d307abbb675b790acdf50eeaf9f1"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/material-off.png",
+    "bytes": 738801,
+    "sha256": "8edfa16ac63ca8505b0d76be164a327daad674214b93a233e469afdad288c233"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/sculpt-front.png",
+    "bytes": 751221,
+    "sha256": "83ef67521994713215ed58b21fcc3a9bfed8789a23049ec8dacbd74e24756cf1"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/sculpt-hands.png",
+    "bytes": 896245,
+    "sha256": "3c6581e4b5fd137f69de992ad2dd935710f4ba8a3aa70c0cc807eed621ac6369"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/sculpt-left.png",
+    "bytes": 740522,
+    "sha256": "2ef97c807a50c99fac5ab3aaaec005df87ff49bfc30125794fd0a0e0f277485d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/sculpt-right.png",
+    "bytes": 751154,
+    "sha256": "7ddd0d92ad07737a6d2091464e8efd7f163f254f94a7fde74c1e6dcee6f87d36"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/sculpt-sandals.png",
+    "bytes": 629836,
+    "sha256": "f0db9e8357b2a7b0828f55872ca3188d6b6443fafcaf671de0b57909fd23892c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/sculpt-wave.png",
+    "bytes": 774468,
+    "sha256": "ce2f8a59baee16b65feca3436988809f62856086fe9924b630af992f9bfb4ff5"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/wanderer-back.png",
+    "bytes": 752526,
+    "sha256": "23a2cc87e3086412d3fa5099bb4e4107b26a8203124a0fe6e251daedd6206141"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/wanderer-dismount.png",
+    "bytes": 733606,
+    "sha256": "c81c5ff5c5ce908b5c72675153fa5545f3fad7ef50d36157ded7decc83228bd1"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/wanderer-face.png",
+    "bytes": 767163,
+    "sha256": "72381134c619d02aa7d81b3b1c55c1ae873fd91918b828b5e0b0832b80b62404"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/wanderer-fall.png",
+    "bytes": 739950,
+    "sha256": "1feaf199f19f43439261199d84b92dd2c5c2bc5b79538ad16f37f7d5d44a0dcc"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/wanderer-front.png",
+    "bytes": 734684,
+    "sha256": "73d6e4f75800bbebf16ef28c40320244b460eec2d4c97435bc6bbb1a73696cf9"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/wanderer-jump.png",
+    "bytes": 741902,
+    "sha256": "6615d24fe4f377a44188a9ac87a15ded9fdb727a3619dcb7e29ac8fd8e4e6eaf"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/wanderer-land.png",
+    "bytes": 748545,
+    "sha256": "212c6b4c416a842fd15e3f337c73441b669d00c51af0ab56b9f04ef732f21485"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/wanderer-medium.png",
+    "bytes": 1637827,
+    "sha256": "2b46c164850eb5438e8125b8c407ed540ebe39d76408513104aa390946bc4f32"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/wanderer-mount.png",
+    "bytes": 742724,
+    "sha256": "913d731d7ddcf26a4d061c5cfc74b5a96763071ebeec4e0e9d0bf65a4e256b07"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/wanderer-night.png",
+    "bytes": 666604,
+    "sha256": "953552fca4b61d393723e845f12f9c875d7df7aa5947d6cfcbed4a2d008dabbe"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/wanderer-run.png",
+    "bytes": 742896,
+    "sha256": "e58a8cc3ecd3415482d7be224fd8f8161c772b21b6bbeb42d90370b679ddaea7"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/wanderer-side.png",
+    "bytes": 728931,
+    "sha256": "528c938c777606acb4035c38b645872b0f3c1b5be7fccaf1f63b710351929dfd"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/wanderer-walk.png",
+    "bytes": 745040,
+    "sha256": "74f112f8b359491dbffd94b79188b68480f7daa8e3e7c838e99edd9849e7a444"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/wanderer-wave.png",
+    "bytes": 750332,
+    "sha256": "2d65b0e2665cb8793f76451ef9ad055c9f1a944b73d5bde7a01f98952977463a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/windline-attached.png",
+    "bytes": 660606,
+    "sha256": "f12be58a6b1a21b9aa4a76a86001245bf8b8ead0bcaf0920b449b658f64b1c1e"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/final/windline-gameplay.png",
+    "bytes": 643885,
+    "sha256": "c17b370809a8395760b98c43b38c63e605bb4f6f3d334e1941c39c5276a37c1a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/gallery-qa.json",
+    "bytes": 824,
+    "sha256": "ce2665067dfb4e120617df29da688107623a9ce4873e9e1e77872e2be15d089b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/index.html",
+    "bytes": 6591,
+    "sha256": "afa2cb07327da474c9f420e22ea4b10fe441c23f46c85521a5437619b1ffce34"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/manifest.json",
+    "bytes": 9130,
+    "sha256": "71403b9161c34ed76f5629098f68ca80ae363b3b691aa850d6a4d34e26cd4144"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/material-high-3k.png",
+    "bytes": 1287576,
+    "sha256": "5aff93155da7b13312821a1b4b31029c259b6443574b74db572b2bca74f5ff25"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/material-high-4k.png",
+    "bytes": 1291803,
+    "sha256": "4de679e105e8a5b9301ae185436feea09f501523b788c542be7da59e1f545c79"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/material-low-1k.png",
+    "bytes": 1222860,
+    "sha256": "8970481090d870b37bc6f911485ad10c76c5387acfd6d9a70cbd4befc42e8617"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/material-medium-2k.png",
+    "bytes": 1314937,
+    "sha256": "f6015d15cb04c1337d57e52901be0868bd787195adb757738f31ad762631ea79"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/mounted/bank-left-left.png",
+    "bytes": 1290827,
+    "sha256": "7a5aebb91fa8002c34aaddd654c596d74996170a01795ef4647aabb6820e10ff"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/mounted/bank-left-right.png",
+    "bytes": 1150984,
+    "sha256": "dbcdb1306d461764751897c2add4542d229458eb4b01e7174d15757abe36ecea"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/mounted/bank-right-left.png",
+    "bytes": 1166651,
+    "sha256": "04c5edf58e14369b103f9550b5358991b1b0efa89cef6745246ba928c6423b1f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/mounted/bank-right-right.png",
+    "bytes": 1225585,
+    "sha256": "838d74d47f2d50a24e6546fc76ced2c9dd5bf63594d9d43bd270c48ea5e60c89"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/mounted/brake-left.png",
+    "bytes": 1248144,
+    "sha256": "48a225f50c772046a3502fa0ed7f6788151055a48bfd7a4756d1f2db0ec17d1d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/mounted/brake-right.png",
+    "bytes": 1215260,
+    "sha256": "7ba86ff3e5be55558a2c87c32de0926ddc1630bca1870ca14011794fd8a86b2c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/mounted/dive-left.png",
+    "bytes": 1217006,
+    "sha256": "3ff25261cfd475fbf37ea07b8ea18f6cbe4a9b4c0548067a6abe855ba2947e53"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/mounted/dive-right.png",
+    "bytes": 1170174,
+    "sha256": "92bd52fb7d98890e42aacb80e9bb10a0f758e6a81db42822f5188eee8aeef3c3"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/mounted/gameplay-left.png",
+    "bytes": 1467924,
+    "sha256": "607e021f70da94af0a8adcd2ff9d73d9054ad7840a4d652f68de580a0229b314"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/mounted/gameplay-right.png",
+    "bytes": 1427828,
+    "sha256": "ef7fce6a753c65d9459f902348455f9dd33cd9230e6e8b6dea0f0b91e6dbb714"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/mounted/glide-left.png",
+    "bytes": 1237886,
+    "sha256": "7a27cca35239f2673e61c4bd4e981fd86874c2e9c4c72f2a8b9aaf65238966f0"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/mounted/glide-right.png",
+    "bytes": 1208460,
+    "sha256": "f791d1e501993280ead82c7c00b14e6d00d14e18b72742bc4213bc2e81b40be8"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/mounted/ground-left.png",
+    "bytes": 1272816,
+    "sha256": "4d5b5d8cbb5039d269b908981bf293c3e944be08658c6d7ef185284458df57a4"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/mounted/ground-right.png",
+    "bytes": 1240931,
+    "sha256": "e852b052873d1b657c189b1198fd766951e174db129722eb7f9ea2875614260c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/mounted/index.html",
+    "bytes": 4154,
+    "sha256": "a91d3203e60de08c415727ce9cde600ed3502b94e0da99515a74acaa22106d26"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/mounted/manifest.json",
+    "bytes": 20364,
+    "sha256": "1b1754529d367b0afc5dfe5aa127eb801d2b09a11bbde025307fea18a9978108"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/mounted/tread-left-oblique.png",
+    "bytes": 1272762,
+    "sha256": "5e560541a72fcbb105a4c5cb97aae4e365759bf68bd4e5ce4c2503921f9007b0"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/mounted/tread-right-oblique.png",
+    "bytes": 1262383,
+    "sha256": "104a42c17b1e52dadfef0798f843e1dffec2378455457874875c0b199350ca16"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/mounted-bank.png",
+    "bytes": 1440508,
+    "sha256": "2a32b04d274fe9bb202b63583bace324d92f1c2e9b90662b80c1b9cec894ae71"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/mounted-left.png",
+    "bytes": 1441941,
+    "sha256": "e1a371fdaf66e491f31f114b2dc028be6d180dc742584fefede21446127f649b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/mounted-right.png",
+    "bytes": 1511375,
+    "sha256": "f9773ca063fb6ab0e6a2204bf5f5342d5aa8fa71ad0d3a36bb8eb361e5bec466"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/scope-verification.json",
+    "bytes": 88527,
+    "sha256": "f08189cee86b774d53008f2dccf5836d09ffcf45b2c83f5024316805c37edc01"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/texture-quality.html",
+    "bytes": 8017,
+    "sha256": "d4d3d5c7b261615ded967e731b56bcfe393202e02f8cf8b2f2fadb2552bb8f88"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/verification.json",
+    "bytes": 776,
+    "sha256": "2eba11c14352a7c4b69589e8f4940f2bebaec91e193c6eb65830ef324e8bb999"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/wind-breeze.png",
+    "bytes": 1306279,
+    "sha256": "859dfb6c8be4d9dd36a1469d84ed33fbeff164c96df5ebca72d87169d59c65ab"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/wind-calm.png",
+    "bytes": 1303286,
+    "sha256": "dce502c5e2a344eecace0bf88243c1ed13f29eab6f7c1dd4e1869b74a0414681"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/wind-gust-left.png",
+    "bytes": 1309096,
+    "sha256": "d5220d3acc5978b5e9dd82b97ea12951ed92b31f0eaac453bfca0a8d78c15e9b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/wind-gust-right.png",
+    "bytes": 1299980,
+    "sha256": "e4a10eedbec9912e6861c30f2b947aea86989af565c6cc9f89b5ae01183d9138"
+   },
+   {
+    "path": "docs/rider-c02/evidence/cloth-hd/wind-settled.png",
+    "bytes": 1296739,
+    "sha256": "41b5c0c961542da3b4e235b38ce08364fa630a75e6a25344fb7c1da7ed4fde21"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/before/cartographer.png",
+    "bytes": 1218022,
+    "sha256": "da10175e660fdd4b8c77694a60a0054b045b7d7b2d34547ca62384293c5bcd4f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/before/courier.png",
+    "bytes": 1210136,
+    "sha256": "f19ace991eb8a97de34e4f5bcd597ea8df33901734aee43ca65af65ad52c2577"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/before/flight-linen-wraps.png",
+    "bytes": 1244768,
+    "sha256": "c0d255ea47ca1c96e1268b58841d673a82c654b97b16a627f0a545c4e7b058db"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/before/flight.png",
+    "bytes": 1207575,
+    "sha256": "57f637db4bf48921efc664ee7ca1796c36b12865553815d52d9c0f2681febf8e"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/before/linen-flight-boots.png",
+    "bytes": 1260395,
+    "sha256": "5630908f4b1d5bf546c96e206bc7c91c60043a51af13aedcf127a4daf99f790d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/before/linen-mounted-left.png",
+    "bytes": 1467829,
+    "sha256": "95b6faa50353d05e7697dbcf88a76ef3cfc2ad385094f87c528ed171952f3302"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/before/linen-skyknight-boots.png",
+    "bytes": 1246290,
+    "sha256": "cd0bca9089c3aac09affc58729585dce8199791afd062d2ac9fe43820d1d89a7"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/before/racer.png",
+    "bytes": 1207655,
+    "sha256": "d2ee113336d2c9db37a16061d0fbcf0cac93563b307e4359481c94c865744114"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/before/racing-scout-boots.png",
+    "bytes": 1226530,
+    "sha256": "34f9fcbee6dd3f96dc9bae6028cbfee1ef2dae5c62220331b58549136926f002"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/before/robe-mounted-bank.png",
+    "bytes": 1454860,
+    "sha256": "08e189482ec1edd9aa442e76ebbb2bff12088f9c0bad5abf427926e1e4a577e5"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/before/scout-mounted-left.png",
+    "bytes": 1467282,
+    "sha256": "1fd5199db9e733c0c23610034f5b0c63321120a9a69196b0d655a537f26007f8"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/before/scout-mounted-right.png",
+    "bytes": 1519082,
+    "sha256": "420651fed31e7df968068ad0fe57a25917d5169d87b884cff9a5b19e9849195d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/before/scout.png",
+    "bytes": 1214991,
+    "sha256": "66bb17f215f1ebb4d07cabece1a021fff0e02228d93203d411e67a23d4320acf"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/before/skyknight.png",
+    "bytes": 1210962,
+    "sha256": "28ef31dd4957ad11196d83615411408329ac3ed3874a4fc2f9f5bb367c0f0e49"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/before/tabard-mounted-brake.png",
+    "bytes": 1492991,
+    "sha256": "4087bcc02aecfd7b5a6f07574a0f353baba3f49b1c26d016c6916f73c8affdd6"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/before/travel-drape.png",
+    "bytes": 1224505,
+    "sha256": "9c99150db9f625a2dd46a17f7a0ab71be1bdec094542ce136fef33eac1585fe3"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/before/verification.json",
+    "bytes": 23037,
+    "sha256": "2c45b55a6becd6ec684078a5056a12fcc2b238681d381861b8c2256d03b8f803"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/cartographer.png",
+    "bytes": 1227849,
+    "sha256": "60365c46012813c3f8eb5f729534b1d48480e74cb2448de2e64f9033b66d9a7d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/courier-mounted-left.png",
+    "bytes": 1466258,
+    "sha256": "c20317b1b59eb0ea611911c6c690a30c442bc1619ec7aa97978afd88b1d9e764"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/courier-mounted-right.png",
+    "bytes": 1513900,
+    "sha256": "5f6521d1746aa6e837f4a943fa9c9b674e8d047c5ec8afa454133c0858066ecf"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/courier.png",
+    "bytes": 1213589,
+    "sha256": "7aa13878a7be6a4ae316ec93c2468a9c78a68b36a13b16255a82d17ab3c22bfd"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/flight-linen-wraps.png",
+    "bytes": 1263398,
+    "sha256": "73e1eb1c423c0b0d80a73491613fe4e6d6b484b55eb680c9de1a0d040871cb54"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/flight.png",
+    "bytes": 1213784,
+    "sha256": "0fd9dd83e346a9b77574e4d651257519858d7b4e5f05527d9622a5acf9089856"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/linen-flight-boots.png",
+    "bytes": 1274292,
+    "sha256": "cac33b35098bc34f896e3e575606119a476e7b8a50cc4d8ee8f63a25b76da066"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/linen-mounted-left.png",
+    "bytes": 1469774,
+    "sha256": "8b0029aa78e424aa5777febb74f374b4e2d0697927647c23f77f1a0a37736afc"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/linen-mounted-right.png",
+    "bytes": 1522980,
+    "sha256": "c715e6ce06e8c6b01d80b2c1c480a0f6433288a2521251da1551bfde9fa0907c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/linen-skyknight-boots.png",
+    "bytes": 1251363,
+    "sha256": "a05f73d42253a25cd9da2f226f33428852866c366a632b7fe2ca58d2133f3c29"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/racer.png",
+    "bytes": 1215151,
+    "sha256": "418baad051becc8c3d180270d58ae635f7bbd9c5a2704b9bb46ac4c9b85c5e6f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/racing-scout-boots.png",
+    "bytes": 1245376,
+    "sha256": "901f99f40485a23ee6584fe1628a11e6a40ff212a888f47bee3af0d34b0d179a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/robe-mounted-bank.png",
+    "bytes": 1466162,
+    "sha256": "12495561f2871f406469773adfb5c18f5b8b72693550e758a4d58d997d5b1233"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/robe-mounted-left.png",
+    "bytes": 1471060,
+    "sha256": "9f0001a320f370e82d099063992c09ef52be0802d55b701d965fd9254923cbd1"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/robe-mounted-right.png",
+    "bytes": 1521603,
+    "sha256": "4accd1c3f51a39cc79e46a652ba22cc31ebbdbf5f005493a27d54cd8b2aba1cd"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/robe-wave.png",
+    "bytes": 1310399,
+    "sha256": "76f49023fc8c009d13fb8798c9564e32b5a69f6aa602413763157feb4ca09065"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/scout-mounted-left.png",
+    "bytes": 1470317,
+    "sha256": "cb0426024b695b213a1b597f41a8c39781674a14ad65d5c772023dcf899b9510"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/scout-mounted-right.png",
+    "bytes": 1519335,
+    "sha256": "8a8e67573dced2ab0a5775db2009fbcaae6c60be84004539ee451ca54cccdf63"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/scout-walk.png",
+    "bytes": 1212441,
+    "sha256": "ef1b5395169b687c8d9c21e14e9d40abc46a3911260378cb89ae24ed469e8596"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/scout.png",
+    "bytes": 1217657,
+    "sha256": "bfe2c33f047311174b0bdc399d3e65c89aa58744758352b01c65c401ede8de05"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/skyknight.png",
+    "bytes": 1222542,
+    "sha256": "747a87af29349c0e25179988fe06d9acac8a9aed1c20c6a21b012bde79ce0b9a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/tabard-mounted-brake.png",
+    "bytes": 1494874,
+    "sha256": "2a352646b3f4cbfca6bdfc34e0598b92e912b191aa52f0a471841ee3ae574d6a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/tabard-mounted-left.png",
+    "bytes": 1468947,
+    "sha256": "567bd557dadca74cfd608163334913ce9532679b50df21e398e330d9799e1c19"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/travel-drape.png",
+    "bytes": 1224866,
+    "sha256": "f6f95bb1380ad3305a8708deb73f80cd59cba8ef903b0e9d9b0d7eea15e9b49a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/final/verification.json",
+    "bytes": 49260,
+    "sha256": "8f7634409e484eccabde22a1b62b84e05ea2f068df68fd574d65ee354e70a0a4"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/full-tests.json",
+    "bytes": 421052,
+    "sha256": "42e67a14aced3e4f13b7a34907e24ae4ebcbe5d253a90359db74ce8e09e86925"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/index.html",
+    "bytes": 9582,
+    "sha256": "ee3d92463248f58663c0206a037ca472c2366216a0b9d5d073adda3e53e058e2"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/cartographer.png",
+    "bytes": 1227585,
+    "sha256": "bbedc4229181265faeb3c66033d590a84ac384ad4e78b247a8fea475808d4bc9"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/courier-mounted-left.png",
+    "bytes": 1466258,
+    "sha256": "c20317b1b59eb0ea611911c6c690a30c442bc1619ec7aa97978afd88b1d9e764"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/courier-mounted-right.png",
+    "bytes": 1513900,
+    "sha256": "5f6521d1746aa6e837f4a943fa9c9b674e8d047c5ec8afa454133c0858066ecf"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/courier.png",
+    "bytes": 1212826,
+    "sha256": "a5d6a2b8f81c7c8163f05fa1a98465d1ab4e95cd40263083ada0d5dbaac0401e"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/editor-report.json",
+    "bytes": 4539,
+    "sha256": "627a003165c29acfa0893af60b3692db388567a5ab1b9ddb7e4d548972a37bb2"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/flight-linen-wraps.png",
+    "bytes": 1264126,
+    "sha256": "5cdc08634903f87bc06bbc37312f1b16a4bb6c5d866a13327750a455a8f87573"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/flight.png",
+    "bytes": 1213013,
+    "sha256": "03e7b172af59f582a5fcd094382125cc9fa49c8ce7f1cf220e8935b7127c3be5"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/full-tests.json",
+    "bytes": 435478,
+    "sha256": "9cd37c943b39e650be027f153f926afe9e21795d5377d8a055aeae4d5df3d91a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/index.html",
+    "bytes": 5369,
+    "sha256": "4403a835e5b116cbbdbe244d052ae2d520bb17e3010a22666ec1b6b27b4bba0c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/launcher-qa.json",
+    "bytes": 1353,
+    "sha256": "25425d766e2f416516412e298fa69848f0dee3a11727c61e8e216e4d29ac4a68"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/linen-flight-boots.png",
+    "bytes": 1274785,
+    "sha256": "508d070647b4fabb6f5f102e86e31175e5e5503d0ba76728cabf2d62d81a700b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/linen-mounted-left.png",
+    "bytes": 1469774,
+    "sha256": "8b0029aa78e424aa5777febb74f374b4e2d0697927647c23f77f1a0a37736afc"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/linen-mounted-right.png",
+    "bytes": 1522980,
+    "sha256": "c715e6ce06e8c6b01d80b2c1c480a0f6433288a2521251da1551bfde9fa0907c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/linen-skyknight-boots.png",
+    "bytes": 1251973,
+    "sha256": "959cba224503d57aafba7ded3d60196103c7bb08ed8886bc6d850e4eb6a25de2"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/mixed-wardrobe/linen-and-flight.png",
+    "bytes": 1218466,
+    "sha256": "0bce7cea410c1291f55234df9b4936f25eda1ab6fa2a96bf6d2ad1c2ae0931b4"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/mixed-wardrobe/mounted-bank.png",
+    "bytes": 1470072,
+    "sha256": "43fa8e7baa9ff54c3754f21b0ab794f2d6fc8347d0b4fffdd4a3de68231280fd"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/mixed-wardrobe/mounted-left.png",
+    "bytes": 1471004,
+    "sha256": "2283bd141f8f32537c8502681dce4988cef6628eb36c27c5684e91d5c30206dd"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/mixed-wardrobe/mounted-right.png",
+    "bytes": 1527886,
+    "sha256": "f43542ba267a083edeaa0ee3a14ab37eb04a5eafff462688df6cf3e44d284edf"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/mixed-wardrobe/robe-and-scales.png",
+    "bytes": 1224548,
+    "sha256": "30a65f733a5dac8a4a59e8a2399e16b3e1d6183abaa9a346d50e24c49ff5d4f4"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/mixed-wardrobe/seven-outfit-back.png",
+    "bytes": 1300245,
+    "sha256": "33b1f93db1800f0bd7686a1f8758a646f554f649822dfc40894b9a252164970f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/mixed-wardrobe/seven-outfit-front.png",
+    "bytes": 1213808,
+    "sha256": "86b1f5889fadf282f545e3923ea4d0cee393f6da5b06ac932db4970c7f73751b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/mixed-wardrobe/stable-mixed-pieces.png",
+    "bytes": 1132272,
+    "sha256": "198b0fbf6b6ca4c6c5e4f6e713122a7821bdb79055d5800bbaf50aa08a42ec9e"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/mixed-wardrobe/verification.json",
+    "bytes": 17327,
+    "sha256": "f98ccec0a049b8e1a5905c025578c0b3bb734ddecce2c4cd2776eb7c844dcf5f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/normal-menu.png",
+    "bytes": 22317,
+    "sha256": "3d373de7cc83e5d5908b380f3504dff8e57176ccfab9afee616e83f0e6ae2078"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/racer.png",
+    "bytes": 1214879,
+    "sha256": "184c0abc188129a7b4e47c756eb3d465156ec057647eb3d545eca3561d9d2d8e"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/racing-scout-boots.png",
+    "bytes": 1246055,
+    "sha256": "6db626bef5516b6c89580c0c5f996d9d7f119a91520ae44e1f7cb8d71092964a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/robe-mounted-bank.png",
+    "bytes": 1466162,
+    "sha256": "12495561f2871f406469773adfb5c18f5b8b72693550e758a4d58d997d5b1233"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/robe-mounted-left.png",
+    "bytes": 1471060,
+    "sha256": "9f0001a320f370e82d099063992c09ef52be0802d55b701d965fd9254923cbd1"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/robe-mounted-right.png",
+    "bytes": 1521603,
+    "sha256": "4accd1c3f51a39cc79e46a652ba22cc31ebbdbf5f005493a27d54cd8b2aba1cd"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/robe-wave.png",
+    "bytes": 1310133,
+    "sha256": "9ee6325c0f70110f6bc9e76bb0e435365562614817a8765b125ea9dbe6d00de3"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/scope-verification.json",
+    "bytes": 60513,
+    "sha256": "7121590feae708902e26ef0af73d041490eda6b47c5501955b9c0726a8286502"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/scout-mounted-left.png",
+    "bytes": 1470317,
+    "sha256": "cb0426024b695b213a1b597f41a8c39781674a14ad65d5c772023dcf899b9510"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/scout-mounted-right.png",
+    "bytes": 1519335,
+    "sha256": "8a8e67573dced2ab0a5775db2009fbcaae6c60be84004539ee451ca54cccdf63"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/scout-walk.png",
+    "bytes": 1212986,
+    "sha256": "5195a62f18325cdb0305c03166e1e64d97902087678d3d751d15f871d3b91530"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/scout.png",
+    "bytes": 1217551,
+    "sha256": "48685a0aa5ebf36592a0bc770699d4c461d42333e4e8f366713ff87e119ab703"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/skyknight.png",
+    "bytes": 1222537,
+    "sha256": "3e737df05f09bb9fc6aee7435c32c71c0d1b95e623bc7ac58e0aefa04e7dc41e"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/stable-pieces.png",
+    "bytes": 1276088,
+    "sha256": "fbe780b97ba35716e155760b3009114cfad45f5e090bcf8bae5cff188c35a932"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/tabard-mounted-brake.png",
+    "bytes": 1494874,
+    "sha256": "2a352646b3f4cbfca6bdfc34e0598b92e912b191aa52f0a471841ee3ae574d6a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/tabard-mounted-left.png",
+    "bytes": 1468947,
+    "sha256": "567bd557dadca74cfd608163334913ce9532679b50df21e398e330d9799e1c19"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/travel-drape.png",
+    "bytes": 1224563,
+    "sha256": "0936dd06a51ff926ef70272e05048790c8012d4668737b1e20cd3cb263266807"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/verification.json",
+    "bytes": 49265,
+    "sha256": "3d9b821c3d5c9f43fa384a7f19229fcc87b33239c3204d2cdf5966c1a995a597"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/integration/windline-gameplay.json",
+    "bytes": 3291,
+    "sha256": "998d6838521146f1eef1001192bb99b6497708d7bf84305002aba7c73a95326f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/mixed-wardrobe/linen-and-flight.png",
+    "bytes": 1218037,
+    "sha256": "f3b3d5685cc19329714fef5fc4bcb9d151149b5fdad6c0ea04efaf0e3dc231f6"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/mixed-wardrobe/mounted-bank.png",
+    "bytes": 1470072,
+    "sha256": "43fa8e7baa9ff54c3754f21b0ab794f2d6fc8347d0b4fffdd4a3de68231280fd"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/mixed-wardrobe/mounted-left.png",
+    "bytes": 1471004,
+    "sha256": "2283bd141f8f32537c8502681dce4988cef6628eb36c27c5684e91d5c30206dd"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/mixed-wardrobe/mounted-right.png",
+    "bytes": 1527886,
+    "sha256": "f43542ba267a083edeaa0ee3a14ab37eb04a5eafff462688df6cf3e44d284edf"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/mixed-wardrobe/robe-and-scales.png",
+    "bytes": 1224226,
+    "sha256": "9bed861d340477a3772f2164fd2710f533fba0b1ae4f57b64cc97f19ff38b382"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/mixed-wardrobe/seven-outfit-back.png",
+    "bytes": 1300049,
+    "sha256": "21edddffaf6012f79fd065e4a477b8065d1076d66324da9f86e27c73b5997d56"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/mixed-wardrobe/seven-outfit-front.png",
+    "bytes": 1214030,
+    "sha256": "cc1a1829a54fd22968da02dd93655da7cb85c5ed57eea81c7d39756180540239"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/mixed-wardrobe/stable-mixed-pieces.png",
+    "bytes": 1126119,
+    "sha256": "aef378cce456da2dec073772d9d1d8edf2044f7f33219423486680db69c10497"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/mixed-wardrobe/verification.json",
+    "bytes": 17327,
+    "sha256": "f98ccec0a049b8e1a5905c025578c0b3bb734ddecce2c4cd2776eb7c844dcf5f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-1/cartographer.png",
+    "bytes": 1221158,
+    "sha256": "b68456b4eaa37d3c92228b49cc46433129fbf88d1a481fcab70c723a1726daf3"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-1/courier.png",
+    "bytes": 1210147,
+    "sha256": "411f74c2124b51059205e3937511277e474fd4255e302aa98f27efdec683f108"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-1/flight-linen-wraps.png",
+    "bytes": 1262542,
+    "sha256": "0ead47b74fbc42e7c80d5af8d195a891b78c45b25759077dbe4b04b3d9076213"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-1/flight.png",
+    "bytes": 1207101,
+    "sha256": "7b8cc542b545c21bb05d794a3be42cdc8444dd6ec69b288ccf24e699463ccc8c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-1/linen-flight-boots.png",
+    "bytes": 1263000,
+    "sha256": "6e2aa91257d9fcf423ed69b9df4652932bd2496d6ef74f3b313cd891dedfa1e9"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-1/linen-mounted-left.png",
+    "bytes": 1469783,
+    "sha256": "5742f75dbe3726f59cf2a3d5dc5ad7eb760ed646ac5e0c6f0df171b766241d8f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-1/linen-skyknight-boots.png",
+    "bytes": 1250580,
+    "sha256": "4add4c263d97e4afedfb340afd09b887ddbf29817fadb5412fc8c8de172c0192"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-1/racer.png",
+    "bytes": 1207950,
+    "sha256": "0765cca1b852d00e42910228a30f664478426e166a0aacb76448ddd5bb1a033c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-1/racing-scout-boots.png",
+    "bytes": 1245114,
+    "sha256": "1f48eb767b6632943d2b7f130facdd85c4236403dab6ea89f1fcf693cd7399a5"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-1/robe-mounted-bank.png",
+    "bytes": 1458889,
+    "sha256": "7fee8ca5c60c01f817bd723636f277af5ab89fb629da9154a6035e8f46486341"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-1/scout-mounted-left.png",
+    "bytes": 1468106,
+    "sha256": "402d974fc4a6b33e34e7dcd02cc31c9a35b1c7e510e93a7f1f4838c4c2dcd84a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-1/scout-mounted-right.png",
+    "bytes": 1518281,
+    "sha256": "68e493412316861b2e0ce834491e6900a551fae1bf599274c49821c3f41cb9ce"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-1/scout.png",
+    "bytes": 1214977,
+    "sha256": "25489987f397d7fee329bbfccb7104d58cf01a3c97ec470d94175292df914d45"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-1/skyknight.png",
+    "bytes": 1213237,
+    "sha256": "2b4153b15eef8cb461230f286f72fc6007bc5e957958a5159b57c08a79d0150f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-1/tabard-mounted-brake.png",
+    "bytes": 1491800,
+    "sha256": "7fec1ae11e6bf0ee1f01efe2fce9cfab185a2560ccdbbc0e7d30f03a1e303bc6"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-1/travel-drape.png",
+    "bytes": 1224841,
+    "sha256": "965072f0263b28354759ce7ac4120be2daa478187c0d86614f62f7a4b6542020"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-1/verification.json",
+    "bytes": 28897,
+    "sha256": "036ad63b4cb05a3da22ccfa1f80ff2a461017820d07832b0c51b6dea2a10007c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-2/cartographer.png",
+    "bytes": 1226448,
+    "sha256": "56ef4bd1f9da56b5f03449b27925512a1e7d4806570b9f5d2b5d5816199dc4fb"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-2/courier.png",
+    "bytes": 1213589,
+    "sha256": "7aa13878a7be6a4ae316ec93c2468a9c78a68b36a13b16255a82d17ab3c22bfd"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-2/flight-linen-wraps.png",
+    "bytes": 1263398,
+    "sha256": "73e1eb1c423c0b0d80a73491613fe4e6d6b484b55eb680c9de1a0d040871cb54"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-2/flight.png",
+    "bytes": 1213784,
+    "sha256": "0fd9dd83e346a9b77574e4d651257519858d7b4e5f05527d9622a5acf9089856"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-2/linen-flight-boots.png",
+    "bytes": 1274292,
+    "sha256": "cac33b35098bc34f896e3e575606119a476e7b8a50cc4d8ee8f63a25b76da066"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-2/linen-mounted-left.png",
+    "bytes": 1469774,
+    "sha256": "8b0029aa78e424aa5777febb74f374b4e2d0697927647c23f77f1a0a37736afc"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-2/linen-skyknight-boots.png",
+    "bytes": 1251363,
+    "sha256": "a05f73d42253a25cd9da2f226f33428852866c366a632b7fe2ca58d2133f3c29"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-2/racer.png",
+    "bytes": 1215151,
+    "sha256": "418baad051becc8c3d180270d58ae635f7bbd9c5a2704b9bb46ac4c9b85c5e6f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-2/racing-scout-boots.png",
+    "bytes": 1245376,
+    "sha256": "901f99f40485a23ee6584fe1628a11e6a40ff212a888f47bee3af0d34b0d179a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-2/robe-mounted-bank.png",
+    "bytes": 1464901,
+    "sha256": "5de18973c06debabbf0a726228702f62e6299e010099a2d0b3878c40f43b0ec9"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-2/scout-mounted-left.png",
+    "bytes": 1470317,
+    "sha256": "cb0426024b695b213a1b597f41a8c39781674a14ad65d5c772023dcf899b9510"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-2/scout-mounted-right.png",
+    "bytes": 1519335,
+    "sha256": "8a8e67573dced2ab0a5775db2009fbcaae6c60be84004539ee451ca54cccdf63"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-2/scout.png",
+    "bytes": 1217657,
+    "sha256": "bfe2c33f047311174b0bdc399d3e65c89aa58744758352b01c65c401ede8de05"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-2/skyknight.png",
+    "bytes": 1222542,
+    "sha256": "747a87af29349c0e25179988fe06d9acac8a9aed1c20c6a21b012bde79ce0b9a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-2/tabard-mounted-brake.png",
+    "bytes": 1494874,
+    "sha256": "2a352646b3f4cbfca6bdfc34e0598b92e912b191aa52f0a471841ee3ae574d6a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-2/travel-drape.png",
+    "bytes": 1224866,
+    "sha256": "f6f95bb1380ad3305a8708deb73f80cd59cba8ef903b0e9d9b0d7eea15e9b49a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/pass-2/verification.json",
+    "bytes": 29519,
+    "sha256": "f11508a93e0624a32127a1f42214d849b95faa495adccd7c097a446e9d22cdc6"
+   },
+   {
+    "path": "docs/rider-c02/evidence/clothing/scope-verification.json",
+    "bytes": 57612,
+    "sha256": "0e689bb4b4a72c4df301013c29b0bc23631bbfa19b9242a49398ab9526bd2b88"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/aerie-back.png",
+    "bytes": 752078,
+    "sha256": "236bb24fa76ebf57a4f7699029f4ba87acd6ba5a777062ada40e0b9912821f35"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/aerie-bank-left.png",
+    "bytes": 872632,
+    "sha256": "a67612c56793faf699d55fb7e22b1072f8d52c0e8a7c5916ef1e6e973aa89c44"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/aerie-bank-right.png",
+    "bytes": 930363,
+    "sha256": "f06eba53612006ae8182562ea2e80e5b4dac43cc78f49a2e89d78ecc3f7ff9f7"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/aerie-brace-close.png",
+    "bytes": 923071,
+    "sha256": "9624269a7d29867c4f4875cf83a857fa6e502a0b75d5fc59307c7a17eb893ed3"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/aerie-brake.png",
+    "bytes": 894357,
+    "sha256": "d1cdc6c86719efdffc28e437f940499ce65488a463bd8a0bb536f99575e86788"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/aerie-dismount-gameplay.png",
+    "bytes": 894891,
+    "sha256": "724e9c0b1b9e97ef18c06de59f08a608118e0d356c9521db854ddfed01335b5d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/aerie-dive.png",
+    "bytes": 939909,
+    "sha256": "286a02216ef7afdcaab5fd8309cb3210ed77315b3e8672d5f6e36cf490c4b8ff"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/aerie-front.png",
+    "bytes": 734018,
+    "sha256": "de6d6c42c5169a0a94339e32fa9f29bc47e25e9f62d0badeb07c653b4eafd703"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/aerie-ground.png",
+    "bytes": 887563,
+    "sha256": "0a1edc04d36c2e7e471a0f0dfbe3cca689be61e324181e2fc102b047b62547d8"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/aerie-high-normal.png",
+    "bytes": 793473,
+    "sha256": "ddabfdfad03dfb82d7ca9d44f28bcb8daf63a369391f032538bc978bd7d6db7d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/aerie-landing-gameplay.png",
+    "bytes": 933316,
+    "sha256": "7ef56b48b7980f20782e4cb6492badcc77bf1909fc1af41879fc00b71092da7b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/aerie-mounted.png",
+    "bytes": 886492,
+    "sha256": "c30903e04260827d75390951145bf4a734691b58d354d95f8f9adfce87908a71"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/aerie-saddle-close.png",
+    "bytes": 859988,
+    "sha256": "0d0cfbea90f8a2dc69207312cfedc470d19d3b78364c2215613d5c546541c8ee"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/aerie-takeoff-gameplay.png",
+    "bytes": 859644,
+    "sha256": "e3112848704d459a9559c00d527143c755750bf4b3f297ca8bfc82a1998de53e"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/atlas-map.png",
+    "bytes": 595832,
+    "sha256": "d958254c6b4bb77d530d4eb677da3660cfc7b1738a696c5d4b2e0b8281027002"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/atlas-normalMap.png",
+    "bytes": 1070968,
+    "sha256": "d813750537738302a3d1ed2fd6ef2da5b2c756a16f7b6286880f7e64e6ef01e1"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/index.html",
+    "bytes": 7689,
+    "sha256": "884604ac45c09d023378482c1feb23e5f1bc84c6bfe809fde8bd4dbb1b00534d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/legacy-default.png",
+    "bytes": 732810,
+    "sha256": "9b1b50aa2759bff18386dd864c993ba6b7c1161b22752226a61c382e6b1dc9ca"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/manifest.json",
+    "bytes": 41656,
+    "sha256": "7326f636abe85fd68854de221d790c9430367beb27910dbf006669ae40e43abd"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/material-color.png",
+    "bytes": 747645,
+    "sha256": "42dd74379a7f43aac12d63cf20e53319c060788feafe8651c86515ad4d988ca3"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/material-normal.png",
+    "bytes": 752271,
+    "sha256": "c48de937fa689c0128e7ae6545e5b68cdb954993cdacd2d40dc8b83910b57804"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/material-off.png",
+    "bytes": 737302,
+    "sha256": "21402bbc08c5e511d1462431f260a3b1a7f9fb9804814cd1fd44f7e1319a33af"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/sculpt-front.png",
+    "bytes": 750059,
+    "sha256": "972f27fe831ac4fd157f7ccb6ace70a57faea892c4e9d207936bf590f16ac86c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/sculpt-hands.png",
+    "bytes": 896486,
+    "sha256": "16b48b6c407b1a9cfeb904ceffbf2ac9e20119a162376e4aaeef400cb1477ab8"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/sculpt-left.png",
+    "bytes": 740371,
+    "sha256": "1d6b29c4b972fa2a0645675593e7ea8dc6e4e859b1032f822d466390d9aada1c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/sculpt-right.png",
+    "bytes": 751909,
+    "sha256": "0f3bba7cd0634e963a66f206f4d288be7de9361c0f0eb5f6fff3cc7a2d25730f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/sculpt-sandals.png",
+    "bytes": 629836,
+    "sha256": "f0db9e8357b2a7b0828f55872ca3188d6b6443fafcaf671de0b57909fd23892c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/sculpt-wave.png",
+    "bytes": 774839,
+    "sha256": "9125cf33d5fe464f7f8b8f35862665eca398370450465964523b951146f27213"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/wanderer-back.png",
+    "bytes": 753281,
+    "sha256": "0956d1211d871b3fe3e2d864b2e89d11495224bde5c0a43e31724d52dbf56bcf"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/wanderer-dismount.png",
+    "bytes": 733873,
+    "sha256": "9503bd01750cd61a5263f3a5cae53009a52cee5831a968d14d5bb64619c0b441"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/wanderer-face.png",
+    "bytes": 767816,
+    "sha256": "efffd273b8a610a6cb92d2f0e885ec1398ba4796b31ff7e2606f5e8c722077e0"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/wanderer-fall.png",
+    "bytes": 739858,
+    "sha256": "3bbca9f1f3eac5e7ea6265fff6f443638f1e14e8fd71c9f2f9c8b4ff001245fe"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/wanderer-front.png",
+    "bytes": 734794,
+    "sha256": "399d1960fa3725772b00480af8122c38eff044cd726355778cd791c960153fee"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/wanderer-jump.png",
+    "bytes": 741942,
+    "sha256": "52fdf0678b9a2865ef35bc2a9a460db7742feb0111d430d53498a19c90767ed2"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/wanderer-land.png",
+    "bytes": 748172,
+    "sha256": "d9728bb46ae399a3894dec89febf73cf514cd048563e73fdfd2d24a6d4b43240"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/wanderer-medium.png",
+    "bytes": 1638903,
+    "sha256": "a95af8a5dace5f09fd1dbbad183d2c30dca94e92ab21f0bae143db254520539b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/wanderer-mount.png",
+    "bytes": 742360,
+    "sha256": "bfd43437994dae9591a33853b88547a47d9eccfbe11c988a8d45f76016d51f95"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/wanderer-night.png",
+    "bytes": 666017,
+    "sha256": "63c96916292cd8ecb52d3271abacca0b9feea576cfa49f1c25ca36738049b5d7"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/wanderer-run.png",
+    "bytes": 742676,
+    "sha256": "7c3df9595a86ee64dcc0155acefc6a20e360575d6794407b54170b4c7b364bdd"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/wanderer-side.png",
+    "bytes": 729052,
+    "sha256": "b5452c81308890b040f571644fa33644ee3e7e46fcec5efc80d9d0657377fb6a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/wanderer-walk.png",
+    "bytes": 745021,
+    "sha256": "2273644b2776d02dd5d5768405a6f78b711eadbea16c23a45764dd53c691419b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/wanderer-wave.png",
+    "bytes": 750375,
+    "sha256": "f9b656032074ed8a0d288884bb6e04979023f71b4bfb835e74df654abd6aae4f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/windline-attached.png",
+    "bytes": 655984,
+    "sha256": "8aec6253ba096cf0ae034b2356ddf2959e215ea687209abfc5f32e124cb4de55"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/final/windline-gameplay.png",
+    "bytes": 639065,
+    "sha256": "fa9e315ebd0feac8dfbc3b2bfce67f660cc3843a9f5c9056df899d0b75bcd3a7"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/gallery-qa.json",
+    "bytes": 488,
+    "sha256": "b03a40e0f7ecbf527bcfa072b2b337ef014ed35908ad82c9c2fa49b10729a11f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/index.html",
+    "bytes": 15748,
+    "sha256": "a4da67d7b5f843240d4cbc6cae0fa35e7df62f740e211e622865a981814e2f9b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/mounted/bank-left-left.png",
+    "bytes": 1290922,
+    "sha256": "4186cd8119daaead6613e96651923583bf6b2940edd45fa181746782477039f9"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/mounted/bank-left-right.png",
+    "bytes": 1150969,
+    "sha256": "c7ef5ada135d630debc84423612fb416d2e2c3430245d27a730db6bfef359aac"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/mounted/bank-right-left.png",
+    "bytes": 1166653,
+    "sha256": "419edaf5ae51c8e642a447145f4d96e371b6436deae75a3990a25fc4051a2d3b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/mounted/bank-right-right.png",
+    "bytes": 1225610,
+    "sha256": "4b9bc59f4d2be6f9cadf96fac2cb310e83c1bbaf10b7afd376044a0a9807f5e2"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/mounted/brake-left.png",
+    "bytes": 1248158,
+    "sha256": "056681c4a143161069eadfe648c5617726ce2667fe7f35ecb02b501a3877ac51"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/mounted/brake-right.png",
+    "bytes": 1215232,
+    "sha256": "928700a85b4fef413255fcd11d586e93267fe5419844eb2d8b3aaa4dd47319e2"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/mounted/dive-left.png",
+    "bytes": 1217009,
+    "sha256": "ac38d65691da3476d14e7ded7c1354b13ffa7f2f1ac2cab20659015bd278313f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/mounted/dive-right.png",
+    "bytes": 1170157,
+    "sha256": "cbbed7e9d659b751bd61fe3dd7e37b0cca453944006924b5126af17343f767a1"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/mounted/gameplay-left.png",
+    "bytes": 1468384,
+    "sha256": "5b3bb9b2b0fa29847d9eb4e52b337bbdd746f81193c42fc149a05c7783816152"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/mounted/gameplay-right.png",
+    "bytes": 1420167,
+    "sha256": "3e40bb26b92883b9dcf2f7278e414cbd1b7a90c305d2f09eee1e6d589317d799"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/mounted/glide-left.png",
+    "bytes": 1237910,
+    "sha256": "7d1d68515b45d7577baa3f39a5eebdb859cd004fad21fe34d45e35c9fd83a298"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/mounted/glide-right.png",
+    "bytes": 1208451,
+    "sha256": "06a362db280cd461f1b383e6c571b3f3ac41dd1b3c0b6f04ad465ebdf1b4d6f4"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/mounted/ground-left.png",
+    "bytes": 1272781,
+    "sha256": "fe586d0786f6925f924a7c60f83b9751ab1dd68f9bc02761ac01e96c8824a8a7"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/mounted/ground-right.png",
+    "bytes": 1240910,
+    "sha256": "142f7d54514c03ab4c1c59fb4f627f7fbfd6f54386f03a3cd4b7a9327af1eeb2"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/mounted/index.html",
+    "bytes": 4154,
+    "sha256": "a91d3203e60de08c415727ce9cde600ed3502b94e0da99515a74acaa22106d26"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/mounted/manifest.json",
+    "bytes": 20364,
+    "sha256": "1b1754529d367b0afc5dfe5aa127eb801d2b09a11bbde025307fea18a9978108"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/mounted/tread-left-oblique.png",
+    "bytes": 1272772,
+    "sha256": "a4972863e1ecb50403123f471b63eda8ebc0a1fe78e21bc8b80f8fec66db1cdb"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/mounted/tread-right-oblique.png",
+    "bytes": 1262377,
+    "sha256": "07fb3b0c8375ea8fafc29ab84ea47c7b550d5c66ea66bdcd995931c30a1913b7"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-1/back.png",
+    "bytes": 1149429,
+    "sha256": "dcfe73fb81b637fd0e9e068d68085e5e4b49a15f2427782313d9f4123f13b869"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-1/costume.png",
+    "bytes": 1134281,
+    "sha256": "b9a53255f751c455f1b57282ed7b38f5eec04f915359730d69607f9646757d90"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-1/face.png",
+    "bytes": 1149251,
+    "sha256": "797738a7345b99c1e69be80682e9878ab37c3378e89dbb24bcee089095186301"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-1/front.png",
+    "bytes": 1120408,
+    "sha256": "30721ea65339bc1c5e7a8625d83e0299344e42c903a7403a3e7773dac4c19d38"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-1/manifest.json",
+    "bytes": 2385,
+    "sha256": "a71e754dc6ea7e5fffd512a39a2efd643a890928db4f15f342efd3d73ea98e75"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-1/material.png",
+    "bytes": 1134197,
+    "sha256": "35c918e5bcd99e88fff71f8eba22ff10fa126d57c7edbd843564f5c57c0dd9aa"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-1/mounted-left.png",
+    "bytes": 1405860,
+    "sha256": "e807111f88179a2bf3fff80b86263943ec202dcd0c089364d51e754ce3fcb9f1"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-1/mounted-right.png",
+    "bytes": 1366739,
+    "sha256": "6d49eb8d036160f2620bacfd68b872b96fb1f7b72fe8a615a7d34117352752f2"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-1/wave.png",
+    "bytes": 1172993,
+    "sha256": "05e617f81a21582fb42cfa2a8cd824588978f00d5a95da590f7bda18b0da7d50"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-2/back.png",
+    "bytes": 1148725,
+    "sha256": "97b6504c4ee1558d41ee509fe9cac19f9a8daa4ac13e3247a1bfb2a21dc00b3e"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-2/costume.png",
+    "bytes": 1141904,
+    "sha256": "11aed9618b00a642d1f76a9d80cc958dcd1978519f065aa9804639e90743f25d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-2/face.png",
+    "bytes": 1153504,
+    "sha256": "a0b3a6f9f9676ad3ccb6ccc9150ee44e04c39819eadb1cc12baa36d6244ad288"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-2/front.png",
+    "bytes": 1120694,
+    "sha256": "0ba0b1a89c4bf832dbcb488b370dc8ed57fd2d62b44fcb062e8d66b8e54b20e3"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-2/manifest.json",
+    "bytes": 2385,
+    "sha256": "30722bbbe55e246afcc0baae3bad3aec866c52111fd865a67aae4cdd99dea01b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-2/material.png",
+    "bytes": 1144678,
+    "sha256": "125651ec375ceec9cf40147eb236e198db85e3627d043f9359cc9c42a85709e0"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-2/mounted-left.png",
+    "bytes": 1406275,
+    "sha256": "87146990d583e59f6ba160f8e1b784a4859c21ee869a2e3f3fa71413db5aada1"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-2/mounted-right.png",
+    "bytes": 1367234,
+    "sha256": "060b497e73f7d9314a79e567378dbe80fb111ce7192aa3a642bf8a6f645c42d3"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-2/wave.png",
+    "bytes": 1176611,
+    "sha256": "c42381202edb6efb5ef42391fcd00698b6b47aaef6c4ba8d9f71deb5e8ffda46"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-3/back.png",
+    "bytes": 1159248,
+    "sha256": "3ac5b6bd11e4fb439208d7d3f25ac02e8641737bb4b613478d90382dbff362a3"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-3/costume.png",
+    "bytes": 1175702,
+    "sha256": "281ce5cb78315a08647a5fa41bd4349463f665db5a0fadb586f35519d827c81a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-3/face.png",
+    "bytes": 1178409,
+    "sha256": "f24990dae3fcd745e2f02ee511116704b16e7ee5c85213427da2dc5e61151bc1"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-3/front.png",
+    "bytes": 1130934,
+    "sha256": "ad7408068965907e77cd6d3f24a8331f6e8e81f8c43503ee9d7bdc3b4bb35b3e"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-3/manifest.json",
+    "bytes": 2385,
+    "sha256": "7ac5cccd5456fcdfc4b444c053e95fee231df638af054f5671530160031e7580"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-3/material.png",
+    "bytes": 1221500,
+    "sha256": "3f8ca2150f33dffb00673a87d189c1c7960ac10388153175ead89363d1a9400e"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-3/mounted-left.png",
+    "bytes": 1411323,
+    "sha256": "0da5631561e511402abc06f7e8e1d2a3807c8b884f341621279b5ab802957daa"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-3/mounted-right.png",
+    "bytes": 1374337,
+    "sha256": "c01c40f41420186c1af7a019d402aca235fb0578381cbf9484f29cc0fee6959d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-3/wave.png",
+    "bytes": 1187042,
+    "sha256": "96173ba74fd9a6b6ef8aa6a10b555d53f97fc0ba419df71e15ec80d839747e1d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-4/back.png",
+    "bytes": 1158896,
+    "sha256": "7cc4e14203d4ddf7bba57a4c7ee8092338a9b7b896e101b76f97bb834fb04d4d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-4/costume.png",
+    "bytes": 1179568,
+    "sha256": "f8a75888dd974f60389b2357a1f5848fef2242fa92714048559b0389b349f5b8"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-4/face.png",
+    "bytes": 1186149,
+    "sha256": "935a82233c8858a14730e8e899407952ee0642310d584c8ed769bb1a8278dc80"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-4/front.png",
+    "bytes": 1132223,
+    "sha256": "2eec4f6cd770dd7cb08e9a9bc57deb674fdc95d6bf303cba679ef58e48249fba"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-4/manifest.json",
+    "bytes": 2385,
+    "sha256": "f931552ee758d6ad0c3b65fa910cd8d6aa578a7a894d641ccbbeae4dedc6d96e"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-4/material.png",
+    "bytes": 1229131,
+    "sha256": "112942ad76950b34eec045693ed03ec89e5cb48de1bd26a29396beb6f9834a08"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-4/mounted-left.png",
+    "bytes": 1411960,
+    "sha256": "3e0dabdd793c5b23e76f41a2fbe1e84546a135fbdae9c29aa933cfd5272b5de2"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-4/mounted-right.png",
+    "bytes": 1374966,
+    "sha256": "10ac429110e330a3d7216e9c1393ba5a7115be6ac18790e706d66f9e672b4b1a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-4/wave.png",
+    "bytes": 1188117,
+    "sha256": "0cb6560902dfc07066c5cadb7411349d2cabe64b38d528578614456c59826366"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-5/back.png",
+    "bytes": 1159247,
+    "sha256": "98150d1bdcb8d043c848ea20f1b2084b95a78597083342664e0788febd5bfd0e"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-5/costume.png",
+    "bytes": 1178039,
+    "sha256": "7d3e3ec9facc68ec1dc97a820503025f9fab5c2c0209c4fca64938cb99ec7c82"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-5/face.png",
+    "bytes": 1183587,
+    "sha256": "f969faf82fc8cb20c1b7ea5da78a1e62e2166693b5bd7d6137acdf4f2395aff9"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-5/front.png",
+    "bytes": 1131958,
+    "sha256": "548577881d90387331c4ca49e1e0eb078ee16bfeaff1b943e3e0651a053d825c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-5/manifest.json",
+    "bytes": 2385,
+    "sha256": "e58d98a6374b667d64dc72ab81c5e97a3816e4383276716c200feb76da6d0cf2"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-5/material.png",
+    "bytes": 1227503,
+    "sha256": "787a38ac8562a8539f1ee64a04cb6dc9f91e83f06ed65421f7eedf6d6e0ee290"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-5/mounted-left.png",
+    "bytes": 1411675,
+    "sha256": "a7c26c4a90effc4daaa973d98599033abd178969f1035d1a91c73474cc6f12fb"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-5/mounted-right.png",
+    "bytes": 1374541,
+    "sha256": "5f7d66164f25452720abae12f184f0234c4209b1cc378e871d7acd3a8a68ed16"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-5/wave.png",
+    "bytes": 1189678,
+    "sha256": "d3c1bf2e6ee8edcfe0bad537665dda8091c7fcc81b80f1d6014b467cbc57346b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/pass-log.json",
+    "bytes": 1675,
+    "sha256": "8bad44e2ef424a30c4fc1e69e6720073bd28b98f447b157e7f6be1014f3f7962"
+   },
+   {
+    "path": "docs/rider-c02/evidence/fidelity/scope-verification.json",
+    "bytes": 92038,
+    "sha256": "b70dea9d0cd9892d282b6e276b15aabd06936d75acc7c1a475b03c2efa19cad4"
+   },
+   {
+    "path": "docs/rider-c02/evidence/index.html",
+    "bytes": 7114,
+    "sha256": "0cc766a1ccfbcb01c0a91dc1265ad0273fc0329f13b9945d0e4239b514418bed"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/after/ankle-side.png",
+    "bytes": 1156917,
+    "sha256": "977893b2ef9d6cd04846e294af09dbcb2b78d83b54c48a2742a37441bc552331"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/after/ankles.png",
+    "bytes": 1300123,
+    "sha256": "f8368aabb0212936c9ced7bb57f20cdd821cf02d2159a5651cd5c105c4332635"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/after/full-outfit.png",
+    "bytes": 1222411,
+    "sha256": "5f5e554e12aaafcdbb79e6c24cefd1487b8825db4818fe16651e95e8d9752a3e"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/after/light-front.png",
+    "bytes": 1217669,
+    "sha256": "53f53ac84322be75c42fe67d7bf1af5bbb237aab1f8bc238c4d86c66b5d3e5b4"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/after/light-top.png",
+    "bytes": 1251191,
+    "sha256": "24ad09afa682326094b36b5aa4d011a201a5008476ec0f04704288d0b4e3f97d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/after/mounted-bank.png",
+    "bytes": 1461344,
+    "sha256": "cab87f6c76a4d2d7a470b750f90cba511726be351173245bb18e3fbd73ed6718"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/after/mounted-left.png",
+    "bytes": 1464351,
+    "sha256": "183eb02378fab77ab0029d96baff127a75fe06fdea1d4e46b7ccbc1d20b6ed6a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/after/mounted-right.png",
+    "bytes": 1517240,
+    "sha256": "7383b7b20cd57e0f38c152ac75dcb0068e3146948111ab6bb311432f8b5e8fc5"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/after/shoulders-back.png",
+    "bytes": 1337471,
+    "sha256": "cd4597333f08a545895ce7e6d25fdd1bfe817bb40feff1b42f1ee8019ffb9349"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/after/verification.json",
+    "bytes": 5913,
+    "sha256": "dd4c0d24bcdad2c815b87284f7d3315773e2e1257077800ba72198fee2ad065e"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/after/wave.png",
+    "bytes": 1249197,
+    "sha256": "d5d4ef369f808d419a05891e66f5de4773e6c67bf9ba493e509370fce98950cc"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/before/ankle-side.png",
+    "bytes": 1153115,
+    "sha256": "1f8357c6f54503491934340cfcccdd817b51dca27485c883c688da283138310a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/before/ankles.png",
+    "bytes": 1295813,
+    "sha256": "23b42cbfaf5e2e13fe9074ec88d43794b801752143e2c7603abd0dd2dce0c676"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/before/light-front.png",
+    "bytes": 1213504,
+    "sha256": "e11f52acdc547a641228df6b78398123a7dd29224ba6797ca6c4d379cae02415"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/before/light-top.png",
+    "bytes": 1246365,
+    "sha256": "f49cccf8a37af8866296c3cd95bff5e559f5bda0b5ac70150c37da7f821678bc"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/before/shoulders-back.png",
+    "bytes": 1339598,
+    "sha256": "05c1ba180a8d90fad77ec874d020c6195c62555ea24ebee6444a0c10987ff800"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/before/verification.json",
+    "bytes": 3056,
+    "sha256": "230497e214153cefbc55987f64a62e77a3b6928fd626deabc0f9f542caed82c6"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/index.html",
+    "bytes": 4384,
+    "sha256": "61447e0b43a3ae95a099925aec84ced2e06854ead49bbc15e3a429ec53268795"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/launcher-qa.json",
+    "bytes": 866,
+    "sha256": "8e7871994b0930602c18ba2a967110a10b2c187701f39bf38a0b57932ac41229"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/mixed-wardrobe/index.html",
+    "bytes": 2492,
+    "sha256": "1ed4f48a2bfca1cf4a4f48153e4d5f105c10c289fcdd1ab8df0731d79f1cd58a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/mixed-wardrobe/linen-and-flight.png",
+    "bytes": 1214767,
+    "sha256": "1f75224cbb5688d35c7b47b45cf6410d32bc03db074062926221ebe19b76c242"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/mixed-wardrobe/mounted-bank.png",
+    "bytes": 1460617,
+    "sha256": "7e6a29a19b23db4fc9783a82a13030b8dc64b9b2c95cdecd43db6607c3b49d3d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/mixed-wardrobe/mounted-left.png",
+    "bytes": 1462952,
+    "sha256": "a4ffb9a49ceb9bb02e50113d4af37ee5a7c62ff53880b9a9a98df5dba7f812e8"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/mixed-wardrobe/mounted-right.png",
+    "bytes": 1524383,
+    "sha256": "02bfa75fa202bb540a77c061caf009a18cf661447e52fd698a494a8ff1b49b77"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/mixed-wardrobe/robe-and-scales.png",
+    "bytes": 1214697,
+    "sha256": "3dd8131014ee27fc3814232bad4995f8c5617654a04591c869dfd65fdd0e385b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/mixed-wardrobe/seven-outfit-back.png",
+    "bytes": 1298855,
+    "sha256": "080f1fd8f344efa1ee15f9f0fc267f23c67ab89e8ec2aa81d1fe4e9f5aff5e07"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/mixed-wardrobe/seven-outfit-front.png",
+    "bytes": 1208510,
+    "sha256": "1bcff8976387e0ffc17cc610dcafba155071a794ba4e54a7e0cf70ac5688bfd8"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/mixed-wardrobe/stable-mixed-pieces.png",
+    "bytes": 1122770,
+    "sha256": "1827fd541161891439543bd7934e84c232d148789dda3be8ac7f59f1788bdc03"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/mixed-wardrobe/verification.json",
+    "bytes": 16351,
+    "sha256": "d9b91741ca44dd19b048f70ff5c94984fe31cdb8868e1a82b08d9862c1c55d1e"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/pass-1/ankle-side.png",
+    "bytes": 1159552,
+    "sha256": "d28fd4457d9eae98035180b16e28901be80ca80fde791409e0dee96ca7d5abca"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/pass-1/ankles.png",
+    "bytes": 1300138,
+    "sha256": "a05310507d9086ee7833b91cc8b4bb0aaf2d9c44d4dad03a8831462ae94be0dc"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/pass-1/full-outfit.png",
+    "bytes": 1222135,
+    "sha256": "89b81da56106c740773e2f964ac4de600d3a434591e0c7acdde768565b58336f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/pass-1/light-front.png",
+    "bytes": 1218579,
+    "sha256": "1e40fe17497644a93fc33427bdd9d520c29975b3a09330d355cba7dac5d3aedc"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/pass-1/light-top.png",
+    "bytes": 1260518,
+    "sha256": "4d8303fbf660c654723e8bd84767427005cae30ad07778c6177b23c9b479cb5d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/pass-1/mounted-bank.png",
+    "bytes": 1461064,
+    "sha256": "573af25fe468f8cbd96eb1eeae4b1b8863a4aff601ab83049fd3c4174f9c9044"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/pass-1/mounted-left.png",
+    "bytes": 1464814,
+    "sha256": "bc70412c9d8afae4f76d3f0dee16236b0ff353ccff5859e0379d27e9cd38ac14"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/pass-1/mounted-right.png",
+    "bytes": 1517290,
+    "sha256": "ca8fed40d4797bddd582a21d904481a404d55ffb6d74560096de1ea41ae1ba8d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/pass-1/shoulders-back.png",
+    "bytes": 1341445,
+    "sha256": "83d07c2a34b90a6c8701b44430197e6b61301c9e31cba86703c14dac3f9309e1"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/pass-1/verification.json",
+    "bytes": 5913,
+    "sha256": "ed7f023701387838a2d7c52d51c0ed728393e716ff01fe78a826fb28a0ee54db"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/pass-1/wave.png",
+    "bytes": 1252078,
+    "sha256": "91c35252905a8f3d273e23b4da1e43e0221540d87214d1b9ebcb2bbb1b5260bb"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/pass-2/ankle-side.png",
+    "bytes": 1156917,
+    "sha256": "977893b2ef9d6cd04846e294af09dbcb2b78d83b54c48a2742a37441bc552331"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/pass-2/ankles.png",
+    "bytes": 1300123,
+    "sha256": "f8368aabb0212936c9ced7bb57f20cdd821cf02d2159a5651cd5c105c4332635"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/pass-2/full-outfit.png",
+    "bytes": 1222251,
+    "sha256": "834dc20647b5a4a2615a4a7b563e825927b1ff53fffa53d9e89f87a9d4cf210b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/pass-2/light-front.png",
+    "bytes": 1217288,
+    "sha256": "e32134adaed05536fb752554b6cdef885eb19c95390d273113840b804262e642"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/pass-2/light-top.png",
+    "bytes": 1251124,
+    "sha256": "a08c6e0195c06d0ac7ebcb0c124f60083d041d44c65ef21f4858617bc7ae98b1"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/pass-2/mounted-bank.png",
+    "bytes": 1461352,
+    "sha256": "9fa86b6024a5b0081696af041f1578bf9568479c78681af22c2606b4f57cdd71"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/pass-2/mounted-left.png",
+    "bytes": 1464394,
+    "sha256": "fdf9defb65d1850e69d09743b3f1efe502607f26830218d61edc9b56ca824650"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/pass-2/mounted-right.png",
+    "bytes": 1516935,
+    "sha256": "3ff174943ea2d61dae6772c3292b73ac48110142c181a59f77bc523ad92457e4"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/pass-2/shoulders-back.png",
+    "bytes": 1338364,
+    "sha256": "0b97b7fa0ae59f68008175c6f948247947622b5a51a4659f529cefb9b09240b9"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/pass-2/verification.json",
+    "bytes": 5913,
+    "sha256": "dd4c0d24bcdad2c815b87284f7d3315773e2e1257077800ba72198fee2ad065e"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/pass-2/wave.png",
+    "bytes": 1249477,
+    "sha256": "5264f771763084882fcbed4d588da7d7de4ba8c63956f9222c429046f52e0bf0"
+   },
+   {
+    "path": "docs/rider-c02/evidence/layering/scope-verification.json",
+    "bytes": 1536,
+    "sha256": "5c252a7289bb3e64ac83d252c97c81512e79bfbf48f62abbe665e8428c6fc9d0"
+   },
+   {
+    "path": "docs/rider-c02/evidence/legacy-default.png",
+    "bytes": 732810,
+    "sha256": "9b1b50aa2759bff18386dd864c993ba6b7c1161b22752226a61c382e6b1dc9ca"
+   },
+   {
+    "path": "docs/rider-c02/evidence/manifest.json",
+    "bytes": 34919,
+    "sha256": "436b35a9e66d6520bbf5486e1f1ed6953e385f5d372cf9644a6cd8f99857935b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/material-color.png",
+    "bytes": 737996,
+    "sha256": "da0561ac7462037af43418ad341879a55b53c9bdf9cef15e6b3fc86b5d4a7c11"
+   },
+   {
+    "path": "docs/rider-c02/evidence/material-normal.png",
+    "bytes": 738706,
+    "sha256": "a5353965cbb9ed8dca3dc8467b81ce36dca255de0aca5751a1e0833f75f75dd5"
+   },
+   {
+    "path": "docs/rider-c02/evidence/material-off.png",
+    "bytes": 735773,
+    "sha256": "9b9553a3c5e5585173da25c7eb6e14a3f0d66f2032654e73c99b467e89743994"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mixed-wardrobe/index.html",
+    "bytes": 2492,
+    "sha256": "1ed4f48a2bfca1cf4a4f48153e4d5f105c10c289fcdd1ab8df0731d79f1cd58a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mixed-wardrobe/launcher-qa.json",
+    "bytes": 852,
+    "sha256": "3bc2f6396e876a5ba7c23e4f43b7dcd8dc3170dc4e70fa69ecffe685842cb39a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mixed-wardrobe/linen-and-flight.png",
+    "bytes": 1213696,
+    "sha256": "c8b147a8f4808a8bdbe36ceea9b4a39655e48b137ca763348e8ec682cf6af6bb"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mixed-wardrobe/mounted-bank.png",
+    "bytes": 1460437,
+    "sha256": "3fa7c2abdb4805833d06c5534427a2d0a9dd8778c927112e001f3f81adaca2f4"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mixed-wardrobe/mounted-left.png",
+    "bytes": 1462590,
+    "sha256": "ff0aa08fc7500dfb4f09ec42dacee08cafa222baab47055a1b1331b1af2d449a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mixed-wardrobe/mounted-right.png",
+    "bytes": 1523205,
+    "sha256": "b6d0470972007b4e79b2bd06ae5b0c0ddfd7680571e9502e57d2b0673980b6c5"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mixed-wardrobe/robe-and-scales.png",
+    "bytes": 1213300,
+    "sha256": "0ff49182cacce717c3a2913bea2752f9acd01447f0b5f760843f942a3a36895e"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mixed-wardrobe/scope-verification.json",
+    "bytes": 1566,
+    "sha256": "e16b290a655129e17badd5454b2d5f645a5925aa4b57701a8db611d3c56eb21a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mixed-wardrobe/seven-outfit-back.png",
+    "bytes": 1298706,
+    "sha256": "9c7fffc8d555118c93473a50ca65732aa63eaf651d9804b913cc2d1c4e46732c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mixed-wardrobe/seven-outfit-front.png",
+    "bytes": 1207317,
+    "sha256": "3a1a5a86e7a1654544456c92c822e85bca65ed1e4d7d5985f568c3ef465c4352"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mixed-wardrobe/stable-mixed-pieces.png",
+    "bytes": 1125401,
+    "sha256": "6e677f28e8d3980ab75b12e05abd2fb9e14ca77dc2a6481b211294892baecdb8"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mixed-wardrobe/verification.json",
+    "bytes": 16351,
+    "sha256": "dca2e31219a8374b1220583cc61aed6ca7467638ef4338b5bcd4de118dde02a7"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mounted-fit/bank-left-left.png",
+    "bytes": 1282139,
+    "sha256": "6beeeebcd2e50c0c59013e7ab72e0c8ce15fa501ebeb1328112bef0c33921e1d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mounted-fit/bank-left-right.png",
+    "bytes": 1145747,
+    "sha256": "7396c55165a0ccb57088a40d2504f915081f3c02af2d17e6e75452d2761a5959"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mounted-fit/bank-right-left.png",
+    "bytes": 1162698,
+    "sha256": "eec0f5c08f8c8025d9b0804cfebb560b634ef2f3c0b9ddff32ec297ab4e7bbd6"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mounted-fit/bank-right-right.png",
+    "bytes": 1217551,
+    "sha256": "8d27303d3266771410463d64a0e2bdaa562731c3395c69c5258ca31ca500d078"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mounted-fit/brake-left.png",
+    "bytes": 1241752,
+    "sha256": "8c43e871ce3946cb2b3be3acc5fb9ba455ed52faeac6424b93d200d451a54a3a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mounted-fit/brake-right.png",
+    "bytes": 1206179,
+    "sha256": "27e6928de461b6cd937cd472801fff2c2c75b937248bdf9cbbdde253b4d1455f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mounted-fit/dive-left.png",
+    "bytes": 1209945,
+    "sha256": "1e007a1261780677a8ca746cfa72766c4fca6f59cd36d6865daa60bcdf7e1535"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mounted-fit/dive-right.png",
+    "bytes": 1159688,
+    "sha256": "51086309c34b3825b582a092c29c3501a41386efb2191ece7a22d6305937a1e3"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mounted-fit/gameplay-left.png",
+    "bytes": 1460877,
+    "sha256": "62a93834fe1b9c666f0e4391a63ba81ecd994019a819f17fb24044c56e6c8dde"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mounted-fit/gameplay-right.png",
+    "bytes": 1412284,
+    "sha256": "d77e379d4b6b4c693f3598e7c1b1aaa96a6682fc7199926072960f9702314da7"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mounted-fit/glide-left.png",
+    "bytes": 1231815,
+    "sha256": "1499e24dc11f64dc20e9511006fd4c228c9bbb60a8484b66f5d791f1155e5cfe"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mounted-fit/glide-right.png",
+    "bytes": 1201328,
+    "sha256": "775005a886836f29cece07fcd5dedc7e115a89841bf98bf8dfd6ecd48d618a63"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mounted-fit/ground-left.png",
+    "bytes": 1265651,
+    "sha256": "628a62ac0cf906620a6df8f39e5d77ac2e78feea4861f2faf653317c63ddb1f4"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mounted-fit/ground-right.png",
+    "bytes": 1232549,
+    "sha256": "6f86d847ae37b3092b0b07f983b46fca98757960db065cf0e5d753e8e3becc43"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mounted-fit/index.html",
+    "bytes": 4298,
+    "sha256": "e77f28a20d9bffc9bad3af9d6ae058e74c6ca06b7d6862f46f488b61150ec817"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mounted-fit/manifest.json",
+    "bytes": 20364,
+    "sha256": "d851f8d4033794f0dc10fe24c573e70a0074ebf1b585526da02dae7d7497f1c5"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mounted-fit/tread-left-oblique.png",
+    "bytes": 1266618,
+    "sha256": "9480706c8303792201dd499ed981a689814aa73607c702f283b3b81ed506a0d3"
+   },
+   {
+    "path": "docs/rider-c02/evidence/mounted-fit/tread-right-oblique.png",
+    "bytes": 1257919,
+    "sha256": "1abbfd578a695f17d50179021032dea965677a6c0b543346dae4e7141e69f24d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/bell-sleeve-wave.png",
+    "bytes": 1198384,
+    "sha256": "036c4fe3518ffaa4946ad16671edb16589bb315873a9eac6a6d24d2a128ac16c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/cartographer-back.png",
+    "bytes": 1260012,
+    "sha256": "a00e6019d91de479a8c184d658e110a05654de79f603f71375cbc424eb983ffe"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/cartographer-front.png",
+    "bytes": 1146701,
+    "sha256": "968738f642e5c80fad41eb83c09be091719bd580f274a38291979cd24ec18500"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/cartographer-mounted-left.png",
+    "bytes": 1319098,
+    "sha256": "9fd01c90fbc801c1857172f5dc5a8c3a46ae4300fc8b1de1c9f29289df8ec73a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/cartographer-mounted-right.png",
+    "bytes": 1290830,
+    "sha256": "84d558364549b47bc91d5fb610208af287af1e673c5117bf8938c8b56f62f43b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/clearance.json",
+    "bytes": 1122699,
+    "sha256": "fe6579fbc33e9c20a1c830967445445cadd7934133bd056927d465929368a2dd"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/contact-cpu-cost.json",
+    "bytes": 4228,
+    "sha256": "9ee7d51b109e605b9d605f0633d68fe9be8b236a46ea9a1280f706e4d218ec89"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/courier-back.png",
+    "bytes": 1234715,
+    "sha256": "af8fed1f02183f66f7b746716c2f28c3c206c42d21f250d2483036cd3b3c9fce"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/courier-front.png",
+    "bytes": 1130017,
+    "sha256": "befc9c55ccd9c440d4a2ee0fab563df5d185e20218e8bb4786d18f108179c715"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/courier-mounted-left.png",
+    "bytes": 1321068,
+    "sha256": "e70a30db942724c4e862685d75b6c08c4c5970ab043a71b33ae7404ef320a7ba"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/courier-mounted-right.png",
+    "bytes": 1279180,
+    "sha256": "42d4daccdea7813ffb3cf30e1bc8dbcb2916b6ee2d252dff1b595aade0dcae30"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/flight-front.png",
+    "bytes": 1124585,
+    "sha256": "a895dcc8cd66df665f12d14a1d1f287b72225c5a45c64271c4d917a63b709e37"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/index.html",
+    "bytes": 6436,
+    "sha256": "1af1965caa4179351952d18379654d22f513770f69c79d1a33576812a7d63ea7"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/bell-sleeve-wave.png",
+    "bytes": 1198384,
+    "sha256": "036c4fe3518ffaa4946ad16671edb16589bb315873a9eac6a6d24d2a128ac16c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/cartographer-back.png",
+    "bytes": 1260012,
+    "sha256": "a00e6019d91de479a8c184d658e110a05654de79f603f71375cbc424eb983ffe"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/cartographer-front.png",
+    "bytes": 1146701,
+    "sha256": "968738f642e5c80fad41eb83c09be091719bd580f274a38291979cd24ec18500"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/cartographer-mounted-left.png",
+    "bytes": 1319098,
+    "sha256": "9fd01c90fbc801c1857172f5dc5a8c3a46ae4300fc8b1de1c9f29289df8ec73a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/cartographer-mounted-right.png",
+    "bytes": 1290829,
+    "sha256": "604c08176512a27c9841188bac89dba9627766955da17ed874de4c9ef0a5b0c6"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/clearance.json",
+    "bytes": 1122699,
+    "sha256": "fe6579fbc33e9c20a1c830967445445cadd7934133bd056927d465929368a2dd"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/contact-cpu-cost.json",
+    "bytes": 4228,
+    "sha256": "9ee7d51b109e605b9d605f0633d68fe9be8b236a46ea9a1280f706e4d218ec89"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/courier-back.png",
+    "bytes": 1234715,
+    "sha256": "af8fed1f02183f66f7b746716c2f28c3c206c42d21f250d2483036cd3b3c9fce"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/courier-front.png",
+    "bytes": 1130017,
+    "sha256": "befc9c55ccd9c440d4a2ee0fab563df5d185e20218e8bb4786d18f108179c715"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/courier-mounted-left.png",
+    "bytes": 1321068,
+    "sha256": "e70a30db942724c4e862685d75b6c08c4c5970ab043a71b33ae7404ef320a7ba"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/courier-mounted-right.png",
+    "bytes": 1279180,
+    "sha256": "42d4daccdea7813ffb3cf30e1bc8dbcb2916b6ee2d252dff1b595aade0dcae30"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/flight-front.png",
+    "bytes": 1124585,
+    "sha256": "a895dcc8cd66df665f12d14a1d1f287b72225c5a45c64271c4d917a63b709e37"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/index.html",
+    "bytes": 6511,
+    "sha256": "bf0c2b3d950ab829922cbdcfe49a65e961bb30a87698dedf888366a5d0a574c3"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/integration-smoke.log",
+    "bytes": 773,
+    "sha256": "ba5bac8894e249791c53603f334c1d1367ca2331976e0a5aa67e81ccc3ca54a7"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/launcher-qa.json",
+    "bytes": 1353,
+    "sha256": "588c65585a5616dbe85d99aa7850b695f3b3a05ad43df3ea261da85c1d54c9eb"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/linen-low.png",
+    "bytes": 1027804,
+    "sha256": "4ffa358e5496f39f5e66fce02bd8594874a416e7ce14f9545bae69cf59cff058"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/linen-material-close.png",
+    "bytes": 1149829,
+    "sha256": "a58a79d81f3aadf5c2f6beb526705913fdb4b24535d3b7aabf7e3b4535c36299"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/linen-medium.png",
+    "bytes": 1154444,
+    "sha256": "ce81ea3caae19a7f05aa1feffd050d1a7e85ea6ace4567a2c8f2ee1b346f3086"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/linen-night.png",
+    "bytes": 1074917,
+    "sha256": "397d74fa57cea42f58a184dd71c97692af37417893f20dcb82c11913ff94f26a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/linen-ultra.png",
+    "bytes": 1144741,
+    "sha256": "5e4690d04c3f104698d9741aa68962d18be08459f8eeb045fc3b32693df70e34"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/metal-night.png",
+    "bytes": 1071750,
+    "sha256": "687ac586e5da9bd3fe59e2de4873f6425cd1f02a59d20cfa335b031777ed115b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/mixed-broad-bank.png",
+    "bytes": 1262575,
+    "sha256": "adbd1db40c1e6f92efc30f42fcbabe97219e215b6243f8a8e24888c6c0ef5190"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/mixing/linen-and-flight.png",
+    "bytes": 1220515,
+    "sha256": "d51920643cc0ff8d05d683bb847cfc438840270160ce1188844919f9994c12ca"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/mixing/mounted-bank.png",
+    "bytes": 1477607,
+    "sha256": "fe3f7ba73d03442dad2b5e11074948fc0e9ae9b6519d2e684e36225b7c5688ad"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/mixing/mounted-left.png",
+    "bytes": 1479016,
+    "sha256": "bd9c15f01a20d643b450f7ab4e1af88adfb97fe856373a325c8c2d35dacb0baf"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/mixing/mounted-right.png",
+    "bytes": 1537922,
+    "sha256": "d2cac57b9ca989dfaeb69e32bf5b24c5c16a517173854d3e82777a856663e1ff"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/mixing/robe-and-scales.png",
+    "bytes": 1224490,
+    "sha256": "7ad9fc7a219df6b03b390d688c670b95e1d0b71e1efed61b67039765f996b711"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/mixing/seven-outfit-back.png",
+    "bytes": 1304178,
+    "sha256": "83a9ed12a8a578b213d999f7f992fdfc2481ca1fcb1629609628fc424f8db40c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/mixing/seven-outfit-front.png",
+    "bytes": 1218126,
+    "sha256": "35bb9dc4ad551b6302bb46e41007f545e1eb542c7049f9c72d8c525e09bf4395"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/mixing/stable-mixed-pieces.png",
+    "bytes": 1133811,
+    "sha256": "206130a0dcabd2693950e88862bc499bcccdedec429d369a8d97085ef1fdb9da"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/mixing/verification.json",
+    "bytes": 17327,
+    "sha256": "f98ccec0a049b8e1a5905c025578c0b3bb734ddecce2c4cd2776eb7c844dcf5f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/normal-menu.png",
+    "bytes": 22317,
+    "sha256": "3d373de7cc83e5d5908b380f3504dff8e57176ccfab9afee616e83f0e6ae2078"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/racer-front.png",
+    "bytes": 1128903,
+    "sha256": "ce6af592bd7248143a6978d3f4a2cedcd205916eb6adcdc9927165c8e64e5e45"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/scope-verification.json",
+    "bytes": 60017,
+    "sha256": "706ad8de4c9c9f12f10b844a6581d075460b1a1ed950ab4f76da84f1d3838ff9"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/scout-front.png",
+    "bytes": 1140575,
+    "sha256": "0210588a59b974a957543a1a304cd6df42b2f2cd3a91a966754f8bdc549f7b6a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/skyknight-back.png",
+    "bytes": 1252105,
+    "sha256": "2f04ed6a8430f42a45155d14bc1c73cb2b35af41e9c0a8806d87fd7d58223d52"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/skyknight-front.png",
+    "bytes": 1136341,
+    "sha256": "49fc35dfd816a448503d11781570a086ba4d8ba555f54fff155b52fac36820ef"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/skyknight-mounted-left.png",
+    "bytes": 1327281,
+    "sha256": "fc17d8db54a9113869a447d25ad0ca33472c481a74cd09da22b707f4be002347"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/skyknight-mounted-right.png",
+    "bytes": 1289383,
+    "sha256": "f87abd9da1eab1f7f8f4f9d95dbfc7d916cf42e5661c0afa6069817ce9634d16"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/stable-pieces.png",
+    "bytes": 1278559,
+    "sha256": "2282427ea27789415a957fd8d2ab238cab22c6ac74681b71db7d011eefc6e8bf"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/travel-drape-back.png",
+    "bytes": 1248733,
+    "sha256": "7cf8682d206b109c127f986a3794f0297a7d56710fdc4bf132f3b1e6281a1136"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/travel-drape-front.png",
+    "bytes": 1141213,
+    "sha256": "3aa894401092c034651fb38e0fa11e01c6f53146fe1c31b407880779f542f064"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/travel-drape-mounted-left.png",
+    "bytes": 1322811,
+    "sha256": "cc77a31a7afda5e1db667b18317d84c0a8c5ba79ab3e4ff998e4b8976451c7c3"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/travel-drape-mounted-right.png",
+    "bytes": 1291589,
+    "sha256": "580c2b1b3b1cc44d551a20c4e1260fae5492afcf7690b0489fabb9a1bd0f90a3"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/unit-summary.json",
+    "bytes": 12566,
+    "sha256": "754d9c2e407893c7836404c6570f55ef7afd0eee68306d46b33b39bad1cee8bb"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/verification.json",
+    "bytes": 53947,
+    "sha256": "f1c6402a660d2facca78465d96a016ee081a73211404b3bd0d730d7e8a611345"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/windline/driftwing-windline-flow-browser-check.json",
+    "bytes": 3426,
+    "sha256": "98381bf5925c539001f63ea56edab8425a26382cd5b2707d1ed88828330a1631"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/windline/driftwing-windline-gameplay-browser-check.json",
+    "bytes": 3043,
+    "sha256": "6f9f96a6168abb62a971d100a0b36f3a51cd31b3452cfded2f10d17d2d2aa91a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/integration/worn-leather-close.png",
+    "bytes": 1124731,
+    "sha256": "c68723a5697c44d031724d14f00eec3965b01a439cfcb81b2d6245a635b5f870"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/launcher-qa.json",
+    "bytes": 1353,
+    "sha256": "588c65585a5616dbe85d99aa7850b695f3b3a05ad43df3ea261da85c1d54c9eb"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/linen-low.png",
+    "bytes": 1027804,
+    "sha256": "4ffa358e5496f39f5e66fce02bd8594874a416e7ce14f9545bae69cf59cff058"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/linen-material-close.png",
+    "bytes": 1149829,
+    "sha256": "a58a79d81f3aadf5c2f6beb526705913fdb4b24535d3b7aabf7e3b4535c36299"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/linen-medium.png",
+    "bytes": 1154444,
+    "sha256": "ce81ea3caae19a7f05aa1feffd050d1a7e85ea6ace4567a2c8f2ee1b346f3086"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/linen-night.png",
+    "bytes": 1074917,
+    "sha256": "397d74fa57cea42f58a184dd71c97692af37417893f20dcb82c11913ff94f26a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/linen-ultra.png",
+    "bytes": 1144741,
+    "sha256": "5e4690d04c3f104698d9741aa68962d18be08459f8eeb045fc3b32693df70e34"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/metal-night.png",
+    "bytes": 1071750,
+    "sha256": "687ac586e5da9bd3fe59e2de4873f6425cd1f02a59d20cfa335b031777ed115b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/mixed-broad-bank.png",
+    "bytes": 1262575,
+    "sha256": "adbd1db40c1e6f92efc30f42fcbabe97219e215b6243f8a8e24888c6c0ef5190"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/mixing/linen-and-flight.png",
+    "bytes": 1220515,
+    "sha256": "d51920643cc0ff8d05d683bb847cfc438840270160ce1188844919f9994c12ca"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/mixing/mounted-bank.png",
+    "bytes": 1477607,
+    "sha256": "fe3f7ba73d03442dad2b5e11074948fc0e9ae9b6519d2e684e36225b7c5688ad"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/mixing/mounted-left.png",
+    "bytes": 1479016,
+    "sha256": "bd9c15f01a20d643b450f7ab4e1af88adfb97fe856373a325c8c2d35dacb0baf"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/mixing/mounted-right.png",
+    "bytes": 1537922,
+    "sha256": "d2cac57b9ca989dfaeb69e32bf5b24c5c16a517173854d3e82777a856663e1ff"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/mixing/robe-and-scales.png",
+    "bytes": 1224490,
+    "sha256": "7ad9fc7a219df6b03b390d688c670b95e1d0b71e1efed61b67039765f996b711"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/mixing/seven-outfit-back.png",
+    "bytes": 1304178,
+    "sha256": "83a9ed12a8a578b213d999f7f992fdfc2481ca1fcb1629609628fc424f8db40c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/mixing/seven-outfit-front.png",
+    "bytes": 1218126,
+    "sha256": "35bb9dc4ad551b6302bb46e41007f545e1eb542c7049f9c72d8c525e09bf4395"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/mixing/stable-mixed-pieces.png",
+    "bytes": 1136736,
+    "sha256": "ff1bb564cc693cd322ca49bd4c328c10013c224000daec633ce09cdfd40379e6"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/mixing/verification.json",
+    "bytes": 17327,
+    "sha256": "f98ccec0a049b8e1a5905c025578c0b3bb734ddecce2c4cd2776eb7c844dcf5f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/normal-menu.png",
+    "bytes": 22317,
+    "sha256": "3d373de7cc83e5d5908b380f3504dff8e57176ccfab9afee616e83f0e6ae2078"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/racer-front.png",
+    "bytes": 1128903,
+    "sha256": "ce6af592bd7248143a6978d3f4a2cedcd205916eb6adcdc9927165c8e64e5e45"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/scope-verification.json",
+    "bytes": 59798,
+    "sha256": "9e38671017c69d02a88be76050221fc2cf7c58599a7a9549971f4a29cb2ba1e5"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/scout-front.png",
+    "bytes": 1140575,
+    "sha256": "0210588a59b974a957543a1a304cd6df42b2f2cd3a91a966754f8bdc549f7b6a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/skyknight-back.png",
+    "bytes": 1252105,
+    "sha256": "2f04ed6a8430f42a45155d14bc1c73cb2b35af41e9c0a8806d87fd7d58223d52"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/skyknight-front.png",
+    "bytes": 1136341,
+    "sha256": "49fc35dfd816a448503d11781570a086ba4d8ba555f54fff155b52fac36820ef"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/skyknight-mounted-left.png",
+    "bytes": 1327281,
+    "sha256": "fc17d8db54a9113869a447d25ad0ca33472c481a74cd09da22b707f4be002347"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/skyknight-mounted-right.png",
+    "bytes": 1289383,
+    "sha256": "f87abd9da1eab1f7f8f4f9d95dbfc7d916cf42e5661c0afa6069817ce9634d16"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/smoke.log",
+    "bytes": 773,
+    "sha256": "684c94c722ba6749c21121abe3527d69f22de7c7d7bfe5dc0412943fcdecf8ea"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/stable-pieces.png",
+    "bytes": 1276330,
+    "sha256": "52d7cbf7aa46cfeeae31246e8c5238a8b5c536f228c49b8b816d0c0bbdbaef7c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/travel-drape-back.png",
+    "bytes": 1248733,
+    "sha256": "7cf8682d206b109c127f986a3794f0297a7d56710fdc4bf132f3b1e6281a1136"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/travel-drape-front.png",
+    "bytes": 1141213,
+    "sha256": "3aa894401092c034651fb38e0fa11e01c6f53146fe1c31b407880779f542f064"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/travel-drape-mounted-left.png",
+    "bytes": 1322811,
+    "sha256": "cc77a31a7afda5e1db667b18317d84c0a8c5ba79ab3e4ff998e4b8976451c7c3"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/travel-drape-mounted-right.png",
+    "bytes": 1291589,
+    "sha256": "580c2b1b3b1cc44d551a20c4e1260fae5492afcf7690b0489fabb9a1bd0f90a3"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/unit-summary.json",
+    "bytes": 12565,
+    "sha256": "b4163123fd9f917b930557ce2b64ab05774b05bcd623cfbab3db837ba3fe391a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/verification.json",
+    "bytes": 53947,
+    "sha256": "f1c6402a660d2facca78465d96a016ee081a73211404b3bd0d730d7e8a611345"
+   },
+   {
+    "path": "docs/rider-c02/evidence/qa/worn-leather-close.png",
+    "bytes": 1124731,
+    "sha256": "c68723a5697c44d031724d14f00eec3965b01a439cfcb81b2d6245a635b5f870"
+   },
+   {
+    "path": "docs/rider-c02/evidence/quality-budget/baseline.json",
+    "bytes": 4065,
+    "sha256": "d27fe1c2d0523b1c0dba6633a1c184398c987133fae1d8104355136a3ff5bd86"
+   },
+   {
+    "path": "docs/rider-c02/evidence/quality-budget/cloth/actual-weather.png",
+    "bytes": 1055532,
+    "sha256": "09e0a063c31174ee2820e8223600b0a12ac68150f08f31cecb5d50bed83a6321"
+   },
+   {
+    "path": "docs/rider-c02/evidence/quality-budget/cloth/manifest.json",
+    "bytes": 9130,
+    "sha256": "71403b9161c34ed76f5629098f68ca80ae363b3b691aa850d6a4d34e26cd4144"
+   },
+   {
+    "path": "docs/rider-c02/evidence/quality-budget/cloth/material-high-3k.png",
+    "bytes": 1260980,
+    "sha256": "dc259e2d8c29c68d17532d5e062d79811eec9a3dfebf9a0cd4f5f0eb19d6a5de"
+   },
+   {
+    "path": "docs/rider-c02/evidence/quality-budget/cloth/material-high-4k.png",
+    "bytes": 1267162,
+    "sha256": "c5e8418e9df878dc86be9d1cafcc14c49e0fd318b6cfa7b6f728d7eaf7eb58e8"
+   },
+   {
+    "path": "docs/rider-c02/evidence/quality-budget/cloth/material-low-1k.png",
+    "bytes": 1222860,
+    "sha256": "8970481090d870b37bc6f911485ad10c76c5387acfd6d9a70cbd4befc42e8617"
+   },
+   {
+    "path": "docs/rider-c02/evidence/quality-budget/cloth/material-medium-2k.png",
+    "bytes": 1267718,
+    "sha256": "6428b7dea0a6efa22ea13891297613992e5b443a218c67a04f905143ab57871e"
+   },
+   {
+    "path": "docs/rider-c02/evidence/quality-budget/cloth/mounted-bank.png",
+    "bytes": 1447829,
+    "sha256": "2bd8e4459c689c2dc645235b3bcac3768672dadc8f383b3ede22d957c978e31e"
+   },
+   {
+    "path": "docs/rider-c02/evidence/quality-budget/cloth/mounted-left.png",
+    "bytes": 1453367,
+    "sha256": "dbfcf4357a2631b9ff32dabc92b781b9ba44b49b165782d92d2d0c041408094b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/quality-budget/cloth/mounted-right.png",
+    "bytes": 1513462,
+    "sha256": "98b643bf1a90b6f7729c1b083651aac780ec0a0bc71b09f38d6c597380a063e9"
+   },
+   {
+    "path": "docs/rider-c02/evidence/quality-budget/cloth/wind-breeze.png",
+    "bytes": 1288509,
+    "sha256": "f1026bed3e2d9054ecd5f885d54291988532acbf2f12ed6b6a50199fc2386e7a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/quality-budget/cloth/wind-calm.png",
+    "bytes": 1290538,
+    "sha256": "198bdfcdc0a7acddddd016c302b24a0c06bfc7970b403d706a30e2a4c25fe118"
+   },
+   {
+    "path": "docs/rider-c02/evidence/quality-budget/cloth/wind-gust-left.png",
+    "bytes": 1297272,
+    "sha256": "8e608f7e0944063539a9b79d42f5bbf06ab3c97500f0ef2ec4f162a1d2a7da25"
+   },
+   {
+    "path": "docs/rider-c02/evidence/quality-budget/cloth/wind-gust-right.png",
+    "bytes": 1290733,
+    "sha256": "db7889c0dcd4535983731ed8fbcfe693c09f4c732d68c36b7d53df0b97310e07"
+   },
+   {
+    "path": "docs/rider-c02/evidence/quality-budget/cloth/wind-settled.png",
+    "bytes": 1291920,
+    "sha256": "448c060ebb032bedc13ccec14b7575b354b4b762f7fa97bc56ed3c0a1dfebf10"
+   },
+   {
+    "path": "docs/rider-c02/evidence/quality-budget/dedicated-tiers.json",
+    "bytes": 4069,
+    "sha256": "bcc0e3d13d0018b523f2ec897c915f317cd89e2c1772b458a73876d74f60e855"
+   },
+   {
+    "path": "docs/rider-c02/evidence/quality-budget/index.html",
+    "bytes": 1316,
+    "sha256": "cb6652137053490fc7a076aa1eea8c82078bea3ea8cb9e73b23348f90d19b03f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/quality-budget/launcher-qa.json",
+    "bytes": 3409,
+    "sha256": "f29ce928b688476ecb489de19f2e92ebe318f700e8643a5c82d137c252b674ad"
+   },
+   {
+    "path": "docs/rider-c02/evidence/quality-budget/scope-verification.json",
+    "bytes": 13711,
+    "sha256": "c3bfd95fe9203d14f6bafabddd6351bf6fa064150ac0ab106f57a238c2c59fb3"
+   },
+   {
+    "path": "docs/rider-c02/evidence/quality-budget/ultra-viewer.png",
+    "bytes": 1245165,
+    "sha256": "77fdd9d04750b60efc1a238974723d81b0b7c0966fb67446d6b072dbe0f5a0d4"
+   },
+   {
+    "path": "docs/rider-c02/evidence/quality-budget/verification.json",
+    "bytes": 14903,
+    "sha256": "b0fd2cb282d0be198daf27858f206cbae8482986dfe3f22aa64cd2ce10338e4b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/aerie-back.png",
+    "bytes": 749249,
+    "sha256": "7bfdb1b6f024ebc060148e0102bfaa945d73f2ce73e6941e5ea4356f26d57765"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/aerie-bank-left.png",
+    "bytes": 872241,
+    "sha256": "fe20a1db0340ea3e83b8535a55cbccc87ab87398fe1fce501f533d8f3af58f6a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/aerie-bank-right.png",
+    "bytes": 930136,
+    "sha256": "61319a33cf57377ff393db167b9057bb17f314c719c30fdc44d5dc246a942ff3"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/aerie-brace-close.png",
+    "bytes": 920692,
+    "sha256": "ab522cd1c637d37db7c392e0a6d5fbf9543b9b50a40af25a13c88ef281580fe6"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/aerie-brake.png",
+    "bytes": 894037,
+    "sha256": "63e20d402faa5ef98a9e3b0b978da38cac1e355006ca45771719f229c13aab83"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/aerie-dismount-gameplay.png",
+    "bytes": 894851,
+    "sha256": "3608516818d0d6d36c8cbfe78c561f6ff3faf647387f6df0cdbadbfc9b0f0129"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/aerie-dive.png",
+    "bytes": 939799,
+    "sha256": "0e82a54fcb3e1b454813c3be25374f5f2aa47ea1d40f25c78544047d37b6206d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/aerie-front.png",
+    "bytes": 731179,
+    "sha256": "127ef4e42561183be08b484ac5f1ffc33b2147e78c761091a92cd65cc1c3c676"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/aerie-ground.png",
+    "bytes": 886878,
+    "sha256": "68b6f54a1e3802a77b1e6d586a836e36f960883d1ead3f81baa3575a2c641b0a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/aerie-high-normal.png",
+    "bytes": 783952,
+    "sha256": "80846a2a1dd14677df51dc6647b462dcaa31cd8ba4ff05cb7d66a93a2831a22b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/aerie-landing-gameplay.png",
+    "bytes": 933895,
+    "sha256": "1981631ca74d8558e7928d0cc79d0e31d536fc224a4578c92e601f86cdb49f4e"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/aerie-mounted.png",
+    "bytes": 886154,
+    "sha256": "d0110f51766765496e4e52fc24a48d7fd10d64d544f1b08e6aeec4b62684fc07"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/aerie-saddle-close.png",
+    "bytes": 857958,
+    "sha256": "2923ab305deee0eb23e8101aa87a8bcceb3db9216dfa856e27e22a947e9d8fe4"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/aerie-takeoff-gameplay.png",
+    "bytes": 859497,
+    "sha256": "d23913e12cec453635962d5a309cc68455af8ec5c88c3a1a32d3381831290e83"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/atlas-map.png",
+    "bytes": 349696,
+    "sha256": "245947923c637a549659c82789fe7f58919239dacb3d814bf7868f8a68eb384a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/atlas-normalMap.png",
+    "bytes": 608137,
+    "sha256": "13372c14b79ff96983ea4c1954738b842b135f29452d7c8b6f1d28015ec67a24"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/index.html",
+    "bytes": 8960,
+    "sha256": "4bc71cfbeba61be5aff4606d7308ac3eb2619593fa752e7a50a315f81ba56296"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/legacy-default.png",
+    "bytes": 732810,
+    "sha256": "9b1b50aa2759bff18386dd864c993ba6b7c1161b22752226a61c382e6b1dc9ca"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/manifest.json",
+    "bytes": 41656,
+    "sha256": "cc80c2ae1824644424b09036f23017c9acb3c3bd49cf84b6cee0b252b8eac699"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/material-color.png",
+    "bytes": 735727,
+    "sha256": "aca9b8f783b677fa795e8ee4cb5b5993a275b79848ff2cbfbcb32dfdf6093a6f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/material-normal.png",
+    "bytes": 736809,
+    "sha256": "9cca5270d824f208407b67ee70a22be960364e13222ddb415af22db4f9275d5e"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/material-off.png",
+    "bytes": 733560,
+    "sha256": "eb7f5e40931fe28ec4a401c27856f1075fbaf3c8ff785eeadbb95dfa0093d4ba"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/mounted/bank-left-left.png",
+    "bytes": 1283592,
+    "sha256": "ca4ba51b81f2e1555457c89e63c6c4cecd664bce071ca5d7b99bf09c11476507"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/mounted/bank-left-right.png",
+    "bytes": 1146059,
+    "sha256": "a6c843d2667b466e4ed372b8e73fbdcf1e075650b1a4ae7a4c7033c2b7582644"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/mounted/bank-right-left.png",
+    "bytes": 1162870,
+    "sha256": "0c29b8465bd7448f2dd2c9337fc214eeeab06b05149d8ed8fa36af6356b52232"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/mounted/bank-right-right.png",
+    "bytes": 1219140,
+    "sha256": "4d390a09c44c7ddca759bcfb0d30b72e35514e9e4015f2293e3066b8781eafe6"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/mounted/brake-left.png",
+    "bytes": 1241929,
+    "sha256": "fd0a9e9d31c38b6e6655025c87acf1cc17b59fdb1e731139e33905b94a2f7e6c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/mounted/brake-right.png",
+    "bytes": 1206255,
+    "sha256": "337f6d5079af5f7ae7ed3c4454c9e5c6823263b5586afbd71a5d848d0d353833"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/mounted/dive-left.png",
+    "bytes": 1210963,
+    "sha256": "3a50a585b887764637a7fd0974e0e6cf03c70dc33767672d823ddcbde35c0f26"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/mounted/dive-right.png",
+    "bytes": 1160367,
+    "sha256": "aa7fa50a55c222d284ea8810b2023a858336d58c183f93365dcd1ec1347b8726"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/mounted/gameplay-left.png",
+    "bytes": 1461090,
+    "sha256": "8c10bd254dd34f59a63b178cef43a397613d6339399be684dc663c9df7b9bc24"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/mounted/gameplay-right.png",
+    "bytes": 1410431,
+    "sha256": "b4265e358b4623ad9c1f76f9cc68ab37dcd85ea80d9af922da8a74f617b38ebc"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/mounted/glide-left.png",
+    "bytes": 1232184,
+    "sha256": "2690ef4d214f905c2553f6ad97103b4ea5775f91792af4a2ca40bf61057d3e43"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/mounted/glide-right.png",
+    "bytes": 1201294,
+    "sha256": "aae05701840da5468b1b974cfcc142dd3456f92e1ee5cf2199e4b5394e59c2da"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/mounted/ground-left.png",
+    "bytes": 1265601,
+    "sha256": "6e55249e80f8be1bb4eb149911851388c1b8e44814f2d0ba9b650bae2c37511c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/mounted/ground-right.png",
+    "bytes": 1232150,
+    "sha256": "52b6c38d12642d529c036c5cd12ddaf21cbf279d141d6a21abe797ef12bc4c88"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/mounted/index.html",
+    "bytes": 4205,
+    "sha256": "7a447e5571fb5eda44b58f53c5457354c7083b44e26cb5e64e8140ca4853fb1c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/mounted/manifest.json",
+    "bytes": 20364,
+    "sha256": "26bd4a5f4983ffcab14c05cc9f49316db09ac99616b855ce5c1eeb8a849f0c3d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/mounted/tread-left-oblique.png",
+    "bytes": 1267241,
+    "sha256": "d077411f30ca04707753a912f20997c906dba628f6cc9f6e677dc11f051fc40e"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/mounted/tread-right-oblique.png",
+    "bytes": 1256981,
+    "sha256": "06c5df748cb575ebc0180fc76bcb602ca3c8267f307a19456fe15dcc7fd2d5d2"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/scope-verification.json",
+    "bytes": 87948,
+    "sha256": "69e495472d9c05050a8520e72540a2c56cb90ce61d000367bd899ec62bf44a89"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/sculpt-front.png",
+    "bytes": 740018,
+    "sha256": "eaddcc91a916178e44921d8a71924df8818839c32a0c42e983b4c236fe2b89c1"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/sculpt-hands.png",
+    "bytes": 892592,
+    "sha256": "a31ee2917e6888b28db8061d3e85665575cb7ce10fecd8555ab48a922bd43dfd"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/sculpt-left.png",
+    "bytes": 733184,
+    "sha256": "c044e5f4aa4ba089f8c379165c710206e3fa70b8070a417aef1000a70d8743d4"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/sculpt-right.png",
+    "bytes": 748560,
+    "sha256": "7b0f8cadf535aca4b45ee6084f8d7680b43bbb2ababfd381ce690d035ff5973d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/sculpt-sandals.png",
+    "bytes": 612546,
+    "sha256": "f05d8cea564cff046fee65352e19bdf898fdf5a7025883b63377e090fcc930a4"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/sculpt-wave.png",
+    "bytes": 765031,
+    "sha256": "c1d28388366f0849a8cebe5180f5d8adc4f4c8b74bf6ddc0df704f8ec0f64d2c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/wanderer-back.png",
+    "bytes": 749456,
+    "sha256": "8e967dd8d28eac30a92c493332b225f87c312c225f877fe8f8452390d7eaaa76"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/wanderer-dismount.png",
+    "bytes": 732325,
+    "sha256": "f66d12f9624346b8cf640aa572c0ac94c2f0562bf4623184dcef32c2af91490f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/wanderer-face.png",
+    "bytes": 751447,
+    "sha256": "94664ea0aab84c37cd99661e14c123ecce32f05835c63ca7a342cec2b050e5df"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/wanderer-fall.png",
+    "bytes": 735499,
+    "sha256": "16200f5a7a1639e0e686ab475de16ee9a8e1496e8acbda3852fd3940535715b3"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/wanderer-front.png",
+    "bytes": 731437,
+    "sha256": "bac0cd276f7a2a78a929c0bb056cf3fc4fd1e42fad0b5be19f874a305c8143fa"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/wanderer-jump.png",
+    "bytes": 738212,
+    "sha256": "2e42f2238dc5117c3983b35661e23c8b9e3daf9f4283af631a02d7e1e81ef482"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/wanderer-land.png",
+    "bytes": 743880,
+    "sha256": "dcfcf105ffd7ed03249a099bf0a1f2a9f0e2555d6701b582b2ce11845efcc77c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/wanderer-medium.png",
+    "bytes": 1625307,
+    "sha256": "a8a59479098582b145c1ebbd9a0efdbebfa5b61ab9ea5efeb6da080a6def2a52"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/wanderer-mount.png",
+    "bytes": 741122,
+    "sha256": "d4ebe442412f8f9478c2832a0f0868c69143b228600b9f0192a0ce9062bb43ab"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/wanderer-night.png",
+    "bytes": 664601,
+    "sha256": "112a67fd3dc9220257750a4fd2e53c2fa6e622a9d8f0606f80809ee94b6cc15c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/wanderer-run.png",
+    "bytes": 738040,
+    "sha256": "7a884000d8386136ffb8ee586e8e8c03080fbd4298288226a5d10c12d763fd95"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/wanderer-side.png",
+    "bytes": 726617,
+    "sha256": "5e3fbed70e512a1190fdf1dd6fb77f11f64d499797fb89d4921cdabb89330fa5"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/wanderer-walk.png",
+    "bytes": 739287,
+    "sha256": "f175411b00f7584650b7aa6bf33b16388d1e69d3cd72b8e122250b6fc41b70a5"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/wanderer-wave.png",
+    "bytes": 745501,
+    "sha256": "0a20ac8cfdf8bb99e845f541568664bdcaba7d2f18829f15927d95dd12f4ccef"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/windline-attached.png",
+    "bytes": 654553,
+    "sha256": "5380f0baa85e973b283595fa2455ddfeb05f8c9cde9a0a079eaa484fb119b0fb"
+   },
+   {
+    "path": "docs/rider-c02/evidence/rounded/windline-gameplay.png",
+    "bytes": 637609,
+    "sha256": "e594a35992abb978c69d8d1a66ea112dcc0a23a0787abd5d3efc7e942cbac3d4"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/body-cartographer.png",
+    "bytes": 1222346,
+    "sha256": "ba7c803c4582a25e823988dac05a35807bd1203e2f39a7544c796702eb5736c9"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/body-courier.png",
+    "bytes": 1205642,
+    "sha256": "9254580127fe96acc43bebcc03561100f538905fbac6e0049f73fb63d141be89"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/body-flight.png",
+    "bytes": 1205532,
+    "sha256": "409d341f4bbc83e2b3888daedc0a35ab1730465b966c416b1a26a6d01f9a1932"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/body-racer.png",
+    "bytes": 1205555,
+    "sha256": "341b03c1a7b433ce08ee5328d11b9dee3903889e8348b154f5d6157bdcb97b4d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/body-scout.png",
+    "bytes": 1212661,
+    "sha256": "ca3c952a8ee77d861005ab7b3d627c9674ef2869cb91b643030a493517854eb2"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/body-skyknight.png",
+    "bytes": 1218098,
+    "sha256": "b91dcff89021973eb2a5cba5166e3f5d0660a31b8fe09be9638a899b1bd3b671"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/body-travel-drape.png",
+    "bytes": 1223185,
+    "sha256": "e07072338085b0b255f408f728eb179d09ea247c7c2f999852e1de2fa691c2f5"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/flight-slight.png",
+    "bytes": 1195804,
+    "sha256": "7fcd9aa2fa01fbe148d79c03641ea1157c1f42b19796b112630e477b5407fe25"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/index.html",
+    "bytes": 6063,
+    "sha256": "172a55412f6108a04c9399cd1179186b3d8fe56b16a0ca68b8539df6d96c130c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/local-menu-verification.json",
+    "bytes": 2165,
+    "sha256": "a73046feba5be517654a9c34cb6d1c1e5a4531a5708b6f70509f678059e1242a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/mixed-wardrobe/linen-and-flight.png",
+    "bytes": 1214767,
+    "sha256": "1f75224cbb5688d35c7b47b45cf6410d32bc03db074062926221ebe19b76c242"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/mixed-wardrobe/mounted-bank.png",
+    "bytes": 1460617,
+    "sha256": "7e6a29a19b23db4fc9783a82a13030b8dc64b9b2c95cdecd43db6607c3b49d3d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/mixed-wardrobe/mounted-left.png",
+    "bytes": 1462952,
+    "sha256": "a4ffb9a49ceb9bb02e50113d4af37ee5a7c62ff53880b9a9a98df5dba7f812e8"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/mixed-wardrobe/mounted-right.png",
+    "bytes": 1524383,
+    "sha256": "02bfa75fa202bb540a77c061caf009a18cf661447e52fd698a494a8ff1b49b77"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/mixed-wardrobe/robe-and-scales.png",
+    "bytes": 1214697,
+    "sha256": "3dd8131014ee27fc3814232bad4995f8c5617654a04591c869dfd65fdd0e385b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/mixed-wardrobe/seven-outfit-back.png",
+    "bytes": 1298855,
+    "sha256": "080f1fd8f344efa1ee15f9f0fc267f23c67ab89e8ec2aa81d1fe4e9f5aff5e07"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/mixed-wardrobe/seven-outfit-front.png",
+    "bytes": 1208510,
+    "sha256": "1bcff8976387e0ffc17cc610dcafba155071a794ba4e54a7e0cf70ac5688bfd8"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/mixed-wardrobe/stable-mixed-pieces.png",
+    "bytes": 1122285,
+    "sha256": "6d20b3b7f1513efc51610a47a83c84cde25e66e914cabe391e91a3b329b03696"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/mixed-wardrobe/verification.json",
+    "bytes": 16369,
+    "sha256": "2289f78a36d3f81e4d5f86def41412450d1eed00575bd76875f57f1a29aa8f48"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/mounted-flight-left.png",
+    "bytes": 1459042,
+    "sha256": "add7b1d19c3cbbf83490bf243efa68b3f9fa5f9f608df6921c717d47f4a06b5c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/mounted-flight-right.png",
+    "bytes": 1515666,
+    "sha256": "47d2fdb265429a81e1f0b48b6b8158c17dad0e8042c2da5aeec9d8c8bce31d49"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/mounted-mix-bank.png",
+    "bytes": 1470028,
+    "sha256": "e43671ee04637e055f1e2f65af37be8ee44a52033a40603e3707d205b8d6ab2f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/scope-verification.json",
+    "bytes": 3806,
+    "sha256": "0575827de55c8919a37c0308557bc611f83f399984faef2bbe66571b125fdd4d"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/skyknight-broad.png",
+    "bytes": 1227889,
+    "sha256": "fc25deca17ed2384a14fb0c6379fad0e465e0cf617ec5a2c9c0f50e497110a77"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/stable-cartographer.png",
+    "bytes": 1290964,
+    "sha256": "6f89add04968c81b84a4ecfd261035daf6bf1d5909a7dfdb68b59af46ecbf6b5"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/stable-courier.png",
+    "bytes": 1243754,
+    "sha256": "f45b4d966777159a4ef48b73a36eb163c278a15ed358b281a202476eb357adc1"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/stable-flight.png",
+    "bytes": 1282915,
+    "sha256": "22dfd847b5e432a056627f6ba10b1a6b0c4ca47b0f22930a31cecd6d67e5f7fb"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/stable-legacy-base-linen-mix.png",
+    "bytes": 1274803,
+    "sha256": "ff9f3e673f34473db5faf75b3d971ee62176a9f5438d0318705f7f7307922fca"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/stable-racer.png",
+    "bytes": 1271768,
+    "sha256": "59bbf5da6e5d4f962fceca59f3f44086848eb64d1428bb8f761f72f8a3366225"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/stable-scout.png",
+    "bytes": 1152891,
+    "sha256": "4d0c354cca3846d5142d3555b9f2a6a390bb843ed3f9c11826099d670acce9fe"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/stable-skyknight.png",
+    "bytes": 1278494,
+    "sha256": "996b5324d7e590ea4cdff0a2b8d833a43c19975c068569a9ddd24f56c1a2301a"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/stable-travel-drape.png",
+    "bytes": 1288855,
+    "sha256": "238c18825693c38e251ffae3ee5332f683ab109d681f237c1abbdf225a11b3b7"
+   },
+   {
+    "path": "docs/rider-c02/evidence/shared-body/verification.json",
+    "bytes": 27692,
+    "sha256": "3ebef2ed3376fc928eec4e47d87f658ca39e32a8943584cf30ca784a71fcbec0"
+   },
+   {
+    "path": "docs/rider-c02/evidence/wanderer-back.png",
+    "bytes": 749412,
+    "sha256": "a61e2151fe474982a2959b1910f3bd1ec6a4323cd1b179f4b34d4cfa35eec4b8"
+   },
+   {
+    "path": "docs/rider-c02/evidence/wanderer-dismount.png",
+    "bytes": 732075,
+    "sha256": "5bf55aa103d18cd1f4bedff6cf1f5eb292b866cf076c95f936f59fcf185e5473"
+   },
+   {
+    "path": "docs/rider-c02/evidence/wanderer-face.png",
+    "bytes": 750157,
+    "sha256": "7a99278a1454893d43addb15ce937afb320e33078ada61b91d0a43bd333c0965"
+   },
+   {
+    "path": "docs/rider-c02/evidence/wanderer-fall.png",
+    "bytes": 736210,
+    "sha256": "faf08f5f2e94b04028a5574743704b1d8edb516f0ff3e28c6abf3638d0fe3cd1"
+   },
+   {
+    "path": "docs/rider-c02/evidence/wanderer-front.png",
+    "bytes": 732263,
+    "sha256": "f0bfaafbd736247d8f302ad55cfef5af1d90eb2d3df3bcd6c6a0a1dfdf20f0eb"
+   },
+   {
+    "path": "docs/rider-c02/evidence/wanderer-jump.png",
+    "bytes": 738764,
+    "sha256": "53dd177eb4a28cb6e4186cca9693fca499dc24861ed427159ab284342088a8ed"
+   },
+   {
+    "path": "docs/rider-c02/evidence/wanderer-land.png",
+    "bytes": 744510,
+    "sha256": "5d48f2df3573a123e293c9aa51c818e359db7afb25824ff4d149844b6940d34b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/wanderer-medium.png",
+    "bytes": 1625747,
+    "sha256": "561d5050d2b4fc7d63e4ee2bb9765bce60c4eac7f932e3b615a5b44ac999b85c"
+   },
+   {
+    "path": "docs/rider-c02/evidence/wanderer-mount.png",
+    "bytes": 741240,
+    "sha256": "67c8738c147e66186dbca445eb8d1e124666acfb2c7ac56b644817c756417bc8"
+   },
+   {
+    "path": "docs/rider-c02/evidence/wanderer-night.png",
+    "bytes": 665775,
+    "sha256": "9556cc632c9f37b4d924d61247b0e627100c48b787df798ec2647a58b4b10294"
+   },
+   {
+    "path": "docs/rider-c02/evidence/wanderer-run.png",
+    "bytes": 739859,
+    "sha256": "34fe00cab958930b9f1823130a8cc29b2267a68374739a897a9e107a6d90d862"
+   },
+   {
+    "path": "docs/rider-c02/evidence/wanderer-side.png",
+    "bytes": 726589,
+    "sha256": "94a54c00b195e098cd01622acfc014bbeff7c509b59f3048d6bd82e390ba4320"
+   },
+   {
+    "path": "docs/rider-c02/evidence/wanderer-walk.png",
+    "bytes": 740325,
+    "sha256": "a7d563fad0fbce9b7bcbd6111bfac426375fc026dbfd2eb2ce2b3eb7d63771f3"
+   },
+   {
+    "path": "docs/rider-c02/evidence/wanderer-wave.png",
+    "bytes": 745352,
+    "sha256": "e99b2bf166a4e4414c51fada5de9e4175eb124a09e915b0b2513d7d6902715eb"
+   },
+   {
+    "path": "docs/rider-c02/evidence/wardrobe/index.html",
+    "bytes": 1560,
+    "sha256": "0736ae6f93698160d86e90a17525ce0b0ab992f55014ad6be1de14107eb7ee43"
+   },
+   {
+    "path": "docs/rider-c02/evidence/wardrobe/launcher-qa.json",
+    "bytes": 824,
+    "sha256": "ecf7a03d6fea09f0c3818578b6310bf3ff79d225398c52f275a16d4b74d03ab2"
+   },
+   {
+    "path": "docs/rider-c02/evidence/wardrobe/mounted-left.png",
+    "bytes": 1462967,
+    "sha256": "b7ed34356352e46d24f2beaea617720147d74af2f7f343da8d6fd787b1dfb077"
+   },
+   {
+    "path": "docs/rider-c02/evidence/wardrobe/mounted-right.png",
+    "bytes": 1522563,
+    "sha256": "eca78cb23ae3f605c3a6b9422f45db3d1fda54099af68d8602cda5ebc8b7158b"
+   },
+   {
+    "path": "docs/rider-c02/evidence/wardrobe/outfit-full.png",
+    "bytes": 1217460,
+    "sha256": "90de9698f7a26f7ccb7e154988ad7afc058504512708d9cc149dc1a4aba9e54f"
+   },
+   {
+    "path": "docs/rider-c02/evidence/wardrobe/outfit-light.png",
+    "bytes": 1209927,
+    "sha256": "ac9e068b20f4b1f6823839ef741bcee6ce372c59221eb28ecf8eb2634ae411dc"
+   },
+   {
+    "path": "docs/rider-c02/evidence/wardrobe/scope-verification.json",
+    "bytes": 1055,
+    "sha256": "44f4fb45ff3be33df8abd1d5d8dace0dd4b4e98b28866f72e476317c61c893bb"
+   },
+   {
+    "path": "docs/rider-c02/evidence/wardrobe/stable-full.png",
+    "bytes": 1164697,
+    "sha256": "8f5d113de4df79146bbe2416572b6f23d5ee05b8fee4cff6308a2f6b617eb037"
+   },
+   {
+    "path": "docs/rider-c02/evidence/wardrobe/verification.json",
+    "bytes": 8474,
+    "sha256": "6836857240e341065a8dd69f299f71785986dfbc5788ef3b5bce044fb51368ac"
+   },
+   {
+    "path": "docs/rider-c02/evidence/windline-attached.png",
+    "bytes": 659822,
+    "sha256": "de90d842d32bff4f1cce6f580d326bde27d580d903e6c7216b5c59d810ddd3d9"
+   },
+   {
+    "path": "docs/rider-c02/evidence/windline-gameplay.png",
+    "bytes": 642721,
+    "sha256": "b08d40b58dd6da97a748ed160e3ff5dbfde3e5f765a7242bfec06911606f8571"
+   }
+  ],
+  "docs/rider-blender-trial/evidence": [
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/audits/authored-audit/clearance.json",
+    "bytes": 1122699,
+    "sha256": "ba5f2d9208291327ea55aee9e6a8e812bb83ec41c84c07c754e1517b3f137c9d"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/audits/authored-audit/contact-cpu-cost.json",
+    "bytes": 4217,
+    "sha256": "62238174234abefa30f4c5e259ac698b2df4cada3e511a22cd5a4c117354aed4"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/audits/legacy-audit/clearance.json",
+    "bytes": 1122699,
+    "sha256": "fe6579fbc33e9c20a1c830967445445cadd7934133bd056927d465929368a2dd"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/audits/legacy-audit/contact-cpu-cost.json",
+    "bytes": 4234,
+    "sha256": "2f65e5c842904888059cc86df2de0b7e618894b296db19ec5fbc59ed820ad0b4"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/baseline-cpu-corrected.json",
+    "bytes": 8662,
+    "sha256": "7290e51625b9667660643712c8c6c88802bdebc13c1b69a98c034b6ac36bb191"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/baseline-cpu-corrected.log",
+    "bytes": 437,
+    "sha256": "bf1ea363b9efbaba1b7564e53d9047f28eabfa044d2d55cd2292f0cfad270ec6"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/browser/delivery.log",
+    "bytes": 238,
+    "sha256": "bff58bd64d762a8c1de5477fb609dd668773c4200dbac26b81321d464d314686"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/browser/existing-browser.log",
+    "bytes": 1784,
+    "sha256": "86424f99b1c6fdb4c7e0d114e631aa3e4d1cda0fb0b7bc2af7b8878ce2a308de"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/browser/gameplay-lifecycle.log",
+    "bytes": 7740,
+    "sha256": "250e291553fd4da3153fbbefb5c8d0a3e3fc5a0987c14381e20177646e4ec672"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/browser/motion-regression.log",
+    "bytes": 1174,
+    "sha256": "03f466b4270f27d57cf48477d6473741841d88c0cd41536b984686059f0ddf49"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/browser/report.json",
+    "bytes": 1566,
+    "sha256": "aa2db07f8bece8146074895df871c20eb77547fad4a303eeee93018eb3844f32"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/browser/smoke.log",
+    "bytes": 776,
+    "sha256": "7e5a6f257c1e6777c3b307c094c4f1e1c808b3753e4acabc4f308a44d62595a2"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/browser/stable.log",
+    "bytes": 708,
+    "sha256": "b3def15f5b30a09351ef0f83474b03c97fcb1ac7ca1be9b3648436bf6b09595c"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/candidate-cpu.json",
+    "bytes": 8638,
+    "sha256": "b4737af24899cdb4bc7d3cc159b832ef9b6fcd5f39bdf984e079a7d944278e53"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/ci-helper-syntax.json",
+    "bytes": 3895,
+    "sha256": "01df1c7a294faecac05838ff43066706d8c06ee9f8f72ccfaf4b3801c7363c61"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/delivery.json",
+    "bytes": 2366,
+    "sha256": "8080d699a60eabb3be5e065073b4e8caee014f817e4acb35767dcf0018381b4c"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/01-windline-gameplay-check.log",
+    "bytes": 2087,
+    "sha256": "c89a42521ac8e278dafffeb5dac7a230bb280371aeeed4e8b22d89e2398a2651"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/02-windline-flow-check.log",
+    "bytes": 1731,
+    "sha256": "232fe02693fb8360af24c053f2932cd4a656275c135c5a42c5b50247f3165ed6"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/03-windline-reticle-check.log",
+    "bytes": 7617,
+    "sha256": "960b5239b78d735e0d052727dfde7a984d7d30c8a1be03f41a392121af038afd"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/04-windline-reticle-motion-check.log",
+    "bytes": 2242,
+    "sha256": "335b47167addcbc03543ac20c68a7549c8e2f991321a5dbe258fc20eb7ac0ac6"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/05-editor-check.log",
+    "bytes": 167,
+    "sha256": "ea8718fb6b79977249e9b7351199a69d857452cfbcaab5e9a67c69e3bdffe9d8"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/06-audio-qa.log",
+    "bytes": 2885,
+    "sha256": "2bd207c76b43232517b6c7d2eb07a8ca81d822b014d13f9b21c4013b9f256cec"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/07-windline-hud-layout-check.log",
+    "bytes": 64,
+    "sha256": "f428648ecfca441eabca2e24e2e8647f46d19631c26236f52f8b940434fec8e6"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/08-windline-hud-layout-check.log",
+    "bytes": 64,
+    "sha256": "b045a7b22b917bee37228549fb064ac8b0cc7a61514c49fdedaf9db989616662"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/09-windline-performance-check.log",
+    "bytes": 437,
+    "sha256": "bf1ea363b9efbaba1b7564e53d9047f28eabfa044d2d55cd2292f0cfad270ec6"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/10-windhaven-smoke.log",
+    "bytes": 1230,
+    "sha256": "c4ea74d66a7812abc3c9c1670e98c480a7aaee8e99de0b139d808dd234e2523a"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/11-sky-lance-check.log",
+    "bytes": 6733,
+    "sha256": "a0023e804fe228bcf80f505237705b7e94ddea0dd21617801f7662172781369a"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/12-sky-lance-check.log",
+    "bytes": 1594,
+    "sha256": "73a33fa7f53507094c8f5a1cddf5938cde3c3250763243e3848c1ed683144c8c"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/13-sky-lance-check.log",
+    "bytes": 3057,
+    "sha256": "87c2142a44a93734788d1f29729915ed1f5c059144d5df220e877104d154b32b"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/14-sky-lance-check.log",
+    "bytes": 471,
+    "sha256": "f5844be482f0dacb80460c9775ca13cf653301394a03c937f42039ff1b712c3e"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/15-sky-lance-check.log",
+    "bytes": 1942,
+    "sha256": "be533c0622f7cb1d186ef85399b6e211f0a67b755e6877f530d035607c1d5d09"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser/baseline-09-windline-performance-check.log",
+    "bytes": 604,
+    "sha256": "959338bb275f2a2c9699c1e3de412fcd6a206b4f64f2ef08ebf325c8f1bcb679"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/existing-browser.json",
+    "bytes": 5604,
+    "sha256": "5d89057f047e89c4d2b038e60c238c583e778bf6a378649009e776a90ac0d96c"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/expected-launch-failure.json",
+    "bytes": 391,
+    "sha256": "c6042d77c8e39f40e38a84057b9c4bef6cfa440702e9012ab272323e35282e17"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/fit/medium-travel-gameplay-mounted-left.png",
+    "bytes": 1490817,
+    "sha256": "03590061f1c1571a7ca1362ada52b812473fdb877f913675b6ba803027d612af"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/fit/medium-travel-gameplay-mounted-right.png",
+    "bytes": 1510943,
+    "sha256": "ec3820ba46afe8e8f062ea03bc908d992e940f585b648650155708d81bc662db"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/fit/medium-travel-stable-front.png",
+    "bytes": 1152774,
+    "sha256": "c462e9bf2b7bb381adbf0f807b0b44e052a0600600a4d764006aaadaf18a244a"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/fit-report.json",
+    "bytes": 5095034,
+    "sha256": "370ed6361986be186d98ba1ea8198e94ead229f923d0e89a9a30422ea85655f2"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/gameplay-lifecycle.json",
+    "bytes": 26362,
+    "sha256": "0478b7cbf95b30ff3282b7df3e56c49cdb145a46e0481ee36b541aa872d75514"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/initial-fail-fast/windkeel-resting-final-checks.json",
+    "bytes": 797,
+    "sha256": "ec80f5fb600ea116ac609ced3d26c485f06df46c8ba0277aa187470072ad76f8"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/initial-fail-fast/windkeel-resting-final-typecheck.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/initial-fail-fast/windkeel-resting-final-unit.log",
+    "bytes": 9081,
+    "sha256": "65f139f9ddabac0713691e2bbb359cb0afab7a756f7dc0c0253e544742a98e2f"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/motion/broad-12.4.png",
+    "bytes": 950679,
+    "sha256": "f5b58e39e656b09aacfa1fdf61ed2152e62c2cf4aaa2b7f8e7b710f14d60097b"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/motion/medium-12.4.png",
+    "bytes": 948177,
+    "sha256": "ed7afed45f33d0aa124bf306cd8d8020abd4dcf616d25ef21f20c7c0a0af0ba0"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/motion/slight-12.4.png",
+    "bytes": 939300,
+    "sha256": "da3219a96a2ec09348427262445a65c0049373991202981a33f6c48932f68ea2"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/motion-regression.json",
+    "bytes": 26102,
+    "sha256": "e4302ce184afc12d5993ae0a69cff3cf5a382f9fa3c5034c9a4725998bf24a7a"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/stable-transactions.json",
+    "bytes": 17459,
+    "sha256": "9763517975d269b871277f552028f1e2967eaaee77d84ec32a4d0c41fe193a05"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/technical/authored-audit.log",
+    "bytes": 200,
+    "sha256": "38bdf1996a04ebfa1a21b5c083de7ef6b2a51a7a24e85f57e98527260c26bf2e"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/technical/build.log",
+    "bytes": 7542,
+    "sha256": "1d547e518f92a78ff14fd55964b88c0af110da3f66463fe6cce887b56adfd0c1"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/technical/legacy-audit.log",
+    "bytes": 199,
+    "sha256": "b8001eda6e520bd94f72f99e2530965a902a34d7d8657b183067485205aa893f"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/technical/report.json",
+    "bytes": 1215,
+    "sha256": "1430f321b60a2b2fc1e8e7f874d4fc90fb69f2777d7121025b4b02ca4f0a4d92"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/candidate-validation/technical/unit-retry.log",
+    "bytes": 8293,
+    "sha256": "4b6febdd10c3521cebb8ff6fe55f2f93a91bfa611533fde5c0a8306831c83c24"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/authored-346-checks.json",
+    "bytes": 515,
+    "sha256": "7aeb3c5d21d1ff891324cf039d94777e5242eb519f57c10a91c6735659c22f86"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/baseline-b.json",
+    "bytes": 8626,
+    "sha256": "b78637bedd52fa7dd228966cfc27288e9e35c46b1d07d1bb2bc056a34e57dffa"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/candidate-a.json",
+    "bytes": 8627,
+    "sha256": "47ddf6a3343787354be17ca710076ee4436cf28a0847c5131dd9c5a46230c9ae"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/candidate-b.json",
+    "bytes": 8513,
+    "sha256": "e140ad247b7e054a044023e39dd1a215c2f03af665c25cb2abd4d4de386ef573"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/editor-pinned-full.json",
+    "bytes": 4636,
+    "sha256": "db23f0aeda0012e0f736075a6bfe4799f4bba1655c6e035ab233f5134574836a"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/fit-report.json",
+    "bytes": 5102439,
+    "sha256": "81ce8371a32a11fbe3c1c139010e585241dd2972dd7f03178e2b03e6ba0e7468"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/full-chromium-fit-summary.json",
+    "bytes": 16322,
+    "sha256": "9028b094320be52ea9673933fd4062901d33145cca257db1c4dd2eb187c709e5"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/full-chromium-gameplay-report.json",
+    "bytes": 26360,
+    "sha256": "2817ebe2c8ff4fa6cdac25722bdf615cf2b3df22aac03448c0f6b67d4f4d8067"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/integration-346-reticle-failure.json",
+    "bytes": 90816,
+    "sha256": "b554f7b92a3bd08affc5de98b7bf1f22a6fbb2c5980e3895e8e29db28021f7db"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/integration-a7-reticle-failure.json",
+    "bytes": 89854,
+    "sha256": "4a5273bba1197cf509e05c17e7eb946c834aa001cbff9dde8e27887c1d6200aa"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/integration-ci-cpu.json",
+    "bytes": 8596,
+    "sha256": "33682a3125b8a80067530583beab8cae82fade02d04be46f62c1065dd0ccbea8"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/integration-f1-reticle-failure.json",
+    "bytes": 90851,
+    "sha256": "d9e36b443c520cde3b60b65973c1b9be6797421d3f1da1d1e0e7465f35754d98"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/medium-travel-gameplay-mounted-left.png",
+    "bytes": 1490817,
+    "sha256": "03590061f1c1571a7ca1362ada52b812473fdb877f913675b6ba803027d612af"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/medium-travel-gameplay-mounted-right.png",
+    "bytes": 1510943,
+    "sha256": "26823978b4db473cfa637545f0ef24c22a72d36ea060bf517ab7bc772d4b47b4"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/medium-travel-stable-front.png",
+    "bytes": 1152773,
+    "sha256": "e70bde7528d3ad1a70622de4ae594a96352b5f8aff742d161690d940e65d942a"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/original-authored-ci-checks.json",
+    "bytes": 515,
+    "sha256": "95d5565c82df589888c6c76e4dd9674ee1ea3dae6bec3c139b97f132ba8ca5f1"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/original-fit-failure.log",
+    "bytes": 786,
+    "sha256": "06b134563f85d66c0f33f49e63f68d282e958f71877c4b3b16fbe14348fb347d"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/reticle-isolated-local.json",
+    "bytes": 202589,
+    "sha256": "7dfd92b3bf78eea1fd050f60c38e7978e38ca1dac56aba7ba9f0825a289440d7"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/reticle-pinned-before.json",
+    "bytes": 185876,
+    "sha256": "1ebefc41dc6f394f509e8a57ec494fe7616c2dfca99845c1bed0b42792436eb0"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/ci-resolution-2026-10-12/reticle-pinned-presented.json",
+    "bytes": 206574,
+    "sha256": "49cc4e8196e15abfa5441dc6a28fe2238b34763617eb47c5206108a8f90efd53"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/delivery/corrected-pass/report.json",
+    "bytes": 9154,
+    "sha256": "4ac30846544e808d7b3699be088e2f5febecfcdfc3ea379fbeaea676e54c6eec"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/delivery/corrected-pass/review-entry.png",
+    "bytes": 783853,
+    "sha256": "752e72d61b2ac64c501390d083d19ddc201631cf38519c2511753c06ee761d8e"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/delivery/initial-missing-icon/report.json",
+    "bytes": 9259,
+    "sha256": "0c2450db83c8929bb10b420d53963352ac1079f3ea232ae451b4d304827bf116"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/delivery/initial-missing-icon/review-entry.png",
+    "bytes": 783853,
+    "sha256": "752e72d61b2ac64c501390d083d19ddc201631cf38519c2511753c06ee761d8e"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/delivery/provenance/REVIEW_ICON_CORRECTION.patch",
+    "bytes": 1673,
+    "sha256": "12e20c02408c77c48973cb11d7bff9ff55c4b9555eae727a767b2cfa0b09ad64"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/delivery/provenance/check_review_delivery.mjs",
+    "bytes": 3481,
+    "sha256": "c9cf28fb301a0fa352c4881690bcbb656280ba6cdbd7f2b16603fcf231342d52"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/delivery/provenance/finish_review_delivery.py",
+    "bytes": 6746,
+    "sha256": "1e5fcf4babe428278fa578cd2d87c4400d77ce4c5615b12a8b4d9434a123db93"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/delivery/provenance/fix_review_icon.py",
+    "bytes": 1085,
+    "sha256": "ffbc9dff12a0c88dcda21073fb7e904d44990938e00b28f7701b055f6970765d"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/broad-travel-gameplay-mounted-left.png",
+    "bytes": 1491123,
+    "sha256": "85ac9d97eeec279b10581b66dad03c16c4c0e9f30e726abc1ef0f49c78e0f485"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/broad-travel-gameplay-mounted-right.png",
+    "bytes": 1490619,
+    "sha256": "2411894d5a72aa6e11434a661f7d03ca4d3201a69985a8f5887d52d75579e873"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/broad-travel-gameplay-run.png",
+    "bytes": 1402145,
+    "sha256": "5ae3118cff26d57a6634c50894393b13953c814770226dd390081e07e11e2815"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/broad-travel-gameplay-walk.png",
+    "bytes": 1485739,
+    "sha256": "31feeb40188a8ca047a4a4629a025e3dff62dbfe4a3af661fd8067b4bb764aa2"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/broad-travel-stable-back.png",
+    "bytes": 1145385,
+    "sha256": "f9995475c2c089d58008accc6d4ab8a65e1fff9d6c0014ed3a3383a73f98fd06"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/broad-travel-stable-front.png",
+    "bytes": 1155929,
+    "sha256": "6698927185a9a1ea0e549aedc25dd8f0cbe449702255cfaaa7e6f42b2bb4edce"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/broad-travel-stable-left.png",
+    "bytes": 1091049,
+    "sha256": "ca2c3090b5afb38ee3f1954e5e150916a66b1a0d022d57705ab57914bd5f9ea6"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/broad-travel-stable-right.png",
+    "bytes": 1160361,
+    "sha256": "5d0b63aed210b55a9c8219dcbbd52b928e3f010db5298c3bd267916f6f26e531"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-flight-gameplay-mounted-left.png",
+    "bytes": 1490357,
+    "sha256": "cf58c29153ae0712f3deda360a9b9e468a6a28c7dc08b80e392b0e94cd71866b"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-flight-gameplay-mounted-right.png",
+    "bytes": 1694475,
+    "sha256": "1e5346f988a0f7904de55bed839db0e04c078f64c3807913fb1e119a835e2373"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-flight-gameplay-run.png",
+    "bytes": 1452597,
+    "sha256": "a81a9091a8d4d98a71c05ddc9da747278464a7eda938ed90b49c83be4cf6fefc"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-flight-gameplay-walk.png",
+    "bytes": 1683197,
+    "sha256": "ed7796ac3ba72f9d05e28081cfd3f093e0f973a2e97ac78d5f788f9e81458c03"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-flight-stable-back.png",
+    "bytes": 1144319,
+    "sha256": "62478eddf571b97595669592f137a28affc645ce2bda09a52eb99bae320820b3"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-flight-stable-front.png",
+    "bytes": 1145167,
+    "sha256": "10a40ff66de66b31417ae48ab82eff8cb2f3577d0d4a66ba6a5b7092aebec48b"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-flight-stable-left.png",
+    "bytes": 1074825,
+    "sha256": "213df153f0bc53cfc7ab7c53fbcadb81c8802f0ec2f328223914631aaf58a351"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-flight-stable-right.png",
+    "bytes": 1157800,
+    "sha256": "ec5289d85ba4affc1a9ea6edacf93cc71c51f0b1425151699b47fa092274d3cb"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-travel-gameplay-mounted-left.png",
+    "bytes": 1490817,
+    "sha256": "03590061f1c1571a7ca1362ada52b812473fdb877f913675b6ba803027d612af"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-travel-gameplay-mounted-right.png",
+    "bytes": 1490554,
+    "sha256": "b9573e2de2fbfc11ac2e928ba446f289a03785f29926b21ff1b78b26ec7b9e4a"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-travel-gameplay-run.png",
+    "bytes": 1474692,
+    "sha256": "51bcc09c796aefc0e7c95342efebac419ecbad0ecbcc9970be64a04cd89ed7db"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-travel-gameplay-walk.png",
+    "bytes": 1566698,
+    "sha256": "6ef40f6ba8aabc19355dcbaabff4d497e3719e5d563dcff1e836d878bddef0fa"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-travel-stable-back.png",
+    "bytes": 1147162,
+    "sha256": "c414c80ed454c4d82c75b0697e85c1426ec4761ebec723f2b3a915dedd8256ac"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-travel-stable-front.png",
+    "bytes": 1152774,
+    "sha256": "c462e9bf2b7bb381adbf0f807b0b44e052a0600600a4d764006aaadaf18a244a"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-travel-stable-left.png",
+    "bytes": 1080498,
+    "sha256": "322bb265a39b05d9c0893cd9899ad7b2aa956f3ae7a436f76f55f6f3ceb2dbb6"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/medium-travel-stable-right.png",
+    "bytes": 1160131,
+    "sha256": "84d542ecbbf93ccf34fdedfbd44e338e1f2e84312660989f33e5efb6e3a6ccde"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/report.json",
+    "bytes": 5094402,
+    "sha256": "3c7470da56a08b57aa218791ed2d8b318645f275fdabd0a39251f01905935e88"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/slight-travel-gameplay-mounted-left.png",
+    "bytes": 1490702,
+    "sha256": "973e35724b9906ef925784439cebbcfad4512a0a0b3219300a209bc6899bcd95"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/slight-travel-gameplay-mounted-right.png",
+    "bytes": 1463872,
+    "sha256": "08faadecaf694a46958ae9b214e6f98f8710aaca199186543fe51068db50c895"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/slight-travel-gameplay-run.png",
+    "bytes": 1443805,
+    "sha256": "cbeaf3df0f5791f5c0f9ea1079c228bf1ce37a54e985b7d6a981c6990125b5f5"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/slight-travel-gameplay-walk.png",
+    "bytes": 1512339,
+    "sha256": "7525f1f999437782d28c26e3795b318c26b3a60d9497259863b61108f3204311"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/slight-travel-stable-back.png",
+    "bytes": 1146652,
+    "sha256": "784180a94aa59a03031674b279269b58ecf27a4c4bf93833a659f2e805075e0b"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/slight-travel-stable-front.png",
+    "bytes": 1151468,
+    "sha256": "8dfaa0e14e2d3fe8ce8a011e0f4ef49827faaef272aee44469166dfe2963edd1"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/slight-travel-stable-left.png",
+    "bytes": 1075059,
+    "sha256": "e3211cfb722e72d420b333270c7eb42cdae43d3dec510fddf6ebc9dd2292387a"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/full-fit/slight-travel-stable-right.png",
+    "bytes": 1158017,
+    "sha256": "6cef3f15b3c1f0a496b9fb27577c8dfe0838f43dffeb8c28bfff584f6dc02b91"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/inspection/INDEPENDENT_VISUAL_REVIEW.json",
+    "bytes": 35337,
+    "sha256": "2fe3d228906bf8c4f80b2a2f09be61ca15abc8f55cd1512a6046469a3b7bd818"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/inspection/make-independent-review.py",
+    "bytes": 6366,
+    "sha256": "4ddc60fed867b8ce6a06c5646cff7eb47346e89a56700de426fc684a385a93f7"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/inspection/mounted-all-full-frames.png",
+    "bytes": 3927775,
+    "sha256": "7fd71e05d8fac46d1227c62c4eaea3ab7a2b2abcc833994462bbc8cf543ffc81"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/inspection/stable-broad-travel.png",
+    "bytes": 787724,
+    "sha256": "b0ab851148fdd7a3064080a41eb36ef7cb9ce8f7a50cfec35f2379a7da3fc95f"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/inspection/stable-medium-flight.png",
+    "bytes": 775467,
+    "sha256": "bf4ca78da191309693e22a1d55875cf36dd0893d3ee6dff0f4bd8dcb86d6e7e1"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/inspection/stable-medium-travel.png",
+    "bytes": 789467,
+    "sha256": "a9f05762ec292f71cb042ea8bfefbec40270f82cc3236a178918f9c79f503fd2"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/inspection/stable-slight-travel.png",
+    "bytes": 787898,
+    "sha256": "5447c913cbb435df560270e6f64816b447ec280fa6dfe7bd81f0f915dd2eca84"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/inspection/walk-run-medium-flight-full-frames.png",
+    "bytes": 1841799,
+    "sha256": "a55ff67eaa5955153c3ca1e68102951a537f0ffd668124f88d526aee6d49cfe4"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/inspection/walk-run-medium-travel-drape-full-frames.png",
+    "bytes": 1844931,
+    "sha256": "f9a2148aa4133ebd30701909e8854dd404bce838400af7b7bba8c0cd4aae7265"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/provenance/CHECKPOINT_VERIFICATION.json",
+    "bytes": 408544,
+    "sha256": "4cc6af118c63207d2468819d215ede75471f469606ab9107c193eedbfbbf6890"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/provenance/PRESERVATION_AFTER_QA.json",
+    "bytes": 75685,
+    "sha256": "c56fe7a46909f85ae2560505073692b34d8d7a978b6240679be367ec58e6139c"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/provenance/VISUAL_REVIEW.json",
+    "bytes": 1394,
+    "sha256": "fa97c04699b241633b092d60995fb4998a40462e154783dc89f978cc4ea88faf"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/provenance/finalize_fit_refresh.py",
+    "bytes": 21308,
+    "sha256": "d2288eb8f6ac95cc6189370c8252256528a939c64c794b8e33c30044813577fa"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/provenance/qa-walk-run-supplement.mjs",
+    "bytes": 14066,
+    "sha256": "e7816c41b756ca21ee1f6842bde211822c2ad7f348a33af027e04a1ea295a143"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/provenance/rider-blender-fit-qa.mjs",
+    "bytes": 21525,
+    "sha256": "cb029fa6145328ae0dba6b9b0f19e04dffe31b0f1923bcb926c99dd3b3c0844d"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/provenance/verify_checkpoint.py",
+    "bytes": 1900,
+    "sha256": "79da221d54b8ec50ab80098bbdb5652d72511ea15beebdbf4f31e07738e16b5f"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/provenance/verify_preservation.py",
+    "bytes": 2878,
+    "sha256": "9e98a86e2d219898e8970d5a343e0c44dd575c6714e86404e0b0add87c703414"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/medium-flight-run-back.png",
+    "bytes": 1687037,
+    "sha256": "7c9e9e71aff93f4deef17c799bc243dce9381991fff84174e50f924e41d17228"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/medium-flight-run-front.png",
+    "bytes": 1490451,
+    "sha256": "44d82bc6b110ba66248ad55d1d487691e3d3b2597c91bd6892876183fecf851b"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/medium-flight-walk-back.png",
+    "bytes": 1619225,
+    "sha256": "8ce5e0df7e238e7592619b2ad757f1ee42c3109c839001ffd01507ef8eaa7c89"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/medium-flight-walk-front.png",
+    "bytes": 1429999,
+    "sha256": "108295915c87a39ad6a33384d88f0789fb6a62bfc70887bd1a85b8a018c0431d"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/medium-travel-drape-run-back.png",
+    "bytes": 1687832,
+    "sha256": "2c96c2ee12cc6d4b34f0bd549a6680b6264145f9d0eb9b95d8a64516d7dbf2f9"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/medium-travel-drape-run-front.png",
+    "bytes": 1495029,
+    "sha256": "5a5587b3d6534dc630173ddc627a01d6a2310aac466dff44e6e246196d3fbed8"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/medium-travel-drape-walk-back.png",
+    "bytes": 1620448,
+    "sha256": "c53b0457e76ef575667cbf352390473b262cdaa49f16f6a8a8171e59c07fd8ad"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/medium-travel-drape-walk-front.png",
+    "bytes": 1433004,
+    "sha256": "6be95860e3ff34b687708cf5bad413d8027ec4f3acd82f98cf1b9006cb34210a"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/walk-run/report.json",
+    "bytes": 52868,
+    "sha256": "0a7f5c9f7e916e3b936c223c4d081647a839362f47ddd88b064a25bc588116f2"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/preserved-trial/dedicated-hardware.json",
+    "bytes": 7257905,
+    "sha256": "bb8ec3a8a4743dacac3f1329201bd28a123a7c31d21a7658457cfa69b4ecfc76"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/preserved-trial/full-browser.json",
+    "bytes": 5606,
+    "sha256": "3513de12b992783b6c2fd5a3857a11f5605214c996f6d4904e004afdd847c99a"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/preserved-trial/software-cpu-standalone.json",
+    "bytes": 3145,
+    "sha256": "3c3030f4b11c5b26e101529853aa9c08b8bc879705cb5904836700d3ba38cfce"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/reexport/REEXPORT_VERIFICATION.json",
+    "bytes": 1694,
+    "sha256": "dfb35213bcf329c549f3de1b8fb04642be2bc5cd88fed89631726a90b950918e"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/reexport/blender-export.log",
+    "bytes": 834,
+    "sha256": "6a4c50cad27b13b305f307268b9a60405339a0f92b332222599b634a2feb89dd"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/reexport/candidate-REEXPORT_VERIFICATION.json",
+    "bytes": 2456,
+    "sha256": "6cd8530e8f58e2840eb0160c625ca9eb60bb4cd3ff4b771c1fb150561edc5cad"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/reexport/candidate-blender-export.log",
+    "bytes": 855,
+    "sha256": "0007b9816d24e1d5f266d536128eb6a3a7b2f409aba633ee9c0ad25980e5bb92"
+   },
+   {
+    "path": "docs/rider-blender-trial/evidence/reexport/inputs-before.json",
+    "bytes": 1595,
+    "sha256": "b2bc017250696355ef6df3af2f14081c215b5879245ecb08bcf31d93d7b58eb7"
+   }
+  ]
+ }
+}

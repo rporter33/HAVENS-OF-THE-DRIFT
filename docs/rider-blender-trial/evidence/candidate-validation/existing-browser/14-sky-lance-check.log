@@ -1,6 +1,0 @@
-DOM reset complete
-DOM Q down
-DOM throw passed
-DOM release/recovery/tap passed
-Keyboard/controller/pause: {"thrown":"projectile","held":"projectile","launched":"spent","recovered":"ready","paused":true,"saddleJump":"traversing","controllerBoost":true,"heldYNoCatch":true,"controllerRescue":"falling","controllerRemount":"flying","controllerPull":true,"heldANoRepeat":true,"reeled":true,"boostUnspent":true,"controllerRelease":true}
-Isolated DOM/controller checks passed.
