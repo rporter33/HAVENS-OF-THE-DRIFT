@@ -22,14 +22,15 @@ The game opens at `/`. The [region workshop](docs/tools/REGION_EDITOR.md) opens 
 
 | Work | Start here |
 |---|---|
+| Where things stand right now | [Current handoff](docs/HANDOFF.md), then the [hub](docs/hub/index.html) (six tabs over this repository's docs) |
 | Current state and owner decisions | [Production status](docs/production/STATUS.md) and [decisions](docs/production/DECISIONS.md) |
-| Game implementation | [Architecture](ARCHITECTURE.md), [development rules](AGENTS.md) and [source](src/) |
+| Game implementation | [Architecture](ARCHITECTURE.md), [development rules](AGENTS.md), [game systems index](docs/systems/README.md) and [source](src/) |
 | Design and lore | [Design index](docs/design/README.md) and [roadmap](docs/ROADMAP.md) |
 | Art authoring and references | [Art and Assets](Art%20and%20Assets/README.md) and [asset ownership/register](assets/README.md) |
 | Editor and automation | [Tools](docs/tools/README.md) |
 | Tests and rendered evidence | [QA](docs/qa/README.md) |
 | Browser release and eventual Steam preparation | [Release checklist](docs/release/README.md) |
 | Comic website | [Website planning](docs/website/README.md), kept in this repository for a later coordinated release |
-| Earlier work and recovery | [History](docs/history/README.md) |
+| Earlier work and recovery | [History](docs/history/README.md); capture binaries are on branch `archive/evidence-2026-10-17` |
 
 [Documentation map](docs/README.md) lists the canonical documents. Large editable masters and raw generator downloads are intended for a separate backed-up archive; its destination is pending. The repository currently contains references and a bundled title-music file, not a stored collection of production Blender masters or imported creature meshes.

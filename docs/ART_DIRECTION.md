@@ -10,7 +10,7 @@ Robert approved a bracer-fired magical tether in place of the thrown lance, plus
 
 ### Blender authoring direction — planning only
 
-Read [the shared Blender asset plan](BLENDER_ASSET_PLAN.md) before proposing authored
+Read [the shared Blender asset plan](asset-guides/BLENDER_ASSET_PLAN.md) before proposing authored
 riders, garments, dragons or props. It records Robert's accepted workflow direction,
 the C02/M01 reference index, missing production decisions and trial acceptance criteria.
 It does not authorize asset creation/import or supersede the visual source hierarchy.

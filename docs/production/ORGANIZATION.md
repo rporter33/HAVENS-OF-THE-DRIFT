@@ -24,6 +24,14 @@ Each old path is a compatibility page. Its title and explicit section anchors po
 | `docs/WINDLINE_REPAIR_QA_2026-10-11.md` | [docs/qa/reports/WINDLINE_REPAIR_QA_2026-10-11.md](../qa/reports/WINDLINE_REPAIR_QA_2026-10-11.md) |
 | `docs/WINDLINE_RETICLE_PERFORMANCE_2026-10-11.md` | [docs/qa/reports/WINDLINE_RETICLE_PERFORMANCE_2026-10-11.md](../qa/reports/WINDLINE_RETICLE_PERFORMANCE_2026-10-11.md) |
 | `docs/WINDLINE_SWEEP_SPIKE_2026-10-11.md` | [docs/qa/reports/WINDLINE_SWEEP_SPIKE_2026-10-11.md](../qa/reports/WINDLINE_SWEEP_SPIKE_2026-10-11.md) |
+| `docs/AI_HANDOFF.md` (2026-10-17) | [docs/HANDOFF.md](../HANDOFF.md) current; [docs/history/handoff/](../history/handoff/README.md) dated entries |
+| `docs/GRAPHICS_QUALITY.md` (2026-10-17) | [docs/systems/GRAPHICS_QUALITY.md](../systems/GRAPHICS_QUALITY.md) |
+| `docs/TEXTURE_QUALITY.md` (2026-10-17) | [docs/systems/TEXTURE_QUALITY.md](../systems/TEXTURE_QUALITY.md) |
+| `docs/WARDROBE_CUSTOMIZATION.md` (2026-10-17) | [docs/systems/WARDROBE_CUSTOMIZATION.md](../systems/WARDROBE_CUSTOMIZATION.md) |
+| `docs/BLENDER_ASSET_PLAN.md` (2026-10-17) | [docs/asset-guides/BLENDER_ASSET_PLAN.md](../asset-guides/BLENDER_ASSET_PLAN.md) |
+| `docs/GAME_DEVELOPMENT_RESOURCES.md` (2026-10-17) | [docs/asset-guides/GAME_DEVELOPMENT_RESOURCES.md](../asset-guides/GAME_DEVELOPMENT_RESOURCES.md) |
+| `docs/concepts/*` (2026-10-17) | [docs/design/concepts/](../design/concepts/) |
+| `docs/rider-c02/evidence`, `docs/rider-blender-trial/evidence` (2026-10-17) | branch `archive/evidence-2026-10-17`; [manifest](../history/EVIDENCE_ARCHIVE_MANIFEST.json) |
 | `docs/CLOUD_HANDOFF_2026-10-11.md` | [docs/history/CLOUD_HANDOFF_2026-10-11.md](../history/CLOUD_HANDOFF_2026-10-11.md) |
 
 ## Preservation contracts

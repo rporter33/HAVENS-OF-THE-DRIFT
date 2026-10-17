@@ -40,7 +40,7 @@ Pieces from all seven existing outfits can now be mixed in eight garment slots, 
 ## Latest: dedicated-GPU quality increment and local launcher — October 10, 2026 (Mountain time)
 
 Robert's playtest revised the target: Low remains for integrated graphics, while Medium/High/Ultra
-prioritize dedicated cards. [Graphics budgets](../GRAPHICS_QUALITY.md) records sharper shadows,
+prioritize dedicated cards. [Graphics budgets](../systems/GRAPHICS_QUALITY.md) records sharper shadows,
 denser grass, smoother drawn cloth and increased texture anisotropy, retaining 2K/3K/4K rider maps.
 Low's profile, costume/body, rig, simulation, flight, mounted fit, saves and dragon runtime are unchanged.
 

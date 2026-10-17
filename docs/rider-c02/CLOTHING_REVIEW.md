@@ -93,5 +93,5 @@ capsules and walkable ground/decks, without arbitrary wall/foliage, self-collisi
 or stacking collision between every outer layer. Guides intentionally limit travel near joints
 and saddles. Finite polygon models retain facets at extreme zoom; sampled silhouettes are
 softened, not claimed mathematically smooth. Edge SwiftShader proves function/appearance,
-not sustained hardware performance. Atlas cache limits remain in [texture policy](../TEXTURE_QUALITY.md).
+not sustained hardware performance. Atlas cache limits remain in [texture policy](../systems/TEXTURE_QUALITY.md).
 Main is not merged or deployed by this review work.
