@@ -3,8 +3,8 @@
   "recorded_on": "2026-10-14",
   "baseline_commit": "88764f93e4c54e7b28ff8d0951c963e8b12c6db0",
   "hash_convention": "SHA-256 of exact committed Git-blob bytes for committed source_files only; external unknowns remain null/unrecorded.",
-  "archive_destination": null,
-  "archive_state": "destination_pending",
+  "archive_destination": "github:rporter33/havens-archive (private)",
+  "archive_state": "destination_selected_2026-10-17",
   "entries": [
     {
       "asset_id": "supplied-art-reference-pack",
@@ -326,6 +326,225 @@
         "All eight original PNG imports pending; private locator availability unverified and not a public runtime URL.",
         "Same-repository website ownership selected; no website application or release readiness implied."
       ]
+    },
+    {
+      "asset_id": "rider-trial-blender-master",
+      "version": "2026-10-12",
+      "category": "editable_master",
+      "availability_state": "archived",
+      "repository_paths": [
+        "assets/rider-blender/source/README.md"
+      ],
+      "provenance_evidence_paths": [
+        "docs/rider-blender-trial/SOURCE_MANIFEST.json",
+        "docs/rider-blender-trial/INTEGRATION.md"
+      ],
+      "source_files": [
+        {
+          "path": "assets/rider-blender/source/BIND_MESH_REFERENCE.json",
+          "sha256": "10373e4d5c60765720c8961fcdc9f2008485cd87320f640aedf09d9116806996",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        },
+        {
+          "path": "assets/rider-blender/source/CONSTRUCTION.json",
+          "sha256": "df2b7da2c7b2c4b1759042e42630be7186efbac5b97c7b1b35827106f4e9b91c",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        },
+        {
+          "path": "assets/rider-blender/source/FITTING_CAGES.json",
+          "sha256": "b729579ea738440d75309f42118df18e52019f0947d12485c416d4ed1d22f5ce",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        },
+        {
+          "path": "assets/rider-blender/source/MEASURED_CONSTRUCTION.svg",
+          "sha256": "0d460a85d4ce6aa1c1938cc272cdd1a3ad5d9607059d7aead34d6b3000854165",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        },
+        {
+          "path": "assets/rider-blender/source/TEXTURE_SOURCE.json",
+          "sha256": "2f461b65035ec967dc0df8f0791428753b5c256254fde433085db9e5842a3694",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        },
+        {
+          "path": "assets/rider-blender/source/WINDKEEL_FITTING.json",
+          "sha256": "9312d94388de10f226cbb9f15ce620e64a95913af18007232d9b4328ab87752a",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        },
+        {
+          "path": "assets/rider-blender/source/rider-trial.blend",
+          "sha256": "0b69bcbb74153a0f0bc993ee756f59048db22e5fc0d5e7a7990c39465b9fa9c4",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        }
+      ],
+      "rights": {
+        "status": "unverified",
+        "creator": null,
+        "license": null,
+        "attribution": null,
+        "evidence": []
+      },
+      "archive": {
+        "state": "restore_verified",
+        "destination": "github:rporter33/havens-archive@f84dc14:assets/rider-blender/source/",
+        "restore_verification": {
+          "date": "2026-10-17",
+          "method": "fresh sparse clone of havens-archive main, SHA-256 of every file compared with MASTERS_AND_SCRIPTS_MANIFEST.json",
+          "result": "26/26 match (7 master files, 19 scripts)"
+        }
+      },
+      "qa": {
+        "status": "not_established_by_hash",
+        "evidence_paths": [
+          "docs/rider-blender-trial/QA.md"
+        ],
+        "limitations": [
+          "Hash identity only; opening the .blend in the recorded Blender version is a separate check."
+        ]
+      },
+      "verification": {
+        "date": "2026-10-17",
+        "method": "SHA-256 of file bytes before copy and after fresh clone",
+        "scope": "Archive copy identity"
+      },
+      "unresolved_issues": [
+        "Runtime GLB src/assets/rider-blender/rider-trial.glb remains on main as a test fixture until an accepted export replaces it."
+      ]
+    },
+    {
+      "asset_id": "review-scripts-2026-10",
+      "version": null,
+      "category": "tooling_archive",
+      "availability_state": "archived",
+      "repository_paths": [],
+      "provenance_evidence_paths": [
+        "docs/production/SOURCE_AUDIT.md"
+      ],
+      "source_files": [
+        {
+          "path": "scripts/rider-blender-final-checks.mjs",
+          "sha256": "0fc420174c3f8b0c793c433bca60f47defe438380b1f4bbd14ab4d0b77dff71a",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        },
+        {
+          "path": "scripts/rider-blender-final-visuals.mjs",
+          "sha256": "389ba2c897f87887d53037b24575d7e734a5a01f4f123795f662b7f845c92ab9",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        },
+        {
+          "path": "scripts/rider-blender-full-browser.mjs",
+          "sha256": "4c81a92d959417ada2bbb1f483ce638ed0fa59d2662a68c5ef9c04da5ec85ae6",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        },
+        {
+          "path": "scripts/rider-blender-hardware-qa.mjs",
+          "sha256": "e0784b530072e53066159cb5c488c56a1acade8086e8c7bff2e4980e722a3eae",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        },
+        {
+          "path": "scripts/rider-blender-performance-summary.py",
+          "sha256": "43f8409ce24e55e86b15b3ca9ea5e9f59128dd984a9156e72228548294b7e008",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        },
+        {
+          "path": "scripts/rider-blender-probe.mjs",
+          "sha256": "b25368435f290ade930bf9bf3d9d030fa36fcebf7d3ad28900abb3d9269d78a3",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        },
+        {
+          "path": "scripts/rider-blender-proof.mjs",
+          "sha256": "acdd65fb5c89e1396da4c752082e4628c00bdea8c03aec4a161b928076215dbc",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        },
+        {
+          "path": "scripts/rider-blender-shoulder-qa.mjs",
+          "sha256": "3b536a6d60275424a4993112b9642280a2d617b1f53f13055d501f7ac5fb5a66",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        },
+        {
+          "path": "scripts/rider-blender-views.mjs",
+          "sha256": "3bdaeeb1f2eace0e8de4a0a3b886190302f8a58c8fa2e79e8d8907c5a86e150e",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        },
+        {
+          "path": "scripts/rider-cloth-hd-check.mjs",
+          "sha256": "ebe2e1a3f2fb99f080927d23d413d6a911b7ed9a107773cf31636e252d7353db",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        },
+        {
+          "path": "scripts/rider-clothing-pass.mjs",
+          "sha256": "c192ac4fbb176803802b39981464071887a2e2bedefa515458dc8755e629b491",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        },
+        {
+          "path": "scripts/rider-fidelity-pass.mjs",
+          "sha256": "80fe394d56aabc1abde68818413cf6852e94c68a5f9e5c85ae0763c89592faaf",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        },
+        {
+          "path": "scripts/rider-layering-check.mjs",
+          "sha256": "9d05f87da5a989d791f819e6a0ac816329606568d95040db282810ee99e60f77",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        },
+        {
+          "path": "scripts/rider-mounted-fit-check.mjs",
+          "sha256": "ce4a940fd72f74522e5d9f665c6cce4c74b7d6d5e5b36bd0074f3d7e5a55846e",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        },
+        {
+          "path": "scripts/rider-proof-check.mjs",
+          "sha256": "54a2d8a84e9edc6e3ae82d7ad02e316405e61654f68523b7ea5cdcb55b2a1e7d",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        },
+        {
+          "path": "scripts/rider-qa-capture.mjs",
+          "sha256": "80e87e87873747f8f8ea795babca56e85a5694f495813613b5a55047a50bb47a",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        },
+        {
+          "path": "scripts/rider-shared-body-check.mjs",
+          "sha256": "a351b9430024ebac99fadfa661f0cfe55cdd40889a4a85bd1100496178844548",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        },
+        {
+          "path": "scripts/rider-wardrobe-check.mjs",
+          "sha256": "c8ae09316654da31a8c629576c93cc3203dae377e22297cbac60abab0792830f",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        },
+        {
+          "path": "scripts/windhaven-art.mjs",
+          "sha256": "1eb8b381901838ccc5bc0000e4ff59269cb54a239827ec7a075369b4d869fee8",
+          "source_commit": "b9d94036fb78821e208ff82e147e93e4a79613b8"
+        }
+      ],
+      "rights": {
+        "status": "project_source",
+        "creator": null,
+        "license": "MIT (repository)",
+        "attribution": null,
+        "evidence": [
+          "LICENSE"
+        ]
+      },
+      "archive": {
+        "state": "restore_verified",
+        "destination": "github:rporter33/havens-archive@f84dc14:scripts/review-2026-10/",
+        "restore_verification": {
+          "date": "2026-10-17",
+          "method": "same fresh-clone hash check",
+          "result": "19/19 match"
+        }
+      },
+      "qa": {
+        "status": "not_applicable",
+        "evidence_paths": [],
+        "limitations": []
+      },
+      "verification": {
+        "date": "2026-10-17",
+        "method": "SHA-256",
+        "scope": "Archive copy identity"
+      },
+      "unresolved_issues": []
     }
   ]
 }

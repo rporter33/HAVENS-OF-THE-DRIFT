@@ -25,7 +25,7 @@ Rule of thumb used: code that is reachable from normal play, or that a selected 
 |---|---|---|---|
 | Referenced by `package.json` or a workflow (`smoke`, `windhaven-smoke`, `editor-check`, `audio-qa`, `sky-lance-check`, `windline-*-check` x7, `lantern-*` x4, `rider-blender-{delivery-check,fit-qa,gameplay-qa,stable-qa,windkeel-qa,qa.config}`, `rider-qa.config`, `review-windows.ps1`, `browser-evidence`, `dragon-capture*`) | 35 | **Keep** | Live checks. |
 | Rider authoring and export: `rider-blender-author.py`, `rider-blender-export.py`, `rider-blender-windkeel.py`, `rider-blender-source.mjs` | 4 | **Keep, relocate** | The only reproducible path from `.blend` to the trial GLB. Propose `tools/rider-blender/` with a README so they stop reading as QA scripts. Gate: path-only move, run `test:rider-qa`. |
-| One-off review captures with no caller: `rider-blender-{final-checks,final-visuals,full-browser,hardware-qa,performance-summary,probe,proof,shoulder-qa,views}`, `rider-{cloth-hd,clothing-pass,fidelity-pass,layering,mounted-fit,proof,qa-capture,shared-body,wardrobe}-check/pass`, `windhaven-art.mjs`, `shot.mjs` | 19 | **Remove candidate** | Each produced one dated evidence set now on the archive branch. None is called by CI, `package.json` or another script. Their outputs are preserved with hashes. Propose moving them to the archive branch under `scripts/` in one PR so they remain recoverable, then deleting from `main`. Gate: run full `npm test` and all five workflows after removal. |
+| One-off review captures with no caller: `rider-blender-{final-checks,final-visuals,full-browser,hardware-qa,performance-summary,probe,proof,shoulder-qa,views}`, `rider-{cloth-hd,clothing-pass,fidelity-pass,layering,mounted-fit,proof,qa-capture,shared-body,wardrobe}-check/pass`, `windhaven-art.mjs`, `shot.mjs` | 19 | **Done 2026-10-17** (G1) | Each produced one dated evidence set now on the archive branch. None is called by CI, `package.json` or another script. Their outputs are preserved with hashes. Propose moving them to the archive branch under `scripts/` in one PR so they remain recoverable, then deleting from `main`. Gate: run full `npm test` and all five workflows after removal. |
 
 ## Documentation and evidence still on `main`
 
@@ -51,9 +51,9 @@ Networking, AI rivals, bonding, non-cosmetic capability unlocks, course variants
 
 ## Suggested order if Robert opens gates
 
-1. Move the 19 orphan review scripts to the archive branch (no runtime effect, CI proves it).
+1. Done 2026-10-17: 19 orphan review scripts moved to `havens-archive/scripts/review-2026-10/`.
 2. Relocate the 4 authoring scripts to `tools/rider-blender/` with a README.
-3. `havens-archive` exists as of 2026-10-17; move `rider-trial.blend` and its JSON (34 MB) with register entries and a verified restore.
+3. Done 2026-10-17: `rider-trial.blend` and companions moved to `havens-archive/assets/rider-blender/source/`, register entry `rider-trial-blender-master`, restore verified 26/26.
 4. Replace the 18 MB GLB test fixture with a minimal one, then move the GLB to the archive or to an accepted `assets/runtime/` export, whichever the Meshy pipeline produces first.
 
 Nothing above touches flight physics, the 120 Hz step, save identifiers or control mappings.

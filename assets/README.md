@@ -23,7 +23,7 @@ For generation, record actual Meshy UI/API route/model/version, prompts/settings
 
 ## Separate master/raw archive
 
-The owner selected a separate backed-up archive for large editable masters and raw downloads. **Destination is pending; no archive is configured by this change.** Use a stable archive ID and versioned relative keys once selected. Local workstation paths are optional reported locators, never portable build dependencies.
+The owner selected a separate backed-up archive for large editable masters and raw downloads. **Destination: the private repository `rporter33/havens-archive` (selected 2026-10-17).** It holds the rider Blender masters (`assets/rider-blender/source/`, restore verified 2026-10-17) and the review-capture evidence; see the register entries `rider-trial-blender-master` and `review-scripts-2026-10`. Use a stable archive ID and versioned relative keys once selected. Local workstation paths are optional reported locators, never portable build dependencies.
 
 Distinguish `destination_pending`, `not_archived`, `archived_restore_unverified`, `restore_verified` and `missing`. A vendor or Library link is not a backup. First copy originals, verify all hashes/companion resources, establish independent backups, then restore into a new directory and reopen/re-export before recording restore verification. Keep originals until retention is explicitly settled.
 
