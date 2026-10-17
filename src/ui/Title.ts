@@ -1,4 +1,4 @@
-// The title: a DRIFTWING logotype with wind sweeping through it, laid over the live 3D scene
+// The title: the HAVENS OF THE DRIFT wordmark with wind sweeping through it, laid over the live 3D scene
 // (the camera's title rig frames the rider and wyvern at the Roost). "Press (A) / Enter" first,
 // then the main menu: Fly, Stable, Settings, Controls, Credits.
 
@@ -52,9 +52,21 @@ export class Title extends Panel {
     const logo = div(
       'dw-logo',
       fromHtml(emblemSvg()),
-      div('dw-logo-wordwrap', fromHtml(windSvg()), h('div', { class: 'dw-logo-word', text: 'Driftwing' })),
+      div(
+        'dw-logo-wordwrap',
+        fromHtml(windSvg()),
+        // Two tiers: HAVENS carries the weight, "of the" sits small between hairlines, DRIFT
+        // stretches wide underneath like a horizon. The runtime name stays Driftwing (save ids,
+        // package, scene object names); only what the player reads changes.
+        div(
+          'dw-logo-word',
+          h('span', { class: 'dw-logo-havens', text: 'Havens' }),
+          div('dw-logo-of', h('i'), h('span', { text: 'of the' }), h('i')),
+          h('span', { class: 'dw-logo-drift', text: 'Drift' }),
+        ),
+      ),
       fromHtml(RULE),
-      h('div', { class: 'dw-logo-tag', text: 'Wings over the Drift' }),
+      h('div', { class: 'dw-logo-tag', text: 'Ride the wind between the havens' }),
     );
     (logo.querySelector('.dw-logo-wordwrap') as HTMLElement).style.position = 'relative';
 

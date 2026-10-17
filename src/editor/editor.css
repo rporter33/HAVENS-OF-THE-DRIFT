@@ -14,7 +14,7 @@ button:disabled { opacity: 0.45; cursor: default; }
 button.primary { background: #315e9c; color: #faf8f3; border-color: #315e9c; }
 button.active { background: #dceaf2; border-color: #7fa8c4; }
 header { position: fixed; top: 0; left: 0; right: 0; min-height: 76px; z-index: 2; background: #faf8f3f7; border-bottom: 1px solid #d8d1c2; display: flex; align-items: center; gap: 22px; padding: 12px 20px; box-shadow: 0 4px 20px #273f4910; }
-.wordmark { min-width: 170px; }
+.wordmark { min-width: 260px; }
 .wordmark strong { display: block; font: 500 20px 'Cinzel', serif; letter-spacing: 2px; }
 .wordmark span, .eyebrow { text-transform: uppercase; font-size: 11px; letter-spacing: 2px; color: #677c85; }
 .document-name { width: 250px; }

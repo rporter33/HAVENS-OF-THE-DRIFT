@@ -379,18 +379,59 @@
 }
 .dw-logo-word {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-family: var(--display);
-  font-weight: 700;
-  font-size: 6.2em;
   line-height: 1;
-  letter-spacing: 0.16em;
-  margin-right: -0.16em; /* letter-spacing trails the last glyph */
   color: #fff3d6;
+}
+.dw-logo-havens,
+.dw-logo-drift {
+  font-weight: 700;
   background: linear-gradient(180deg, #fffaf0 0%, #ffe7b0 42%, #e9b860 78%, #c9913c 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0.03em 0.02em rgba(70, 38, 12, 0.85)) drop-shadow(0 0.06em 0.22em rgba(30, 16, 6, 0.55));
+}
+.dw-logo-havens {
+  font-size: 5.4em;
+  letter-spacing: 0.14em;
+  margin-right: -0.14em;
+}
+.dw-logo-drift {
+  /* The second tier reads as a horizon line: smaller type, much wider tracking, same width as HAVENS. */
+  font-size: 3.9em;
+  letter-spacing: 0.62em;
+  margin-right: -0.62em;
+  margin-top: 0.02em;
+}
+.dw-logo-of {
+  display: flex;
+  align-items: center;
+  gap: 0.9em;
+  width: 100%;
+  margin: 0.25em 0 0.3em;
+  font-family: var(--body);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.35em;
+  letter-spacing: 0.3em;
+  color: #fff4dc;
+  text-shadow: 0 0 0.6em rgba(25, 12, 4, 0.75), 0 0.05em 0.1em rgba(25, 12, 4, 0.9);
+}
+.dw-logo-of span {
+  padding-left: 0.3em; /* balance the trailing letter-spacing */
+}
+.dw-logo-of i {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 225, 160, 0.85));
+  filter: drop-shadow(0 0.05em 0.1em rgba(40, 20, 6, 0.8));
+}
+.dw-logo-of i:last-child {
+  background: linear-gradient(90deg, rgba(255, 225, 160, 0.85), transparent);
 }
 .dw-logo-tag {
   margin-top: 0.55em;
@@ -419,9 +460,9 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 46em;
-  height: 14em;
-  transform: translate(-50%, -46%);
+  width: 48em;
+  height: 20em;
+  transform: translate(-50%, -50%);
   overflow: visible;
   pointer-events: none;
 }

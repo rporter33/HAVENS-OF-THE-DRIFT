@@ -7,7 +7,7 @@ import { Panel, hintBar, sheet, type UiCtx } from './panel';
 import { emblemSvg } from './Title';
 
 const SECTIONS: [string, string[]][] = [
-  ['A GAME BY', ['The Driftwing team']],
+  ['A GAME CREATED BY', ['Oberon']],
   ['FLIGHT & FEEL', ['Weighty sim-lite flight model, stalls, dives and stamina', 'Player states: landing, walking, falling and the catch']],
   ['THE DRIFT', ['Floating islands, spires and the Eye of the Gale', 'Grass, groves, waterfalls and the Roost']],
   ['SKY & WEATHER', ['Golden hours, night skies, clouds and rain']],
@@ -26,7 +26,7 @@ export class CreditsMenu extends Panel {
   constructor(ctx: UiCtx) {
     super(ctx, 'dw-credits-menu');
     const s = sheet('Credits');
-    const c = div('dw-credits', fromHtml(emblemSvg('dw-logo-mark')), h('div', { class: 'dw-credits-logo', text: 'DRIFTWING' }), fromHtml(RULE));
+    const c = div('dw-credits', fromHtml(emblemSvg('dw-logo-mark')), h('div', { class: 'dw-credits-logo', text: 'HAVENS OF THE DRIFT' }), fromHtml(RULE));
     for (const [title, lines] of SECTIONS) {
       c.append(h('h3', { text: title }));
       for (const l of lines) c.append(h('p', { text: l }));
