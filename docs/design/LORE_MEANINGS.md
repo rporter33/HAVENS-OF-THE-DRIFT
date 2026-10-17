@@ -18,3 +18,9 @@ Recorded from Robert's own words. This is canon at the top of the authority orde
 - Is the drifting-apart ongoing in play (islands move, routes change), or only in the past?
 - Do havens differ by kind (monastery, temple, city) in gameplay terms, or only in dressing?
 - Does migration give the airship its reason to exist?
+
+## Added 2026-10-17
+
+- **Windhaven** is the starting haven: the place the game currently calls Windward Roost. The airship is **the Codex**. The stationary "Windhaven traveling home" art study is now Codex reference material.
+- The **Air Nomads** are the player culture, carrying the white dragonflight color. The five clans and their elders are canon; the comic introduces them first.
+- Mounts: wyverns (two legs) are the shipped player mount; four-legged dragons join the roster when their rig exists.
