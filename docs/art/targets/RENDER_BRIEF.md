@@ -81,3 +81,48 @@ For each pair (render, current screenshot) the visual gate asks three questions,
 3. Could the Three.js renderer plausibly reach it with better textures, normal maps and material parameters, without a new engine? (reachability)
 
 A render that fails 3 is still useful as mood, but the gate's acceptance test is built from the ones that pass all three.
+
+---
+
+## Additional context for Astra
+
+### Attach these images with the master prompt
+
+All in `docs/art/targets/reference/`. Attach the "current game" images so the model knows the before state and keeps the identity; attach the concepts so it matches the established style of people, banners and the dragon.
+
+| File | What it is | Attach for shots |
+|---|---|---|
+| `current-game/title-screen.png` | The game today: rider, Harrier, Windhaven plaza, floating island, flat-shaded trees. The before state for the whole set. | all |
+| `current-game/windhaven-plaza-on-foot.png` | Ground-level plaza, flagstones, bell tower, lantern post, saddled Harrier. | 01, 06, 07, 10, 11 |
+| `current-game/windhaven-dusk-mist.png` | Same place in the game's mist weather at dusk; the fireflies and cool palette are intentional. | 16, 19, 21 |
+| `current-game/airship-art-study.png` | The airship as it exists in the game (72 m hull, canvas sails, four hitches). Keep its proportions for the Codex. | 18 |
+| `concepts/01_Wanderer.jpg` | Approved rider costume reference: chiton, drape, sash, scale panel, banner-lance. Match the costume, not the background. | 06, 07 |
+| `concepts/04_Elder.jpg` | Clan elder in the broad white mantle; the figure beside the dragon in shot 08. | 08 |
+| `concepts/05_Banner_Families.png` | The three banner cuts (tapered Wayfinder, swallowtail Rider, broad split Sanctuary). | 06, 10, 23 |
+| `concepts/06_Faction_Palette.png` | The seven swatches with their roles. | all |
+| `concepts/sleek-dragon-three-view-v1.png` | The only approved dragon concept: ivory and powder-blue, four legs, branching horns, whiskers. Shot 08 is this animal, older and at rest. | 08 |
+
+Note on the Wanderer and Elder references: their backgrounds show pagoda rooflines and ornate serpentine dragons from an earlier direction. Those are explicitly rejected. Take the costume and the figure, replace the architecture with limestone and blue plaster.
+
+### Tone and what the game is not
+
+- Gentle, wry, non-hostile. Even the storm wall at the edge of the Drift is "visibility and wind, not an enemy." Nothing in a render should look like it wants to kill the rider.
+- Islands are places to rest, not obstacles. Landing spots look inviting: flat terraces, grass, a cistern, shade.
+- The feeling to hit is the one from the best flight games: height, wind you can see in cloth and grass, the long way round being worth it.
+- Not grimdark, not high fantasy with glowing runes and spiky armor, not photoreal, not anime. Closest existing references in spirit: AER Memories of Old for silhouettes and light, Sky: Children of the Light for warmth, The Falconeer for scale over a sea, Studio Ghibli skies for cloud mass.
+
+### World rules the renders should respect
+
+- **Scale.** The Drift is about 2,900 m across. Windhaven's island is large enough for a plaza, stables and a bell tower. The Codex is 72 m long; a Galewing's wingspan is about 20 m; a Harrier's about 14 m; a rider is 1.7 m. Keep these ratios when they share a frame.
+- **Time.** A full day lasts 24 real minutes, so sunrise and sunset are frequent; golden hour is the game's signature light. Night is navigable: lanterns, the Lantern Spire, Glowcap bioluminescence.
+- **Weather states** in the game: clear, breezy, overcast, mist, rain. Thermals are visible as faint rising shimmer columns; ridge lift happens on the windward face of every island. Birds (Driftrays) circle where there is lift.
+- **Wind is the Drift.** Cloth, banners, grass, cloud edges and wing membranes should all agree on a wind direction in every frame.
+- **The Ventari** are the vanished wind-charters. Their ruins are limestone and bronze, with ring and counting motifs. The one inscription currently in the game, in provisional Ancient Greek epigraphic capitals (lunate sigma, no accents), reads:
+  `ΠΡΟϹΕϹΠΕΡΑΝΖΗΤΕΙΤΟΥΨΗΛΟΝΠΕΔΙΟΝ / ΕΚΕΙΛΙΘΟΙΚΥΚΛΩΙΤΟΥϹΑΝΕΜΟΥϹΑΡΙΘΜΟΥϹΙΝ`
+  ("Seek the high plateau toward the setting sun. There, stones in a circle count the winds.") If a model can carve legible capitals, shot 15 may use the first line on the lintel; otherwise keep the lettering as shapes.
+- **Clans.** Five clans share one culture with regional accents: red, green, blue, black, white. Each haven has one dragon elder and one wyvern elder on tower-top platforms. The player culture is the Air Nomads, white. Clan color appears in banners, sashes and plaster trim, never as full-body color.
+- **Mounts.** Wyverns are the ridden animals today: two legs, wing-arms, 58-bone rig. Dragons are four-legged and belong to elders. A render must never put a rider on a four-legged dragon.
+
+### How the game actually renders, for reachability
+
+Three.js WebGL 2, a custom toon ramp with rim light and shared height fog, procedural geometry for creatures and islands, texture budgets of 1K/2K/3K/4K per quality tier, bundled fonts, no post-process beyond bloom and a color grade. The upgrade path is better normal and roughness maps, higher-resolution procedural materials, smoother tessellation on creatures, and denser dressing, not ray tracing or volumetrics. Renders that lean on heavy global illumination or subsurface scattering are mood only.
