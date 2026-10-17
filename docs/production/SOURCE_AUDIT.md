@@ -53,7 +53,7 @@ Networking, AI rivals, bonding, non-cosmetic capability unlocks, course variants
 
 1. Move the 19 orphan review scripts to the archive branch (no runtime effect, CI proves it).
 2. Relocate the 4 authoring scripts to `tools/rider-blender/` with a README.
-3. Decide the `havens-archive` repository, then move `rider-trial.blend` and its JSON (34 MB) with register entries and a verified restore.
+3. `havens-archive` exists as of 2026-10-17; move `rider-trial.blend` and its JSON (34 MB) with register entries and a verified restore.
 4. Replace the 18 MB GLB test fixture with a minimal one, then move the GLB to the archive or to an accepted `assets/runtime/` export, whichever the Meshy pipeline produces first.
 
 Nothing above touches flight physics, the 120 Hz step, save identifiers or control mappings.

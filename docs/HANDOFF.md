@@ -15,5 +15,5 @@ Keep this file short: one checkpoint, overwritten each session. Move the previou
   - `public/hub/index.html`: a hand-built tabbed hub (ships with the Pages deploy at `/hub/`) that reads this repository's markdown live from GitHub, any branch.
   - `docs/production/SOURCE_AUDIT.md`: keep/flag/remove proposals for source tied to shelved directions. Proposals only.
 - **Tests:** see the PR description for the typecheck, vitest and build results on this branch.
-- **Known issues:** full Git history still carries the evidence blobs (no history rewrite, per the no-force-push rule); only shallow clones benefit. A separate `havens-archive` repository is the intended final home for the archive branch and needs Robert's GitHub token to create.
+- **Known issues:** full Git history still carries the evidence blobs (no history rewrite, per the no-force-push rule); only shallow clones benefit. `rporter33/havens-archive` (private) was created by Robert on 2026-10-17 and holds the archive branch as its `main`; the orphan branch stays here as a mirror.
 - **Next authorized action:** Robert reviews and merges the PR. The first implementation gate after merge is his call; the source audit lists candidates.
