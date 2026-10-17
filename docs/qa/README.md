@@ -15,6 +15,7 @@ Evidence applies to the named tested head/tree/build and environment. Historical
 | [Sweep spike](reports/WINDLINE_SWEEP_SPIKE_2026-10-11.md) | Earlier failed performance head, preserved for comparison. |
 | [Reticle 0fcc709](WINDLINE_RETICLE_0FCC709.md) | Raw historical captures and exact source identity; later status is separate. |
 | [Lantern Dash review](LANTERN_DASH_REVIEW.md) | Private review workflow, not human usability or release approval. |
+| [G4 bond expression v1](G4_BOND_V1.md) | Staged headless captures of the Windhaven greeting and the anticipatory lean, with hashes; images not committed. |
 
 ## New evidence record
 

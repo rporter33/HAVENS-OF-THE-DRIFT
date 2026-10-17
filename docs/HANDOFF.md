@@ -2,20 +2,14 @@
 
 Keep this file short: one checkpoint, overwritten each session. Move the previous entry to [the handoff log](history/handoff/README.md) under its day before writing a new one. Nothing here authorizes new work on its own; the current task from Robert does.
 
-## Checkpoint 2026-10-17: platform cleanup, no gameplay changes
+## Checkpoint 2026-10-17: G4 bond expression v1
 
-- **Objective:** make the repository the single source of truth for Claude Code and Codex, small enough to clone from a phone-driven cloud session, with documentation organized into the tabs Robert asked for (production, design, systems, assets, QA, history).
-- **Branch:** `platform/cleanup-2026-10-17` from main `18a7aab`.
+- **Objective:** gate G4 from the [first slice](design/FIRST_SLICE.md). The wyvern greets its rider on arriving at Windhaven (landmark `roost`) on foot or landing there. It leans into a known bank 0.3 to 0.5 s early at any landmark flown through 3 or more times. Presentation only.
+- **Branch:** `gate/g4-bond-v1` from main `4647b27`; the code is in `4f95085`, with QA and handoff docs on top.
 - **Completed:**
-  - 811 review-capture files (762 MB) moved from `docs/rider-c02/evidence` and `docs/rider-blender-trial/evidence` to the orphan branch `archive/evidence-2026-10-17` (`eff904a`); stubs and a SHA-256 manifest left behind. Working tree 829 MB to 99 MB.
-  - The 245 KB `docs/AI_HANDOFF.md` split into `docs/history/handoff/<day>.md`; this file replaces it as the current checkpoint; the old path is a compatibility stub.
-  - `docs/` reorganized into six folders; loose dated reports moved to `docs/history/`; compatibility stubs at every old path.
-  - Design material consolidated from `havens-workspace` (decision log, catch-up, comparative review, lore meanings) into `docs/design/`; Robert's 2026-10-17 answers recorded.
-  - `AGENTS.md` is the single contract; `CLAUDE.md` points at it. `.agents/skills/havens-session-start` and its `.claude/skills` copy added.
-  - `public/hub/index.html`: a hand-built tabbed hub (ships with the Pages deploy at `/hub/`) that reads this repository's markdown live from GitHub, any branch.
-  - `docs/production/SOURCE_AUDIT.md`: keep/flag/remove proposals for source tied to shelved directions. Proposals only.
-- **Tests:** see the PR description for the typecheck, vitest and build results on this branch.
-- **Known issues:** full Git history still carries the evidence blobs (no history rewrite, per the no-force-push rule); only shallow clones benefit. `rporter33/havens-archive` (private) was created by Robert on 2026-10-17 and holds the archive branch as its `main`; the orphan branch stays here as a mirror.
-- **2026-10-17 later:** QA run on main `b9d9403`: typecheck clean, 1,322 tests, rider QA, build, smoke 15/15; browser suite green in GitHub CI (4 of 17 cannot run in the sandbox renderer). Robert answered 17 more decisions plus 6 new ones; see [decision log](design/DECISION_LOG.md) and [first slice](design/FIRST_SLICE.md).
-- **Gates opened by Robert on 2026-10-17:** G1 archive housekeeping (orphan scripts, Blender masters), G2 title and naming. Everything else waits for its own gate.
-- **Next authorized action:** land G1 and G2 PRs; supply the target renders to `docs/art/targets/` so G3 can be scoped.
+  - `src/bond/`: `memory.ts` (passes and bank sites per landmark; its own `driftwing.bond.v1` localStorage document, sanitized on load), `anticipation.ts` (pass tracking, bank onsets, the lean), `greeting.ts` (arrival after 8 s away, landing settle, waiting for the wyvern), `Bond.ts` (wiring between `Player.update` and `Wyvern.update`).
+  - `WyvernPose.anticipate` is a new optional presentation channel. The wyvern flight layer turns it into spine roll (0.12 rad) and head lead. When it is absent the output is unchanged (tested bit-exact).
+  - Game wires the bond on the play screen only; `resetProgress` resets it. No changes to `src/flight`, the save schema, HUD or controls.
+- **Tests:** typecheck clean; vitest 126 files, 1,342 tests (20 new in `src/bond/bond.test.ts`); smoke 15/15. Captures and hashes are in [QA: G4 bond v1](qa/G4_BOND_V1.md).
+- **Known issues and decisions for Robert:** bond memory persists in a new key beside the save (`driftwing.save.v1` untouched); say if it should be session-only or move into the save in a later schema version. Thresholds are first guesses: known after 3 passes, a bank known after 2, lean 0.12 rad. The discovery banner still reads "Windward Roost" (outside G4).
+- **Next authorized action:** review and merge the G4 PR. Other gates wait for Robert.
