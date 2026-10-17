@@ -13,15 +13,19 @@ Q4 and pillar 1 ask for capabilities that "open a route that was closed before".
 - **Snap-roll (measured).** The layout has no solid-to-solid gap narrower than a wingspan. Only the Archway Reach arches' bounding shapes come within 30 m of other rock, and the narrow readings there are wedges where arch feet meet islet rock.
 - **Windline from the saddle.** Every Windline target is already reachable today by the hold-to-leap, freefall-cast and hold-to-recall sequence.
 
-So, as specified, each capability makes a route **faster or more forgiving**; it does not unlock access. Each section below names the layout route where the difference shows, states the test contract under which it fails before and succeeds after, and says how strong that gate is. **Decision needed from Robert** (end of document): accept these timed or precision gates for G5, or have G8 author one small capability site per capability so each opens a genuinely closed route.
+So, as specified, each capability makes a route **faster or more forgiving**; it does not unlock access. Each section below names the layout route where the difference shows, states the test contract under which it fails before and succeeds after, and says how strong that gate is.
+
+**Decided 2026-10-17 ([Q30](DECISION_LOG.md)):**
+- **Steep-slope landing and snap-roll:** G8 authors one capability site each, closed by physics until the unlock. The requirements are in [Capability sites](#capability-sites-for-g8).
+- **Thermal climb and Windline from the saddle:** keep their timed contracts.
 
 ## Summary
 
 | Capability | Parameter (source) | Current | Unlocked | Clamp | Bond milestone | Route | Gate |
 |---|---|---|---|---|---|---|---|
 | Stronger thermal climb | New per-instance `FlightModel.liftGain` on rising air at `FlightModel.ts:718` (same pattern as `regenMultiplier` `:461` and `capacity` `:466`) | 1 (air used as sampled) | 1.25 | ≤ 1.3; thermal `topY`; still-air polar unchanged | Highmoor known | Highmoor climb-out in thermal 3 | Timed, no wingbeats |
-| Steep-slope landing | `GaitProfile.landNormalY` (`src/core/gait.ts:40-44`) over `PLAYER_TUNING.landNormalY` (`src/player/tuning.ts:18`), read by `slopeLimitY` (`src/player/ground.ts:27-30`) | 0.65 (49.5°) | 0.602 (53°) | > cos 56° = 0.559 (the Craghorn); required content ≤ 49.5° | 4 landmarks known, incl. Cascade Isle | Cascade Isle south crag, (800, 457, −692) | Precision, real physics |
-| Snap-roll | `BreedStats.maxRollRate` and `rollAuthority` (`src/flight/breeds.ts:83,87,111,115,139,143,167,171`) during a short burst | per breed (below) | × 1.6 for 0.6 s | ≤ 1.6 (× 2 breaks the skimmer's roll-out) | 6 known banks, ≥ 1 at the Archway Reach | Archway Reach, arch 1 → arch 2 reversal | Timed; no layout gap exists |
+| Steep-slope landing | `GaitProfile.landNormalY` (`src/core/gait.ts:40-44`) over `PLAYER_TUNING.landNormalY` (`src/player/tuning.ts:18`), read by `slopeLimitY` (`src/player/ground.ts:27-30`) | 0.65 (49.5°) | 0.602 (53°) | > cos 56° = 0.559 (the Craghorn); required content ≤ 49.5° | 4 landmarks known, incl. Cascade Isle | Cascade south perch (G8 site), near (800, 457, −692) | Authored site, closed by physics |
+| Snap-roll | `BreedStats.maxRollRate` and `rollAuthority` (`src/flight/breeds.ts:83,87,111,115,139,143,167,171`) during a short burst | per breed (below) | × 1.6 for 0.6 s | ≤ 1.6 (× 2 breaks the skimmer's roll-out) | 6 known banks, ≥ 1 at the Archway Reach | The Archway Keyhole (G8 site), between arch 1 and arch 2 | Authored site, closed by physics |
 | Windline from the saddle | `Player.windlineHoldAction` (`src/player/Player.ts:145-148`) and `LANCE.callHold` (`src/traversal/tuning.ts:4`) | cast only after a 0.4 s hold-to-leap | cast from flight, one press; caught on release | `LANCE.maxLength` 65 m / `chargedLength` 95 m; only below `boostMaxSpeed` 36 m/s | 8 landmarks known, incl. the Eye | Through the Eye of the Gale | Timed; open sky makes it the strongest |
 
 ## Bond milestones
@@ -103,7 +107,7 @@ Contract: a flared landing aimed at that point holds.
 
 Measured: Cascade Isle's top has 537 sampled points in the 49.5° to 53° band (2 m grid). Every one is within 2 m of ground already landable at the same height.
 
-**Gate strength: real, but small.** The physics differs at that exact point, but the destination is not new. In play this reads as fewer skate-offs on Cascade Isle's and the rocky islets' hill flanks.
+**Gate strength: real, but small.** The physics differs at that exact point, but the destination is not new. In play this reads as fewer skate-offs on Cascade Isle's and the rocky islets' hill flanks. **Superseded by Q30:** the G5 route test uses the authored [Cascade south perch](#steep-landing-site-cascade-south-perch). This point stays as a regression check.
 
 ## 3. Snap-roll through gaps
 
@@ -131,6 +135,8 @@ Contract: from wings level through arch 1, reach 90° of opposite bank within 0.
 - Galewing and ironback: fail both before and after, so their contract needs its own threshold (1.4 s and 1.2 s would do).
 
 **Gate strength: weak, and not the capability Q4 names.** "Through a tight gap" has no gap to go through. Measured: only the Archway Reach arches (and the Observatory with scatter island 49) have bounding shapes within 30 m of other rock. The narrow readings there are wedges where arch feet meet islet undersides, not passages a flight line can use. The real openings, the arches' insides at 219 to 236 m, are far wider than any wingspan (13 to 20.5 m). Wingtips collide only while spread (`FlightModel.ts:1180-1203`), so a gap narrower than the wings is a knife-edge problem, and the layout has none. Rootfall's hanging roots look like gaps, but they don't collide: `planRoots` strands (`src/world/dressing/roots/rootPlan.ts`) feed rendering and the course clearance test, and Game registers no collider source for them.
+
+**Superseded by Q30:** the G5 route test uses the authored [Archway Keyhole](#snap-roll-site-the-archway-keyhole).
 
 ## 4. Windline from the saddle
 
@@ -165,7 +171,39 @@ These times are estimated from the tuning constants. The swoop's duration needs 
 
 ---
 
-## Decision for Robert
+## Capability sites for G8
+
+Decided in [Q30](DECISION_LOG.md). These are requirements, not geometry: G8 places and sizes each site, measures it with the real flight and terrain code, and adds it to `src/world/layout.ts`. Both sites need shape support the analytic shapes don't have yet (see each site). Per ARCHITECTURE's one-world-model rule, collision, landing, walking and meshing must read the same new function. Neither site may carry required content (`docs/ROADMAP.md:113`), and neither may move a race line: `src/race/courses.test.ts` stays green unchanged.
+
+### Steep-landing site: Cascade south perch
+
+- **Where:** Cascade Isle's south flank, near the current route point (800, 457, −692).
+- **Surface:** a landing shelf sloping 50° to 53° (normal y 0.602 to 0.643). It must be at least as large as the biggest breed's standing footprint plus a margin; G8 sizes it from the walker's foot positions (`src/player/ground.ts`, `GAIT`).
+- **Isolation:** no ground at normal y ≥ 0.65 within 12 m at a similar height (±6 m). The shelf can't be reached by landing beside it and walking over: the walk limit stays 40° (`src/player/tuning.ts:32`).
+- **Ceiling:** ≤ 53°, so 53° to 56° stays the Craghorn's (`docs/ROADMAP.md:80`).
+- **Content:** one optional collectible on the shelf, so the place is worth reaching.
+- **Shape support:** no current shape makes a tilted shelf; island tops are hills on a flat center, and spire tops are flat. G8 adds one, for example a `topTilt` on `SpireDef` for a leaning crag, or a crag term in Cascade Isle's relief.
+- **Rider check:** the rider can't stand on 50°: on-foot ground needs normal y ≥ 0.766 (`Player.ts:683`). The dismount looks for such ground beside the wyvern, but if it finds none it sets the rider down there anyway (`Player.ts:1003-1009`). G5 must either block dismounting on the shelf or show that a dismount there ends in the existing catch, never stuck.
+- **Acceptance:** before the unlock, a flared landing on the shelf skates off (`Player.ts:855`); after it, the landing holds. Gameplay-camera capture of all four breeds standing on it, with no foot sliding and the rider seated.
+
+### Snap-roll site: the Archway Keyhole
+
+A narrow vertical slot on its own doesn't need a snap-roll, because a pilot can roll to knife-edge well before it. The Keyhole pairs two openings a short distance apart:
+
+1. **The letterbox:** wider than the largest wingspan plus margin (> 24 m) and lower than the smallest wingspan (< 12 m tall), so the wyvern must cross it wings-level.
+2. **The slot:** at most 9 m wide and at least 26 m tall, D metres beyond the letterbox.
+
+How the dimensions work:
+- **Bank needed in a 9 m slot.** The wingtip probes sit at 0.92 × half-span (`FLIGHT_TUNING.tipSpanFactor`, `FlightModel.ts:310`), radius 0.55 m, and must fit inside ±4.5 m. That needs a bank of at least 49° (skimmer), 56° (harrier), 58° (ironback) or 65° (galewing). The body (radius `standHeight` × 0.55, 1.4 to 1.6 m) leaves about ±2.9 m of lateral error.
+- **The spacing D sets the window.** D = approach speed × the time allowed to reach that bank. Set D between each gated breed's measured time-to-bank with and without the × 1.6 burst, at race pace, so the slot is closed before the unlock and open after. Which breeds are gated is [Q32](DECISION_LOG.md), still open. The times to 90° in §3 are an upper bound; G8 measures time to the needed bank.
+- **Height loss.** Banked past about 60° the wyvern sinks; G8 sizes the slot's height and the line's entry height so the measured sink fits with margin.
+- **Where:** off the Archway Thread line, between arch 1 and arch 2 of the Archway Reach.
+- **Shape support:** the letterbox can be an existing `ArchDef` segment (a shallow arc of a large ring: wide and low). The slot needs either two spires set close (the gap is narrowest at their bellies) or a new rock-fin shape.
+- **Acceptance:** a scripted flight at race pace through the letterbox, then the slot. Before the unlock, a wingtip hits the slot (or the line has to miss it). After it, there is a clean pass, for every breed Q32 gates.
+
+## Decision record
+
+Robert's answer is [Q30](DECISION_LOG.md) (2026-10-17): option 2 for the steep landing and the snap-roll, option 1 for the thermal climb and the Windline. The options as written before that answer:
 
 1. **Accept timed and precision gates for G5.** The four contracts above become the route tests, each failing before and succeeding after under its stated rules. The capabilities read as "the dragon makes this quicker or surer", which fits pillar 2 better than pillar 1.
 2. **Or have G8 author one capability site each** in `src/world/layout.ts`, each a few lines of data, so every route is closed by physics before the unlock:
@@ -176,6 +214,7 @@ These times are estimated from the tuning constants. The swoop's duration needs 
 
 Recommendation: option 2 for the steep landing and the snap-roll (both cheap layout data, and both turn a weak gate into a real one), and option 1 for the thermal climb and the Windline. A faster climb and a one-press swing are honest as "quicker", and a gating weak thermal that some breeds pass without the unlock would muddle the per-breed records.
 
-Also open before G5 starts:
-- G4 merged, and the bond persistence answer.
-- Whether the snap-roll's double-tap is acceptable on keyboard, where roll is all-or-nothing.
+Status of the items that were open before G5:
+- **G4:** merged ([rporter33/HAVENS-OF-THE-DRIFT#6](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/6)). Bond memory is persisted in `driftwing.bond.v1` ([Q31](DECISION_LOG.md)).
+- **Snap-roll breeds:** which breeds the Keyhole gates is open ([Q32](DECISION_LOG.md)).
+- **Snap-roll keyboard input:** the double-tap on keyboard is open ([Q33](DECISION_LOG.md)).
