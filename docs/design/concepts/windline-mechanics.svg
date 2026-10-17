@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+<title id="title">Driftwing Windline Bracer and Sky Lance traversal schematic</title>
+<desc id="desc">A ceremonial Sky Lance anchors to a static Greco-Mediterranean stone arch. Tether routes through the rider's harness and bracer; the rider swings along a circular arc and releases with tangential momentum. Lower panels show the bracer and the six traversal states.</desc>
+<defs>
+<linearGradient id="sky" x2="0" y2="1"><stop stop-color="#183C64"/><stop offset=".75" stop-color="#658FB0"/><stop offset="1" stop-color="#D4DDD8"/></linearGradient>
+<linearGradient id="bronze" x2="1" y2="1"><stop stop-color="#D8C397"/><stop offset=".5" stop-color="#9B7448"/><stop offset="1" stop-color="#694932"/></linearGradient>
+<marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto"><path d="M0 0 L12 6 L0 12 Z" fill="#F8DD9F"/></marker>
+</defs>
+<rect width="1280" height="760" fill="#0E1C2A"/><rect x="18" y="17" width="1244" height="468" rx="10" fill="url(#sky)"/>
+<g fill="#EADFCB" stroke="#8E8068" stroke-width="4">
+<path d="M18 442H280V328L312 308V217H337V168H361V217H395V321H530V442H604V485H18Z"/>
+<path d="M998 485V249H1032V215H1061V160H1088V215H1114V249H1152V485Z"/>
+<path d="M1092 249H1182V292H1092Z"/><path d="M917 485V406H1038V485Z"/>
+</g><g fill="none" stroke="#D8CBAF" stroke-width="6"><path d="M317 328 Q354 254 393 328 M1030 343 Q1074 275 1117 343"/></g>
+<g stroke="#533F2E" stroke-width="4"><path d="M1067 142V220"/><path d="M1054 170h27"/><path d="M1067 137l-10 13 10 5 10-5Z" fill="url(#bronze)"/><path d="M1067 167q23 10 38-1l-11 28q-15-14-27-9Z" fill="#E7D9B9"/></g>
+<path d="M1067 200 Q755 408 410 445" fill="none" stroke="#C4E7F4" stroke-width="2" opacity=".55" stroke-dasharray="6 7"/>
+<path d="M1067 200 Q850 284 779 460" fill="none" stroke="#C4E7F4" stroke-width="2" opacity=".7" stroke-dasharray="7 7"/>
+<path d="M1067 200 L695 439" stroke="#F3DFA5" stroke-width="5"/>
+<circle cx="1067" cy="200" r="11" fill="#F8E0AB" stroke="#182C40" stroke-width="5"/>
+<g transform="translate(688 432) rotate(-25)">
+<circle cx="0" cy="-23" r="18" fill="#D2A276"/>
+<path d="M-15-2l34 0 11 60-34 0Z" fill="#F2EADA" stroke="#3E4850" stroke-width="4"/>
+<path d="M-9 4q-55 9-110 30l18 39 110-31Z" fill="#1E497A"/><path d="M-11 20q25-6 39 21" stroke="#C4A368" stroke-width="6"/>
+<path d="M1 55l-28 58M23 55l35 55M-5 14l-47 44M20 13l60 27" stroke="#302A27" stroke-width="14" stroke-linecap="round"/>
+<rect x="57" y="25" width="22" height="23" rx="6" fill="url(#bronze)" stroke="#302A27" stroke-width="3"/>
+</g>
+<path d="M691 430 Q716 387 777 384" stroke="#F8DD9F" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+<g font-family="Georgia,serif" fill="#FCF0D6"><text x="42" y="58" font-size="35" font-weight="bold">DRIFTWING • WINDLINE BRACER</text><text x="43" y="89" font-size="19">SKY LANCE THROW → STATIC ANCHOR → FIXED-LENGTH TETHER → SWING → RELEASE</text></g>
+<g font-family="Arial,sans-serif" font-size="19" fill="#17364C">
+<rect x="863" y="90" width="350" height="42" rx="6" fill="#F2EADA" opacity=".93"/><text x="882" y="118">Anchor = thrown ceremonial lance</text>
+<rect x="375" y="345" width="340" height="41" rx="6" fill="#F2EADA" opacity=".94"/><text x="393" y="372">Harness carries the rope load</text>
+<rect x="726" y="415" width="273" height="40" rx="6" fill="#F2EADA" opacity=".94"/><text x="745" y="442">Release preserves velocity</text></g>
+<rect x="18" y="506" width="600" height="237" rx="10" fill="#172A3B" stroke="#657788"/>
+<text x="42" y="541" font-family="Georgia,serif" fill="#F4DFB6" font-size="25">BRACER • STONE, WIND &amp; BRONZE</text>
+<g transform="translate(62 566)">
+<path d="M20 74q93-34 236-20l18 68q-130 39-256-1Z" fill="#D9C9A9"/>
+<path d="M66 49q88-47 190-9l22 89q-89 39-205-4Z" fill="#224D7F" stroke="#D9B77B" stroke-width="7"/>
+<path d="M90 53l-11 76M242 48l16 82" stroke="#BA9257" stroke-width="12"/>
+<ellipse cx="164" cy="83" rx="45" ry="43" fill="url(#bronze)" stroke="#E5D5AE" stroke-width="4"/>
+<circle cx="164" cy="83" r="25" fill="#173A5D" stroke="#DDC392" stroke-width="4"/>
+<path d="M145 90q32-37 39 2M145 104q39-19 48-43" fill="none" stroke="#F3DCA8" stroke-width="3"/>
+<path d="M261 74h47l17 14-17 12h-47" fill="#D9B57C" stroke="#E8D2A2" stroke-width="4"/>
+</g>
+<text x="397" y="592" font-family="Arial,sans-serif" fill="#F2EADA" font-size="18">Wrist guide + thumb release</text>
+<text x="397" y="628" font-family="Arial,sans-serif" fill="#D0DBE5" font-size="17">Crossback harness bears tension</text>
+<text x="397" y="665" font-family="Arial,sans-serif" fill="#D0DBE5" font-size="17">No powered winch or auto-pull</text>
+<rect x="639" y="506" width="623" height="237" rx="10" fill="#172A3B" stroke="#657788"/>
+<text x="665" y="541" font-family="Georgia,serif" fill="#F4DFB6" font-size="25">PHYSICS / LIFECYCLE</text>
+<g font-family="Arial,sans-serif" font-size="20" fill="#DCE5EB">
+<text x="666" y="582">1  Aim</text><text x="856" y="582">2  Throw lance</text><text x="1091" y="582">3  Anchor</text>
+<text x="666" y="626">4  Pendulum swing</text><text x="940" y="626">5  Release</text>
+<text x="666" y="673">6  Recover lance / reset</text></g>
+<text x="664" y="712" font-family="Arial,sans-serif" fill="#F4DFB6" font-size="17">World-static surfaces only • 120 Hz deterministic step • M1-independent</text>
+</svg>

@@ -1,19 +1,16 @@
 # Havens of the Drift documentation
 
-[Back to project](../README.md)
+[Back to project](../README.md) · [Current handoff](HANDOFF.md) · [Hub view](../public/hub/index.html) (deployed with the game at `/hub/`)
 
-Use [production status](production/STATUS.md) for a dated checkpoint and [owner decisions](production/DECISIONS.md) for selected direction and unresolved choices. Reverify the live checkout before implementation. Older Driftwing names and pinned links describe the baseline and historical evidence.
+Six folders, one per tab in the hub. Start with the current handoff, then production status. Reverify the live checkout before implementation; older Driftwing names and pinned links describe the baseline and historical evidence.
 
-| Area | Canonical entry point |
-|---|---|
-| Implementation | [Architecture](../ARCHITECTURE.md) and [development rules](../AGENTS.md) |
-| Design and lore | [Design index](design/README.md), [roadmap](ROADMAP.md) |
-| Art direction/authoring | [Shared visual authority](ART_DIRECTION.md), [Art and Assets](../Art%20and%20Assets/README.md) |
-| Asset provenance and availability | [Ownership and register](../assets/README.md) |
-| Editor and capture tooling | [Tools](tools/README.md) |
-| QA evidence | [QA index](qa/README.md) |
-| Release preparation | [Release checklist](release/README.md) |
-| Comic website | [Website planning](website/README.md) |
-| Historical work and backups | [History index](history/README.md), [dated AI handoff](AI_HANDOFF.md) |
+| Tab | Folder | Start here |
+|---|---|---|
+| Production | [production/](production/README.md) | [Status](production/STATUS.md), [owner decisions](production/DECISIONS.md), [source audit](production/SOURCE_AUDIT.md), [roadmap](ROADMAP.md) |
+| Design | [design/](design/README.md) | [Decision log](design/DECISION_LOG.md), [catch-up](design/CATCH_UP_2026-10-15.md), [lore meanings](design/LORE_MEANINGS.md), [art direction](ART_DIRECTION.md) |
+| Game systems | [systems/](systems/README.md) | One row per runtime system with source path, line count and governing doc |
+| Assets | [asset-guides/](asset-guides/README.md) | [Asset register](../assets/README.md), [Art and Assets hub](../Art%20and%20Assets/README.md), [Blender plan](asset-guides/BLENDER_ASSET_PLAN.md) |
+| QA | [qa/](qa/README.md) | [QA index](qa/README.md), [release checklist](release/README.md), [tools](tools/README.md) |
+| History | [history/](history/README.md) | [Handoff log by day](history/handoff/README.md), [evidence archive manifest](history/EVIDENCE_ARCHIVE_MANIFEST.json) |
 
-[Organization map and preservation rules](production/ORGANIZATION.md) record the document relocations. Former paths remain compatibility pages with links to the complete documents and their original section anchors. Canonical art-pack and evidence binaries remain at their original paths.
+Also here: [website planning](website/README.md) (comic, same repository, later release), `rider-c02/` and `rider-blender-trial/` (review markdown and manifests; their capture binaries moved to branch `archive/evidence-2026-10-17` on 2026-10-17), and `art/` (the supplied reference pack, kept at its original path). The small files at this level whose first line says "moved" are compatibility stubs for old links; [the organization map](production/ORGANIZATION.md) lists every relocation.

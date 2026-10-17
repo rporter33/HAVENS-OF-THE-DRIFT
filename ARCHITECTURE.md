@@ -54,7 +54,7 @@ src/editor/      region documents, workshop preview and isolated playtest
 ## Bounded asset authoring trial
 
 Robert authorized one hybrid Blender rider trial after the October 11 planning
-proposal; see [the shared asset plan](docs/BLENDER_ASSET_PLAN.md) and
+proposal; see [the shared asset plan](docs/asset-guides/BLENDER_ASSET_PLAN.md) and
 [trial integration](docs/rider-blender-trial/INTEGRATION.md). Its provider remains an
 explicit development selection, preserving renderer, animator/IK authority,
 deterministic simulation, shared geometry, save IDs and self-contained delivery.

@@ -2,9 +2,9 @@
 
 Latest integration: reviewed main `f97bac5` is included with the rider runtime preserved.
 **119 files / 1,286 tests**, typecheck/build and repeated game/clothing integration checks
-pass. [Current captures and source hashes](evidence/qa/integration/index.html).
+pass. [Current captures and source hashes](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/blob/archive/evidence-2026-10-17/docs/rider-c02/evidence/qa/integration/index.html).
 
-Current follow-up: [four-pass QA review](QA_REVIEW.md) and [28 new production captures](evidence/qa/index.html).
+Current follow-up: [four-pass QA review](QA_REVIEW.md) and [28 new production captures](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/blob/archive/evidence-2026-10-17/docs/rider-c02/evidence/qa/index.html).
 The follow-up repairs material identity, final cloth-surface contacts and bell sleeves, gives
 heavy cloth its own response, and corrects rigid armor weighting. **119 files / 1,260 tests,
 two dedicated audits, typecheck/build, 15 smoke, 32 mixing/flight and 33 browser checks** pass.
@@ -46,13 +46,13 @@ Current integrated review: **117 files / 1,239 tests**, typecheck/build, product
 15/15, Stable mixing 32/32, clothing 30/30 with 24 fresh captures and local menu/launcher
 12/12 passed. Reviewed main `a7adb45` is included in branch integration `f287267`.
 Windline gameplay/controller and editor authoring/save-isolation workflows passed too.
-[Current captures and exact reports](evidence/clothing/integration/index.html) include the
+[Current captures and exact reports](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/blob/archive/evidence-2026-10-17/docs/rider-c02/evidence/clothing/integration/index.html) include the
 integrated source hashes. Flight/traversal, shared world geometry and rider animator/IK
 match reviewed main. The normal local menu serves this verified compiled release.
 
 Three implementation/capture passes follow preserved source checkpoint
 `60755b4f968db58b77210000cb9e6e8c7c91d129a90c3bc10555f3be95db5e89`.
-[Scope hashes](evidence/clothing/scope-verification.json) compare every source file. Flight,
+[Scope hashes](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/blob/archive/evidence-2026-10-17/docs/rider-c02/evidence/clothing/scope-verification.json) compare every source file. Flight,
 movement, rig/animator/IK, world geometry, saddle/stirrups, saves, unlocks, tiers and dragon source
 are unchanged against that checkpoint. Ground contact now applies to legacy garment cloth
 through the existing terrain query too.
@@ -70,7 +70,7 @@ restore and actual takeoff/landing/dismount. Clothing browser proof **30/30 with
 all seven presets, four lower-leg mixes, both mounted sides of hanging costume types, bank,
 brake, wave and walk. Browser gust reversals move free panels while seams remain attached;
 maximum sampled guide travel is 7 cm and measured seam drift is zero. Posed captures are
-separate from actual flight tests. [Gallery](evidence/clothing/index.html), [measurements](evidence/clothing/final/verification.json).
+separate from actual flight tests. [Gallery](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/blob/archive/evidence-2026-10-17/docs/rider-c02/evidence/clothing/index.html), [measurements](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/blob/archive/evidence-2026-10-17/docs/rider-c02/evidence/clothing/final/verification.json).
 
 The checkpoint counts immediately above precede main integration. The current counts at
 the start of this section and the latest [handoff](../AI_HANDOFF.md) record integrated status.
@@ -93,5 +93,5 @@ capsules and walkable ground/decks, without arbitrary wall/foliage, self-collisi
 or stacking collision between every outer layer. Guides intentionally limit travel near joints
 and saddles. Finite polygon models retain facets at extreme zoom; sampled silhouettes are
 softened, not claimed mathematically smooth. Edge SwiftShader proves function/appearance,
-not sustained hardware performance. Atlas cache limits remain in [texture policy](../TEXTURE_QUALITY.md).
+not sustained hardware performance. Atlas cache limits remain in [texture policy](../systems/TEXTURE_QUALITY.md).
 Main is not merged or deployed by this review work.

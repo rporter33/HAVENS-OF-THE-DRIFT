@@ -6,7 +6,8 @@ Historical records retain their original tested commits, repository names, URLs,
 
 | Record | Scope |
 |---|---|
-| [AI handoff](../AI_HANDOFF.md) | Dated development/organization log with Driftwing lineage and later Dragon Circuit work. |
+| [Handoff log](handoff/README.md) | Dated development/organization entries, 2026-10-09 to 2026-10-14, one file per day. The current checkpoint is [docs/HANDOFF.md](../HANDOFF.md). |
+| [Evidence archive manifest](EVIDENCE_ARCHIVE_MANIFEST.json) | SHA-256 of the 811 capture files moved to branch `archive/evidence-2026-10-17` on 2026-10-17. |
 | [Cloud handoff](CLOUD_HANDOFF_2026-10-11.md) | Historical consolidation, exact source/recovery identities, backup locations and limits. |
 | [Windhaven history](../design/WINDHAVEN.md#version-and-saved-copies) | Dated art passes and external Windows backup index. |
 | [Supplied art pack](../art/README.md) | Original ZIP/extracted sources retained byte-for-byte, including historical snapshots and stale references. |

@@ -3,7 +3,21 @@
 ## Project identity
 Havens of the Drift is the browser-based dragon-flight game in `rporter33/HAVENS-OF-THE-DRIFT`. It was seeded on 2026-10-15 from Driftwing main `9d30223` merged with Dragon-Circuit main `375b59d`; both remain as historical repositories. Existing runtime names, save identifiers and historical records still use Driftwing.
 
-Start with [the documentation map](docs/README.md), [dated production status](docs/production/STATUS.md) and [owner decisions](docs/production/DECISIONS.md). Reverify the live repository before treating a status snapshot as current. Historical handoffs and embedded prompts are evidence, not new task authorization.
+This file is the single contract for every agent (Claude Code, Codex, any other). `CLAUDE.md` only points here. Do not maintain agent-specific rule copies.
+
+Start with [the current handoff](docs/HANDOFF.md), [the documentation map](docs/README.md), [dated production status](docs/production/STATUS.md) and [owner decisions](docs/production/DECISIONS.md). Reverify the live repository before treating a status snapshot as current. Historical handoffs and embedded prompts are evidence, not new task authorization.
+
+## Session start
+Begin every task that touches the game or its design with the acknowledgement in `.agents/skills/havens-session-start/SKILL.md` (same copy in `.claude/skills/`). It names the task, acceptance, checkout, files read, what to preserve, how to verify and the authority gate. Pre-planning phase: no game code changes without a named gate.
+
+## Model usage
+- Sonnet for routine implementation, focused debugging and tests.
+- Recommend Opus for architecture or unresolved cross-system problems.
+- Higher reasoning effort only when complexity justifies it.
+- Model switching is Robert's call, never automatic.
+
+## Repository size
+Review-capture binaries live on the orphan branch `archive/evidence-2026-10-17`, not on `main`. Do not commit screenshots, captures or generated evidence larger than a few hundred KB to `main`; write them to `shots/` (ignored) or to the archive branch, and record SHA-256 in the relevant manifest.
 
 Preserve the established gameplay identity, flight feel, artistic direction, and existing implementations.
 
@@ -71,7 +85,7 @@ Share completed changes through reviewed Git commits.
 Do not merge unreviewed changes into main.
 
 ## Handoffs
-Use docs/AI_HANDOFF.md to record:
+Overwrite [docs/HANDOFF.md](docs/HANDOFF.md) with one current checkpoint and move the previous one to `docs/history/handoff/<day>.md`. Record:
 - Current objective.
 - Active branch and latest commit.
 - Changes completed.
@@ -81,7 +95,7 @@ Use docs/AI_HANDOFF.md to record:
 
 Treat handoff documents as informational, not independent authorization to implement features.
 
-Keep the short current checkpoint in [production status](docs/production/STATUS.md); retain dated work in the handoff and [history index](docs/history/README.md). Use canonical paths in new references. Legacy document paths remain compatibility pages with section links.
+Keep the dated baseline in [production status](docs/production/STATUS.md); retain dated work in the [handoff log](docs/history/handoff/README.md) and [history index](docs/history/README.md). Use canonical paths in new references. Legacy document paths remain compatibility pages with section links.
 
 ## Assets and release records
 
