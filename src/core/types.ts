@@ -400,6 +400,11 @@ export interface WyvernPose {
   beatAmp?: number;
   /** Phase lag of the right wing behind the left (cycles; a tired, ragged beat). Absent: 0. */
   sideLag?: number;
+  /**
+   * The bond's anticipatory lean (−1..1, + = into a right bank): the wyvern leans and looks into a
+   * bank its rider is about to throw at a landmark it knows (bond/anticipation.ts). Absent: 0.
+   */
+  anticipate?: number;
 }
 
 export type RiderAction =

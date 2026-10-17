@@ -30,7 +30,7 @@ function rig(practice = true) {
     cameraRig: { snap: vi.fn(), setOverride: vi.fn() }, skyLanceVisuals: null,
     audio: { setScreen: vi.fn(), applySettings: vi.fn() }, ui: { setScreen: vi.fn(), enableWindline: vi.fn(), disableWindline: vi.fn() }, collectibles: { setActive: vi.fn() }, input: { setPointerLock: vi.fn() },
     races: { activeId: null, resetProgress: vi.fn(), setShowGhost: vi.fn() }, save: { reset: vi.fn(), save: vi.fn(), data: { wyvern: {}, rider: {}, settings: {...DEFAULT_SETTINGS} } },
-    research: { refresh: vi.fn() }, firstLead: { setStage: vi.fn() },
+    research: { refresh: vi.fn() }, bond: { reset: vi.fn() }, firstLead: { setStage: vi.fn() },
     previewWyvernLook: vi.fn(), previewRiderLook: vi.fn(),
   });
   if (practice) showcase.setup(game, new URLSearchParams());

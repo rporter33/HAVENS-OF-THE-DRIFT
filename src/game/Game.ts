@@ -36,6 +36,7 @@ import { guessQuality } from './settings';
 import { computePrompt } from '../player/prompts';
 import { Interactables } from './interactables';
 import { Research } from '../research/Research';
+import { Bond } from '../bond/Bond';
 import { airshipStage } from '../research/state';
 import { shrineInteraction } from '../research/firstLeadEncounter';
 import { FirstLead } from '../world/dressing/ventari/FirstLead';
@@ -79,6 +80,8 @@ export class Game implements GameActions {
   readonly fx: Fx;
   readonly audio: AudioSystem;
   readonly research: Research;
+  /** Bond expression v1: the Windhaven greeting and the anticipatory lean (presentation only). */
+  readonly bond: Bond;
   readonly firstLead: FirstLead;
   readonly ui: Ui;
   readonly debug: DebugParams;
@@ -215,6 +218,7 @@ export class Game implements GameActions {
     };
 
     this.research = new Research(this.save, this.events);
+    this.bond = new Bond(this.world.layout);
     const shrine = this.dressing.ventariSites.find((s) => s.id === 'gullrest-shrine');
     if (!shrine) throw new Error('First Lead shrine anchor missing');
     this.view.tutorialShrine = shrine;
@@ -316,6 +320,7 @@ export class Game implements GameActions {
     const alpha = this.accumulator / FIXED_DT;
     this.player.update(dt, alpha);
     this.showcase?.update?.(this, dt);
+    this.bond.update(dt, this.player, this.screen === 'play', (kind) => this.wyvern.cue(kind));
 
     if (this.screen === 'play' && !this.ui.capturesInput) this.handlePlayInput();
 
@@ -461,6 +466,7 @@ export class Game implements GameActions {
     (this.races as RaceSystem).resetProgress?.();
     this.save.reset();
     this.research.refresh();
+    this.bond.reset();
     this.firstLead.setStage(0);
     // Everything that follows the save re-reads it: the breed's physics, the models, collectibles
     // (they notice the new save), the HUD's discoveries and the tips.
