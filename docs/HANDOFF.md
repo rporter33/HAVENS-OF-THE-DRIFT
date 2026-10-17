@@ -16,4 +16,6 @@ Keep this file short: one checkpoint, overwritten each session. Move the previou
   - `docs/production/SOURCE_AUDIT.md`: keep/flag/remove proposals for source tied to shelved directions. Proposals only.
 - **Tests:** see the PR description for the typecheck, vitest and build results on this branch.
 - **Known issues:** full Git history still carries the evidence blobs (no history rewrite, per the no-force-push rule); only shallow clones benefit. `rporter33/havens-archive` (private) was created by Robert on 2026-10-17 and holds the archive branch as its `main`; the orphan branch stays here as a mirror.
-- **Next authorized action:** Robert reviews and merges the PR. The first implementation gate after merge is his call; the source audit lists candidates.
+- **2026-10-17 later:** QA run on main `b9d9403`: typecheck clean, 1,322 tests, rider QA, build, smoke 15/15; browser suite green in GitHub CI (4 of 17 cannot run in the sandbox renderer). Robert answered 17 more decisions plus 6 new ones; see [decision log](design/DECISION_LOG.md) and [first slice](design/FIRST_SLICE.md).
+- **Gates opened by Robert on 2026-10-17:** G1 archive housekeeping (orphan scripts, Blender masters), G2 title and naming. Everything else waits for its own gate.
+- **Next authorized action:** land G1 and G2 PRs; supply the target renders to `docs/art/targets/` so G3 can be scoped.

@@ -6,7 +6,8 @@ The owner's current direction is racing-first exploratory fantasy, intelligent d
 
 | Reference | Use and limits |
 |---|---|
-| [Decision log](DECISION_LOG.md) | The 23 decision questions with dated answers (6 answered as of 2026-10-17). Answer here; never delete, mark superseded. |
+| [First slice](FIRST_SLICE.md) | Pillars and the eleven proposed gates with acceptance tests, derived from the decision log on 2026-10-17. |
+| [Decision log](DECISION_LOG.md) | The 23 decision questions with dated answers (29 answered, 2 open as of 2026-10-17). Answer here; never delete, mark superseded. |
 | [Catch-up 2026-10-15](CATCH_UP_2026-10-15.md) | What is implemented, the lore tiers, the review assessment and the reasoning behind each question. |
 | [Comparative design review](COMPARATIVE_DESIGN_REVIEW.md) | Seven reference games compared; proposals for Havens. Written as if starting from zero; read with the catch-up. |
 | [Lore meanings](LORE_MEANINGS.md) | Robert's statement of what Havens and the Drift mean. Top of the authority order. |

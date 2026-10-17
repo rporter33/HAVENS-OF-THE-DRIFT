@@ -19,30 +19,45 @@ Havens are the island monasteries, temples and cities. The Drift is the wind; it
 
 ## Flight and progression
 
-### Q4 · Which three to five capability unlocks? — open
-### Q5 · Capabilities from bond, research, or both? — open
-### Q6 · Keep stamina, or move to charges? — open
+### Q4 · Which three to five capability unlocks? — answered 2026-10-17
+Four: stronger thermal climb, steep-slope landing, snap-roll through a tight gap, Windline from the saddle. Each ties to one bond milestone and one route it changes.
+### Q5 · Capabilities from bond, research, or both? — answered 2026-10-17
+Both, split: bond gives dragon capabilities; research gives ship and world reach; cosmetics come from everything.
+### Q6 · Keep stamina, or move to charges? — answered 2026-10-17
+Keep stamina as is; it is tuned and tested. Additional charges may be layered on later as a separate design item.
 
 ## Racing
 
-### Q7 · Per-breed record categories, or one normalized race breed? — open
-### Q8 · Which course variants first? — open
-### Q9 · AI rivals in the first release? — open
+### Q7 · Per-breed record categories, or one normalized race breed? — answered 2026-10-17
+Per-breed record categories, with capability tier shown on the record.
+### Q8 · Which course variants first? — answered 2026-10-17
+Reverse plus one Challenge variant, on two existing courses.
+### Q9 · AI rivals in the first release? — answered 2026-10-17
+Yes. Rivals should be physical enough to collide with.
 
 ## Bonding and story
 
-### Q10 · Smallest bond expression to build first? — open
-### Q11 · Does the Ventari mystery resolve in release one? — open
-### Q12 · Quintus and Vellum in or out of release one? — open
-### Q13 · Five clans and ten elders: game canon or comic-only for now? — open
+### Q10 · Smallest bond expression to build first? — answered 2026-10-17
+Greeting at the Roost plus an anticipatory lean before a known maneuver. No meters. Build up from there.
+### Q11 · Does the Ventari mystery resolve in release one? — answered 2026-10-17
+No. It stays open past release one.
+### Q12 · Quintus and Vellum in or out of release one? — answered 2026-10-17
+Quintus in. Vellum undecided (still open as Q12b).
+
+### Q12b · Vellum in release one? — open
+### Q13 · Five clans and ten elders: game canon or comic-only for now? — answered 2026-10-17
+Game canon, presented in the comic first. Comic rendering and much of its art will be produced with ChatGPT image generation.
 
 ## Scope
 
-### Q14 · Combat: none, a pursuer, or secondary combat? — open
+### Q14 · Combat: none, a pursuer, or secondary combat? — answered 2026-10-17
+Secondary combat. Never the primary loop.
 ### Q15 · Windline: core, optional, or unlocked? — answered 2026-10-17
 Keep Windline. Whether it is core or unlocked is still open; it is not being cut.
-### Q16 · Multiplayer order? — open
-### Q17 · Aerial ball sport: still committed, or paused? — open
+### Q16 · Multiplayer order? — answered 2026-10-17
+Prove the solo loop first, then an early networking feasibility test with zero co-op content.
+### Q17 · Aerial ball sport: still committed, or paused? — answered 2026-10-17
+Still committed.
 
 ## Production
 
@@ -50,10 +65,36 @@ Keep Windline. Whether it is core or unlocked is still open; it is not being cut
 Driftwing main `9d30223` merged with Dragon-Circuit main `375b59d`, pushed as `rporter33/HAVENS-OF-THE-DRIFT` main `18a7aab`. Titles renamed only; runtime names, save ids, package name and paths unchanged. Local clone: `C:\Users\Robert\Projects\HAVENS OF THE DRIFT`.
 ### Q19 · Keep the Drift and focus one cluster, or author a new compact cluster? — answered 2026-10-17
 Keep the Drift. Focus one cluster first per the recommendation (Roost quadrant re-dressed first).
-### Q20 · Meshy dragon body in release one, or ship the procedural wyvern? — open
+### Q20 · Meshy dragon body in release one, or ship the procedural wyvern? — answered 2026-10-17
+Goal is the best-looking wyvern achievable. Meshy is available and acceptable if it gets there; whichever route is chosen, Claude must be able to edit the Blender source to fit game mechanics (rig, saddle, collision, animation events).
 
 ## Inherited from the Codex handoffs
 
-### Q21 · The Craghorn's name; free from day one or earned? — open
-### Q22 · Windhaven and the Codex: one ship or two? — open
-### Q23 · Air Nomads: the player culture, one clan, or a starting outfit family? — open
+### Q21 · The Craghorn's name; free from day one or earned? — answered 2026-10-17
+Earned. Name still open (Q21b).
+
+### Q21b · The Craghorn's in-world name — open
+### Q22 · Windhaven and the Codex: one ship or two? — answered 2026-10-17
+Resolved by reassignment: Windhaven becomes the starting zone (it takes over the place currently called Windward Roost); the Codex is the ship. The current Windhaven airship art study becomes Codex reference.
+### Q23 · Air Nomads: the player culture, one clan, or a starting outfit family? — answered 2026-10-17
+The player culture, associated with the white dragonflight color.
+
+## Added 2026-10-17 (from the platform and QA pass)
+
+### Q24 · Visual target for the texture and material upgrade — answered 2026-10-17
+The recent Codex renders of the Harrier, Windward Roost and Windhaven improvements. Direction: smooth 3D surfaces, vibrant colors, an improvement on the current painterly look rather than a replacement of it. The render files are not yet in any repository; they go to `docs/art/targets/` when supplied and become the acceptance reference for Q25.
+
+### Q25 · Scope of the first visual gate — answered 2026-10-17
+The whole Drift eventually; characters first (wyvern, rider), terrain and dressing second.
+
+### Q26 · Title screen text — answered 2026-10-17
+Change the displayed title to Havens of the Drift with real artistic effort on the wordmark. Runtime identifiers, package name and save ids stay `driftwing`.
+
+### Q27 · Orphan review scripts — answered 2026-10-17
+Approved: move the 19 unreferenced review scripts to the archive.
+
+### Q28 · Blender masters and the GLB test fixture — answered 2026-10-17
+Robert delegated the call. Decision taken: move the editable masters (`assets/rider-blender/source/`, 34 MB) to `havens-archive` with register entries and a restore check; keep the 18 MB GLB on main until an accepted export replaces it, because two tests inline it as a fixture.
+
+### Q29 · Git history rewrite — answered 2026-10-17
+Robert delegated the call. Decision taken: no rewrite. Shallow clones are already 99 MB, a force-push would invalidate every existing clone and PR, and the archive branch mirrors the blobs anyway.
