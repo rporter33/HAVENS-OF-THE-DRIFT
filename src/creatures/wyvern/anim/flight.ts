@@ -119,6 +119,12 @@ const RUDDER_ZETA = 0.45;
  */
 const BUMP_ACCEL = 2 * FLIGHT_TUNING.authorityMax;
 const BUMP_HOLD = 0.4;
+/**
+ * The bond's anticipatory lean at full strength (WyvernPose.anticipate ±1): the spine's roll into
+ * the coming bank (rad), and the head's lead into it (as lookLead, rad).
+ */
+const ANTICIPATE_LEAN = 0.12;
+const ANTICIPATE_LOOK = 0.4;
 
 export class FlightLayer {
   private readonly a: WyvernAnimator;
@@ -217,6 +223,12 @@ export class FlightLayer {
     this.hoverNone = HOVER_NONE * vStall;
   }
 
+  /** The bond's anticipatory lean this frame (pose.anticipate, −1..1, + = right), in the air only. */
+  private anticipate(): number {
+    const f = this.f;
+    return clamp(f.pose.anticipate ?? 0, -1, 1) * f.airW;
+  }
+
   /**
    * The stick: the player's (pose.control), or for a ghost (no control recorded) an estimate from
    * the body's motion: the roll stick commands a roll rate, so the rate plus a lead of its
@@ -253,7 +265,8 @@ export class FlightLayer {
     this.rollInit = (this.ctlRoll - slow) * air * f.spreadAir;
     // The head turns into the turn first (the rope shortened on that side), then the body banks:
     // the life layer adds lookLead to the look yaw (+ = toward the body's left, like lookYaw).
-    f.lookLead = -(0.5 * this.ctlYaw + 0.35 * this.ctlRoll) * air;
+    // Anticipating a known bank (the bond), it looks into it before the stick goes over.
+    f.lookLead = -(0.5 * this.ctlYaw + 0.35 * this.ctlRoll) * air - this.anticipate() * ANTICIPATE_LOOK;
     // The tail rudder (+ = toward the body's left): a right yaw swings the tail's tip right (a
     // rudder pushed right yaws the nose right), a little with the roll too, so a roll-out lets it
     // swing through center and back (the spring's overshoot, about a quarter second).
@@ -355,7 +368,7 @@ export class FlightLayer {
     // The wings drive the chest: it pitches up on the downstroke and leads the roll into a turn.
     const chestLift = -flap * airW * (0.05 + 0.03 * heft) * Math.sin((sp - 0.02) * TAU);
     f.chestLift = chestLift;
-    f.lean = clamp(f.bank * 0.1 + om.z * 0.1, -0.22, 0.22) * airW;
+    f.lean = clamp(f.bank * 0.1 + om.z * 0.1, -0.22, 0.22) * airW + this.anticipate() * ANTICIPATE_LEAN;
     // Landing (B5): the last metres of an approach (feet within 1.6·sh of the ground, coming
     // down) the chest and spine pitch up a further 10° and a flaring beat becomes a backwing.
     const feet = f.height - sh;

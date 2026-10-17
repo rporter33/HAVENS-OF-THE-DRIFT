@@ -18,6 +18,7 @@ src/input/       gamepad + keyboard/mouse → InputFrame; the control scheme as 
 src/creatures/   procedural wyvern and rider models and animation
 src/race/        courses, rings, timing, medals, ghosts
 src/progression/ save data, collectibles, unlocks
+src/bond/        bond expression: the Windhaven greeting and the anticipatory lean (presentation only)
 src/cosmetics/   the cosmetic catalog (what exists and how it unlocks)
 src/ui/          HTML overlay: title, HUD, menus, the stable
 src/audio/       procedural WebAudio
