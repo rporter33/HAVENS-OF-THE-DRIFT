@@ -23,12 +23,12 @@ asset or service; this directory does not assign a shared license to its entries
 
 ## Driftwing context
 
-These links are general development references. Follow [ARCHITECTURE.md](../ARCHITECTURE.md)
-and [ROADMAP.md](ROADMAP.md) when applying them to Driftwing. Asset imports must
+These links are general development references. Follow [ARCHITECTURE.md](../../ARCHITECTURE.md)
+and [ROADMAP.md](../ROADMAP.md) when applying them to Driftwing. Asset imports must
 fit the project's current procedural approach and art direction; adding this
 directory does not authorize an engine migration or runtime asset integration.
 
-For the project's supplied visual reference pack, see [the art index](art/README.md).
+For the project's supplied visual reference pack, see [the art index](../art/README.md).
 
 ## Sources
 

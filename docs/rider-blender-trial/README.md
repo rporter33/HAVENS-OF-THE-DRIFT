@@ -56,9 +56,9 @@ source instructions below; no software is automatically installed.
 
 ## Gameplay and Stable evidence
 
-Current candidate: [Stable](evidence/candidate-validation/fit/medium-travel-stable-front.png),
-[mounted left](evidence/candidate-validation/fit/medium-travel-gameplay-mounted-left.png),
-[mounted right](evidence/candidate-validation/fit/medium-travel-gameplay-mounted-right.png).
+Current candidate: [Stable](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/blob/archive/evidence-2026-10-17/docs/rider-blender-trial/evidence/candidate-validation/fit/medium-travel-stable-front.png),
+[mounted left](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/blob/archive/evidence-2026-10-17/docs/rider-blender-trial/evidence/candidate-validation/fit/medium-travel-gameplay-mounted-left.png),
+[mounted right](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/blob/archive/evidence-2026-10-17/docs/rider-blender-trial/evidence/candidate-validation/fit/medium-travel-gameplay-mounted-right.png).
 [Fresh validation and CPU failure](MERGE_REVIEW.md#validation).
 
 The [October 12 fit record](FIT_REFRESH_2026-10-12.md) retains all 40 fresh frames,
@@ -67,11 +67,11 @@ acceptance. The selected sheets below are real engine Stable/follow/flight views
 not Blender renders. The new PR candidate has its own validation record in
 [MERGE_REVIEW.md](MERGE_REVIEW.md); these images identify the prior unchanged art.
 
-![Medium Travel in Stable, both shoulders and front/back](evidence/fit-refresh/2026-10-12/inspection/stable-medium-travel.png)
+![Medium Travel in Stable, both shoulders and front/back](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/blob/archive/evidence-2026-10-17/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/inspection/stable-medium-travel.png)
 
-![All four tested looks, both mounted sides](evidence/fit-refresh/2026-10-12/inspection/mounted-all-full-frames.png)
+![All four tested looks, both mounted sides](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/blob/archive/evidence-2026-10-17/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/inspection/mounted-all-full-frames.png)
 
-![Clear normal gameplay walking/running views](evidence/fit-refresh/2026-10-12/inspection/walk-run-medium-travel-drape-full-frames.png)
+![Clear normal gameplay walking/running views](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/blob/archive/evidence-2026-10-17/docs/rider-blender-trial/evidence/fit-refresh/2026-10-12/inspection/walk-run-medium-travel-drape-full-frames.png)
 
 Slight/Broad mixed fits and Medium Flight are retained beside these sheets.
 Earlier matched old/new and day/night/tier captures remain in the original trial

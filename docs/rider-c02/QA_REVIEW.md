@@ -13,7 +13,7 @@ The integrated build passes **119 files / 1,286 tests**, typecheck/build, **15**
 **12** local-menu/profile checks. Normal Windline keyboard/controller gameplay and the
 controller-first leap/cast/boost/recall flow also pass. The 384-look geometry matrix remains
 applicable because the entire rider runtime is identical to the four-pass checkpoint.
-[Current integrated captures and hashes](evidence/qa/integration/index.html) supersede
+[Current integrated captures and hashes](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/blob/archive/evidence-2026-10-17/docs/rider-c02/evidence/qa/integration/index.html) supersede
 the pre-integration build identity below; all earlier evidence/backups are preserved.
 
 The current local release is `local-rider-qa-integrated-test/dist` at the same 5193/5198
@@ -42,10 +42,10 @@ Reviewed main `a7adb45` is already included.
 - **15/15** game smoke, **32/32** Stable/mixing/save/actual-flight checks,
   **33/33** production appearance checks with **28** captures.
 - **12/12** local menu/profile/launcher checks are recorded with the verified release.
-- [Production gallery and reports](evidence/qa/index.html),
-  [pairwise matrix](evidence/qa/clearance.json),
-  [source hashes and scope](evidence/qa/scope-verification.json),
-  [CPU measurements](evidence/qa/contact-cpu-cost.json).
+- [Production gallery and reports](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/blob/archive/evidence-2026-10-17/docs/rider-c02/evidence/qa/index.html),
+  [pairwise matrix](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/blob/archive/evidence-2026-10-17/docs/rider-c02/evidence/qa/clearance.json),
+  [source hashes and scope](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/blob/archive/evidence-2026-10-17/docs/rider-c02/evidence/qa/scope-verification.json),
+  [CPU measurements](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/blob/archive/evidence-2026-10-17/docs/rider-c02/evidence/qa/contact-cpu-cost.json).
 
 The pairwise matrix uses Low for Slight and Medium for the other requested builds. The
 complete Travel Drape preset retains its existing Medium/Aerie contract. High/Ultra have

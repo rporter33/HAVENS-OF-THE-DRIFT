@@ -22,7 +22,7 @@ The game opens at `/`. The [region workshop](docs/tools/REGION_EDITOR.md) opens 
 
 | Work | Start here |
 |---|---|
-| Where things stand right now | [Current handoff](docs/HANDOFF.md), then the [hub](docs/hub/index.html) (six tabs over this repository's docs) |
+| Where things stand right now | [Current handoff](docs/HANDOFF.md), then the [hub](public/hub/index.html), deployed with the game at `/hub/` (six tabs over this repository's docs) |
 | Current state and owner decisions | [Production status](docs/production/STATUS.md) and [decisions](docs/production/DECISIONS.md) |
 | Game implementation | [Architecture](ARCHITECTURE.md), [development rules](AGENTS.md), [game systems index](docs/systems/README.md) and [source](src/) |
 | Design and lore | [Design index](docs/design/README.md) and [roadmap](docs/ROADMAP.md) |

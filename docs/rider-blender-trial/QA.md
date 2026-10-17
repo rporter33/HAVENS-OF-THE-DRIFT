@@ -206,7 +206,7 @@ are checked separately in `evidence/REVIEW_DELIVERY.json`.
 
 ## Inherited remote CI
 
-[REMOTE_CI.json](evidence/REMOTE_CI.json) was rechecked against PR #11's rider
+[REMOTE_CI.json](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/blob/archive/evidence-2026-10-17/docs/rider-blender-trial/evidence/REMOTE_CI.json) was rechecked against PR #11's rider
 baseline. Editor run 38166348209 passed. Integration run 38166348207 failed after
 30,000 ms waiting for `#sky-lance-reticle` in `scripts/windline-reticle-check.mjs`;
 later checks in that step did not run. Earlier typecheck, unit, garment audit,

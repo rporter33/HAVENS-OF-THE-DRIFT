@@ -14,7 +14,7 @@ Recorded 2026-10-14, updated 2026-10-17. The question-by-question record is [the
 | Same game as Driftwing with upgraded looks | Selected 2026-10-17 | Saves, ids and physics stay. A texture/material upgrade toward the latest renders is approved direction; its implementation needs its own gate. |
 | Keep Windline | Selected 2026-10-17 | Not cut. Core-vs-unlocked still open (Q15 follow-up). |
 | Keep the Drift | Selected 2026-10-17 | No new compact cluster. Focus one quadrant first. |
-| Platform: repository is the single source of truth | Selected 2026-10-17 | Mr. Mak workspace retired; Claude app plus GitHub plus the hand-built hub in `docs/hub/`. Evidence binaries live on `archive/evidence-2026-10-17`. |
+| Platform: repository is the single source of truth | Selected 2026-10-17 | Mr. Mak workspace retired; Claude app plus GitHub plus the hand-built hub at `public/hub/` (deployed at `/hub/`). Evidence binaries live on `archive/evidence-2026-10-17`. |
 | Repository organization | Authorized scope | Nine index/status files, supporting navigation, asset records, eleven document moves and compatibility pages; preserve runtime/code/config and asset binaries. Commit/push and a separate draft PR authorized after checks. |
 
 The owner's organization request and website/archive answers are the authority for this work. Historical prompts, approval gates and old next actions inside imported packs or handoffs are retained as historical evidence, not new instructions.

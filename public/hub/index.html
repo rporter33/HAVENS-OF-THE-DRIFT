@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Havens Hub</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Layout: one top band (title, branch, tabs), then a reading desk: doc list rail on the left, document on the right; stacks on a phone. */
+:root {
+  --bg: #f3efe6;        /* chalk linen */
+  --paper: #fbf9f4;
+  --ink: #26303a;       /* scale slate */
+  --ink-soft: #5b6670;
+  --rule: #d9d2c4;
+  --sky: #2f7fb8;       /* Aegean sky */
+  --sky-soft: #dbe9f4;
+  --bronze: #9a6a2b;    /* aged bronze */
+  --ok: #3f7d4e; --warn: #b07a1a; --bad: #a93d3d;
+  --display: "Cinzel", "Times New Roman", serif;
+  --body: "Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #1b2229; --paper: #222b33; --ink: #e8e3d8; --ink-soft: #a8b0b8; --rule: #35414c;
+  --sky: #6fb3e6; --sky-soft: #233a4d; --bronze: #d2a05a; --ok: #7cc48b; --warn: #e0b35a; --bad: #e08484; color-scheme: dark;
+}}
+:root[data-theme="dark"] {
+  --bg: #1b2229; --paper: #222b33; --ink: #e8e3d8; --ink-soft: #a8b0b8; --rule: #35414c;
+  --sky: #6fb3e6; --sky-soft: #233a4d; --bronze: #d2a05a; --ok: #7cc48b; --warn: #e0b35a; --bad: #e08484; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.5; }
+a { color: var(--sky); }
+header { background: var(--paper); border-bottom: 1px solid var(--rule); padding-block: 10px 0; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+.brand { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.brand h1 { font-family: var(--display); font-weight: 600; font-size: 1.25rem; letter-spacing: .04em; margin: 0; }
+.brand .meta { font-size: .85rem; color: var(--ink-soft); display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.brand select { font: inherit; font-size: .85rem; padding: 2px 6px; border: 1px solid var(--rule); border-radius: 4px; background: var(--bg); color: var(--ink); }
+nav.tabs { display: flex; gap: 2px; overflow-x: auto; margin-top: 8px; scrollbar-width: none; }
+nav.tabs button { font: inherit; font-size: .95rem; font-weight: 500; padding: 8px 14px; border: 0; border-bottom: 3px solid transparent; background: none; color: var(--ink-soft); cursor: pointer; white-space: nowrap; }
+nav.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--bronze); }
+nav.tabs button:focus-visible { outline: 2px solid var(--sky); outline-offset: -2px; }
+main { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 0; min-height: calc(100% - 90px); }
+aside { border-right: 1px solid var(--rule); padding-block: 14px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: 12px; font-size: .95rem; }
+aside h2 { font-family: var(--display); font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--bronze); margin: 14px 0 6px; font-weight: 600; }
+aside h2:first-child { margin-top: 0; }
+aside ul { list-style: none; padding: 0; margin: 0; }
+aside li button { font: inherit; width: 100%; text-align: left; padding: 5px 8px; border: 0; border-radius: 4px; background: none; color: var(--ink); cursor: pointer; display: flex; justify-content: space-between; gap: 8px; }
+aside li button:hover { background: var(--sky-soft); }
+aside li button[aria-current="true"] { background: var(--sky-soft); font-weight: 700; }
+aside li button small { color: var(--ink-soft); font-family: var(--mono); font-size: .7rem; }
+aside p.note { color: var(--ink-soft); font-size: .85rem; margin: 10px 0 0; }
+article { padding-block: 22px 60px; padding-left: 28px; padding-right: max(16px, env(safe-area-inset-right, 0px)); min-width: 0; }
+.doc { max-width: 72ch; }
+.crumb { font-family: var(--mono); font-size: .75rem; color: var(--ink-soft); display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.crumb a { color: var(--ink-soft); }
+.doc h1 { font-family: var(--display); font-weight: 600; font-size: 1.7rem; line-height: 1.2; text-wrap: balance; margin: 0 0 14px; }
+.doc h2 { font-size: 1.25rem; margin: 1.6em 0 .5em; border-bottom: 1px solid var(--rule); padding-bottom: 4px; text-wrap: balance; }
+.doc h3 { font-size: 1.05rem; margin: 1.3em 0 .4em; }
+.doc p, .doc li { font-size: 1rem; }
+.doc code { font-family: var(--mono); font-size: .82em; background: var(--sky-soft); padding: 1px 5px; border-radius: 3px; }
+.doc pre { background: var(--paper); border: 1px solid var(--rule); padding: 12px; overflow-x: auto; border-radius: 4px; }
+.doc pre code { background: none; padding: 0; }
+.doc table { border-collapse: collapse; font-size: .9rem; display: block; overflow-x: auto; max-width: 100%; font-variant-numeric: tabular-nums; }
+.doc th, .doc td { border: 1px solid var(--rule); padding: 6px 9px; vertical-align: top; text-align: left; }
+.doc th { background: var(--paper); font-weight: 700; }
+.doc img { max-width: 100%; height: auto; border-radius: 4px; }
+.doc blockquote { margin: 1em 0; padding: 4px 14px; border-left: 3px solid var(--bronze); color: var(--ink-soft); }
+.doc hr { border: 0; border-top: 1px solid var(--rule); margin: 2em 0; }
+.status { font-size: .85rem; color: var(--ink-soft); }
+.status.err { color: var(--bad); }
+.pill { display: inline-block; font-size: .7rem; font-family: var(--mono); padding: 1px 7px; border-radius: 10px; border: 1px solid var(--rule); color: var(--ink-soft); }
+.pill.answered { color: var(--ok); border-color: var(--ok); }
+.pill.open { color: var(--warn); border-color: var(--warn); }
+.overview { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 0 0 22px; }
+.overview .tile { background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 12px 14px; }
+.overview .tile b { font-family: var(--display); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--bronze); display: block; margin-bottom: 4px; font-weight: 600; }
+.overview .tile .big { font-size: 1.6rem; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.overview .tile .sub { font-size: .85rem; color: var(--ink-soft); }
+@media (max-width: 760px) {
+  main { grid-template-columns: 1fr; }
+  aside { border-right: 0; border-bottom: 1px solid var(--rule); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  article { padding-left: max(16px, env(safe-area-inset-left, 0px)); }
+}
+@media (prefers-reduced-motion: no-preference) { aside li button, nav.tabs button { transition: background .12s, color .12s; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <h1>Havens of the Drift</h1>
+    <div class="meta">
+      <span>hub</span>
+      <label>branch <select id="ref"><option value="main">main</option></select></label>
+      <a id="repoLink" href="https://github.com/rporter33/HAVENS-OF-THE-DRIFT" target="_blank" rel="noopener">repository</a>
+      <a href="../" title="the game build deployed from main">play</a>
+      <span id="status" class="status"></span>
+    </div>
+  </div>
+  <nav class="tabs" id="tabs" role="tablist"></nav>
+</header>
+<main>
+  <aside id="rail"></aside>
+  <article><div id="doc" class="doc"></div></article>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.0/marked.min.js"></script>
+<script>
+(function () {
+  const OWNER = 'rporter33', REPO = 'HAVENS-OF-THE-DRIFT';
+  const TABS = [
+    { id: 'production', label: 'Production', pinned: [
+        ['docs/HANDOFF.md', 'Current handoff'],
+        ['docs/production/STATUS.md', 'Status'],
+        ['docs/production/DECISIONS.md', 'Owner decisions'],
+        ['docs/production/SOURCE_AUDIT.md', 'Source audit'],
+        ['docs/ROADMAP.md', 'Roadmap'],
+        ['docs/release/README.md', 'Release checklist'],
+        ['docs/production/ORGANIZATION.md', 'Organization map'],
+        ['AGENTS.md', 'Agent contract'] ], folders: [] },
+    { id: 'design', label: 'Design', pinned: [
+        ['docs/design/DECISION_LOG.md', 'Decision log'],
+        ['docs/design/LORE_MEANINGS.md', 'Lore meanings'],
+        ['docs/design/CATCH_UP_2026-10-15.md', 'Catch-up 2026-10-15'],
+        ['docs/design/COMPARATIVE_DESIGN_REVIEW.md', 'Comparative design review'],
+        ['docs/ART_DIRECTION.md', 'Art direction'],
+        ['docs/design/M1_FIRST_LEAD_BRIEF.md', 'M1 First Lead brief'],
+        ['docs/design/WINDHAVEN.md', 'Windhaven'],
+        ['docs/website/README.md', 'Comic website'] ], folders: ['docs/design/concepts'] },
+    { id: 'systems', label: 'Game systems', pinned: [
+        ['docs/systems/README.md', 'Systems index'],
+        ['ARCHITECTURE.md', 'Architecture'],
+        ['docs/systems/GRAPHICS_QUALITY.md', 'Graphics quality'],
+        ['docs/systems/TEXTURE_QUALITY.md', 'Texture policy'],
+        ['docs/systems/WARDROBE_CUSTOMIZATION.md', 'Wardrobe'],
+        ['docs/tools/REGION_EDITOR.md', 'Region editor'],
+        ['docs/tools/README.md', 'Tools'] ], folders: [] },
+    { id: 'assets', label: 'Assets', pinned: [
+        ['assets/README.md', 'Ownership and register'],
+        ['Art and Assets/README.md', 'Art and Assets hub'],
+        ['Art and Assets/Guides/README.md', 'Authoring guides'],
+        ['Art and Assets/Guides/meshy/README.md', 'Meshy guide'],
+        ['docs/asset-guides/BLENDER_ASSET_PLAN.md', 'Blender asset plan'],
+        ['docs/rider-blender-trial/INTEGRATION.md', 'Rider trial integration'],
+        ['docs/asset-guides/GAME_DEVELOPMENT_RESOURCES.md', 'Resources'] ], folders: ['Art and Assets'] },
+    { id: 'qa', label: 'QA', pinned: [
+        ['docs/qa/README.md', 'QA index'],
+        ['docs/qa/LANTERN_DASH_REVIEW.md', 'Lantern Dash review'],
+        ['docs/rider-c02/README.md', 'Rider C02 review'],
+        ['docs/rider-c02/QA_REVIEW.md', 'Rider C02 QA'] ], folders: ['docs/qa/reports'] },
+    { id: 'history', label: 'History', pinned: [
+        ['docs/history/README.md', 'History index'],
+        ['docs/history/handoff/README.md', 'Handoff log by day'],
+        ['docs/history/CLOUD_HANDOFF_2026-10-11.md', 'Cloud handoff 2026-10-11'] ], folders: ['docs/history/handoff'] },
+  ];
+  const $ = (s) => document.querySelector(s);
+  const tabsEl = $('#tabs'), rail = $('#rail'), docEl = $('#doc'), statusEl = $('#status'), refSel = $('#ref');
+  let ref = 'main', tab = TABS[0], current = null;
+  const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
+  const raw = (p) => `https://raw.githubusercontent.com/${OWNER}/${REPO}/${ref}/${p.split('/').map(encodeURIComponent).join('/')}`;
+  const blob = (p) => `https://github.com/${OWNER}/${REPO}/blob/${ref}/${p.split('/').map(encodeURIComponent).join('/')}`;
+
+  // Branch list, so a PR branch can be reviewed from the phone.
+  fetch(`https://api.github.com/repos/${OWNER}/${REPO}/branches?per_page=50`).then(r => r.ok ? r.json() : []).then(list => {
+    const names = list.map(b => b.name).filter(n => n !== 'main');
+    for (const n of names) { const o = document.createElement('option'); o.value = n; o.textContent = n; refSel.appendChild(o); }
+    const saved = store.get('hub.ref'); if (saved && [...refSel.options].some(o => o.value === saved)) { refSel.value = saved; ref = saved; }
+  }).catch(() => {});
+  refSel.addEventListener('change', () => { ref = refSel.value; store.set('hub.ref', ref); $('#repoLink').href = `https://github.com/${OWNER}/${REPO}/tree/${ref}`; renderRail(); if (current) openDoc(current); });
+
+  // Tabs
+  for (const t of TABS) {
+    const b = document.createElement('button'); b.role = 'tab'; b.textContent = t.label; b.id = 'tab-' + t.id;
+    b.addEventListener('click', () => selectTab(t, true)); tabsEl.appendChild(b);
+  }
+  function selectTab(t, openFirst) {
+    tab = t; for (const b of tabsEl.children) b.setAttribute('aria-selected', b.id === 'tab-' + t.id);
+    history.replaceState(null, '', '#' + t.id); store.set('hub.tab', t.id);
+    renderRail(); if (openFirst) openDoc(store.get('hub.doc.' + t.id) || t.pinned[0][0]);
+  }
+
+  // Rail: pinned docs plus a live listing of each tab's folders (new files show up without editing this page).
+  const folderCache = new Map();
+  async function listFolder(path) {
+    const key = ref + ':' + path; if (folderCache.has(key)) return folderCache.get(key);
+    try {
+      const r = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path.split('/').map(encodeURIComponent).join('/')}?ref=${encodeURIComponent(ref)}`);
+      if (!r.ok) throw 0;
+      const items = (await r.json()).filter(i => i.type === 'file' && /\.md$/i.test(i.name)).map(i => [i.path, i.name.replace(/\.md$/i, '').replace(/[_-]/g, ' ')]);
+      folderCache.set(key, items); return items;
+    } catch { return null; }
+  }
+  async function renderRail() {
+    rail.innerHTML = '';
+    const sec = (title, items) => {
+      const h = document.createElement('h2'); h.textContent = title; rail.appendChild(h);
+      const ul = document.createElement('ul');
+      for (const [p, label] of items) {
+        const li = document.createElement('li'); const b = document.createElement('button'); b.textContent = label;
+        b.dataset.path = p; b.setAttribute('aria-current', p === current); b.addEventListener('click', () => openDoc(p)); li.appendChild(b); ul.appendChild(li);
+      }
+      rail.appendChild(ul);
+    };
+    sec(tab.label, tab.pinned);
+    for (const f of tab.folders) {
+      const items = await listFolder(f);
+      if (items === null) { const p = document.createElement('p'); p.className = 'note'; p.textContent = `Folder listing for ${f} unavailable (GitHub API limit or offline).`; rail.appendChild(p); continue; }
+      const pinnedPaths = new Set(tab.pinned.map(x => x[0]));
+      const rest = items.filter(([p]) => !pinnedPaths.has(p));
+      if (rest.length) sec(f.split('/').pop(), rest);
+    }
+    if (tab.id === 'production') { const p = document.createElement('p'); p.className = 'note'; p.textContent = 'Edit any of these through Claude Code or Codex; this page only reads the repository.'; rail.appendChild(p); }
+  }
+
+  // Document rendering. Relative .md links open in the hub; everything else goes to GitHub or raw.
+  marked.use({ gfm: true, breaks: false });
+  function resolve(base, href) {
+    if (/^(https?:|mailto:|#)/i.test(href)) return href;
+    const dir = base.split('/').slice(0, -1); const parts = decodeURIComponent(href.split('#')[0]).split('/');
+    for (const s of parts) { if (s === '..') dir.pop(); else if (s !== '.' && s !== '') dir.push(s); }
+    return dir.join('/') + (href.includes('#') ? '#' + href.split('#')[1] : '');
+  }
+  async function openDoc(path) {
+    current = path; store.set('hub.doc.' + tab.id, path);
+    for (const b of rail.querySelectorAll('button[data-path]')) b.setAttribute('aria-current', b.dataset.path === path);
+    statusEl.textContent = 'loading'; statusEl.className = 'status';
+    docEl.innerHTML = '';
+    let text;
+    try { const r = await fetch(raw(path), { cache: 'no-cache' }); if (!r.ok) throw new Error(r.status); text = await r.text(); }
+    catch (e) { statusEl.textContent = ''; docEl.innerHTML = `<p class="status err">Could not load <code>${path}</code> from branch <code>${ref}</code> (${e.message || e}). <a href="${blob(path)}" target="_blank" rel="noopener">Open it on GitHub</a>.</p>`; return; }
+    const renderer = new marked.Renderer();
+    renderer.link = function (href, title, text) {
+      if (href && typeof href === 'object') ({ href, title, text } = href);
+      const target = resolve(path, href);
+      if (/\.md(#|$)/i.test(target) && !/^https?:/i.test(target)) return `<a href="#${tab.id}" data-doc="${target.split('#')[0]}" title="${title || ''}">${text}</a>`;
+      const url = /^https?:|^mailto:|^#/i.test(target) ? target : blob(target);
+      return `<a href="${url}" target="_blank" rel="noopener" title="${title || ''}">${text}</a>`;
+    };
+    renderer.image = function (href, title, text) {
+      if (href && typeof href === 'object') ({ href, title, text } = href);
+      const target = resolve(path, href); const url = /^https?:/i.test(target) ? target : raw(target);
+      return `<img src="${url}" alt="${text || ''}" title="${title || ''}" loading="lazy">`;
+    };
+    let html = marked.parse(text, { renderer });
+    if (path === 'docs/design/DECISION_LOG.md') html = overview(text) + html;
+    docEl.innerHTML = `<div class="crumb"><a href="${blob(path)}" target="_blank" rel="noopener">${path}</a><span>${ref}</span></div>` + html;
+    for (const a of docEl.querySelectorAll('a[data-doc]')) a.addEventListener('click', (ev) => { ev.preventDefault(); openDoc(a.dataset.doc); window.scrollTo(0, 0); });
+    statusEl.textContent = '';
+    window.scrollTo(0, 0);
+  }
+  // Decision log: count answered vs open at the top, since that is the number Robert tracks.
+  function overview(md) {
+    const heads = md.match(/^### Q\d+ ·.*$/gm) || [];
+    const answered = heads.filter(h => /answered/i.test(h)).length, open = heads.filter(h => /— open/i.test(h)).length, sup = heads.filter(h => /superseded/i.test(h)).length;
+    return `<div class="overview"><div class="tile"><b>Decisions</b><div class="big">${answered} / ${heads.length}</div><div class="sub">answered</div></div><div class="tile"><b>Still open</b><div class="big">${open}</div><div class="sub">${sup ? sup + ' superseded' : 'none superseded'}</div></div></div>`;
+  }
+
+  // Start: hash picks the tab, remembered doc picks the page.
+  const startTab = TABS.find(t => t.id === location.hash.slice(1)) || TABS.find(t => t.id === store.get('hub.tab')) || TABS[0];
+  window.addEventListener('hashchange', () => { const t = TABS.find(t => t.id === location.hash.slice(1)); if (t && t !== tab) selectTab(t, true); });
+  selectTab(startTab, true);
+})();
+</script>
+</body>
+</html>

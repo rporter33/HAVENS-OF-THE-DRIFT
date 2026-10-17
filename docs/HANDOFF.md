@@ -12,7 +12,7 @@ Keep this file short: one checkpoint, overwritten each session. Move the previou
   - `docs/` reorganized into six folders; loose dated reports moved to `docs/history/`; compatibility stubs at every old path.
   - Design material consolidated from `havens-workspace` (decision log, catch-up, comparative review, lore meanings) into `docs/design/`; Robert's 2026-10-17 answers recorded.
   - `AGENTS.md` is the single contract; `CLAUDE.md` points at it. `.agents/skills/havens-session-start` and its `.claude/skills` copy added.
-  - `docs/hub/index.html`: a hand-built tabbed hub that reads this repository's markdown from GitHub.
+  - `public/hub/index.html`: a hand-built tabbed hub (ships with the Pages deploy at `/hub/`) that reads this repository's markdown live from GitHub, any branch.
   - `docs/production/SOURCE_AUDIT.md`: keep/flag/remove proposals for source tied to shelved directions. Proposals only.
 - **Tests:** see the PR description for the typecheck, vitest and build results on this branch.
 - **Known issues:** full Git history still carries the evidence blobs (no history rewrite, per the no-force-push rule); only shallow clones benefit. A separate `havens-archive` repository is the intended final home for the archive branch and needs Robert's GitHub token to create.

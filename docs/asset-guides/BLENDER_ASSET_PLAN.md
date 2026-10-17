@@ -27,20 +27,20 @@ this plan records a future hybrid direction, not an implemented exception.
 
 ## Artistic authority and readiness
 
-Read [the shared art guide](ART_DIRECTION.md) first. Current explicit user decisions
+Read [the shared art guide](../ART_DIRECTION.md) first. Current explicit user decisions
 take precedence over historical pack instructions and concept imagery. In particular,
 the reviewed bracer-fired Windline behavior supersedes old thrown-lance descriptions.
 Do not revive old traversal tasks or add a banner weapon because a reference depicts one.
 
 Required sources:
 
-- [Master v2](art/Driftwing_Codex_Handoff/01_Sky_Lance/Art_Direction_Master.md),
-  [pack introduction](art/Driftwing_Codex_Handoff/README_START_HERE.md) and
-  [art index](art/README.md). Use corrected image paths in ART_DIRECTION.md.
-- [Individual component specifications](art/Driftwing_Codex_Handoff/02_Wardrobe/Individual_Armor_Specifications.md)
+- [Master v2](../art/Driftwing_Codex_Handoff/01_Sky_Lance/Art_Direction_Master.md),
+  [pack introduction](../art/Driftwing_Codex_Handoff/README_START_HERE.md) and
+  [art index](../art/README.md). Use corrected image paths in ART_DIRECTION.md.
+- [Individual component specifications](../art/Driftwing_Codex_Handoff/02_Wardrobe/Individual_Armor_Specifications.md)
   and the indexed component cards and costume atlases; subordinate conflicting older designs.
-- [Current rider review](rider-c02/QA_REVIEW.md),
-  [integrated engine captures](rider-c02/evidence/qa/integration/index.html),
+- [Current rider review](../rider-c02/QA_REVIEW.md),
+  [integrated engine captures](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/blob/archive/evidence-2026-10-17/docs/rider-c02/evidence/qa/integration/index.html),
   [wardrobe contracts](../systems/WARDROBE_CUSTOMIZATION.md),
   [texture policy](../systems/TEXTURE_QUALITY.md) and [graphics policy](../systems/GRAPHICS_QUALITY.md).
 - Original C02/M01 review folder on Robert's computer:

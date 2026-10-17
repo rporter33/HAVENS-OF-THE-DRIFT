@@ -1,6 +1,6 @@
 # Havens of the Drift documentation
 
-[Back to project](../README.md) · [Current handoff](HANDOFF.md) · [Hub view](hub/index.html)
+[Back to project](../README.md) · [Current handoff](HANDOFF.md) · [Hub view](../public/hub/index.html) (deployed with the game at `/hub/`)
 
 Six folders, one per tab in the hub. Start with the current handoff, then production status. Reverify the live checkout before implementation; older Driftwing names and pinned links describe the baseline and historical evidence.
 

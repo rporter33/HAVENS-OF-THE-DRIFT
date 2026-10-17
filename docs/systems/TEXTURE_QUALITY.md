@@ -93,7 +93,7 @@ walking and foot placement. This is a walkable height surface, not arbitrary wal
 collision, wet-cloth simulation or self-collision. Ground projection is vertically resolved.
 Fitted bodices, trousers, wraps, leather, armor and Aerie's secured drape remain rig-driven.
 The chiton's hanging lower panels now move. Mounted contacts, equipment sockets and flight
-simulation remain. [Latest evidence and limits](rider-c02/CLOTHING_REVIEW.md).
+simulation remain. [Latest evidence and limits](../rider-c02/CLOTHING_REVIEW.md).
 
-See [cloth and resolution evidence](rider-c02/evidence/cloth-hd/index.html), its manifests and
-[the current rider report](rider-c02/README.md) for checks, captures and remaining limits.
+See [cloth and resolution evidence](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/blob/archive/evidence-2026-10-17/docs/rider-c02/evidence/cloth-hd/index.html), its manifests and
+[the current rider report](../rider-c02/README.md) for checks, captures and remaining limits.
