@@ -11,7 +11,7 @@ import './editor.css';
 
 const escape = (value: unknown): string => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
 const root = document.getElementById('editor-ui')!;
-root.innerHTML = '<header><div class="wordmark"><strong>DRIFTWING</strong><span>Region workshop</span></div>' +
+root.innerHTML = '<header><div class="wordmark"><strong>HAVENS OF THE DRIFT</strong><span>Region workshop</span></div>' +
   '<label class="document-name"><span class="eyebrow">Your region</span><input id="region-name" aria-label="Region name" maxlength="64"></label>' +
   '<div class="toolbar"><button id="undo" title="Ctrl/⌘ Z">Undo</button><button id="redo" title="Ctrl/⌘ Shift Z">Redo</button>' +
   '<button id="save">Save</button><button id="load">Load</button><button id="export">Export JSON</button><button id="import">Import</button>' +

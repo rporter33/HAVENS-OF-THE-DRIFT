@@ -26,7 +26,7 @@ export class CreditsMenu extends Panel {
   constructor(ctx: UiCtx) {
     super(ctx, 'dw-credits-menu');
     const s = sheet('Credits');
-    const c = div('dw-credits', fromHtml(emblemSvg('dw-logo-mark')), h('div', { class: 'dw-credits-logo', text: 'DRIFTWING' }), fromHtml(RULE));
+    const c = div('dw-credits', fromHtml(emblemSvg('dw-logo-mark')), h('div', { class: 'dw-credits-logo', text: 'HAVENS OF THE DRIFT' }), fromHtml(RULE));
     for (const [title, lines] of SECTIONS) {
       c.append(h('h3', { text: title }));
       for (const l of lines) c.append(h('p', { text: l }));
