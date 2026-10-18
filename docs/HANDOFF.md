@@ -2,18 +2,22 @@
 
 Keep this file short: one checkpoint, overwritten each session. Move the previous entry to [the handoff log](history/handoff/README.md) under its day before writing a new one. Nothing here authorizes new work on its own; the current task from Robert does.
 
-## Checkpoint 2026-10-17: G5 capability decision recorded
+## Checkpoint 2026-10-18: G8a capability sites, ready to playtest
 
-- **Objective:** record Robert's answer on the G5 capability gates. Design only; no code.
-- **Branch:** `design/g5-sites-decision` from main `60be059` (G4 in [rporter33/HAVENS-OF-THE-DRIFT#6](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/6) and the G5 spec in [rporter33/HAVENS-OF-THE-DRIFT#7](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/7) both merged).
+- **Objective:** gate G8a (Q34): build the steep-landing and snap-roll capability sites ahead of G5, at the render brief's fidelity, and set up a playtest.
+- **Branch:** `gate/g8a-capability-sites`, stacked on `design/g5-sites-decision`, which is PR #8 and not yet merged.
 - **Completed:**
-  - Decision log Q30: G8 authors capability sites for the steep landing and the snap-roll; the thermal climb and the Windline keep timed contracts.
-  - Q31: bond memory stays persisted in `driftwing.bond.v1`, recorded from the merge of #6.
-  - Q32 and Q33 opened.
-  - [CAPABILITIES.md](design/CAPABILITIES.md) gains the site requirements (Cascade south perch, Archway Keyhole). The first slice's G5 and G8 rows and open items now point at it.
-- **Tests:** none; docs only.
-- **Open for Robert:**
-  - Q32: which breeds the Keyhole gates (recommendation: the harrier site, light breeds only).
-  - Q33: the snap-roll double-tap on keyboard.
-  - Whether the two capability sites land as their own small gate before G5.
-- **Next authorized action:** none. G5 and G8 are not opened.
+  - `RockFormShape` (`src/world/rockForm.ts`) is a new signed-distance solid read by terrain, collision, ground, the Windline sweep, race and cloud clearance, and a surface-nets mesher (`mesh/rockFormMesh.ts`). It's painted in the islands' palette through `terrainMaterial`, with LODs and shadow stand-ins.
+  - **Cascade south perch:** 51.5° top, ground only on its plane. No breed lands on it today; every breed can with the unlock.
+  - **Archway Keyhole:** opposed 70° cracks around a 9.5 m chamber. The harrier can't thread it today and can with the ×1.6 snap-roll, at 14–16.5 m/s.
+  - `?capPreview=steep,snap` is a debug-only preview. The session saves nothing.
+  - Playtest plan and QA questions: [G8a QA](qa/G8A_CAPABILITY_SITES.md).
+- **Tests:** see the PR. Typecheck, the full vitest suite and smoke are run before the push. New: `src/world/rockForm.test.ts` and `src/debug/capPreview.test.ts`.
+- **Known issues and decisions for Robert:**
+  - Q35: folded wings thread the Keyhole without a roll. No geometry prevents it; it needs a flight-model call, or acceptance.
+  - Q33: the keyboard double-tap is open.
+  - The skimmer threads the Keyhole without the unlock.
+  - Dismounting on the perch slides the rider off into freefall.
+  - The boosted window is narrow, just above stall.
+  - Target renders aren't in yet; the sites are judged against the brief for now.
+- **Next authorized action:** Robert's playtest, with the plan's questions. Then decide Q33 and Q35. G5 is not opened.

@@ -12,11 +12,14 @@
 //   ?debug=1                install window.__dw in a production build (dev builds always do)
 //   ?warmup=1               run the boot shader warmup under ?manual=1 (skipped by default)
 //   ?starglints=1           night sky: glinting starfield (0 classic .. 1; see SkyDome STAR_GLINTS)
+//   ?capPreview=steep,snap  playtest two G5 capabilities before G5 exists (debug/capPreview.ts);
+//                           the session saves nothing
 
 import type { QualityLevel, WeatherKind } from '../core/types';
 import type { RiderProof } from '../creatures/rider/proof';
 import type { ProofMaps } from '../creatures/rider/proofMaterials';
 import type { TrialSelection } from '../creatures/rider/importContract';
+import { parseCapPreview, type CapPreviewFlags } from './capPreview';
 
 export interface DebugParams {
   riderTrial?: TrialSelection;
@@ -41,6 +44,8 @@ export interface DebugParams {
   view?: string;
   /** Night-sky star glints, 0 (classic) .. 1 (glinting). */
   starGlints?: number;
+  /** Debug preview of G5 capabilities for the capability-site playtest. */
+  capPreview?: CapPreviewFlags;
 }
 
 function vec3(v: string | null): [number, number, number] | undefined {
@@ -72,5 +77,6 @@ export function readDebugParams(search = typeof location !== 'undefined' ? locat
     manual: q.get('manual') === '1',
     view: q.get('view') ?? undefined,
     starGlints: num('starglints'),
+    capPreview: parseCapPreview(q.get('capPreview')),
   };
 }

@@ -33,7 +33,7 @@ describe('World shadow stand-ins (PERF-05)', () => {
   it('casts from one stand-in per feature, never from the drawn levels', () => {
     const world = new World(new Scene(), QUALITY.high);
     const proxies = meshes(world, /-shadow$/);
-    const features = world.terrain.islands.length + world.terrain.spires.length + world.terrain.arches.length;
+    const features = world.terrain.islands.length + world.terrain.spires.length + world.terrain.arches.length + world.terrain.rocks.length;
     expect(proxies.length).toBe(features);
     expect(meshes(world, /-lod\d$/).every((m) => !m.castShadow)).toBe(true);
     expect(proxies.every((p) => p.castShadow && !p.receiveShadow)).toBe(true);

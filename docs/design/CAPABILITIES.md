@@ -173,33 +173,31 @@ These times are estimated from the tuning constants. The swoop's duration needs 
 
 ## Capability sites for G8
 
-Decided in [Q30](DECISION_LOG.md). These are requirements, not geometry: G8 places and sizes each site, measures it with the real flight and terrain code, and adds it to `src/world/layout.ts`. Both sites need shape support the analytic shapes don't have yet (see each site). Per ARCHITECTURE's one-world-model rule, collision, landing, walking and meshing must read the same new function. Neither site may carry required content (`docs/ROADMAP.md:113`), and neither may move a race line: `src/race/courses.test.ts` stays green unchanged.
+Decided in [Q30](DECISION_LOG.md) and built in gate G8a ([Q34](DECISION_LOG.md); evidence in [the G8a QA record](../qa/G8A_CAPABILITY_SITES.md)). Both sites are `RockFormDef` entries in `src/world/layout.ts` (`rocks`), made by one new solid, `RockFormShape` (`src/world/rockForm.ts`): a signed distance field that collision, ground, distance, raycasts and the mesh all read. Neither carries required content (`docs/ROADMAP.md:113`), neither moves a race line (`src/race/courses.test.ts` unchanged, and both are more than 40 m from every line), and both sit more than 30 m from other rock. The optional collectible on each goes in with G5: a collectible only the unlock can reach would leave the collection unfinishable until G5 ships.
 
 ### Steep-landing site: Cascade south perch
 
-- **Where:** Cascade Isle's south flank, near the current route point (800, 457, −692).
-- **Surface:** a landing shelf sloping 50° to 53° (normal y 0.602 to 0.643). It must be at least as large as the biggest breed's standing footprint plus a margin; G8 sizes it from the walker's foot positions (`src/player/ground.ts`, `GAIT`).
-- **Isolation:** no ground at normal y ≥ 0.65 within 12 m at a similar height (±6 m). The shelf can't be reached by landing beside it and walking over: the walk limit stays 40° (`src/player/tuning.ts:32`).
-- **Ceiling:** ≤ 53°, so 53° to 56° stays the Craghorn's (`docs/ROADMAP.md:80`).
-- **Content:** one optional collectible on the shelf, so the place is worth reaching.
-- **Shape support:** no current shape makes a tilted shelf; island tops are hills on a flat center, and spire tops are flat. G8 adds one, for example a `topTilt` on `SpireDef` for a leaning crag, or a crag term in Cascade Isle's relief.
-- **Rider check:** the rider can't stand on 50°: on-foot ground needs normal y ≥ 0.766 (`Player.ts:683`). The dismount looks for such ground beside the wyvern, but if it finds none it sets the rider down there anyway (`Player.ts:1003-1009`). G5 must either block dismounting on the shelf or show that a dismount there ends in the existing catch, never stuck.
-- **Acceptance:** before the unlock, a flared landing on the shelf skates off (`Player.ts:855`); after it, the landing holds. Gameplay-camera capture of all four breeds standing on it, with no foot sliding and the rider seated.
+As built: a leaning crag 380 m south of Cascade Isle's axis, top center (820, 478, −900). Its whole top is one plane sloping **51.5°** (normal y 0.622), falling south.
+
+- **Between the limits:** 0.622 is below today's land limit (0.65) and above the unlock's (cos 53° = 0.602). At ≤ 53°, 53°–56° stays the Craghorn's (`docs/ROADMAP.md:80`).
+- **Only the plane is ground.** It's reported with its exact normal, inside its rounded rim. The flanks and rim are collision only, like the arches. Any smooth crest has a line where the surface turns flat, so that would have been a way on today.
+- **Isolation:** no other ground within 12 m at a similar height. The perch floats free, and the walk limit stays 40°.
+- **Measured:** no breed lands on it today (0 of 405 scripted approaches each). With the unlock, the harrier lands on 196 of 405, the skimmer 170, the galewing 197 and the ironback 204, and every landing stays standing. In the running game, 0 of 12 approaches land today and 8–9 of 12 land with the preview.
+- **Rider check (for G5):** dismounting on the perch sets the rider down on 51.5°, where they can't stand. They slide off the downhill rim into Windline freefall, and normal play never summons the wyvern automatically, so they must hold recall or fall to the cloud sea. G5 decides: block dismounting there, or keep it.
 
 ### Snap-roll site: the Archway Keyhole
 
-A narrow vertical slot on its own doesn't need a snap-roll, because a pilot can roll to knife-edge well before it. The Keyhole pairs two openings a short distance apart:
+As built: an islet off the Archway Reach, chamber center (−850, 330, −1280), its passage along the chain's line (`yaw` = atan2(−800, −320)). Two **opposed 70° cracks**, 8 m wide and 36 m long, one through each 8 m wall, open into a **9.5 m** chamber.
 
-1. **The letterbox:** wider than the largest wingspan plus margin (> 24 m) and lower than the smallest wingspan (< 12 m tall), so the wyvern must cross it wings-level.
-2. **The slot:** at most 9 m wide and at least 26 m tall, D metres beyond the letterbox.
-
-How the dimensions work:
-- **Bank needed in a 9 m slot.** The wingtip probes sit at 0.92 × half-span (`FLIGHT_TUNING.tipSpanFactor`, `FlightModel.ts:310`), radius 0.55 m, and must fit inside ±4.5 m. That needs a bank of at least 49° (skimmer), 56° (harrier), 58° (ironback) or 65° (galewing). The body (radius `standHeight` × 0.55, 1.4 to 1.6 m) leaves about ±2.9 m of lateral error.
-- **The spacing D sets the window.** D = approach speed × the time allowed to reach that bank. Set D between each gated breed's measured time-to-bank with and without the × 1.6 burst, at race pace, so the slot is closed before the unlock and open after. Which breeds are gated is [Q32](DECISION_LOG.md), still open. The times to 90° in §3 are an upper bound; G8 measures time to the needed bank.
-- **Height loss.** Banked past about 60° the wyvern sinks; G8 sizes the slot's height and the line's entry height so the measured sink fits with margin.
-- **Where:** off the Archway Thread line, between arch 1 and arch 2 of the Archway Reach.
-- **Shape support:** the letterbox can be an existing `ArchDef` segment (a shallow arc of a large ring: wide and low). The slot needs either two spires set close (the gap is narrowest at their bellies) or a new rock-fin shape.
-- **Acceptance:** a scripted flight at race pace through the letterbox, then the slot. Before the unlock, a wingtip hits the slot (or the line has to miss it). After it, there is a clean pass, for every breed Q32 gates.
+- **Why a reversal, not the letterbox and slot written above:**
+  - In open sky a gap gates nothing unless what's behind it is enclosed, so the passage is the only way into the chamber, where G5's collectible will sit.
+  - A low "letterbox" still lets a pilot pre-roll about 20°.
+  - Opposed cracks demand a reversal of at least 2 × (70° − the crack's bank tolerance) inside the chamber. The ×1.6 burst shortens that reversal by the same 1.6× at any speed, so the only way to compensate is to fly slower, and the chamber is sized so that even at stall speed the base harrier runs out of room.
+- **Measured (harrier, real `FlightModel` and terrain, scripted pilot search):**
+  - At normal roll, 0 of 37,260 approach settings thread it.
+  - With the ×1.6 snap-roll, 180 of 53,820 do, all at 14–16.5 m/s, just above the harrier's 13.9 m/s stall.
+  - The skimmer threads it without the unlock; the galewing and ironback can't even with it ([Q32](DECISION_LOG.md)).
+- **Known bypass ([Q35](DECISION_LOG.md), open):** folded wings thread it. Wingtips collide only while spread (`FlightModel.ts:1181`), so a tucked wyvern collides as its body alone. 1,082 of 14,040 tucked entries pass, across all breeds and speeds. No crack geometry can stop this: a folded wyvern is always more compact than a spread one, and the fall across this passage is a few metres. Closing it needs a decision about the flight model, or accepting the tuck as the other way through.
 
 ## Decision record
 

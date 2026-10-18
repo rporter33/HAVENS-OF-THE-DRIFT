@@ -112,7 +112,7 @@ The site requirements are in the spec. Neither G5 nor G8 is opened by this answe
 Persisted, in its own `driftwing.bond.v1` localStorage document beside the save; `driftwing.save.v1` is unchanged. This is recorded from Robert merging [rporter33/HAVENS-OF-THE-DRIFT#6](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/6) as built, not from an explicit answer: revise here if session-only, or folding it into a later save version, was meant.
 
 ### Q32 · Snap-roll site: which breeds thread it? — answered 2026-10-17
-Robert: the harrier site. The Keyhole is sized so that the harrier (and the skimmer) can't thread it before the snap-roll and can after; the galewing and ironback stay out. The question as it was posed:
+Robert: the harrier site. The Keyhole is sized so the harrier can't thread it before the snap-roll and can after; the galewing and ironback stay out. Measured once built: the skimmer threads it without the unlock (its normal roll is about the harrier's boosted one), so for the skimmer the Keyhole is a skill site, not a gate. The question as it was posed:
 
 One site can't gate every breed the same way. Measured time to 90° of bank: harrier 1.08 → 0.74 s, skimmer 0.81 → 0.58, galewing 1.93 → 1.32, ironback 1.61 → 1.08 (× 1.6 burst). A site tuned for the harrier gates the harrier and skimmer, and stays closed to the galewing and ironback even after the unlock, much as the Craghorn owns the rock. Options:
 - **Harrier site:** accept that the galewing and ironback can't thread it.
@@ -126,3 +126,11 @@ The proposed combo is a double-tap of roll within 0.25 s. Keyboard roll is all-o
 
 ### Q34 · Open the capability-sites gate? — answered 2026-10-17
 Yes. Robert opened the sites gate (G8a): build the Cascade south perch and the Archway Keyhole ahead of G5, then playtest how they feel. Same day, as the target renders start arriving: the new terrain solids' geometry and visual effort must match the fidelity those renders set (smooth, continuous surfaces; the painterly identity kept). Until the renders are in `docs/art/targets/`, the [render brief](../art/targets/RENDER_BRIEF.md) and the art pack are the bar.
+
+### Q35 · The Keyhole's tuck bypass: change the flight model, or accept it? — open
+Built and measured in G8a: with wings folded, a wyvern collides as its body alone (wingtips only collide while spread, `FlightModel.ts:1181`), so it can drop through the Keyhole's cracks without any roll; 1,082 of 14,040 tucked entries pass, every breed. No crack geometry prevents it. Options:
+- **Accept it:** folding through is the honest physical answer, and the snap-roll becomes the way through that keeps your height and speed. The Keyhole is then a skill site, not a gate.
+- **Give folded wings a collision extent:** probes at the folded wings' real reach. This is a flight-model change that affects tucked flight near any rock, so it needs its own gate, and it only blocks the tuck if the cracks are narrower than the folded wyvern.
+- **Rethink the fourth capability:** "snap-roll through a gap" may not be a gate in this physics at all.
+
+*Recommendation: decide after the playtest, once the tuck has been tried by hand.*
