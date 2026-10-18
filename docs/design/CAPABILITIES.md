@@ -183,7 +183,7 @@ As built: a leaning crag 380 m south of Cascade Isle's axis, top center (820, 47
 - **Only the plane is ground.** It's reported with its exact normal, inside its rounded rim. The flanks and rim are collision only, like the arches. Any smooth crest has a line where the surface turns flat, so that would have been a way on today.
 - **Isolation:** no other ground within 12 m at a similar height. The perch floats free, and the walk limit stays 40°.
 - **Measured:** no breed lands on it today (0 of 405 scripted approaches each). With the unlock, the harrier lands on 196 of 405, the skimmer 170, the galewing 197 and the ironback 204, and every landing stays standing. In the running game, 0 of 12 approaches land today and 8–9 of 12 land with the preview.
-- **Rider check (for G5):** dismounting on the perch sets the rider down on 51.5°, where they can't stand. They slide off the downhill rim into Windline freefall, and normal play never summons the wyvern automatically, so they must hold recall or fall to the cloud sea. G5 decides: block dismounting there, or keep it.
+- **Rider check (for G5):** dismounting on the perch sets the rider down on 51.5°, where they can't stand. They slide off the downhill rim into Windline freefall, and normal play never summons the wyvern automatically, so they must hold recall or fall to the cloud sea. Decided 2026-10-18 ([Q43](DECISION_LOG.md)): keep it. Dismounting on the perch is acceptable and is not blocked.
 
 ### Snap-roll site: the Archway Keyhole
 
@@ -197,7 +197,7 @@ As built: an islet off the Archway Reach, chamber center (−850, 330, −1280),
   - At normal roll, 0 of 37,260 approach settings thread it.
   - With the ×1.6 snap-roll, 180 of 53,820 do, all at 14–16.5 m/s, just above the harrier's 13.9 m/s stall.
   - The skimmer threads it without the unlock; the galewing and ironback can't even with it ([Q32](DECISION_LOG.md)).
-- **Known bypass ([Q35](DECISION_LOG.md), open):** folded wings thread it. Wingtips collide only while spread (`FlightModel.ts:1181`), so a tucked wyvern collides as its body alone. 1,082 of 14,040 tucked entries pass, across all breeds and speeds. No crack geometry can stop this: a folded wyvern is always more compact than a spread one, and the fall across this passage is a few metres. Closing it needs a decision about the flight model, or accepting the tuck as the other way through.
+- **Known bypass ([Q35](DECISION_LOG.md), accepted 2026-10-18):** folded wings thread it. Wingtips collide only while spread (`FlightModel.ts:1181`), so a tucked wyvern collides as its body alone. 1,082 of 14,040 tucked entries pass, across all breeds and speeds. No crack geometry can stop this: a folded wyvern is always more compact than a spread one, and the fall across this passage is a few metres. Robert accepted the tuck as the other way through, so the Keyhole is a skill site for everyone, and the snap-roll no longer gates the chamber's collectible. G5 decides what the unlock earns here.
 
 ## Decision record
 
@@ -215,4 +215,5 @@ Recommendation: option 2 for the steep landing and the snap-roll (both cheap lay
 Status of the items that were open before G5:
 - **G4:** merged ([rporter33/HAVENS-OF-THE-DRIFT#6](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/6)). Bond memory is persisted in `driftwing.bond.v1` ([Q31](DECISION_LOG.md)).
 - **Snap-roll breeds:** which breeds the Keyhole gates is open ([Q32](DECISION_LOG.md)).
-- **Snap-roll keyboard input:** the double-tap on keyboard is open ([Q33](DECISION_LOG.md)).
+- **Snap-roll keyboard input:** the double-tap is good on a gamepad and hard on a keyboard ([Q33](DECISION_LOG.md)), so the keyboard input is open ([Q41](DECISION_LOG.md)).
+- **Playtest direction (2026-10-18, [Q43](DECISION_LOG.md)):** a charged launch off the steep slope that improves with bonding, a more forgiving Keyhole chamber, and a possible wind stream for agility. None is built or specified here yet; G5 stays closed.

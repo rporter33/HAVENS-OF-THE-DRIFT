@@ -33,7 +33,7 @@ Not scheduled: dragon rig (waits on Meshy or Blender output), Craghorn (name ope
 ## Open items that block a gate
 
 - G3 and G8 need the target renders in `docs/art/targets/`. Until they arrive, the art pack in `docs/art/` is the fallback authority.
-- G5's parameter ranges are proposed in [CAPABILITIES.md](CAPABILITIES.md) (2026-10-17). Its steep-landing and snap-roll route tests use the G8a capability sites. Q35 (the Keyhole's tuck bypass) and Q33 (keyboard double-tap) are open; both are playtest questions.
+- G5's parameter ranges are proposed in [CAPABILITIES.md](CAPABILITIES.md) (2026-10-17). Its steep-landing and snap-roll route tests use the G8a capability sites. The G8a playtest (2026-10-18) accepted the tuck (Q35) and found the double-tap hard on a keyboard (Q33); the keyboard input (Q41) and what a rock hit costs (Q42) are open, and Q43 records the direction it gave G5.
 - G7 needs a decision on rival count per course (proposal: one).
 - Q12b (Vellum) only affects G9's line count.
 

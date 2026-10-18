@@ -121,16 +121,57 @@ One site can't gate every breed the same way. Measured time to 90° of bank: har
 
 *Recommendation: the harrier site, so the gap stays a light-breed line.*
 
-### Q33 · Snap-roll input on keyboard — open
+### Q33 · Snap-roll input on keyboard — answered 2026-10-18
+Robert, after the playtest: the double-tap is good on a gamepad and hard on a keyboard. So the double-tap stays as the gamepad input and is not the keyboard answer; the keyboard input is [Q41](#q41--snap-roll-input-on-the-keyboard--open). Robert didn't say whether "hard" meant missed double-taps or accidental ones from trimming the bank. The preview used a 0.3 s window, where the spec proposed 0.25 s. The question as it was posed:
+
 The proposed combo is a double-tap of roll within 0.25 s. Keyboard roll is all-or-nothing, so a double-tap reads cleanly there; the question is whether it collides with tapping to trim the bank in normal flight. Decide before G5's input work.
 
 ### Q34 · Open the capability-sites gate? — answered 2026-10-17
 Yes. Robert opened the sites gate (G8a): build the Cascade south perch and the Archway Keyhole ahead of G5, then playtest how they feel. Same day, as the target renders start arriving: the new terrain solids' geometry and visual effort must match the fidelity those renders set (smooth, continuous surfaces; the painterly identity kept). Until the renders are in `docs/art/targets/`, the [render brief](../art/targets/RENDER_BRIEF.md) and the art pack are the bar.
 
-### Q35 · The Keyhole's tuck bypass: change the flight model, or accept it? — open
+### Q35 · The Keyhole's tuck bypass: change the flight model, or accept it? — answered 2026-10-18
+Robert: accept it. After folding the mount's wings to drop through, Robert called it legitimate and "what I had in mind". There is no flight-model change and no new gate. What follows from it:
+- The Keyhole is a skill site for everyone, not a gate. The snap-roll is the line that keeps your height and speed; the tuck is the other.
+- Q30's "closed by physics until the unlock" no longer holds for this site. A player without the unlock can reach the chamber by tucking, so G5's collectible there isn't gated by the snap-roll. G5 has to decide what the unlock earns at this site.
+
+The question as it was posed:
+
 Built and measured in G8a: with wings folded, a wyvern collides as its body alone (wingtips only collide while spread, `FlightModel.ts:1181`), so it can drop through the Keyhole's cracks without any roll; 1,082 of 14,040 tucked entries pass, every breed. No crack geometry prevents it. Options:
 - **Accept it:** folding through is the honest physical answer, and the snap-roll becomes the way through that keeps your height and speed. The Keyhole is then a skill site, not a gate.
 - **Give folded wings a collision extent:** probes at the folded wings' real reach. This is a flight-model change that affects tucked flight near any rock, so it needs its own gate, and it only blocks the tuck if the cracks are narrower than the folded wyvern.
 - **Rethink the fourth capability:** "snap-roll through a gap" may not be a gate in this physics at all.
 
 *Recommendation: decide after the playtest, once the tuck has been tried by hand.*
+
+## Added 2026-10-18 (from the G8a playtest)
+
+Numbering continues at Q41; Q36 to Q40 were recorded on parallel branches. The playtest answers are in [the G8a QA doc](../qa/G8A_CAPABILITY_SITES.md#playtest-results-2026-10-18).
+
+### Q41 · Snap-roll input on the keyboard — open
+The playtest ([Q33](#q33--snap-roll-input-on-keyboard--answered-2026-10-18)) found the double-tap hard on a keyboard and good on a gamepad. It isn't known whether it was missed or fired by accident, which changes which option fits. Options:
+- **A dedicated key while banking:** the held roll key gives the direction, so a trim tap can never fire it. X and Z are unbound in flight today. Ctrl is a poor choice, because Ctrl+A and Ctrl+D are browser shortcuts (select all, bookmark).
+- **A longer keyboard window (about 0.45 s):** the cheapest change, but trim taps can still fire it.
+- **One burst key, shared with the launch in [Q43](#q43--g8a-playtest-direction-capability-sites--answered-2026-10-18):** a tap while banking is the snap-roll and a hold gathers energy. One key to learn, but it is a new control design and the least tested.
+
+Whichever is chosen, the gamepad keeps the double flick it works with. *Recommendation: the dedicated key, decided with G5's input work. No control mapping changes before then.*
+
+### Q42 · What a rock hit costs — open
+In the playtest, hitting a crack wall was "fair, but not consequential", and Robert wants more effort in what happens when a mount hits rock. The follow camera also clips into rock while the mount is falling (F4 in the QA doc).
+
+Today, from reading `FlightModel.ts` (not tested in this playtest): a hit bounces (restitution 0.18) and scrapes. Above 9 m/s of impact the controls are stunned for 0.6 s with a small tumble. Sound, scrape particles, a haptic pulse and a camera kick respond. Nothing is lost beyond speed and height: no stamina, no progress, no setback. Options:
+- **Stagger and recover:** a stumble animation and a longer loss of control for harder hits. No new meter.
+- **Spend stamina:** a hard hit drains some of the existing stamina, tying rock hits to the wingbeat economy.
+- **Fall and recall:** a hard enough hit throws the rider into freefall, as the perch dismount does, and recall (F) brings the mount back.
+
+The sound, animation and camera response can change without touching flight; any change to the collision response is a flight-physics change and needs its own gate and Robert's approval. *Recommendation: stagger and recover first, since it adds consequence without a new meter; revisit stamina after it's been felt.*
+
+### Q43 · G8a playtest direction: capability sites — answered 2026-10-18
+Robert, from the playtest. This is direction; none of it opens a gate, and none of it is built.
+- **Dismounting on the perch:** acceptable. It is not blocked: the rider slides off and recalls the mount with F.
+- **Steep landing:** with the preview it felt planted and, on its own, like a small tweak. Robert wants more to it: hold a button to gather energy, then launch off the slope. It improves with bonding. G5's spec would give the steep-landing capability a launch half, with parameters, clamps and a bond milestone like the other capabilities. The bond tie is the one detail he gave; the rest is open.
+- **Keyhole:** a more forgiving chamber for most spots. Read as the longer chamber the question offered; with Q35 accepted, a good pilot may then thread it without the unlock, which suits a skill site. A rework needs its own gate. Also floated, "maybe": a wind stream through part of the Keyhole that gives more agility inside it. Source today has weather wind and thermals; nothing that changes roll authority.
+- **Snap-roll look:** the roll animation should have noticeable detail and look good, with subtle effects around the wings. For G5.
+- **Readability:** the perch's top and rim need a clearer distinguisher, and a failed landing shouldn't read as a bug. Sites should read as places to try, with small variations between them.
+- **Island character:** each island should be more unique, with verticality, and always possible to traverse. Robert says work on this is under way elsewhere.
+
+Open for G5: how the launch and the wind stream fit the four capabilities. G5 stays closed.

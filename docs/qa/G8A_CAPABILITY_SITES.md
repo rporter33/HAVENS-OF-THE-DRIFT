@@ -1,6 +1,6 @@
 # G8a capability sites: playtest plan and evidence
 
-[QA index](README.md) · [Capability spec, sites](../design/CAPABILITIES.md#capability-sites-for-g8) · [Decision log](../design/DECISION_LOG.md) (Q30, Q32–Q35)
+[QA index](README.md) · [Capability spec, sites](../design/CAPABILITIES.md#capability-sites-for-g8) · [Decision log](../design/DECISION_LOG.md) (Q30, Q32–Q35, Q41–Q43)
 
 Two sites built for the G5 capabilities: the **Cascade south perch** (steep-slope landing) and the **Archway Keyhole** (snap-roll). The sites are real terrain in every build. G5's capabilities don't exist yet, so the "after" side can only be felt through a debug-only preview.
 
@@ -82,6 +82,54 @@ A short rumble marks the snap-roll on a pad.
 21. Does the follow camera behave in the cracks and the chamber, or does it clip into rock or lose the wyvern?
 22. Is anything about Archway Thread or Cascade Run different? It should be unchanged.
 
+## Playtest results (2026-10-18)
+
+Robert's answers to the 22 questions above, quoted where short. Both a gamepad and the keyboard were used. Not recorded: the tested commit (main was `affe784` when the answers came in), whether the build was local or hosted, the quality setting and any frame rate. This is one person's first session, and questions 8 and 22 were marked as needing more time.
+
+| # | Answer | Recorded as |
+|---|---|---|
+| 1 | Yes. More uniqueness on each island is important; work on it is going on. | Direction ([Q43](../design/DECISION_LOG.md)). |
+| 2 | Yes; small variations would be ideal. | Direction (Q43): keep the Keyhole's read, add small variations between sites. |
+| 3 | Decoration, and hard to distinguish. | Finding F1. |
+| 4 | Yes, a little. Unique islands with verticality would be ideal, but they must stay possible to traverse. | Direction (Q43). |
+| 5 | The perch's rim could use a better distinguisher. | Finding F1. |
+| 6 | Closer to a bug, or a spot not meant for the mount to land. | Findings F1 and F2. |
+| 7 | No. "I just slide off and the mount kind of freezes up." | Finding F2 (no explanation) and F3 (the freeze). |
+| 8 | Not explored deeply enough; "seemingly no". | Inconclusive. The scripted search found no landing in 405 approaches per breed. |
+| 9 | It does feel planted; a few more passes would take it to a gold standard. | Polish pass on the landing, no change of approach. |
+| 10 | Almost easy, but the player should be able to gather energy by holding a button and launch off; this improves with bonding. | New direction (Q43). |
+| 11 | Acceptable. | Decided: dismounting on the perch is not blocked (Q43). |
+| 12 | A small tweak. | The steep landing alone is a thin capability (Q43). |
+| 13 | Readable, but more effort is needed in what happens when mounts hit rocks. | [Q42](../design/DECISION_LOG.md), open. |
+| 14 | Fair, "but not consequential to hitting a rock wall". | Q42. Read as: the hit is fair, but it has no real consequence. |
+| 15 | Feels legitimate, and what Robert had in mind. | [Q35](../design/DECISION_LOG.md) answered: the tuck is accepted. |
+| 16 | Gamepad is good, keyboard is hard. The snap-roll animation should have noticeable detail and look cool. | [Q33](../design/DECISION_LOG.md) answered; [Q41](../design/DECISION_LOG.md) opened for the keyboard input; animation direction in Q43. |
+| 17 | Left blank. | Taken from Robert's earlier note: minor, subtle effects around the wings. Read together with 16 as subtle effects plus a clearly readable, well-made roll animation. |
+| 18 | A little hard, and clunky. A more forgiving chamber would be ideal for most spots. | Direction (Q43). |
+| 19 | A bit of both. A mechanic that gives more agility in a wind stream through part of it is wanted, "maybe". | An idea, not a decision (Q43). |
+| 20 | Didn't notice a hitch. | No hitch seen. No frame rate given. |
+| 21 | It clips into rock when the mount is falling. | Finding F4. |
+| 22 | No, but needs more time with them. | No difference seen so far; inconclusive. |
+
+### Findings
+
+None of these is fixed or investigated yet. They need a named gate before any game code changes.
+
+| ID | Finding | From | Status |
+|---|---|---|---|
+| F1 | The perch doesn't read as a place to land: its tilted top and rim are hard to tell from decoration. | 3, 5, 6 | Open. Needs a clearer distinguisher on the top plane and rim. |
+| F2 | A failed landing on the perch reads as a bug, and nothing says why. | 6, 7 | Open. |
+| F3 | After sliding off the perch, the mount "kind of freezes up". | 7 | Not reproduced. Which state it was in (flying, landing, falling) isn't known. |
+| F4 | The follow camera clips into rock while the mount is falling. | 21 | Not reproduced. The camera is outside G8a. |
+| F5 | The double-tap snap-roll is hard on a keyboard. | 16 | Tracked as Q41. |
+
+### Where the answers went
+
+- [Q33](../design/DECISION_LOG.md) and [Q35](../design/DECISION_LOG.md) are answered.
+- [Q41](../design/DECISION_LOG.md) (keyboard snap-roll input) and [Q42](../design/DECISION_LOG.md) (what a rock hit costs) are open.
+- [Q43](../design/DECISION_LOG.md) records the direction for the sites and the capabilities, and what it doesn't authorize.
+- [CAPABILITIES.md](../design/CAPABILITIES.md) (sites as built) and the handoff point at these answers.
+
 ## Evidence
 
 - **Captured:** 2026-10-18 in a cloud session, headless Chromium 141 with SwiftShader, dev build, 1280×720.
@@ -90,7 +138,7 @@ A short rumble marks the snap-roll on a pad.
 - **What the frames are:**
   - The Keyhole approach, entry and exit frames are **staged poses** (the harrier placed and banked), not a flown pass.
   - The perch before, after and dismount frames are **real scripted flights** (flare held) and a real dismount.
-- **Not done:** no human playtest yet; that's this document's purpose. The PNGs are not committed.
+- **Human playtest:** Robert, 2026-10-18, gamepad and keyboard; see [Playtest results](#playtest-results-2026-10-18). The commit, build, quality and frame rate were not recorded. The PNGs are not committed.
 
 | File | SHA-256 |
 |---|---|
