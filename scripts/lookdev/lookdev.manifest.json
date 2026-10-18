@@ -1,0 +1,137 @@
+{
+  "title": "Look development (G3c): matched views against the Astra targets",
+  "intro": "Each view is framed like one target render (35 to 50 mm lens via aim.fov) or is the real gameplay camera, at the afternoon key (tod 0.6) and the golden-hour key (tod 0.7). scripts/lookdev/metrics.mjs scores every shot against its target (pairs in metrics.mjs). Capture: node scripts/dragon-capture.mjs --manifest scripts/lookdev/lookdev.manifest.json --out shots/lookdev/<label> --serve",
+  "defaults": {
+    "base": "http://127.0.0.1:5173/",
+    "size": "1672x941",
+    "stage": "fresh=1&sky=native&blink=999&breed=harrier&rider=0",
+    "settle": 2.0,
+    "ui": "hide"
+  },
+  "vars": {
+    "tod": [
+      "0.6",
+      "0.7"
+    ]
+  },
+  "boots": {
+    "stable-0.6": {
+      "url": "?view=wyvern&play=1&manual=1&quality=high&weather=clear&pose=idle&tod=0.6",
+      "desc": "wyvern showcase at the Roost, High"
+    },
+    "stable-0.7": {
+      "url": "?view=wyvern&play=1&manual=1&quality=high&weather=clear&pose=idle&tod=0.7",
+      "desc": "wyvern showcase at the Roost, High"
+    },
+    "flight-0.6": {
+      "url": "?play=1&manual=1&quality=high&weather=clear&tod=0.6&at=60,345,190&yaw=150&mode=flying&speed=24",
+      "desc": "the real game, flying, High"
+    },
+    "flight-0.7": {
+      "url": "?play=1&manual=1&quality=high&weather=clear&tod=0.7&at=60,345,190&yaw=150&mode=flying&speed=24",
+      "desc": "the real game, flying, High"
+    },
+    "flightmed-0.7": {
+      "url": "?play=1&manual=1&quality=medium&weather=clear&tod=0.7&at=60,345,190&yaw=150&mode=flying&speed=24",
+      "desc": "the real game, flying, Medium"
+    },
+    "roost-0.6": {
+      "url": "?play=1&manual=1&quality=high&weather=clear&tod=0.6&at=0,360,0&yaw=200&mode=flying&speed=0&freeze=1",
+      "desc": "held above the Roost, High"
+    },
+    "roost-0.7": {
+      "url": "?play=1&manual=1&quality=high&weather=clear&tod=0.7&at=0,360,0&yaw=200&mode=flying&speed=0&freeze=1",
+      "desc": "held above the Roost, High"
+    }
+  },
+  "sections": [
+    {
+      "id": "m",
+      "title": "Matched to the targets",
+      "dir": "matched",
+      "items": [
+        {
+          "id": "m01-portrait-{tod}",
+          "each": {
+            "tod": "$tod"
+          },
+          "boot": "stable-{tod}",
+          "stage": "pose=idle&tod={tod}",
+          "aim": {
+            "target": "body",
+            "az": 50,
+            "el": 4,
+            "dist": 13,
+            "fov": 38
+          },
+          "desc": "target 01: standing, front three-quarter, 35 mm"
+        },
+        {
+          "id": "m02-flight-{tod}",
+          "each": {
+            "tod": "$tod"
+          },
+          "boot": "flight-{tod}",
+          "aim": {
+            "target": "body",
+            "az": 200,
+            "el": 24,
+            "dist": 26,
+            "fov": 38
+          },
+          "desc": "target 02: in flight from behind and above, 35 mm"
+        },
+        {
+          "id": "m10-approach-{tod}",
+          "each": {
+            "tod": "$tod"
+          },
+          "boot": "roost-{tod}",
+          "aim": {
+            "target": "body",
+            "az": 215,
+            "el": 30,
+            "dist": 300,
+            "fov": 45
+          },
+          "desc": "target 10: Windhaven from the air on approach, 45 mm"
+        }
+      ]
+    },
+    {
+      "id": "g",
+      "title": "Gameplay camera",
+      "dir": "gameplay",
+      "items": [
+        {
+          "id": "g-chase-{tod}",
+          "each": {
+            "tod": "$tod"
+          },
+          "boot": "flight-{tod}",
+          "desc": "the chase camera as played, High"
+        },
+        {
+          "id": "g-chase-medium-0.7",
+          "boot": "flightmed-0.7",
+          "desc": "the chase camera as played, Medium"
+        },
+        {
+          "id": "h-horizon-{tod}",
+          "each": {
+            "tod": "$tod"
+          },
+          "boot": "flight-{tod}",
+          "aim": {
+            "target": "body",
+            "az": 185,
+            "el": 3,
+            "dist": 14,
+            "fov": 50
+          },
+          "desc": "level view past the wyvern to the horizon: the boundary's cloud rampart"
+        }
+      ]
+    }
+  ]
+}
