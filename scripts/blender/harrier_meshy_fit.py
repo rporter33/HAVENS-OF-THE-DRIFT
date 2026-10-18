@@ -566,6 +566,7 @@ def run_all(do_clean=True):
     _show(bpy.data.objects[RAW])
     _show(grig)
     w = clean() if do_clean else bpy.data.objects[WORK]
+    _show(w)
     L = _landmarks(grig)
     w['fit_landmarks'] = json.dumps(L)
     fit_rig(w, L)
