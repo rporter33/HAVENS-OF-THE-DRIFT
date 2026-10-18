@@ -33,7 +33,7 @@ V = mathutils.Vector
 
 RAW, WORK, OUT, KEEP = 'Meshy_Harrier_Raw', 'Meshy_Harrier_Work', 'Harrier_Meshy_Body', 'Harrier_Keep'
 RIG, GBODY, COLL = 'Harrier_Rig', 'Harrier_Body', 'Harrier Pilot'
-TRIS = 15500
+TRIS = 10500   # body only; with the kept wings, tack and horns the whole Harrier stays under the 24,000 LOD0 ceiling
 
 # Landmarks on the Meshy body, in its object space (head toward -Y, up +Z, the creature's left +X),
 # read off orthographic side and front views of harrier-raw.glb (sha256 7243fe80...).
