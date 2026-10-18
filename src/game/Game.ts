@@ -158,7 +158,7 @@ export class Game implements GameActions {
       interactableNear: (p) => this.interactables.nearest(p) !== null,
     });
     this.cameraRig = new CameraRig(this.camera, this.world.terrain, () => this.settings, this.events);
-    this.wyvern = new Wyvern(this.save.data.wyvern, { terrain: this.world.terrain });
+    this.wyvern = new Wyvern(this.save.data.wyvern, { terrain: this.world.terrain, trial: this.debug.wyvernTrial });
     this.wyvern.setQuality(quality);
     this.rider = new Rider(this.save.data.rider, {
       trial: this.debug.riderTrial,

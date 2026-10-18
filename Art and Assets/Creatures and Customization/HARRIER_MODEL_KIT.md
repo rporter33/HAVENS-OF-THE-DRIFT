@@ -79,6 +79,9 @@ The plan tier matters for rights: Meshy's terms (as summarized in the Meshy guid
 
 ## What happens next (Claude, G3b)
 
+Done 2026-10-18 as a first trial: see `scripts/blender/harrier_meshy_fit.py` and `?wyvernTrial=meshy`. Robert's direction: alter the model to fit the rig, 75% Meshy shape. LODs and the self-collision proxies are still open.
+
+
 1. Blender: audit and remesh to 14,000 to 16,000 triangles, cut the body at the shoulders, scale and fit it to the game's 60-joint skeleton, skin weights, and bake the region, belly and back attributes the game shader reads. LODs at 6,000 and 1,500 triangles.
 2. Game: a dev-only `?wyvernTrial=blender` loader mirroring the rider trial, with the procedural wings attached and the self-collision proxies rebuilt from the new body.
 3. Captures beside targets 01 and 02, plus the gameplay camera. Normal builds keep the procedural Harrier until Robert accepts the captures.

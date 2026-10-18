@@ -72,21 +72,7 @@ export function buildWyvernGeometry(rig: RigDef, look: WyvernLook, lod: Lod = 0)
   buildTailTip(b, rig, look.tail, res);
   const saddle = buildSaddle(b, rig, look.saddle, res);
   const geometry = b.build();
-  // Ambient occlusion: the analytic fallback now, over the opaque body's vertices.
-  const ex = geometry.getAttribute('aExtra');
-  const nv = ex.count;
-  const aoBase = new Float32Array(nv);
-  for (let v = 0; v < nv; v++) aoBase[v] = ex.getX(v);
-  // The hide, the plates and the tack take the field (not the eyes, teeth, claws or horns).
-  const mask = new Uint8Array(nv);
-  const idx = geometry.index!.array;
-  const g0 = geometry.groups[0];
-  const mat = geometry.getAttribute('aMat');
-  const shaded = new Set<number>([REGION.skin, REGION.plate, REGION.leather, REGION.cloth, REGION.wood, REGION.wool]);
-  for (let i = g0.start; i < g0.start + g0.count; i++) if (shaded.has(Math.round(mat.getX(idx[i])))) mask[idx[i]] = 1;
-  const field = analyticAO(rig, geometry.getAttribute('position').array, geometry.getAttribute('normal').array, mask, saddle.seat, new Float32Array(nv));
-  const ao = { base: aoBase, mask, field };
-  writeAO(geometry, ao);
+  const ao = finishGeometry(rig, geometry, saddle.seat);
   return {
     geometry,
     ao,
@@ -99,6 +85,28 @@ export function buildWyvernGeometry(rig: RigDef, look: WyvernLook, lod: Lod = 0)
     membraneArea: wings.membraneArea,
     saddle,
   };
+}
+
+/**
+ * Ambient occlusion for a built geometry: the analytic fallback now, over the opaque body's
+ * vertices, multiplied into aExtra.x. Shared by the procedural build and the G3b trial body.
+ */
+export function finishGeometry(rig: RigDef, geometry: BufferGeometry, seat: Vector3): WyvernMeshInfo['ao'] {
+  const ex = geometry.getAttribute('aExtra');
+  const nv = ex.count;
+  const aoBase = new Float32Array(nv);
+  for (let v = 0; v < nv; v++) aoBase[v] = ex.getX(v);
+  // The hide, the plates and the tack take the field (not the eyes, teeth, claws or horns).
+  const mask = new Uint8Array(nv);
+  const idx = geometry.index!.array;
+  const g0 = geometry.groups[0];
+  const mat = geometry.getAttribute('aMat');
+  const shaded = new Set<number>([REGION.skin, REGION.plate, REGION.leather, REGION.cloth, REGION.wood, REGION.wool]);
+  for (let i = g0.start; i < g0.start + g0.count; i++) if (shaded.has(Math.round(mat.getX(idx[i])))) mask[idx[i]] = 1;
+  const field = analyticAO(rig, geometry.getAttribute('position').array, geometry.getAttribute('normal').array, mask, seat, new Float32Array(nv));
+  const ao = { base: aoBase, mask, field };
+  writeAO(geometry, ao);
+  return ao;
 }
 
 /** Write the AO field (times the builders' own values) into aExtra.x. */
