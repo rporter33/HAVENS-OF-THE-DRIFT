@@ -193,7 +193,7 @@ As built: an islet off the Archway Reach, chamber center (−850, 330, −1280),
 - **Why a reversal, not the letterbox and slot written above:**
   - In open sky a gap gates nothing unless what's behind it is enclosed, so the passage is the only way into the chamber, where G5's collectible will sit.
   - A low "letterbox" still lets a pilot pre-roll about 20°.
-  - Opposed cracks demand a reversal of at least 2 × (70° − the crack's bank tolerance) in and around the chamber. The ×1.6 burst shortens that reversal by the same 1.6× at any speed. The G8a chamber (9.5 m) left the base harrier no way through; after the playtest ([Q43](DECISION_LOG.md)) it is 14 m, so a well-aimed harrier at its normal roll can sometimes thread it, by starting the reversal early, and the snap-roll makes it reliable. 14 m is the longest chamber that still keeps the ironback out ([Q32](DECISION_LOG.md)).
+  - Opposed cracks demand a reversal of at least 2 × (70° − the crack's bank tolerance) in and around the chamber. The ×1.6 burst shortens that reversal by the same 1.6× at any speed (the debug preview marks it with a rumble and subtle wingtip ribbons). The G8a chamber (9.5 m) left the base harrier no way through; after the playtest ([Q43](DECISION_LOG.md)) it is 14 m, so a well-aimed harrier at its normal roll can sometimes thread it, by starting the reversal early, and the snap-roll makes it reliable. 14 m is the longest chamber that still keeps the ironback out ([Q32](DECISION_LOG.md)).
 - **Measured (harrier, real `FlightModel` and terrain, scripted pilot search):**
   - At normal roll, 195 of 37,260 approach settings thread it (0.5%; 0 at the 9.5 m chamber).
   - With the ×1.6 snap-roll, 1,996 of 53,820 do (3.7%; 180 at 9.5 m), at 14–20 m/s.

@@ -12,9 +12,10 @@ Keep this file short: one checkpoint, overwritten each session. Move the previou
   - **F2:** a flared approach into ground too steep for the breed shows "Too steep to land" with the slope and the breed's limit, at most every 8 s (`Player.ts`, presentation only; raised from the legs' check and from the body's contact).
   - **Keyhole chamber 9.5 m to 14 m** (`layout.ts`). A normal-roll harrier now threads 195 of 37,260 settings (0 before) and the snap-roll 1,996 of 53,820. The galewing and ironback still never do. 15 m would let the ironback through with the unlock, so 14 m is the longest that keeps Q32.
   - **F3 and F4 reproduced, not fixed:** F3 is a feel problem (a 0.6 s stun, then about 2.4 s under 8 m/s in the flare pose, and nothing says to release flare); F4 is the camera boom snapping in and ending inside the rock for 2 frames.
-- **Tests:** typecheck clean; vitest 128 files, 1,366 tests passed; smoke 15/15 (the build stamp was `400bfa5`, before the G8b commit). New or changed: `rockForm.test.ts` (the failed-landing explanation and its conditions, the Keyhole search, pinned early and late lines, the heavy breeds).
+- **Graphics pass and QA (two rounds):** the lip under the slab edge is darker and hung with moss, the Keyhole's cracks and chamber are shaded darker and cooler, and the snap-roll preview shows subtle wingtip ribbons (`Fx.trailBoost`, driven only by the preview). Both QA rounds are written up in the [QA doc](qa/G8A_CAPABILITY_SITES.md#g8b-site-polish-2026-10-18).
+- **Tests:** typecheck clean; vitest 128 files, 1,366 tests passed; smoke 15/15; the production build checked for the message and the snap-roll burst. New or changed: `rockForm.test.ts` (the failed-landing explanation and its conditions, the Keyhole search, pinned early and late lines, the heavy breeds) and `capPreview.test.ts` (the wingtip bloom).
 - **Known issues and decisions for Robert:**
-  - Re-test questions B1 to B7 are in the QA doc. Nothing from G8b has been played.
+  - Re-test questions B1 to B8 are in the QA doc. Nothing from G8b has been played.
   - F3 and F4 need a named gate to fix. F4 is the camera boom; F3 is feedback during a failed landing.
   - Q42's physics half (a longer loss of control) needs its own gate and Robert's approval; Q41's longer keyboard window is built with G5.
   - Open PRs #10 and #11 (art targets, Harrier colour) use Q36 to Q40, so counts and the end of the decision log will need a small recount whichever merges second.

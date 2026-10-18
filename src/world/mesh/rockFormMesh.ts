@@ -43,7 +43,7 @@ const SLAB_WARM = new Color('#c4aa7e');
 const SLAB_STREAK = new Color('#9d8a6c');
 const SCRUB = new Color('#5f7d3a');
 const SCRUB_DRY = new Color('#8f9150');
-const LIP = new Color('#86705b');
+const LIP = new Color('#443d2d');
 const GRASS = new Color('#77a345');
 const GRASS_ALT = new Color('#8e9a50');
 const GRASS_DARK = new Color('#3d7234');
@@ -232,9 +232,14 @@ export function* buildRockFormMesh(shape: RockFormShape, spec: RockLodSpec): Gen
     const y = b.y(v) + d.y;
     const z = b.z(v) + d.z;
     n3.set(normals[v * 3], normals[v * 3 + 1], normals[v * 3 + 2]);
-    // How enclosed (the cracks, the chamber, under the belly): the field a few metres out along
-    // the normal is short when other rock faces this point.
-    const open = smoothstep(0.5, 4, shape.sdf(x + n3.x * 4, y + n3.y * 4, z + n3.z * 4));
+    // How enclosed (the cracks, the chamber, under the belly): the field out along the normal is
+    // short when other rock faces this point.
+    // Probes out along the normal at three reaches: the near one catches corners and crack lips,
+    // the others the far wall of a slot (the cracks are 8 m wide) and of the chamber.
+    const o3 = smoothstep(0.4, 3, shape.sdf(x + n3.x * 3, y + n3.y * 3, z + n3.z * 3));
+    const o8 = smoothstep(0.5, 8, shape.sdf(x + n3.x * 8, y + n3.y * 8, z + n3.z * 8));
+    const o14 = smoothstep(0.5, 14, shape.sdf(x + n3.x * 14, y + n3.y * 14, z + n3.z * 14));
+    const open = 0.45 * o3 + 0.35 * o8 + 0.2 * o14;
     const n = patchN(x * 0.03, z * 0.03 + y * 0.01) * 0.5 + 0.5;
     const plane = d.kind === 'crag' ? smoothstep(0.93, 0.985, n3.dot(PLANE)) : 0;
     if (plane > 0.5) {
@@ -270,11 +275,16 @@ export function* buildRockFormMesh(shape: RockFormShape, spec: RockLodSpec): Gen
     const deepT = smoothstep(0, Math.max(10, waist - deepest), waist - y);
     tmp.copy(CLIFF).lerp(UNDER_NEAR, 0.15 + 0.25 * n + 0.3 * smoothstep(4, 16, below));
     tmp.lerp(UNDER_MID, smoothstep(0, 0.5, deepT)).lerp(UNDER_DEEP, smoothstep(0.4, 1, deepT) * (0.75 + 0.25 * n));
-    tmp.multiplyScalar(0.62 + 0.38 * open);
+    // Closed-in rock (the cracks, the chamber, under the belly) is darker and cooler, so the way
+    // through reads as a slot from a distance and has depth inside it.
+    tmp.lerp(UNDER_MID, (1 - open) * 0.3).multiplyScalar(0.5 + 0.5 * open);
+    let lip = 0;
     if (d.kind === 'crag' && slabN > 0) {
-      // The lip: the flank within a few metres of the slab's edge, shaded so the edge is outlined.
+      // The lip: the flank within a few metres of the slab's edge, stained dark and hung with moss
+      // like rock under a spill, so the edge is outlined from the front.
       const underSlab = slabH - (PLANE.x * x + PLANE.y * y + PLANE.z * z);
-      tmp.lerp(LIP, 0.5 * smoothstep(3.2, 0.4, underSlab) * smoothstep(-0.5, 0.3, underSlab));
+      lip = smoothstep(6, 0.8, underSlab) * smoothstep(-0.5, 0.3, underSlab);
+      tmp.lerp(LIP, 0.85 * lip);
     }
     // Moss where rock faces up, and creeping a little way down from the top.
     const moss = Math.max(smoothstep(0.45, 0.8, n3.y) * smoothstep(0.2, 0.6, mossN(x * 0.06, z * 0.06 + y * 0.03)), (1 - smoothstep(0.5, 6, below)) * 0.7);
@@ -282,7 +292,7 @@ export function* buildRockFormMesh(shape: RockFormShape, spec: RockLodSpec): Gen
     b.setColor(v, tmp.r, tmp.g, tmp.b);
     // Strata on the flanks; hanging moss and root streaks under overhangs.
     const under = smoothstep(-0.25, -0.75, n3.y);
-    b.setSurf(v, 1 - 0.7 * deepT, 0, 0, Math.max(under * 0.8, moss * 0.5));
+    b.setSurf(v, 1 - 0.7 * deepT, 0, 0, Math.max(under * 0.8, moss * 0.5, lip * 0.7));
   }
   return { data: b.finish(normals) };
 }

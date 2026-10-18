@@ -39,13 +39,13 @@ Then open one of the URLs below at `http://localhost:5173`. Each starts in fligh
 | Snap-roll (preview only) | double-tap A or D within 0.3 s | flick the stick the same way twice |
 | Recall your wyvern | hold F | as for interact |
 
-A short rumble marks the snap-roll on a pad.
+A short rumble marks the snap-roll on a pad, and pale ribbons bloom off both wingtips for the length of the burst.
 
 ### Before you trust the preview
 
 - **It saves nothing.** A toast says so when the session starts: progress, race records, ghosts and bond memory all stay as they were.
 - **Steep preview:** every breed's landing limit is 53°.
-- **Snap preview:** each double-tap gives 0.6 s of roll rate and roll authority ×1.6. These are G5's proposed values; G5 itself will tie them to bond milestones.
+- **Snap preview:** each double-tap gives 0.6 s of roll rate and roll authority ×1.6, with a subtle bloom of wingtip ribbons (a first look at the playtest note about wing effects; G5 refines it). These are G5's proposed values; G5 itself will tie them to bond milestones.
 
 ### What to look for: the QA questions
 
@@ -141,6 +141,8 @@ Opened by [Q45](../design/DECISION_LOG.md) after the playtest. Built on the same
 - **The perch's top reads as a landing slab (F1).** Its landing plane is now a bright ivory slab with faint streaks down the fall line, framed by a fringe of scrub along its rim and a shaded lip on the flank just under the edge, so the plane and its outline read against the warmer cliff. It is paint only: no geometry or collision changed. The palette follows the Archway Reach render's ivory limestone with scrub along its ledges.
 - **A failed landing says why (F2).** When a flared approach meets ground too steep for the breed, a toast reads "Too steep to land. A Harrier lands on slopes up to 49°. This one is 52°." It shows at most once every 8 s, never for ground steeper than about 70°, and not at all when the wyvern can land. It is presentation only: no flight or landing change. On a steep slope the body touches before the legs do (the legs' reach is measured straight down), so the message is also raised from the body's contact, not only from the legs' own check.
 - **The Keyhole's chamber is 14 m, from 9.5 m.** The target (Q43): a good unassisted pilot can sometimes thread it, and the snap-roll makes it reliable.
+- **The Keyhole's inside is darker and cooler.** Rock that other rock faces (the cracks, the chamber, under the belly) now takes its shade from three probe reaches instead of one, so the cracks read as slots from a distance and have depth inside. The perch's belly shares the paint, so it deepens a little too.
+- **The snap-roll preview shows it on the wings.** Pale wingtip ribbons bloom for the length of the burst (a small `trailBoost` hook on the wingtip effect, driven only by the preview). It answers the playtest note about subtle wing effects as a first look; G5's real effect is a separate design.
 
 **Why 14 m.** A scan of chamber length with the scripted harrier (a 3,024-setting grid, 14–20 m/s). The heavy breeds were checked at 14, 15 and 16 m, and at 9.5 m in G8a:
 
@@ -156,6 +158,12 @@ At 15 m the ironback starts to thread it with the unlock, which would break Q32 
 
 **Not changed:** `src/flight`, the courses (Archway Thread and Cascade Run tests unchanged and green), the tuck (Q35), the keyboard input (Q41), rock-hit consequences (Q42) and the F3 and F4 fixes. "Small variations between sites" has nothing to vary yet: one site of each kind.
 
+**Graphics pass and two QA rounds (the same day).**
+
+- *Graphics pass.* I reviewed the slab, its rim and the lip at 90, 40 and 25 m, from the side and from above, at noon, dusk and night and across the LOD switch; and the Keyhole from 120 m, 45 m, inside a crack and inside the chamber, at noon, dusk and night. Changes: the lip under the slab's edge was barely visible, so it is darker and wider and hangs moss streaks; the Keyhole's inside is darker and cooler (above); the snap-roll preview shows wingtip ribbons (above). Not changed: the Keyhole's turf top is still a plain green strip with no trees or scrub, and the slab's surface is smooth at 1.25 m vertex-colour resolution, so cracks or stones there would need geometry or a texture. Both are candidates for a later dressing pass.
+- *QA round 1 (the running game, dev build).* Eight perch approaches each way: today 0 of 8 land and all 8 get the message exactly once; with the steep preview 7 of 8 land with no message (the miss was not a slope failure, so it is rightly silent). No console errors. Low and ultra quality render both sites. No visible pop across the LOD switch (360 m against 420 m).
+- *QA round 2 (after the final changes).* Typecheck clean; 128 files and 1,366 tests pass; smoke 15/15. The production build gives 4 of 4 failed perch approaches one message each, and the snap-roll burst (roll rate 1.8, then 2.88, then 1.8, wingtip bloom 0.62 and then 0) with no errors. The Keyhole's crack stays legible at dusk and is dark but readable against the sky at night. The capture hashes below were regenerated from the final code.
+
 ### Re-test questions
 
 Same URLs and controls as above.
@@ -166,7 +174,8 @@ B3. Fly into the perch with no preview. Does the "Too steep to land" message app
 B4. After the message, is it clear what to do next (let go of flare and fly away)?
 B5. Keyhole with no preview: can you thread it sometimes now? Did you find that starting the roll early works? Does it feel fair?
 B6. Keyhole with the snap-roll: how many tries did it take now, and is it still clunky?
-B7. Does the Keyhole still read as a way through from a distance, with the longer chamber?
+B7. Does the Keyhole still read as a way through from a distance, with the longer chamber, and does the darker inside help or hurt seeing the walls?
+B8. Snap-roll preview: do you notice the wingtip ribbons during the burst? Too faint, about right, or too much?
 
 ## Evidence
 
@@ -192,17 +201,18 @@ B7. Does the Keyhole still read as a way through from a distance, with the longe
 | g8a-perch-after.png (landed, preview) | `eda80b5691fcf5cadd6b8551adf13cd2ca425776b9f62d4b86fa96de202b70a1` |
 | g8a-perch-dismount.png | `dce280fc2669c2f6124afa25dcde2f6b7486f21a413249f7e43bc2979daeb66e` |
 
-G8b captures (2026-10-18, headless Chromium with SwiftShader, dev build, 1280×720, `tod=0.42`). The three perch frames are real scripted flights on the follow camera, except the top view, which is a pinned camera over a real flight. The Keyhole frames are staged poses on the new geometry. No human has seen these yet.
+G8b captures (2026-10-18, headless Chromium with SwiftShader, dev build, 1280×720, `tod=0.42`), taken from the final code after the graphics pass. The two perch distance frames are real scripted flights on the follow camera; the top view is a pinned camera over a real flight; the toast and snap-roll frames are real flights. The Keyhole frames are staged poses on the new geometry. No human has seen these yet.
 
 | File | SHA-256 |
 |---|---|
-| g8b-perch-far-v2.png (the slab from about 70 m, follow camera) | `53a632d768890f6a9641a9d630c9de3ce84ac4196596a302452092af344b7e38` |
-| g8b-perch-near-v2.png (about 35 m) | `dc122919f830d761854c15350cfe2fa9a7b4dfdcdda09adde0276207da5c9874` |
-| g8b-perch-top-v2.png (from above, pinned camera) | `68143a422658f357eb4dba8cdd973f6be602004199dd4a1700962c4397612e3c` |
-| g8b-toast-b.png (the "Too steep to land" toast, real flight) | `f2d0cb9caf2373b134b9e1cf5caa0725414f59ed6c4095e1a97457ab3c1ba56a` |
-| g8b-keyhole-approach.png (staged) | `5c8e853a864f370b66c836a8e5490e21f12e8c847b31661f8376db1a2c5a72c5` |
-| g8b-keyhole-entry.png (staged) | `b347afa6bbd1fa5fc0bcee6c203c2efa6245d597c6caae92e7dc0fffa0fe5e50` |
-| g8b-keyhole-exit.png (staged) | `e03a194df73a7890a1cfd513a87493367b5217abdfad610f05701e05e68c482e` |
+| g8b-perch-far-v2.png (the slab from about 70 m, follow camera) | `ca5fe86da88a7b58cb4c6aa1a9871e0c2ef5e95e23e725c779eb068ae3c7229d` |
+| g8b-perch-near-v2.png (about 35 m) | `9af72fbcd9ea8568a5573398252eec9c6fd941f3cd1efc0896296d6fc3da4913` |
+| g8b-perch-top-v2.png (from above, pinned camera) | `817b6d687c7cfc5bdc914415ad5e6082d0c06d432dbcbfd486127b2166371163` |
+| g8b-toast-b.png (the "Too steep to land" toast, real flight) | `83bdaab419f273efd28bd45e33f63ac95467765adcb0d4568093ac5161fc94ec` |
+| g8b-keyhole-approach.png (staged) | `405714c861011d7f8344e0001bf8607b48dd9c84142420d7c83cd39873213270` |
+| g8b-keyhole-entry.png (staged) | `84b697f71f5ae30cb9d924a451fe6c03c4f08f67a1951d22b345cc1fdc107ab6` |
+| g8b-keyhole-exit.png (staged) | `cf82666a80974362323dff1f7122276d7163f9e0310870e5ee9ce6b3971d58f3` |
+| g8b-snapfx-burst2.png (snap-roll preview mid-burst, wingtip ribbons) | `75fb2c8f497d6df8cd362da12ae5d0d8ea633a3b0ef07d46eb85cfc7a46aa2cf` |
 
 ### Measured: perch
 

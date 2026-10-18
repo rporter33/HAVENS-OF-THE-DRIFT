@@ -4,7 +4,9 @@
 //
 //   steep  every breed's landing slope limit becomes cos 53° (today 0.65, 49.5°)
 //   snap   a double-tap of roll (the stick or key pushed past 0.6 twice the same way within
-//          0.3 s) gives a 0.6 s burst of roll rate and roll authority × 1.6; a short rumble marks it
+//          0.3 s) gives a 0.6 s burst of roll rate and roll authority × 1.6; a short rumble and a
+//          subtle bloom of wingtip vortex ribbons mark it (the playtest asked for something
+//          visible on the wings, minor and subtle; G5 refines it)
 //
 // A preview session never saves: progress, race records, ghosts and bond memory stay as they were,
 // so nothing earned with a capability that doesn't exist yet reaches the real save.
@@ -78,6 +80,8 @@ export class CapabilityPreview {
     } else if (mag <= PREVIEW.tapOff) this.armed = true;
 
     const model = player.model;
+    // The wingtips bloom in over the first 80 ms of a burst and fade over the last 250 ms.
+    this.game.fx.trailBoost = this.burst > 0 && player.mode === 'flying' ? Math.min(1, (PREVIEW.snapDuration - this.burst) / 0.08 + 0.2, this.burst / 0.25) : 0;
     if (this.burst > 0 && player.mode === 'flying') {
       // Rebuilt when the breed changes; the flight model reads both numbers every step.
       if (!this.boosted || this.boosted.id !== player.breed.id) {

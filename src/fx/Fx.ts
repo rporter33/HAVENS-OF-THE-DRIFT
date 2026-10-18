@@ -90,6 +90,8 @@ export class Fx implements FxSystem {
   private speedLines: AirStreaks;
   private wisps: AirStreaks;
   private trails: WingTrails;
+  /** 0..1 extra wingtip vortex for something that wants the tips to show (the snap-roll preview). */
+  trailBoost = 0;
   private thermals: ThermalMotes;
   private fireflies: Fireflies | null = null;
   private drifters: Drifters | null = null;
@@ -219,7 +221,7 @@ export class Fx implements FxSystem {
     const wp = player.wyvernPose;
     const beat = flying ? wp.flapStrength : 0;
     const burst = flapTrailBurst(wp.flapPhase, beat, player.breed.downFrac ?? 0.5, breedMassFactor(player.breed.mass), airspeed);
-    const vortex = Math.max(trailIntensity(airspeed, f.gLoad, flying) * 0.75, flapTrailFloor(beat, airspeed), burst * 0.85);
+    const vortex = Math.max(trailIntensity(airspeed, f.gLoad, flying) * 0.75, flapTrailFloor(beat, airspeed), burst * 0.85, flying ? this.trailBoost * 0.9 : 0);
     this.trails.update(step, this.tipL, this.tipR, vortex);
 
     // --- World: thermals, fireflies, leaves, launch gust --------------------------------------

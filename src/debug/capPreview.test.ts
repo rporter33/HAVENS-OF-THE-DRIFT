@@ -16,6 +16,7 @@ function fakeGame() {
     bond: { store: { save: vi.fn() } },
     events: { emit: vi.fn() },
     input: { rumble: vi.fn() },
+    fx: { trailBoost: 0 },
     player: { mode: 'flying', breed, model: { breed } },
   };
   return game;
@@ -49,8 +50,12 @@ describe('capability preview', () => {
     expect(g.input.rumble).toHaveBeenCalledOnce();
     expect(g.player.model.breed.maxRollRate).toBeCloseTo(BREEDS.harrier.maxRollRate * PREVIEW.snapMultiplier, 9);
     expect(g.player.model.breed.rollAuthority).toBeCloseTo(BREEDS.harrier.rollAuthority * PREVIEW.snapMultiplier, 9);
+    // The wingtips bloom while it lasts (subtle: never past 1), and are quiet afterwards.
+    expect(g.fx.trailBoost).toBeGreaterThan(0);
+    expect(g.fx.trailBoost).toBeLessThanOrEqual(1);
     feed(p, hold(1, Math.ceil(PREVIEW.snapDuration * 60) + 2));
     expect(g.player.model.breed).toBe(BREEDS.harrier);
+    expect(g.fx.trailBoost).toBe(0);
   });
 
   it('ignores a single tap, taps the other way, slow taps and the ground', () => {
@@ -63,6 +68,7 @@ describe('capability preview', () => {
     feed(p, [...hold(1, 4), ...hold(0, 4), ...hold(1, 4)]);
     expect(p.bursts).toBe(0);
     expect(g.player.model.breed).toBe(BREEDS.harrier);
+    expect(g.fx.trailBoost).toBe(0);
   });
 
   it('steep: every breed lands on up to 53°', () => {
