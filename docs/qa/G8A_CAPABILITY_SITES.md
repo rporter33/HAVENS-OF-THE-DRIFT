@@ -119,8 +119,8 @@ None of these is fixed or investigated yet. They need a named gate before any ga
 |---|---|---|---|
 | F1 | The perch doesn't read as a place to land: its tilted top and rim are hard to tell from decoration. | 3, 5, 6 | Open. Needs a clearer distinguisher on the top plane and rim. |
 | F2 | A failed landing on the perch reads as a bug, and nothing says why. | 6, 7 | Open. |
-| F3 | After sliding off the perch, the mount "kind of freezes up". | 7 | Not reproduced. Which state it was in (flying, landing, falling) isn't known. |
-| F4 | The follow camera clips into rock while the mount is falling. | 21 | Not reproduced. The camera is outside G8a. |
+| F3 | After sliding off the perch, the mount "kind of freezes up". | 7 | Reproduced as a feel problem, not a stuck state (scripted, flare held, 2026-10-18). The mode stays `flying` and the pose keeps animating. The controls are stunned for 0.6 s after the hit, then the mount spends about 2.4 s under 8 m/s in the flare pose, sliding down the face, and is back above stall speed 3.7 s after the hit. Releasing flare 0.7 s after the hit and flapping or diving recovers in 1.8 to 2.4 s, so input works. Nothing tells the player to let go of flare. Robert's own input isn't known. |
+| F4 | The follow camera clips into rock while the mount is falling. | 21 | Reproduced on the perch (scripted, flare held, sampled at 30 Hz). When the crag comes between the camera and the mount, the boom snaps in from about 29 m to 12.5 m in one frame. The camera ends 0.87 m inside the rock for 2 frames and within 0.6 m for 5, about 0.17 s. Variants that release flare also come within 0.6 m. Not tested against other rock; the cause isn't identified. The camera is outside G8a, and a fix needs its own gate. |
 | F5 | The double-tap snap-roll is hard on a keyboard. | 16 | Decided in Q41: a longer keyboard window, built with G5. |
 
 ### Where the answers went
