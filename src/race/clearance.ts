@@ -90,6 +90,7 @@ export function rockDistance(terrain: Terrain, p: Vector3): number {
     let d: number;
     if (s.type === 'island') d = islandRockDistance(s.shape, p);
     else if (s.type === 'spire') d = spireRockDistance(s.shape, p);
+    else if (s.type === 'rock') d = s.shape.distance(p);
     else {
       const bound = p.distanceTo(s.shape.center) - s.shape.boundRadius;
       d = bound > 60 ? bound : s.shape.distance(p);

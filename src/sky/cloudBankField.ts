@@ -7,6 +7,7 @@ import { Vector3 } from 'three';
 import { Rng } from '../core/rng';
 import { clamp01, smoothstep } from '../core/math';
 import type { WorldLayout } from '../world/layout';
+import { rockFormBounds } from '../world/rockForm';
 import { PUFF_VARIANTS } from './cloudTextures';
 
 export interface PuffDef {
@@ -113,7 +114,7 @@ export function buildBanks(layout: WorldLayout, count: number, puffsPer: number,
   return banks;
 }
 
-/** Horizontal gap between a bank and the nearest island it overlaps vertically (m). */
+/** Horizontal gap between a bank and the nearest island, spire or rock form it overlaps vertically (m). */
 export function islandClearance(layout: WorldLayout, x: number, y: number, z: number, width: number, height: number): number {
   // Indexed loops and sqrt (for-of iterators and Math.hypot allocate in V8); runs per bank per
   // refresh.
@@ -136,6 +137,15 @@ export function islandClearance(layout: WorldLayout, x: number, y: number, z: nu
     const dx = x - sp.x;
     const dz = z - sp.z;
     const gap = Math.sqrt(dx * dx + dz * dz) - sp.bellyRadius - width;
+    if (gap < best) best = gap;
+  }
+  const rocks = layout.rocks ?? [];
+  for (let i = 0; i < rocks.length; i++) {
+    const r = rockFormBounds(rocks[i]);
+    if (y > r.maxY + 30 || y + height < r.minY) continue;
+    const dx = x - rocks[i].x;
+    const dz = z - rocks[i].z;
+    const gap = Math.sqrt(dx * dx + dz * dz) - r.radius - width;
     if (gap < best) best = gap;
   }
   return best;

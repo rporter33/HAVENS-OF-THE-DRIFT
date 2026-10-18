@@ -1,4 +1,4 @@
-// The visible archipelago: island, spire and arch meshes with distance LODs, plus floating debris.
+// The visible archipelago: island, spire, arch and rock-form meshes with distance LODs, plus floating debris.
 // Vegetation, water and structures belong to the Dressing system (world/dressing/).
 //
 // Shadows: the level being drawn never casts. Each feature casts from a shadow-only stand-in
@@ -28,6 +28,8 @@ import { BoundsLOD, boundsDistance, type Bounds } from './mesh/BoundsLOD';
 import { ISLAND_LODS, ISLAND_SHADOW_LOD, buildIslandMesh, islandLodDistances } from './mesh/islandMesh';
 import { SPIRE_LODS, buildSpireMesh } from './mesh/spireMesh';
 import { ARCH_LODS, buildArchMesh } from './mesh/archMesh';
+import { ROCK_LODS, buildRockFormMesh } from './mesh/rockFormMesh';
+import type { RockFormShape } from './rockForm';
 import { toGeometry, type MeshData } from './mesh/MeshBuilder';
 import { terrainMaterial } from './mesh/terrainMaterial';
 import { Debris } from './mesh/debris';
@@ -121,6 +123,7 @@ export class World implements WorldSystem {
     for (const shape of this.terrain.islands) this.addIsland(shape);
     for (const shape of this.terrain.spires) this.addSpire(shape);
     for (const shape of this.terrain.arches) this.addArch(shape);
+    for (const shape of this.terrain.rocks) this.addRock(shape);
     // The coarsest level of everything, now: the whole archipelago is visible from the start.
     for (const f of this.features) this.install(f, f.distances.length - 1, runBuilder(f.build(f.distances.length - 1)));
 
@@ -184,6 +187,18 @@ export class World implements WorldSystem {
       ARCH_LODS.map((l) => l.distance),
       [c.x, c.y, c.z],
       (level) => buildArchMesh(shape, ARCH_LODS[level], this.terrain),
+    );
+  }
+
+  private addRock(shape: RockFormShape): void {
+    const c = shape.center;
+    const d = shape.def;
+    this.addFeature(
+      `rock-${d.id}`,
+      { kind: 'sphere', x: c.x, y: c.y, z: c.z, radius: shape.boundRadius },
+      ROCK_LODS.map((l) => l.distance),
+      [d.x, d.y, d.z],
+      (level) => buildRockFormMesh(shape, ROCK_LODS[level]),
     );
   }
 

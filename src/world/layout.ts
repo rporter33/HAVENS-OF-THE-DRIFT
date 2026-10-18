@@ -86,6 +86,55 @@ export interface ArchDef {
   seed: number;
 }
 
+/**
+ * A sculpted rock form: a signed-distance solid (world/rockForm.ts) for shapes the analytic
+ * islands, spires and arches can't make. Collision, landing and the mesh all evaluate the same
+ * function. Two kinds, both capability sites (docs/design/CAPABILITIES.md, decision Q30):
+ *
+ *   crag     a leaning rock pillar whose top is one plane sloping `slope` downhill along `yaw`
+ *            ((sin yaw, 0, cos yaw)); (x, y, z) is the top plane's center
+ *   keyhole  a floating rock mass with a hollow chamber, entered through two slanted cracks, one
+ *            in each wall, tilted opposite ways: threading it means a bank reversal inside the
+ *            chamber. (x, y, z) is the chamber's center; the passage runs along `yaw`
+ */
+interface RockFormBase {
+  id: number;
+  name: string;
+  x: number;
+  y: number;
+  z: number;
+  yaw: number;
+  seed: number;
+}
+
+export interface CragDef extends RockFormBase {
+  kind: 'crag';
+  /** Slope of the top plane from horizontal (radians). */
+  slope: number;
+  /** Pillar radius at the top, at its widest (the belly) and how far the pointed tip hangs below the top (m). */
+  topRadius: number;
+  bellyRadius: number;
+  depth: number;
+}
+
+export interface KeyholeDef extends RockFormBase {
+  kind: 'keyhole';
+  /** Outer mass: width (across the passage), height, and each wall's thickness (m). */
+  width: number;
+  height: number;
+  wall: number;
+  /** The chamber between the walls: its length along the passage (the bank-reversal window), width and height (m). */
+  chamber: number;
+  chamberWidth: number;
+  chamberHeight: number;
+  /** Each crack: its opening width, its length along the slant (m) and its tilt from horizontal (rad; the entry crack +, the exit crack −). */
+  crackWidth: number;
+  crackLength: number;
+  crackAngle: number;
+}
+
+export type RockFormDef = CragDef | KeyholeDef;
+
 /** A column of rising warm air. Visible as drifting motes; strength is the core updraft (m/s). */
 export interface ThermalDef {
   id: number;
@@ -110,6 +159,8 @@ export interface WorldLayout {
   spires: SpireDef[];
   arches: ArchDef[];
   thermals: ThermalDef[];
+  /** Sculpted rock forms (the capability sites). Optional: editor region layouts have none. */
+  rocks?: RockFormDef[];
   landmarks: LandmarkDef[];
   /**
    * Where a new game starts: on foot in front of the stable. Only x/z are authored; y is
@@ -354,6 +405,30 @@ function buildLayout(): WorldLayout {
     { id: 7, x: 150, z: 760, radius: 110, strength: 11, baseY: 0, topY: 900 },
   ];
 
+  // --- Capability sites (decision Q30; requirements in docs/design/CAPABILITIES.md) ----------
+  // Placed after the scatter so the seeded islands are unchanged. Neither is a landmark, and
+  // neither carries required content.
+  const rocks: RockFormDef[] = [
+    {
+      // A leaning pillar 380 m south of Cascade Isle's axis whose whole top falls away south at
+      // 51.5°: steeper than any wyvern lands on today (49.5°), within the steep-landing unlock
+      // (53°) and short of the Craghorn's 56°. Nothing flatter within reach.
+      id: 0, kind: 'crag', name: 'Cascade south perch',
+      x: 820, y: 478, z: -900, yaw: Math.PI, seed: 8101,
+      slope: 51.5 * D, topRadius: 9, bellyRadius: 12.5, depth: 95,
+    },
+    {
+      // A floating rock south of the Archway Reach, pierced along the chain's line: an entry
+      // crack tilted 70° one way, a chamber, an exit crack tilted 70° the other. Threading it
+      // is a bank reversal inside the chamber, too short for a harrier's normal roll.
+      id: 1, kind: 'keyhole', name: 'Archway Keyhole',
+      x: -850, y: 330, z: -1280, yaw: Math.atan2(-800, -320), seed: 8102,
+      width: 56, height: 60, wall: 8,
+      chamber: 9.5, chamberWidth: 28, chamberHeight: 40,
+      crackWidth: 8, crackLength: 36, crackAngle: 70 * D,
+    },
+  ];
+
   const landmarks: LandmarkDef[] = [
     { id: 'roost', name: 'Windward Roost', description: 'The rookery. Stables, banners and the start of every journey.', position: [0, 300, 0] },
     { id: 'gullrest', name: "Gull's Rest", description: 'A quiet meadow a short glide from the Roost.', position: [560, 360, 420] },
@@ -374,6 +449,7 @@ function buildLayout(): WorldLayout {
     spires,
     arches,
     thermals,
+    rocks,
     landmarks,
     // The rider starts a few strides from the waiting wyvern, north of the plaza's middle: the
     // title camera frames them as a two-shot from the south (rider left, wyvern right, both

@@ -111,7 +111,9 @@ The site requirements are in the spec. Neither G5 nor G8 is opened by this answe
 ### Q31 · Bond memory: persisted or session-only? — answered 2026-10-17
 Persisted, in its own `driftwing.bond.v1` localStorage document beside the save; `driftwing.save.v1` is unchanged. This is recorded from Robert merging [rporter33/HAVENS-OF-THE-DRIFT#6](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/6) as built, not from an explicit answer: revise here if session-only, or folding it into a later save version, was meant.
 
-### Q32 · Snap-roll site: which breeds thread it? — open
+### Q32 · Snap-roll site: which breeds thread it? — answered 2026-10-17
+Robert: the harrier site. The Keyhole is sized so that the harrier (and the skimmer) can't thread it before the snap-roll and can after; the galewing and ironback stay out. The question as it was posed:
+
 One site can't gate every breed the same way. Measured time to 90° of bank: harrier 1.08 → 0.74 s, skimmer 0.81 → 0.58, galewing 1.93 → 1.32, ironback 1.61 → 1.08 (× 1.6 burst). A site tuned for the harrier gates the harrier and skimmer, and stays closed to the galewing and ironback even after the unlock, much as the Craghorn owns the rock. Options:
 - **Harrier site:** accept that the galewing and ironback can't thread it.
 - **Two spacings:** a second, longer site for the heavy breeds.
@@ -121,3 +123,6 @@ One site can't gate every breed the same way. Measured time to 90° of bank: har
 
 ### Q33 · Snap-roll input on keyboard — open
 The proposed combo is a double-tap of roll within 0.25 s. Keyboard roll is all-or-nothing, so a double-tap reads cleanly there; the question is whether it collides with tapping to trim the bank in normal flight. Decide before G5's input work.
+
+### Q34 · Open the capability-sites gate? — answered 2026-10-17
+Yes. Robert opened the sites gate (G8a): build the Cascade south perch and the Archway Keyhole ahead of G5, then playtest how they feel. Same day, as the target renders start arriving: the new terrain solids' geometry and visual effort must match the fidelity those renders set (smooth, continuous surfaces; the painterly identity kept). Until the renders are in `docs/art/targets/`, the [render brief](../art/targets/RENDER_BRIEF.md) and the art pack are the bar.

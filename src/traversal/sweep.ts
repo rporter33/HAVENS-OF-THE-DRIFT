@@ -48,7 +48,7 @@ export class TraversalWorld implements SweepWorld {
     const rock = this.rockAnchors.get(id);
     if (rock) {
       const {solid,definition} = rock;
-      const list: readonly object[] = solid.type === 'island' ? this.terrain.islands : solid.type === 'spire' ? this.terrain.spires : this.terrain.arches;
+      const list: readonly object[] = solid.type === 'island' ? this.terrain.islands : solid.type === 'spire' ? this.terrain.spires : solid.type === 'rock' ? this.terrain.rocks : this.terrain.arches;
       return list.includes(solid.shape) && definition === JSON.stringify(solid.shape.def);
     }
     const shape = this.anchors.resolve(id);
@@ -99,8 +99,8 @@ export class TraversalWorld implements SweepWorld {
       const shape=solid.shape;
       const center = solid.type==='arch' ? solid.shape.center : {x:shape.def.x,z:shape.def.z};
       const reach = (solid.type==='arch'?solid.shape.boundRadius:solid.shape.maxRadius)+rockRadius;
-      let bottom = (solid.type==='island'?solid.shape.minY:solid.type==='spire'?solid.shape.def.tipY:solid.shape.center.y-solid.shape.boundRadius)-rockRadius;
-      let top = (solid.type==='island'?solid.shape.maxY:solid.type==='spire'?solid.shape.def.topY:solid.shape.center.y+solid.shape.boundRadius)+rockRadius;
+      let bottom = (solid.type==='island'||solid.type==='rock'?solid.shape.minY:solid.type==='spire'?solid.shape.def.tipY:solid.shape.center.y-solid.shape.boundRadius)-rockRadius;
+      let top = (solid.type==='island'||solid.type==='rock'?solid.shape.maxY:solid.type==='spire'?solid.shape.def.topY:solid.shape.center.y+solid.shape.boundRadius)+rockRadius;
       if (columns && solid.type === 'island') {
         const interval = this.terrain.rockColumnBounds(solid.shape, from.x, from.z, rockRadius, columns);
         if (!interval) continue;
