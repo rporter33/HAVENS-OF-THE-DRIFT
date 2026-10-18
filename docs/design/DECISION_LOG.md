@@ -44,7 +44,9 @@ No. It stays open past release one.
 ### Q12 · Quintus and Vellum in or out of release one? — answered 2026-10-17
 Quintus in. Vellum undecided (still open as Q12b).
 
-### Q12b · Vellum in release one? — open
+### Q12b · Vellum in release one? — answered 2026-10-18
+Robert: no. Vellum is not in release one; Quintus is (Q12).
+
 ### Q13 · Five clans and ten elders: game canon or comic-only for now? — answered 2026-10-17
 Game canon, presented in the comic first. Comic rendering and much of its art will be produced with ChatGPT image generation.
 
@@ -73,7 +75,9 @@ Goal is the best-looking wyvern achievable. Meshy is available and acceptable if
 ### Q21 · The Craghorn's name; free from day one or earned? — answered 2026-10-17
 Earned. Name still open (Q21b).
 
-### Q21b · The Craghorn's in-world name — open
+### Q21b · The Craghorn's in-world name — answered 2026-10-18
+Robert: "craichorn", as typed. Recorded as **Craichorn**, with the spelling still to be confirmed (the working name in the docs and art is Craghorn). No renames in code or docs until it is.
+
 ### Q22 · Windhaven and the Codex: one ship or two? — answered 2026-10-17
 Resolved by reassignment: Windhaven becomes the starting zone (it takes over the place currently called Windward Roost); the Codex is the ship. The current Windhaven airship art study becomes Codex reference.
 ### Q23 · Air Nomads: the player culture, one clan, or a starting outfit family? — answered 2026-10-17
@@ -122,7 +126,7 @@ One site can't gate every breed the same way. Measured time to 90° of bank: har
 *Recommendation: the harrier site, so the gap stays a light-breed line.*
 
 ### Q33 · Snap-roll input on keyboard — answered 2026-10-18
-Robert, after the playtest: the double-tap is good on a gamepad and hard on a keyboard. So the double-tap stays as the gamepad input and is not the keyboard answer; the keyboard input is [Q41](#q41--snap-roll-input-on-the-keyboard--open). Robert didn't say whether "hard" meant missed double-taps or accidental ones from trimming the bank. The preview used a 0.3 s window, where the spec proposed 0.25 s. The question as it was posed:
+Robert, after the playtest: the double-tap is good on a gamepad and hard on a keyboard. So the double-tap stays as the gamepad input and is not the keyboard answer; the keyboard input is [Q41](#q41--snap-roll-input-on-the-keyboard--answered-2026-10-18). Robert didn't say whether "hard" meant missed double-taps or accidental ones from trimming the bank. The preview used a 0.3 s window, where the spec proposed 0.25 s. The question as it was posed:
 
 The proposed combo is a double-tap of roll within 0.25 s. Keyboard roll is all-or-nothing, so a double-tap reads cleanly there; the question is whether it collides with tapping to trim the bank in normal flight. Decide before G5's input work.
 
@@ -147,7 +151,11 @@ Built and measured in G8a: with wings folded, a wyvern collides as its body alon
 
 Numbering continues at Q41; Q36 to Q40 were recorded on parallel branches. The playtest answers are in [the G8a QA doc](../qa/G8A_CAPABILITY_SITES.md#playtest-results-2026-10-18).
 
-### Q41 · Snap-roll input on the keyboard — open
+### Q41 · Snap-roll input on the keyboard — answered 2026-10-18
+Robert: option B, a longer keyboard double-tap window (about 0.45 s). This is read from the reply "1b"; the sub-question, whether the double-tap was missed or fired by accident, wasn't answered. The weakness of B stands: trim taps can still fire it. It isn't the recommended option, so revisit if playtesting shows accidental bursts. It is built with G5's input work; the debug preview still uses a 0.3 s window for every device.
+
+The question as it was posed:
+
 The playtest ([Q33](#q33--snap-roll-input-on-keyboard--answered-2026-10-18)) found the double-tap hard on a keyboard and good on a gamepad. It isn't known whether it was missed or fired by accident, which changes which option fits. Options:
 - **A dedicated key while banking:** the held roll key gives the direction, so a trim tap can never fire it. X and Z are unbound in flight today. Ctrl is a poor choice, because Ctrl+A and Ctrl+D are browser shortcuts (select all, bookmark).
 - **A longer keyboard window (about 0.45 s):** the cheapest change, but trim taps can still fire it.
@@ -155,7 +163,11 @@ The playtest ([Q33](#q33--snap-roll-input-on-keyboard--answered-2026-10-18)) fou
 
 Whichever is chosen, the gamepad keeps the double flick it works with. *Recommendation: the dedicated key, decided with G5's input work. No control mapping changes before then.*
 
-### Q42 · What a rock hit costs — open
+### Q42 · What a rock hit costs — answered 2026-10-18
+Robert: option A, stagger and recover: a stumble animation and a longer loss of control on harder hits, with no new meter. The stumble animation, sound and camera response don't touch flight. Lengthening the loss of control changes the flight model's stun, so it needs its own gate and Robert's approval; the answer to 2b (presentation first, physics later) wasn't given, so this answer opens no gate.
+
+The question as it was posed:
+
 In the playtest, hitting a crack wall was "fair, but not consequential", and Robert wants more effort in what happens when a mount hits rock. The follow camera also clips into rock while the mount is falling (F4 in the QA doc).
 
 Today, from reading `FlightModel.ts` (not tested in this playtest): a hit bounces (restitution 0.18) and scrapes. Above 9 m/s of impact the controls are stunned for 0.6 s with a small tumble. Sound, scrape particles, a haptic pulse and a camera kick respond. Nothing is lost beyond speed and height: no stamina, no progress, no setback. Options:
@@ -175,3 +187,17 @@ Robert, from the playtest. This is direction; none of it opens a gate, and none 
 - **Island character:** each island should be more unique, with verticality, and always possible to traverse. Robert says work on this is under way elsewhere.
 
 Open for G5: how the launch and the wind stream fit the four capabilities. G5 stays closed.
+
+Follow-up, same day: the Keyhole's target is that a good unassisted pilot can sometimes thread it, and the snap-roll makes it reliable (option B of the chamber question). Whether the same loosening is the rule for every future site (3b) wasn't answered.
+
+### Q44 · G7: how many rivals per course? — answered 2026-10-18
+One rival per course for the current courses. Later, a larger course for five rivals, one per dragonflight color ("colors of all"). That course isn't scoped or authorized. G7's gate row already reads one rival per course.
+
+### Q45 · Open the site-polish gate (G8b)? — answered 2026-10-18
+Yes. Scope, as proposed after the playtest:
+- the perch's top and rim read as a place to land (F1);
+- a failed landing on the perch says why (F2);
+- the Keyhole's chamber is longer, per Q43's follow-up;
+- small variations between sites: nothing to vary yet, since there is one site of each kind, so none are invented.
+
+Same answer: reproduce F3 (the mount freezing after it slides off the perch) and F4 (the camera clipping into rock while falling). Reproducing is read-only; a fix needs its own gate. Not in scope: `src/flight`, the keyboard input (Q41), Q42's physics, G5.

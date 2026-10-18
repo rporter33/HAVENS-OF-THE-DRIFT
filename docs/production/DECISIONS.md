@@ -1,6 +1,6 @@
 # Owner decisions and unresolved choices
 
-Recorded 2026-10-14, updated 2026-10-18. The question-by-question record is [the design decision log](../design/DECISION_LOG.md) (36 answered, 4 open: Vellum in release one, the Craghorn's name, the snap-roll's keyboard input, what a rock hit costs). The owner's current explicit instructions take precedence; this record does not authorize unrelated implementation. [Current status](STATUS.md) distinguishes selected direction from source/runtime evidence.
+Recorded 2026-10-14, updated 2026-10-18. The question-by-question record is [the design decision log](../design/DECISION_LOG.md) (42 answered, none open). The owner's current explicit instructions take precedence; this record does not authorize unrelated implementation. [Current status](STATUS.md) distinguishes selected direction from source/runtime evidence.
 
 | Decision | State | Consequence |
 |---|---|---|
@@ -17,8 +17,8 @@ Recorded 2026-10-14, updated 2026-10-18. The question-by-question record is [the
 | Platform: repository is the single source of truth | Selected 2026-10-17 | Mr. Mak workspace retired; Claude app plus GitHub plus the hand-built hub at `public/hub/` (deployed at `/hub/`). Evidence binaries live in `rporter33/havens-archive` (mirrored on branch `archive/evidence-2026-10-17`). |
 | Visual target and order | Selected 2026-10-17 | Codex's recent Harrier / Windward Roost / Windhaven renders (smooth 3D, vibrant colors) are the reference once supplied to `docs/art/targets/`. Characters first, then terrain. Title screen reads Havens of the Drift; runtime ids stay `driftwing`. |
 | Progression | Selected 2026-10-17 | Four capability unlocks (thermal climb, steep-slope landing, snap-roll, Windline from the saddle) earned through bond; research buys ship and world reach; stamina stays. First bond expression: Roost greeting plus anticipatory lean. |
-| Racing | Selected 2026-10-17 | Per-breed records; Reverse plus one Challenge variant on two courses; AI rivals in release one, collidable. |
-| Story and scope | Selected 2026-10-17 | Secondary combat only. Ventari mystery stays open. Quintus in release one (Vellum open). Five clans are canon, introduced through the comic first. Solo loop proven before a networking feasibility test. Aerial ball sport still committed. |
+| Racing | Selected 2026-10-17 | Per-breed records; Reverse plus one Challenge variant on two courses; AI rivals in release one, collidable, one per course (Q44). |
+| Story and scope | Selected 2026-10-17 | Secondary combat only. Ventari mystery stays open. Quintus in release one, Vellum not (Q12b). Five clans are canon, introduced through the comic first. Solo loop proven before a networking feasibility test. Aerial ball sport still committed. |
 | World naming | Selected 2026-10-17 | Windhaven is the starting zone (replaces the name Windward Roost); the Codex is the ship. Air Nomads are the player culture, white dragonflight. Craghorn is earned; name open. |
 | Creature pipeline | Selected 2026-10-17 | Best-looking wyvern wins; Meshy acceptable; Blender source must stay editable by Claude for rig, saddle, collision and animation events. |
 | Archive policy follow-through | Selected 2026-10-17 | 19 orphan review scripts and the Blender masters move to the archive; the 18 MB GLB fixture stays until an accepted export replaces it; no Git history rewrite. |

@@ -1,6 +1,6 @@
 # G8a capability sites: playtest plan and evidence
 
-[QA index](README.md) · [Capability spec, sites](../design/CAPABILITIES.md#capability-sites-for-g8) · [Decision log](../design/DECISION_LOG.md) (Q30, Q32–Q35, Q41–Q43)
+[QA index](README.md) · [Capability spec, sites](../design/CAPABILITIES.md#capability-sites-for-g8) · [Decision log](../design/DECISION_LOG.md) (Q30, Q32–Q35, Q41–Q45)
 
 Two sites built for the G5 capabilities: the **Cascade south perch** (steep-slope landing) and the **Archway Keyhole** (snap-roll). The sites are real terrain in every build. G5's capabilities don't exist yet, so the "after" side can only be felt through a debug-only preview.
 
@@ -100,10 +100,10 @@ Robert's answers to the 22 questions above, quoted where short. Both a gamepad a
 | 10 | Almost easy, but the player should be able to gather energy by holding a button and launch off; this improves with bonding. | New direction (Q43). |
 | 11 | Acceptable. | Decided: dismounting on the perch is not blocked (Q43). |
 | 12 | A small tweak. | The steep landing alone is a thin capability (Q43). |
-| 13 | Readable, but more effort is needed in what happens when mounts hit rocks. | [Q42](../design/DECISION_LOG.md), open. |
-| 14 | Fair, "but not consequential to hitting a rock wall". | Q42. Read as: the hit is fair, but it has no real consequence. |
+| 13 | Readable, but more effort is needed in what happens when mounts hit rocks. | [Q42](../design/DECISION_LOG.md) answered: stagger and recover. |
+| 14 | Fair, "but not consequential to hitting a rock wall". | Q42. Read as: the hit is fair, but it has no real consequence (confirmed). |
 | 15 | Feels legitimate, and what Robert had in mind. | [Q35](../design/DECISION_LOG.md) answered: the tuck is accepted. |
-| 16 | Gamepad is good, keyboard is hard. The snap-roll animation should have noticeable detail and look cool. | [Q33](../design/DECISION_LOG.md) answered; [Q41](../design/DECISION_LOG.md) opened for the keyboard input; animation direction in Q43. |
+| 16 | Gamepad is good, keyboard is hard. The snap-roll animation should have noticeable detail and look cool. | [Q33](../design/DECISION_LOG.md) answered; [Q41](../design/DECISION_LOG.md) answered (a longer keyboard window); animation direction in Q43. |
 | 17 | Left blank. | Taken from Robert's earlier note: minor, subtle effects around the wings. Read together with 16 as subtle effects plus a clearly readable, well-made roll animation. |
 | 18 | A little hard, and clunky. A more forgiving chamber would be ideal for most spots. | Direction (Q43). |
 | 19 | A bit of both. A mechanic that gives more agility in a wind stream through part of it is wanted, "maybe". | An idea, not a decision (Q43). |
@@ -121,12 +121,13 @@ None of these is fixed or investigated yet. They need a named gate before any ga
 | F2 | A failed landing on the perch reads as a bug, and nothing says why. | 6, 7 | Open. |
 | F3 | After sliding off the perch, the mount "kind of freezes up". | 7 | Not reproduced. Which state it was in (flying, landing, falling) isn't known. |
 | F4 | The follow camera clips into rock while the mount is falling. | 21 | Not reproduced. The camera is outside G8a. |
-| F5 | The double-tap snap-roll is hard on a keyboard. | 16 | Tracked as Q41. |
+| F5 | The double-tap snap-roll is hard on a keyboard. | 16 | Decided in Q41: a longer keyboard window, built with G5. |
 
 ### Where the answers went
 
 - [Q33](../design/DECISION_LOG.md) and [Q35](../design/DECISION_LOG.md) are answered.
-- [Q41](../design/DECISION_LOG.md) (keyboard snap-roll input) and [Q42](../design/DECISION_LOG.md) (what a rock hit costs) are open.
+- [Q41](../design/DECISION_LOG.md) (keyboard snap-roll input) and [Q42](../design/DECISION_LOG.md) (what a rock hit costs) are answered.
+- [Q45](../design/DECISION_LOG.md) opens the site-polish gate (G8b) and the read-only reproduction of F3 and F4.
 - [Q43](../design/DECISION_LOG.md) records the direction for the sites and the capabilities, and what it doesn't authorize.
 - [CAPABILITIES.md](../design/CAPABILITIES.md) (sites as built) and the handoff point at these answers.
 

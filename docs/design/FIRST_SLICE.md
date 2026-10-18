@@ -24,6 +24,7 @@ Written 2026-10-17 from the [decision log](DECISION_LOG.md) (29 answered, 2 open
 | G7 | AI rivals | Autopilot exists for tests | One rival per course driven by the autopilot with a personality offset; collision between rider bodies using the shared geometry contract | Rival finishes within medal window; collision test; 120 Hz determinism preserved with rivals seeded | L |
 | G8 | Terrain and dressing upgrade | Procedural islands, painterly dressing; Region Workshop; courtyard asset kit on a Driftwing branch (#9) | Windhaven quadrant first: materials, dressing density, Aegean kit from #9 if accepted. The two capability sites moved to G8a | Gameplay-camera captures vs target renders; editor-verify green; draw-call budget unchanged at Medium | L |
 | G8a | Capability sites (opened 2026-10-17, Q34; lands before G5) | The steep-landing and snap-roll routes have nothing to gate (CAPABILITIES.md) | Cascade south perch and Archway Keyhole as sculpted rock forms (`RockFormShape`), at the render brief's fidelity; a debug-only `?capPreview` for playtesting | Real-physics before/after tests per site; race lines and other rock clear; captures; playtest ([plan](../qa/G8A_CAPABILITY_SITES.md)) | M |
+| G8b | Site polish (opened 2026-10-18, Q45) | The perch's top and rim don't read as landable, a failed landing gives no reason, and the Keyhole is too tight (G8a playtest) | A clearer perch top and rim, a "too steep" explanation on a failed landing, and a longer Keyhole chamber so a good unassisted pilot can sometimes thread it and the snap-roll makes it reliable; no `src/flight` change | Updated real-physics searches and tests; the other courses unchanged; captures | S |
 | G9 | Quintus | Speaker id only | Quintus present at Windhaven with 3 to 5 lines tied to M1 First Lead; no dialogue system beyond the existing tips/banner UI | Lines appear at the right triggers; no save schema change | S |
 | G10 | Secondary combat prototype | Nothing | One optional pursuer encounter off the race path; no damage model, evasion only | Prototype behind a debug flag until reviewed | M |
 | G11 | Networking feasibility | Nothing | Two clients see each other's position at 10 Hz on a test server; no gameplay | Latency and determinism report; no runtime dependency added to the game build | M |
@@ -33,9 +34,9 @@ Not scheduled: dragon rig (waits on Meshy or Blender output), Craghorn (name ope
 ## Open items that block a gate
 
 - G3 and G8 need the target renders in `docs/art/targets/`. Until they arrive, the art pack in `docs/art/` is the fallback authority.
-- G5's parameter ranges are proposed in [CAPABILITIES.md](CAPABILITIES.md) (2026-10-17). Its steep-landing and snap-roll route tests use the G8a capability sites. The G8a playtest (2026-10-18) accepted the tuck (Q35) and found the double-tap hard on a keyboard (Q33); the keyboard input (Q41) and what a rock hit costs (Q42) are open, and Q43 records the direction it gave G5.
-- G7 needs a decision on rival count per course (proposal: one).
-- Q12b (Vellum) only affects G9's line count.
+- G5's parameter ranges are proposed in [CAPABILITIES.md](CAPABILITIES.md) (2026-10-17). Its steep-landing and snap-roll route tests use the G8a capability sites. The G8a playtest (2026-10-18) accepted the tuck (Q35) and found the double-tap hard on a keyboard (Q33); the keyboard input is a longer double-tap window (Q41), a rock hit staggers and recovers (Q42), and Q43 records the direction it gave G5.
+- G7: one rival per course (Q44); a larger five-rival course comes later and isn't scoped.
+- Q12b is answered no: Vellum is not in release one, so G9's line count excludes Vellum.
 
 ## What this does not change
 
