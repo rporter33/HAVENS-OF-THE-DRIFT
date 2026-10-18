@@ -241,6 +241,8 @@ def fit_rig(w, L):
     fr.select_set(True)
     bpy.context.view_layer.objects.active = fr
     bpy.ops.object.parent_set(type='ARMATURE_AUTO')
+    if not w.vertex_groups or w.parent != fr:
+        raise RuntimeError('bone-heat weighting failed (is the work mesh visible and selectable?)')
     return fr
 
 
@@ -544,8 +546,20 @@ def reseat(nb, k):
                 max_shift=float(np.linalg.norm(D, axis=1).max()))
 
 
+def _show(obj):
+    for c in obj.users_collection:
+        c.hide_viewport = False
+        lc = bpy.context.view_layer.layer_collection.children.get(c.name)
+        if lc:
+            lc.exclude = False
+            lc.hide_viewport = False
+    obj.hide_set(False)
+
+
 def run_all(do_clean=True):
     grig = bpy.data.objects[RIG]
+    _show(bpy.data.objects[RAW])
+    _show(grig)
     w = clean() if do_clean else bpy.data.objects[WORK]
     L = _landmarks(grig)
     w['fit_landmarks'] = json.dumps(L)
