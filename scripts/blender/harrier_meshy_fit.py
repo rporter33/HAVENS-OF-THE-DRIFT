@@ -546,9 +546,177 @@ def reseat(nb, k):
     newco = kco + D
     loc = (inv @ np.c_[newco, np.ones(len(newco))].T).T[:, :3]
     me.vertices.foreach_set('co', loc.ravel())
+    if '_DISP' in me.attributes:
+        me.attributes.remove(me.attributes['_DISP'])
+    me.attributes.new('_DISP', 'FLOAT_VECTOR', 'POINT').data.foreach_set('vector', D.ravel())
     me.update()
     return dict(rigid=int(done.sum()), tack=int(len(tack)), wing=int(kwing.sum()),
                 max_shift=float(np.linalg.norm(D, axis=1).max()))
+
+
+# The Meshy skull's eye: a ray toward the midline at this height finds the socket's surface.
+EYE_PROBE = (0.08, -0.356, 0.177)
+EYE_SCALE = 0.72      # the game eyeball is too big for the slimmer skull
+EYE_INSET = 0.032     # m, eyeball centre inside the socket surface
+
+
+def fit_eyes(w, nb, k):
+    """Seat the game's eyeballs (region 2) in the Meshy skull's sockets, symmetric."""
+    bm = bmesh.new()
+    bm.from_mesh(w.data)
+    bvh = mathutils.bvhtree.BVHTree.FromBMesh(bm)
+    bm.free()
+    wco = np.array([v.co[:] for v in w.data.vertices])
+    nco = np.array([(nb.matrix_world @ v.co)[:] for v in nb.data.vertices])
+    hits = []
+    for sx in (1, -1):
+        h = bvh.ray_cast(V((sx * EYE_PROBE[0], EYE_PROBE[1], EYE_PROBE[2])), V((-sx, 0, 0)), 0.2)
+        idx = np.argsort(np.linalg.norm(wco - np.array(h[0][:]), axis=1))[:6]
+        hits.append(nco[idx].mean(0))
+    tx = (abs(hits[0][0]) + abs(hits[1][0])) / 2
+    ty, tz = (hits[0][1] + hits[1][1]) / 2, (hits[0][2] + hits[1][2]) / 2
+    gb = bpy.data.objects[GBODY]
+    greg = np.array([d.color[0] for d in gb.data.attributes['_AMAT'].data]).round().astype(int)
+    gco = np.array([(gb.matrix_world @ v.co)[:] for v in gb.data.vertices])
+    me = k.data
+    reg = np.array([d.color[0] for d in me.attributes['_AMAT'].data]).round().astype(int)
+    kco = np.array([(k.matrix_world @ v.co)[:] for v in me.vertices])
+    eyev = np.nonzero(reg == 2)[0]
+    rec = {}
+    for sx in (1, -1):
+        ids = eyev[np.sign(kco[eyev, 0]) == sx]
+        orig = gco[(greg == 2) & (np.sign(gco[:, 0]) == sx)]
+        c_old = orig.mean(0)
+        target = np.array([sx * (tx - EYE_INSET), ty, tz])
+        # Rebuild from the original eyeball: scale about its own centre, then place it.
+        k_orig = (kco[ids] - kco[ids].mean(0)) + c_old
+        kco[ids] = target + (k_orig - c_old) * EYE_SCALE
+        if sx == 1:
+            rec = dict(c_old=c_old.tolist(), c_new=target.tolist(), scale=EYE_SCALE)
+    inv = np.array(k.matrix_world.inverted())
+    me.vertices.foreach_set('co', (inv @ np.c_[kco, np.ones(len(kco))].T).T[:, :3].ravel())
+    me.update()
+    k['eye_fit'] = json.dumps(rec)
+    return rec
+
+
+def _to_rig(points_world, gb, vectors=False):
+    """Blender world (rest) -> the game's rig space (+Z forward, +Y up): via Harrier_Body's local."""
+    inv = np.array(gb.matrix_world.inverted())
+    if vectors:
+        loc = points_world @ inv[:3, :3].T
+    else:
+        loc = (inv @ np.c_[points_world, np.ones(len(points_world))].T).T[:, :3]
+    return np.c_[loc[:, 0], loc[:, 2], -loc[:, 1]]
+
+
+def export_glb(path, provenance=None):
+    """Write the trial body (new body + kept parts) as a GLB in the game's bind space.
+
+    Two primitives over one vertex set: 0 = body (opaque), 1 = membranes. Skin data travel as
+    JOINTS_0 / WEIGHTS_0 indexing mesh.extras.jointNames (no glTF skin: the game binds them to its
+    own skeleton by name). Custom attributes _AMAT, _AUV2, _AEXTRA are the shader's aMat, aUv2, aExtra.
+    """
+    gb = bpy.data.objects[GBODY]
+    grig = bpy.data.objects[RIG]
+    parts = [bpy.data.objects[OUT], bpy.data.objects[KEEP]]
+    joint_names = [b.name for b in grig.data.bones]
+    jidx = {n: i for i, n in enumerate(joint_names)}
+    P, N, J, W, A, U, E, I0, I1 = [], [], [], [], [], [], [], [], []
+    base = 0
+    for obj in parts:
+        me = obj.data
+        co = np.array([(obj.matrix_world @ v.co)[:] for v in me.vertices])
+        # Smooth normals in rest (the meshes are smooth-shaded; split normals are not needed).
+        nr = np.array([(obj.matrix_world.to_3x3() @ v.normal)[:] for v in me.vertices])
+        P.append(_to_rig(co, gb))
+        n = _to_rig(nr, gb, vectors=True)
+        N.append(n / np.maximum(np.linalg.norm(n, axis=1, keepdims=True), 1e-9))
+        names = {g.index: g.name for g in obj.vertex_groups}
+        jj = np.zeros((len(co), 4), np.uint16)
+        ww = np.zeros((len(co), 4), np.float32)
+        for v in me.vertices:
+            gs = sorted(((g.weight, names[g.group]) for g in v.groups if names[g.group] in jidx and g.weight > 1e-4), reverse=True)[:4]
+            s = sum(x for x, _ in gs) or 1.0
+            for t, (wt, nm) in enumerate(gs):
+                jj[v.index, t] = jidx[nm]
+                ww[v.index, t] = wt / s
+        J.append(jj)
+        W.append(ww)
+        A.append(np.array([d.color[:] for d in me.attributes['_AMAT'].data], np.float32))
+        U.append(np.array([d.vector[:] for d in me.attributes['_AUV2'].data], np.float32))
+        E.append(np.array([d.color[:] for d in me.attributes['_AEXTRA'].data], np.float32))
+        for p in me.polygons:
+            tri = [base + i for i in p.vertices]
+            for t in range(1, len(tri) - 1):
+                (I1 if p.material_index == 1 and obj.name == KEEP else I0).append((tri[0], tri[t], tri[t + 1]))
+        base += len(co)
+    P, N, J, W = np.concatenate(P).astype(np.float32), np.concatenate(N).astype(np.float32), np.concatenate(J), np.concatenate(W)
+    A, U, E = np.concatenate(A), np.concatenate(U), np.concatenate(E)
+    I0, I1 = np.array(I0, np.uint32).ravel(), np.array(I1, np.uint32).ravel()
+    # The seat: how far the tack moved at the saddle anchor (rest), for the rider and the holds.
+    k = bpy.data.objects[KEEP]
+    pose = grig.data.pose_position
+    grig.data.pose_position = 'REST'
+    bpy.context.view_layer.update()
+    seat = np.array(bpy.data.objects['saddle'].matrix_world.translation[:])
+    grig.data.pose_position = pose
+    bpy.context.view_layer.update()
+    kco = np.array([(k.matrix_world @ v.co)[:] for v in k.data.vertices])
+    D = np.array([d.vector[:] for d in k.data.attributes['_DISP'].data])
+    kreg = np.array([d.color[0] for d in k.data.attributes['_AMAT'].data]).round().astype(int)
+    tack = np.isin(kreg, TACK_REGIONS)
+    d2 = np.linalg.norm(kco[tack] - seat, axis=1)
+    wts = np.exp(-(d2 / 0.6) ** 2)
+    seat_shift = (D[tack] * wts[:, None]).sum(0) / max(wts.sum(), 1e-9)
+    eye = json.loads(k.get('eye_fit', '{}'))
+    extras = dict(
+        jointNames=joint_names,
+        seatShift=_to_rig(seat_shift[None], gb, vectors=True)[0].tolist(),
+        eye=dict(scale=eye.get('scale', 1.0),
+                 cOld=_to_rig(np.array([eye['c_old']]), gb)[0].tolist() if eye else None,
+                 cNew=_to_rig(np.array([eye['c_new']]), gb)[0].tolist() if eye else None),
+        provenance=provenance or {},
+    )
+    blobs, views, accs = [], [], []
+
+    def add(arr, ctype, typ, target=None, minmax=False):
+        data = np.ascontiguousarray(arr).tobytes()
+        off = sum(len(b) for b in blobs)
+        pad = (-len(data)) % 4
+        blobs.append(data + b'\0' * pad)
+        v = dict(buffer=0, byteOffset=off, byteLength=len(data))
+        if target:
+            v['target'] = target
+        views.append(v)
+        a = dict(bufferView=len(views) - 1, componentType=ctype, count=int(arr.shape[0]), type=typ)
+        if minmax:
+            a['min'] = arr.min(0).tolist()
+            a['max'] = arr.max(0).tolist()
+        accs.append(a)
+        return len(accs) - 1
+
+    F, U16, U32 = 5126, 5123, 5125
+    attrs = dict(POSITION=add(P, F, 'VEC3', 34962, True), NORMAL=add(N, F, 'VEC3', 34962),
+                 JOINTS_0=add(J, U16, 'VEC4', 34962), WEIGHTS_0=add(W, F, 'VEC4', 34962),
+                 _AMAT=add(A, F, 'VEC4', 34962), _AUV2=add(U, F, 'VEC2', 34962), _AEXTRA=add(E, F, 'VEC4', 34962))
+    prims = [dict(attributes=attrs, indices=add(I0.reshape(-1, 1), U32, 'SCALAR', 34963), material=0),
+             dict(attributes=attrs, indices=add(I1.reshape(-1, 1), U32, 'SCALAR', 34963), material=1)]
+    binary = b''.join(blobs)
+    gltf = dict(asset=dict(version='2.0', generator='havens harrier_meshy_fit.py'),
+                scene=0, scenes=[dict(nodes=[0])], nodes=[dict(name='HarrierTrial', mesh=0)],
+                meshes=[dict(name='HarrierTrial', primitives=prims, extras=extras)],
+                materials=[dict(name='body'), dict(name='membrane', doubleSided=True)],
+                buffers=[dict(byteLength=len(binary))], bufferViews=views, accessors=accs)
+    js = json.dumps(gltf, separators=(',', ':')).encode()
+    js += b' ' * ((-len(js)) % 4)
+    import struct
+    out = struct.pack('<III', 0x46546C67, 2, 12 + 8 + len(js) + 8 + len(binary))
+    out += struct.pack('<II', len(js), 0x4E4F534A) + js + struct.pack('<II', len(binary), 0x004E4942) + binary
+    with open(path, 'wb') as f:
+        f.write(out)
+    return dict(path=path, bytes=len(out), verts=int(len(P)), body_tris=int(len(I0) // 3), membrane_tris=int(len(I1) // 3),
+                seatShift=extras['seatShift'], eye=extras['eye'])
 
 
 def _show(obj):
@@ -575,6 +743,7 @@ def run_all(do_clean=True):
     transfer_attrs(nb)
     k = keep_parts()
     moved = reseat(nb, k)
+    fit_eyes(w, nb, k)
     hide = bpy.data.materials.get('Harrier_Hide')
     if hide:
         nb.data.materials.clear()
