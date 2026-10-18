@@ -1,0 +1,564 @@
+# Harrier Meshy fit (gate G3b): conform a Meshy base body to the game's Harrier skeleton.
+#
+# Runs inside Blender (5.2) with the pilot file open (havens-blender-pilot/harrier-pilot.blend), which
+# holds the game Harrier imported from scripts/wyvern-export-glb.mjs (objects Harrier_Rig, Harrier_Body)
+# and the raw Meshy download (Meshy_Harrier_Raw). Robert's direction (2026-10-18): keep the game
+# Harrier's proportions and rig; alter the new model to fit them.
+#
+# Steps
+#   1. clean   copy the raw mesh, drop stray islands, cut the wing-arms and membranes off at the body,
+#              close it (octree remesh), relax, decimate to ~15,500 triangles
+#   2. fit rig a temporary armature (FitRig) with the game's bone names, placed on landmarks read off
+#              the Meshy body; Blender bone-heat weights
+#   3. envelope per bone, the Meshy body's cross-section (depth and width at mid-segment) is mapped
+#              onto the game body's, and its length onto the game bone's; parameters are smoothed
+#              along each chain so neighbouring bones agree
+#   4. conform each vertex = weighted blend of its bones' transforms (linear blend skinning in rest),
+#              giving a body in the game's bind space, bound to Harrier_Rig with the same weights
+#   5. attrs   region / belly / dorsal / pattern coordinates copied from the nearest game skin vertex,
+#              so the game's wyvern shader paints the new body
+#   6. keep    a copy of the game mesh keeping what the new body does not replace: wings (arm tubes and
+#              membranes), tack, horns and spines, eyes, hand claws
+#
+# Exec from the MCP bridge: exec(open(path).read()); run_all()
+
+import json
+
+import bmesh
+import bpy
+import mathutils
+import numpy as np
+
+V = mathutils.Vector
+
+RAW, WORK, OUT, KEEP = 'Meshy_Harrier_Raw', 'Meshy_Harrier_Work', 'Harrier_Meshy_Body', 'Harrier_Keep'
+RIG, GBODY, COLL = 'Harrier_Rig', 'Harrier_Body', 'Harrier Pilot'
+TRIS = 15500
+
+# Landmarks on the Meshy body, in its object space (head toward -Y, up +Z, the creature's left +X),
+# read off orthographic side and front views of harrier-raw.glb (sha256 7243fe80...).
+LANDMARKS = {
+    'snout': (0, -0.390, 0.150), 'head': (0, -0.283, 0.172),
+    'neck5': (0, -0.282, 0.150), 'neck4': (0, -0.280, 0.124), 'neck3': (0, -0.278, 0.101),
+    'neck2': (0, -0.275, 0.079), 'neck1': (0, -0.270, 0.057), 'neck0': (0, -0.262, 0.035),
+    'chest': (0, -0.228, -0.003), 'root': (0, -0.193, -0.024),
+    'hipL': (0.050, -0.140, -0.035), 'kneeL': (0.055, -0.190, -0.095), 'ankleL': (0.060, -0.073, -0.125),
+    'ballL': (0.070, -0.130, -0.190), 'toetipL': (0.080, -0.205, -0.198),
+    'tail0': (0, -0.066, -0.028), 'tailtip': (0, 0.392, -0.027),
+}
+TAIL_POLY = [(-0.066, -0.028), (-0.05, -0.030), (0.0, -0.034), (0.1, -0.040), (0.2, -0.033), (0.3, -0.018),
+             (0.36, -0.020), (0.392, -0.027)]
+
+MESHY_SHARE = 0.75
+NATURAL_SCALE = 15.0
+
+WING_PREFIX = ('humerus', 'forearm', 'hand', 'finger', 'fold', 'claw')
+SKIN_REGIONS = (0, 8)
+GAME_TOE_REGIONS = (0, 8, 9)
+
+
+def _islands(bm):
+    seen, out = set(), []
+    for v in bm.verts:
+        if v.index in seen:
+            continue
+        st, ids = [v], []
+        while st:
+            x = st.pop()
+            if x.index in seen:
+                continue
+            seen.add(x.index)
+            ids.append(x)
+            st.extend(e.other_vert(x) for e in x.link_edges)
+        out.append(ids)
+    out.sort(key=len)
+    return out
+
+
+def _select_only(obj):
+    for o in bpy.context.selected_objects:
+        o.select_set(False)
+    obj.select_set(True)
+    bpy.context.view_layer.objects.active = obj
+
+
+def clean():
+    raw = bpy.data.objects[RAW]
+    old = bpy.data.objects.get(WORK)
+    if old:
+        bpy.data.objects.remove(old, do_unlink=True)
+    w = raw.copy()
+    w.data = raw.data.copy()
+    w.name = WORK
+    raw.users_collection[0].objects.link(w)
+    bm = bmesh.new()
+    bm.from_mesh(w.data)
+    bmesh.ops.remove_doubles(bm, verts=bm.verts, dist=1e-6)
+    isl = _islands(bm)
+    bmesh.ops.delete(bm, geom=[v for i in isl[:-1] for v in i], context='VERTS')
+    bm.normal_update()
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+    bm.normal_update()
+    bvh = mathutils.bvhtree.BVHTree.FromBMesh(bm)
+    bm.verts.ensure_lookup_table()
+    co = np.array([v.co[:] for v in bm.verts])
+    thick = np.ones(len(co))
+    for v in bm.verts:
+        n = v.normal
+        if n.length < 1e-6:
+            continue
+        hit = bvh.ray_cast(v.co - n * 1e-4, -n, 0.05)
+        if hit[0] is not None:
+            thick[v.index] = hit[3]
+    ax, y, z = np.abs(co[:, 0]), co[:, 1], co[:, 2]
+    wing = (ax > 0.085) & (z > -0.06)
+    shoulder = (ax > 0.058) & (y > -0.265) & (y < -0.17) & (z > 0.015)
+    membrane = (thick < 0.006) & (ax > 0.035) & (y > -0.27) & (y < 0.02) & (z > -0.06)
+    dele = wing | shoulder | membrane
+    bmesh.ops.delete(bm, geom=[bm.verts[i] for i in np.nonzero(dele)[0]], context='VERTS')
+    isl = _islands(bm)
+    bmesh.ops.delete(bm, geom=[v for i in isl[:-1] for v in i], context='VERTS')
+    r = bmesh.ops.holes_fill(bm, edges=[e for e in bm.edges if e.is_boundary], sides=400)
+    bmesh.ops.triangulate(bm, faces=r['faces'])
+    bm.normal_update()
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+    bm.to_mesh(w.data)
+    bm.free()
+    _select_only(w)
+    rm = w.modifiers.new('Octree', 'REMESH')
+    rm.mode, rm.octree_depth, rm.scale, rm.use_remove_disconnected = 'SMOOTH', 9, 0.9, True
+    bpy.ops.object.modifier_apply(modifier='Octree')
+    sm = w.modifiers.new('Relax', 'LAPLACIANSMOOTH')
+    sm.lambda_factor, sm.iterations, sm.use_volume_preserve = 0.4, 3, True
+    bpy.ops.object.modifier_apply(modifier='Relax')
+    for _ in range(3):
+        bm = bmesh.new()
+        bm.from_mesh(w.data)
+        bmesh.ops.triangulate(bm, faces=bm.faces)
+        bm.to_mesh(w.data)
+        n = len(bm.faces)
+        bm.free()
+        if n <= TRIS * 1.02:
+            break
+        dc = w.modifiers.new('Decimate', 'DECIMATE')
+        dc.decimate_type, dc.ratio, dc.use_symmetry, dc.symmetry_axis = 'COLLAPSE', TRIS / n, True, 'X'
+        bpy.ops.object.modifier_apply(modifier='Decimate')
+    for p in w.data.polygons:
+        p.use_smooth = True
+    w.hide_set(False)
+    return w
+
+
+def _landmarks(grig):
+    L = {k: tuple(v) for k, v in LANDMARKS.items()}
+    for k in list(L):
+        if k.endswith('L'):
+            x, y, z = L[k]
+            L[k[:-1] + 'R'] = (-x, y, z)
+    # Meshy tail joints at the game's arc-length fractions from tail0 to the tip.
+    gy = [(grig.matrix_world @ grig.data.bones[f'tail{i}'].head_local) for i in range(10)]
+    gb = bpy.data.objects[GBODY]
+    tip_y = max((gb.matrix_world @ v.co).y for v in gb.data.vertices)
+    pts = gy + [V((0, tip_y, gy[-1].z))]
+    gl = np.r_[0, np.cumsum([(pts[i + 1] - pts[i]).length for i in range(10)])]
+    fr = gl / gl[-1]
+    poly = np.array(TAIL_POLY)
+    ml = np.r_[0, np.cumsum(np.linalg.norm(np.diff(poly, axis=0), axis=1))]
+    for i in range(10):
+        d = fr[i] * ml[-1]
+        L[f'tail{i}'] = (0.0, float(np.interp(d, ml, poly[:, 0])), float(np.interp(d, ml, poly[:, 1])))
+    return L
+
+
+def _segments():
+    seg = {'spine': ('root', 'chest'), 'chest': ('chest', 'neck0'), 'head': ('head', 'snout'), 'pelvis': ('root', 'tail0')}
+    for i in range(5):
+        seg[f'neck{i}'] = (f'neck{i}', f'neck{i + 1}')
+    seg['neck5'] = ('neck5', 'head')
+    for i in range(9):
+        seg[f'tail{i}'] = (f'tail{i}', f'tail{i + 1}')
+    seg['tail9'] = ('tail9', 'tailtip')
+    for s in 'LR':
+        seg[f'thigh{s}'] = (f'hip{s}', f'knee{s}')
+        seg[f'shin{s}'] = (f'knee{s}', f'ankle{s}')
+        seg[f'meta{s}'] = (f'ankle{s}', f'ball{s}')
+        seg[f'toes{s}'] = (f'ball{s}', f'toetip{s}')
+    return seg
+
+
+# Game joint key for each Meshy landmark key.
+def _gkey(k):
+    return {'hipL': 'thighL', 'hipR': 'thighR', 'kneeL': 'shinL', 'kneeR': 'shinR', 'ankleL': 'metaL',
+            'ankleR': 'metaR', 'ballL': 'toesL', 'ballR': 'toesR'}.get(k, k)
+
+
+PARENT = {'chest': 'spine', 'neck0': 'chest', 'head': 'neck5', 'tail0': 'pelvis'}
+PARENT.update({f'neck{i}': f'neck{i - 1}' for i in range(1, 6)})
+PARENT.update({f'tail{i}': f'tail{i - 1}' for i in range(1, 10)})
+for _s in 'LR':
+    PARENT.update({f'thigh{_s}': 'pelvis', f'shin{_s}': f'thigh{_s}', f'meta{_s}': f'shin{_s}', f'toes{_s}': f'meta{_s}'})
+
+CHAINS = [['spine', 'chest', 'neck0', 'neck1', 'neck2', 'neck3', 'neck4', 'neck5', 'head'],
+          ['pelvis'] + [f'tail{i}' for i in range(10)]] + [[f'thigh{s}', f'shin{s}', f'meta{s}', f'toes{s}'] for s in 'LR']
+
+# Which bones' vertices count as the same body part when measuring a bone's cross-section.
+def _family(b):
+    if b in ('spine', 'chest', 'pelvis'):
+        return {'spine', 'chest', 'pelvis', 'root', 'breath', 'neck0', 'tail0'}
+    if b.startswith('neck'):
+        return {f'neck{i}' for i in range(6)} | {'chest'}
+    if b == 'head':
+        return {'head', 'jaw', 'gular', 'neck5'}
+    if b.startswith('tail'):
+        return {f'tail{i}' for i in range(10)} | {'pelvis'}
+    s = b[-1]
+    return {f'thigh{s}', f'shin{s}', f'meta{s}', f'toes{s}'}
+
+
+def fit_rig(w, L):
+    old = bpy.data.objects.get('FitRig')
+    if old:
+        bpy.data.objects.remove(old, do_unlink=True)
+    ad = bpy.data.armatures.new('FitRig')
+    ad.display_type = 'STICK'
+    fr = bpy.data.objects.new('FitRig', ad)
+    w.users_collection[0].objects.link(fr)
+    fr.matrix_world = w.matrix_world.copy()
+    fr.show_in_front = True
+    _select_only(fr)
+    bpy.ops.object.mode_set(mode='EDIT')
+    for n, (a, b) in _segments().items():
+        e = ad.edit_bones.new(n)
+        e.head, e.tail, e.roll = V(L[a]), V(L[b]), 0
+    for c, p in PARENT.items():
+        ad.edit_bones[c].parent = ad.edit_bones[p]
+    bpy.ops.object.mode_set(mode='OBJECT')
+    w.vertex_groups.clear()
+    for m in list(w.modifiers):
+        w.modifiers.remove(m)
+    w.parent = None
+    _select_only(w)
+    fr.select_set(True)
+    bpy.context.view_layer.objects.active = fr
+    bpy.ops.object.parent_set(type='ARMATURE_AUTO')
+    return fr
+
+
+def _frame(u):
+    u = u / np.linalg.norm(u)
+    X = np.array([1.0, 0, 0])
+    wv = X - X.dot(u) * u
+    if np.linalg.norm(wv) < 1e-6:
+        wv = np.array([0, 0, 1.0]) - u[2] * u
+    wv /= np.linalg.norm(wv)
+    return np.array([u, np.cross(wv, u), wv]).T
+
+
+def _dominant(obj):
+    names = {g.index: g.name for g in obj.vertex_groups}
+    return np.array([names[max(v.groups, key=lambda g: g.weight).group] if v.groups else '' for v in obj.data.vertices])
+
+
+def _game_skin():
+    gb = bpy.data.objects[GBODY]
+    me = gb.data
+    co = np.array([(gb.matrix_world @ v.co)[:] for v in me.vertices])
+    reg = np.array([d.color[0] for d in me.attributes['_AMAT'].data]).round().astype(int)
+    mem = np.zeros(len(co), bool)
+    for p in me.polygons:
+        if p.material_index == 1:
+            mem[list(p.vertices)] = True
+    dom = _dominant(gb)
+    wing = np.array([any(d.startswith(p) for p in WING_PREFIX) for d in dom])
+    return gb, co, reg, mem, dom, wing
+
+
+def envelopes(w, L):
+    grig = bpy.data.objects[RIG]
+    G = {b.name: np.array((grig.matrix_world @ b.head_local)[:]) for b in grig.data.bones}
+    gb, gco, greg, gmem, gdom, gwing = _game_skin()
+    gskin = np.isin(greg, GAME_TOE_REGIONS) & ~gmem & ~gwing
+    for s in 'LR':
+        t = gco[(gdom == 'toes' + s) & gskin]
+        G['toetip' + s] = t[np.argmin(t[:, 1])]
+    h = gco[gskin & (gdom == 'head')]
+    G['snout'] = h[np.argmin(h[:, 1])]
+    t = gco[gskin & (gdom == 'tail9')]
+    G['tailtip'] = t[np.argmax(t[:, 1])]
+    mco = np.array([(w.matrix_world @ v.co)[:] for v in w.data.vertices])
+    mdom = _dominant(w)
+    mw = np.array(w.matrix_world)
+    Lw = {k: (mw @ np.r_[v, 1.0])[:3] for k, v in L.items()}
+    T = {}
+    for b, (ka, kb) in _segments().items():
+        a, bb = Lw[ka], Lw[kb]
+        A, B = G[_gkey(ka)], G[_gkey(kb)]
+        Fm, Fg = _frame(bb - a), _frame(B - A)
+        lm, lg = np.linalg.norm(bb - a), np.linalg.norm(B - A)
+        fam = list(_family(b))
+        qm = (mco[np.isin(mdom, fam)] - a) @ Fm
+        qg = (gco[gskin & np.isin(gdom, fam)] - A) @ Fg
+        lo, hi = (0.1, 0.9) if b in ('head', 'toesL', 'toesR', 'tail9') else (0.2, 0.8)
+        qm = qm[(qm[:, 0] > lo * lm) & (qm[:, 0] < hi * lm)]
+        qg = qg[(qg[:, 0] > lo * lg) & (qg[:, 0] < hi * lg)]
+        t = dict(a=a, A=A, Fm=Fm, Fg=Fg, ku=lg / lm)
+        if len(qm) >= 6 and len(qg) >= 6:
+            for i, key in ((1, 'v'), (2, 'w')):
+                m0, m1 = np.percentile(qm[:, i], [2, 98])
+                g0, g1 = np.percentile(qg[:, i], [2, 98])
+                k = (g1 - g0) / max(m1 - m0, 1e-6)
+                t['k' + key], t['o' + key] = k, g0 - k * m0
+        T[b] = t
+    # Fill gaps from neighbours, clamp, then smooth along each chain.
+    for ch in CHAINS:
+        for key in ('kv', 'ov', 'kw', 'ow'):
+            vals = [T[b].get(key) for b in ch]
+            idx = [i for i, v in enumerate(vals) if v is not None]
+            vals = np.interp(range(len(ch)), idx, [vals[i] for i in idx])
+            sm = vals.copy()
+            for i in range(len(ch)):
+                sm[i] = 0.25 * vals[max(i - 1, 0)] + 0.5 * vals[i] + 0.25 * vals[min(i + 1, len(ch) - 1)]
+            for b, v in zip(ch, sm):
+                T[b][key] = float(v)
+    for b in T:
+        base = T[b]['ku']
+        for key in ('kv', 'kw'):
+            T[b][key] = float(np.clip(T[b][key], 0.55 * base, 1.8 * base))
+    # Blend: MESHY_SHARE of the Meshy body's own girth (scaled by NATURAL_SCALE, eased toward the
+    # bone's length stretch so long slender parts stay slender), the rest the game body's envelope.
+    # Robert, 2026-10-18: "75% the newer model". Bone lengths always follow the game rig.
+    for ch in CHAINS:
+        nat = np.array([np.sqrt(T[b]['ku'] * NATURAL_SCALE) for b in ch])
+        sm = nat.copy()
+        for i in range(len(ch)):
+            sm[i] = 0.25 * nat[max(i - 1, 0)] + 0.5 * nat[i] + 0.25 * nat[min(i + 1, len(ch) - 1)]
+        for b, k in zip(ch, sm):
+            for key in ('v', 'w'):
+                T[b]['k' + key] = MESHY_SHARE * float(k) + (1 - MESHY_SHARE) * T[b]['k' + key]
+                T[b]['o' + key] = (1 - MESHY_SHARE) * T[b]['o' + key]
+    return T
+
+
+def conform(w, T):
+    grig = bpy.data.objects[RIG]
+    names = {g.index: g.name for g in w.vertex_groups}
+    co = np.array([(w.matrix_world @ v.co)[:] for v in w.data.vertices])
+    out = np.zeros_like(co)
+    for v in w.data.vertices:
+        acc, tw = np.zeros(3), 0.0
+        for g in v.groups:
+            t = T.get(names[g.group])
+            if t is None or g.weight < 1e-4:
+                continue
+            q = t['Fm'].T @ (co[v.index] - t['a'])
+            q = np.array([t['ku'] * q[0], t['kv'] * q[1] + t['ov'], t['kw'] * q[2] + t['ow']])
+            acc += g.weight * (t['A'] + t['Fg'] @ q)
+            tw += g.weight
+        out[v.index] = acc / tw
+    old = bpy.data.objects.get(OUT)
+    if old:
+        bpy.data.objects.remove(old, do_unlink=True)
+    me = w.data.copy()
+    me.name = OUT
+    for at in [a for a in me.attributes if a.name.startswith('_A')]:
+        me.attributes.remove(at)
+    me.vertices.foreach_set('co', out.ravel())
+    me.update()
+    nb = bpy.data.objects.new(OUT, me)
+    bpy.data.collections[COLL].objects.link(nb)
+    nb.vertex_groups.clear()
+    for g in w.vertex_groups:
+        nb.vertex_groups.new(name=g.name)
+    for v in w.data.vertices:
+        for g in v.groups:
+            nb.vertex_groups[names[g.group]].add([v.index], g.weight, 'REPLACE')
+    nb.parent = grig
+    nb.matrix_parent_inverse = grig.matrix_world.inverted()
+    nb.modifiers.new('Armature', 'ARMATURE').object = grig
+    for p in me.polygons:
+        p.use_smooth = True
+    return nb
+
+
+def transfer_attrs(nb):
+    gb, gco, greg, gmem, gdom, gwing = _game_skin()
+    src = np.nonzero(np.isin(greg, (0, 8, 9)) & ~gmem & ~gwing)[0]
+    kd = mathutils.kdtree.KDTree(len(src))
+    for j, i in enumerate(src):
+        kd.insert(gco[i], j)
+    kd.balance()
+    nco = [(nb.matrix_world @ v.co) for v in nb.data.vertices]
+    near = np.array([src[kd.find(p)[1]] for p in nco])
+    gme = gb.data
+    for name in ('_AMAT', '_AUV2', '_AEXTRA'):
+        a = gme.attributes[name]
+        if a.data_type == 'FLOAT2':
+            vals = np.array([d.vector[:] for d in a.data])
+        else:
+            vals = np.array([d.color[:] for d in a.data])
+        at = nb.data.attributes.new(name, a.data_type, 'POINT')
+        at.data.foreach_set('vector' if a.data_type == 'FLOAT2' else 'color', vals[near].ravel())
+    nb.data.update()
+
+
+def keep_parts():
+    gb = bpy.data.objects[GBODY]
+    old = bpy.data.objects.get(KEEP)
+    if old:
+        bpy.data.objects.remove(old, do_unlink=True)
+    k = gb.copy()
+    k.data = gb.data.copy()
+    k.name = k.data.name = KEEP
+    bpy.data.collections[COLL].objects.link(k)
+    me = k.data
+    reg = np.array([d.color[0] for d in me.attributes['_AMAT'].data]).round().astype(int)
+    dom = _dominant(k)
+    wing = np.array([any(d.startswith(p) for p in WING_PREFIX) for d in dom])
+    bm = bmesh.new()
+    bm.from_mesh(me)
+    kill = []
+    for f in bm.faces:
+        if f.material_index == 1:
+            continue
+        vs = [v.index for v in f.verts]
+        if wing[vs].mean() > 0.5:
+            continue
+        if int(np.bincount(reg[vs]).argmax()) in (0, 8, 3, 9, 12, 13):
+            kill.append(f)
+    bmesh.ops.delete(bm, geom=kill, context='FACES')
+    bmesh.ops.delete(bm, geom=[v for v in bm.verts if not v.link_faces], context='VERTS')
+    bm.to_mesh(me)
+    bm.free()
+    return k
+
+
+RIGID_REGIONS = (1, 2)            # horns and spines, eyes: move whole, never bend
+TACK_REGIONS = (4, 5, 6, 7, 11)   # leather, metal, cloth, wood, wool: follow the surface, smoothly
+TACK_RADIUS = 0.35                # m, spatial smoothing of the tack's displacement
+WING_FALLOFF = 0.4                # m from the old body surface, wing roots follow the body this far
+
+
+def _bvh(obj, face_ok=None):
+    co = [(obj.matrix_world @ v.co) for v in obj.data.vertices]
+    polys = [list(p.vertices) for p in obj.data.polygons if face_ok is None or face_ok(p)]
+    return mathutils.bvhtree.BVHTree.FromPolygons(co, polys)
+
+
+def reseat(nb, k):
+    """Move the kept game parts from the old body surface to the new one (rest space)."""
+    grig = bpy.data.objects[RIG]
+    gb, gco, greg, gmem, gdom, gwing = _game_skin()
+    skin = np.isin(greg, SKIN_REGIONS) & ~gmem & ~gwing
+    old = _bvh(gb, lambda p: skin[list(p.vertices)].all())
+    new = _bvh(nb)
+    segs = []
+    for b in grig.data.bones:
+        if b.parent and not any(b.name.startswith(p) for p in WING_PREFIX):
+            segs.append((np.array((grig.matrix_world @ b.parent.head_local)[:]), np.array((grig.matrix_world @ b.head_local)[:])))
+
+    def axis_point(q):
+        best, bd = None, 1e9
+        for a, b in segs:
+            ab = b - a
+            t = np.clip(np.dot(q - a, ab) / max(np.dot(ab, ab), 1e-9), 0, 1)
+            c = a + t * ab
+            d = np.linalg.norm(q - c)
+            if d < bd:
+                best, bd = c, d
+        return best
+
+    def disp(p):
+        hit = old.find_nearest(V(p))
+        if hit[0] is None:
+            return np.zeros(3), 1e9
+        q = np.array(hit[0][:])
+        c = axis_point(q)
+        dirv = q - c
+        n = np.linalg.norm(dirv)
+        pn = None
+        if n > 1e-6:
+            r = new.ray_cast(V(c), V(dirv / n), 10.0)
+            if r[0] is not None:
+                pn = np.array(r[0][:])
+        if pn is None:
+            pn = np.array(new.find_nearest(V(q))[0][:])
+        return pn - q, hit[3]
+
+    me = k.data
+    kco = np.array([(k.matrix_world @ v.co)[:] for v in me.vertices])
+    kreg = np.array([d.color[0] for d in me.attributes['_AMAT'].data]).round().astype(int)
+    kmem = np.zeros(len(kco), bool)
+    for p in me.polygons:
+        if p.material_index == 1:
+            kmem[list(p.vertices)] = True
+    kdom = _dominant(k)
+    kwing = np.array([any(d.startswith(p) for p in WING_PREFIX) for d in kdom]) | kmem
+    D = np.zeros_like(kco)
+    dist = np.full(len(kco), 1e9)
+    # Rigid parts: one displacement per connected piece, taken where it touches the body.
+    bm = bmesh.new()
+    bm.from_mesh(me)
+    bm.verts.ensure_lookup_table()
+    done = np.zeros(len(kco), bool)
+    for v in bm.verts:
+        i = v.index
+        if done[i] or kwing[i] or kreg[i] not in RIGID_REGIONS:
+            continue
+        st, comp = [v], []
+        while st:
+            x = st.pop()
+            if done[x.index]:
+                continue
+            done[x.index] = True
+            comp.append(x.index)
+            st.extend(e.other_vert(x) for e in x.link_edges if not done[e.other_vert(x).index])
+        comp = np.array(comp)
+        ds = [old.find_nearest(V(kco[j]))[3] for j in comp]
+        root = comp[int(np.argmin(ds))]
+        d, _ = disp(kco[root])
+        D[comp] = d
+    bm.free()
+    # Tack: per-vertex displacement, smoothed in space so the saddle moves as one and straps hug.
+    tack = np.nonzero(~kwing & np.isin(kreg, TACK_REGIONS))[0]
+    raw = np.array([disp(kco[i])[0] for i in tack]) if len(tack) else np.zeros((0, 3))
+    if len(tack):
+        kd = mathutils.kdtree.KDTree(len(tack))
+        for j, i in enumerate(tack):
+            kd.insert(kco[i], j)
+        kd.balance()
+        for j, i in enumerate(tack):
+            nbrs = kd.find_range(kco[i], TACK_RADIUS)
+            wts = np.array([np.exp(-(r / (0.5 * TACK_RADIUS)) ** 2) for _, _, r in nbrs])
+            D[i] = (raw[[n[1] for n in nbrs]] * wts[:, None]).sum(0) / wts.sum()
+    # Wing roots: follow the body near it, fading out along the arm and membrane.
+    for i in np.nonzero(kwing)[0]:
+        d, dd = disp(kco[i])
+        f = max(0.0, 1.0 - dd / WING_FALLOFF)
+        D[i] = d * f * f
+    inv = np.array(k.matrix_world.inverted())
+    newco = kco + D
+    loc = (inv @ np.c_[newco, np.ones(len(newco))].T).T[:, :3]
+    me.vertices.foreach_set('co', loc.ravel())
+    me.update()
+    return dict(rigid=int(done.sum()), tack=int(len(tack)), wing=int(kwing.sum()),
+                max_shift=float(np.linalg.norm(D, axis=1).max()))
+
+
+def run_all(do_clean=True):
+    grig = bpy.data.objects[RIG]
+    w = clean() if do_clean else bpy.data.objects[WORK]
+    L = _landmarks(grig)
+    w['fit_landmarks'] = json.dumps(L)
+    fit_rig(w, L)
+    T = envelopes(w, L)
+    nb = conform(w, T)
+    transfer_attrs(nb)
+    k = keep_parts()
+    moved = reseat(nb, k)
+    hide = bpy.data.materials.get('Harrier_Hide')
+    if hide:
+        nb.data.materials.clear()
+        nb.data.materials.append(hide)
+    report = {b: [round(T[b][k], 2) for k in ('ku', 'kv', 'ov', 'kw', 'ow')] for b in T}
+    return dict(tris=len(nb.data.polygons), verts=len(nb.data.vertices), keep_faces=len(k.data.polygons),
+                reseat=moved, T=report)
