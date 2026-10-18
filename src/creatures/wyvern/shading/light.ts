@@ -25,6 +25,9 @@ uniform float uRimI;
 // belly, claws and saddle gear) and of the fill a fragment takes.
 float dwRimScale = 1.0;
 float dwFillScale = 1.0;
+// How much of the lit color's chroma a fragment keeps (the albedo pass lowers it on the hide and
+// the tack; membranes, eyes and emissive keep theirs).
+float dwChroma = 1.0;
 `;
 
 /** Luminance weights (Rec. 709, linear). */
@@ -50,6 +53,14 @@ export const CREATURE_LIGHT = {
   kneeSlope: 0.3,
   /** Ink contour where the surface turns away (pale palettes keep an outline on white cloud). */
   contour: 0.34,
+  /**
+   * Chroma the lit hide keeps (G3). Warm golden-hour light, the hue-true rim and the grade's
+   * saturation pushed a moss palette to emerald and brown leather to orange; the target renders
+   * keep the hide muted and let the membranes, eyes and sky carry the color.
+   */
+  hideChroma: 0.7,
+  /** Chroma the lit tack (leather, saddle cloth, wool) keeps. */
+  tackChroma: 0.78,
 } as const;
 
 const f = (x: number) => x.toFixed(4);
@@ -84,6 +95,9 @@ export const CREATURE_LIGHT_BLOCK = /* glsl */ `
           // Camera-rig kick (a soft wrap light) and directional rim (camera/creatureLight.ts).
           dwLit += diffuseColor.rgb * uKickColor * (uKickI * smoothstep(-0.1, 0.6, dot(normal, uKickDir)));
           dwLit += uRimColor * dwHue * (uRimI * dwRimScale * (1.0 - dwNV) * (1.0 - dwNV) * max(0.0, dot(normal, uRimDir)));
+          // Painterly chroma: the hide and tack keep their hue but not the saturation the warm
+          // light piles on (dwChroma, set per region by the albedo pass).
+          dwLit = mix(vec3(dot(dwLit, ${LUMA})), dwLit, dwChroma);
           // Highlight shoulder: a soft knee just under the bloom threshold; never above it.
           float dwL = dot(dwLit, ${LUMA});
           float dwKnee = uDwBloomT - ${f(CREATURE_LIGHT.kneeBelow)};

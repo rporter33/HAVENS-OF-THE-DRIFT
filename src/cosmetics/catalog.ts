@@ -148,7 +148,7 @@ export const PALETTES = {
   skin: ['#f2d0b8', '#e6b896', '#d09a74', '#b07a56', '#8a5a3e', '#6a4230', '#4a2e22', '#f0dcc8'],
   hair: ['#1e1a18', '#3a2a20', '#6a4a30', '#a87a48', '#d8b070', '#e8d8b0', '#a03a2a', '#c86a3a', '#8a8a90', '#e8e8e8', '#4a6ac0', '#8a4ab0'],
   cloth: [
-    '#7a3a2a', '#a8582a', '#c89048', '#d8c08a', '#4a6a3a', '#2f5a5a', '#2f4a6a', '#3a3a5a',
+    '#7a5232', '#a8582a', '#c89048', '#d8c08a', '#4a6a3a', '#2f5a5a', '#2f4a6a', '#3a3a5a',
     '#6a3a5a', '#8a2a3a', '#e8e0d0', '#4a4440', '#2a2a2e', '#1f3a6a', '#c8a050', '#5a7a8a',
   ],
 } as const;
@@ -159,7 +159,9 @@ export const PALETTES = {
  * that still reads from the chase camera.
  */
 export const BREED_DEFAULT_COLORS: Record<BreedId, Pick<WyvernLook, 'primary' | 'secondary' | 'belly' | 'membrane' | 'eyes'>> = {
-  harrier: { primary: '#3f7d5a', secondary: '#23453b', belly: '#dfcea7', membrane: '#d89a5a', eyes: '#f0c040' },
+  // Olive-moss with a dark olive mantle and bright amber sails, as target renders 01 and 02 (G3);
+  // was a cooler emerald '#3f7d5a' / '#23453b' with a duller '#d89a5a' membrane.
+  harrier: { primary: '#586e46', secondary: '#2d3a28', belly: '#dfcea7', membrane: '#e89a40', eyes: '#f0c040' },
   skimmer: { primary: '#2f6f8f', secondary: '#23375a', belly: '#c0d0c8', membrane: '#5aa890', eyes: '#60d0e0' },
   // Storm-slate with a deep blue mantle and amber sails: mid-to-dark values, so the mount reads
   // against the white cloud sea even in full sun and haze (VIS-06). The slate sits a full step
@@ -176,7 +178,8 @@ export const DEFAULT_WYVERN: WyvernLook = {
   frill: 'spines',
   tail: 'spade',
   saddle: 'rider',
-  saddleColor: '#7a3a2a',
+  // Worn brown leather, as the target renders' tack (G3); was an oxblood '#7a3a2a' that read red.
+  saddleColor: '#7a5232',
 };
 
 export const DEFAULT_RIDER: RiderLook = {

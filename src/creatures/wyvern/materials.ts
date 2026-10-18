@@ -30,7 +30,7 @@ import {
 import type { WyvernLook } from '../../core/types';
 import { PAINTERLY_RIM_GLSL, applyPainterly, toonRamp } from '../../render/painterly';
 import { creatureUniforms, globalUniforms } from '../../render/uniforms';
-import { CREATURE_LIGHT_BLOCK, CREATURE_LIGHT_PARS, CREATURE_TOON_PARS, RELIEF_APPLY, RELIEF_PARS } from './shading/light';
+import { CREATURE_LIGHT, CREATURE_LIGHT_BLOCK, CREATURE_LIGHT_PARS, CREATURE_TOON_PARS, RELIEF_APPLY, RELIEF_PARS } from './shading/light';
 
 export const PATTERN_IDS: Record<string, number> = {
   plain: 0,
@@ -139,7 +139,6 @@ export function createWyvernUniforms(): WyvernUniforms {
   };
 }
 
-const _hsl = { h: 0, s: 0, l: 0 };
 const _c = new Color();
 
 /**
@@ -149,6 +148,9 @@ const _c = new Color();
  */
 export const BELLY_MAX_LUMINANCE = 0.55;
 export const SCALES_MAX_LUMINANCE = 0.6;
+/** The saddle pad's undyed linen (G3, target renders 01 and 07) and its luminance ceiling. */
+export const LINEN_PAD = '#d9c9a8';
+export const CLOTH_MAX_LUMINANCE = 0.4;
 
 /** Linear (Rec. 709) luminance of a linear color. */
 export function luminance(c: Color): number {
@@ -169,11 +171,10 @@ export function applyLookUniforms(u: WyvernUniforms, look: WyvernLook): void {
   u.uMembrane.value.set(look.membrane);
   u.uEyes.value.set(look.eyes);
   u.uSaddle.value.set(look.saddleColor);
-  // Saddle cloth: a slightly lighter, warmer companion of the saddle color (kept close in value:
-  // a much lighter band on top of the back caught the light like a glowing strip).
-  const c = u.uCloth.value.set(look.saddleColor);
-  c.getHSL(_hsl);
-  c.setHSL((_hsl.h + 0.035) % 1, Math.min(1, _hsl.s * 1.02 + 0.03), Math.min(0.5, _hsl.l * 1.15 + 0.06));
+  // Saddle cloth: an undyed linen pad under the leather, as on the target renders (G3), warmed a
+  // little toward the saddle color. Its luminance is capped (a near-white band on top of the back
+  // caught the light like a glowing strip).
+  capLuminance(u.uCloth.value.set(LINEN_PAD).lerp(_c.set(look.saddleColor), 0.14), CLOTH_MAX_LUMINANCE);
   // Horn: a bone color nudged toward the secondary scales.
   u.uHorn.value.set('#d9c9a6').lerp(_c.set(look.secondary), 0.18);
   u.uPattern.value = PATTERN_IDS[look.pattern] ?? 0;
@@ -293,6 +294,9 @@ vec3 dwWyvernAlbedo(out vec3 emit, out float gold) {
   // on the saddle's leather, cloth and gold (thin edges flare like a light source), the eye and
   // the keratin of claws and teeth; the belly is masked below by anatomy.
   dwRimScale = region == 5 ? 0.15 : (region >= 4 && region <= 7) || region == 11 ? 0.3 : region == 2 ? 0.5 : region == 9 || region == 13 ? 0.25 : 1.0;
+  // Painterly chroma (shading/light.ts): the hide and the tack lose the saturation the warm light
+  // adds; eyes, horn, claws, gold and glass keep theirs.
+  dwChroma = region == 0 || region == 8 ? ${CREATURE_LIGHT.hideChroma.toFixed(4)} : region == 4 || region == 6 || region == 11 ? ${CREATURE_LIGHT.tackChroma.toFixed(4)} : 1.0;
   vec3 bp = vBodyPos / uBodyScale;
   // Footprint of a pixel in body space (body-scale units): every pattern below fades to its own
   // mean as its features shrink toward a pixel, so nothing sparkles and nothing drifts in value.
@@ -341,12 +345,17 @@ vec3 dwWyvernAlbedo(out vec3 emit, out float gold) {
     // finer grain, each faded to its mean by footprint.
     col *= 1.0 + 0.14 * (n1 - 0.5) * n1f + 0.08 * (n2 - 0.5) * n2f;
     // The darkest coat tone: saddleback mantles and the breeds' markings.
-    vec3 mantle = min(uSecondary, 0.62 * uPrimary);
+    // G3: a step lighter than before (0.62): from the chase camera the target renders read the
+    // back as a darker green, not near-black.
+    vec3 mantle = min(uSecondary, 0.75 * uPrimary);
     if (pat == 1) {
       // Saddleback: a dark mantle over the shoulders and back, ragged edge.
       float along = smoothstep(-1.9, -1.2, bp.z) * (1.0 - smoothstep(1.2, 2.2, bp.z));
       float m = smoothstep(0.38, 0.55, dorsal * 0.85 + 0.2 * along + 0.18 * (n1 - 0.5) + 0.08 * (n2 - 0.5) * n2f + 0.12 * along - 0.12);
       m *= 1.0 - belly;
+      // The mantle stays on the back (G3): on the wing-arms and legs it read as a near-black slab
+      // from the side, where the target renders keep the limbs in the coat's own green.
+      m *= onTube ? 1.0 : 0.3;
       col = mix(col, mantle * (0.92 + 0.16 * (n2 - 0.5) * n2f), m * (0.6 + 0.4 * along));
       // The mantle continues as a stripe down the tail.
       float tailStripe = smoothstep(0.62, 0.8, dorsal + 0.1 * (n2 - 0.5) * n2f) * smoothstep(-1.9, -2.6, bp.z);
@@ -361,7 +370,7 @@ vec3 dwWyvernAlbedo(out vec3 emit, out float gold) {
         float bar = smoothstep(0.0, 0.07 + cw, fc) * (1.0 - smoothstep(0.3, 0.37 + cw, fc));
         bar = mix(0.3, bar, 1.0 - smoothstep(0.25, 0.5, cw));
         float wv = onTube ? smoothstep(0.3, 0.75, dorsal) * (1.0 - smoothstep(0.9, 1.4, bp.z)) * smoothstep(-6.8, -3.2, bp.z) : 0.0;
-        col = mix(col, mantle * 0.5, bar * wv * 0.85);
+        col = mix(col, mantle * 0.7, bar * wv * 0.6);
       } else if (breed == 1) {
         // Skimmer: a pale stripe along each flank from the jaw down the tail.
         float st = smoothstep(0.34 - angW, 0.39 + angW, ang) * (1.0 - smoothstep(0.47 - angW, 0.52 + angW, ang));
@@ -594,8 +603,10 @@ vec3 dwWyvernAlbedo(out vec3 emit, out float gold) {
   if (region == 1) {
     // Horn: darker at the base, pale toward the tip, with faint growth rings.
     float t = vUv2.x;
-    vec3 base = mix(uHorn * 0.45, uSecondary * 0.6, 0.35);
-    vec3 c = mix(base, uHorn * 1.08, smoothstep(0.0, 0.85, t));
+    // A pale bone over most of its length (the target renders' horns and dorsal spines read as
+    // pale ridges); only the root takes the mantle's tone.
+    vec3 base = mix(uHorn * 0.62, uSecondary * 0.7, 0.3);
+    vec3 c = mix(base, uHorn * 1.08, smoothstep(0.0, 0.55, t));
     c *= 0.92 + 0.08 * sin(t * 40.0);
     return c;
   }
@@ -633,7 +644,9 @@ vec3 dwWyvernAlbedo(out vec3 emit, out float gold) {
     float nEdge = nm * (1.0 - smoothstep(nf + 0.02, nf + 0.16, ex));
     c = mix(c, mix(vec3(0.72, 0.8, 0.86), c, 0.35), nm * (0.42 + 0.3 * nEdge));
     c = mix(c, vec3(1.0), hl * (1.0 - 0.5 * nm));
-    emit += uEyes * iris * (1.0 - pupil) * (0.22 + 0.75 * uNight) * (1.0 - 0.75 * nm);
+    // A faint glow by day (an amber eye with a slit pupil, not a lamp: target 01), the full glow
+    // after dusk.
+    emit += uEyes * iris * (1.0 - pupil) * (0.07 + 0.9 * uNight) * (1.0 - 0.75 * nm);
     return c;
   }
   if (region == 3) return vec3(0.32, 0.09, 0.11);
@@ -721,15 +734,18 @@ vec3 dwMembraneAlbedo(out float trans) {
     c = mix(c, mix(uSecondary, uMembrane, 0.3) * 0.7, bone * 0.55);
     // The upper face is darker and duller than the underside (bats, pterosaurs): the wing reads
     // as a shape from the chase camera, and the backlit glow stands out against it.
+    // G3: only a little darker now; the target renders show the upper face as a warm, lit amber,
+    // and the dark struts and hem keep the shape readable against cloud.
     float top = smoothstep(0.15, 0.6, gl_FrontFacing ? vDwUp : -vDwUp);
     float cl = dot(c, vec3(0.2126, 0.7152, 0.0722));
-    c = mix(c, mix(vec3(cl), c, 0.85) * 0.8, top);
+    c = mix(c, mix(vec3(cl), c, 0.95) * 0.93, top);
     trans = clamp(thin * (1.0 - 0.75 * vein) * (1.0 - bone * 0.5), 0.0, 1.0);
     // Folded on the ground the membrane bunches into deep pleats along the bones: darker, banded
     // light and shade, little light through.
     float pleat = 0.5 + 0.5 * sin(vUv2.y * 25.13 + vUv2.x * 3.0);
-    c *= 1.0 - uFold * (0.24 + 0.1 * vein + 0.26 * pleat * thin);
-    trans *= 1.0 - 0.7 * uFold;
+    // G3: shallower than before; the target renders keep a folded wing a lit amber.
+    c *= 1.0 - uFold * (0.12 + 0.06 * vein + 0.16 * pleat * thin);
+    trans *= 1.0 - 0.5 * uFold;
     return c;
   }
   if (region == 1) {
