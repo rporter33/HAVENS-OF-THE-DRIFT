@@ -37,6 +37,7 @@ import { computePrompt } from '../player/prompts';
 import { Interactables } from './interactables';
 import { Research } from '../research/Research';
 import { Bond } from '../bond/Bond';
+import { CapabilityPreview } from '../debug/capPreview';
 import { airshipStage } from '../research/state';
 import { shrineInteraction } from '../research/firstLeadEncounter';
 import { FirstLead } from '../world/dressing/ventari/FirstLead';
@@ -82,6 +83,8 @@ export class Game implements GameActions {
   readonly research: Research;
   /** Bond expression v1: the Windhaven greeting and the anticipatory lean (presentation only). */
   readonly bond: Bond;
+  /** ?capPreview only: the capability-site playtest's stand-in for G5 (never in normal play). */
+  readonly capPreview: CapabilityPreview | null;
   readonly firstLead: FirstLead;
   readonly ui: Ui;
   readonly debug: DebugParams;
@@ -219,6 +222,7 @@ export class Game implements GameActions {
 
     this.research = new Research(this.save, this.events);
     this.bond = new Bond(this.world.layout);
+    this.capPreview = this.debug.capPreview ? new CapabilityPreview(this, this.debug.capPreview) : null;
     const shrine = this.dressing.ventariSites.find((s) => s.id === 'gullrest-shrine');
     if (!shrine) throw new Error('First Lead shrine anchor missing');
     this.view.tutorialShrine = shrine;
@@ -309,6 +313,7 @@ export class Game implements GameActions {
         gameplayInput.aim = this.lanceAim;
       }
       this.player.latchPresses(gameplayInput);
+      this.capPreview?.update(dt, gameplayInput);
       while (this.accumulator >= FIXED_DT && steps < MAX_STEPS) {
         this.player.fixedUpdate(FIXED_DT, gameplayInput, this.cameraRig.yaw);
         this.races.fixedUpdate(FIXED_DT, this.player);

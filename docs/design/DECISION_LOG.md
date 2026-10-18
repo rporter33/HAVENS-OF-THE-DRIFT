@@ -98,3 +98,39 @@ Robert delegated the call. Decision taken: move the editable masters (`assets/ri
 
 ### Q29 · Git history rewrite — answered 2026-10-17
 Robert delegated the call. Decision taken: no rewrite. Shallow clones are already 99 MB, a force-push would invalidate every existing clone and PR, and the archive branch mirrors the blobs anyway.
+
+## Added 2026-10-17 (from the G4 and G5 work)
+
+### Q30 · G5 capability gates: timed contracts, or authored sites? — answered 2026-10-17
+The [capability spec](CAPABILITIES.md) found that none of the four capabilities opens a place that is closed in today's layout. Robert took the recommendation:
+- **Steep-slope landing and snap-roll:** G8 authors one capability site each in `src/world/layout.ts`, closed by physics until the unlock.
+- **Stronger thermal climb and Windline from the saddle:** keep the timed route contracts (Highmoor climb-out, through the Eye of the Gale).
+
+The site requirements are in the spec. Neither G5 nor G8 is opened by this answer.
+
+### Q31 · Bond memory: persisted or session-only? — answered 2026-10-17
+Persisted, in its own `driftwing.bond.v1` localStorage document beside the save; `driftwing.save.v1` is unchanged. This is recorded from Robert merging [rporter33/HAVENS-OF-THE-DRIFT#6](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/6) as built, not from an explicit answer: revise here if session-only, or folding it into a later save version, was meant.
+
+### Q32 · Snap-roll site: which breeds thread it? — answered 2026-10-17
+Robert: the harrier site. The Keyhole is sized so the harrier can't thread it before the snap-roll and can after; the galewing and ironback stay out. Measured once built: the skimmer threads it without the unlock (its normal roll is about the harrier's boosted one), so for the skimmer the Keyhole is a skill site, not a gate. The question as it was posed:
+
+One site can't gate every breed the same way. Measured time to 90° of bank: harrier 1.08 → 0.74 s, skimmer 0.81 → 0.58, galewing 1.93 → 1.32, ironback 1.61 → 1.08 (× 1.6 burst). A site tuned for the harrier gates the harrier and skimmer, and stays closed to the galewing and ironback even after the unlock, much as the Craghorn owns the rock. Options:
+- **Harrier site:** accept that the galewing and ironback can't thread it.
+- **Two spacings:** a second, longer site for the heavy breeds.
+- **Per-breed burst:** a larger multiplier for the heavy breeds. Their roll-outs stay stable at × 2, unlike the skimmer's.
+
+*Recommendation: the harrier site, so the gap stays a light-breed line.*
+
+### Q33 · Snap-roll input on keyboard — open
+The proposed combo is a double-tap of roll within 0.25 s. Keyboard roll is all-or-nothing, so a double-tap reads cleanly there; the question is whether it collides with tapping to trim the bank in normal flight. Decide before G5's input work.
+
+### Q34 · Open the capability-sites gate? — answered 2026-10-17
+Yes. Robert opened the sites gate (G8a): build the Cascade south perch and the Archway Keyhole ahead of G5, then playtest how they feel. Same day, as the target renders start arriving: the new terrain solids' geometry and visual effort must match the fidelity those renders set (smooth, continuous surfaces; the painterly identity kept). Until the renders are in `docs/art/targets/`, the [render brief](../art/targets/RENDER_BRIEF.md) and the art pack are the bar.
+
+### Q35 · The Keyhole's tuck bypass: change the flight model, or accept it? — open
+Built and measured in G8a: with wings folded, a wyvern collides as its body alone (wingtips only collide while spread, `FlightModel.ts:1181`), so it can drop through the Keyhole's cracks without any roll; 1,082 of 14,040 tucked entries pass, every breed. No crack geometry prevents it. Options:
+- **Accept it:** folding through is the honest physical answer, and the snap-roll becomes the way through that keeps your height and speed. The Keyhole is then a skill site, not a gate.
+- **Give folded wings a collision extent:** probes at the folded wings' real reach. This is a flight-model change that affects tucked flight near any rock, so it needs its own gate, and it only blocks the tuck if the cracks are narrower than the folded wyvern.
+- **Rethink the fourth capability:** "snap-roll through a gap" may not be a gate in this physics at all.
+
+*Recommendation: decide after the playtest, once the tuck has been tried by hand.*

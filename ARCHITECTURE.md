@@ -8,7 +8,8 @@ Havens of the Drift continues this Driftwing implementation (previously organize
 src/core/        pure helpers and the shared contracts (types.ts) — no three.js scene code
 src/game/        Game.ts builds and wires every system; contracts.ts defines their interfaces
 src/render/      renderer + post chain, quality presets, shared uniforms, the painterly material patch
-src/world/       layout (the archipelago as data), analytic island/spire/arch shapes, terrain queries,
+src/world/       layout (the archipelago as data), analytic island/spire/arch shapes, sculpted rock forms
+                 (rockForm.ts: signed-distance solids for the capability sites), terrain queries,
                  island meshing; world/dressing/ holds vegetation, water and structures
 src/sky/         sky dome, day/night lighting, clouds and cloud sea; weather and the wind field
 src/flight/      breeds and the flight model (pure, unit-tested)

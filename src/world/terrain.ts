@@ -5,6 +5,7 @@ import { Vector3 } from 'three';
 import type { ContactInfo, GroundHit, RayHit, SurfaceKind, TerrainQuery } from '../core/types';
 import { LAYOUT, type WorldLayout } from './layout';
 import { ArchShape, IslandShape, SpireShape } from './islandShape';
+import { RockFormShape } from './rockForm';
 import { ColliderIndex } from './colliders';
 
 const CELL = 400;
@@ -14,13 +15,18 @@ const STRUCTURE_STEP = 1.0;
 const COLLIDER_REACH = 24;
 /** Ground hits on structures report this island id (they aren't part of any island). */
 export const STRUCTURE_GROUND_ID = -1000;
+/** Ground hits on rock forms report ROCK_GROUND_BASE − the form's id. */
+export const ROCK_GROUND_BASE = -2000;
 
 export type TerrainSolid =
   | { type: 'island'; shape: IslandShape; stamp: number }
   | { type: 'spire'; shape: SpireShape; stamp: number }
-  | { type: 'arch'; shape: ArchShape; stamp: number };
+  | { type: 'arch'; shape: ArchShape; stamp: number }
+  | { type: 'rock'; shape: RockFormShape; stamp: number };
 
 const tmpN = new Vector3();
+const rockNormal = new Vector3();
+const rockHitNormal = new Vector3();
 /** sqrt(a² + b²). Math.hypot allocates its argument list in V8; these run many times a frame. */
 const hyp = (a: number, b: number): number => Math.sqrt(a * a + b * b);
 const tmpP = new Vector3();
@@ -34,6 +40,8 @@ export class Terrain implements TerrainQuery {
   readonly islands: IslandShape[];
   readonly spires: SpireShape[];
   readonly arches: ArchShape[];
+  /** Sculpted rock forms (the capability sites). */
+  readonly rocks: RockFormShape[];
   /** Buildings, trees, decks, gates…: everything solid that isn't analytic rock. */
   readonly colliders = new ColliderIndex();
   private grid = new Map<number, TerrainSolid[]>();
@@ -46,9 +54,11 @@ export class Terrain implements TerrainQuery {
     this.islands = layout.islands.map((d) => new IslandShape(d));
     this.spires = layout.spires.map((d) => new SpireShape(d));
     this.arches = layout.arches.map((d) => new ArchShape(d));
+    this.rocks = (layout.rocks ?? []).map((d) => new RockFormShape(d));
     for (const shape of this.islands) this.insert({ type: 'island', shape, stamp: 0 }, shape.def.x, shape.def.z, shape.maxRadius);
     for (const shape of this.spires) this.insert({ type: 'spire', shape, stamp: 0 }, shape.def.x, shape.def.z, shape.maxRadius);
     for (const shape of this.arches) this.insert({ type: 'arch', shape, stamp: 0 }, shape.center.x, shape.center.z, shape.boundRadius);
+    for (const shape of this.rocks) this.insert({ type: 'rock', shape, stamp: 0 }, shape.def.x, shape.def.z, shape.maxRadius);
   }
 
   private key(cx: number, cz: number): number {
@@ -117,9 +127,10 @@ export class Terrain implements TerrainQuery {
    */
   groundAt(x: number, z: number, fromY: number, out?: GroundHit): GroundHit | null {
     // Find the winner first, then fill one result: no objects per candidate.
-    let found: 'island' | 'spire' | 'structure' | null = null;
+    let found: 'island' | 'spire' | 'rock' | 'structure' | null = null;
     let bestY = -Infinity;
     let island: IslandShape | null = null;
+    let rock: RockFormShape | null = null;
     let spireId = 0;
     const list = this.candidates(x, z, 0);
     for (let i = 0; i < list.length; i++) {
@@ -141,6 +152,13 @@ export class Terrain implements TerrainQuery {
         found = 'spire';
         bestY = d.topY;
         spireId = d.id;
+      } else if (s.type === 'rock') {
+        const y = s.shape.groundAt(x, z, fromY, rockNormal);
+        if (y === null || (found && y <= bestY)) continue;
+        found = 'rock';
+        bestY = y;
+        rock = s.shape;
+        rockHitNormal.copy(rockNormal);
       }
     }
     // Roofs, decks and other structure tops you can stand on (only a small step up, so walls and
@@ -157,6 +175,10 @@ export class Terrain implements TerrainQuery {
       island!.topNormal(x, z, hit.normal);
       hit.islandId = island!.def.id;
       hit.surface = island!.surfaceAt(x, z, hit.normal.y);
+    } else if (found === 'rock') {
+      hit.normal.copy(rockHitNormal);
+      hit.islandId = ROCK_GROUND_BASE - rock!.def.id;
+      hit.surface = 'stone';
     } else {
       hit.normal.set(0, 1, 0);
       hit.islandId = found === 'spire' ? -1 - spireId : STRUCTURE_GROUND_ID;
@@ -206,6 +228,7 @@ export class Terrain implements TerrainQuery {
       let pushed = false;
       if (s.type === 'island') pushed = this.collideIsland(s.shape, p, radius, columns);
       else if (s.type === 'spire') pushed = this.collideSpire(s.shape, p, radius);
+      else if (s.type === 'rock') pushed = this.collideRockForm(s.shape, p, radius);
       else pushed = this.collideArch(s.shape, p, radius);
       if (pushed) {
         if (contact) contact.solid = s;
@@ -332,6 +355,27 @@ export class Terrain implements TerrainQuery {
     return true;
   }
 
+  /** Pushes p out of a rock form in place. On contact, tmpN holds the contact normal. */
+  private collideRockForm(shape: RockFormShape, p: Vector3, radius: number): boolean {
+    if (p.distanceTo(shape.center) > shape.boundRadius + radius) return false;
+    const s = shape.sdf(p.x, p.y, p.z);
+    if (s >= radius / 0.5) return false;
+    // The sdf's gradient length corrects its scale near the surface (the weathering bends it).
+    const e = 0.12;
+    tmpN.set(
+      shape.sdf(p.x + e, p.y, p.z) - shape.sdf(p.x - e, p.y, p.z),
+      shape.sdf(p.x, p.y + e, p.z) - shape.sdf(p.x, p.y - e, p.z),
+      shape.sdf(p.x, p.y, p.z + e) - shape.sdf(p.x, p.y, p.z - e),
+    );
+    const g = tmpN.length() / (2 * e);
+    if (g < 1e-6) tmpN.set(0, 1, 0);
+    else tmpN.normalize();
+    const dist = s / Math.max(g, 0.5);
+    if (dist >= radius) return false;
+    p.addScaledVector(tmpN, radius - dist);
+    return true;
+  }
+
   distance(p: Vector3): number {
     let best = Infinity;
     // Look a generous distance around; far solids are bounded by their cylinders.
@@ -341,6 +385,7 @@ export class Terrain implements TerrainQuery {
       let d: number;
       if (s.type === 'island') d = islandDistance(s.shape, p);
       else if (s.type === 'spire') d = spireDistance(s.shape, p);
+      else if (s.type === 'rock') d = s.shape.distance(p);
       else {
         const bound = p.distanceTo(s.shape.center) - s.shape.boundRadius;
         d = bound > 5 ? bound : s.shape.distance(p);

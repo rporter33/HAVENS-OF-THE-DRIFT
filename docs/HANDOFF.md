@@ -2,14 +2,22 @@
 
 Keep this file short: one checkpoint, overwritten each session. Move the previous entry to [the handoff log](history/handoff/README.md) under its day before writing a new one. Nothing here authorizes new work on its own; the current task from Robert does.
 
-## Checkpoint 2026-10-17: G4 bond expression v1
+## Checkpoint 2026-10-18: G8a capability sites, ready to playtest
 
-- **Objective:** gate G4 from the [first slice](design/FIRST_SLICE.md). The wyvern greets its rider on arriving at Windhaven (landmark `roost`) on foot or landing there. It leans into a known bank 0.3 to 0.5 s early at any landmark flown through 3 or more times. Presentation only.
-- **Branch:** `gate/g4-bond-v1` from main `4647b27`; the code is in `4f95085`, with QA and handoff docs on top.
+- **Objective:** gate G8a (Q34): build the steep-landing and snap-roll capability sites ahead of G5, at the render brief's fidelity, and set up a playtest.
+- **Branch:** `gate/g8a-capability-sites`, stacked on `design/g5-sites-decision`, which is PR #8 and not yet merged.
 - **Completed:**
-  - `src/bond/`: `memory.ts` (passes and bank sites per landmark; its own `driftwing.bond.v1` localStorage document, sanitized on load), `anticipation.ts` (pass tracking, bank onsets, the lean), `greeting.ts` (arrival after 8 s away, landing settle, waiting for the wyvern), `Bond.ts` (wiring between `Player.update` and `Wyvern.update`).
-  - `WyvernPose.anticipate` is a new optional presentation channel. The wyvern flight layer turns it into spine roll (0.12 rad) and head lead. When it is absent the output is unchanged (tested bit-exact).
-  - Game wires the bond on the play screen only; `resetProgress` resets it. No changes to `src/flight`, the save schema, HUD or controls.
-- **Tests:** typecheck clean; vitest 126 files, 1,342 tests (20 new in `src/bond/bond.test.ts`); smoke 15/15. Captures and hashes are in [QA: G4 bond v1](qa/G4_BOND_V1.md).
-- **Known issues and decisions for Robert:** bond memory persists in a new key beside the save (`driftwing.save.v1` untouched); say if it should be session-only or move into the save in a later schema version. Thresholds are first guesses: known after 3 passes, a bank known after 2, lean 0.12 rad. The discovery banner still reads "Windward Roost" (outside G4).
-- **Next authorized action:** review and merge the G4 PR. Other gates wait for Robert.
+  - `RockFormShape` (`src/world/rockForm.ts`) is a new signed-distance solid read by terrain, collision, ground, the Windline sweep, race and cloud clearance, and a surface-nets mesher (`mesh/rockFormMesh.ts`). It's painted in the islands' palette through `terrainMaterial`, with LODs and shadow stand-ins.
+  - **Cascade south perch:** 51.5° top, ground only on its plane. No breed lands on it today; every breed can with the unlock.
+  - **Archway Keyhole:** opposed 70° cracks around a 9.5 m chamber. The harrier can't thread it today and can with the ×1.6 snap-roll, at 14–16.5 m/s.
+  - `?capPreview=steep,snap` is a debug-only preview. The session saves nothing.
+  - Playtest plan and QA questions: [G8a QA](qa/G8A_CAPABILITY_SITES.md).
+- **Tests:** see the PR. Typecheck, the full vitest suite and smoke are run before the push. New: `src/world/rockForm.test.ts` and `src/debug/capPreview.test.ts`.
+- **Known issues and decisions for Robert:**
+  - Q35: folded wings thread the Keyhole without a roll. No geometry prevents it; it needs a flight-model call, or acceptance.
+  - Q33: the keyboard double-tap is open.
+  - The skimmer threads the Keyhole without the unlock.
+  - Dismounting on the perch slides the rider off into freefall.
+  - The boosted window is narrow, just above stall.
+  - Target renders aren't in yet; the sites are judged against the brief for now.
+- **Next authorized action:** Robert's playtest, with the plan's questions. Then decide Q33 and Q35. G5 is not opened.
