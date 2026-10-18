@@ -39,6 +39,11 @@ export interface WingShape {
   trailZ: number;
   /** Depth of the scalloped trailing edge between finger tips (fraction of the gap). */
   scallop: number;
+  /**
+   * The inner panel's (arm, finger 2 and flank) scallop, when it differs from the outer panels'
+   * (Q40: the outer panels fill out; the inner one, which folds against the body, keeps its cut).
+   */
+  scallopInner?: number;
 }
 
 export interface BreedShape {
@@ -148,7 +153,29 @@ export interface LegAngles {
  */
 export const LEG_ANGLES: Readonly<LegAngles> = { thigh: 30 * DEG, shin: -40 * DEG, meta: 24 * DEG };
 
-const W = (w: Partial<WingShape> & Pick<WingShape, 'armLength'>): WingShape => ({
+/**
+ * Deeper membranes (Robert, 2026-10-18, Q40: "I like the flight stats but I think deeper wings are
+ * good"): the middle finger is a fifth longer and the outer panels' trailing edges sag a fifth as
+ * far between the fingers, so the spread wing reads as the target renders' broad sail (the
+ * harrier's membranes 24.1 m² → 26.8 m², visual aspect ratio 9.9 → 9.0). Visual only: the flight
+ * model's span and area (flight/breeds.ts) are unchanged, and the span stays the breed's (finger
+ * 0's outer phalanx is solved for it). The inner panel and finger 2, which fold against the body,
+ * keep their cut: deepening them put the folded membrane 2 to 9 cm into the flank when kneeling,
+ * and finger 1 beyond 1.2× put the skimmer's into its thigh standing (wyvern.ground.test.ts).
+ */
+export const WING_DEPTH = { finger1: 1.2, outerScallop: 0.2 } as const;
+
+/** A wing with WING_DEPTH applied (see above). */
+function deepen(w: WingShape): WingShape {
+  return {
+    ...w,
+    fingers: w.fingers.map(([a, b], i) => (i === 1 ? [a * WING_DEPTH.finger1, b * WING_DEPTH.finger1] : [a, b])) as [number, number][],
+    scallop: w.scallop * WING_DEPTH.outerScallop,
+    scallopInner: w.scallop,
+  };
+}
+
+const W = (w: Partial<WingShape> & Pick<WingShape, 'armLength'>): WingShape => deepen({
   humerus: 0.22,
   forearm: 0.36,
   hand: 0.075,

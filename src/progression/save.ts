@@ -179,9 +179,14 @@ function sanitizeRider(v: unknown): RiderLook {
   };
 }
 
+/** The default field of view before the lens change of 2026-10-18 (Q40). */
+const OLD_DEFAULT_FOV = 62;
+
 function sanitizeSettings(v: unknown): Settings {
   const r = isObject(v) ? v : {};
   const out: Settings = { ...DEFAULT_SETTINGS };
+  // Settings saved under the old default lens that never moved the slider take the new default.
+  const oldDefaultLens = r.lensRev === undefined && r.fov === OLD_DEFAULT_FOV;
   // Copy only keys we know, and only when the type matches the default's.
   for (const key of Object.keys(DEFAULT_SETTINGS) as (keyof Settings)[]) {
     const val = r[key];
@@ -197,6 +202,8 @@ function sanitizeSettings(v: unknown): Settings {
   out.resolutionScale = clampTo(out.resolutionScale, 0.5, 1);
   out.lookSensitivity = clampTo(out.lookSensitivity, 0.25, 2);
   out.fov = clampTo(out.fov, 40, 100);
+  if (oldDefaultLens) out.fov = DEFAULT_SETTINGS.fov;
+  out.lensRev = DEFAULT_SETTINGS.lensRev;
   out.masterVolume = clampTo(out.masterVolume, 0, 1);
   out.musicVolume = clampTo(out.musicVolume, 0, 1);
   out.sfxVolume = clampTo(out.sfxVolume, 0, 1);

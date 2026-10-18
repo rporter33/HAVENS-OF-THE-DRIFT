@@ -558,6 +558,11 @@ export interface Settings {
   lookSensitivity: number;
   /** Base vertical FOV in degrees. */
   fov: number;
+  /**
+   * Which default lens the settings were made under: absent = before 2026-10-18 (62°), 1 = the
+   * slightly narrower default (58°, Q40). A save still on the old default moves to the new one.
+   */
+  lensRev?: number;
   masterVolume: number;
   musicVolume: number;
   sfxVolume: number;

@@ -11,6 +11,9 @@
 // The head is the game's own (Robert, 2026-10-18): the file carries no skull, and the procedural
 // build's head (skull, jaw, eyes, teeth, tongue, horns, cheek fans: everything riding the head's
 // bones) is merged in, so the wyvernHead and horn cosmetics and the glowing eyes work on the trial.
+// So are the wing membranes and finger spars (G3c, Q40): the file's copies were fitted against the
+// rig of the day, and the game's wings now run deeper (proportions.ts WING_DEPTH); taking them
+// from the build keeps the trial's wings the game's, whatever their cut.
 
 import { BufferAttribute, BufferGeometry, Float32BufferAttribute, Uint16BufferAttribute, Vector3 } from 'three';
 import type { BreedId } from '../../core/types';
@@ -114,8 +117,11 @@ export function trialInfo(rig: RigDef, base: WyvernMeshInfo, asset: WyvernTrialA
   });
   const joints = new Uint16Array(asset.joints.length);
   for (let i = 0; i < joints.length; i++) joints[i] = asset.weights[i] > 0 ? remap[asset.joints[i]] : 0;
-  // The procedural head: body-group triangles whose every vertex rides mostly on a head bone.
-  const head = headPart(rig, base);
+  // From the procedural build: the head (body-group triangles whose every vertex rides mostly on a
+  // head bone), the finger spars (likewise on a finger bone) and every membrane triangle. The
+  // file's own finger spars and membranes are left out.
+  const fingerBones = new Set(rig.idx.wings.flatMap((w) => w.fingers.flat()));
+  const head = basePart(base, boneSet(rig, HEAD_BONES), fingerBones);
   const nT = asset.position.length / 3;
   const nH = head.verts.length;
   const cat = (a: ArrayLike<number>, attr: string, k: number, Ctor: Float32ArrayConstructor | Uint16ArrayConstructor) => {
@@ -136,10 +142,12 @@ export function trialInfo(rig: RigDef, base: WyvernMeshInfo, asset: WyvernTrialA
   g.setAttribute('aExtra', new Float32BufferAttribute(cat(asset.extra, 'aExtra', 4, Float32Array), 4));
   const exH = g.getAttribute('aExtra');
   for (let i = 0; i < nH; i++) exH.setX(nT + i, base.ao.base[head.verts[i]]);
-  const [t0, i1] = asset.index;
+  // The file's body without its finger spars.
+  const t0 = withoutBones(asset.index[0], asset.joints, asset.weights, new Set(asset.jointNames.flatMap((n, i) => (fingerBones.has(byName.get(n) ?? -1) ? [i] : []))));
   const i0 = new Uint32Array(t0.length + head.tris.length);
   i0.set(t0);
   for (let i = 0; i < head.tris.length; i++) i0[t0.length + i] = nT + head.tris[i];
+  const i1 = Uint32Array.from(head.membrane, (v) => nT + v);
   const all = new Uint32Array(i0.length + i1.length);
   all.set(i0);
   all.set(i1, i0.length);
@@ -175,39 +183,57 @@ export function trialInfo(rig: RigDef, base: WyvernMeshInfo, asset: WyvernTrialA
   };
 }
 
-/**
- * The procedural head out of a built geometry: its vertices (indices into it) and its body-group
- * triangles re-indexed onto that list. A vertex belongs when most of its skin weight is on a head bone.
- */
-function headPart(rig: RigDef, base: WyvernMeshInfo): { verts: number[]; tris: number[] } {
-  const g = base.geometry;
-  const heads = new Set(HEAD_BONES.map((n) => rig.bones.findIndex((b) => b.name === n)).filter((i) => i >= 0));
-  const si = g.getAttribute('skinIndex');
-  const sw = g.getAttribute('skinWeight');
-  const n = si.count;
-  const inHead = new Uint8Array(n);
-  for (let v = 0; v < n; v++) {
-    let w = 0;
-    for (let k = 0; k < 4; k++) if (heads.has(si.getComponent(v, k))) w += sw.getComponent(v, k);
-    if (w > 0.5) inHead[v] = 1;
+function boneSet(rig: RigDef, names: string[]): Set<number> {
+  return new Set(names.map((n) => rig.bones.findIndex((b) => b.name === n)).filter((i) => i >= 0));
+}
+
+/** True when most of vertex v's skin weight (of `k` influences per vertex) is on `bones`. */
+function mostlyOn(v: number, idx: ArrayLike<number>, w: ArrayLike<number>, bones: Set<number>): boolean {
+  let s = 0;
+  for (let k = 0; k < 4; k++) if (bones.has(idx[v * 4 + k])) s += w[v * 4 + k];
+  return s > 0.5;
+}
+
+/** A triangle list without the triangles whose every vertex rides mostly on `bones`. */
+function withoutBones(tris: Uint32Array, joints: ArrayLike<number>, weights: ArrayLike<number>, bones: Set<number>): Uint32Array {
+  const out: number[] = [];
+  for (let i = 0; i < tris.length; i += 3) {
+    const a = tris[i], b = tris[i + 1], c = tris[i + 2];
+    if (mostlyOn(a, joints, weights, bones) && mostlyOn(b, joints, weights, bones) && mostlyOn(c, joints, weights, bones)) continue;
+    out.push(a, b, c);
   }
+  return Uint32Array.from(out);
+}
+
+/**
+ * Parts of a built geometry for the trial: its vertices (indices into it), the body-group
+ * triangles riding mostly on the head bones or the finger bones (re-indexed onto that list), and
+ * all of its membrane triangles (likewise).
+ */
+function basePart(base: WyvernMeshInfo, heads: Set<number>, fingers: Set<number>): { verts: number[]; tris: number[]; membrane: number[] } {
+  const g = base.geometry;
+  const si = g.getAttribute('skinIndex').array;
+  const sw = g.getAttribute('skinWeight').array;
+  const n = g.getAttribute('position').count;
   const idx = g.index!.array;
-  const g0 = g.groups[0];
   const map = new Int32Array(n).fill(-1);
   const verts: number[] = [];
-  const tris: number[] = [];
-  for (let i = g0.start; i < g0.start + g0.count; i += 3) {
-    const a = idx[i];
-    const b = idx[i + 1];
-    const c = idx[i + 2];
-    if (!(inHead[a] && inHead[b] && inHead[c])) continue;
-    for (const v of [a, b, c]) {
-      if (map[v] < 0) {
-        map[v] = verts.length;
-        verts.push(v);
-      }
-      tris.push(map[v]);
+  const take = (v: number) => {
+    if (map[v] < 0) {
+      map[v] = verts.length;
+      verts.push(v);
     }
+    return map[v];
+  };
+  const tris: number[] = [];
+  const [g0, g1] = g.groups;
+  for (let i = g0.start; i < g0.start + g0.count; i += 3) {
+    const a = idx[i], b = idx[i + 1], c = idx[i + 2];
+    const on = (bones: Set<number>) => mostlyOn(a, si, sw, bones) && mostlyOn(b, si, sw, bones) && mostlyOn(c, si, sw, bones);
+    if (!on(heads) && !on(fingers)) continue;
+    tris.push(take(a), take(b), take(c));
   }
-  return { verts, tris };
+  const membrane: number[] = [];
+  for (let i = g1.start; i < g1.start + g1.count; i++) membrane.push(take(idx[i]));
+  return { verts, tris, membrane };
 }
