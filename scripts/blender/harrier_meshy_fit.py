@@ -51,6 +51,7 @@ TAIL_POLY = [(-0.066, -0.028), (-0.05, -0.030), (0.0, -0.034), (0.1, -0.040), (0
 
 MESHY_SHARE = 0.75
 NATURAL_SCALE = 15.0
+HEAD_GIRTH = 1.05
 
 WING_PREFIX = ('humerus', 'forearm', 'hand', 'finger', 'fold', 'claw')
 SKIN_REGIONS = (0, 8)
@@ -338,6 +339,10 @@ def envelopes(w, L):
             for key in ('v', 'w'):
                 T[b]['k' + key] = MESHY_SHARE * float(k) + (1 - MESHY_SHARE) * T[b]['k' + key]
                 T[b]['o' + key] = (1 - MESHY_SHARE) * T[b]['o' + key]
+    # The head keeps the Meshy skull's own shape: one uniform scale, set by the game head's length.
+    for key in ('v', 'w'):
+        T['head']['k' + key] = T['head']['ku'] * HEAD_GIRTH
+        T['head']['o' + key] = 0.0
     return T
 
 
