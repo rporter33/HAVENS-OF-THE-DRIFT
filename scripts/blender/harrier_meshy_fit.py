@@ -50,6 +50,11 @@ TAIL_POLY = [(-0.066, -0.028), (-0.05, -0.030), (0.0, -0.034), (0.1, -0.040), (0
              (0.36, -0.020), (0.392, -0.027)]
 
 MESHY_SHARE = 0.75
+# The head stays the game's own (Robert, 2026-10-18: the procedural head, glowing eyes, swappable
+# through the wyvernHead cosmetic). The Meshy head is cut off at the head joint, and the neck eases
+# from MESHY_SHARE to the game's own girth toward the skull, so the game head seats on it.
+HEAD_FAMILY = ('head', 'jaw', 'gular', 'tongue0', 'tongue1', 'fanL', 'fanR')
+NECK_EASE = {'neck3': 0.6, 'neck4': 0.35, 'neck5': 0.15}
 NATURAL_SCALE = 15.0
 HEAD_GIRTH = 1.05
 
@@ -336,9 +341,10 @@ def envelopes(w, L):
         for i in range(len(ch)):
             sm[i] = 0.25 * nat[max(i - 1, 0)] + 0.5 * nat[i] + 0.25 * nat[min(i + 1, len(ch) - 1)]
         for b, k in zip(ch, sm):
+            share = NECK_EASE.get(b, MESHY_SHARE)
             for key in ('v', 'w'):
-                T[b]['k' + key] = MESHY_SHARE * float(k) + (1 - MESHY_SHARE) * T[b]['k' + key]
-                T[b]['o' + key] = (1 - MESHY_SHARE) * T[b]['o' + key]
+                T[b]['k' + key] = share * float(k) + (1 - share) * T[b]['k' + key]
+                T[b]['o' + key] = (1 - share) * T[b]['o' + key]
     # The head keeps the Meshy skull's own shape: one uniform scale, set by the game head's length.
     for key in ('v', 'w'):
         T['head']['k' + key] = T['head']['ku'] * HEAD_GIRTH
@@ -408,6 +414,18 @@ def transfer_attrs(nb):
     nb.data.update()
 
 
+def cut_head(nb):
+    """Remove the Meshy skull: every vertex riding mostly on the head bone (the game's head replaces it)."""
+    dom = _dominant(nb)
+    bm = bmesh.new()
+    bm.from_mesh(nb.data)
+    bm.verts.ensure_lookup_table()
+    bmesh.ops.delete(bm, geom=[bm.verts[i] for i in np.nonzero(np.isin(dom, HEAD_FAMILY))[0]], context='VERTS')
+    bm.to_mesh(nb.data)
+    bm.free()
+    nb.data.update()
+
+
 def keep_parts():
     gb = bpy.data.objects[GBODY]
     old = bpy.data.objects.get(KEEP)
@@ -421,6 +439,7 @@ def keep_parts():
     reg = np.array([d.color[0] for d in me.attributes['_AMAT'].data]).round().astype(int)
     dom = _dominant(k)
     wing = np.array([any(d.startswith(p) for p in WING_PREFIX) for d in dom])
+    head = np.isin(dom, HEAD_FAMILY)
     bm = bmesh.new()
     bm.from_mesh(me)
     kill = []
@@ -428,6 +447,9 @@ def keep_parts():
         if f.material_index == 1:
             continue
         vs = [v.index for v in f.verts]
+        if head[vs].mean() > 0.5:
+            kill.append(f)
+            continue
         if wing[vs].mean() > 0.5:
             continue
         if int(np.bincount(reg[vs]).argmax()) in (0, 8, 3, 9, 12, 13):
@@ -740,10 +762,11 @@ def run_all(do_clean=True):
     fit_rig(w, L)
     T = envelopes(w, L)
     nb = conform(w, T)
+    cut_head(nb)
     transfer_attrs(nb)
     k = keep_parts()
     moved = reseat(nb, k)
-    fit_eyes(w, nb, k)
+    k['eye_fit'] = '{}'
     hide = bpy.data.materials.get('Harrier_Hide')
     if hide:
         nb.data.materials.clear()
