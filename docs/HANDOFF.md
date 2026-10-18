@@ -2,21 +2,20 @@
 
 Keep this file short: one checkpoint, overwritten each session. Move the previous entry to [the handoff log](history/handoff/README.md) under its day before writing a new one. Nothing here authorizes new work on its own; the current task from Robert does.
 
-## Checkpoint 2026-10-18: G8a capability sites, playtested
+## Checkpoint 2026-10-18: G8b site polish built; waiting on a re-test
 
-- **Objective:** gate G8a (Q34): build the steep-landing and snap-roll capability sites ahead of G5, at the render brief's fidelity, playtest them, and record the answers.
-- **Branch:** the sites are on `main` (#9, with #8, at `affe784`). The playtest answers are docs only, on `claude/loving-gates-7sydp9`.
+- **Objective:** gate G8b (Q45): after the G8a playtest, make the perch read as landable, explain a failed landing, and make the Keyhole more forgiving.
+- **Branch:** `claude/loving-gates-7sydp9` (docs and code, pushed, no PR). G8a is on `main` (#9, `affe784`).
 - **Completed:**
-  - `RockFormShape` (`src/world/rockForm.ts`) is a new signed-distance solid read by terrain, collision, ground, the Windline sweep, race and cloud clearance, and a surface-nets mesher (`mesh/rockFormMesh.ts`). It's painted in the islands' palette through `terrainMaterial`, with LODs and shadow stand-ins.
-  - **Cascade south perch:** 51.5° top, ground only on its plane. No breed lands on it today; every breed can with the unlock.
-  - **Archway Keyhole:** opposed 70° cracks around a 9.5 m chamber. The harrier can't thread it today and can with the ×1.6 snap-roll, at 14–16.5 m/s.
-  - `?capPreview=steep,snap` is a debug-only preview. The session saves nothing.
-  - Robert played both sites on 2026-10-18 (gamepad and keyboard). Answers: [G8a QA](qa/G8A_CAPABILITY_SITES.md#playtest-results-2026-10-18). Decision log: Q33 and Q35 answered, Q41 and Q42 opened, Q43 records the direction.
-- **Tests:** G8a code passed typecheck, the full vitest suite (1,361 tests) and smoke (15/15) on #9. The answers change docs only and ran no tests.
+  - **Answers recorded:** Q33, Q35, Q41, Q42, Q12b, Q21b answered; Q43 (direction), Q44 (one rival per course) and Q45 (opens G8b) added. See [G8a QA](qa/G8A_CAPABILITY_SITES.md#playtest-results-2026-10-18).
+  - **F1:** the perch's top is a bright ivory slab with a scrub-fringed rim and a shaded lip (paint only, `rockFormMesh.ts`).
+  - **F2:** a flared approach into ground too steep for the breed shows "Too steep to land" with the slope and the breed's limit, at most every 8 s (`Player.ts`, presentation only; raised from the legs' check and from the body's contact).
+  - **Keyhole chamber 9.5 m to 14 m** (`layout.ts`). A normal-roll harrier now threads 195 of 37,260 settings (0 before) and the snap-roll 1,996 of 53,820. The galewing and ironback still never do. 15 m would let the ironback through with the unlock, so 14 m is the longest that keeps Q32.
+  - **F3 and F4 reproduced, not fixed:** F3 is a feel problem (a 0.6 s stun, then about 2.4 s under 8 m/s in the flare pose, and nothing says to release flare); F4 is the camera boom snapping in and ending inside the rock for 2 frames.
+- **Tests:** typecheck clean; vitest 128 files, 1,366 tests passed; smoke 15/15 (the build stamp was `400bfa5`, before the G8b commit). New or changed: `rockForm.test.ts` (the failed-landing explanation and its conditions, the Keyhole search, pinned early and late lines, the heavy breeds).
 - **Known issues and decisions for Robert:**
-  - The perch's top and rim don't read as a place to land, and a failed landing reads as a bug with no explanation (F1, F2).
-  - After sliding off the perch the mount "kind of freezes up" (F3); the follow camera clips into rock while the mount is falling (F4). Neither is reproduced or investigated.
-  - Q41 (keyboard snap-roll input) and Q42 (what a rock hit costs) are open.
-  - Q35 is accepted: the tuck threads the Keyhole, so it is a skill site and the snap-roll no longer gates its collectible. G5 decides what the unlock earns there.
-  - Direction in Q43, none of it built: a charged launch that improves with bonding, a more forgiving Keyhole chamber, a possible wind stream for agility, a more visible snap-roll animation, and more unique, vertical islands.
-- **Next authorized action:** none opened by this checkpoint. G5 and any G8a follow-up (readability, a more forgiving chamber, F3 and F4) need a named gate from Robert, and Q41 and Q42 need Robert's call.
+  - Re-test questions B1 to B7 are in the QA doc. Nothing from G8b has been played.
+  - F3 and F4 need a named gate to fix. F4 is the camera boom; F3 is feedback during a failed landing.
+  - Q42's physics half (a longer loss of control) needs its own gate and Robert's approval; Q41's longer keyboard window is built with G5.
+  - Open PRs #10 and #11 (art targets, Harrier colour) use Q36 to Q40, so counts and the end of the decision log will need a small recount whichever merges second.
+- **Next authorized action:** none opened by this checkpoint. G5, the F3 and F4 fixes and the Q42 physics each need a named gate from Robert.

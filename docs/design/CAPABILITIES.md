@@ -182,22 +182,23 @@ As built: a leaning crag 380 m south of Cascade Isle's axis, top center (820, 47
 - **Between the limits:** 0.622 is below today's land limit (0.65) and above the unlock's (cos 53° = 0.602). At ≤ 53°, 53°–56° stays the Craghorn's (`docs/ROADMAP.md:80`).
 - **Only the plane is ground.** It's reported with its exact normal, inside its rounded rim. The flanks and rim are collision only, like the arches. Any smooth crest has a line where the surface turns flat, so that would have been a way on today.
 - **Isolation:** no other ground within 12 m at a similar height. The perch floats free, and the walk limit stays 40°.
+- **Reads as a landing slab (G8b, [Q45](DECISION_LOG.md)):** the plane is painted as a bright ivory slab with a scrub-fringed rim and a shaded lip under its edge, and a flared approach that meets ground too steep for the breed gets a "Too steep to land" toast naming the slope and the breed's limit. Paint and presentation only: the geometry, the collision and the landing rule are unchanged.
 - **Measured:** no breed lands on it today (0 of 405 scripted approaches each). With the unlock, the harrier lands on 196 of 405, the skimmer 170, the galewing 197 and the ironback 204, and every landing stays standing. In the running game, 0 of 12 approaches land today and 8–9 of 12 land with the preview.
 - **Rider check (for G5):** dismounting on the perch sets the rider down on 51.5°, where they can't stand. They slide off the downhill rim into Windline freefall, and normal play never summons the wyvern automatically, so they must hold recall or fall to the cloud sea. Decided 2026-10-18 ([Q43](DECISION_LOG.md)): keep it. Dismounting on the perch is acceptable and is not blocked.
 
 ### Snap-roll site: the Archway Keyhole
 
-As built: an islet off the Archway Reach, chamber center (−850, 330, −1280), its passage along the chain's line (`yaw` = atan2(−800, −320)). Two **opposed 70° cracks**, 8 m wide and 36 m long, one through each 8 m wall, open into a **9.5 m** chamber.
+As built: an islet off the Archway Reach, chamber center (−850, 330, −1280), its passage along the chain's line (`yaw` = atan2(−800, −320)). Two **opposed 70° cracks**, 8 m wide and 36 m long, one through each 8 m wall, open into a **14 m** chamber (9.5 m in G8a; lengthened in G8b, [Q43](DECISION_LOG.md)).
 
 - **Why a reversal, not the letterbox and slot written above:**
   - In open sky a gap gates nothing unless what's behind it is enclosed, so the passage is the only way into the chamber, where G5's collectible will sit.
   - A low "letterbox" still lets a pilot pre-roll about 20°.
-  - Opposed cracks demand a reversal of at least 2 × (70° − the crack's bank tolerance) inside the chamber. The ×1.6 burst shortens that reversal by the same 1.6× at any speed, so the only way to compensate is to fly slower, and the chamber is sized so that even at stall speed the base harrier runs out of room.
+  - Opposed cracks demand a reversal of at least 2 × (70° − the crack's bank tolerance) in and around the chamber. The ×1.6 burst shortens that reversal by the same 1.6× at any speed. The G8a chamber (9.5 m) left the base harrier no way through; after the playtest ([Q43](DECISION_LOG.md)) it is 14 m, so a well-aimed harrier at its normal roll can sometimes thread it, by starting the reversal early, and the snap-roll makes it reliable. 14 m is the longest chamber that still keeps the ironback out ([Q32](DECISION_LOG.md)).
 - **Measured (harrier, real `FlightModel` and terrain, scripted pilot search):**
-  - At normal roll, 0 of 37,260 approach settings thread it.
-  - With the ×1.6 snap-roll, 180 of 53,820 do, all at 14–16.5 m/s, just above the harrier's 13.9 m/s stall.
-  - The skimmer threads it without the unlock; the galewing and ironback can't even with it ([Q32](DECISION_LOG.md)).
-- **Known bypass ([Q35](DECISION_LOG.md), accepted 2026-10-18):** folded wings thread it. Wingtips collide only while spread (`FlightModel.ts:1181`), so a tucked wyvern collides as its body alone. 1,082 of 14,040 tucked entries pass, across all breeds and speeds. No crack geometry can stop this: a folded wyvern is always more compact than a spread one, and the fall across this passage is a few metres. Robert accepted the tuck as the other way through, so the Keyhole is a skill site for everyone, and the snap-roll no longer gates the chamber's collectible. G5 decides what the unlock earns here.
+  - At normal roll, 195 of 37,260 approach settings thread it (0.5%; 0 at the 9.5 m chamber).
+  - With the ×1.6 snap-roll, 1,996 of 53,820 do (3.7%; 180 at 9.5 m), at 14–20 m/s.
+  - The skimmer threads it without the unlock (272 of 5,184 settings); the galewing and ironback can't even with it ([Q32](DECISION_LOG.md)).
+- **Known bypass ([Q35](DECISION_LOG.md), accepted 2026-10-18):** folded wings thread it. Wingtips collide only while spread (`FlightModel.ts:1181`), so a tucked wyvern collides as its body alone. 1,109 of 14,040 tucked entries pass, across all breeds and speeds. No crack geometry can stop this: a folded wyvern is always more compact than a spread one, and the fall across this passage is a few metres. Robert accepted the tuck as the other way through, so the Keyhole is a skill site for everyone, and the snap-roll no longer gates the chamber's collectible. G5 decides what the unlock earns here.
 
 ## Decision record
 

@@ -420,11 +420,12 @@ function buildLayout(): WorldLayout {
     {
       // A floating rock south of the Archway Reach, pierced along the chain's line: an entry
       // crack tilted 70° one way, a chamber, an exit crack tilted 70° the other. Threading it
-      // is a bank reversal inside the chamber, too short for a harrier's normal roll.
+      // is a bank reversal in and around the chamber: a well-aimed harrier at its normal roll can
+      // sometimes manage it, and the snap-roll's ×1.6 makes it reliable (G8b, decision Q43).
       id: 1, kind: 'keyhole', name: 'Archway Keyhole',
       x: -850, y: 330, z: -1280, yaw: Math.atan2(-800, -320), seed: 8102,
       width: 56, height: 60, wall: 8,
-      chamber: 9.5, chamberWidth: 28, chamberHeight: 40,
+      chamber: 14, chamberWidth: 28, chamberHeight: 40,
       crackWidth: 8, crackLength: 36, crackAngle: 70 * D,
     },
   ];

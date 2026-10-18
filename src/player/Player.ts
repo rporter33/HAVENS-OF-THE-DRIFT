@@ -101,6 +101,10 @@ function phaseLerp(a: number, b: number, t: number): number {
 const SUN_WARMED_TOAST = { text: 'Sun-warmed — your wyvern spreads its wings to the sun', sub: 'Its stamina lasts longer for a while', icon: 'info' } as const;
 const RESTED_TOAST = { text: 'Rested — your wyvern stretches and settles', sub: 'Its stamina lasts longer for a while', icon: 'info' } as const;
 
+/** A failed landing explains itself at most this often (s), and never on ground steeper than ~70°. */
+const STEEP_HINT_INTERVAL = 8;
+const STEEP_HINT_MIN_Y = 0.34;
+
 /** Seat (where the rider's hips rest) in body space, as a fraction of standHeight. */
 const SEAT_UP = 0.37;
 const SEAT_FWD = 0.08;
@@ -253,6 +257,8 @@ export class Player implements PlayerSystem {
   private waveTimer = 0;
   private landActionTimer = 0;
   private hitCooldown = 0;
+  /** Seconds until a failed steep landing may explain itself again. */
+  private steepHintTimer = 0;
   private stillTime = 0;
 
   // Last place it was safe to stand (respawn point).
@@ -477,6 +483,7 @@ export class Player implements PlayerSystem {
     this.modeTime += dt;
     this.cameraYaw = cameraYaw;
     this.hitCooldown = Math.max(0, this.hitCooldown - dt);
+    this.steepHintTimer = Math.max(0, this.steepHintTimer - dt);
     this.noLand = Math.max(0, this.noLand - dt);
     this.landActionTimer = Math.max(0, this.landActionTimer - dt);
     this.waveTimer = Math.max(0, this.waveTimer - dt);
@@ -739,11 +746,12 @@ export class Player implements PlayerSystem {
   private updateFlying(dt: number, input: InputFrame): void {
     const s = this.model.state;
     this.buildFlightInput(dt, input.flight);
-    this.model.step(dt, this.flightIn, this.deps.env, this.deps.events);
+    const step = this.model.step(dt, this.flightIn, this.deps.env, this.deps.events);
     this.airTime += dt;
     this.copyFlightAnim();
     this.setGait(this.airTime < P.takeoffGaitTime ? this.launchGait : 'idle');
     this.legContact(dt);
+    if (step.contact) this.explainSteepContact();
     if (this.mode === 'flying' && s.position.y < this.deps.terrain.layout.cloudFloor) this.startRespawn();
     this.syncRiderToSeat();
   }
@@ -856,6 +864,7 @@ export class Player implements PlayerSystem {
       // Too steep to stand: the legs skate and the wyvern slides off.
       s.position.addScaledVector(n, (sh - h) * 0.5);
       if (vn < 0) s.velocity.addScaledVector(n, -vn);
+      this.explainSteep(n.y);
       return;
     }
     // Flaring into the ground is a landing, however heavy: the legs take it (a deep crouch, a
@@ -875,6 +884,35 @@ export class Player implements PlayerSystem {
       this.deps.events.emit('terrainHit', { impulse: sink, point: s.position.clone().setY(g.y), normal: n.clone() });
     }
     this.setGait('landing');
+  }
+
+  /**
+   * Say why a landing attempt skated off, once per interval: how steep the ground is against what
+   * this breed lands on. Never for a wall (nobody tries to land on one). Presentation only.
+   */
+  private explainSteep(normalY: number): void {
+    if (this.steepHintTimer > 0 || normalY < STEEP_HINT_MIN_Y) return;
+    this.steepHintTimer = STEEP_HINT_INTERVAL;
+    const limit = Math.floor((Math.acos(slopeLimitY(this.breed.id, 'land')) * 180) / Math.PI);
+    const slope = Math.ceil((Math.acos(normalY) * 180) / Math.PI);
+    this.deps.events.emit('toast', {
+      text: 'Too steep to land',
+      sub: `A ${this.breed.name} lands on slopes up to ${limit}°. This one is ${slope}°.`,
+      icon: 'info',
+    });
+  }
+
+  /**
+   * On a steep slope the body touches before the legs do (the legs' reach is measured straight
+   * down, and a slope's perpendicular is shorter), so a flared approach that bounces off ground
+   * too steep for this breed never reaches legContact's own check. Explain it from the contact.
+   */
+  private explainSteepContact(): void {
+    const s = this.model.state;
+    if (this.steepHintTimer > 0 || (s.flare < 0.25 && s.airspeed >= P.legsSpeed)) return;
+    const g = this.deps.terrain.groundAt(s.position.x, s.position.z, s.position.y + 0.5);
+    if (!g || s.position.y - g.y > this.breed.standHeight + 3) return;
+    if (g.normal.y < slopeLimitY(this.breed.id, 'land')) this.explainSteep(g.normal.y);
   }
 
   private touchdown(g: GroundHit, sink: number): void {

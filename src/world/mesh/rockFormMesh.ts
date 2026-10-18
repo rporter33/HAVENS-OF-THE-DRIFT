@@ -36,6 +36,14 @@ const ROCK_OCHRE = new Color('#ad946c');
 const STONE = new Color('#aca596');
 const MOSS = new Color('#4c7a35');
 const LICHEN = new Color('#a3a56a');
+// The perch's landing slab and the scrub fringe that outlines it (the Archway Reach render's
+// ivory limestone with scrub along its ledges), and the shaded lip under the slab's edge.
+const SLAB = new Color('#cfc2a3');
+const SLAB_WARM = new Color('#c4aa7e');
+const SLAB_STREAK = new Color('#9d8a6c');
+const SCRUB = new Color('#5f7d3a');
+const SCRUB_DRY = new Color('#8f9150');
+const LIP = new Color('#86705b');
 const GRASS = new Color('#77a345');
 const GRASS_ALT = new Color('#8e9a50');
 const GRASS_DARK = new Color('#3d7234');
@@ -193,13 +201,18 @@ export function* buildRockFormMesh(shape: RockFormShape, spec: RockLodSpec): Gen
   const normals = new Float32Array(b.vertexCount * 3);
   const patchN = noise2(d.seed + 5);
   const mossN = noise2(d.seed + 9);
+  const streakN = noise2(d.seed + 13);
   // Where the turf, the cliff and the underside meet (world y), and how deep the underside goes.
   const top = d.kind === 'crag' ? d.y : d.y + d.height / 2;
   const waist = d.kind === 'crag' ? d.y - 6 : d.y - d.height / 2;
   const deepest = shape.minY;
   if (d.kind === 'crag') PLANE.set(shape.fwd.x * Math.sin(d.slope), Math.cos(d.slope), shape.fwd.z * Math.sin(d.slope));
+  // The slab's height along its own normal (the mean over the vertices lying on it), so the flank
+  // just under its edge can be shaded as a lip.
+  let slabH = 0;
+  let slabN = 0;
   for (let v = 0; v < b.vertexCount; v++) {
-    if (v % (SLICE / 4) === SLICE / 4 - 1) yield;
+    if (v % (SLICE / 2) === SLICE / 2 - 1) yield;
     const x = b.x(v) + d.x;
     const y = b.y(v) + d.y;
     const z = b.z(v) + d.z;
@@ -207,17 +220,38 @@ export function* buildRockFormMesh(shape: RockFormShape, spec: RockLodSpec): Gen
     normals[v * 3] = n3.x;
     normals[v * 3 + 1] = n3.y;
     normals[v * 3 + 2] = n3.z;
+    if (d.kind === 'crag' && n3.dot(PLANE) > 0.985) {
+      slabH += PLANE.x * x + PLANE.y * y + PLANE.z * z;
+      slabN++;
+    }
+  }
+  if (slabN > 0) slabH /= slabN;
+  for (let v = 0; v < b.vertexCount; v++) {
+    if (v % (SLICE / 4) === SLICE / 4 - 1) yield;
+    const x = b.x(v) + d.x;
+    const y = b.y(v) + d.y;
+    const z = b.z(v) + d.z;
+    n3.set(normals[v * 3], normals[v * 3 + 1], normals[v * 3 + 2]);
     // How enclosed (the cracks, the chamber, under the belly): the field a few metres out along
     // the normal is short when other rock faces this point.
     const open = smoothstep(0.5, 4, shape.sdf(x + n3.x * 4, y + n3.y * 4, z + n3.z * 4));
     const n = patchN(x * 0.03, z * 0.03 + y * 0.01) * 0.5 + 0.5;
     const plane = d.kind === 'crag' ? smoothstep(0.93, 0.985, n3.dot(PLANE)) : 0;
     if (plane > 0.5) {
-      // The perch's landing plane: pale, wind-worn stone with lichen (not turf: turf reads as
-      // ground anyone can land on).
-      tmp.copy(STONE).lerp(ROCK_OCHRE, 0.25 * n).lerp(LICHEN, 0.35 * smoothstep(0.55, 0.8, mossN(x * 0.12, z * 0.12) * 0.5 + 0.5));
+      // The perch's landing plane: a bright ivory slab, wind-worn, with scrub growing along its
+      // edge so the slab reads against the warmer cliff and its rim is a line you can see. Not
+      // turf across it: that would read as ordinary ground.
+      const rim = slabRim(shape, x, y, z, n3);
+      const scrub = mossN(x * 0.35, z * 0.35) * 0.5 + 0.5;
+      // Wind and water streaks run down the fall line.
+      const along = (x - d.x) * shape.fwd.x + (z - d.z) * shape.fwd.z;
+      const across = -(x - d.x) * shape.fwd.z + (z - d.z) * shape.fwd.x;
+      const streak = smoothstep(0.35, 0.8, streakN(across * 0.55, along * 0.07) * 0.5 + 0.5);
+      tmp.copy(SLAB).lerp(SLAB_WARM, 0.35 * n + 0.25 * smoothstep(-6, 6, along)).lerp(SLAB_STREAK, 0.4 * streak);
+      tmp.lerp(LICHEN, 0.22 * smoothstep(0.6, 0.85, mossN(x * 0.12, z * 0.12) * 0.5 + 0.5));
+      tmp.lerp(SCRUB_DRY, rim * 0.6).lerp(SCRUB, rim * smoothstep(0.25, 0.7, scrub) * 0.85);
       b.setColor(v, tmp.r, tmp.g, tmp.b);
-      b.setSurf(v, 0.3, 0, 0, 0);
+      b.setSurf(v, 0.3 * (1 - rim), rim * 0.45, 0, rim * 0.25);
       continue;
     }
     if (d.kind === 'keyhole' && y > top - 7 && n3.y > 0.2 && open > 0.6) {
@@ -237,6 +271,11 @@ export function* buildRockFormMesh(shape: RockFormShape, spec: RockLodSpec): Gen
     tmp.copy(CLIFF).lerp(UNDER_NEAR, 0.15 + 0.25 * n + 0.3 * smoothstep(4, 16, below));
     tmp.lerp(UNDER_MID, smoothstep(0, 0.5, deepT)).lerp(UNDER_DEEP, smoothstep(0.4, 1, deepT) * (0.75 + 0.25 * n));
     tmp.multiplyScalar(0.62 + 0.38 * open);
+    if (d.kind === 'crag' && slabN > 0) {
+      // The lip: the flank within a few metres of the slab's edge, shaded so the edge is outlined.
+      const underSlab = slabH - (PLANE.x * x + PLANE.y * y + PLANE.z * z);
+      tmp.lerp(LIP, 0.5 * smoothstep(3.2, 0.4, underSlab) * smoothstep(-0.5, 0.3, underSlab));
+    }
     // Moss where rock faces up, and creeping a little way down from the top.
     const moss = Math.max(smoothstep(0.45, 0.8, n3.y) * smoothstep(0.2, 0.6, mossN(x * 0.06, z * 0.06 + y * 0.03)), (1 - smoothstep(0.5, 6, below)) * 0.7);
     tmp.lerp(MOSS, moss * 0.5);
@@ -249,3 +288,24 @@ export function* buildRockFormMesh(shape: RockFormShape, spec: RockLodSpec): Gen
 }
 
 const PLANE = new Vector3();
+
+const RIM_DIRS = 8;
+/**
+ * 0..1 how close a point on the slab is to its edge: probes along the slab for open air within
+ * about 3 m (the field beyond an edge is large, over the slab it stays at the probe's height).
+ */
+function slabRim(shape: RockFormShape, x: number, y: number, z: number, nrm: Vector3): number {
+  let rim = 0;
+  for (let i = 0; i < RIM_DIRS; i++) {
+    const a = (i / RIM_DIRS) * Math.PI * 2;
+    // Eight horizontal directions, each lifted onto the slab's plane through the point.
+    const ux = Math.cos(a);
+    const uz = Math.sin(a);
+    const sx = x + ux * 3 + nrm.x * 0.4;
+    const sz = z + uz * 3 + nrm.z * 0.4;
+    // Keep the probe in the slab's plane: solve y from the plane through (x, y, z).
+    const sy = nrm.y > 1e-3 ? y - (nrm.x * (sx - x - nrm.x * 0.4) + nrm.z * (sz - z - nrm.z * 0.4)) / nrm.y + nrm.y * 0.4 : y;
+    rim = Math.max(rim, smoothstep(0.55, 1.8, shape.sdf(sx, sy, sz)));
+  }
+  return rim;
+}

@@ -2,8 +2,9 @@
 // agreeing, and the two physics gates proven with the real flight model and player:
 //   - the Cascade south perch: no wyvern lands on its 51.5° top today; with the steep-landing
 //     unlock (land limit cos 53°) every breed can, and stays standing
-//   - the Archway Keyhole: a harrier can't thread its two opposed cracks today, at any approach a
-//     search tries; with the snap-roll (roll rate and authority × 1.6) it can
+//   - the Archway Keyhole: a harrier at its normal roll threads its two opposed cracks only
+//     sometimes (an early, well-aimed reversal); with the snap-roll (roll rate and authority × 1.6)
+//     it threads from many more approaches; the heavy breeds never do (G8b, decision Q43)
 // See docs/design/CAPABILITIES.md for the requirements and docs/qa/G8A_CAPABILITY_SITES.md for the
 // measured margins.
 
@@ -58,7 +59,7 @@ describe('the capability sites in the layout', () => {
   it('has the perch and the keyhole, neither a landmark', () => {
     expect(LAYOUT.rocks?.map((r) => r.kind)).toEqual(['crag', 'keyhole']);
     expect(C.slope).toBeCloseTo(51.5 * DEG, 6);
-    expect(K.chamber).toBe(9.5);
+    expect(K.chamber).toBe(14);
   });
 
   it('keeps 30 m of air between each form and any other rock', () => {
@@ -123,8 +124,10 @@ describe('the Cascade south perch', () => {
   });
 
   /** A flared approach onto the top plane, `along` m downhill of its center, heading uphill. */
-  function land(breed: BreedId, along: number, side: number, speed: number): { landed: boolean; standing: boolean } {
+  function land(breed: BreedId, along: number, side: number, speed: number): { landed: boolean; standing: boolean; toasts: GameEvents['toast'][] } {
     const events = new EventBus<GameEvents>();
+    const toasts: GameEvents['toast'][] = [];
+    events.on('toast', (t) => toasts.push(t));
     const p = new Player({ terrain, env: { windAt: (_q, o) => o.set(0, 0, 0), terrain }, events, breed, settings: () => ({ ...DEFAULT_SETTINGS, holdToFlap: true }) });
     const x = C.x + crag.fwd.x * along + crag.side.x * side;
     const z = C.z + crag.fwd.z * along + crag.side.z * side;
@@ -140,7 +143,7 @@ describe('the Cascade south perch', () => {
       p.update(1 / 120, 1);
       if (p.mode === 'landed') landed = true;
     }
-    return { landed, standing: p.mode === 'landed' && Math.hypot(p.position.x - C.x, p.position.z - C.z) < C.topRadius + 2 };
+    return { landed, standing: p.mode === 'landed' && Math.hypot(p.position.x - C.x, p.position.z - C.z) < C.topRadius + 2, toasts };
   }
 
   it('no wyvern lands on it today; with the steep-landing unlock every breed does, and stays', () => {
@@ -153,6 +156,80 @@ describe('the Cascade south perch', () => {
       expect(after.filter((r) => r.landed).length, `${breed} unlocked`).toBeGreaterThan(2);
       for (const r of after) if (r.landed) expect(r.standing, `${breed} stands`).toBe(true);
     }
+  }, SLOW);
+});
+
+describe('a failed landing on the perch', () => {
+  afterEach(() => {
+    for (const id of BREED_ORDER) (GAIT_PROFILES[id] as { landNormalY?: number }).landNormalY = undefined;
+  });
+
+  // The same flared approach as the landing gate above, watching what the player is told.
+  function approach(breed: BreedId, limit?: number, start?: Vector3): { landed: boolean; toasts: GameEvents['toast'][] } {
+    if (limit !== undefined) (GAIT_PROFILES[breed] as { landNormalY?: number }).landNormalY = limit;
+    const events = new EventBus<GameEvents>();
+    const toasts: GameEvents['toast'][] = [];
+    events.on('toast', (t) => toasts.push(t));
+    const p = new Player({ terrain, env: { windAt: (_q, o) => o.set(0, 0, 0), terrain }, events, breed, settings: () => ({ ...DEFAULT_SETTINGS, holdToFlap: true }) });
+    const gy = crag.groundAt(C.x, C.z, 1e6, new Vector3())!;
+    const yaw = C.yaw + Math.PI;
+    p.teleport(start ?? new Vector3(C.x - Math.sin(yaw) * 14, gy + 7, C.z - Math.cos(yaw) * 14), yaw, 'flying', 12);
+    let landed = false;
+    for (let i = 0; i < 6 * 120; i++) {
+      const inp = emptyFrame();
+      inp.flight.flare = 1;
+      p.latchPresses(inp);
+      p.fixedUpdate(1 / 120, inp, 0);
+      p.update(1 / 120, 1);
+      if (p.mode === 'landed') landed = true;
+    }
+    return { landed, toasts };
+  }
+
+  it('says why, once: the slope against what the breed lands on', () => {
+    for (const breed of BREED_ORDER) {
+      const r = approach(breed);
+      expect(r.landed, breed).toBe(false);
+      expect(r.toasts, breed).toHaveLength(1);
+      expect(r.toasts[0].text).toBe('Too steep to land');
+      const limit = Math.floor((Math.acos(LAND_TODAY) * 180) / Math.PI);
+      expect(r.toasts[0].sub, breed).toBe(`A ${BREEDS[breed].name} lands on slopes up to ${limit}°. This one is ${Math.ceil(C.slope / DEG)}°.`);
+    }
+  }, SLOW);
+
+  it('also says why when the body meets the slab before the legs do (the approach the game runs)', () => {
+    // On the 51.5° face the legs' reach, measured straight down, is longer than the body's
+    // perpendicular clearance: in the game a flared harrier bounces off the slab at about 3.1 m
+    // above it, never reaching the legs' own check. The contact explains it.
+    const make = (flare: number, airspeed: number, up: number) => {
+      const events = new EventBus<GameEvents>();
+      const toasts: GameEvents['toast'][] = [];
+      events.on('toast', (t) => toasts.push(t));
+      const p = new Player({ terrain, env: { windAt: (_q, o) => o.set(0, 0, 0), terrain }, events, breed: 'harrier', settings: () => ({ ...DEFAULT_SETTINGS, holdToFlap: true }) });
+      const gy = crag.groundAt(C.x, C.z, 1e6, new Vector3())!;
+      p.teleport(new Vector3(C.x, gy + up, C.z), C.yaw + Math.PI, 'flying', 8);
+      p.model.state.flare = flare;
+      p.model.state.airspeed = airspeed;
+      const explain = (p as unknown as { explainSteepContact(): void }).explainSteepContact.bind(p);
+      return { toasts, explain };
+    };
+    const a = make(1, 8, 3.1);
+    a.explain();
+    a.explain(); // within the interval: silent
+    expect(a.toasts.map((t) => t.text)).toEqual(['Too steep to land']);
+    // Not a landing attempt (legs up at speed), or nowhere near the slab: silent.
+    const b = make(0, 30, 3.1);
+    b.explain();
+    const c = make(1, 8, 12);
+    c.explain();
+    expect(b.toasts).toHaveLength(0);
+    expect(c.toasts).toHaveLength(0);
+  });
+
+  it('stays quiet when the wyvern can land', () => {
+    const r = approach('harrier', LAND_UNLOCKED);
+    expect(r.landed).toBe(true);
+    expect(r.toasts.filter((t) => t.text === 'Too steep to land')).toHaveLength(0);
   }, SLOW);
 });
 
@@ -253,36 +330,63 @@ describe('the Archway Keyhole', () => {
     return false;
   }
 
-  it('a harrier at its normal roll never threads it', () => {
+  /** Every setting of a coarse search (the entry speed, when the reversal starts, the roll-stop lead, the entry height along the crack and the entry climb): how many thread it. */
+  function search(breed: BreedId, rollMult: number, speeds: number[]): { passed: number; tried: number } {
+    let passed = 0;
     let tried = 0;
-    for (let V = 14; V <= 18; V++) {
+    for (const V of speeds) {
       for (let s = -9; s <= 2; s++) {
-        for (const tau of [0.12, 0.18, 0.24]) {
+        for (const tau of [0.08, 0.16, 0.24]) {
           for (const aim of [0, 3, 6, 9]) {
             for (const climb of [0, 4, 8]) {
               tried++;
-              expect(thread('harrier', 1, V, -half + s, tau, aim, climb), `V${V} s${s} tau${tau} aim${aim} climb${climb}`).toBe(false);
+              if (thread(breed, rollMult, V, -half + s, tau, aim, climb)) passed++;
             }
           }
         }
       }
     }
-    expect(tried).toBe(2160);
+    return { passed, tried };
+  }
+
+  it('a harrier at its normal roll can thread it, but only sometimes: a few settings of a coarse search', () => {
+    const r = search('harrier', 1, [14, 15, 16, 17, 18, 19, 20]);
+    expect(r.tried).toBe(3024);
+    expect(r.passed).toBeGreaterThanOrEqual(5);
+    expect(r.passed / r.tried).toBeLessThan(0.03);
   }, SLOW);
 
-  it('a harrier with the snap-roll threads it (slowly: 14 to 16.5 m/s, just above its stall)', () => {
-    const lines: [number, number, number, number, number][] = [
-      [14, -half - 6, 0.16, 6, 6],
-      [14, -half - 7, 0.2, 9, 4],
-      [16, -half - 7, 0.16, 6, 6],
-      [16.5, -half - 6.5, 0.12, 6, 6],
+  it('the snap-roll makes it far easier: several times the settings that thread it', () => {
+    const base = search('harrier', 1, [14, 15, 16, 17, 18, 19, 20]).passed;
+    const snap = search('harrier', 1.6, [14, 15, 16, 17, 18, 19, 20]).passed;
+    expect(snap).toBeGreaterThanOrEqual(4 * base);
+  }, SLOW);
+
+  it('pinned lines: a normal-roll pilot reverses early, before the chamber; a snap-roll pilot reverses inside it', () => {
+    // [V, startAt, tau, aim, climb] with the reversal starting at the front of the first crack.
+    const early: [number, number, number, number, number][] = [
+      [14, -15, 0.16, 9, 4],
+      [16, -15, 0.2, 6, 6],
     ];
-    for (const l of lines) {
+    // The same entry lines with the reversal started inside the chamber.
+    const late: [number, number, number, number, number][] = [
+      [14, -11.5, 0.16, 9, 4],
+      [16, -10.5, 0.2, 6, 6],
+      [16, -11.5, 0.16, 9, 4],
+      [18, -11.5, 0.12, 6, 6],
+    ];
+    for (const l of early) expect(thread('harrier', 1, ...l), `normal roll, early ${l.join(' ')}`).toBe(true);
+    for (const l of late) {
       expect(thread('harrier', 1.6, ...l), `snap-roll ${l.join(' ')}`).toBe(true);
-      // The same line at the harrier's normal roll hits the rock.
-      expect(thread('harrier', 1, ...l), `normal roll ${l.join(' ')}`).toBe(false);
+      expect(thread('harrier', 1, ...l), `normal roll, late ${l.join(' ')}`).toBe(false);
     }
   });
+
+  it('stays a light-breed line: neither the galewing nor the ironback threads it, even with the snap-roll', () => {
+    for (const breed of ['galewing', 'ironback'] as BreedId[]) {
+      expect(search(breed, 1.6, [14, 16, 18, 20, 22]).passed, breed).toBe(0);
+    }
+  }, SLOW);
 });
 
 describe('rock-form meshes', () => {
