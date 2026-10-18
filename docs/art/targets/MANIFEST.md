@@ -1,6 +1,6 @@
 # Visual targets manifest
 
-Astra renders supplied by Robert on 2026-10-17, filed against the shot list in [the render brief](RENDER_BRIEF.md). 20 files cover 18 of the 20 numbered shots; two shots have an alternate take.
+Astra renders supplied by Robert on 2026-10-17, filed against the shot list in [the render brief](RENDER_BRIEF.md). 21 files cover 19 of the 20 numbered shots; two shots have an alternate take.
 
 Delivered at 1672x941 (16:9) and 1254x1254 (01, square), below the brief's preferred 3840x2160. Files are the originals, unmodified.
 
@@ -20,6 +20,7 @@ Delivered at 1672x941 (16:9) and 1254x1254 (01, square), below the brief's prefe
 | `12-the-drift-vista.png` | 12 The whole Drift | 1672x941 | `a8bb5c285c74b2028a449449ed86e44145cbdf364d8ceff3e27725dffd1b12f2` |
 | `13-cascade-isle.png` | 13 Cascade Isle | 1672x941 | `fdcfa123a66eead992bd4de39fb5de405ea21d8c0b2391d7f6748876b7d85a43` |
 | `14-rootfall.png` | 14 Rootfall | 1672x941 | `694524af9cb88147c45fcaa13895b2b748e3e44e35a371f41ceb07228270405f` |
+| `15-old-observatory.png` | 15 The Old Observatory at dusk (supplied 2026-10-18) | 1672x941 | `9f44046cd7e51900400e8b3a4ab2a852aaaf24a6137e95911ff7f89b90add0bc` |
 | `16-lantern-spire.png` | 16 Lantern Spire at night | 1672x941 | `f972f7478649f3219f1d15c0178486d0f99dc833406fba2560fb40ed091b0cc7` |
 | `17-eye-of-the-gale.png` | 17 Eye of the Gale | 1672x941 | `994c0cf35d593a8e1578412f02b6369dd30c93963eca50ee5afb51514e601d4e` |
 | `18-the-codex-airship.png` | 18 The Codex, under sail | 1672x941 | `c4d29b9885544dc022f37fc28c4ce8fb2e0b10c79b2c596d91fc7c1e5993e2ca` |
@@ -30,10 +31,10 @@ Delivered at 1672x941 (16:9) and 1254x1254 (01, square), below the brief's prefe
 ## Not yet rendered
 
 - `11-windhaven-plaza.png` (ground-level plaza)
-- `15-old-observatory.png` (Ventari dome at dusk)
 - Optional extensions 21 to 24
 
 ## Notes for the gate review
 
 - 06 and 18 each have two takes. The gate picks one as the acceptance reference; the other stays as mood.
-- Size: about 75 MB total, committed under decision Q24, which names this folder as the home for the targets.
+- Size: about 79 MB total, committed under decision Q24, which names this folder as the home for the targets.
+- A second copy of `10-windhaven-approach.png` supplied 2026-10-18 is byte-identical and was not added.
