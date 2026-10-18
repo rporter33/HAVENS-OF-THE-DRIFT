@@ -10,7 +10,7 @@ export type StableFocus = 'wyvern' | 'rider' | 'both';
 
 export type WyvernColorKey = 'primary' | 'secondary' | 'belly' | 'membrane' | 'eyes' | 'saddleColor';
 export type RiderColorKey = 'skin' | 'hairColor' | 'outfitPrimary' | 'outfitSecondary' | 'scarfColor' | 'capeColor' | 'armorColor' | 'leatherColor';
-export type WyvernShapeKey = 'pattern' | 'horns' | 'frill' | 'tail' | 'saddle';
+export type WyvernShapeKey = 'pattern' | 'head' | 'horns' | 'frill' | 'tail' | 'saddle';
 export type RiderShapeKey = 'hair' | 'outfit' | 'headgear' | 'scarf' | 'cape' | 'chest' | 'shoulderDrape' | 'waist' | 'armWraps' | 'legWraps' | 'footwear';
 
 export type StableSection =
@@ -55,10 +55,11 @@ export const STABLE_TABS: StableTab[] = [
   },
   {
     id: 'features',
-    label: 'Horns & Tail',
+    label: 'Head & Horns',
     group: 'wyvern',
     focus: 'wyvern',
     sections: [
+      { kind: 'options', title: 'Head', target: 'wyvern', key: 'head', slot: 'wyvernHead' },
       { kind: 'options', title: 'Horns', target: 'wyvern', key: 'horns', slot: 'wyvernHorns' },
       { kind: 'options', title: 'Frill', target: 'wyvern', key: 'frill', slot: 'wyvernFrill' },
       { kind: 'options', title: 'Tail', target: 'wyvern', key: 'tail', slot: 'wyvernTail' },

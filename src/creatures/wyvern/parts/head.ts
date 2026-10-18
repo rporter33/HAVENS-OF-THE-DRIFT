@@ -52,8 +52,10 @@ export function buildHead(b: GeoBuilder, rig: RigDef, res: Res = RES[0]): HeadIn
   const Hh = S.headHalfHeight;
   const headSkin = Skin.of(rig.idx.head);
   const jawSkin = Skin.of(rig.idx.jaw);
-  // Stocky breeds get a blunter, deeper snout.
-  const blunt = S.plates ? 1.12 : 1;
+  // The head style's sculpting (proportions.ts HEAD_STYLES); stocky heads get a blunter, deeper snout.
+  const HP = S.head ?? { blunt: S.plates ? 1.12 : 1, brow: 1, cheek: 1, crown: 1, pegTeeth: !!S.plates };
+  const blunt = HP.blunt;
+  const crown = HP.crown;
 
   const zBack = -0.2 * L;
   const zTip = 1.0 * L;
@@ -78,9 +80,9 @@ export function buildHead(b: GeoBuilder, rig: RigDef, res: Res = RES[0]): HeadIn
     keyed(
       [
         [0, 0.75],
-        [0.12, 1.3],
-        [0.27, 1.42],
-        [0.38, 1.3],
+        [0.12, 1.3 * crown],
+        [0.27, 1.42 * crown],
+        [0.38, 1.3 * (0.5 + 0.5 * crown)],
         [0.5, 0.92],
         [0.68, 0.72 * blunt],
         [0.86, 0.66 * blunt],
@@ -161,9 +163,9 @@ export function buildHead(b: GeoBuilder, rig: RigDef, res: Res = RES[0]): HeadIn
     // Brow ledge over the eye: at least 0.34 half-heights, and always out past the eyeball.
     // (A flat-topped profile, so the crest reaches its height between ring vertices too.)
     const gb = Math.min(1, 1.6 * Math.exp(-(((t - EYE_T) / 0.085) ** 2)) * both(th, browTh, 0.2)) * open;
-    const brow = gb * Math.max(0.34 * Hh, (eyeOuterX + 0.1 * rEye - Math.abs(base.x - H.x)) / Math.max(0.3, Math.abs(s)));
+    const brow = gb * HP.brow * Math.max(0.34 * Hh, (eyeOuterX + 0.1 * rEye - Math.abs(base.x - H.x)) / Math.max(0.3, Math.abs(s)));
     // Jaw muscle bulging behind and below the eye.
-    const cheek = 0.22 * Wd * Math.exp(-(((t - 0.18) / 0.1) ** 2)) * both(th, 2.05, 0.45) * open;
+    const cheek = 0.22 * HP.cheek * Wd * Math.exp(-(((t - 0.18) / 0.1) ** 2)) * both(th, 2.05, 0.45) * open;
     // Ear opening: a shallow oval pit behind the jaw muscle (super-Gaussian: a defined rim).
     // (Never smaller than the ring spacing, so the mesh always samples it.)
     const eu = (t - 0.06) / Math.max(0.05 / 1.2, 0.8 / STATIONS);
@@ -369,7 +371,7 @@ export function buildHead(b: GeoBuilder, rig: RigDef, res: Res = RES[0]): HeadIn
   // Recurved and of uneven size, the upper and lower rows interlocking (offset by half a
   // spacing). The ironback has blunt crocodilian pegs, its enlarged 4th lower tooth standing
   // outside the upper lip.
-  const peg = !!S.plates;
+  const peg = HP.pegTeeth;
   const toothLen = (peg ? 0.042 : 0.052) * L;
   const nUp = res.teeth[0];
   const nLo = res.teeth[1];

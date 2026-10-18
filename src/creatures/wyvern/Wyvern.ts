@@ -11,6 +11,7 @@ import type { QualityProfile } from '../../render/quality';
 import type { WyvernRenderable } from '../../game/contracts';
 import type { TerrainQuery } from '../../core/types';
 import { rigFor, type RigDef } from './rig';
+import { headStyleId } from './proportions';
 import { aoJob, applyAO, buildWyvernGeometry, type WyvernMeshInfo } from './geometry';
 import { cachedAO, requestAO } from './ao';
 import { armScale, foldRest, type FoldRest } from './parts/wings';
@@ -313,7 +314,9 @@ export class Wyvern implements WyvernRenderable {
     const look = this.look;
     const breedChanged = !this.rig || this.rig.props.breed !== look.breed;
     this.disposeMesh();
-    if (breedChanged) this.rig = rigFor(look.breed);
+    // A head style moves the head's own joints: its own rig (same bones, same order).
+    const rig0 = rigFor(look.breed, headStyleId(look.breed, look.head));
+    this.rig = rig0;
     const rig = this.rig;
     this.info = buildWyvernGeometry(rig, look);
     const trial = this.trialAsset && look.breed === this.trialAsset.breed ? this.trialAsset : null;
@@ -408,7 +411,7 @@ export class Wyvern implements WyvernRenderable {
 }
 
 function shapeKeyOf(look: WyvernLook): string {
-  return `${look.breed}|${look.horns}|${look.frill}|${look.tail}|${look.saddle}`;
+  return `${look.breed}|${look.head}|${look.horns}|${look.frill}|${look.tail}|${look.saddle}`;
 }
 
 /** FoldRest as flat typed arrays: per side a run of (bone, weight, offset to the helper's pivot). */

@@ -644,9 +644,9 @@ vec3 dwWyvernAlbedo(out vec3 emit, out float gold) {
     float nEdge = nm * (1.0 - smoothstep(nf + 0.02, nf + 0.16, ex));
     c = mix(c, mix(vec3(0.72, 0.8, 0.86), c, 0.35), nm * (0.42 + 0.3 * nEdge));
     c = mix(c, vec3(1.0), hl * (1.0 - 0.5 * nm));
-    // A faint glow by day (an amber eye with a slit pupil, not a lamp: target 01), the full glow
-    // after dusk.
-    emit += uEyes * iris * (1.0 - pupil) * (0.07 + 0.9 * uNight) * (1.0 - 0.75 * nm);
+    // The eyes glow by day too, a little brighter than before G3 (Robert, 2026-10-18: the glowing
+    // eyes are part of the charm), and fully after dusk.
+    emit += uEyes * iris * (1.0 - pupil) * (0.3 + 0.7 * uNight) * (1.0 - 0.75 * nm);
     return c;
   }
   if (region == 3) return vec3(0.32, 0.09, 0.11);

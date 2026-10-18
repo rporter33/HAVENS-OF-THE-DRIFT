@@ -456,6 +456,7 @@ export interface RiderPose {
 
 export type CosmeticSlot =
   | 'wyvernPattern'
+  | 'wyvernHead'
   | 'wyvernHorns'
   | 'wyvernFrill'
   | 'wyvernTail'
@@ -485,6 +486,8 @@ export interface WyvernLook {
   membrane: string;
   eyes: string;
   pattern: string;
+  /** Head style (wyvernHead): 'native' is the breed's own; any breed's head fits any mount. */
+  head: string;
   horns: string;
   frill: string;
   tail: string;

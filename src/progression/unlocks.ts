@@ -93,6 +93,7 @@ export function unlockEntry(c: CosmeticOption, catalog: readonly CosmeticOption[
 
 const SLOT_LABEL: Record<CosmeticSlot, string> = {
   wyvernPattern: 'Wyvern markings',
+  wyvernHead: 'Wyvern head',
   wyvernHorns: 'Wyvern horns',
   wyvernFrill: 'Wyvern crest',
   wyvernTail: 'Wyvern tail',

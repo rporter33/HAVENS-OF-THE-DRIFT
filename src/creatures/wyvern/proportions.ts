@@ -77,6 +77,62 @@ export interface BreedShape {
   eye: number;
   /** Overlapping armor plates down the back (ironback). */
   plates: boolean;
+  /** The head's sculpting (a head style, see HEAD_STYLES); absent: the plain loft. */
+  head?: HeadProfile;
+}
+
+/** How a head style sculpts the skull loft (parts/head.ts); 1 = the plain loft. */
+export interface HeadProfile {
+  /** Snout breadth and depth forward of the eye (a blunter, deeper muzzle above 1). */
+  blunt: number;
+  /** The brow ledge over the eye: its height and how far it juts. */
+  brow: number;
+  /** The jaw muscle bulging behind and below the eye. */
+  cheek: number;
+  /** The crown's rise between the eyes and over the back of the skull. */
+  crown: number;
+  /** Peg teeth (the ironback's crocodilian row) instead of recurved ones. */
+  pegTeeth: boolean;
+}
+
+/**
+ * Head styles (the wyvernHead cosmetic): any mount can wear any of them. A style's skull is sized
+ * from the wearer's own head length (× size) with the style's own breadth and depth for that
+ * length, so a head keeps its character on a smaller or a bigger body. 'native' is the breed's own.
+ */
+export type HeadId = 'harrier' | 'skimmer' | 'galewing' | 'ironback' | 'drake';
+export interface HeadStyle {
+  size: number;
+  /** Half-width and half-height as fractions of the head's length. */
+  width: number;
+  height: number;
+  /** Eye radius as a fraction of head length. */
+  eye: number;
+  profile: HeadProfile;
+}
+export const HEAD_STYLES: Record<HeadId, HeadStyle> = {
+  // The breeds' heads. The harrier's is pronounced (G3, 2026-10-18: Robert asked for a more
+  // pronounced, characterful head): a little bigger and deeper, a heavier brow and jaw muscle.
+  harrier: { size: 1.06, width: 0.345, height: 0.345, eye: 0.095, profile: { blunt: 1.04, brow: 1.35, cheek: 1.6, crown: 1.08, pegTeeth: false } },
+  skimmer: { size: 1, width: 0.35 / 1.12, height: 0.33 / 1.12, eye: 0.12, profile: { blunt: 1, brow: 1, cheek: 1, crown: 1, pegTeeth: false } },
+  galewing: { size: 1, width: 0.31 / 1.45, height: 0.34 / 1.45, eye: 0.098, profile: { blunt: 1, brow: 1, cheek: 1, crown: 1, pegTeeth: false } },
+  ironback: { size: 1, width: 0.66 / 1.55, height: 0.54 / 1.55, eye: 0.078, profile: { blunt: 1.12, brow: 1, cheek: 1, crown: 1, pegTeeth: true } },
+  // A short, deep head with a heavy brow ledge and a broad jaw: the most expressive face.
+  drake: { size: 0.97, width: 0.4, height: 0.41, eye: 0.105, profile: { blunt: 1.1, brow: 1.5, cheek: 1.8, crown: 1.12, pegTeeth: false } },
+};
+export const HEAD_IDS = Object.keys(HEAD_STYLES) as HeadId[];
+
+/** The head style a look's head id names ('native' or an unknown id: the breed's own). */
+export function headStyleId(breed: BreedId, head: string | undefined): HeadId {
+  return head && head !== 'native' && head in HEAD_STYLES ? (head as HeadId) : breed;
+}
+
+/** The breed's shape wearing a head style: head length, breadth, depth, eye and profile replaced. */
+export function shapeWithHead(breed: BreedId, head: HeadId): BreedShape {
+  const s = BREED_SHAPES[breed];
+  const h = HEAD_STYLES[head];
+  const L = s.headLength * h.size;
+  return { ...s, headLength: L, headHalfWidth: h.width * L, headHalfHeight: h.height * L, eye: h.eye, head: h.profile };
 }
 
 export interface LegAngles {
@@ -294,9 +350,9 @@ export function azDir(az: number, el = 0): [number, number, number] {
   return [c * Math.cos(az), Math.sin(el), c * Math.sin(az)];
 }
 
-export function computeProportions(breed: BreedId): WyvernProportions {
+export function computeProportions(breed: BreedId, head: HeadId = breed): WyvernProportions {
   const stats = BREEDS[breed];
-  const s = BREED_SHAPES[breed];
+  const s = shapeWithHead(breed, head);
   const shoulder: [number, number, number] = [
     s.shoulder[0] * s.torsoHalfWidth,
     s.shoulder[1] * s.torsoHalfHeight,

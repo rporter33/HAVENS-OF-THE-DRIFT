@@ -38,7 +38,7 @@ describe('G3b Meshy Harrier trial body', () => {
     for (let i = 0; i < pos.length; i++) expect(Number.isFinite(pos[i])).toBe(true);
   });
 
-  it('moves the seat and the eyes by bounded amounts and keeps the eye on its side', async () => {
+  it('moves the seat by a bounded amount and keeps the game head, eyes and all', async () => {
     const asset = parseWyvernTrial(await readFile());
     const rig = rigFor('harrier');
     const base = buildWyvernGeometry(rig, { ...DEFAULT_WYVERN, breed: 'harrier' });
@@ -46,8 +46,13 @@ describe('G3b Meshy Harrier trial body', () => {
     const eye0 = base.eyeCenter.clone();
     const info = trialInfo(rig, base, asset);
     expect(info.saddle.seat.distanceTo(seat0)).toBeLessThan(0.5);
-    expect(info.eyeCenter.distanceTo(eye0)).toBeLessThan(1.0);
-    expect(info.eyeCenter.x).toBeGreaterThan(0);
-    expect(info.eyeRadius).toBeLessThan(base.eyeRadius);
+    const r0 = base.eyeRadius;
+    expect(info.eyeCenter.distanceTo(eye0)).toBe(0);
+    expect(info.eyeRadius).toBe(r0);
+    // The procedural skull, eyes and teeth are in the trial geometry (the file has no head).
+    const mat = info.geometry.getAttribute('aMat');
+    const regions = new Set<number>();
+    for (let v = 0; v < mat.count; v++) regions.add(Math.round(mat.getX(v)));
+    for (const r of [2, 13]) expect(regions.has(r), `region ${r}`).toBe(true);
   });
 });

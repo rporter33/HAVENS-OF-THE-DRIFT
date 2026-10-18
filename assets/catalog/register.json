@@ -561,7 +561,7 @@
       "source_files": [
         {
           "path": "src/assets/wyvern-trial/harrier-meshy.glb",
-          "sha256": "a00866daee8f8aebf91fbaa974c4ce9952162a0eb62eb500ca563a340591cf2e",
+          "sha256": "5fa4bec09960d972b8b219a4e9d60fbe7674002b666403d50b801cf3a3cab336",
           "source_commit": null
         },
         {
@@ -590,7 +590,8 @@
         ],
         "limitations": [
           "Dev-only via ?wyvernTrial=meshy; normal builds keep the procedural Harrier",
-          "Shape cosmetics (horns, frill, tail tip, saddle) are baked at their defaults in the trial",
+          "Head is the game's own (merged at load, Q39); other shape cosmetics (frill, tail tip, saddle) are baked at their defaults in the trial",
+          "23,825 of the 24,000 LOD0 triangles with the game head and membranes",
           "LOD0 only; self-collision proxies are the procedural body plan's",
           "Reference-GPU frame rate not measured"
         ]

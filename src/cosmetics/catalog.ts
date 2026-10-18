@@ -40,6 +40,14 @@ export const COSMETICS: CosmeticOption[] = [
   opt('wyvernPattern', 'starfield', 'Starfield', 'Pale freckles like a night sky.', { type: 'medals', medal: 'gold', count: 3 }),
   opt('wyvernPattern', 'gilded', 'Gilded Scales', 'Gold-tipped scales that catch the sun.', { type: 'medals', medal: 'gold', count: 6 }),
 
+  // Wyvern head: any mount can wear any breed's head (scaled to its own), or the drake's.
+  opt('wyvernHead', 'native', 'Breed Head', 'The head its breed was born with.'),
+  opt('wyvernHead', 'harrier', 'Harrier Head', 'A keen, deep-browed head with a strong jaw.'),
+  opt('wyvernHead', 'skimmer', 'Skimmer Head', 'Small and quick, with big bright eyes.'),
+  opt('wyvernHead', 'galewing', 'Galewing Head', 'Long and narrow, built to cut the wind.'),
+  opt('wyvernHead', 'ironback', 'Ironback Head', 'Broad and blunt, with a row of peg teeth.'),
+  opt('wyvernHead', 'drake', 'Drake Head', 'Short and deep under a heavy brow: all expression.', { type: 'feathers', count: 25 }),
+
   // Wyvern horns
   opt('wyvernHorns', 'swept', 'Swept Horns', 'A pair of long horns swept back along the neck.'),
   opt('wyvernHorns', 'none', 'Hornless', 'Smooth-skulled and aerodynamic.'),
@@ -174,6 +182,7 @@ export const DEFAULT_WYVERN: WyvernLook = {
   breed: 'harrier',
   ...BREED_DEFAULT_COLORS.harrier,
   pattern: 'saddleback',
+  head: 'native',
   horns: 'swept',
   frill: 'spines',
   tail: 'spade',

@@ -136,6 +136,7 @@ function sanitizeWyvern(v: unknown): WyvernLook {
     membrane: color(r.membrane, d.membrane),
     eyes: color(r.eyes, d.eyes),
     pattern: cosmetic(r.pattern, 'wyvernPattern', d.pattern),
+    head: cosmetic(r.head, 'wyvernHead', d.head),
     horns: cosmetic(r.horns, 'wyvernHorns', d.horns),
     frill: cosmetic(r.frill, 'wyvernFrill', d.frill),
     tail: cosmetic(r.tail, 'wyvernTail', d.tail),
