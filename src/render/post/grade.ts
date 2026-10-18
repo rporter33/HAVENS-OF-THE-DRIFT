@@ -3,8 +3,9 @@
 // dither. It draws straight to the canvas, so three's tone mapping and output-colorspace chunks
 // apply here (the scene itself renders linear HDR into a half-float target).
 
-import { Color, DataTexture, RGBAFormat, ShaderMaterial, Vector2 } from 'three';
+import { Color, DataTexture, Matrix4, RGBAFormat, ShaderMaterial, Vector2 } from 'three';
 import { POST_VERTEX } from './quad';
+import { SSAO_UPSAMPLE_GLSL } from './ssao';
 
 const BLACK = new DataTexture(new Uint8Array([0, 0, 0, 255]), 1, 1, RGBAFormat);
 BLACK.needsUpdate = true;
@@ -44,6 +45,16 @@ export function gradeUniforms() {
     uFxaa: { value: 0 },
     /** Saturation boost weighted toward muted colors (0 = off). */
     uVibrance: { value: 0 },
+    /** Screen-space AO (post/ssao.ts): half-res result, scene depth, and how much of it applies. */
+    tAO: { value: BLACK as unknown },
+    tDepth: { value: BLACK as unknown },
+    uAOTexel: { value: new Vector2(1, 1) },
+    uAOStrength: { value: 0 },
+    /** Look development (render/look.ts aoDebug): show the AO alone. */
+    uAODebug: { value: 0 },
+    uProjInv: { value: new Matrix4() },
+    uNear: { value: 0.5 },
+    uFar: { value: 7000 },
   };
 }
 
@@ -57,6 +68,8 @@ uniform float uBloomStrength, uSharpen, uDither, uFxaa, uVibrance;
 uniform vec2 uTexel;
 uniform vec3 uLift, uGain, uFadeColor, uFlashColor, uCloudColor;
 varying vec2 vUv;
+uniform float uAOStrength, uAODebug;
+${SSAO_UPSAMPLE_GLSL}
 
 float hash(vec2 p) { return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453); }
 
@@ -173,6 +186,12 @@ void main() {
     col = fxaa(col, uv);
   } else if (uSharpen > 0.001) {
     col = sharpen(col, uv);
+  }
+  if (uAOStrength > 0.0) {
+    float ao = dwAO(uv);
+    col *= mix(1.0, ao, uAOStrength);
+    if (uAODebug > 0.5) col = vec3(ao * 0.6);
+    if (uAODebug > 1.5) col = vec3(fract(texture2D(tAO, uv).g / 20.0) * 0.6, fract(-dwViewZ(texture2D(tDepth, uv).x) / 20.0) * 0.6, 0.0);
   }
   if (uBloomStrength > 0.0) col += texture2D(tBloom, uv).rgb * uBloomStrength;
   col *= uExposure;

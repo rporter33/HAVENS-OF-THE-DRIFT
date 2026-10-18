@@ -86,16 +86,20 @@ vec3 dwCloudShade(vec3 n, float h01, float cavity, float shadow, vec3 rd) {
   vec3 L = dwCloudLightDir();
   float ndl = dot(n, L);
   // Clouds scatter: wrap the light past the terminator, then band it softly like brushwork.
-  float wrap = clamp(ndl * 0.72 + 0.3, 0.0, 1.0);
-  float band = mix(0.14, 1.0, (dwSoftRamp(wrap, 0.13) - 0.32) / 0.68);
-  float ao = mix(0.48, 1.0, smoothstep(0.05, 0.85, h01)) * clamp(1.0 + cavity * 1.8, 0.45, 1.15);
+  // (G3c: less wrap and a darker floor than before, so flanks turned from the sun and the
+  // crevices between heads go a clear cool blue-grey, as in the target renders.)
+  float wrap = clamp(ndl * 0.62 + 0.24, 0.0, 1.0);
+  float band = mix(0.06, 1.0, (dwSoftRamp(wrap, 0.13) - 0.32) / 0.68);
+  float ao = mix(0.36, 1.0, smoothstep(0.05, 0.85, h01)) * clamp(1.0 + cavity * 2.2, 0.38, 1.15);
   // Skylight reaches the tops; flanks and crevices see less of it. Under a grey lid the sky is
   // the light, so it brightens as the direct share falls.
-  float sky = ao * (0.6 + 0.4 * max(n.y, 0.0));
-  vec3 col = uCloudShade * sky * (1.0 + 0.5 * (1.0 - uCloudDirect));
-  col += uCloudLit * sky * (1.0 - uCloudDirect) * 0.45;
+  float sky = ao * (0.55 + 0.45 * max(n.y, 0.0));
   float direct = band * shadow * uCloudDirect * mix(0.62, 1.0, h01) * clamp(1.0 + cavity, 0.55, 1.1);
-  col += (uCloudLit - uCloudShade * 0.45) * direct;
+  // The sunlit tops take the sun's color, not the sky's: the blue skylight gives way where the
+  // direct light is strong (G3c: tops warm, hollows cool).
+  vec3 col = uCloudShade * sky * (1.0 + 0.5 * (1.0 - uCloudDirect)) * (1.0 - 0.5 * direct);
+  col += uCloudLit * sky * (1.0 - uCloudDirect) * 0.45;
+  col += (uCloudLit - uCloudShade * 0.2) * direct * 1.3;
   // Silver lining: looking toward the light, the thin silhouettes of crests glow.
   float toward = pow(max(dot(rd, uSunDir), 0.0), 6.0);
   float rim = pow(1.0 - clamp(dot(n, -rd), 0.0, 1.0), 2.5);

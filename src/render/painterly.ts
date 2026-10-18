@@ -17,6 +17,7 @@ import {
   type WebGLProgramParametersWithUniforms,
 } from 'three';
 import { globalUniforms } from './uniforms';
+import { LOOK } from './look';
 
 /** GLSL uniform declarations + fog function. Safe to include in any fragment shader. */
 export const FOG_PARS_GLSL = /* glsl */ `
@@ -66,23 +67,29 @@ const WORLDPOS_VERTEX_GLSL = /* glsl */ `
 `;
 
 /**
- * The painterly "rim" as injected before `#include <opaque_fragment>`. Exported so creature
- * materials can swap it for their own light (render/creatureLight via materials.ts) by exact
- * text, without touching what the world compiles.
+ * The painterly fill and rim as injected before `#include <opaque_fragment>`. Exported so
+ * creature materials can swap it for their own light (render/creatureLight via materials.ts) by
+ * exact text, without touching what the world compiles.
  *
- * Note: vViewPosition points from the surface to the camera, so dot(normal, -dwV) is <= 0 on
- * every front face and dwFres is 1 everywhere: in practice this is a sun-side-weighted,
- * albedo-scaled lift over the whole surface (a soft wrap fill), not a silhouette rim. The
- * world's palettes are tuned with it as it is.
+ * Two terms (G3c, render/look.ts), both scaled by the palette's rim strength:
+ *   - fill: a soft sun-side-weighted sky and bounce light, cooler than the sun. Shadows do not
+ *     touch it, so it is kept small: cast shadows and turned-away faces read. (Before G3c this
+ *     was the only term, at 1.6 and as warm as the sun: a flat lift over every front face, since
+ *     its fresnel read dot(normal, -V) and was 1 everywhere.)
+ *   - rim: a true fresnel edge (vViewPosition points from the surface to the camera), strongest
+ *     with the sun behind the surface, so silhouettes glow against the sky.
  */
 export const PAINTERLY_RIM_GLSL = /* glsl */ `
         {
           vec3 dwV = normalize(vViewPosition);
-          float dwFres = pow(1.0 - clamp(dot(normal, -dwV), 0.0, 1.0), 3.0);
-          // Brighter on the side lit by the sun, a cool sky rim on the shadow side.
           vec3 dwSunView = normalize((viewMatrix * vec4(uSunDir, 0.0)).xyz);
           float dwSunSide = 0.35 + 0.65 * clamp(dot(normal, dwSunView) * 0.5 + 0.5, 0.0, 1.0);
-          outgoingLight += dwFres * uRimStrength * uDwRim * dwSunSide * mix(uSunColor, vec3(0.55, 0.65, 0.9), 0.35) * diffuseColor.rgb * 1.6;
+          float dwStr = uRimStrength * uDwRim;
+          vec3 dwSky = vec3(0.55, 0.65, 0.9);
+          outgoingLight += dwStr * uDwFill * dwSunSide * mix(uSunColor, dwSky, uDwFillCool) * diffuseColor.rgb;
+          float dwF = 1.0 - clamp(dot(normal, dwV), 0.0, 1.0);
+          float dwBack = 0.35 + 0.65 * smoothstep(-0.1, 0.7, dot(-dwV, dwSunView));
+          outgoingLight += dwStr * uDwRimEdge * dwF * dwF * dwF * dwBack * mix(uSunColor, dwSky, 0.35) * diffuseColor.rgb;
         }
         `;
 
@@ -94,7 +101,8 @@ let rampCache: DataTexture | null = null;
  */
 export function toonRamp(): DataTexture {
   if (rampCache) return rampCache;
-  const steps = [0.32, 0.55, 0.8, 1.0];
+  // Facing away, turning away, turning toward, facing the sun (render/look.ts, G3c).
+  const steps = LOOK.ramp;
   const size = 16;
   const data = new Uint8Array(size);
   for (let i = 0; i < size; i++) {
@@ -140,7 +148,7 @@ export function applyPainterly<T extends Material>(material: T, opts: PainterlyO
       .replace('#include <common>', '#include <common>\nvarying vec3 vDwWorldPos;')
       .replace('#include <fog_vertex>', '#include <fog_vertex>\n' + WORLDPOS_VERTEX_GLSL);
     let frag = shader.fragmentShader
-      .replace('#include <common>', '#include <common>\nvarying vec3 vDwWorldPos;\nuniform float uDwRim;\nuniform float uRimStrength;\n' + FOG_PARS_GLSL);
+      .replace('#include <common>', '#include <common>\nvarying vec3 vDwWorldPos;\nuniform float uDwRim;\nuniform float uRimStrength;\nuniform float uDwFill;\nuniform float uDwFillCool;\nuniform float uDwRimEdge;\n' + FOG_PARS_GLSL);
     if (rim > 0) frag = frag.replace('#include <opaque_fragment>', PAINTERLY_RIM_GLSL + '#include <opaque_fragment>');
     if (fog) {
       frag = frag.replace('#include <fog_fragment>', '#include <fog_fragment>\n' + FOG_APPLY_GLSL);
