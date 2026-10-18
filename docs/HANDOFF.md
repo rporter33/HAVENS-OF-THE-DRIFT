@@ -5,7 +5,7 @@ Keep this file short: one checkpoint, overwritten each session. Move the previou
 ## Checkpoint 2026-10-18 (evening): G3c look development
 
 - **Objective:** gate G3c (Q40): close the measured gap to the Astra target renders in light, sky, haze and clouds; a slightly narrower default lens; a cloud boundary at the world's edge; deeper wings with the flight stats unchanged.
-- **Branch:** `gate/g3c-look-dev`, stacked on `gate/g3-harrier-visual` (PR #11).
+- **Branch:** `gate/g3c-look-dev` (PR #12, draft), stacked on `gate/g3-harrier-visual` (PR #11).
 - **Completed:**
   - **Measurement:** `scripts/lookdev/` frames the game like targets 01, 02 and 10 (35 to 50 mm) plus the gameplay camera at tod 0.6 and 0.7, and `metrics.mjs` scores each against its target in CIELAB (no dependencies).
   - **Light:** `render/look.ts` holds the knobs. The painterly lift became a smaller, cooler fill plus a real fresnel rim (its old fresnel was 1 on every front face). The sun is 1.35 times brighter, the world toon ramp goes 0.13/0.3/0.78/1 (was 0.32/0.55/0.8/1) and the creature ramp's shadow 0.16 (was 0.28). The wyvern's baked AO, computed before but never read, now reaches its shader.
