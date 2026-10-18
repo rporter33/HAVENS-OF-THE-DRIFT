@@ -137,4 +137,4 @@ Built and measured in G8a: with wings folded, a wyvern collides as its body alon
 
 ### Q36 · How closely the game follows the target renders, and dragonflight color — answered 2026-10-18
 Robert, on the renders in [`docs/art/targets/`](../art/targets/MANIFEST.md): the game's rendering should closely match them, including the look of the dragons and wyverns. Each dragonflight is restricted to its own color but blends into the neighboring hues on the color wheel: the blue flight toward purple, the red flight across orange and yellow. The Codex airship should end up more detailed than its render; that work comes later. This is direction for G3 and G8, not an implementation gate.
-*Open follow-up: the neighboring hues for the green, black and white flights.*
+Follow-up answered the same night: green blends toward teal and yellow-green; black, being off the wheel, takes a tint toward deep violet or ember; white toward ivory and powder blue, as the elder dragon render (08) shows.
