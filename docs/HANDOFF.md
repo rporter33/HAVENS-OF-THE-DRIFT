@@ -31,13 +31,12 @@ Keep this file short: one checkpoint, overwritten each session. Move the previou
 
   Not checked: LOD2's horns on LOD2's body, any posed or animated frame, the game's shaders, and anything at gameplay distance. Nothing draws the dragon yet.
 - **Known issues:**
-  - Q50 is still open: the size, the wing's source and the membrane's root are built as recommended.
   - At LOD2 the wings' trailing edge shows the membrane's underside from above in places.
   - The flight palette has no horn colour. The parts use the hide shader's horn region and fin membrane, and the kit names "pale bone ivory" without a value, so G12b maps it.
   - The parts sit on LOD0's surface, and on the thinner LODs they aren't measured against the body.
   - The variant sheets aren't built; each is a later builder and catalog option.
   - Carried over: the fit's limits (wing-root stubs, a flatter flank under the membrane's root, bind pose only). PR #11's Harrier trial isn't on main. The decision log is still forked across branches (Q37 to Q46).
+- **Decisions:** Robert accepted Q50's recommendations the same day ("im okay with reccomendations, continue"). The size, the wing's source and the membrane's root stand as built, so nothing was rebuilt.
 - **Next authorized action:**
-  - Fast-forward `gate/g12a-white-dragon` to this session's commit.
-  - Robert answers Q50 (or lets the recommendations stand) and reviews [PR #15](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/15), the parts and LODs included.
+  - Robert reviews [PR #15](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/15), the parts and LODs included. `gate/g12a-white-dragon` was fast-forwarded to this session's commit and pushed.
   - Then G12b's resting showcase, which loads the body, the LODs and the parts.

@@ -167,8 +167,7 @@ Built on `gate/g12a-white-dragon` as data, tests and dev-only assets. Nothing dr
   - the shader channels are kept apart;
   - the file records its sources.
 
-Still to do in G12a:
-- **Robert's confirmations** in Q50: the size, the wing's source and the membrane's root.
+Robert accepted Q50's recommendations on 2026-10-19 (the size, the wing's source and the membrane's root stand as built). Still to do in G12a:
 - **Robert's review** of [PR #15](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/15), the parts and LODs included.
 
 Not started: anything visible. That is G12b.
@@ -290,10 +289,10 @@ The flight constants and the 120 Hz step, `driftwing.save.v1` and `driftwing.bon
 
 ## Decisions
 
-Answered 2026-10-19 ([Q47](DECISION_LOG.md#q47--open-the-white-dragon-gate-g12-and-on-what-terms--answered-2026-10-19), [Q48](DECISION_LOG.md#q48--dragon-customization-and-colour-within-a-flight--answered-2026-10-19)):
+Answered 2026-10-19 ([Q47](DECISION_LOG.md#q47--open-the-white-dragon-gate-g12-and-on-what-terms--answered-2026-10-19), [Q48](DECISION_LOG.md#q48--dragon-customization-and-colour-within-a-flight--answered-2026-10-19), [Q50](DECISION_LOG.md#q50--the-white-dragons-size-wing-and-membrane-root--answered-2026-10-19)):
 - G12 is open: R1, a Meshy body on a game-owned skeleton, the tower at Windhaven, the elder figure later.
 - Parts fit every flight, the hue shift is ±8°, and the elders' dragons are authored characters.
+- The choices the sheet and the Meshy body forced stand as built: the size from render 08's body readings, the wing from the Meshy body, the membrane meeting the flank ahead of the hip.
 
 Open:
-- the dragon's name and whether it speaks ([Q47f](DECISION_LOG.md#q47f--the-white-elder-dragons-name-and-whether-it-speaks--open));
-- the choices the sheet and the Meshy body forced: the dragon's size, the wing's source and the membrane's root ([Q50](DECISION_LOG.md#q50--the-white-dragons-size-wing-and-membrane-root--open)). Each is built as recommended until Robert answers.
+- the dragon's name and whether it speaks ([Q47f](DECISION_LOG.md#q47f--the-white-elder-dragons-name-and-whether-it-speaks--open)).
