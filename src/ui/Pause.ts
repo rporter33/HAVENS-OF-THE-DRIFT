@@ -18,7 +18,7 @@ export interface PauseEntry {
   sub?: (view: GameView) => string;
 }
 
-/** "At Cascade Isle", "Near Rootfall", "Over the cloud sea, south of the Roost". */
+/** "At Cascade Isle", "Near Rootfall", "Over the Drift, south of Windhaven". */
 export function whereAmI(x: number, z: number, discovered: readonly string[]): string {
   let best = Infinity;
   let name = '';
@@ -36,7 +36,7 @@ export function whereAmI(x: number, z: number, discovered: readonly string[]): s
   if (best < 700 && known) return `Near ${name}`;
   // Name the nearest place you know and which way it lies from here.
   let kd = Infinity;
-  let kname = 'the Roost';
+  let kname = 'Windhaven';
   let kx = 0;
   let kz = 0;
   for (const l of LAYOUT.landmarks) {
@@ -44,7 +44,7 @@ export function whereAmI(x: number, z: number, discovered: readonly string[]): s
     const d = Math.hypot(l.position[0] - x, l.position[2] - z);
     if (d < kd) {
       kd = d;
-      kname = l.id === 'roost' ? 'the Roost' : l.name;
+      kname = l.name;
       kx = l.position[0];
       kz = l.position[2];
     }

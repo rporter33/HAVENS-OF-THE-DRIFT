@@ -23,7 +23,7 @@ function rings(n: number, cx: number, cy: number, cz: number, r: number) {
 export const FAKE_RACES: RaceDef[] = [
   {
     id: 'roost-loop', name: 'Roost Loop', kind: 'rings', difficulty: 1, landmark: 'roost',
-    description: 'A gentle circuit of the Windward Roost: round the rookery towers, under the launch deck and home again.',
+    description: 'A gentle circuit of Windhaven: round the rookery towers, under the launch deck and home again.',
     start: { position: [40, 330, 80], yaw: 0 }, rings: rings(12, 0, 320, 0, 260),
     medals: { gold: 62000, silver: 70000, bronze: 82000 },
   },

@@ -120,7 +120,7 @@ export class CollectionMenu extends Panel {
       const el = div(
         `dw-landmark${known ? '' : ' is-missing'}`,
         fromHtml(ICONS.landmark),
-        div('', h('b', { text: known ? l.name : 'Undiscovered' }), h('span', { text: known ? l.description : `Somewhere to the ${dir} of the Roost.` })),
+        div('', h('b', { text: known ? l.name : 'Undiscovered' }), h('span', { text: known ? l.description : `Somewhere to the ${dir} of Windhaven.` })),
       );
       this.scope.add({ el });
       list.append(el);
