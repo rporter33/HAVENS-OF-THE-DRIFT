@@ -13,7 +13,11 @@ Keep this file short: one checkpoint, overwritten each session. Move the previou
     - `catalog.ts`: the white elder's parts from render 08 and its look.
     - `proportions.ts` and `rig.ts`: the six-limb skeleton in the wyverns' conventions, 64 bones (tongue and wing-claw bones dropped). It stands on four feet at 3.0 m, spreads to 20 m, roots the wings mid-back and seats a rider between the neck and the wing roots.
   - **Accuracy:** render 08 was measured against the elder (readings in `proportions.ts` and [the design](design/WHITE_DRAGON.md)), and the rig tests hold each reading within ±15%. Measuring corrected the model kit's prompt (wing roots mid-back, not over the shoulders; span about the dragon's length, not twice chest to hips) and the design doc's resting heights.
-- **Tests:** the new dragon tests pass (30, in `look.test.ts`, `catalog.test.ts` and `rig.test.ts`), and typecheck is clean. The full vitest suite and smoke were running when this was committed; their results follow in the next commit.
+- **Tests,** run on `8209a23`; all green:
+  - typecheck clean;
+  - vitest 131 files, 1,391 tests, against a baseline of 128 and 1,361 before the change. The 30 new tests are in `look.test.ts`, `catalog.test.ts` and `rig.test.ts`, and the wyvern suites and pose golden pass unchanged;
+  - smoke 15/15.
+  - There's no visual check because nothing draws the dragon yet.
 - **Known issues:**
   - The proportions are provisional until the approved Astra sheet; standing height isn't in the render and was chosen to fit the measured legs.
   - Nothing draws the dragon yet: the body, the parts' geometry, the Blender export and fit, and G12b's showcase all wait on Robert's sheet and Meshy body.
