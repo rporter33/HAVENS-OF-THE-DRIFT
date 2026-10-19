@@ -5,7 +5,7 @@ Keep this file short: one checkpoint, overwritten each session. Move the previou
 ## Checkpoint 2026-10-19: G12a begun, the white dragon's skeleton, look and parts
 
 - **Objective:** gate G12 (Q47), opened by Robert on 2026-10-19 ("Go ahead with accuracy"): the white elder dragon at rest on a tower at Windhaven. G12a is the skeleton, the fitted body, the parts and the flight colour, dev-only.
-- **Branch:** `gate/g12a-white-dragon`, stacked on `design/white-elder-dragon`, which is stacked on main `ae839d9`. No PR yet.
+- **Branch:** `gate/g12a-white-dragon`, stacked on `design/white-elder-dragon`, which is stacked on main `ae839d9`. Draft [PR #14](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/14) into main holds both branches.
 - **Completed:**
   - **Decisions:** Q47 answered (as recommended, the tower at Windhaven; the name and voice stay open as Q47f). Q48's follow-ups answered: parts fit every flight, ±8° hue shift, the elders' dragons are authored characters. The dictated "47 and it does go are unshaven" is recorded with its reading.
   - **`src/creatures/dragon/` (new; no existing module changed):**
