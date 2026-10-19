@@ -2,46 +2,42 @@
 
 Keep this file short: one checkpoint, overwritten each session. Move the previous entry to [the handoff log](history/handoff/README.md) under its day before writing a new one. Nothing here authorizes new work on its own; the current task from Robert does.
 
-## Checkpoint 2026-10-19 (second session): G12a, the sheet measured and the Meshy body fitted
+## Checkpoint 2026-10-19 (third session): G12a's parts and distance models
 
-- **Objective:** continue gate G12a (Q47) with Robert's approved Astra sheet and Meshy body. Check them against the model kit, re-measure the skeleton from side view C and tighten the rig tests, archive the raw files with SHA-256, export the bind skeleton and fit the body in Blender. Nothing visible before G12b.
-- **Branch:** `gate/g12a-white-dragon`, continuing from `194aa2c` (the first G12a session, merged to main as PR #14). This session's work is [PR #15](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/15) into main, ready for review. Archive branch `archive/g12a-white-dragon` (`4725479`, pushed).
+- **Objective:** finish gate G12a (Q47). Build the white elder's five parts on the fitted body, inside the 2,000 to 4,000 triangle allowance, each riding existing bones. Then build the LODs below the bare body, at budgets set in the gate. Nothing visible before G12b.
+- **Branch:** `gate/g12a-white-dragon`, continuing from `223e5fd`, which adds to [PR #15](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/15). The gate branch is checked out in the main checkout, so this session committed on `g12a-parts-lods`, a worktree branch that fast-forwards it.
 - **Completed:**
-  - **Checked:** the four sheet views and the Meshy body pass the kit's checklist: six limbs, wing roots mid-back, membranes clear of the legs, no horns or whiskers. There are three departures. Sheet C ties the membrane behind the hip. The Meshy wings root further forward and its tail curves left, both corrected by the fit. Side view C's raised wing is out of scale with the front view. Details are in [the white dragon](design/WHITE_DRAGON.md#the-approved-sheet-and-the-meshy-body).
-  - **Archived:** 12 raw files (the Meshy raw and textured GLB, the four views, an earlier three-quarter view, the parts sheet and four variant sheets) on the orphan branch, with README and MANIFEST. Each blob's SHA-256 matches its source. The Meshy model, version and task ID weren't recorded at hand-over.
-  - **Measured:** three readers measured side view C blind and a fourth reconciled them. `proportions.ts` and `rig.ts` now follow the sheet:
-    - the neck in its S, one rise per segment, and the head pitched 17.6° nose-down;
-    - the sheet's leg joints, standing 3.42 m at the body center;
-    - the size from render 08's body readings, which makes it 20.3 m nose to tail along the skeleton;
-    - the tail in the sheet's sag and curl, joint by joint;
-    - the wing's bones from the Meshy body, 21.8 m spread flat.
+  - **Parts:** `scripts/blender/dragon_parts.py` builds the white elder's set from the archived `white-dragon-parts.png`. It was run through the Blender MCP and wrote `src/assets/dragon/white-dragon-parts.glb` (230 KB), one mesh per piece and LOD. The pieces:
+    - branching horns (the head);
+    - two 3.6 m whiskers (the head; strand coordinates and rest nodes for G12b's verlet hang, no bones);
+    - swept cheek fins (`fanL` / `fanR`);
+    - seven dorsal spines down the nape and a nine-tooth tail fin, both weighted as the hide beneath them.
 
-    `rig.test.ts` now holds side view C within ±5% on lengths and 0.15 m on joints, where it used to hold render 08 within ±15%.
-  - **Bind skeleton:** `creatures/dragon/skeleton.ts` and `scripts/dragon-export-skeleton.mjs` write the skeleton as JSON for Blender: pivots, ends, named points and each weighted bone's span.
-  - **Fit:** `scripts/blender/dragon_meshy_fit.py`, generalised from PR #11's Harrier fit, was run through the Blender MCP:
-    - the wings split off at the root and the cut closed;
-    - bone-heat weights on the body and distance weights on the wings, with at most four bones per vertex;
-    - each Meshy segment mapped onto the game bone's, with the regions baked from the textured download.
-
-    The result, `src/assets/dragon/white-dragon.glb` (17,999 triangles, 1.13 MB, dev-only data), has a parser (`creatures/dragon/asset.ts`) and tests. It is recorded in the register as `white-dragon-meshy-body`. The master is `havens-blender-pilot/white-dragon-pilot.blend` on Robert's PC.
-  - **Reviewed:** four reviewers each covered one area (rig and tests, skeleton export, fit script, docs), and each finding went to a skeptic. All 15 findings were confirmed and fixed:
-    - the tail's sag and the body plan's fold at the neck;
-    - tests that only checked a parameter against itself;
-    - the baked attributes: arc length stepped at stations, tube values on limbs and head, the wing panel coordinate, shared vertices, stray claws;
-    - doc errors: a wrong sign, overstated checklist, wingtip overshoot, missing open-question counts.
-  - **Decisions:** Q50 (open) asks Robert to confirm the size, the wing's source and the membrane's root; each is built as recommended.
+    LOD0 is 2,314 triangles and LOD1 698. LOD2 keeps the horns only, at 68. `creatures/dragon/parts.ts` parses the file. Each catalog option now names its pieces (`catalog.ts`).
+  - **LODs:** the budgets come from the model budgets guide and are recorded in the gate. LOD1 is 4,000 to 5,000 bare and up to 6,000 with parts; LOD2 is 1,000 to 1,300 bare and up to 1,500. They're in `DRAGON_LOD_BUDGETS` (`asset.ts`). The fit script's new `make_lod` and `export_lods` decimate the fitted body and wings and copy the shader attributes from the nearest LOD0 vertex. They wrote `white-dragon-lod1.glb` (4,500 triangles, 305 KB) and `-lod2.glb` (1,270, 94 KB).
+  - **Register:** `white-dragon-meshy-body` lists the LODs, and there's a new `white-dragon-parts` entry. The master `white-dragon-pilot.blend` now holds the parts and LOD copies; it was re-saved, and its new SHA-256 is in the register.
+  - **Docs:** [the white dragon](design/WHITE_DRAGON.md) has the G12a status, [the parts](design/WHITE_DRAGON.md#the-parts) and [the distance models](design/WHITE_DRAGON.md#the-distance-models). The gate's acceptance names the LOD budgets.
 - **Tests,** run on the working tree before commit:
   - typecheck clean;
-  - vitest 133 files, 1,412 tests, against 131 and 1,391 before; the dragon's 51 include 21 new;
-  - the production build succeeds;
-  - smoke 15/15. `npm run smoke` can't build on this PC because `scripts/smoke.mjs` passes the folder path, which has spaces, to Vite unquoted. It ran as `vite build` then `node scripts/smoke.mjs --no-build` with `CHROMIUM_PATH` set to Edge, since Playwright's Chromium isn't installed here.
-  - No visual check in the game: nothing draws the dragon yet. The fit was checked in Blender renders only.
+  - vitest 134 files, 1,431 tests, against 133 and 1,412 before. The dragon's 70 include 19 new: the parts tests (`parts.test.ts`), per-LOD body tests in `asset.test.ts`, and a catalog test;
+  - the production build succeeds, and nothing from `src/assets/dragon/` reaches `dist`;
+  - smoke 15/15, run as `vite build` then `node scripts/smoke.mjs --no-build` with `CHROMIUM_PATH` set to Edge, as last session.
+  - The final parts script was re-run to a scratch file, and its output matches the committed GLB byte for byte.
+- **Visual checks,** all in Blender solid-shaded renders, bind pose only:
+  - the parts against the parts sheet, side and front;
+  - the parts from above and three-quarter, and with back-face culling (no inward faces);
+  - LOD1's parts on LOD1's body;
+  - both LODs beside LOD0, side and top.
+
+  Not checked: LOD2's horns on LOD2's body, any posed or animated frame, the game's shaders, and anything at gameplay distance. Nothing draws the dragon yet.
 - **Known issues:**
-  - G12a still needs the parts' geometry (horns, whiskers, cheek fins, spines, tail fin), its LODs, and Robert's answers to Q50.
-  - Fit limits: stubs of the wing root stay on the body under the wing's root, the flank under the membrane's root is filled flatter than the body around it, and the fit is checked in the bind pose only.
-  - PR #11 merged into `art/astra-targets-2026-10-17` after that branch had already reached main, so the Harrier trial isn't on main. The dragon doesn't depend on it.
-  - The decision log is still forked across branches (Q37 to Q46).
-  - This session first tried to build the archive branch in a worktree. Creating it failed on Windows long paths, and the commands after it (`git checkout --orphan`, `git rm`) ran in the main checkout instead. Nothing was lost, since there were no uncommitted changes, and the checkout was restored to `194aa2c` before any further work. The archive was then built with git plumbing, which needs no checkout.
+  - Q50 is still open: the size, the wing's source and the membrane's root are built as recommended.
+  - At LOD2 the wings' trailing edge shows the membrane's underside from above in places.
+  - The flight palette has no horn colour. The parts use the hide shader's horn region and fin membrane, and the kit names "pale bone ivory" without a value, so G12b maps it.
+  - The parts sit on LOD0's surface, and on the thinner LODs they aren't measured against the body.
+  - The variant sheets aren't built; each is a later builder and catalog option.
+  - Carried over: the fit's limits (wing-root stubs, a flatter flank under the membrane's root, bind pose only). PR #11's Harrier trial isn't on main. The decision log is still forked across branches (Q37 to Q46).
 - **Next authorized action:**
-  - Robert answers Q50, or lets the recommendations stand, and reviews [PR #15](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/15).
-  - G12a's parts geometry and LODs, then G12b's resting showcase.
+  - Fast-forward `gate/g12a-white-dragon` to this session's commit.
+  - Robert answers Q50 (or lets the recommendations stand) and reviews [PR #15](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/15), the parts and LODs included.
+  - Then G12b's resting showcase, which loads the body, the LODs and the parts.

@@ -28,6 +28,9 @@
 #   exec(open(path).read()); report = run_all(SKELETON_JSON)
 # then, once the result has been looked at:
 #   export_glb(path, load_skeleton(SKELETON_JSON), provenance, report_dict)
+# and the distance models below it (CFG['lods']), decimated from the fitted LOD0:
+#   export_lods(SKELETON_JSON, 'src/assets/dragon', provenance)
+# The parts (horns, whiskers, cheek fins, spines, tail fin) are scripts/blender/dragon_parts.py's.
 #
 # Frames. Game body space: +Z forward, +Y up, +X left (metres). Blender: (x, -z, y), so the head
 # faces -Y and the creature's left is +X, as on the imported Meshy body.
@@ -47,6 +50,10 @@ CFG = dict(
     rig='Dragon_Rig', fit_rig='FitRig', work='Dragon_Work', body='Dragon_Meshy_Body', wings='Dragon_Meshy_Wings',
     # Exploratory LOD0 budget (model budgets: 16,000 to 20,000 bare); parts add up to 4,000 more.
     body_tris=12000, wing_tris=6000,
+    # Distance models below it (make_lod), body and wings in LOD0's proportion: LOD1 4,000 to 5,000
+    # bare and LOD2 1,000 to 1,300, so that with the parts they stay inside the model budgets' medium
+    # and far ceilings (6,000 and 1,500, as wyvern/parts/res.ts holds the wyverns).
+    lods={1: dict(body_tris=3000, wing_tris=1500), 2: dict(body_tris=850, wing_tris=420)},
     # Wing split, in Meshy units: the cut plane stands this far outside the wing root; behind the
     # membrane's trailing root only what lies beyond wing_outer (clear of the thighs) or is thin is
     # wing, and thin parts count only beyond wing_inner (clear of the midline). The wing piece keeps
@@ -927,16 +934,17 @@ def report(objs, sk):
     return out
 
 
-def export_glb(path, sk, provenance=None, fit=None):
+def export_glb(path, sk, provenance=None, fit=None, objs=None):
     """The fitted dragon as a GLB in the game's bind space: one vertex buffer, two primitives
     (0 body and wing bones, opaque; 1 membranes). JOINTS_0/WEIGHTS_0 index mesh.extras.jointNames (all
     the skeleton's bones, in its order; no glTF skin: the game binds by name to its own rig).
+    `objs` is the (body, wings) pair to write: by default the fitted LOD0, or make_lod's.
 
     A wing vertex used by both primitives is written twice, once with its hide reading and once with
     its membrane reading (bake_wing_attrs), so each shader sees its own channels. Every hide triangle
     is a single region: a corner whose region differs from the triangle's majority is written again
     with the triangle's region, as the wyvern builder splits its triangles (aMat.x is a flat varying)."""
-    body, wings = bpy.data.objects[CFG['body']], bpy.data.objects[CFG['wings']]
+    body, wings = objs or (bpy.data.objects[CFG['body']], bpy.data.objects[CFG['wings']])
     joint_names = [b['name'] for b in sk['bones']]
     jidx = {n: i for i, n in enumerate(joint_names)}
     P, N, J, W, A, U, E, I0, I1 = [], [], [], [], [], [], [], [], []
@@ -1021,6 +1029,63 @@ def export_glb(path, sk, provenance=None, fit=None):
     with open(path, 'wb') as f:
         f.write(out)
     return dict(path=path, bytes=len(out), verts=int(len(P)), body_tris=int(len(I0) // 3), membrane_tris=int(len(I1) // 3))
+
+
+# --- distance models -----------------------------------------------------------------------------
+
+def make_lod(lod):
+    """LOD `lod` of the fitted body (CFG['lods']): copies of the fitted body and wings decimated by
+    collapse, symmetric in x, to the LOD's triangles. The decimation interpolates the weights, which
+    are then held to four. The shader attributes and the membrane mask are copied from the nearest
+    LOD0 vertex of the same piece instead: regions are categories and the tube's girth angle wraps
+    round, so interpolating either would invent values. Returns (body, wings)."""
+    spec = CFG['lods'][lod]
+    rig = bpy.data.objects[CFG['rig']]
+    out = []
+    for src_name, tris in ((CFG['body'], spec['body_tris']), (CFG['wings'], spec['wing_tris'])):
+        src = bpy.data.objects[src_name]
+        ob = src.copy()
+        ob.data = src.data.copy()
+        ob = _replace(f'{src_name}_LOD{lod}', ob)
+        for m in list(ob.modifiers):
+            ob.modifiers.remove(m)
+        if 'custom_normal' in ob.data.attributes:
+            ob.data.attributes.remove(ob.data.attributes['custom_normal'])
+        _decimate(ob, tris, True)
+        limit_influences(ob)
+        kd = mathutils.kdtree.KDTree(len(src.data.vertices))
+        for v in src.data.vertices:
+            kd.insert(v.co, v.index)
+        kd.balance()
+        near = np.array([kd.find(v.co)[1] for v in ob.data.vertices])
+        for name in ('_AMAT', '_AUV2', '_AMAT_M', '_AUV2_M', '_AEXTRA'):
+            if name in src.data.attributes:
+                at = src.data.attributes[name]
+                key = 'vector' if at.data_type == 'FLOAT2' else 'color'
+                vals = np.array([getattr(d, key)[:] for d in at.data], np.float32)
+                _put(ob, name, vals[near])
+        if 'membrane_mask' in src:
+            memb = np.zeros(len(src.data.vertices), bool)
+            memb[json.loads(src['membrane_mask'])] = True
+            ob['membrane_mask'] = json.dumps(np.nonzero(memb[near])[0].tolist())
+        ob.modifiers.new('Armature', 'ARMATURE').object = rig
+        for p in ob.data.polygons:
+            p.use_smooth = True
+        out.append(ob)
+    return out
+
+
+def export_lods(skeleton_path, out_dir, provenance=None):
+    """Every LOD in CFG['lods'] as white-dragon-lod<n>.glb beside the LOD0 file, with LOD0's
+    provenance and a report of its own."""
+    sk = load_skeleton(skeleton_path)
+    res = {}
+    for lod in sorted(CFG['lods']):
+        objs = make_lod(lod)
+        fit = dict(lod=lod, decimated_from='white-dragon.glb (LOD0)', targets=CFG['lods'][lod],
+                   mesh=report(objs, sk), max_influences=4)
+        res[lod] = export_glb(f'{out_dir}/white-dragon-lod{lod}.glb', sk, provenance, fit, objs)
+    return res
 
 
 # --- the whole fit -------------------------------------------------------------------------------

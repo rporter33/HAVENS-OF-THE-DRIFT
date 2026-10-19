@@ -135,31 +135,75 @@ Three steps, each its own PR with its own checks. None changes `src/flight`, `sr
 
 | Step | Changes | Acceptance | Size |
 |---|---|---|---|
-| **G12a** Skeleton, body and parts (dev-only) | `src/creatures/dragon/`: the six-limb rig, proportions from the approved sheet, an export of the bind skeleton for Blender (as G3b exported the Harrier). `scripts/blender/dragon_meshy_fit.py` generalised from the Harrier fit. The dragon's look data, the five slots and the white elder's part in each. The white flight's palette and the hue shift. The fitted GLB under `src/assets/` with its provenance and register entry (route, model and version, task id or "not recorded", plan tier, date). | New anatomy tests: six limbs, symmetric chains, the bone budget, the triangle budget per LOD (exploratory: 16,000 to 20,000 bare, up to 24,000 with parts, from the [model budgets](../../Art%20and%20Assets/Guides/model-budgets/README.md)), bind proportions within tolerance of the sheet. Every part attaches to its bones and stays inside the accessory allowance. Derived colours stay within the bound and are the same on every run. A fit report: every vertex weighted, at most four influences. All wyvern suites and the pose golden unchanged. Typecheck, full vitest, smoke 15/15. | M |
+| **G12a** Skeleton, body and parts (dev-only) | `src/creatures/dragon/`: the six-limb rig, proportions from the approved sheet, an export of the bind skeleton for Blender (as G3b exported the Harrier). `scripts/blender/dragon_meshy_fit.py` generalised from the Harrier fit. The dragon's look data, the five slots and the white elder's part in each. The white flight's palette and the hue shift. The fitted GLB under `src/assets/` with its provenance and register entry (route, model and version, task id or "not recorded", plan tier, date). | New anatomy tests: six limbs, symmetric chains, the bone budget, the triangle budget per LOD ([below](#the-distance-models); exploratory, from the [model budgets](../../Art%20and%20Assets/Guides/model-budgets/README.md): LOD0 16,000 to 20,000 bare and up to 24,000 with parts, LOD1 4,000 to 5,000 bare and up to 6,000, LOD2 1,000 to 1,300 bare and up to 1,500), bind proportions within tolerance of the sheet. Every part attaches to its bones and stays inside the accessory allowance. Derived colours stay within the bound and are the same on every run. A fit report: every vertex weighted, at most four influences. All wyvern suites and the pose golden unchanged. Typecheck, full vitest, smoke 15/15. | M |
 | **G12b** Resting showcase (dev-only) | `?view=white-dragon`: the dragon in render 08's pose on a stand-in platform, the idle life layer, its own driver, a camera matched to render 08, a capture manifest. A lineup of white dragons across the hue shift and part swaps. | Captures beside render 08 scored on the brief's three questions: identity, fidelity, reachability. In the lineup, Robert judges that every dragon reads as the white flight and that each part reads at gameplay distance; the ±8° shift is tuned here. The idle is stable across frame rates, as the wyvern tail test checks. No console errors; smoke 15/15. Robert times Medium on his GPU. | S to M |
 | **G12c** On its tower | A tower-top platform at Windhaven (Q47d), built with the haven's kit. Colliders: a cylinder for the tower and a `colChain` along the resting body. The white banner. The idle reacts to the player nearby. In the normal build once Robert has accepted G12b. | Dressing and editor checks green, with protected routes clear (spawn, stable door, launch deck). Collision within half a meter of what is seen. Race lines, cloud clearance and the Windline sweep unchanged. Flight replays bit-identical. Captures from render 10's approach and from the plaza. Draw calls at Medium within budget. | M |
 
-### G12a status, 2026-10-19 (second session)
+### G12a status, 2026-10-19 (third session)
 
-Built on `gate/g12a-white-dragon` as data, tests and one dev-only asset. Nothing draws it yet, and no existing module changed; wyvern helpers are imported, not edited.
-- `creatures/dragon/look.ts` and `catalog.ts` (first session): the flights, the five slots, the white flight's palette, the ±8° shift, and the white elder's parts and look.
+Built on `gate/g12a-white-dragon` as data, tests and dev-only assets. Nothing draws them yet, and no existing module changed; wyvern helpers are imported, not edited.
+- `creatures/dragon/look.ts` and `catalog.ts` (first session): the flights, the five slots, the white flight's palette, the ±8° shift, and the white elder's parts and look. Each catalog option now names its geometry pieces; the plate pattern is shading and has none.
 - `creatures/dragon/proportions.ts` and `rig.ts`: the six-limb skeleton, 64 bones, now measured from the approved sheet ([below](#the-approved-sheet-and-the-meshy-body)). The neck follows the sheet's S, one rise per segment, and the head pitches nose-down as drawn. The body center stands 3.4 m up. The wings spread flat to 21.8 m, rooted mid-back where side view C roots them. The seat is in the middle of the flat back between the withers and the wing roots.
 - `creatures/dragon/skeleton.ts` and `scripts/dragon-export-skeleton.mjs`: the bind skeleton as JSON for Blender. It lists every bone's pivot and end, the named points the fit maps onto, and each weighted bone's span. The export runs `node scripts/dragon-export-skeleton.mjs [--out path]`.
 - `scripts/blender/dragon_meshy_fit.py`: the fit, generalised from `harrier_meshy_fit.py` (PR #11). It was run through the Blender MCP on 2026-10-19 ([below](#the-fit)).
 - `src/assets/dragon/white-dragon.glb` and `creatures/dragon/asset.ts`: the fitted body (1.13 MB) and its parser. The provenance is in the file and in the [asset register](../../assets/catalog/register.json) (`white-dragon-meshy-body`). The raw downloads and the sheet are archived on `archive/g12a-white-dragon` with SHA-256.
-- Tests: `look`, `catalog`, `rig`, `skeleton` and `asset`, 51 in all. The rig tests hold the skeleton to side view C within ±5% on lengths and 0.15 m on every joint (the neck and tail joint by joint), and to the Meshy body's wing bones within ±5%. They also check that the body plan doesn't fold where the upright neck meets the torso. The asset tests check the fitted body:
-  - it binds by name to every bone and sits in the bare LOD0 budget;
+- `src/assets/dragon/white-dragon-lod1.glb` and `-lod2.glb` (third session): the [distance models](#the-distance-models), decimated from the fitted body by the fit script's `make_lod`. Same layout and parser; registered with the body.
+- `src/assets/dragon/white-dragon-parts.glb`, `creatures/dragon/parts.ts` and `scripts/blender/dragon_parts.py` (third session): [the white elder's parts](#the-parts) at every LOD, their parser and the script that builds them. Registered as `white-dragon-parts`.
+- The master, `havens-blender-pilot/white-dragon-pilot.blend`, now holds the parts (collection `White Dragon Parts`) and the LOD copies, and was saved again (the register has its new SHA-256).
+- Tests: `look`, `catalog`, `rig`, `skeleton`, `asset` and `parts`, 70 in all. The rig tests hold the skeleton to side view C within ±5% on lengths and 0.15 m on every joint (the neck and tail joint by joint), and to the Meshy body's wing bones within ±5%. They also check that the body plan doesn't fold where the upright neck meets the torso. The asset tests check the fitted body and each distance model:
+  - it binds by name to every bone and sits in its LOD's bare budget;
   - it weights every vertex with at most four bones and stands where the skeleton stands;
   - each body triangle is one region, with claws only on the feet and wings, and the two primitives share no vertex;
-  - the tube's arc length runs smoothly, and the membrane's panel coordinate spans 0 to 3;
-  - it records its provenance.
+  - the tube's arc length runs smoothly (LOD0), and the membrane's panel coordinate spans 0 to 3;
+  - it records its provenance, and each distance model the SHA-256 of the LOD0 file it came from.
+
+  The parts tests check that:
+  - each of the white elder's catalog options has its pieces at every LOD;
+  - every piece rides only bones the skeleton has, each the bones it's built for, and the skeleton is still 64 bones;
+  - the parts stay inside the allowance at every LOD, and the body with them inside each LOD's ceiling;
+  - every connected bit of geometry touches the hide, or the rest of its part (a tine its beam);
+  - left and right match;
+  - the whiskers carry their strands from the lip;
+  - the shader channels are kept apart;
+  - the file records its sources.
 
 Still to do in G12a:
-- **The parts' geometry:** horns, whiskers, cheek fins, spines and tail fin on the fitted head and tail, built from `white-dragon-parts.png` and the variant sheets (archived), inside the 2,000 to 4,000 triangle allowance.
-- **LODs** below the bare body, at budgets set in the gate.
 - **Robert's confirmations** in Q50: the size, the wing's source and the membrane's root.
+- **Robert's review** of [PR #15](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/15), the parts and LODs included.
 
 Not started: anything visible. That is G12b.
+
+### The parts
+
+`scripts/blender/dragon_parts.py` builds the white elder's set from `white-dragon-parts.png` (archived). Each piece is procedural, placed by ray casts onto the fitted body's own surface and skinned to bones the skeleton already has.
+
+| Piece | Catalog option | Shape | Rides | Triangles (LOD0 / 1 / 2) |
+|---|---|---|---|---:|
+| Horns | `horns/branching` | Behind the eyes, swept back and out in a wide V, the tips turning up. A brow tine forward and out, three tines rising off the beam | `head`, rigid | 800 / 182 / 68 |
+| Whiskers | `whiskers/long` | Two strands of 3.6 m from the upper lip, out to the side and back along the jaw, then drooping | `head`, rigid; strand coordinates for a verlet hang | 350 / 90 / none |
+| Cheek fins | `frill/finCrest` | Four rays swept back from the cheek, with a scalloped web between them | `fanL` / `fanR`, rigid | 320 / 120 / none |
+| Spines | `frill/finCrest` | Seven flattened blades from behind the skull down the nape, 0.42 m shrinking to 0.14 m, leaning back 50° | the neck's own weights where each meets the hide | 294 / 84 / none |
+| Tail fin | `tail/fin` | Nine back-swept teeth on the last third of the tail, 0.30 m shrinking to 0.06 m | the tail's own weights under each column | 550 / 222 / none |
+| **All** | | | | **2,314 / 698 / 68** |
+
+- **No bones are added.** The whiskers carry strand coordinates per vertex: which strand, and 0 at the root to 1 at the tip. Their rest nodes, 12 per strand, are in the file, so G12b can hang them as verlet strands the way the tail hangs. Until then they ride the head rigidly. The 3.6 m length lets them reach the platform with the dragon lying down, as the catalog has it.
+- **Shading:** the hide shader's channels. Horns, spines, fin rays and the tail fin are the horn region (`aUv2.x` 0 at the base to 1 at the tip). The whiskers are hide with the belly's cloud white. The cheek fins' web is a fin membrane in the membrane group. The flight palette has no horn colour yet: the kit names "pale bone ivory" without a value, so G12b maps it.
+- **The variant sheets** (swept, crown and spiral horns; curled, forked and barbel whiskers; sail crest, mane and small cheek fins; spade, blade and ribbon tail tips) aren't built. Each would be another builder on the same anchors and bones, and another catalog option.
+- **Checked:** in Blender solid-shaded renders, on the fitted body in the bind pose: the side and front against the parts sheet, then from above and three-quarter. The head was rendered with back-face culling to check that every face points outward. LOD1's parts were looked at on LOD1's body. Not checked: LOD2's horns on LOD2's body, any posed or animated frame, the game's shaders, and gameplay distance.
+
+### The distance models
+
+Budgets, from the [model budgets](../../Art%20and%20Assets/Guides/model-budgets/README.md). The guide gives a complete wyvern with its gear 4,000 to 6,000 triangles at medium distance and 1,000 to 1,500 far. The wyverns' own ceilings are 6,000 and 1,500 (`wyvern/parts/res.ts`). The dragon's LODs keep the whole creature, parts included, inside those ceilings, with the bare body taking most of each.
+
+| LOD | Bare body | Parts | With parts | Built | File |
+|---|---:|---:|---:|---|---|
+| 0, close | 16,000 to 20,000 | 2,000 to 4,000 | up to 24,000 | 17,999 + 2,314 = 20,313 | `white-dragon.glb` (1.13 MB) |
+| 1, medium | 4,000 to 5,000 | up to 1,000 | up to 6,000 | 4,500 + 698 = 5,198 | `white-dragon-lod1.glb` (305 KB) |
+| 2, far | 1,000 to 1,300 | up to 200, horns only | up to 1,500 | 1,270 + 68 = 1,338 | `white-dragon-lod2.glb` (94 KB) |
+
+`make_lod` in `dragon_meshy_fit.py` copies the fitted body and wings and decimates each by symmetric collapse. LOD1 has 3,000 body and 1,500 wing triangles; LOD2 has 850 and 420, the same two to one as LOD0. The decimation interpolates the weights, which are then held to four bones. The shader attributes and the membrane mask are copied from the nearest LOD0 vertex instead: regions are categories, and the girth angle wraps around the tube, so interpolating either would invent values. `export_lods` writes both with LOD0's provenance and the LOD0 file's SHA-256.
+
+Checked in Blender, side and top views beside LOD0: the silhouette, legs, neck, tail and wing outline hold at both LODs. At LOD2 the wings' trailing edge shows the membrane's underside from above in places, where the decimation thinned the two faces of the thin sheet differently. That's acceptable far off, but it's the first thing to look at in G12b.
 
 ### The approved sheet and the Meshy body
 

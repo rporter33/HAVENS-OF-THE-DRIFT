@@ -132,7 +132,7 @@ The plan tier matters for rights. Robert's account is on the **Pro plan** (Q49),
 
 ## What happens next (Claude, G12a)
 
-G12 is open. The look data and the parts slots are built. On 2026-10-19 the skeleton was re-measured from the approved sheet and the Meshy body was fitted to it (steps 1 and 2 below, apart from the LODs). The design doc has the status and the full plan.
+G12 is open. The look data and the parts slots are built. On 2026-10-19 the skeleton was re-measured from the approved sheet and the Meshy body was fitted to it. Then its LODs and the white elder's parts were built, the parts from the parts sheet (steps 1 and 2 below). The variant sheets wait as later part options. The design doc has the status and the full plan.
 
 1. **The skeleton first, in code.** The game owns the skeleton, as it does for the wyverns: a six-limb rig definition written to the approved sheet's proportions, exported to Blender the way G3b exported the Harrier.
 2. **Blender fit.** Audit and remesh the Meshy body, cut the wings at the root, fit it to the game skeleton (generalising `harrier_meshy_fit.py` from G3b), skin weights, and bake the region, belly and back attributes the game shader reads. LODs below the bare body, at budgets set in the gate.

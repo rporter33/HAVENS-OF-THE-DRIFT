@@ -14,6 +14,12 @@ describe('dragon parts', () => {
     }
     for (const p of DRAGON_PARTS) expect(DRAGON_PART_SLOTS).toContain(p.slot);
   });
+
+  it('names each option’s geometry: one piece or more for every slot with a shape, none for the pattern', () => {
+    for (const p of DRAGON_PARTS) expect(p.pieces.length > 0, `${p.slot}/${p.id}`).toBe(p.slot !== 'pattern');
+    const all = DRAGON_PARTS.flatMap((p) => p.pieces);
+    expect(new Set(all).size).toBe(all.length);
+  });
 });
 
 describe('elder dragons', () => {
