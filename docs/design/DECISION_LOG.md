@@ -192,3 +192,10 @@ What still applies:
 - **Community.** Nothing goes to Meshy's Community, where published output becomes CC0.
 
 This is Robert's statement plus the guide's summary of the terms, not a legal review of any one asset.
+
+### Q50 · The white dragon's size, wing and membrane root — open
+Measuring Robert's approved sheet and Meshy body for G12a, 2026-10-19 ([the white dragon](WHITE_DRAGON.md#the-approved-sheet-and-the-meshy-body)), turned up three things the sheet can't settle by itself. Each is built as recommended until Robert answers; changing one is a change to `proportions.ts` and a re-run of the fit.
+- **a. Size.** The sheet has no scale. *Built: render 08's five body readings (head, neck, torso, tail, back height), their geometric mean. The dragon is 20.3 m from nose to tail tip along the skeleton (the provisional rig from render 08: 20.6 m), its body center 3.4 m off the ground, its wings 21.8 m spread flat at the fingers' ends.* Other choices: the head alone (about the same), or render 08's leg readings too, which would make it about 7% smaller. Those were taken lying down.
+- **b. The wing.** Side view C's raised wing is too large for the other views: its leading finger alone would spread the wings to about 25 m, where the front view shows about 16.5 m. *Built: the Meshy body's wing bones, which span 20.7 m as modelled and 21.8 m spread flat; the wing's root stays where C puts it.* Other choice: C's wing, about 25 m.
+- **c. The membrane's root.** C ties the membrane's trailing edge to the top of the rump, about 0.5 m behind the hip. That's clear of the leg, but it isn't the kit's "flank just in front of the hind legs". *Built: as the design and the Meshy body have it, 0.65 m ahead of the hip.*
+- **d. Noted, not asked.** The approved sheet's tail is 2.1 times nose to hips and its neck 0.65 times shoulder to hips, where the kit asked for about 1.33 and 0.75. The skeleton follows the approved sheet.

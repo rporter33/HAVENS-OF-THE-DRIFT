@@ -120,9 +120,19 @@ Plan tier: Pro (paid), or say if it has changed
 
 The plan tier matters for rights. Robert's account is on the **Pro plan** (Q49), and Meshy's terms (as summarized in the Meshy guide) give paid-plan output to the subscriber as owner, so the dragon model is his for Blender and game use. Free-tier output would instead fall under CC BY 4.0 with attribution. Record the tier anyway, because ownership follows the plan in force on the day it is generated. Private visibility alone is not a no-training commitment.
 
+### Received 2026-10-19
+
+| | |
+|---|---|
+| Sheet | A, B, C and D, an earlier three-quarter view, the parts sheet and all four variant sheets, in `refs\White Dragon\` (not `refs\white-dragon\`) |
+| Meshy | `white-dragon-raw.glb` and `white-dragon-textured.glb`. The 30,000-triangle fallback wasn't downloaded, and wasn't needed |
+| Record | Plan: Pro (Q49). Route: web UI, Image to 3D. Model and version, task ID, settings and the views used: not recorded |
+| Checklist | Six of the seven checks pass, for the views and the Meshy body. The views don't agree on the wing's size: C's raised wing implies about 25 m, the front view about 16.5 m. That check, and the other departures, are in [the white dragon](../../docs/design/WHITE_DRAGON.md#the-approved-sheet-and-the-meshy-body) |
+| Archive | Byte for byte, with SHA-256, on `archive/g12a-white-dragon` |
+
 ## What happens next (Claude, G12a)
 
-G12 is open. The look data, the parts slots and the skeleton are built in code ahead of the sheet, with proportions from render 08 marked provisional; the steps below that need the sheet or the Meshy body wait for them. The design doc has the full plan.
+G12 is open. The look data and the parts slots are built. On 2026-10-19 the skeleton was re-measured from the approved sheet and the Meshy body was fitted to it (steps 1 and 2 below, apart from the LODs). The design doc has the status and the full plan.
 
 1. **The skeleton first, in code.** The game owns the skeleton, as it does for the wyverns: a six-limb rig definition written to the approved sheet's proportions, exported to Blender the way G3b exported the Harrier.
 2. **Blender fit.** Audit and remesh the Meshy body, cut the wings at the root, fit it to the game skeleton (generalising `harrier_meshy_fit.py` from G3b), skin weights, and bake the region, belly and back attributes the game shader reads. LODs below the bare body, at budgets set in the gate.

@@ -4,9 +4,10 @@
 // Conventions are the wyvern rig's (wyvern/rig.ts): every bone's rest rotation is the identity and
 // bones differ only by their pivots, given in body space; left first, the right mirrors x.
 //
-// Bind pose, matching the reference sheet's: torso level, neck rising at `neckRise`, head level,
-// tail straight back with a slight droop, wings spread flat at the height of their roots, all four
-// legs in their natural standing bend with the soles at y = -standHeight.
+// Bind pose, matching the reference sheet's (side view C): torso level, the neck in the sheet's S
+// (one rise per segment), the head pitched nose-down as drawn, the tail back in the sheet's sag and
+// curl (one droop per segment), wings spread flat at the height of their roots, all four legs in the
+// sheet's standing bend with the soles at y = -standHeight.
 //
 // Six limbs within the wyverns' 64-bone budget (the bone texture stays 16x16): the wyvern's 58
 // bones less the tongue (the mouth stays closed at rest) and the wing claws (the thumb claw rides
@@ -97,6 +98,8 @@ export interface DragonRigDef {
   foreleg: LegPoints;
   hindleg: LegPoints;
   mouth: Vector3;
+  /** Tip of the snout, headLength from the skull joint along the pitched head. */
+  snout: Vector3;
   eye: Vector3;
   eyeRadius: number;
   /** Seat on the back (where a rider's hips would rest), between the neck base and the wing roots. */
@@ -135,28 +138,34 @@ export function buildDragonRig(P: DragonProportions = computeDragonProportions()
   const breath = add('breath', spine, new Vector3(0, -0.25 * hh, -0.02 * T));
   const pelvis = add('pelvis', root, new Vector3());
 
-  // Neck: equal segments rising from the top front of the torso.
-  const neckBase = new Vector3(0, 0.36 * hh, 0.4 * T);
-  const neckDir = new Vector3(0, Math.sin(S.neckRise), Math.cos(S.neckRise));
+  // Neck: equal segments from the top front of the torso, each rising at the sheet's angle, so the
+  // chain follows the sheet's S (straight up from the withers, bending forward under the skull).
+  const neckBase = new Vector3(0, S.neckBase[0] * hh, S.neckBase[1] * T);
   const seg = S.neckLength / DRAGON_NECK_BONES;
   const neck: number[] = [];
   let parent = chest;
+  const np = neckBase.clone();
   for (let i = 0; i < DRAGON_NECK_BONES; i++) {
-    parent = add(`neck${i}`, parent, neckBase.clone().addScaledVector(neckDir, seg * i));
+    parent = add(`neck${i}`, parent, np);
     neck.push(parent);
+    np.add(new Vector3(0, Math.sin(S.neckRise[i]), Math.cos(S.neckRise[i])).multiplyScalar(seg));
   }
-  const headPos = neckBase.clone().addScaledVector(neckDir, S.neckLength);
+  const headPos = np.clone();
   const head = add('head', parent, headPos);
   const L = S.headLength;
-  const jaw = add('jaw', head, headPos.clone().add(new Vector3(0, -0.5 * S.headHalfHeight, 0.08 * L)));
+  // The head's frame, pitched nose-down as the sheet draws it: offsets are (side, up, along).
+  const hFwd = new Vector3(0, -Math.sin(S.headPitch), Math.cos(S.headPitch));
+  const hUp = new Vector3(0, Math.cos(S.headPitch), Math.sin(S.headPitch));
+  const inHead = (x: number, up: number, along: number) =>
+    headPos.clone().add(new Vector3(x, 0, 0)).addScaledVector(hUp, up).addScaledVector(hFwd, along);
+  const jaw = add('jaw', head, inHead(0, -0.5 * S.headHalfHeight, 0.08 * L));
   const fans: [number, number] = [0, 1].map((side) =>
-    add(`fan${sideName(side)}`, head, headPos.clone().add(new Vector3(0.75 * S.headHalfWidth * SIDE_SIGN[side], -0.15 * S.headHalfHeight, -0.02 * L))),
+    add(`fan${sideName(side)}`, head, inHead(0.75 * S.headHalfWidth * SIDE_SIGN[side], -0.15 * S.headHalfHeight, -0.02 * L)),
   ) as [number, number];
 
-  // Tail: segments shrink toward the tip so the long tail curls smoothly at rest.
-  const tailBase = new Vector3(0, 0.1 * hh, -0.56 * T);
-  const droop = 5 * (Math.PI / 180);
-  const tailDir = new Vector3(0, -Math.sin(droop), -Math.cos(droop));
+  // Tail: segments shrink toward the tip so the long tail curls smoothly at rest; each follows the
+  // sheet's droop at its place along the tail.
+  const tailBase = new Vector3(0, S.tailBase[0] * hh, S.tailBase[1] * T);
   const ratio = 0.92;
   let norm = 0;
   for (let i = 0; i < DRAGON_TAIL_BONES; i++) norm += Math.pow(ratio, i);
@@ -166,7 +175,8 @@ export function buildDragonRig(P: DragonProportions = computeDragonProportions()
   for (let i = 0; i < DRAGON_TAIL_BONES; i++) {
     parent = add(`tail${i}`, parent, tp);
     tail.push(parent);
-    tp.addScaledVector(tailDir, (S.tailLength * Math.pow(ratio, i)) / norm);
+    const d = S.tailDroop[i];
+    tp.add(new Vector3(0, -Math.sin(d), -Math.cos(d)).multiplyScalar((S.tailLength * Math.pow(ratio, i)) / norm));
   }
   const tailTip = tp.clone();
 
@@ -233,16 +243,20 @@ export function buildDragonRig(P: DragonProportions = computeDragonProportions()
   const nk = (i: number) => bones[neck[i]].pos;
   const neckR = (t: number) => lerp(S.neckTopRadius, S.neckBaseRadius, Math.pow(t, 2.2));
   const keys: { p: Vector3; hw: number; hu: number; hl: number; sq: number }[] = [];
-  keys.push({ p: headPos.clone().add(new Vector3(0, -0.05 * S.headHalfHeight, 0.18 * L)), hw: 0.7 * S.neckTopRadius, hu: 0.85 * S.neckTopRadius, hl: 0.85 * S.neckTopRadius, sq: 2 });
+  keys.push({ p: inHead(0, -0.05 * S.headHalfHeight, 0.18 * L), hw: 0.7 * S.neckTopRadius, hu: 0.85 * S.neckTopRadius, hl: 0.85 * S.neckTopRadius, sq: 2 });
   keys.push({ p: headPos.clone(), hw: S.neckTopRadius * 0.95, hu: S.neckTopRadius * 1.05, hl: S.neckTopRadius * 1.08, sq: 2 });
   const neckTopKey = keys.length - 1;
   for (let i = DRAGON_NECK_BONES - 1; i >= 1; i--) {
     const r = neckR(1 - i / DRAGON_NECK_BONES);
     keys.push({ p: nk(i).clone(), hw: r * 0.95, hu: r, hl: r * 1.12, sq: 2 });
   }
-  keys.push({ p: nk(0).clone().add(new Vector3(0, -0.08 * hh, -0.02 * T)), hw: S.neckBaseRadius * 1.15, hu: S.neckBaseRadius, hl: S.neckBaseRadius * 1.5, sq: 2.1 });
+  // The neck rises almost straight up from the withers, so its base key sits below the first neck
+  // joint, along the neck, and the shoulder key behind and below that: the centre line turns from
+  // the neck into the torso without running forward again.
+  const neck0Dir = new Vector3(0, Math.sin(S.neckRise[0]), Math.cos(S.neckRise[0]));
+  keys.push({ p: nk(0).clone().addScaledVector(neck0Dir, -0.3 * hh), hw: S.neckBaseRadius * 1.15, hu: S.neckBaseRadius, hl: S.neckBaseRadius * 1.5, sq: 2.1 });
   const neckBaseKey = keys.length - 1;
-  keys.push({ p: new Vector3(0, 0.1 * hh, 0.32 * T), hw: hw * 1.08, hu: hh * 0.9, hl: hh * 1.1 + S.keel * 1.2, sq: 2.3 });
+  keys.push({ p: new Vector3(0, 0.3 * hh, 0.27 * T), hw: hw * 1.08, hu: hh * 0.9, hl: hh * 1.1 + S.keel * 1.2, sq: 2.3 });
   const shoulderKey = keys.length - 1;
   keys.push({ p: new Vector3(0, 0.04 * hh, 0.15 * T), hw: hw * 1.04, hu: hh * 0.93, hl: hh + S.keel, sq: 2.25 });
   const chestKey = keys.length - 1;
@@ -277,14 +291,15 @@ export function buildDragonRig(P: DragonProportions = computeDragonProportions()
   const trailRoot = new Vector3(0.75 * trailSt.halfWidth, trailSt.center.y + 0.6 * trailSt.upper, trailZ);
   const foldC = panelCentroid([wingRoot, elbow, wrist, knuckle, fingerTips[2], trailRoot]);
   const fold: [number, number] = [add('foldL', spine, mirror(foldC, 0)), add('foldR', spine, mirror(foldC, 1))];
-  const gular = add('gular', jaw, headPos.clone().add(new Vector3(0, -0.8 * S.headHalfHeight, 0.1 * L)));
+  const gular = add('gular', jaw, inHead(0, -0.8 * S.headHalfHeight, 0.1 * L));
 
   const seatZ = S.seatZ * T;
   const seatSt = plan.station(plan.sAtZ(seatZ));
   const seat = new Vector3(0, seatSt.center.y + seatSt.upper + 0.06 * hh, seatZ);
 
-  const mouth = headPos.clone().add(new Vector3(0, -0.35 * S.headHalfHeight, 0.98 * L));
-  const eye = headPos.clone().add(new Vector3(0.78 * S.headHalfWidth, 0.42 * S.headHalfHeight, 0.4 * L));
+  const mouth = inHead(0, -0.35 * S.headHalfHeight, 0.98 * L);
+  const snout = inHead(0, 0, L);
+  const eye = inHead(S.eyeAt[0] * S.headHalfWidth, S.eyeAt[1] * S.headHalfHeight, S.eyeAt[2] * L);
 
   return {
     props: P,
@@ -301,6 +316,7 @@ export function buildDragonRig(P: DragonProportions = computeDragonProportions()
     foreleg: fore,
     hindleg: hind,
     mouth,
+    snout,
     eye,
     eyeRadius: S.eye * L,
     seat,

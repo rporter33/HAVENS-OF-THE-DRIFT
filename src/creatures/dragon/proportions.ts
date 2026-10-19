@@ -1,9 +1,10 @@
 // The dragon's body plan as plain numbers (gate G12a). One body serves every flight (Q48a).
 //
-// PROVISIONAL: measured on target render 08 (docs/art/targets/08-sleek-dragon-elder.png) against
-// the elder beside it (about 1.75 m), with the perspective corrected by eye, so expect ±15%. Every
-// number is re-measured from the approved Astra side view (model kit, sheet C) before the Meshy body
-// is fitted; the method and the readings are in docs/design/WHITE_DRAGON.md.
+// Measured on the approved Astra side view (model kit, sheet C: white-dragon-ref-left.png, archived
+// on archive/g12a-white-dragon) by three independent readers, reconciled. The sheet has no scale, so
+// its size comes from target render 08 (docs/art/targets/08-sleek-dragon-elder.png, measured against
+// the elder): the geometric mean of render 08's five body readings sets 86.3 px/m. The method and
+// the readings are in docs/design/WHITE_DRAGON.md; the rig tests hold the skeleton to them.
 //
 // Body frame as for the wyverns (core/types.ts): +Z forward, +Y up, +X left; the origin is the body
 // center. Six limbs: four walking legs, and two wings rooted on the back behind the forelegs.
@@ -41,15 +42,27 @@ export interface DragonShape {
   torsoHalfWidth: number;
   torsoHalfHeight: number;
   keel: number;
+  /** Along the neck's curve, base to skull joint (m). */
   neckLength: number;
   neckBaseRadius: number;
   neckTopRadius: number;
-  neckRise: number;
+  /** The neck's base: [y as a fraction of torso half-height, z as a fraction of torso length]. */
+  neckBase: [number, number];
+  /** Rise of each neck segment above the horizontal, base to head (radians): the sheet's S. */
+  neckRise: number[];
+  /** Skull joint to snout tip (m). */
   headLength: number;
+  /** Nose-down pitch of the head, skull joint to snout tip (radians). */
+  headPitch: number;
   headHalfWidth: number;
   headHalfHeight: number;
+  /** Along the tail, base to tip (m). */
   tailLength: number;
   tailBaseRadius: number;
+  /** The tail's base: [y as a fraction of torso half-height, z as a fraction of torso length]. */
+  tailBase: [number, number];
+  /** Droop of each tail segment below the horizontal, base to tip (radians; negative curls up). */
+  tailDroop: number[];
   /** Joints as fractions: x of torso half-width, y of half-height, z of torso length. */
   wingRoot: [number, number, number];
   scapula: [number, number, number];
@@ -62,7 +75,10 @@ export interface DragonShape {
   hindleg: { thigh: number; shin: number; meta: number; toe: number; angles: LimbAngles };
   /** Seat on the back, as a fraction of torso length: between the neck base and the wing roots. */
   seatZ: number;
+  /** Eye radius as a fraction of head length. */
   eye: number;
+  /** Eye center in the head's frame: [x of head half-width, up of head half-height, along of head length]. */
+  eyeAt: [number, number, number];
   /** Body center above the ground standing on all four feet (m). */
   standHeight: number;
   /** Tip to tip, wings spread flat in the bind pose (m). */
@@ -70,60 +86,82 @@ export interface DragonShape {
 }
 
 /**
- * Readings on render 08 (elder ≈ 227 px ≈ 1.75 m at the chest's depth, ~130 px/m):
- * head ≈ 190 px ≈ 1.5 m; neck ≈ 2.5–2.8 m along its curve; chest front to rump ≈ 630 px, ≈ 5.6 m
- * with the body's turn from the image plane; tail ≈ 11 m traced around its curl at three depths;
- * folded wing: forearm ≈ 2.5 m, leading finger ≈ 6 m, so a span near 20 m, about the dragon's
- * length; wing roots mid-back, about 1.5 m behind the withers; haunch ≈ 1.5 m, hind foot ≈ 1.4 m;
- * forelimb lying, elbow to toe tips ≈ 2.0 m; lying, the back ≈ 1.9 m and the head ≈ 3.5 m above the
- * platform. Standing height is not in the render: standHeight is chosen so the legs come out at
- * those lengths.
+ * Side view C (1672 x 941, the dragon facing left, soles at y 800): head 132 px; neck 192 px along its
+ * curve, rising straight up from the withers and bending forward under the skull; chest front to
+ * rump 432 px; tail 1015 px along its line, sagging behind the haunch and curling up at the tip;
+ * body 191 px deep at the center, 200 px at the chest; the body center 295 px above the soles; wing
+ * root 108 px behind the withers; the near legs' joints as read (shoulder, elbow, wrist, ball, toes;
+ * hip, knee, hock, ball, toes). The neck's and tail's segment angles are their centre lines
+ * resampled at the rig's own joint spacing. Render 08's body readings in px/m: head 88, neck 73,
+ * torso 77, tail 92, depth 105; their geometric mean, 86.3, sets the size: 20.3 m from the nose to
+ * the tail tip along the skeleton, where render 08's provisional rig measured 20.6 m. Its lying leg
+ * readings aren't comparable with a standing sheet and are left out.
  */
 export const DRAGON_SHAPE: DragonShape = {
-  torsoLength: 5.6,
+  torsoLength: 5.005,
+  // Not in a side view: the Meshy body's chest and haunch half-widths at the fit's scale.
   torsoHalfWidth: 0.9,
-  torsoHalfHeight: 0.95,
-  keel: 0.25,
-  neckLength: 2.7,
+  // The sheet's chest is barely deeper than its middle: no keel, half-height fitted to both depths.
+  torsoHalfHeight: 1.223,
+  keel: 0,
+  neckLength: 2.227,
   neckBaseRadius: 0.85,
   neckTopRadius: 0.42,
-  neckRise: 30 * DEG,
-  headLength: 1.5,
+  neckBase: [1.026, 0.323],
+  neckRise: [82.4 * DEG, 93.7 * DEG, 91.4 * DEG, 77.5 * DEG, 60.8 * DEG, 38.5 * DEG],
+  headLength: 1.532,
+  headPitch: 17.6 * DEG,
   headHalfWidth: 0.36,
   headHalfHeight: 0.34,
-  tailLength: 11,
+  tailLength: 11.76,
   tailBaseRadius: 0.75,
-  wingRoot: [0.42, 0.88, 0.05],
+  tailBase: [-0.045, -0.507],
+  // The sheet's tail sags behind the haunch and curls up toward the tip (4.9° base to tip overall).
+  tailDroop: [7.5, 12.5, 10.5, 8.3, 6.0, 3.9, 1.4, -1.9, -4.6, -8.6].map((d) => d * DEG),
+  // Height and place along the back from sheet C (108 px behind the withers); how far out, from the
+  // Meshy body.
+  wingRoot: [0.606, 0.76, -0.093],
   scapula: [0.5, 0.62, 0.22],
-  foreShoulder: [0.62, -0.15, 0.3],
-  hip: [0.74, -0.3, -0.33],
+  foreShoulder: [0.62, -0.045, 0.301],
+  hip: [0.74, -0.158, -0.38],
+  // The wing's bones from the Meshy body (both wings averaged; lengths in 3D, azimuths flattened),
+  // at the fit's scale of 10.89 m per Meshy unit. Sheet C draws its raised wing too large for the
+  // other views (its leading finger alone, 9 m, would spread the wings to 25 m where the front view
+  // shows about 16.5 m); the Meshy body, built from all the views, spans 20.7 m as it stands and
+  // 21.8 m spread flat. The hand is very short: the fingers fan straight from the wrist's knob, and
+  // the leading finger's joint sits 29% of the way out.
   wing: {
-    armLength: 3.7,
-    humerus: 0.22,
-    forearm: 0.36,
-    hand: 0.075,
+    armLength: 4.677,
+    humerus: 0.571,
+    forearm: 0.429,
+    hand: 0.051,
     fingers: [
-      [0.235, 0.2],
-      [0.225, 0.19],
-      [0.205, 0.175],
+      [0.35, 0.851],
+      [0.489, 0.457],
+      [0.34, 0.362],
     ],
-    azHumerus: -16 * DEG,
-    azForearm: 14 * DEG,
-    azHand: -4 * DEG,
-    azFingers: [-10 * DEG, -47 * DEG, -86 * DEG],
-    // Just ahead of the hind legs (the hip is at -0.33): the membrane never joins a leg.
-    trailZ: -0.27,
+    azHumerus: -0.4 * DEG,
+    azForearm: 4.2 * DEG,
+    azHand: -13.4 * DEG,
+    azFingers: [-14.1 * DEG, -23.2 * DEG, -45.3 * DEG],
+    // Just ahead of the hind legs (the hip is at -0.38), as the design and the Meshy body have it.
+    // Sheet C ties the membrane to the top of the rump behind the hip (-0.49): clear of the leg, but
+    // not where the kit asked.
+    trailZ: -0.25,
   },
-  // A quadruped's foreleg: the humerus slopes back to the elbow, the forearm stands near vertical,
+  // Sheet C's near foreleg: the humerus slopes back to the elbow, the forearm stands near vertical,
   // the hand rakes forward onto the toes.
-  foreleg: { humerus: 0.42, forearm: 0.4, hand: 0.18, toe: 0.16, angles: { upper: -25 * DEG, lower: 5 * DEG, foot: 20 * DEG } },
-  // The wyverns' digitigrade hind leg angles (LEG_ANGLES in wyvern/proportions.ts), with a longer
-  // foot: render 08's hind foot is about 1.4 m.
-  hindleg: { thigh: 0.5, shin: 0.45, meta: 0.3, toe: 0.22, angles: { upper: 30 * DEG, lower: -40 * DEG, foot: 24 * DEG } },
-  seatZ: 0.22,
+  foreleg: { humerus: 0.375, forearm: 0.475, hand: 0.15, toe: 0.132, angles: { upper: -30 * DEG, lower: 6.5 * DEG, foot: 23.7 * DEG } },
+  // Sheet C's near hind leg: the knee almost under the hip, the shin raking back to a high hock,
+  // the long metatarsus near vertical.
+  hindleg: { thigh: 0.294, shin: 0.336, meta: 0.371, toe: 0.112, angles: { upper: -4.4 * DEG, lower: -58.6 * DEG, foot: 9.4 * DEG } },
+  // The middle of the flat back between the withers (0.16 T) and the wing roots.
+  seatZ: 0.04,
   eye: 0.075,
-  standHeight: 3.0,
-  wingspan: 20,
+  eyeAt: [0.78, 0.56, 0.468],
+  standHeight: 3.415,
+  // Spread flat with the bones above: the leading finger's outer phalanx is solved to it.
+  wingspan: 21.8,
 };
 
 export interface LegChain {
