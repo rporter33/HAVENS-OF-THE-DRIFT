@@ -36,6 +36,8 @@ export interface QualityProfile {
   particles: number;
   /** Cloud quality 0..2 (puff count, shader steps). */
   clouds: number;
+  /** Screen-space ambient occlusion (post/ssao.ts, G3c). Optional: off when absent. */
+  ao?: boolean;
 }
 
 export const QUALITY: Record<QualityLevel, QualityProfile> = {
@@ -52,11 +54,11 @@ export const QUALITY: Record<QualityLevel, QualityProfile> = {
   high: {
     level: 'high', pixelRatioCap: 1.75, msaa: 4, bloom: true, bloomLevels: 6, shadows: true, shadowMapSize: 3072,
     shadowExtent: 110, grassDensity: 1.25, grassRadius: 180, propDensity: 1, drawDistance: 7000,
-    particles: 1, clouds: 2,
+    particles: 1, clouds: 2, ao: true,
   },
   ultra: {
     level: 'ultra', pixelRatioCap: 2, msaa: 4, bloom: true, bloomLevels: 6, shadows: true, shadowMapSize: 4096,
     shadowExtent: 140, grassDensity: 1.75, grassRadius: 220, propDensity: 1.3, drawDistance: 8000,
-    particles: 1.4, clouds: 2,
+    particles: 1.4, clouds: 2, ao: true,
   },
 };

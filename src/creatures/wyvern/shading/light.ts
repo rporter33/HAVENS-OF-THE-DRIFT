@@ -12,9 +12,13 @@
 //   shoulder             light, so the hide never blooms (emissive eyes, embers, lanterns and
 //                        the membrane's transmitted glow are added after it and still do).
 
+import { LOOK } from '../../../render/look';
+
 /** Uniforms and globals the creature light reads (declared once, before main). */
 export const CREATURE_LIGHT_PARS = /* glsl */ `
 uniform float uDwBloomT;
+// The baked ambient occlusion (aExtra.x: 1 open … 0 shut in; ao.ts), from the vertex shader.
+varying float vDwAO;
 uniform vec3 uKickDir;
 uniform vec3 uKickColor;
 uniform float uKickI;
@@ -39,8 +43,12 @@ const LUMA = 'vec3(0.2126, 0.7152, 0.0722)';
  * capped in it, since a cream belly under a flat lift is what bloomed into a neon tube.
  */
 export const CREATURE_LIGHT = {
-  /** Fill strength relative to the painterly lift. */
-  fill: 0.78,
+  /** Fill strength relative to the pre-G3c painterly lift (0.78), times the look's creature fill. */
+  fill: 0.78 * LOOK.creatureFill,
+  /** How much of the baked AO the light takes (render/look.ts; 0 before G3c). */
+  ao: LOOK.creatureAO,
+  /** How far toward the sky's blue the fill moves (render/look.ts; 0.35 before G3c). */
+  fillCool: LOOK.fillCool,
   /** Fill on the side away from the sun, as a fraction of the sunlit side. */
   fillFloor: 0.24,
   /** Albedo luminance the fill sees at most (pale bellies take the fill of a mid tone). */
@@ -71,7 +79,10 @@ const f = (x: number) => x.toFixed(4);
  * threshold, inks the silhouette and puts the emissive back on top.
  */
 export const CREATURE_LIGHT_BLOCK = /* glsl */ `
-        vec3 dwLit = max(outgoingLight - totalEmissiveRadiance, vec3(0.0));
+        // Ambient occlusion (G3c): all of it on the sky and the fills, a little on the sun (the
+        // crease of a fold or the underside of a strap is shaded however it faces).
+        float dwAO = mix(1.0, clamp(vDwAO, 0.0, 1.0), ${f(CREATURE_LIGHT.ao)});
+        vec3 dwLit = max(reflectedLight.directDiffuse * mix(1.0, dwAO, 0.35) + reflectedLight.indirectDiffuse * dwAO, vec3(0.0));
         {
           vec3 dwVv = normalize(vViewPosition);
           float dwNV = clamp(dot(normal, dwVv), 0.0, 1.0);
@@ -83,7 +94,8 @@ export const CREATURE_LIGHT_BLOCK = /* glsl */ `
           // Sun-and-sky wrap fill: the world's painterly lift with a terminator.
           vec3 dwFillAlb = diffuseColor.rgb * min(1.0, ${f(CREATURE_LIGHT.fillAlbedoCap)} / max(dwAlb, 1e-3));
           float dwWrap = ${f(CREATURE_LIGHT.fillFloor)} + ${f(1 - CREATURE_LIGHT.fillFloor)} * smoothstep(-0.55, 0.95, dwNL);
-          dwLit += dwFillAlb * dwTint * (dwStr * 1.6 * ${f(CREATURE_LIGHT.fill)} * dwFillScale) * dwWrap;
+          vec3 dwFillTint = mix(uSunColor, vec3(0.55, 0.65, 0.9), ${f(CREATURE_LIGHT.fillCool)});
+          dwLit += dwFillAlb * dwFillTint * (dwStr * 1.6 * ${f(CREATURE_LIGHT.fill)} * dwFillScale * dwAO) * dwWrap;
           // Rim: a true fresnel edge, strongest with the sun behind the wyvern (contre-jour), in
           // the skin's hue at a fixed value so pale skin does not flare.
           float dwF1 = 1.0 - dwNV;
@@ -91,9 +103,9 @@ export const CREATURE_LIGHT_BLOCK = /* glsl */ `
           vec3 dwVw = normalize(vDwWorldPos - cameraPosition);
           float dwBack = 0.35 + 0.65 * smoothstep(-0.1, 0.7, dot(dwVw, uSunDir));
           vec3 dwHue = diffuseColor.rgb / max(0.3, dwAlb) * 0.35;
-          dwLit += dwFres * dwStr * dwRimScale * dwBack * dwTint * dwHue * ${f(CREATURE_LIGHT.rimGain)};
+          dwLit += dwFres * dwStr * dwRimScale * dwBack * dwTint * dwHue * ${f(CREATURE_LIGHT.rimGain)} * mix(1.0, dwAO, 0.5);
           // Camera-rig kick (a soft wrap light) and directional rim (camera/creatureLight.ts).
-          dwLit += diffuseColor.rgb * uKickColor * (uKickI * smoothstep(-0.1, 0.6, dot(normal, uKickDir)));
+          dwLit += diffuseColor.rgb * uKickColor * (uKickI * smoothstep(-0.1, 0.6, dot(normal, uKickDir)) * dwAO);
           dwLit += uRimColor * dwHue * (uRimI * dwRimScale * (1.0 - dwNV) * (1.0 - dwNV) * max(0.0, dot(normal, uRimDir)));
           // Painterly chroma: the hide and tack keep their hue but not the saturation the warm
           // light piles on (dwChroma, set per region by the albedo pass).
@@ -124,19 +136,22 @@ export function shoulder(lum: number, threshold: number): number {
 /**
  * The toon ramp: replaces three's lights_toon_pars_fragment in the creature materials. An
  * analytic ramp (no gradientMap fetch) with more steps across the lit half, so forms turn:
- * shadow 0.28, a terminator step, then 0.62 / 0.80 / 0.92 / 1.0. Each step is a smoothstep as
+ * shadow 0.16 (0.28 before G3c), a terminator step, then 0.56 / 0.77 / 0.91 / 1.0. Each step is a smoothstep as
  * wide as 1.5 pixels of the ramp coordinate (never under 0.015): band edges stay soft lines
  * instead of breaking into dotted stairs on cylinders.
  */
+/** The lit steps rise from the shadow value to full light (they were authored over 0.28). */
+const RAMP_RISE = (1 - LOOK.creatureShadow) / (1 - 0.28);
 export const RAMP = {
-  shadow: 0.28,
+  /** Facing away from the sun (0.28 before G3c; render/look.ts). */
+  shadow: LOOK.creatureShadow,
   /** [edge in dotNL*0.5+0.5, step up] */
   steps: [
-    [0.47, 0.2],
-    [0.56, 0.14],
-    [0.66, 0.18],
-    [0.76, 0.12],
-    [0.86, 0.08],
+    [0.47, 0.2 * RAMP_RISE],
+    [0.56, 0.14 * RAMP_RISE],
+    [0.66, 0.18 * RAMP_RISE],
+    [0.76, 0.12 * RAMP_RISE],
+    [0.86, 0.08 * RAMP_RISE],
   ] as [number, number][],
 };
 

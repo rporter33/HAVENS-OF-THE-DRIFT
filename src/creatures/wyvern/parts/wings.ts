@@ -363,7 +363,7 @@ export function buildWings(b: GeoBuilder, rig: RigDef, res: Res = RES[0]): WingI
     const inwardC = wr.clone().sub(midC);
     inwardC.y = 0;
     inwardC.normalize();
-    const depthC = S.wing.scallop * 1.2 * trail.distanceTo(tip2);
+    const depthC = (S.wing.scallopInner ?? S.wing.scallop) * 1.2 * trail.distanceTo(tip2);
     const Lp = new Vector3();
     const Rp = new Vector3();
     /** Panel C's bind surface: from the arm (v = 0) to the trailing edge, the root along the flank at t = 0. */

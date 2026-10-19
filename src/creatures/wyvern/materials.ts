@@ -779,6 +779,9 @@ const VERT_PARS = /* glsl */ `
 uniform float uTime;
 attribute vec4 aMat;
 attribute vec2 aUv2;
+// x: baked ambient occlusion (ao.ts), read by the creature light (shading/light.ts).
+attribute vec4 aExtra;
+varying float vDwAO;
 varying vec3 vBodyPos;
 varying vec4 vMat;
 varying vec2 vUv2;
@@ -796,6 +799,7 @@ uniform float uBodyScale;
 `;
 
 const VERT_BEGIN = /* glsl */ `
+vDwAO = aExtra.x;
 vBodyPos = position;
 vMat = aMat;
 vUv2 = aUv2;
@@ -803,6 +807,7 @@ vRegion = aMat.x;
 `;
 
 const MEMBRANE_VERT_BEGIN = /* glsl */ `
+vDwAO = aExtra.x;
 vBodyPos = position;
 vMat = aMat;
 vUv2 = aUv2;

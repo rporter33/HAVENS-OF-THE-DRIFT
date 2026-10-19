@@ -315,7 +315,7 @@ export class GroundLayer {
         const inward = wr.clone().sub(mid);
         inward.y = 0;
         inward.normalize();
-        mid.addScaledVector(inward, rig.props.shape.wing.scallop * 1.2 * trail.distanceTo(tip));
+        mid.addScaledVector(inward, (rig.props.shape.wing.scallopInner ?? rig.props.shape.wing.scallop) * 1.2 * trail.distanceTo(tip));
         const m2 = rig.bones[w.fingers[2][1]].pos;
         const d = this.wingRestDir[side][5];
         const off = mid.clone().sub(m2);

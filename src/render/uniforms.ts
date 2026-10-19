@@ -2,6 +2,7 @@
 // them once per frame; materials hold references, so nothing else has to be told the sun moved.
 
 import { Color, Vector3 } from 'three';
+import { LOOK } from './look';
 
 export const globalUniforms = {
   uTime: { value: 0 },
@@ -30,6 +31,10 @@ export const globalUniforms = {
   uWetness: { value: 0 },
   /** Strength of the painterly rim light. */
   uRimStrength: { value: 0.45 },
+  /** Painterly fill and fresnel rim gains, and how cool the fill is (render/look.ts, G3c). */
+  uDwFill: { value: LOOK.fill },
+  uDwFillCool: { value: LOOK.fillCool },
+  uDwRimEdge: { value: LOOK.rim },
   /** Player position, for grass bending and proximity effects. */
   uPlayerPos: { value: new Vector3() },
 };

@@ -11,6 +11,7 @@
 // The fragment stage adds root shading, backlit translucency and (flowers) a night glow.
 
 import { Color, DoubleSide, MeshToonMaterial, Vector4 } from 'three';
+import { LOOK } from '../../../render/look';
 import { applyPainterly, toonRamp } from '../../../render/painterly';
 import { SWAY_GLSL } from '../materials';
 
@@ -219,7 +220,12 @@ function fieldMaterial(kind: 'grass' | 'flower', uniforms: FieldUniforms): MeshT
       .replace('#include <color_vertex>', flower ? FLOWER_COLOR : GRASS_COLOR);
     shader.fragmentShader = shader.fragmentShader
       .replace('#include <common>', `#include <common>\n${FRAGMENT_PARS}`)
-      .replace('#include <color_fragment>', '#include <color_fragment>\ndiffuseColor.rgb = clamp(diffuseColor.rgb, 0.0, 1.0);')
+      .replace(
+        '#include <color_fragment>',
+        '#include <color_fragment>\ndiffuseColor.rgb = clamp(diffuseColor.rgb, 0.0, 1.0);' +
+          // Lawns keep less chroma than painted (render/look.ts, G3c); flowers keep theirs.
+          (flower ? '' : `\ndiffuseColor.rgb = mix(vec3(dot(diffuseColor.rgb, vec3(0.2126, 0.7152, 0.0722))), diffuseColor.rgb, ${LOOK.grassChroma.toFixed(3)});`),
+      )
       .replace(
         '#include <normal_fragment_begin>',
         `float faceDirection = 1.0;

@@ -71,6 +71,8 @@ uniform vec2 uScrollMacro;
 ${FAR_SEA_GLSL}
 uniform vec3 uFlashDir;
 uniform float uStarGlints;
+// 0..1 how much of the boundary's cloud rampart shows on the horizon.
+uniform float uRampart;
 varying vec3 vDir;
 
 const float SUN_R = 0.022;
@@ -88,7 +90,9 @@ const vec3 MW_E2 = vec3(0.090839, -0.968084, 0.233586);
 
 vec3 skyGradient(vec3 d) {
   float h = clamp(d.y, 0.0, 1.0);
-  vec3 col = mix(uSkyZenith, uSkyHorizon, pow(1.0 - h, 2.7));
+  // The horizon color holds only the lowest few degrees (the chase camera sees the sky up to about
+  // 15 degrees above the horizon, and the targets keep it blue there: G3c).
+  vec3 col = mix(uSkyZenith, uSkyHorizon, pow(1.0 - h, 3.4));
   // Toward the sun the low sky warms (dawn gold, sunset fire).
   vec2 dh = normalize(d.xz + vec2(1e-5, 0.0));
   vec2 sh = normalize(uTrueSunDir.xz + vec2(1e-5, 0.0));
@@ -280,6 +284,75 @@ vec4 highClouds(vec3 d) {
   return vec4(lit, clamp(a, 0.0, 1.0));
 }
 
+// The world's edge (G3c, Q40): seen from inside the Drift, the boundary is a rampart of stacked
+// cumulus banks all round the horizon, three tiers deep (the farthest tallest and most hazed), so
+// every island sees where the Drift ends. The storm wall itself (BoundaryWall.ts) takes over as
+// a flyer comes within 2 km of it. Heads on heads along the crown (cauliflower), lit from the
+// top down, warm on the sun's side.
+float rpHash(float n) { return fract(sin(n * 127.1 + 311.7) * 43758.5453); }
+// Rounded heads along the horizon: u 0..1 around it, cells domes, each jittered in place,
+// width and height (periodic, so there is no seam behind you). Returns the crown height and,
+// in side, where across its head the point is (-1 left edge .. 1 right edge).
+float rpHeads(float u, float cells, float seed, out float side) {
+  float x = u * cells;
+  float i = floor(x);
+  float h = 0.0;
+  side = 0.0;
+  for (int k = -1; k <= 1; k++) {
+    float j = i + float(k);
+    float jw = mod(j, cells);
+    float c = j + 0.25 + 0.5 * rpHash(jw + seed);
+    float r = 0.6 + 0.7 * rpHash(jw + seed + 17.0);
+    float amp = 0.35 + 0.65 * rpHash(jw + seed + 31.0);
+    float q = (x - c) / r;
+    float hk = amp * sqrt(max(0.0, 1.0 - q * q));
+    if (hk > h) { h = hk; side = q; }
+  }
+  return h;
+}
+vec4 rampLayer(vec3 d, float u, float base, float amp, float cells, float seed, float sunSide) {
+  float sBig, sSmall;
+  float big = rpHeads(u, cells, seed, sBig);
+  float small = rpHeads(u, cells * 3.3, seed + 5.0, sSmall);
+  float crown = base + amp * (0.8 * big + 0.32 * small * big);
+  float a = 1.0 - smoothstep(crown - 0.003, crown + 0.0012, d.y);
+  // Lit from the top down and from the sun's side of each head: crowns in the sun's color,
+  // flanks and the foot in the cloud shade.
+  float t = clamp(d.y / max(crown, 1e-3), 0.0, 1.0);
+  float lit = smoothstep(0.2, 1.0, t) * (0.72 + 0.28 * small);
+  lit = clamp(lit + 0.3 * (sBig * 0.7 + sSmall * 0.3) * sunSide * smoothstep(0.1, 0.6, t), 0.0, 1.0);
+  // Billows inside the bank (folds a little darker than the bulges).
+  float puff = dwFbm3(vec2(u * cells * 9.0, d.y * 260.0) + seed);
+  lit *= 0.82 + 0.3 * puff;
+  vec2 sh = normalize(uTrueSunDir.xz + vec2(1e-5, 0.0));
+  float toward = pow(max(dot(normalize(d.xz + vec2(1e-5, 0.0)), sh), 0.0), 2.0) * smoothstep(-0.1, 0.2, uTrueSunDir.y);
+  vec3 col = mix(uCloudShade * 0.66, uCloudLit * 1.04, lit);
+  col += uHorizonSun * toward * uGlow * 0.25 * lit;
+  return vec4(col, a);
+}
+
+vec4 rampart(vec3 d) {
+  if (d.y > 0.14 || uRampart <= 0.001) return vec4(0.0);
+  float az = atan(d.z, d.x);
+  float u = az / 6.2831853 + 0.5;
+  // Which side of a head faces the sun (+1: the right-hand side as seen from here).
+  float sunAz = atan(uTrueSunDir.z, uTrueSunDir.x);
+  float sunSide = -sin(sunAz - az);
+  vec4 far = rampLayer(d, u, 0.026, 0.085, 46.0, 3.0, sunSide);
+  vec4 mid = rampLayer(d, u, 0.011, 0.052, 71.0, 11.0, sunSide);
+  vec4 near = rampLayer(d, u, 0.002, 0.036, 109.0, 23.0, sunSide);
+  vec3 fogC = mix(uFogColor, uFogSunColor, pow(max(dot(d, uSunDir), 0.0), 6.0) * (1.0 - 0.7 * uNight));
+  vec3 col = mix(far.rgb, fogC, 0.48);
+  float a = far.a;
+  col = mix(col, mix(mid.rgb, fogC, 0.32), mid.a);
+  a = max(a, mid.a);
+  col = mix(col, mix(near.rgb, fogC, 0.2), near.a);
+  a = max(a, near.a);
+  // The foot sinks into the haze over the far cloud sea: no hard line at the horizon.
+  col = mix(fogC, col, smoothstep(0.0, 0.012, d.y));
+  return vec4(col, a * uRampart);
+}
+
 vec3 haze(vec3 col, vec3 d) {
   // The world's height fog, integrated to infinity along the view ray: matches dwApplyFog.
   float b = uFogHeightFalloff;
@@ -312,10 +385,13 @@ void main() {
     col = mix(col, hc.rgb, hc.a);
     col += moonGlow * (1.0 - 0.7 * hc.a);
     col = haze(col, d);
-    // The sun disk punches through the haze (reddened by the palette) but not the deck.
+    vec4 rp = rampart(d);
+    col = mix(col, rp.rgb, rp.a);
+    // The sun disk punches through the haze (reddened by the palette) but not the deck, and it
+    // sets behind the boundary's cloud banks.
     float disk = smoothstep(SUN_R + sunAA, SUN_R - sunAA, sunAng);
     float low = mix(0.45, 1.0, smoothstep(0.0, 0.15, d.y));
-    col += uSunDisk * disk * 9.0 * low * (1.0 - hc.a * 0.92);
+    col += uSunDisk * disk * 9.0 * low * (1.0 - hc.a * 0.92) * (1.0 - rp.a);
   } else {
     // Below the horizon: the far cloud sea, flat-shaded like the mipmapped real one.
     float t = (uSeaY - cameraPosition.y) / d.y;
@@ -356,6 +432,8 @@ export interface DomeUniforms {
   uFlashDir: { value: Vector3 };
   /** 0 classic stars .. 1 glinting (see STAR_GLINTS). */
   uStarGlints: { value: number };
+  /** 0..1 the boundary's cloud rampart on the horizon (G3c). */
+  uRampart: { value: number };
   uCloudLit: { value: Color };
   uCloudShade: { value: Color };
   uFlashPos: { value: Vector3 };
@@ -390,6 +468,7 @@ export class SkyDome {
       uSeaY: { value: 0 },
       uFlashDir: { value: new Vector3(1, 0, 0) },
       uStarGlints: { value: readDebugParams().starGlints ?? STAR_GLINTS },
+      uRampart: { value: 1 },
       ...shared,
     };
     const material = new ShaderMaterial({

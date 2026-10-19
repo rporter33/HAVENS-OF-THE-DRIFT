@@ -13,6 +13,7 @@
 
 import type { MeshToonMaterial, WebGLProgramParametersWithUniforms } from 'three';
 import { toonMaterial } from '../../render/painterly';
+import { LOOK } from '../../render/look';
 import { STRATA_BAND, STRATA_PACKET } from './strata';
 import { LAYOUT } from '../layout';
 
@@ -174,6 +175,8 @@ vec3 dwTerrainPaint(vec3 col, vec3 wp, vec3 wn, float dist) {
     float hue = dwNoise2(p * 0.016 + 5.0);
     g = mix(g, g * vec3(1.08, 1.04, 0.82), smoothstep(0.55, 0.85, hue) * 0.35);
     g = mix(g, g * vec3(0.86, 0.98, 1.06), smoothstep(0.45, 0.15, hue) * 0.3);
+    // Lawns keep less chroma than painted (render/look.ts, G3c: olive and sage, as the targets).
+    g = mix(vec3(dot(g, vec3(0.2126, 0.7152, 0.0722))), g, ${LOOK.grassChroma.toFixed(3)});
     col = mix(col, g, grassW);
   }
 
