@@ -14,14 +14,14 @@ import { smoothstep } from '../../core/math';
  *
  *   breed=harrier|skimmer|galewing|ironback
  *   pose=glide|flap|tuck|flare|stall|bankL|bankR|idle|walk|run|takeoff|landing|hover
- *   look params: pattern= horns= frill= tail= saddle= primary= secondary= belly= membrane= eyes=
+ *   look params: pattern= head= horns= frill= tail= saddle= primary= secondary= belly= membrane= eyes=
  *                saddleColor= (hex without '#')
  *   cam=side|front|back|top|low|three|under|sun or camAz=deg&camEl=deg&camDist=m
  *   turntable=1          orbit the camera (degrees per second with spin=)
  *   bg=roost|air         backdrop (default: roost for ground poses, air for flight poses)
  *   phase=0.25           freeze the flap phase
  *   fatigue=0..1  ghost=1  rider=0
- *   lineup=breeds|pattern|horns|frill|tail|saddle   several wyverns side by side
+ *   lineup=breeds|pattern|head|horns|frill|tail|saddle   several wyverns side by side
  *   tod= (time of day; default golden hour 0.7), sky=native to skip the lighting stand-in
  *   real=takeoff|landing|turn|dive|walk|cliff   drive the REAL player (flight model + state
  *                        machine) from a staged start; scripted input comes from the shot steps.
@@ -83,7 +83,7 @@ function num(name: string, fallback: number): number {
 function lookFrom(game: Game, breed: BreedId): WyvernLook {
   const base = params.get('fresh') === '1' ? DEFAULT_WYVERN : game.save.data.wyvern;
   const look: WyvernLook = { ...base, breed, ...BREED_DEFAULT_COLORS[breed] };
-  for (const k of ['pattern', 'horns', 'frill', 'tail', 'saddle'] as const) {
+  for (const k of ['pattern', 'head', 'horns', 'frill', 'tail', 'saddle'] as const) {
     const v = params.get(k);
     if (v) look[k] = v;
   }
@@ -432,8 +432,9 @@ const wyvernShowcase: Showcase = {
       const list: WyvernLook[] = [];
       if (lineup === 'breeds') for (const b of ['skimmer', 'harrier', 'galewing', 'ironback'] as BreedId[]) list.push(lookFrom(game, b));
       else {
-        const slot = { pattern: 'wyvernPattern', horns: 'wyvernHorns', frill: 'wyvernFrill', tail: 'wyvernTail', saddle: 'saddle' }[lineup] as
+        const slot = { pattern: 'wyvernPattern', head: 'wyvernHead', horns: 'wyvernHorns', frill: 'wyvernFrill', tail: 'wyvernTail', saddle: 'saddle' }[lineup] as
           | 'wyvernPattern'
+          | 'wyvernHead'
           | 'wyvernHorns'
           | 'wyvernFrill'
           | 'wyvernTail'

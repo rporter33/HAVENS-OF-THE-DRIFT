@@ -10,7 +10,9 @@ describe('settings rows', () => {
     expect(new Set(keys).size).toBe(keys.length);
     const covered = new Set([...keys, ...rows.flatMap((r) => (r.kind === 'toggle' && r.fallback ? [r.fallback] : []))]);
     const optional = ['invertPitchPad', 'invertPitchKeys', 'invertLookY', 'mouseFlight'];
-    expect(covered).toEqual(new Set([...Object.keys(DEFAULT_SETTINGS), ...optional]));
+    // Bookkeeping the menu never shows (lensRev: which default lens the settings were made under).
+    const internal = ['lensRev'];
+    expect(covered).toEqual(new Set([...Object.keys(DEFAULT_SETTINGS).filter((k) => !internal.includes(k)), ...optional]));
   });
   it('per-device inverts follow the single invert until set', () => {
     const row = SETTINGS_TABS.flatMap((t) => t.rows).find((r) => r.kind === 'toggle' && r.key === 'invertPitchPad');

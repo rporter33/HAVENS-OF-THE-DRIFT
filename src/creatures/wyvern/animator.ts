@@ -338,6 +338,10 @@ export class WyvernAnimator {
     this.life.neckHead();
     this.tail.updateTail();
 
+    // --- Legs (before the wings: the folded arm keeps clear of the hind leg as posed) ---------------
+    this.flight.flightLegWeights();
+    this.ground.applyLegs();
+
     // --- Wings: the flight pose blended with the ground pose, then the stance IK ------------------
     for (let side = 0; side < 2; side++) {
       const wp = this.wingFK[side];
@@ -350,9 +354,7 @@ export class WyvernAnimator {
     }
     this.ground.foldHelpers();
 
-    // --- Legs, contacts -----------------------------------------------------------------------
-    this.flight.flightLegWeights();
-    this.ground.applyLegs();
+    // --- Contacts -------------------------------------------------------------------------------
     this.ground.contacts();
 
     if (uniforms) {

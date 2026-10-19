@@ -13,7 +13,7 @@
 
 import { Vector3 } from 'three';
 import { clamp, lerp, smoothstep } from '../../core/math';
-import { azDir, computeProportions, type WyvernProportions } from './proportions';
+import { azDir, computeProportions, type HeadId, type WyvernProportions } from './proportions';
 import { keyed } from './parts/shape';
 import type { BreedId } from '../../core/types';
 
@@ -311,20 +311,24 @@ const TAIL_TAPER: [number, number][] = [
   [1, 0.06],
 ];
 
-const rigCache = new Map<BreedId, RigDef>();
+const rigCache = new Map<string, RigDef>();
 
-/** The (immutable) rig for a breed, built once and shared. */
-export function rigFor(breed: BreedId): RigDef {
-  let r = rigCache.get(breed);
+/**
+ * The (immutable) rig for a breed wearing a head style (wyvernHead; default the breed's own), built
+ * once and shared. A head style moves only the head's own joints (jaw, tongue, gular, fans, mouth).
+ */
+export function rigFor(breed: BreedId, headStyle: HeadId = breed): RigDef {
+  const key = `${breed}|${headStyle}`;
+  let r = rigCache.get(key);
   if (!r) {
-    r = buildRig(breed);
-    rigCache.set(breed, r);
+    r = buildRig(breed, headStyle);
+    rigCache.set(key, r);
   }
   return r;
 }
 
-export function buildRig(breed: BreedId): RigDef {
-  const P = computeProportions(breed);
+export function buildRig(breed: BreedId, headStyle: HeadId = breed): RigDef {
+  const P = computeProportions(breed, headStyle);
   const S = P.shape;
   const T = S.torsoLength;
   const bones: BoneDef[] = [];

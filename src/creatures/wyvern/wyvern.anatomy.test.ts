@@ -550,11 +550,13 @@ describe('the inner membrane folds and beats like a sheet hinged on the flank (A
 
 describe('reptile head (A6)', () => {
   it('keeps the expert-approved horn placement: swept horn roots within 1 mm of before', () => {
-    // Base-ring centres of the default swept horns before the anatomy pass (head space, m),
-    // harrier (its head dimensions are unchanged): left big horn, left lower horn.
+    // Base-ring centres of the default swept horns (head space, m), harrier: left big horn, left
+    // lower horn. Re-recorded 2026-10-18 when Robert asked for a more pronounced harrier head
+    // (proportions.ts HEAD_STYLES.harrier: 6% longer, deeper and broader); the horns keep the same
+    // place on the skull relative to its length, breadth and depth.
     const before = [
-      [0.132, 0.3198, 0.264],
-      [0.308, 0.189, 0.132],
+      [0.14971, 0.37463, 0.27984],
+      [0.34084, 0.21722, 0.13992],
     ];
     const rig = rigFor('harrier');
     const H = rig.bones[rig.idx.head].pos;

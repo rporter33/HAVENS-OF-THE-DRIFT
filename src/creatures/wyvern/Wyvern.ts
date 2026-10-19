@@ -11,6 +11,7 @@ import type { QualityProfile } from '../../render/quality';
 import type { WyvernRenderable } from '../../game/contracts';
 import type { TerrainQuery } from '../../core/types';
 import { rigFor, type RigDef } from './rig';
+import { headStyleId } from './proportions';
 import { aoJob, applyAO, buildWyvernGeometry, type WyvernMeshInfo } from './geometry';
 import { cachedAO, requestAO } from './ao';
 import { armScale, foldRest, type FoldRest } from './parts/wings';
@@ -24,12 +25,15 @@ import {
   type WyvernUniforms,
 } from './materials';
 import { WyvernAnimator } from './animator';
+import { loadWyvernTrial, trialInfo, type WyvernTrialAsset, type WyvernTrialSelection } from './trial';
 
 export interface WyvernOptions {
   /** Render as a translucent race ghost. */
   ghost?: boolean;
   /** Optional terrain for per-foot ground placement (falls back to pose.groundY). */
   terrain?: Pick<TerrainQuery, 'groundAt'>;
+  /** Dev-only G3b trial body (`?wyvernTrial=meshy`): the Harrier's fitted Meshy body; other breeds unchanged. */
+  trial?: WyvernTrialSelection;
 }
 
 const _m = new Matrix4();
@@ -78,6 +82,9 @@ export class Wyvern implements WyvernRenderable {
   private holdBone: Partial<Record<TackHold, number>> = {};
   private holdOffset: Partial<Record<TackHold, Vector3>> = {};
   private mouthOffset = new Vector3();
+  private trialAsset: WyvernTrialAsset | null = null;
+  /** The G3b trial body's load state (debug captures and tests read it). */
+  readonly trialState: { selection?: WyvernTrialSelection; status: 'off' | 'loading' | 'ready' | 'failed'; error?: string } = { status: 'off' };
 
   constructor(look: WyvernLook, opts: WyvernOptions = {}) {
     this.ghost = !!opts.ghost;
@@ -89,6 +96,27 @@ export class Wyvern implements WyvernRenderable {
       : [createBodyMaterial(this.uniforms), createMembraneMaterial(this.uniforms)];
     if (this.ghost) this.uniforms.uContour.value = 0;
     this.rebuild();
+    if (opts.trial && !this.ghost) void this.loadTrial(opts.trial);
+  }
+
+  private async loadTrial(selection: WyvernTrialSelection): Promise<void> {
+    this.trialState.selection = selection;
+    this.trialState.status = 'loading';
+    try {
+      const asset = await loadWyvernTrial(selection);
+      this.trialAsset = asset;
+      if (this.look.breed === asset.breed) this.rebuild();
+      this.trialState.status = 'ready';
+    } catch (error) {
+      this.trialAsset = null;
+      this.trialState.status = 'failed';
+      this.trialState.error = String(error);
+    }
+  }
+
+  /** True while the G3b trial body stands in for the procedural one. */
+  get trialActive(): boolean {
+    return !!this.trialAsset && this.look.breed === this.trialAsset.breed;
   }
 
   /** Triangle and bone counts of the current build (for budgets and tests). */
@@ -286,14 +314,18 @@ export class Wyvern implements WyvernRenderable {
     const look = this.look;
     const breedChanged = !this.rig || this.rig.props.breed !== look.breed;
     this.disposeMesh();
-    if (breedChanged) this.rig = rigFor(look.breed);
+    // A head style moves the head's own joints: its own rig (same bones, same order).
+    const rig0 = rigFor(look.breed, headStyleId(look.breed, look.head));
+    this.rig = rig0;
     const rig = this.rig;
     this.info = buildWyvernGeometry(rig, look);
+    const trial = this.trialAsset && look.breed === this.trialAsset.breed ? this.trialAsset : null;
+    if (trial) this.info = trialInfo(rig, this.info, trial);
     this.foldHold = flattenFoldRest(rig, foldRest(rig));
     this.shapeKey = shapeKeyOf(look);
     // The baked ambient occlusion replaces the analytic fallback when it lands (cached per shape).
     const info = this.info;
-    const aoKey = `${this.shapeKey}|${info.lod}`;
+    const aoKey = `${this.shapeKey}|${info.lod}${trial ? '|trial' : ''}`;
     const baked = cachedAO(aoKey);
     if (baked) applyAO(info, baked);
     else
@@ -379,7 +411,7 @@ export class Wyvern implements WyvernRenderable {
 }
 
 function shapeKeyOf(look: WyvernLook): string {
-  return `${look.breed}|${look.horns}|${look.frill}|${look.tail}|${look.saddle}`;
+  return `${look.breed}|${look.head}|${look.horns}|${look.frill}|${look.tail}|${look.saddle}`;
 }
 
 /** FoldRest as flat typed arrays: per side a run of (bone, weight, offset to the helper's pivot). */

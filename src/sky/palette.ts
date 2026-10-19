@@ -123,46 +123,48 @@ const MORNING: PaletteSpec = {
   belt: 0, beltColor: '#000000', stars: 0,
   key: '#ffe8c8', keyI: 0.92, hemiSky: '#a4c0e8', hemiGround: '#b4bccc', hemiI: 1.0,
   fog: '#a6c2e6', fogSun: '#f2e2c8', fogDensity: 0.00018, fogFalloff: 0.0022,
-  cloudLit: '#fffaf2', cloudShade: '#88a2d0',
+  cloudLit: '#fff4e4', cloudShade: '#7a96cc',
   exposure: 1.0, saturation: 1.14, contrast: 1.07, lift: '#02040c', gain: '#fffcf6',
   bloom: 0.28, bloomThreshold: 0.88, rim: 0.5, vibrance: 0.22,
 };
 
 const NOON: PaletteSpec = {
-  zenith: '#1f5cc8', horizon: '#a6c8ee', horizonSun: '#dcebf6', sunDisk: '#ffffff', glow: 0.5,
+  zenith: '#1f5cc8', horizon: '#9cc0ec', horizonSun: '#dcebf6', sunDisk: '#ffffff', glow: 0.5,
   belt: 0, beltColor: '#000000', stars: 0,
   key: '#fff4e4', keyI: 1.0, hemiSky: '#a8c8f2', hemiGround: '#b2bccc', hemiI: 1.05,
   fog: '#9cbde6', fogSun: '#e4eef4', fogDensity: 0.00016, fogFalloff: 0.0022,
-  cloudLit: '#ffffff', cloudShade: '#86a2d2',
+  cloudLit: '#fff6e6', cloudShade: '#7896cc',
   exposure: 1.0, saturation: 1.15, contrast: 1.08, lift: '#00030a', gain: '#ffffff',
   bloom: 0.25, bloomThreshold: 0.9, rim: 0.42, vibrance: 0.25,
 };
 
 const AFTERNOON: PaletteSpec = {
-  zenith: '#2260c4', horizon: '#aecaea', horizonSun: '#f6e4c4', sunDisk: '#fff8ea', glow: 0.62,
+  zenith: '#2260c4', horizon: '#a2c2ea', horizonSun: '#f6e4c4', sunDisk: '#fff8ea', glow: 0.62,
   belt: 0, beltColor: '#000000', stars: 0,
   key: '#ffefd2', keyI: 0.95, hemiSky: '#a8c4ea', hemiGround: '#b8bcc8', hemiI: 1.0,
   fog: '#a2c0e4', fogSun: '#f4deb8', fogDensity: 0.00018, fogFalloff: 0.0022,
-  cloudLit: '#fff8ea', cloudShade: '#88a2ce',
+  cloudLit: '#ffeed6', cloudShade: '#7a94c8',
   exposure: 1.0, saturation: 1.15, contrast: 1.08, lift: '#02030a', gain: '#fffaf0',
   bloom: 0.28, bloomThreshold: 0.88, rim: 0.5, vibrance: 0.22,
 };
 
+// Golden hour is warm light on a blue sky (Robert, 2026-10-18, Q40): the warmth is the sun, its
+// side of the horizon and what it lights; the sky, the haze and the shade stay blue.
 const GOLDEN: PaletteSpec = {
-  zenith: '#3c5ea8', horizon: '#eec28e', horizonSun: '#ffb458', sunDisk: '#ffe2a2', glow: 1.0,
-  belt: 0.1, beltColor: '#c8a0b8', stars: 0,
-  key: '#ffbd74', keyI: 0.8, hemiSky: '#98a8cc', hemiGround: '#b8a2aa', hemiI: 0.96,
-  fog: '#d4b49c', fogSun: '#ffba68', fogDensity: 0.00027, fogFalloff: 0.0022,
-  cloudLit: '#ffd8a0', cloudShade: '#8c88b2',
-  exposure: 1.05, saturation: 1.16, contrast: 1.06, lift: '#180a24', gain: '#fff0dc',
+  zenith: '#2a5cbc', horizon: '#bcd0e6', horizonSun: '#ffb458', sunDisk: '#ffe2a2', glow: 1.0,
+  belt: 0.04, beltColor: '#c8a0b8', stars: 0,
+  key: '#ffbd74', keyI: 0.8, hemiSky: '#9cb4dc', hemiGround: '#c0b0a0', hemiI: 0.96,
+  fog: '#b6c6de', fogSun: '#ffba68', fogDensity: 0.00022, fogFalloff: 0.0022,
+  cloudLit: '#ffd8a0', cloudShade: '#7c8cc0',
+  exposure: 1.05, saturation: 1.16, contrast: 1.08, lift: '#0a0614', gain: '#fff0dc',
   bloom: 0.45, bloomThreshold: 0.82, rim: 0.9, vibrance: 0.1,
 };
 
 const SUNSET: PaletteSpec = {
-  zenith: '#2e448a', horizon: '#ffa06a', horizonSun: '#ff7e3e', sunDisk: '#ffb070', glow: 1.25,
+  zenith: '#2e448a', horizon: '#f0b28a', horizonSun: '#ff7e3e', sunDisk: '#ffb070', glow: 1.25,
   belt: 0.3, beltColor: '#c890b2', stars: 0,
   key: '#ff9456', keyI: 0.52, hemiSky: '#7c82ba', hemiGround: '#aa8c9e', hemiI: 0.92,
-  fog: '#c88c8e', fogSun: '#ff9250', fogDensity: 0.0003, fogFalloff: 0.0022,
+  fog: '#b8a0b0', fogSun: '#ff9250', fogDensity: 0.0003, fogFalloff: 0.0022,
   cloudLit: '#ffb27a', cloudShade: '#6e689a',
   exposure: 1.1, saturation: 1.18, contrast: 1.05, lift: '#1c0a28', gain: '#ffe8d4',
   bloom: 0.5, bloomThreshold: 0.78, rim: 0.95, vibrance: 0.02,

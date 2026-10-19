@@ -545,6 +545,57 @@
         "scope": "Archive copy identity"
       },
       "unresolved_issues": []
+    },
+    {
+      "asset_id": "harrier-meshy-trial",
+      "version": "2026-10-18",
+      "category": "runtime_trial_model",
+      "availability_state": "committed",
+      "repository_paths": [
+        "src/assets/wyvern-trial/harrier-meshy.glb"
+      ],
+      "provenance_evidence_paths": [
+        "Art and Assets/Creatures and Customization/HARRIER_MODEL_KIT.md",
+        "scripts/blender/harrier_meshy_fit.py"
+      ],
+      "source_files": [
+        {
+          "path": "src/assets/wyvern-trial/harrier-meshy.glb",
+          "sha256": "5fa4bec09960d972b8b219a4e9d60fbe7674002b666403d50b801cf3a3cab336",
+          "source_commit": null
+        },
+        {
+          "path": "github:rporter33/HAVENS-OF-THE-DRIFT@archive/g3b-meshy-trial:harrier-raw.glb",
+          "sha256": "7243fe8019e8ad70379d8167942451f8077c3d688434bb5cc8b4d025d33fe671",
+          "source_commit": "ff8b9d3085720d1a98be9b6d01569737a5a44421"
+        }
+      ],
+      "rights": {
+        "status": "stated_by_owner",
+        "creator": "Robert Porter (Meshy generation from his Astra reference views); fit by Claude in Blender",
+        "license": "Meshy paid plan output (owner stated 2026-10-18); not legal clearance",
+        "attribution": null,
+        "evidence": [
+          "Meshy model shown as 't2.5'; task ID not recorded"
+        ]
+      },
+      "archive": {
+        "state": "pending",
+        "destination": "github:rporter33/HAVENS-OF-THE-DRIFT@archive/g3b-meshy-trial (raw Meshy GLB, Astra refs, fitted GLB); Blender master on Robert's PC: Projects/havens-blender-pilot/harrier-pilot.blend"
+      },
+      "qa": {
+        "status": "trial",
+        "evidence_paths": [
+          "src/creatures/wyvern/trial.test.ts"
+        ],
+        "limitations": [
+          "Dev-only via ?wyvernTrial=meshy; normal builds keep the procedural Harrier",
+          "Head is the game's own (merged at load, Q39); other shape cosmetics (frill, tail tip, saddle) are baked at their defaults in the trial",
+          "23,825 of the 24,000 LOD0 triangles with the game head and membranes",
+          "LOD0 only; self-collision proxies are the procedural body plan's",
+          "Reference-GPU frame rate not measured"
+        ]
+      }
     }
   ]
 }

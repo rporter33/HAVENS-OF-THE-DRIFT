@@ -15,6 +15,7 @@ The first increase remains a local review build, not a production rollout or min
 | C02 color atlas | 1K | 2K | 3K; optional 4K comparison | 4K |
 | Atlas anisotropy request | 2 | 4 | 8; 16 for 4K comparison | 16 |
 | Cloth visual detail multiplier | 0.5 | 1 (was 0.75) | 4/3 (was 1) | 2 (was 1) |
+| Screen-space AO (G3c, 2026-10-18) | Off | Off | On, half resolution | On, half resolution |
 
 Pixel ratio is capped by the display's device-pixel ratio; this does not force supersampling on
 a 1× screen. Existing resolution controls and automatic resolution reduction remain. Three.js
@@ -31,6 +32,18 @@ Quality switches retain C02 cloth state. Body silhouette, approved costume, rig 
 remain the reviewed P1. Prop placement density, shared geometry, flight, movement, saves, bloom,
 clouds, view distance and particle budgets are unchanged. Dragon runtime source is unchanged;
 see [texture policy](TEXTURE_QUALITY.md) for its procedural materials and future bitmap budgets.
+
+## Look development (G3c, 2026-10-18)
+
+Gate G3c (Q40) changed how hard the light is on every tier, at no per-pixel cost beyond the AO:
+a brighter sun over a smaller, cooler painterly fill and a real fresnel rim (`render/look.ts`),
+a darker toon-ramp floor, the wyvern's baked AO wired into its shader, a blue-sky golden hour, a
+deeper cloud sea and the boundary's cloud rampart on the horizon. High and Ultra add one
+half-resolution screen-space AO pass (`render/post/ssao.ts`: 12 depth samples per half-res pixel,
+two 9-tap depth-aware blurs, a 4-tap upsample in the grade). Its scene target now carries a float
+depth texture, resolved from the MSAA buffer. Medium and Low allocate nothing new. GPU time on the
+RX 9070 XT was not measured from the cloud workspace; at 2560×1440 the pass reads about 50 million
+texels a frame. Before and after scores against the target renders: `scripts/lookdev/`.
 
 ## Current evidence and limits
 

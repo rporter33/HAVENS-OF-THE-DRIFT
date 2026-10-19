@@ -99,6 +99,14 @@ describe('save migration and sanitizing', () => {
     expect(s.discovered).toEqual([]);
   });
 
+  it('moves settings saved on the old default lens (62°) to the new one, and leaves a chosen lens alone', () => {
+    expect(migrateSave({ version: 1, settings: { fov: 62 } }).settings.fov).toBe(DEFAULT_SETTINGS.fov);
+    expect(migrateSave({ version: 1, settings: { fov: 70 } }).settings.fov).toBe(70);
+    // Once made under the new default, 62 is a choice.
+    expect(migrateSave({ version: 1, settings: { fov: 62, lensRev: 1 } }).settings.fov).toBe(62);
+    expect(migrateSave({ version: 1, settings: { fov: 62 } }).settings.lensRev).toBe(1);
+  });
+
   it('repairs bad fields without losing good ones', () => {
     const s = migrateSave({
       version: 1,

@@ -62,6 +62,16 @@ const _qr = new Quaternion();
 const _gn = new Vector3();
 const _q2 = new Quaternion();
 const _qa = new Float64Array(4);
+const _ax = new Vector3();
+const _ec = new Vector3();
+const _eu = new Vector3();
+const _ev = new Vector3();
+const _et = new Vector3();
+const _cp = new Vector3();
+const _cd = new Vector3();
+const _cs = new Vector3();
+/** The posed hind leg's capsules for the wing's clearance: thigh, shin (a, b, ra, rb; body frame). */
+const _leg = [new Vector3(), new Vector3(), new Vector3()];
 
 /**
  * The folded stance (applyWingIK), as fractions: where the wrist plants, the elbow's pole, how
@@ -125,6 +135,23 @@ export const FOLD = {
    */
   bundleHold: 0.6,
   bundleLean: 0.35,
+  /**
+   * The folded arm keeps off the hind leg as it strides (Robert, 2026-10-18: no wing through the
+   * hind legs while walking): the elbow swings out about the shoulder-to-wrist line, as far as
+   * elbowSwingMax (rad), until the arm clears the posed thigh and shin by legClear (× standHeight).
+   * It swings out quickly (swingOut, 1/s) and settles back slowly (swingIn).
+   */
+  legClear: 0.03,
+  /** The folded arm's effective radius for that clearance (× the arm scale): tube plus membrane bundle. */
+  armBundle: 0.45,
+  /** The same for a folded finger's outer segment (× the arm scale): the spar and the membrane along it. */
+  fingerBundle: 0.25,
+  /** The forefoot's track: outside the hind foot's by this share of the thigh's radius (plus the forearm's). */
+  foreOutside: 0.5,
+  foreOutStand: 0.2,
+  elbowSwingMax: 1.3,
+  swingOut: 60,
+  swingIn: 5,
   /** A wall closer than this to the folded elbow's surface (m) draws the wing in, by at most wallMax. */
   wallReach: 0.25,
   wallMax: 0.35,
@@ -198,6 +225,15 @@ export class GroundLayer {
   private readonly croup = new Float64Array(2);
   /** Where the folded fingertips stop short of the thigh: its front (z) and its top (y), body frame. */
   private readonly hipGuard = new Float64Array(2);
+  /** This frame's guard per side (z, y): the bind guard, or the posed knee's front if it is further forward. */
+  private readonly legGuard = new Float64Array(4);
+  /** Per side: the folded elbow's swing out about the shoulder-to-wrist line clearing the hind leg (rad, smoothed). */
+  private readonly elbowSwing = new Float64Array(2);
+  private readonly thighR: number;
+  /** How far out the forefeet's track moves while striding (m; see FOLD.foreOutside). */
+  private readonly foreOut: number;
+  /** 0 standing to 1 striding, quick: the forefeet's first steps already land outside. */
+  private outW = 0;
   /** The body's centreline height and upper half-height at the folded elbow. */
   private readonly flankMid = new Float64Array(2);
   /** Where the folded elbow tucks against the flank (left side, body frame). */
@@ -279,7 +315,7 @@ export class GroundLayer {
         const inward = wr.clone().sub(mid);
         inward.y = 0;
         inward.normalize();
-        mid.addScaledVector(inward, rig.props.shape.wing.scallop * 1.2 * trail.distanceTo(tip));
+        mid.addScaledVector(inward, (rig.props.shape.wing.scallopInner ?? rig.props.shape.wing.scallop) * 1.2 * trail.distanceTo(tip));
         const m2 = rig.bones[w.fingers[2][1]].pos;
         const d = this.wingRestDir[side][5];
         const off = mid.clone().sub(m2);
@@ -311,6 +347,7 @@ export class GroundLayer {
       this.hipGuard[0] = rig.props.hip[2] + 1.1 * R;
       this.hipGuard[1] = rig.props.hip[1] + 1.1 * R;
     }
+    this.thighR = rig.props.shape.thighRadius;
     this.legRestDir = [0, 1].map((side) => {
       const l = rig.idx.legs[side];
       const m = (v: Vector3) => new Vector3(v.x * SIDE_SIGN[side], v.y, v.z);
@@ -338,6 +375,10 @@ export class GroundLayer {
       this.flankMid[1] = st.upper;
     }
     const restFore = (side: number) => new Vector3((this.elbowAt.x - FOLD.wristIn * sh) * SIDE_SIGN[side], -sh, P.shoulder[2] + FOLD.wristFwd * P.arm.forearm);
+    // Striding, the forefeet plant outside the hind feet's track (as a pterosaur's hands printed
+    // outside its feet), so the forearm passes outside the striding knee and shin (Robert,
+    // 2026-10-18: no wing through the hind legs). Standing they keep the tucked fold.
+    this.foreOut = Math.max(0, hipX * 1.08 + FOLD.foreOutside * P.shape.thighRadius + 0.2 * armScale(rig) - (this.elbowAt.x - FOLD.wristIn * sh));
     this.gait = new Gait([restHind(0), restHind(1), restFore(0), restFore(1)]);
     this.foreRest = [restFore(0), restFore(1)];
     this.profile = gaitProfile(rig.props.breed);
@@ -440,6 +481,16 @@ export class GroundLayer {
       const nd = this.need;
       const over = c.runBlend < 0.5 ? 0.01 * f.sh : Infinity;
       c.overreach = (nd[0] > over ? 1 : 0) | (nd[1] > over ? 2 : 0) | (nd[2] > over ? 4 : 0) | (nd[3] > over ? 8 : 0);
+      // Setting off, a forefoot still on the standing fold's track (inside the stride's) steps out
+      // first, before the hind leg on its side swings past the folded arm.
+      if (c.moving && f.kneel < 0.02) {
+        for (let side = 0; side < 2; side++) {
+          const foot = this.gait.feet[2 + side];
+          if (foot.swinging) continue;
+          const x = this.a.toModel(foot.plant, _v).x * SIDE_SIGN[side];
+          if (x < Math.abs(this.gait.rest[2 + side].x) - 0.5 * this.foreOut) c.overreach |= 4 << side;
+        }
+      }
       if (f.teleport) this.gait.reset(c);
       this.footfalls = this.gait.update(c);
     } else this.footfalls = 0;
@@ -457,12 +508,13 @@ export class GroundLayer {
     const toward = lt.x > 0.25 ? 1 : lt.x < -0.25 ? -1 : this.kneelSide > 0 ? 1 : -1;
     this.kneelSide += (toward - this.kneelSide) * clamp01(f.dt * 3);
     const fwd = KNEEL.fwd * this.rig.props.arm.forearm * k;
+    this.outW += ((this.gaitCtx.moving ? 1 : 0) - this.outW) * clamp01(f.dt * 12);
     for (let side = 0; side < 2; side++) {
       const sx = SIDE_SIGN[side];
       const near = clamp01(this.kneelSide * sx);
       const r = this.gait.rest[2 + side];
       const b = this.foreRest[side];
-      r.x = b.x + sx * (KNEEL.out + KNEEL.nearOut * near) * k;
+      r.x = b.x + sx * ((KNEEL.out + KNEEL.nearOut * near) * k + this.foreOut * (FOLD.foreOutStand + (1 - FOLD.foreOutStand) * this.outW) * (1 - k));
       r.y = b.y;
       r.z = b.z + fwd;
     }
@@ -619,6 +671,10 @@ export class GroundLayer {
     const E = _v5;
     this.reachNeed(2 + side, S, Wt, 0.98 * (this.lens[0] + this.lens[1]));
     solveTwoBoneAt(S, this.lens, 0, Wt, _v4, E);
+    // The hind leg, as posed this frame: the elbow swings out to clear it, and the folded fingers
+    // keep ahead of its knee.
+    this.legCapsules(side);
+    this.clearElbow(side, S, Wt, E, outG);
     // A wall at the elbow: tuck the wing in against the body (next frame's pole, smoothed).
     this.wallProbe(side, E);
     const hum = _hum.subVectors(E, S);
@@ -675,14 +731,25 @@ export class GroundLayer {
       this.clear[0] = need;
       // ...and it stays ahead of the thigh below the thigh's top, however far a trailing forefoot
       // carries the knuckle back.
-      const behindHip = this.hipGuard[0] - _tv1.z;
-      const fwdNeed = _tv1.y < this.hipGuard[1] && behindHip > 0 ? behindHip / la : 0;
+      const behindHip = this.legGuard[side * 2] - _tv1.z;
+      const fwdNeed = _tv1.y < this.legGuard[side * 2 + 1] && behindHip > 0 ? behindHip / la : 0;
       if (this.clear[0] > 0 || fwdNeed > 0) {
         const k = this.clear[0] / la;
         _fd.x += outG.x * k + fwdG.x * fwdNeed;
         _fd.y += outG.y * k + fwdG.y * fwdNeed;
         _fd.z += outG.z * k + fwdG.z * fwdNeed;
         _fd.normalize();
+      }
+      // ...and clear of the hind leg as posed this frame: leaning forward and out until it is.
+      {
+        const fr = T.fingerBundle * this.armR;
+        const margin = T.legClear * this.f.sh;
+        _tv4.copy(kn).addScaledVector(_fd, la);
+        const move = this.moveW;
+        for (let k = 0; k < 8 && move > 0.001 && this.legClearance(kn, _tv4, fr) < margin; k++) {
+          _fd.addScaledVector(fwdG, 0.12 * move).addScaledVector(outG, 0.08 * move).normalize();
+          _tv4.copy(kn).addScaledVector(_fd, la);
+        }
       }
       // ...and the outer segment it carries runs back along the flank from its end without passing
       // into the body there: where that segment's first half would, the bundle leans out (the long
@@ -750,6 +817,45 @@ export class GroundLayer {
         if (!(turn > 0)) break;
         // (Turning about +Y by +a swings a backward-pointing tip toward -X.)
         yaw -= sx * Math.min(0.35, turn);
+      }
+      // ...and over the hind leg as posed this frame: pitched up until the segment, and the
+      // membrane folded along it, clear the striding thigh and shin.
+      {
+        const fr = T.fingerBundle * this.armR;
+        const margin = T.legClear * this.f.sh;
+        _tv3.copy(rest[3 + f]).applyQuaternion(_q);
+        _tv4.copy(pv).addScaledVector(_tv3, lb);
+        const move = this.moveW;
+        if (move > 0.001 && this.legClearance(pv, _tv4, fr) < margin) {
+          const yaw0 = yaw;
+          // Pitched up first (over the haunch), then turned out if pitching alone cannot clear it.
+          let r2 = rise;
+          let clear = false;
+          for (let k = 0; k < 8 && !clear; k++) {
+            r2 += 0.09;
+            this.outerDir(side, f, r2, yaw, _tv3);
+            _tv4.copy(pv).addScaledVector(_tv3, lb);
+            clear = this.legClearance(pv, _tv4, fr) >= margin;
+          }
+          for (let k = 0; k < 6 && !clear; k++) {
+            yaw -= sx * 0.08;
+            this.outerDir(side, f, r2, yaw, _tv3);
+            _tv4.copy(pv).addScaledVector(_tv3, lb);
+            clear = this.legClearance(pv, _tv4, fr) >= margin;
+          }
+          // (Eased in with the stride: none standing.)
+          r2 = rise + (r2 - rise) * move;
+          yaw = yaw0 + (yaw - yaw0) * move;
+          const s2 = Math.sin(r2 * 0.5);
+          const c2 = Math.cos(r2 * 0.5);
+          const syh = Math.sin(yaw * 0.5);
+          const cyh = Math.cos(yaw * 0.5);
+          _qa[0] = s2 * cyh;
+          _qa[1] = c2 * syh;
+          _qa[2] = s2 * syh;
+          _qa[3] = c2 * cyh;
+          _q.fromArray(_qa);
+        }
       }
       if (f === 2) this.trailRoll(side, _q);
       a.setModelBlend(w.fingers[f][1], _q);
@@ -939,6 +1045,95 @@ export class GroundLayer {
   }
 
   /**
+   * The hind leg on this side as posed this frame (legs are applied before the wings): thigh and
+   * shin capsules into _leg (hip, knee, ankle), and this frame's finger guard: the bind guard, or
+   * the knee's front when a stride carries it further forward.
+   */
+  private legCapsules(side: number): void {
+    const a = this.a;
+    const l = this.rig.idx.legs[side];
+    _leg[0].copy(a.pivot(l.thigh));
+    _leg[1].copy(a.pivot(l.shin));
+    _leg[2].copy(a.pivot(l.meta));
+    const R = this.thighR;
+    this.legGuard[side * 2] = Math.max(this.hipGuard[0], _leg[1].z + 0.6 * R);
+    this.legGuard[side * 2 + 1] = this.hipGuard[1];
+  }
+
+  /** How far the arm segment p→q clears the posed hind leg (m; negative: into it). */
+  private legClearance(p: Vector3, q: Vector3, armR: number): number {
+    const R = this.thighR;
+    let best = 1e9;
+    for (let c = 0; c < 2; c++) {
+      const A = _leg[c];
+      const B = _leg[c + 1];
+      const ra = c === 0 ? 0.9 * R : 0.45 * R;
+      const rb = c === 0 ? 0.5 * R : 0.3 * R;
+      _cd.subVectors(B, A);
+      const L2 = _cd.lengthSq();
+      for (let i = 0; i <= 8; i++) {
+        _cp.lerpVectors(p, q, i / 8);
+        const t = L2 > 1e-12 ? clamp01(_cs.subVectors(_cp, A).dot(_cd) / L2) : 0;
+        _cs.copy(A).addScaledVector(_cd, t);
+        const d = _cp.distanceTo(_cs) - (ra + (rb - ra) * t) - armR;
+        if (d < best) best = d;
+      }
+    }
+    return best;
+  }
+
+  /**
+   * Swing the folded elbow E out about the shoulder (S) to wrist (W) line, both fixed, until the
+   * humerus and forearm clear the posed hind leg (FOLD.legClear); smoothed per side. The elbow's
+   * circle about that line is the one the bone lengths allow, so the two-bone solution stays exact.
+   */
+  private clearElbow(side: number, S: Vector3, W: Vector3, E: Vector3, outG: Vector3): void {
+    const T = FOLD;
+    _ax.subVectors(W, S);
+    const L = _ax.length();
+    if (L < 1e-6) return;
+    _ax.multiplyScalar(1 / L);
+    _ec.copy(S).addScaledVector(_ax, _cs.subVectors(E, S).dot(_ax));
+    _eu.subVectors(E, _ec);
+    const r = _eu.length();
+    if (r < 1e-4) return;
+    _eu.multiplyScalar(1 / r);
+    _ev.crossVectors(_ax, _eu);
+    if (_ev.dot(outG) < 0) _ev.negate();
+    // The arm's reach toward the leg: its tube and the folded membrane bundled on its inner side.
+    const armR = T.armBundle * this.armR;
+    const margin = T.legClear * this.f.sh;
+    const clear = (th: number) => {
+      _et.copy(_ec).addScaledVector(_eu, r * Math.cos(th)).addScaledVector(_ev, r * Math.sin(th));
+      return Math.min(this.legClearance(S, _et, armR), this.legClearance(_et, W, armR)) - margin;
+    };
+    // Only striding: standing, kneeling and basking keep their own measured-clean folds.
+    const move = this.moveW;
+    let target = 0;
+    if (move > 0.001 && clear(0) < 0) {
+      let bestTh = 0;
+      let bestC = -1e9;
+      target = NaN;
+      for (let k = 1; k <= 14 && Number.isNaN(target); k++) {
+        const th = (k / 14) * T.elbowSwingMax;
+        const c = clear(th);
+        if (c >= 0) target = th;
+        else if (c > bestC) {
+          bestC = c;
+          bestTh = th;
+        }
+      }
+      if (Number.isNaN(target)) target = bestTh;
+      target *= move;
+    }
+    const cur = this.elbowSwing[side];
+    const rate = target > cur ? T.swingOut : T.swingIn;
+    const th = cur + (target - cur) * clamp01(this.f.dt * rate);
+    this.elbowSwing[side] = th;
+    if (th !== 0) E.copy(_ec).addScaledVector(_eu, r * Math.cos(th)).addScaledVector(_ev, r * Math.sin(th));
+  }
+
+  /**
    * Where finger f's outer segment points from its inner joint `pv` (body frame), as a pitch up
    * and a yaw (rad, into aim[0] and aim[1]; see outerDir). The wingtip spar aims its tip at the
    * croup's height, in over its side, however long it is: it rises back along the flank like a
@@ -965,8 +1160,8 @@ export class GroundLayer {
     const tipY = this.flankMid[0] + (T.tipH - T.tipHStep * (f - 1)) * this.flankMid[1];
     const sinR = (tipY - pv.y) / lb;
     let rise = sinR >= 1 ? T.riseMax : sinR <= -1 ? T.riseMin : clamp(Math.asin(sinR), T.riseMin, T.riseMax);
-    const hipZ = this.hipGuard[0];
-    if (pv.y + Math.sin(rise) * lb < this.hipGuard[1] && pv.z - Math.cos(rise) * lb < hipZ) {
+    const hipZ = this.legGuard[side * 2];
+    if (pv.y + Math.sin(rise) * lb < this.legGuard[side * 2 + 1] && pv.z - Math.cos(rise) * lb < hipZ) {
       const c = (pv.z - hipZ) / lb;
       rise = Math.max(rise, c >= 1 ? 0 : c <= -1 ? Math.PI * 0.5 : Math.min(Math.PI * 0.5, Math.acos(c)));
     }

@@ -5,7 +5,10 @@ export const DEFAULT_SETTINGS: Settings = {
   resolutionScale: 1,
   invertPitch: false,
   lookSensitivity: 1,
-  fov: 62,
+  // A little narrower than the 62° it was (Robert, 2026-10-18, Q40: closer to the target renders'
+  // framing without losing the sense of speed; Settings > Camera keeps the 50-90° slider).
+  fov: 58,
+  lensRev: 1,
   masterVolume: 0.8,
   musicVolume: 0.6,
   sfxVolume: 0.9,

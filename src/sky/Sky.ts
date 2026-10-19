@@ -33,6 +33,7 @@ import { BoundaryWall } from './BoundaryWall';
 import { SEA_RANGE, generateSeaField, puffAtlas, seaHeight01, seaTexture, type SeaField } from './cloudTextures';
 import type { Weather } from './Weather';
 import { SHADOW_RANGE, SHADOW_UP, installShadowFade } from './shadowFade';
+import { LOOK } from '../render/look';
 
 // The key light's shadows fade at the shadow box's border and with occluder distance; the chunk
 // must be patched before any lit material compiles, so it happens as soon as the sky is loaded.
@@ -267,7 +268,7 @@ export class Sky implements SkySystem {
 
     // --- Lights -----------------------------------------------------------------------------
     this.sun.color.copy(pal.key);
-    this.sun.intensity = pal.keyI * KEY_SCALE;
+    this.sun.intensity = pal.keyI * KEY_SCALE * LOOK.sun;
     this.hemi.color.copy(pal.hemiSky);
     this.hemi.groundColor.copy(pal.hemiGround);
     this.hemi.intensity = pal.hemiI + flash * 0.9;
@@ -354,6 +355,9 @@ export class Sky implements SkySystem {
     const cover = w ? w.cloudCover : 0.32;
     d.uCirrus.value = smoothstep(0.2, 1.0, cover);
     d.uDeck.value = clamp01((w ? w.overcast : 0) * 1.05 + (w ? w.mist : 0) * 0.15);
+    // The boundary's cloud rampart (G3c) is a clear-air sight: mist and rain swallow it, an
+    // overcast lid flattens it.
+    d.uRampart.value = clamp01(1 - (w ? 0.9 * w.mist + 0.7 * w.rain + 0.45 * w.overcast : 0));
     const speed = w ? Math.hypot(w.wind.x, w.wind.z) : 3;
     this.cirrusOffset = (this.cirrusOffset + (speed * dt) / 700) % 1000;
     d.uCloudOffset.value.set(this.cirrusOffset, 0);

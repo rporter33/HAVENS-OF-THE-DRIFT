@@ -203,11 +203,13 @@ describe('pale palettes are capped', () => {
 });
 
 describe('creature toon ramp and relief', () => {
-  it('turns the lit half through four values over a 0.28 shadow (0.48 / 0.62 / 0.8 / 0.92 / 1.0)', () => {
+  it('turns the lit half through four values over a 0.16 shadow (0.39 / 0.56 / 0.77 / 0.91 / 1.0)', () => {
+    // G3c (Q40): the shadow went from 0.28 to 0.16 so turned-away flanks read; the lit steps were
+    // stretched to keep full light at 1.0.
     expect(toonRampValue(0.3)).toBeCloseTo(RAMP.shadow, 9);
-    expect(RAMP.shadow).toBeCloseTo(0.28, 9);
+    expect(RAMP.shadow).toBeCloseTo(0.16, 9);
     const lit = [0.5, 0.6, 0.7, 0.8, 0.9].map(toonRampValue);
-    for (const [v, want] of lit.map((v, i) => [v, [0.48, 0.62, 0.8, 0.92, 1.0][i]])) expect(v).toBeCloseTo(want, 6);
+    for (const [v, want] of lit.map((v, i) => [v, [0.3933, 0.5567, 0.7667, 0.9067, 1.0][i]])) expect(v).toBeCloseTo(want, 3);
     // Monotonic, and every step edge inside the lit half of the ramp coordinate.
     for (let i = 1; i < RAMP.steps.length; i++) expect(RAMP.steps[i][0]).toBeGreaterThan(RAMP.steps[i - 1][0]);
     expect(RAMP.steps[0][0]).toBeGreaterThan(0.45);

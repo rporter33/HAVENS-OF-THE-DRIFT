@@ -1,0 +1,34 @@
+{
+  "title": "G3 Harrier visual pass: captures beside the target renders",
+  "intro": "The Harrier staged to match target renders 01 (portrait on a terrace) and 02 (flight with rider), plus the real chase camera and a hide close-up. Same lighting contract as the dragon audit: sky=native, quality=high, clear weather, golden hour (tod 0.7), fresh=1, blink=999.",
+  "defaults": {
+    "base": "http://127.0.0.1:5173/",
+    "size": "1280x720",
+    "stage": "fresh=1&sky=native&tod=0.7&blink=999&breed=harrier",
+    "settle": 2.0,
+    "ui": "hide"
+  },
+  "boots": {
+    "showcase": {"url": "?view=wyvern&play=1&manual=1&quality=high&weather=clear&pose=idle", "desc": "wyvern showcase, quality high"},
+    "flight": {"url": "?play=1&manual=1&quality=high&weather=clear&tod=0.7&at=60,345,190&yaw=150&mode=flying&speed=24", "desc": "the real game, flying, chase camera"}
+  },
+  "sections": [
+    {
+      "id": "p", "title": "Portrait (target 01)", "dir": "portrait",
+      "items": [
+        {"id": "p-01-three-low", "boot": "showcase", "stage": "pose=idle&rider=0&camAz=55&camEl=-4&camDist=7.5", "desc": "standing, front three-quarter from slightly below, like target 01"},
+        {"id": "p-side", "boot": "showcase", "stage": "pose=idle&rider=0&cam=side&camDist=9", "desc": "standing, left profile"},
+        {"id": "p-head", "boot": "showcase", "stage": "pose=idle&rider=0&focus=jaw&camAz=40&camEl=8&camDist=3.2", "desc": "head front three-quarter: horns, frill, eye, jaw"},
+        {"id": "p-hide", "boot": "showcase", "stage": "pose=idle&rider=0&focus=chest&camAz=70&camEl=6&camDist=4.0", "desc": "hide close-up: shoulder, chest, scale rows"}
+      ]
+    },
+    {
+      "id": "f", "title": "Flight (target 02)", "dir": "flight",
+      "items": [
+        {"id": "f-02-glide-behind", "boot": "showcase", "stage": "pose=glide&camAz=200&camEl=22&camDist=16", "desc": "gliding with rider, from behind and above, like target 02"},
+        {"id": "f-glide-under", "boot": "showcase", "stage": "pose=glide&cam=under", "desc": "gliding, from below: backlit membrane"},
+        {"id": "f-chase", "boot": "flight", "settle": 1.5, "desc": "real game chase camera in flight"}
+      ]
+    }
+  ]
+}

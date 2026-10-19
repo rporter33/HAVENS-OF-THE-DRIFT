@@ -606,6 +606,28 @@ describe('no clipping: the wyvern never passes through itself (Q17, C16)', { tim
   }
 });
 
+describe('no clipping on the move: the folded wings keep off the hind legs (2026-10-18)', { timeout: 600000 }, () => {
+  // Robert: "make sure the wings fold in with no flipping on the hind legs". Standing was covered
+  // above; striding, the forearm, the membrane folded along it and the finger spars swept through
+  // the thigh and shin by up to 0.48 m. The forefeet now plant outside the hind track, the elbow
+  // swings out to clear the posed leg and the folded fingers keep over and ahead of it.
+  for (const breed of BREED_ORDER) {
+    it(`${breed}: walking, a brisk walk and running`, () => {
+      const b = BREEDS[breed];
+      for (const frac of [P.keyboardWalk, P.walkFraction * 0.9, 1]) {
+        const pen = {} as Penetration;
+        let worst = 0;
+        walkOn(breed, FLAT, 0.3, 300, (i) => (i < 30 ? 0 : frac * b.groundSpeed), (w, i) => {
+          if (i < 60) return;
+          wyvernPenetration(w, pen);
+          worst = Math.max(worst, pen['wing-leg']);
+        });
+        expect(worst, `${breed} at ${frac.toFixed(2)} of groundSpeed`).toBeLessThan(0.02);
+      }
+    });
+  }
+});
+
 describe('environment awareness (C16): the folded wings keep off walls', () => {
   it('draws the folded wing in against the body when a rock face is at its elbow, and only that one', () => {
     for (const breed of BREED_ORDER) {

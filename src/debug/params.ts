@@ -23,6 +23,8 @@ import { parseCapPreview, type CapPreviewFlags } from './capPreview';
 
 export interface DebugParams {
   riderTrial?: TrialSelection;
+  /** G3b: `wyvernTrial=meshy` swaps in the fitted Meshy Harrier body (dev only). */
+  wyvernTrial?: 'meshy';
   /** P1 preview only: riderProof=wanderer|aerie, riderMaps=color|normal|off. */
   riderProof?: RiderProof;
   riderMaps?: ProofMaps;
@@ -59,6 +61,7 @@ export function readDebugParams(search = typeof location !== 'undefined' ? locat
   const num = (k: string) => (q.has(k) && Number.isFinite(Number(q.get(k))) ? Number(q.get(k)) : undefined);
   const yawDeg = num('yaw');
   return {
+    wyvernTrial: q.get('wyvernTrial') === 'meshy' ? 'meshy' : undefined,
     riderTrial: q.get('riderTrial')==='compatibility' ? 'compatibility' : q.get('riderTrial')==='blender' ? 'blender' : undefined,
     riderProof: q.get('riderProof') === 'wanderer' ? 'wanderer' : q.get('riderProof') === 'aerie' ? 'aerie' : undefined,
     riderMaps: q.get('riderMaps') === 'off' ? 'off' : q.get('riderMaps') === 'normal' ? 'normal' : 'color',

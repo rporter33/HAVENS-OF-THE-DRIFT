@@ -1,7 +1,8 @@
 // WebGL renderer + post chain:
 //
 //   scene ──► HDR target (half float, MSAA per quality, the only multisampled buffer)
-//          └► bloom mip chain (half res and down; see post/bloom.ts)
+//          ├► bloom mip chain (half res and down; see post/bloom.ts)
+//          └► AO from the resolved depth (half res, High/Ultra; see post/ssao.ts)
 //   grade (full res, straight to the canvas): scene + bloom, speed blur or sharpening, color
 //          grade, cloud veil, flash, vignette, fade, ACES tone map, sRGB, dither.
 //
@@ -11,6 +12,8 @@
 
 import {
   ACESFilmicToneMapping,
+  DepthTexture,
+  FloatType,
   HalfFloatType,
   PCFShadowMap,
   SRGBColorSpace,
@@ -18,6 +21,7 @@ import {
   WebGLRenderer,
   WebGLRenderTarget,
   type Camera,
+  type PerspectiveCamera,
   type ShaderMaterial,
   type Scene,
 } from 'three';
@@ -26,6 +30,8 @@ import type { QualityLevel } from '../core/types';
 import { BloomChain } from './post/bloom';
 import { gradeMaterial, gradeUniforms, type GradeUniforms } from './post/grade';
 import { POST_CAMERA, PostQuad } from './post/quad';
+import { SSAOPass } from './post/ssao';
+import { LOOK } from './look';
 import { ShaderWarmup, type WarmupStats } from './warmup';
 import { globalUniforms } from './uniforms';
 
@@ -37,6 +43,8 @@ export type { WarmupStats } from './warmup';
  * halos match the UnrealBloomPass tuning the palettes were authored against.
  */
 const BLOOM_GAIN = 1.8;
+/** How much of the screen-space AO the grade applies (post/ssao.ts, G3c). */
+const AO_STRENGTH = 0.85;
 /** Below this strength bloom is skipped entirely. */
 const BLOOM_MIN = 0.02;
 /**
@@ -75,6 +83,7 @@ export class Renderer {
   compiledThisFrame = false;
   private target: WebGLRenderTarget;
   private bloom: BloomChain;
+  private ssao: SSAOPass;
   private gradeQuad: PostQuad<ShaderMaterial>;
   private bloomStrength = 0.32;
   private resolutionScale = 1;
@@ -102,8 +111,9 @@ export class Renderer {
     container.appendChild(this.canvas);
     this.warmup = new ShaderWarmup(this.gl);
 
-    this.target = this.makeSceneTarget(this.quality.msaa);
+    this.target = this.makeSceneTarget(this.quality.msaa, !!this.quality.ao);
     this.bloom = new BloomChain(this.quality.bloomLevels ?? 6);
+    this.ssao = new SSAOPass();
     this.bloom.threshold = 0.86;
     this.grade = gradeUniforms();
     this.grade.uFxaa.value = this.quality.fxaa ? 1 : 0;
@@ -126,9 +136,9 @@ export class Renderer {
     this.gl.shadowMap.enabled = q.shadows;
     // three never re-creates a framebuffer when `samples` changes on a live target, so a new
     // MSAA level means a new target.
-    if (this.target.samples !== q.msaa) {
+    if (this.target.samples !== q.msaa || !!this.target.depthTexture !== !!q.ao) {
       this.target.dispose();
-      this.target = this.makeSceneTarget(q.msaa);
+      this.target = this.makeSceneTarget(q.msaa, !!q.ao);
     }
     this.bloom.setLevels(q.bloomLevels ?? 6);
     this.grade.uFxaa.value = q.fxaa ? 1 : 0;
@@ -179,6 +189,8 @@ export class Renderer {
     const bh = this.canvas.height;
     this.target.setSize(bw, bh);
     this.bloom.setSize(bw, bh);
+    this.ssao.setSize(bw, bh);
+    this.grade.uAOTexel.value.copy(this.ssao.texel);
     this.grade.uTexel.value.set(1 / bw, 1 / bh);
     // The browser stretches the drawing buffer to the screen; sharpen in proportion.
     this.grade.uSharpen.value = sharpenFor((w * dpr) / bw);
@@ -249,6 +261,19 @@ export class Renderer {
     gl.render(scene, camera);
 
     const g = this.grade;
+    const depth = this.target.depthTexture;
+    if (this.quality.ao && LOOK.ssao > 0 && depth && (camera as PerspectiveCamera).isPerspectiveCamera) {
+      const cam = camera as PerspectiveCamera;
+      g.tAO.value = this.ssao.render(gl, depth, cam);
+      g.tDepth.value = depth;
+      g.uProjInv.value.copy(cam.projectionMatrixInverse);
+      g.uNear.value = cam.near;
+      g.uFar.value = cam.far;
+      g.uAOStrength.value = AO_STRENGTH;
+      g.uAODebug.value = LOOK.aoDebug;
+    } else {
+      g.uAOStrength.value = 0;
+    }
     if (this.quality.bloom && this.bloomStrength > BLOOM_MIN) {
       g.tBloom.value = this.bloom.render(gl, this.target.texture);
       g.uBloomStrength.value = this.bloomStrength * BLOOM_GAIN;
@@ -275,12 +300,17 @@ export class Renderer {
 
   // --- Internals ------------------------------------------------------------------------------
 
-  private makeSceneTarget(samples: number): WebGLRenderTarget {
-    const t = new WebGLRenderTarget(Math.max(1, this.canvas?.width ?? 1), Math.max(1, this.canvas?.height ?? 1), {
+  private makeSceneTarget(samples: number, depthTexture = false): WebGLRenderTarget {
+    const w = Math.max(1, this.canvas?.width ?? 1);
+    const h = Math.max(1, this.canvas?.height ?? 1);
+    const t = new WebGLRenderTarget(w, h, {
       type: HalfFloatType,
       samples,
       depthBuffer: true,
       stencilBuffer: false,
+      // The AO pass reads the scene's depth (resolved from the multisampled buffer by three).
+      // (Only set when wanted: three's setter does not accept undefined.)
+      ...(depthTexture ? { depthTexture: new DepthTexture(w, h, FloatType) } : {}),
     });
     t.texture.name = 'DriftwingScene';
     t.texture.generateMipmaps = false;
@@ -293,6 +323,8 @@ export class Renderer {
     try {
       gl.setRenderTarget(this.bloom.compileTarget);
       for (const q of this.bloom.quads) gl.compile(q.mesh, POST_CAMERA);
+      gl.setRenderTarget(this.ssao.compileTarget);
+      for (const q of this.ssao.quads) gl.compile(q.mesh, POST_CAMERA);
       gl.setRenderTarget(null);
       gl.compile(this.gradeQuad.mesh, POST_CAMERA);
     } finally {
