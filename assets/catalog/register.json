@@ -545,6 +545,151 @@
         "scope": "Archive copy identity"
       },
       "unresolved_issues": []
+    },
+    {
+      "asset_id": "white-dragon-meshy-body",
+      "version": "2026-10-19",
+      "category": "runtime_model",
+      "availability_state": "committed",
+      "repository_paths": [
+        "src/assets/dragon/white-dragon.glb"
+      ],
+      "provenance_evidence_paths": [
+        "Art and Assets/Creatures and Customization/WHITE_DRAGON_MODEL_KIT.md",
+        "docs/design/WHITE_DRAGON.md",
+        "scripts/blender/dragon_meshy_fit.py",
+        "scripts/dragon-export-skeleton.mjs"
+      ],
+      "generation": {
+        "generator": "Meshy",
+        "ui_or_api_route": "web UI, Image to 3D (multi-view or single image not recorded)",
+        "actual_model_version": "not recorded",
+        "date": "2026-10-19",
+        "task_id": "not recorded",
+        "prompts": "Astra reference sheet from the model kit's Step 1 prompts; Meshy takes images, not text",
+        "settings": "not recorded (the kit asks for High Detail, symmetry on, geometry first)",
+        "input_references_note": "The approved sheet's four views. Which of them Meshy received wasn't recorded: the kit's Multi-View route takes B, C and D, its single-image fallback A.",
+        "input_references_and_hashes": [
+          {
+            "path": "github:rporter33/HAVENS-OF-THE-DRIFT@archive/g12a-white-dragon:refs/white-dragon-ref-front.png",
+            "sha256": "6ef8eb1e09252d20384192c6f43d919f190e83462236f5d19bcb050e601465dd"
+          },
+          {
+            "path": "github:rporter33/HAVENS-OF-THE-DRIFT@archive/g12a-white-dragon:refs/white-dragon-ref-left.png",
+            "sha256": "a67d22e023fbb5bef31751d9e1fb00bfc6f54fa7381641ec547846a32199526f"
+          },
+          {
+            "path": "github:rporter33/HAVENS-OF-THE-DRIFT@archive/g12a-white-dragon:refs/white-dragon-ref-back.png",
+            "sha256": "55df96d6649737e9dfd7b8aba5a28b075f960bf2da103b0e897299fbb4552010"
+          },
+          {
+            "path": "github:rporter33/HAVENS-OF-THE-DRIFT@archive/g12a-white-dragon:refs/white-dragon-ref-34.png",
+            "sha256": "d4baac4475ce281f487278b44c9fc9b71bd1c5b24f2dc8267afaee8f4b398b23"
+          }
+        ]
+      },
+      "source_files": [
+        {
+          "path": "src/assets/dragon/white-dragon.glb",
+          "sha256": "5e33f0e6e8e83ee9aa0e1a2bc8eee2b71713425bc394e7befd112e93d4370631",
+          "source_commit": null
+        },
+        {
+          "path": "github:rporter33/HAVENS-OF-THE-DRIFT@archive/g12a-white-dragon:meshy/white-dragon-raw.glb",
+          "sha256": "45afc967ae23c44392687f5b8e41c15e4cb13838a7e66167d76a972aaa21f562",
+          "source_commit": "4725479aaf2e5c7627a6812b45cf67636bd5a62b"
+        },
+        {
+          "path": "github:rporter33/HAVENS-OF-THE-DRIFT@archive/g12a-white-dragon:meshy/white-dragon-textured.glb",
+          "sha256": "812c8f289c15a2953612493e15b3d40d8e639cbec8679b4be8ab7f943003e447",
+          "source_commit": "4725479aaf2e5c7627a6812b45cf67636bd5a62b"
+        }
+      ],
+      "rights": {
+        "status": "stated_by_owner",
+        "creator": "Robert Porter (Astra reference sheet and Meshy generation); fit by Claude in Blender",
+        "license": "Meshy Pro (paid) plan output, owner stated 2026-10-19 (Q49); not legal clearance",
+        "attribution": null,
+        "evidence": [
+          "Plan stated by Robert in Q49 and again at hand-over, 2026-10-19",
+          "GLB generator strings: raw xpostprocessing, textured pygltflib@v1.16.5"
+        ]
+      },
+      "archive": {
+        "state": "archived_restore_unverified",
+        "destination": "github:rporter33/HAVENS-OF-THE-DRIFT@archive/g12a-white-dragon",
+        "archive_id": "4725479aaf2e5c7627a6812b45cf67636bd5a62b",
+        "versioned_relative_keys": [
+          "meshy/white-dragon-raw.glb",
+          "meshy/white-dragon-textured.glb",
+          "refs/",
+          "README.md",
+          "MANIFEST.json"
+        ],
+        "reported_locator": "C:\\Users\\Robert\\Projects\\havens-blender-pilot\\ (meshy\\, refs\\White Dragon\\)",
+        "companion_dependencies": [],
+        "backup_verification": {
+          "date": "2026-10-19",
+          "method": "SHA-256 of each blob in the pushed archive commit against the source file on Robert's PC",
+          "result": "12/12 match"
+        },
+        "restore_verification": null
+      },
+      "authoring": {
+        "tool_and_version": "Blender 5.2.2 LTS, driven through the Blender MCP; scripts/blender/dragon_meshy_fit.py",
+        "master_paths_and_hashes": [
+          {
+            "path": "C:\\Users\\Robert\\Projects\\havens-blender-pilot\\white-dragon-pilot.blend",
+            "sha256": "159d8d897d2c8a8a103ca95dc6df8bc2064b253254add37380a376fc2f58e788",
+            "note": "workstation only; not archived"
+          }
+        ],
+        "changes": "Split the wings from the body at the root and closed the cut; decimated (body 12,000, wings 6,000 triangles); bone-heat weights on the body, distance weights on the wings, four influences; each bone's Meshy segment mapped onto the game skeleton's (10.89 m per Meshy unit; the tail's sideways curl taken out and the sheet's sag kept; the wing roots moved back to sheet C's); the wyvern hide shader's attributes baked by part (tube, legs, head, wing bones, membrane) from the textured download and the skeleton's body plan."
+      },
+      "exports": {
+        "repository_paths_and_hashes": [
+          {
+            "path": "src/assets/dragon/white-dragon.glb",
+            "sha256": "5e33f0e6e8e83ee9aa0e1a2bc8eee2b71713425bc394e7befd112e93d4370631"
+          }
+        ],
+        "settings": "the fit script's own GLB writer: one vertex buffer, primitive 0 body and wing bones, primitive 1 membranes, no vertex shared between them; every body triangle one region; JOINTS_0 over mesh.extras.jointNames (no glTF skin)",
+        "measured_triangles": 17999,
+        "vertices": 10301,
+        "materials": [
+          "body",
+          "membrane"
+        ],
+        "texture_dimensions": null,
+        "bones": 64,
+        "units": "metres",
+        "axes": "game body frame: +Z forward, +Y up, +X left; origin at the body center"
+      },
+      "qa": {
+        "status": "trial",
+        "source_commit": null,
+        "evidence_paths": [
+          "src/creatures/dragon/asset.test.ts",
+          "src/creatures/dragon/rig.test.ts",
+          "src/creatures/dragon/skeleton.test.ts"
+        ],
+        "limitations": [
+          "Dev-only data: nothing loads it until G12b's showcase",
+          "LOD0 only, 17,999 bare triangles; LODs and the parts' geometry still to build",
+          "Checked in the bind pose only (wings spread flat), not posed or animated",
+          "The flank under the membrane's root is filled where the wing was cut away, and short stubs of the wing root stay on the body under the wing's own root",
+          "Reference-GPU frame rate not measured"
+        ]
+      },
+      "verification": {
+        "date": "2026-10-19",
+        "method": "SHA-256 of the committed file bytes",
+        "scope": "Committed runtime file identity"
+      },
+      "unresolved_issues": [
+        "Meshy model, version, task ID and settings weren't recorded at hand-over; add them from Robert's Meshy history if wanted",
+        "Restore from the archive branch into a fresh directory not yet done"
+      ]
     }
   ]
 }

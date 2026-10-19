@@ -9,7 +9,7 @@ The owner's current direction is racing-first exploratory fantasy, intelligent d
 | [First slice](FIRST_SLICE.md) | Pillars and the eleven proposed gates with acceptance tests, derived from the decision log on 2026-10-17. |
 | [White dragon](WHITE_DRAGON.md) | The white clan's elder dragon (render 08): what exists, the six-limb rig it needs, customization by parts and flight colour (Q48), and gate G12, opened 2026-10-19 (Q47). |
 | [G5 capabilities](CAPABILITIES.md) | Parameters, clamps, bond milestones and route tests for the four capabilities, and the two capability sites G8 authors (Q30). G5 and G8 not opened. |
-| [Decision log](DECISION_LOG.md) | The decision questions with dated answers (37 answered, 5 open on main as of 2026-10-19). Answer here; never delete, mark superseded. |
+| [Decision log](DECISION_LOG.md) | The decision questions with dated answers (37 answered, 6 open as of the G12a branch, 2026-10-19). Answer here; never delete, mark superseded. |
 | [Catch-up 2026-10-15](CATCH_UP_2026-10-15.md) | What is implemented, the lore tiers, the review assessment and the reasoning behind each question. |
 | [Comparative design review](COMPARATIVE_DESIGN_REVIEW.md) | Seven reference games compared; proposals for Havens. Written as if starting from zero; read with the catch-up. |
 | [Lore meanings](LORE_MEANINGS.md) | Robert's statement of what Havens and the Drift mean. Top of the authority order. |
