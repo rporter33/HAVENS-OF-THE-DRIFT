@@ -20,7 +20,7 @@ export class TutorialMap extends Panel {
     const svg = document.createElementNS(ns, 'svg');
     svg.setAttribute('viewBox', `${minX} ${minZ} ${span} ${span}`);
     svg.setAttribute('role', 'img');
-    svg.setAttribute('aria-label', 'Local map: north up, your position, the Roost, and the Shrine of the First Wind.');
+    svg.setAttribute('aria-label', 'Local map: north up, your position, Windhaven, and the Shrine of the First Wind.');
     svg.classList.add('dw-guide-chart');
     for (const island of LAYOUT.islands) {
       if (island.x < minX - island.radius || island.x > minX + span + island.radius ||
@@ -49,7 +49,7 @@ export class TutorialMap extends Panel {
       }
       svg.append(dot, text);
     };
-    marker(roost.x, roost.z, 'Roost', 'is-home', -0.025);
+    marker(roost.x, roost.z, 'Windhaven', 'is-home', -0.025);
     marker(target.x, target.z, 'First Wind shrine', 'is-shrine', -0.025);
     marker(player.x, player.z, 'You', 'is-player', 0.04);
     s.body.append(h('p', { text: 'You know the basics. Try a short flight to the nearby shrine, land beside its stone gateway, and read the inscription. North is up on this map.' }), svg);

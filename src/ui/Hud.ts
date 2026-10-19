@@ -276,7 +276,7 @@ export class Hud {
       this.markers.push(mk(l.id, l.position[0], l.position[2], l.name, ICONS.landmark, ''));
     }
     const roost = LAYOUT.landmarks.find((l) => l.id === 'roost');
-    this.home = mk('roost', roost?.position[0] ?? 0, roost?.position[2] ?? 0, roost?.name ?? 'The Roost', ICONS.home, 'is-home');
+    this.home = mk('roost', roost?.position[0] ?? 0, roost?.position[2] ?? 0, roost?.name ?? 'Windhaven', ICONS.home, 'is-home');
     this.shrineMarker = mk('first-wind', 0, 0, 'First Wind shrine', ICONS.landmark, 'is-shrine');
     this.waypoint = mk('waypoint', 0, 0, '', ICONS.waypoint, 'is-waypoint');
     this.waypointOn = new LiveClass(this.waypoint.el, 'dw-hidden');
@@ -656,7 +656,7 @@ export class Hud {
     }
     if (!this.beyondBoundary && flying && near) {
       this.beyondBoundary = true;
-      this.notices.push({ key: 'boundary', text: 'The winds of the Drift turn you back', sub: 'Follow the compass home to the Roost', icon: 'wing', priority: 3, life: 6 });
+      this.notices.push({ key: 'boundary', text: 'The winds of the Drift turn you back', sub: 'Follow the compass home to Windhaven', icon: 'wing', priority: 3, life: 6 });
     } else if (this.beyondBoundary && home) {
       this.beyondBoundary = false;
     }

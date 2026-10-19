@@ -16,6 +16,7 @@ Evidence applies to the named tested head/tree/build and environment. Historical
 | [Reticle 0fcc709](WINDLINE_RETICLE_0FCC709.md) | Raw historical captures and exact source identity; later status is separate. |
 | [Lantern Dash review](LANTERN_DASH_REVIEW.md) | Private review workflow, not human usability or release approval. |
 | [G8a capability sites](G8A_CAPABILITY_SITES.md) | Playtest plan with QA questions, plus measured before/after gates and captures (staged and scripted) of the perch and the Keyhole; images not committed. |
+| [QA pass 2026-10-18](QA_PASS_2026-10-18.md) | Typecheck, vitest, build and smoke on the PR #10–#12 stack and the Windhaven label branch; code-audit findings on G3/G3b/G3c (source inspection, plus sky captures for the rampart seam). |
 | [G4 bond expression v1](G4_BOND_V1.md) | Staged headless captures of the Windhaven greeting and the anticipatory lean, with hashes; images not committed. |
 
 ## New evidence record

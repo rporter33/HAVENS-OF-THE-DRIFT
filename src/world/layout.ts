@@ -209,7 +209,7 @@ function buildLayout(): WorldLayout {
   // --- Landmark islands ----------------------------------------------------------------------
   islands.push(
     island({
-      id: id(), kind: 'roost', landmark: 'roost', name: 'Windward Roost',
+      id: id(), kind: 'roost', landmark: 'roost', name: 'Windhaven',
       x: 0, y: 240, z: 0, radius: 170, outline: 0.14, hills: 3, depth: 170, lip: 11,
       flatCenter: 0.55, trees: 0.18, grass: 1, waterfalls: 1,
     }),
@@ -430,8 +430,8 @@ function buildLayout(): WorldLayout {
   ];
 
   const landmarks: LandmarkDef[] = [
-    { id: 'roost', name: 'Windward Roost', description: 'The rookery. Stables, banners and the start of every journey.', position: [0, 300, 0] },
-    { id: 'gullrest', name: "Gull's Rest", description: 'A quiet meadow a short glide from the Roost.', position: [560, 360, 420] },
+    { id: 'roost', name: 'Windhaven', description: 'The starting haven. Stables, rookery towers, banners and the start of every journey.', position: [0, 300, 0] },
+    { id: 'gullrest', name: "Gull's Rest", description: 'A quiet meadow a short glide from Windhaven.', position: [560, 360, 420] },
     { id: 'cascade', name: 'Cascade Isle', description: 'Five falls pour off its rim into the cloud sea.', position: [820, 520, -520] },
     { id: 'rootfall', name: 'Rootfall', description: 'An old forest whose roots hang a hundred meters into the sky.', position: [340, 700, 1000] },
     { id: 'observatory', name: 'The Old Observatory', description: 'Whoever charted the winds here left their dome behind.', position: [-1500, 480, 150] },

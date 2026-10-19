@@ -48,7 +48,7 @@ try {
      for(const selector of ['.dw-tip','.dw-tip--gauge','.dw-prompt','.dw-toasts','.dw-flightinfo-notes']){
       const el=document.querySelector(selector);el.hidden=false;el.classList.add('is-on');el.style.opacity='1';el.dataset.layoutFixture='true';
      }
-     document.querySelector('.dw-prompt-t').textContent='Read the Windward Roost inscription and return to your companion';
+     document.querySelector('.dw-prompt-t').textContent='Read the Windhaven inscription and return to your companion';
      document.querySelector('.dw-tip--gauge .dw-tip-title').textContent='Glide or land to rest';
      document.querySelector('.dw-tip--gauge .dw-tip-body').textContent='Your wyvern recovers stamina while gliding. Find a calm place to rest.';
      document.querySelector('.dw-tip:not(.dw-tip--gauge) .dw-tip-title').textContent='Your first flight';
