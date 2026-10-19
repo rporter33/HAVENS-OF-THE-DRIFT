@@ -1,0 +1,154 @@
+{
+  "schema": 1,
+  "archive_branch": "archive/g12a-white-dragon",
+  "gate": "G12a",
+  "archived_on": "2026-10-19",
+  "hash_convention": "SHA-256 of the exact file bytes; equal to the source files on Robert's PC at archive time",
+  "provenance": {
+    "route": "Astra reference sheet, then Meshy Image to 3D (web UI)",
+    "creator": "Robert Porter",
+    "meshy_plan": "Pro (paid); stated by Robert, Q49, 2026-10-19",
+    "meshy_model_version": "not recorded",
+    "meshy_task_id": "not recorded",
+    "meshy_mode_settings": "not recorded",
+    "views_used": "not recorded",
+    "generated": "2026-10-19 (downloads 10:43 and 10:45 -06:00)",
+    "glb_generator": {
+      "raw": "xpostprocessing",
+      "textured": "pygltflib@v1.16.5"
+    }
+  },
+  "meshy_body": {
+    "vertices": 158671,
+    "triangles": 317346,
+    "islands": 1,
+    "open_edges": 0,
+    "non_manifold_edges": 0,
+    "frame": "glTF +Z forward, +Y up, +X creature left (the game body frame)",
+    "bbox_min": [
+      -0.9503,
+      -0.3143,
+      -0.7551
+    ],
+    "bbox_max": [
+      0.9467,
+      0.3249,
+      0.7552
+    ],
+    "units": "Meshy units (unscaled)"
+  },
+  "files": [
+    {
+      "path": "meshy/white-dragon-raw.glb",
+      "bytes": 7617200,
+      "sha256": "45afc967ae23c44392687f5b8e41c15e4cb13838a7e66167d76a972aaa21f562",
+      "source": "C:\\Users\\Robert\\Projects\\havens-blender-pilot\\meshy\\white-dragon-raw.glb",
+      "source_modified": "2026-10-19T10:43:16-06:00",
+      "role": "Meshy geometry, untextured: the fit input"
+    },
+    {
+      "path": "meshy/white-dragon-textured.glb",
+      "bytes": 20972000,
+      "sha256": "812c8f289c15a2953612493e15b3d40d8e639cbec8679b4be8ab7f943003e447",
+      "source": "C:\\Users\\Robert\\Projects\\havens-blender-pilot\\meshy\\white-dragon-textured.glb",
+      "source_modified": "2026-10-19T10:45:53-06:00",
+      "role": "same triangles with a 4096x4096 JPEG base colour: region reference only"
+    },
+    {
+      "path": "refs/white-dragon-ref-34.png",
+      "bytes": 1312135,
+      "sha256": "d4baac4475ce281f487278b44c9fc9b71bd1c5b24f2dc8267afaee8f4b398b23",
+      "source": "C:\\Users\\Robert\\Projects\\havens-blender-pilot\\refs\\White Dragon\\white-dragon-ref-34.png",
+      "source_modified": "2026-10-19T10:30:28-06:00",
+      "role": "sheet A, three-quarter (approval image)"
+    },
+    {
+      "path": "refs/white-dragon-ref-front.png",
+      "bytes": 1286092,
+      "sha256": "6ef8eb1e09252d20384192c6f43d919f190e83462236f5d19bcb050e601465dd",
+      "source": "C:\\Users\\Robert\\Projects\\havens-blender-pilot\\refs\\White Dragon\\white-dragon-ref-front.png",
+      "source_modified": "2026-10-19T10:30:37-06:00",
+      "role": "sheet B, front"
+    },
+    {
+      "path": "refs/white-dragon-ref-left.png",
+      "bytes": 1324700,
+      "sha256": "a67d22e023fbb5bef31751d9e1fb00bfc6f54fa7381641ec547846a32199526f",
+      "source": "C:\\Users\\Robert\\Projects\\havens-blender-pilot\\refs\\White Dragon\\white-dragon-ref-left.png",
+      "source_modified": "2026-10-19T10:30:46-06:00",
+      "role": "sheet C, left side (proportions measured from it)"
+    },
+    {
+      "path": "refs/white-dragon-ref-back.png",
+      "bytes": 1322959,
+      "sha256": "55df96d6649737e9dfd7b8aba5a28b075f960bf2da103b0e897299fbb4552010",
+      "source": "C:\\Users\\Robert\\Projects\\havens-blender-pilot\\refs\\White Dragon\\white-dragon-ref-back.png",
+      "source_modified": "2026-10-19T10:30:57-06:00",
+      "role": "sheet D, back"
+    },
+    {
+      "path": "refs/White elder dragon anatomy reference.png",
+      "bytes": 1338852,
+      "sha256": "9903aafa4736bd2978cb8120b28286a960e74d53506c069cdf631a6447fde3d1",
+      "source": "C:\\Users\\Robert\\Projects\\havens-blender-pilot\\refs\\White Dragon\\White elder dragon anatomy reference.png",
+      "source_modified": "2026-10-19T10:24:19-06:00",
+      "role": "earlier three-quarter view, same creature"
+    },
+    {
+      "path": "refs/white-dragon-parts.png",
+      "bytes": 1423405,
+      "sha256": "0d116811065e22bace348e6a7b09b523349355abbc49f63759a6c88099c7c143",
+      "source": "C:\\Users\\Robert\\Projects\\havens-blender-pilot\\refs\\White Dragon\\white-dragon-parts.png",
+      "source_modified": "2026-10-19T10:36:09-06:00",
+      "role": "step 1b: head ornaments and tail fin"
+    },
+    {
+      "path": "refs/white-dragon-variants-horns.png",
+      "bytes": 1602348,
+      "sha256": "d5b0a093d565859050a126b526afeafec3db00ba9ab8cb151a10053a9f5ece49",
+      "source": "C:\\Users\\Robert\\Projects\\havens-blender-pilot\\refs\\White Dragon\\white-dragon-variants-horns.png",
+      "source_modified": "2026-10-19T10:39:17-06:00",
+      "role": "step 1c: horn variants"
+    },
+    {
+      "path": "refs/white-dragon-variants-whiskers.png",
+      "bytes": 1481517,
+      "sha256": "11a47ad17e44c4bdc5f50f167226908906695d9107f813e66baf2e4d89ca0c9f",
+      "source": "C:\\Users\\Robert\\Projects\\havens-blender-pilot\\refs\\White Dragon\\white-dragon-variants-whiskers.png",
+      "source_modified": "2026-10-19T10:39:39-06:00",
+      "role": "step 1c: whisker variants"
+    },
+    {
+      "path": "refs/white-dragon-variants-frill.png",
+      "bytes": 1490486,
+      "sha256": "4baf2224cdd42bae1eebf92575743059128b19e03fa6dfedb3b2cefd7592c546",
+      "source": "C:\\Users\\Robert\\Projects\\havens-blender-pilot\\refs\\White Dragon\\white-dragon-variants-frill.png",
+      "source_modified": "2026-10-19T10:40:45-06:00",
+      "role": "step 1c: frill variants"
+    },
+    {
+      "path": "refs/white-dragon-variants-tail.png",
+      "bytes": 1460423,
+      "sha256": "04695c61741b9b657de26a48ab819599ede0b326ef1dc0676e22518d01932408",
+      "source": "C:\\Users\\Robert\\Projects\\havens-blender-pilot\\refs\\White Dragon\\white-dragon-variants-tail.png",
+      "source_modified": "2026-10-19T10:41:32-06:00",
+      "role": "step 1c: tail tip variants"
+    }
+  ],
+  "not_archived": [
+    {
+      "path": "refs/White Dragon/WHITE_DRAGON_MODEL_KIT.md",
+      "bytes": 13661,
+      "sha256": "eabb924eb752b92aa4e1b920a7fc18c3cde0edece17af29f00d3b453ab002877",
+      "reason": "older copy of the repository kit, without Q49"
+    },
+    {
+      "path": "meshy/white-dragon-remesh-30k.glb",
+      "reason": "optional fallback, not downloaded"
+    },
+    {
+      "path": "meshy/white dragon/",
+      "reason": "empty folder"
+    }
+  ]
+}
