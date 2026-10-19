@@ -115,10 +115,10 @@ Task ID or model URL:
 Mode and settings: High Detail, symmetry on/off, texture on/off
 Views used: front / left / back (and any changes)
 Date generated:
-Plan tier: free or paid
+Plan tier: Pro (paid), or say if it has changed
 ```
 
-The plan tier matters for rights: Meshy's terms (as summarized in the Meshy guide) give free-tier output under CC BY 4.0 with attribution and paid output to you as owner. Private visibility alone is not a no-training commitment.
+The plan tier matters for rights. Robert's account is on the **Pro plan** (Q49), and Meshy's terms (as summarized in the Meshy guide) give paid-plan output to the subscriber as owner, so the dragon model is his for Blender and game use. Free-tier output would instead fall under CC BY 4.0 with attribution. Record the tier anyway, because ownership follows the plan in force on the day it is generated. Private visibility alone is not a no-training commitment.
 
 ## What happens next (Claude, G12a)
 

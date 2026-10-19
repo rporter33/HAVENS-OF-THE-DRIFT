@@ -12,6 +12,7 @@ Keep this file short: one checkpoint, overwritten each session. Move the previou
     - `look.ts`: flights, five part slots, the white flight's palette, and the hue shift as an OKLCH turn holding lightness and chroma, clamped to ±8°.
     - `catalog.ts`: the white elder's parts from render 08 and its look.
     - `proportions.ts` and `rig.ts`: the six-limb skeleton in the wyverns' conventions, 64 bones (tongue and wing-claw bones dropped). It stands on four feet at 3.0 m, spreads to 20 m, roots the wings mid-back and seats a rider between the neck and the wing roots.
+  - **Meshy plan (Q49):** Robert's account is on the Pro plan, so models generated on it are his for Blender and game use. This is recorded in the decision log, the decisions table, the Meshy guide and the model kit.
   - **Accuracy:** render 08 was measured against the elder (readings in `proportions.ts` and [the design](design/WHITE_DRAGON.md)), and the rig tests hold each reading within ±15%. Measuring corrected the model kit's prompt (wing roots mid-back, not over the shoulders; span about the dragon's length, not twice chest to hips) and the design doc's resting heights.
 - **Tests,** run on `8209a23`; all green:
   - typecheck clean;

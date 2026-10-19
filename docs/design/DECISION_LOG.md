@@ -177,3 +177,18 @@ Follow-ups, with recommendations:
 - **48c. Who customizes:** authored looks for the elders' dragons now; the player customizes a dragon once dragons are mounts (R3, Q47b). *Recommendation: build the look data once, so the elders and a later stable use the same thing.*
 
 **Follow-ups answered 2026-10-19.** Robert: "Parts - across flights, hue shift is good, we customize the elders they're characters." The "parts" reading is confirmed. 48a: every part fits every flight's dragon. 48b: ±8°, as proposed. 48c: the elders' dragons are characters whose looks we author; this answer gives the player no dragon customization.
+
+### Q49 · Meshy plan: who owns the generated models? — answered 2026-10-19
+Robert: "mark it down that i have meshy pro plan so we own these models for blender and game use."
+
+Recorded:
+- Robert's Meshy account is on the **Pro plan**, which is paid.
+- Under Meshy's terms as the [Meshy guide](../../Art%20and%20Assets/Guides/meshy/README.md#provenance-record-for-the-next-authorized-asset-task) summarizes them (checked 2026-10-14), paid-plan output belongs to the subscriber to the extent the law allows. So models Robert generates on this plan are his to edit in Blender and to ship in the game.
+- This covers the Harrier trial's body, made on his paid plan (Q38), and the white dragon's (G12).
+
+What still applies:
+- **Ownership follows the plan in force when a model is generated.** Each asset's provenance still records the plan tier and the date.
+- **Training use.** Pro isn't Enterprise. Meshy's terms allow it to use non-Enterprise inputs and outputs for training unless otherwise agreed. That doesn't change who owns the output.
+- **Community.** Nothing goes to Meshy's Community, where published output becomes CC0.
+
+This is Robert's statement plus the guide's summary of the terms, not a legal review of any one asset.
