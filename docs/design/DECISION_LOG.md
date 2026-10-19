@@ -143,7 +143,7 @@ Follow-up answered the same night: green blends toward teal and yellow-green; bl
 
 Numbering continues at Q47; Q37 to Q46 were recorded on parallel branches (PR #12, `claude/loving-gates-7sydp9`, `claude/pensive-pasteur-hgbhg0`).
 
-### Q47 · Open the white dragon gate (G12), and on what terms? — open
+### Q47 · Open the white dragon gate (G12), and on what terms? — answered 2026-10-19
 Robert, 2026-10-19: "Begin work on the white dragon." That is read as the white clan's elder dragon in [render 08](../art/targets/08-sleek-dragon-elder.png): four legs plus two wings, ivory toward powder blue (Q36). Nothing four-legged exists in source; the wyvern rig, animator and flight model are two-legged throughout. The [white dragon design](WHITE_DRAGON.md) sets out the route and proposes gate G12 in three steps: G12a the six-limb skeleton and the fitted body (dev-only), G12b a dev-only resting showcase judged against render 08, G12c the dragon on its tower in the world. The [model kit](../../Art%20and%20Assets/Creatures%20and%20Customization/WHITE_DRAGON_MODEL_KIT.md) holds Robert's Astra and Meshy steps, which need no gate. Each part below is a separate answer:
 - **a. Open G12a now,** ahead of the fidelity plan's order (which leaves the elder dragon for after the Harrier, rider, mounts and islands)? *Recommendation: yes for G12a, which touches no shipped creature; G12b after PR #11 lands, since it reuses #11's trial loading pattern.*
 - **b. Its role:** an elder you meet, resting on its tower (R1); also flying over the haven (R2); or a mount you ride (R3, which Q1 promises once the rig exists). *Recommendation: build R1, with the skeleton made to R3's standard (full leg chains, a saddle socket between the wing roots) so a mount never needs a second rig. R2 and R3 each need their own gate.*
@@ -152,7 +152,17 @@ Robert, 2026-10-19: "Begin work on the white dragon." That is read as the white 
 - **e. Its elder:** the figure in the white mantle at its shoulder in G12c as a still figure, or later with the speaking characters (G9). *Recommendation: later; G12c shows the dragon and the banner.*
 - **f. Its name,** and whether the dragon has a voice of its own.
 
-Nothing in the game changes until part a is answered.
+**Answered 2026-10-19.** Robert: "47 and it does go are unshaven. Go ahead with accuracy." Read as dictated speech for "47 as recommended, and it does go at Windhaven"; say if that reading is wrong. So:
+- **a.** G12 is open. Its steps go in order, G12a then G12b then G12c, each its own PR. G12c reaches the normal build only after Robert accepts G12b's captures.
+- **b.** R1, an elder you meet, with the skeleton built to the mount standard.
+- **c.** A Meshy body fitted in Blender to a skeleton the game owns.
+- **d.** The tower stands at Windhaven.
+- **e.** The elder figure waits; G12c shows the dragon and the banner.
+- **f.** Still open, as Q47f.
+
+"With accuracy" is applied as: numbers come from a named source (render 08 now, the approved reference sheet when it exists), provisional ones are marked as such, and every claim about the build is backed by a test or a capture.
+
+### Q47f · The white elder dragon's name, and whether it speaks — open
 
 ### Q48 · Dragon customization, and colour within a flight — answered 2026-10-19
 Robert, on the white dragon plan: "each of these colors and dragons need customization with parks. Their colors are a small hue change for variation within flight." Read as *parts*: every flight's dragons are customized with interchangeable parts, and dragons of the same flight differ from one another by a small hue change. Say if "parks" meant something else.
@@ -165,3 +175,5 @@ Follow-ups, with recommendations:
 - **48a. Parts across flights:** every part fits every flight's dragon, or each flight has its own parts. *Recommendation: every part fits every flight; colour carries the flight.*
 - **48b. Size of the hue change:** *proposed ±8° of hue around the flight's palette, the whole palette turning together, lightness and saturation held; tuned in G12b's lineup.*
 - **48c. Who customizes:** authored looks for the elders' dragons now; the player customizes a dragon once dragons are mounts (R3, Q47b). *Recommendation: build the look data once, so the elders and a later stable use the same thing.*
+
+**Follow-ups answered 2026-10-19.** Robert: "Parts - across flights, hue shift is good, we customize the elders they're characters." The "parts" reading is confirmed. 48a: every part fits every flight's dragon. 48b: ±8°, as proposed. 48c: the elders' dragons are characters whose looks we author; this answer gives the player no dragon customization.

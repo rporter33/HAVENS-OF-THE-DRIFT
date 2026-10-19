@@ -2,7 +2,7 @@
 
 [Back to Creatures and Customization](README.md)
 
-Written 2026-10-19 for the proposed gate G12a ([white dragon design](../../docs/design/WHITE_DRAGON.md), open question Q47). Steps 1 and 2 of the same route the Harrier took (Q38): Robert makes a reference sheet in Astra, then generates the base mesh in Meshy. Claude takes it from the Meshy download. Making the images and the Meshy model is Robert's call and needs no gate; bringing the result into the game does. Grounded in the Harrier model kit (`HARRIER_MODEL_KIT.md` in this folder, on PR #11 until it merges), the [Meshy guide](../Guides/meshy/README.md), the [base-model prompts](../Guides/base-model-prompts/README.md), the [model budgets](../Guides/model-budgets/README.md) and [target render 08](../../docs/art/targets/08-sleek-dragon-elder.png).
+Written 2026-10-19 for gate G12a ([white dragon design](../../docs/design/WHITE_DRAGON.md); G12 opened the same day, Q47). Steps 1 and 2 of the same route the Harrier took (Q38): Robert makes a reference sheet in Astra, then generates the base mesh in Meshy. Claude takes it from the Meshy download. Making the images and the Meshy model is Robert's call and needs no gate; bringing the result into the game does. Grounded in the Harrier model kit (`HARRIER_MODEL_KIT.md` in this folder, on PR #11 until it merges), the [Meshy guide](../Guides/meshy/README.md), the [base-model prompts](../Guides/base-model-prompts/README.md), the [model budgets](../Guides/model-budgets/README.md) and [target render 08](../../docs/art/targets/08-sleek-dragon-elder.png).
 
 ## What we are making
 
@@ -10,7 +10,7 @@ One **base body**: the white clan's elder dragon with render 08's form, as an un
 
 Everything thin or ornamental comes later as separate parts, so it can be built cleanly and swapped: the branching horns, the long whiskers, the cheek fins, the dorsal spines and the tail fin. Parts are how every flight's dragons are customized (Q48), so one body serves all five flights. Meshy handles thin strands and antler tines badly, and in the Harrier's case separate parts kept the stable's customization working.
 
-The colors in the sheet are flat and only mark regions. Meshy's texture is not used in the game; the game shader paints the hide. The boundaries help Claude mark the belly, back and hide regions in Blender. The values are a proposal for the white flight's base palette (Q36: ivory toward powder blue) and are settled as palette data with the other dragonflight colors. Individual white dragons differ from it by a small hue change the game applies (Q48), so the sheet uses the base.
+The colors in the sheet are flat and only mark regions. Meshy's texture is not used in the game; the game shader paints the hide. The boundaries help Claude mark the belly, back and hide regions in Blender. The values are the white flight's base palette, read from render 08 (Q36: ivory toward powder blue) and are settled as palette data with the other dragonflight colors. Individual white dragons differ from it by a small hue change the game applies (Q48), so the sheet uses the base.
 
 | Region | Sheet color | Notes |
 |---|---|---|
@@ -118,9 +118,9 @@ Plan tier: free or paid
 
 The plan tier matters for rights: Meshy's terms (as summarized in the Meshy guide) give free-tier output under CC BY 4.0 with attribution and paid output to you as owner. Private visibility alone is not a no-training commitment.
 
-## What happens next (Claude, once G12 is opened)
+## What happens next (Claude, G12a)
 
-Not started; each step needs the gate. The design doc has the full plan.
+G12 is open. The look data, the parts slots and the skeleton are built in code ahead of the sheet, with proportions from render 08 marked provisional; the steps below that need the sheet or the Meshy body wait for them. The design doc has the full plan.
 
 1. **The skeleton first, in code.** The game owns the skeleton, as it does for the wyverns: a six-limb rig definition written to the approved sheet's proportions, exported to Blender the way G3b exported the Harrier.
 2. **Blender fit.** Audit and remesh the Meshy body, cut the wings at the root, fit it to the game skeleton (generalising `harrier_meshy_fit.py` from G3b), skin weights, and bake the region, belly and back attributes the game shader reads. LODs below the bare body, at budgets set in the gate.

@@ -27,8 +27,9 @@ Written 2026-10-17 from the [decision log](DECISION_LOG.md) (29 answered, 2 open
 | G9 | Quintus | Speaker id only | Quintus present at Windhaven with 3 to 5 lines tied to M1 First Lead; no dialogue system beyond the existing tips/banner UI | Lines appear at the right triggers; no save schema change | S |
 | G10 | Secondary combat prototype | Nothing | One optional pursuer encounter off the race path; no damage model, evasion only | Prototype behind a debug flag until reviewed | M |
 | G11 | Networking feasibility | Nothing | Two clients see each other's position at 10 Hz on a test server; no gameplay | Latency and determinism report; no runtime dependency added to the game build | M |
+| G12 | White elder dragon (opened 2026-10-19, Q47) | Nothing four-legged; the wyvern rig is two-legged with wing-arms ([WHITE_DRAGON.md](WHITE_DRAGON.md)) | G12a six-limb skeleton, fitted Meshy body, parts and flight colour (dev-only); G12b resting showcase; G12c on its tower at Windhaven | Anatomy and look tests; wyvern suites and goldens unchanged; captures beside render 08 scored by Robert; G12c's world checks | L |
 
-Not scheduled: dragon rig (waits on Meshy or Blender output; proposed as G12 in [WHITE_DRAGON.md](WHITE_DRAGON.md), Q47), Craghorn (name open), aerial ball sport (after shared airship), comic website (separate release track), Codex ship gameplay (after G5).
+Not scheduled: a dragon as a mount or in flight (G12 builds the rig for the elder at rest), Craghorn (name open), aerial ball sport (after shared airship), comic website (separate release track), Codex ship gameplay (after G5).
 
 ## Open items that block a gate
 

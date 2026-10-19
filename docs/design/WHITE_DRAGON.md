@@ -1,8 +1,8 @@
 # The white dragon
 
-[Design index](README.md) · [Decision log](DECISION_LOG.md#q47--open-the-white-dragon-gate-g12-and-on-what-terms--open) · [Model kit](../../Art%20and%20Assets/Creatures%20and%20Customization/WHITE_DRAGON_MODEL_KIT.md)
+[Design index](README.md) · [Decision log](DECISION_LOG.md#q47--open-the-white-dragon-gate-g12-and-on-what-terms--answered-2026-10-19) · [Model kit](../../Art%20and%20Assets/Creatures%20and%20Customization/WHITE_DRAGON_MODEL_KIT.md)
 
-Written 2026-10-19 against main `ae839d9`, from Robert's "Begin work on the white dragon". Design lane: a proposal that opens nothing. The decisions are Q47 and Q48. Statements about source are from reading it, cited by file and line (wyvern files under `src/creatures/wyvern/`, others under `src/`); nothing here was run.
+Written 2026-10-19 against main `ae839d9`, from Robert's "Begin work on the white dragon". Robert opened gate G12 the same day (Q47) and settled customization (Q48); the dragon's name and voice are still open (Q47f). Statements about source are from reading it, cited by file and line (wyvern files under `src/creatures/wyvern/`, others under `src/`); nothing here was run.
 
 ## What the white dragon is
 
@@ -15,7 +15,7 @@ The white clan's elder dragon, as [render 08](../art/targets/08-sleek-dragon-eld
 | **Approved direction** | Four-legged dragons join the roster when their rig exists (Q1). The five clans and ten elders are game canon, introduced in the comic first (Q13). The Air Nomads, the player culture, carry the white flight (Q23). The game should closely match the renders, dragons included; white blends toward ivory and powder blue "as the elder dragon render (08) shows" (Q36). Creature bodies may come from Meshy if Claude can edit the Blender source to fit the game (Q20, Q38). Every flight's dragons are customized with parts, and dragons of one flight differ by a small hue change (Q48). The [render brief](../art/targets/RENDER_BRIEF.md): four legs plus two wings, sleeker and larger than the wyverns, swept branching horns and whiskers, ivory and powder blue, belongs to the clan elders. |
 | **Future ideas, not authorized** | The dragon as a mount, a dragon that flies over the haven, the elder speaking, the five-rival course with one rival per flight (Q44). The other four flights' elder dragons are canon (Q13) but not scheduled. |
 
-The [storyboard](../website/storyboard/chapter-01/README.md) puts one dragon elder and one wyvern elder per clan on a broad tower-top platform above each settlement. Since the Air Nomads are the white flight, this reads as the player culture's own elder dragon; where its tower stands is Q47d.
+The [storyboard](../website/storyboard/chapter-01/README.md) puts one dragon elder and one wyvern elder per clan on a broad tower-top platform above each settlement. Since the Air Nomads are the white flight, this reads as the player culture's own elder dragon; its tower stands at Windhaven (Q47d).
 
 ## Its form, from render 08
 
@@ -61,7 +61,7 @@ The wyvern is "two-legged" but already walks on four feet, pterosaur-style. Its 
 
 No imported creature loader exists on main. The Harrier's Meshy trial (`creatures/wyvern/trial.ts`, `scripts/blender/harrier_meshy_fit.py`) is on PR #11, unmerged. It binds a Blender-fitted body, by bone name, to a skeleton the game itself defines.
 
-## The route (recommended)
+## The route (chosen, Q47)
 
 1. **Its own module,** `src/creatures/dragon/`. It's not a `BreedId`, so no wyvern table, test, golden or save path changes. Shared helpers are imported, not edited. If one has to change, the wyvern goldens prove the change is a no-op for the wyverns.
 2. **The game owns the skeleton,** as it does for the wyverns: a six-limb rig definition in code, written to the approved reference sheet. It's built to the mount standard from the start, with full foreleg chains and a seat socket between the wing roots, so a mount later never needs a second rig.
@@ -94,10 +94,10 @@ Robert, 2026-10-19 (Q48): every flight's dragons are customized with parts, and 
 
 **What the wyvern has.** The parts are slots in the cosmetic catalog: pattern, horns, frill, tail tip and saddle (`cosmetics/catalog.ts:33-70`), each with unlocks from feathers, medals and relics. PR #11 adds an interchangeable head slot (Q39). Antlers and cheek fans are already wyvern options (`catalog.ts:48,56`). A wyvern's colours are free hex picks: `WyvernLook` says "Colors are always free" (`core/types.ts:479-493`).
 
-**The dragon's look (proposed).**
-- **Data:** its flight (white, red, green, blue or black; black also picks its violet or ember tint), a hue shift, and one part per slot. It's authored data for the elders now, and the same data feeds a stable later (Q48c). It isn't a `WyvernLook`, so wyvern saves don't change.
-- **Colours are derived, not picked.** Each flight has a palette (hide, plates, belly, membrane, wing bones, claws, eyes), and a dragon's palette is the flight's turned by its hue shift. The shift is proposed at ±8° (Q48b), with the whole palette turning together and lightness and saturation held, so every dragon of a flight reads as that flight. The shift is a stored number, never random at runtime.
-- **Parts fit every flight** (Q48a, recommended). Every dragon shares one body and one skeleton, and each part attaches to named bones, so a part built once fits all five flights.
+**The dragon's look.**
+- **Data:** its flight (white, red, green, blue or black; black also picks its violet or ember tint), a hue shift, and one part per slot. The elders' dragons are characters whose looks we author (Q48c); there is no player-facing dragon customization. It isn't a `WyvernLook`, so wyvern saves don't change.
+- **Colours are derived, not picked.** Each flight has a palette (hide, plates, belly, membrane, wing bones, claws, eyes), and a dragon's palette is the flight's turned by its hue shift. The shift is at most ±8° (Q48b), with the whole palette turning together and lightness and saturation held, so every dragon of a flight reads as that flight. The shift is a stored number, never random at runtime.
+- **Parts fit every flight** (Q48a). Every dragon shares one body and one skeleton, and each part attaches to named bones, so a part built once fits all five flights.
 
 | Slot | The white elder's part (render 08) | Other options to draw on |
 |---|---|---|
@@ -127,9 +127,9 @@ Only the white flight has values so far (the [model kit](../../Art%20and%20Asset
 | **R2, flying over the haven** | Wing poses and a beat for back-mounted wings, four legs tucking in flight, take-off and landing from the tower, a scripted path. Presentation only, no flight model. | Its own gate |
 | **R3, a mount (Q1)** | A creature-type key beside `BreedId` so the per-breed tables can hold it, flight stats, the four-foot gait with real foreleg IK, a saddle between the wing roots (a girth becomes possible), rider-fit and mounted tests, records and ghosts per breed (Q7), the save sanitizer accepting the id with no schema change, the dragon expert's review. Size L to XL. | Its own gate |
 
-*Recommendation: R1 now. The skeleton is built to R3's standard, so neither R2 nor R3 needs a second rig.*
+Chosen (Q47b): R1 now. The skeleton is built to R3's standard, so neither R2 nor R3 needs a second rig.
 
-## Proposed gate G12: the white dragon at rest
+## Gate G12: the white dragon at rest (opened 2026-10-19)
 
 Three steps, each its own PR with its own checks. None changes `src/flight`, `src/player`, the save, controls or any wyvern module's output.
 
@@ -137,14 +137,14 @@ Three steps, each its own PR with its own checks. None changes `src/flight`, `sr
 |---|---|---|---|
 | **G12a** Skeleton, body and parts (dev-only) | `src/creatures/dragon/`: the six-limb rig, proportions from the approved sheet, an export of the bind skeleton for Blender (as G3b exported the Harrier). `scripts/blender/dragon_meshy_fit.py` generalised from the Harrier fit. The dragon's look data, the five slots and the white elder's part in each. The white flight's palette and the hue shift. The fitted GLB under `src/assets/` with its provenance and register entry (route, model and version, task id or "not recorded", plan tier, date). | New anatomy tests: six limbs, symmetric chains, the bone budget, the triangle budget per LOD (exploratory: 16,000 to 20,000 bare, up to 24,000 with parts, from the [model budgets](../../Art%20and%20Assets/Guides/model-budgets/README.md)), bind proportions within tolerance of the sheet. Every part attaches to its bones and stays inside the accessory allowance. Derived colours stay within the bound and are the same on every run. A fit report: every vertex weighted, at most four influences. All wyvern suites and the pose golden unchanged. Typecheck, full vitest, smoke 15/15. | M |
 | **G12b** Resting showcase (dev-only) | `?view=white-dragon`: the dragon in render 08's pose on a stand-in platform, the idle life layer, its own driver, a camera matched to render 08, a capture manifest. A lineup of white dragons across the hue shift and part swaps. | Captures beside render 08 scored on the brief's three questions: identity, fidelity, reachability. In the lineup, Robert judges that every dragon reads as the white flight and that each part reads at gameplay distance; the ±8° shift is tuned here. The idle is stable across frame rates, as the wyvern tail test checks. No console errors; smoke 15/15. Robert times Medium on his GPU. | S to M |
-| **G12c** On its tower | A tower-top platform at the chosen haven (Q47d), built with that haven's kit. Colliders: a cylinder for the tower and a `colChain` along the resting body. The white banner. The idle reacts to the player nearby. In the normal build once Robert has accepted G12b. | Dressing and editor checks green, with protected routes clear (spawn, stable door, launch deck). Collision within half a meter of what is seen. Race lines, cloud clearance and the Windline sweep unchanged. Flight replays bit-identical. Captures from render 10's approach and from the plaza. Draw calls at Medium within budget. | M |
+| **G12c** On its tower | A tower-top platform at Windhaven (Q47d), built with the haven's kit. Colliders: a cylinder for the tower and a `colChain` along the resting body. The white banner. The idle reacts to the player nearby. In the normal build once Robert has accepted G12b. | Dressing and editor checks green, with protected routes clear (spawn, stable door, launch deck). Collision within half a meter of what is seen. Race lines, cloud clearance and the Windline sweep unchanged. Flight replays bit-identical. Captures from render 10's approach and from the plaza. Draw calls at Medium within budget. | M |
 
 **Later, not in G12:** the other four flights' elder dragons. Each is a palette and a parts set on the same body, made from its own render.
 
 **Order and dependencies:**
 - G12a's skeleton can start from the approved reference sheet before the Meshy body arrives.
 - The fit and G12b reuse PR #11's trial pattern, so #11 should land first, as the fidelity plan's Phase 0 also asks.
-- G12c depends on Q47d and, at Windhaven, on the Aegean kit: a platform big enough for a 20 m creature changes the haven's silhouette, which no current tower allows for (the rookery towers are 3.4 to 4.2 m in radius; `world/dressing/structures/roostPlan.ts:64-69`).
+- G12c depends on Windhaven's Aegean kit: a platform big enough for a 20 m creature changes the haven's silhouette, which no current tower allows for (the rookery towers are 3.4 to 4.2 m in radius; `world/dressing/structures/roostPlan.ts:64-69`).
 
 ## What this doesn't change
 
@@ -156,21 +156,14 @@ The flight constants and the 120 Hz step, `driftwing.save.v1` and `driftwing.bon
 - **The wing root.** It sits over a moving shoulder, and weighting it is the hard part of a six-limb body. The Harrier trial fitted a body only and kept the procedural wings.
 - **Thin parts.** Horns and whiskers are thin and alias or vanish at distance. Only LOD0 is used at runtime today (`Wyvern.ts:291`); one instance can afford it, but the parts need a distance fade.
 - **Scale.** A creature of 20 m or more on a tower competes with the haven's silhouette, and render 10 doesn't show one.
-- **The elder.** The figure at its shoulder needs a mantle and an NPC stance, neither of which the rider system has. Q47e proposes leaving them for later.
+- **The elder.** The figure at its shoulder needs a mantle and an NPC stance, neither of which the rider system has. They wait (Q47e).
 
-## Decisions for Robert
+## Decisions
 
-See [Q47](DECISION_LOG.md#q47--open-the-white-dragon-gate-g12-and-on-what-terms--open):
-- (a) open G12a now;
-- (b) the role;
-- (c) the body route;
-- (d) where the tower stands;
-- (e) the elder figure;
-- (f) its name and voice.
+Answered 2026-10-19 ([Q47](DECISION_LOG.md#q47--open-the-white-dragon-gate-g12-and-on-what-terms--answered-2026-10-19), [Q48](DECISION_LOG.md#q48--dragon-customization-and-colour-within-a-flight--answered-2026-10-19)):
+- G12 is open: R1, a Meshy body on a game-owned skeleton, the tower at Windhaven, the elder figure later.
+- Parts fit every flight, the hue shift is ±8°, and the elders' dragons are authored characters.
 
-See [Q48](DECISION_LOG.md#q48--dragon-customization-and-colour-within-a-flight--answered-2026-10-19) for the customization follow-ups:
-- (a) whether parts fit every flight;
-- (b) the size of the hue shift;
-- (c) who customizes.
+Open: the dragon's name and whether it speaks ([Q47f](DECISION_LOG.md#q47f--the-white-elder-dragons-name-and-whether-it-speaks--open)).
 
-The Astra reference sheet in the [model kit](../../Art%20and%20Assets/Creatures%20and%20Customization/WHITE_DRAGON_MODEL_KIT.md) needs no gate and is the first input everything else waits on.
+The Astra reference sheet in the [model kit](../../Art%20and%20Assets/Creatures%20and%20Customization/WHITE_DRAGON_MODEL_KIT.md) is Robert's step and the first input the body and the final proportions wait on.
