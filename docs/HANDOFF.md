@@ -5,7 +5,7 @@ Keep this file short: one checkpoint, overwritten each session. Move the previou
 ## Checkpoint 2026-10-19 (second session): G12a, the sheet measured and the Meshy body fitted
 
 - **Objective:** continue gate G12a (Q47) with Robert's approved Astra sheet and Meshy body. Check them against the model kit, re-measure the skeleton from side view C and tighten the rig tests, archive the raw files with SHA-256, export the bind skeleton and fit the body in Blender. Nothing visible before G12b.
-- **Branch:** `gate/g12a-white-dragon`, continuing from `194aa2c` (the first G12a session, merged to main as PR #14). Archive branch `archive/g12a-white-dragon` (`4725479`, pushed).
+- **Branch:** `gate/g12a-white-dragon`, continuing from `194aa2c` (the first G12a session, merged to main as PR #14). This session's work is [PR #15](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/15) into main, ready for review. Archive branch `archive/g12a-white-dragon` (`4725479`, pushed).
 - **Completed:**
   - **Checked:** the four sheet views and the Meshy body pass the kit's checklist: six limbs, wing roots mid-back, membranes clear of the legs, no horns or whiskers. There are three departures. Sheet C ties the membrane behind the hip. The Meshy wings root further forward and its tail curves left, both corrected by the fit. Side view C's raised wing is out of scale with the front view. Details are in [the white dragon](design/WHITE_DRAGON.md#the-approved-sheet-and-the-meshy-body).
   - **Archived:** 12 raw files (the Meshy raw and textured GLB, the four views, an earlier three-quarter view, the parts sheet and four variant sheets) on the orphan branch, with README and MANIFEST. Each blob's SHA-256 matches its source. The Meshy model, version and task ID weren't recorded at hand-over.
@@ -43,5 +43,5 @@ Keep this file short: one checkpoint, overwritten each session. Move the previou
   - The decision log is still forked across branches (Q37 to Q46).
   - This session first tried to build the archive branch in a worktree. Creating it failed on Windows long paths, and the commands after it (`git checkout --orphan`, `git rm`) ran in the main checkout instead. Nothing was lost, since there were no uncommitted changes, and the checkout was restored to `194aa2c` before any further work. The archive was then built with git plumbing, which needs no checkout.
 - **Next authorized action:**
-  - Robert answers Q50, or lets the recommendations stand, and reviews the PR from this branch.
+  - Robert answers Q50, or lets the recommendations stand, and reviews [PR #15](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/15).
   - G12a's parts geometry and LODs, then G12b's resting showcase.
