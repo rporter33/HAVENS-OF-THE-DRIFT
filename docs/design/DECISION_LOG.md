@@ -138,3 +138,57 @@ Built and measured in G8a: with wings folded, a wyvern collides as its body alon
 ### Q36 · How closely the game follows the target renders, and dragonflight color — answered 2026-10-18
 Robert, on the renders in [`docs/art/targets/`](../art/targets/MANIFEST.md): the game's rendering should closely match them, including the look of the dragons and wyverns. Each dragonflight is restricted to its own color but blends into the neighboring hues on the color wheel: the blue flight toward purple, the red flight across orange and yellow. The Codex airship should end up more detailed than its render; that work comes later. This is direction for G3 and G8, not an implementation gate.
 Follow-up answered the same night: green blends toward teal and yellow-green; black, being off the wheel, takes a tint toward deep violet or ember; white toward ivory and powder blue, as the elder dragon render (08) shows.
+
+## Added 2026-10-19 (the white dragon)
+
+Numbering continues at Q47; Q37 to Q46 were recorded on parallel branches (PR #12, `claude/loving-gates-7sydp9`, `claude/pensive-pasteur-hgbhg0`).
+
+### Q47 · Open the white dragon gate (G12), and on what terms? — answered 2026-10-19
+Robert, 2026-10-19: "Begin work on the white dragon." That is read as the white clan's elder dragon in [render 08](../art/targets/08-sleek-dragon-elder.png): four legs plus two wings, ivory toward powder blue (Q36). Nothing four-legged exists in source; the wyvern rig, animator and flight model are two-legged throughout. The [white dragon design](WHITE_DRAGON.md) sets out the route and proposes gate G12 in three steps: G12a the six-limb skeleton and the fitted body (dev-only), G12b a dev-only resting showcase judged against render 08, G12c the dragon on its tower in the world. The [model kit](../../Art%20and%20Assets/Creatures%20and%20Customization/WHITE_DRAGON_MODEL_KIT.md) holds Robert's Astra and Meshy steps, which need no gate. Each part below is a separate answer:
+- **a. Open G12a now,** ahead of the fidelity plan's order (which leaves the elder dragon for after the Harrier, rider, mounts and islands)? *Recommendation: yes for G12a, which touches no shipped creature; G12b after PR #11 lands, since it reuses #11's trial loading pattern.*
+- **b. Its role:** an elder you meet, resting on its tower (R1); also flying over the haven (R2); or a mount you ride (R3, which Q1 promises once the rig exists). *Recommendation: build R1, with the skeleton made to R3's standard (full leg chains, a saddle socket between the wing roots) so a mount never needs a second rig. R2 and R3 each need their own gate.*
+- **c. Body route:** a Meshy body fitted in Blender to a skeleton the game owns, as the Harrier trial did (Q38); or a procedural body grown from the wyvern builder. *Recommendation: Meshy. For the Harrier, the code pass closed the color gap but not the form gap (Q38), and render 08's form is further from anything in code.*
+- **d. Where its tower stands:** at Windhaven, as the player culture's own elder (Q23); on an island of its own; or not placed until the world pass. *Recommendation: Windhaven, built with the Aegean kit (fidelity plan 4.1), since a tower-top platform big enough for it changes the haven's silhouette.*
+- **e. Its elder:** the figure in the white mantle at its shoulder in G12c as a still figure, or later with the speaking characters (G9). *Recommendation: later; G12c shows the dragon and the banner.*
+- **f. Its name,** and whether the dragon has a voice of its own.
+
+**Answered 2026-10-19.** Robert: "47 and it does go are unshaven. Go ahead with accuracy." Read as dictated speech for "47 as recommended, and it does go at Windhaven"; say if that reading is wrong. So:
+- **a.** G12 is open. Its steps go in order, G12a then G12b then G12c, each its own PR. G12c reaches the normal build only after Robert accepts G12b's captures.
+- **b.** R1, an elder you meet, with the skeleton built to the mount standard.
+- **c.** A Meshy body fitted in Blender to a skeleton the game owns.
+- **d.** The tower stands at Windhaven.
+- **e.** The elder figure waits; G12c shows the dragon and the banner.
+- **f.** Still open, as Q47f.
+
+"With accuracy" is applied as: numbers come from a named source (render 08 now, the approved reference sheet when it exists), provisional ones are marked as such, and every claim about the build is backed by a test or a capture.
+
+### Q47f · The white elder dragon's name, and whether it speaks — open
+
+### Q48 · Dragon customization, and colour within a flight — answered 2026-10-19
+Robert, on the white dragon plan: "each of these colors and dragons need customization with parks. Their colors are a small hue change for variation within flight." Read as *parts*: every flight's dragons are customized with interchangeable parts, and dragons of the same flight differ from one another by a small hue change. Say if "parks" meant something else.
+
+Read with Q36. Q36 sets the hues a flight's dragon carries, which can be more than one on the same animal: render 08's white dragon is ivory with powder-blue plates. This answer sets how far individuals of one flight differ: a small hue change, not a free colour. Black has two tints under Q36 (deep violet or ember), so its small change applies within the chosen tint.
+
+What follows in the [white dragon design](WHITE_DRAGON.md#customization-parts-and-flight-colour): a dragon's look is its flight, a bounded hue shift and one part per slot; its colours are derived, not picked. This is direction for G12 and opens no gate. Wyvern colours, free today (`core/types.ts:481`), are not changed by it.
+
+Follow-ups, with recommendations:
+- **48a. Parts across flights:** every part fits every flight's dragon, or each flight has its own parts. *Recommendation: every part fits every flight; colour carries the flight.*
+- **48b. Size of the hue change:** *proposed ±8° of hue around the flight's palette, the whole palette turning together, lightness and saturation held; tuned in G12b's lineup.*
+- **48c. Who customizes:** authored looks for the elders' dragons now; the player customizes a dragon once dragons are mounts (R3, Q47b). *Recommendation: build the look data once, so the elders and a later stable use the same thing.*
+
+**Follow-ups answered 2026-10-19.** Robert: "Parts - across flights, hue shift is good, we customize the elders they're characters." The "parts" reading is confirmed. 48a: every part fits every flight's dragon. 48b: ±8°, as proposed. 48c: the elders' dragons are characters whose looks we author; this answer gives the player no dragon customization.
+
+### Q49 · Meshy plan: who owns the generated models? — answered 2026-10-19
+Robert: "mark it down that i have meshy pro plan so we own these models for blender and game use."
+
+Recorded:
+- Robert's Meshy account is on the **Pro plan**, which is paid.
+- Under Meshy's terms as the [Meshy guide](../../Art%20and%20Assets/Guides/meshy/README.md#provenance-record-for-the-next-authorized-asset-task) summarizes them (checked 2026-10-14), paid-plan output belongs to the subscriber to the extent the law allows. So models Robert generates on this plan are his to edit in Blender and to ship in the game.
+- This covers the Harrier trial's body, made on his paid plan (Q38), and the white dragon's (G12).
+
+What still applies:
+- **Ownership follows the plan in force when a model is generated.** Each asset's provenance still records the plan tier and the date.
+- **Training use.** Pro isn't Enterprise. Meshy's terms allow it to use non-Enterprise inputs and outputs for training unless otherwise agreed. That doesn't change who owns the output.
+- **Community.** Nothing goes to Meshy's Community, where published output becomes CC0.
+
+This is Robert's statement plus the guide's summary of the terms, not a legal review of any one asset.
