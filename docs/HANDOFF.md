@@ -2,22 +2,14 @@
 
 Keep this file short: one checkpoint, overwritten each session. Move the previous entry to [the handoff log](history/handoff/README.md) under its day before writing a new one. Nothing here authorizes new work on its own; the current task from Robert does.
 
-## Checkpoint 2026-10-18: G8a capability sites, ready to playtest
+## Checkpoint 2026-10-19: the Harrier planned to a gold standard
 
-- **Objective:** gate G8a (Q34): build the steep-landing and snap-roll capability sites ahead of G5, at the render brief's fidelity, and set up a playtest.
-- **Branch:** `gate/g8a-capability-sites`, stacked on `design/g5-sites-decision`, which is PR #8 and not yet merged.
+- **Objective:** understand the Harrier mount as it stands and plan its upgrade to a gold standard, then the other breeds. Design lane; no game code changed.
+- **Branch:** `design/harrier-gold-standard` from main `affe784`.
 - **Completed:**
-  - `RockFormShape` (`src/world/rockForm.ts`) is a new signed-distance solid read by terrain, collision, ground, the Windline sweep, race and cloud clearance, and a surface-nets mesher (`mesh/rockFormMesh.ts`). It's painted in the islands' palette through `terrainMaterial`, with LODs and shadow stand-ins.
-  - **Cascade south perch:** 51.5° top, ground only on its plane. No breed lands on it today; every breed can with the unlock.
-  - **Archway Keyhole:** opposed 70° cracks around a 9.5 m chamber. The harrier can't thread it today and can with the ×1.6 snap-roll, at 14–16.5 m/s.
-  - `?capPreview=steep,snap` is a debug-only preview. The session saves nothing.
-  - Playtest plan and QA questions: [G8a QA](qa/G8A_CAPABILITY_SITES.md).
-- **Tests:** see the PR. Typecheck, the full vitest suite and smoke are run before the push. New: `src/world/rockForm.test.ts` and `src/debug/capPreview.test.ts`.
-- **Known issues and decisions for Robert:**
-  - Q35: folded wings thread the Keyhole without a roll. No geometry prevents it; it needs a flight-model call, or acceptance.
-  - Q33: the keyboard double-tap is open.
-  - The skimmer threads the Keyhole without the unlock.
-  - Dismounting on the perch slides the rider off into freefall.
-  - The boosted window is narrow, just above stall.
-  - Target renders aren't in yet; the sites are judged against the brief for now.
-- **Next authorized action:** Robert's playtest, with the plan's questions. Then decide Q33 and Q35. G5 is not opened.
+  - [The Harrier plan](design/HARRIER_GOLD_STANDARD.md): what "gold standard" means (no written bar exists here; built from Q20, Q24, the render brief and G3), a twelve-line acceptance checklist, where the Harrier is today with gameplay-camera evidence, ranked gaps, a five-step proposed gate G3a (baseline, hide language, surfaces, tack, membrane, then render-driven refinements), the procedural-first route with Meshy as a study, and the Skimmer/Galewing/Ironback follow-on.
+  - Q36 (open) added to the [decision log](design/DECISION_LOG.md); the design index lists the plan.
+- **Evidence:** six Harrier captures taken with `scripts/dragon-capture.mjs` on main (`shots/dragon/`, ignored; not archived yet). Findings: fine honeycomb hide where the brief wants 3 to 5 broad rows; facets on jaw, neck, thighs and tail up close; red high saddle and large blanket against the brief's low-profile sand-leather harness; on-screen green brighter than the authored moss.
+- **Tests:** typecheck clean; `src/creatures/wyvern` and `src/flight/breeds.test.ts`: 8 files, 155 tests passing. No code changed, so the full suite was not re-run.
+- **Known issues and decisions for Robert:** Q36 (open G3a as proposed?); target renders 01, 02 and 07 still absent from `docs/art/targets/`; Q33 and Q35 from G8a remain open.
+- **Next authorized action:** Robert's G8a playtest, unchanged. Then answer Q36; if opened, G3a step 0 (baseline captures to the archive) can start without the renders.

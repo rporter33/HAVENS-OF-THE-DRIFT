@@ -134,3 +134,12 @@ Built and measured in G8a: with wings folded, a wyvern collides as its body alon
 - **Rethink the fourth capability:** "snap-roll through a gap" may not be a gate in this physics at all.
 
 *Recommendation: decide after the playtest, once the tuck has been tried by hand.*
+
+### Q36 · Open G3a, the Harrier half of G3, procedural route first? — open
+Asked 2026-10-19. Robert asked for the Harrier to be planned to a gold standard before the other breeds. No written fidelity bar exists in this repository (the roadmap's "Q1–Q18" bar did not come across in the seed), so [the Harrier plan](HARRIER_GOLD_STANDARD.md) proposes a twelve-line checklist built from Q20, Q24, the render brief and G3, and five steps: baseline captures, hide language (broad scale rows, colour and material response), surfaces (resolution where facets show), tack restyled to the brief on the expert's topology, membrane backlight; then the Skimmer, Galewing and Ironback on the shared work. Options:
+- **Open G3a as proposed**, procedural route first, Meshy/Blender as a study only if render 01 shows forms the builder cannot reach.
+- **Open G3 whole** (wyvern and rider together), accepting a longer first PR.
+- **Wait for the target renders** before any step; step 0 and step 1 can run on the written brief without them.
+
+*Recommendation: open G3a as proposed; supply renders 01, 02 and 07 so steps 3 and 5 have their reference.*
+
