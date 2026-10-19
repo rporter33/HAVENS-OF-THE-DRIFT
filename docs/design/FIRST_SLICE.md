@@ -28,7 +28,7 @@ Written 2026-10-17 from the [decision log](DECISION_LOG.md) (29 answered, 2 open
 | G10 | Secondary combat prototype | Nothing | One optional pursuer encounter off the race path; no damage model, evasion only | Prototype behind a debug flag until reviewed | M |
 | G11 | Networking feasibility | Nothing | Two clients see each other's position at 10 Hz on a test server; no gameplay | Latency and determinism report; no runtime dependency added to the game build | M |
 
-Not scheduled: dragon rig (waits on Meshy or Blender output), Craghorn (name open), aerial ball sport (after shared airship), comic website (separate release track), Codex ship gameplay (after G5).
+Not scheduled: dragon rig (waits on Meshy or Blender output; proposed as G12 in [WHITE_DRAGON.md](WHITE_DRAGON.md), Q47), Craghorn (name open), aerial ball sport (after shared airship), comic website (separate release track), Codex ship gameplay (after G5).
 
 ## Open items that block a gate
 

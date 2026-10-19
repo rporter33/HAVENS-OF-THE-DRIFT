@@ -138,3 +138,18 @@ Built and measured in G8a: with wings folded, a wyvern collides as its body alon
 ### Q36 · How closely the game follows the target renders, and dragonflight color — answered 2026-10-18
 Robert, on the renders in [`docs/art/targets/`](../art/targets/MANIFEST.md): the game's rendering should closely match them, including the look of the dragons and wyverns. Each dragonflight is restricted to its own color but blends into the neighboring hues on the color wheel: the blue flight toward purple, the red flight across orange and yellow. The Codex airship should end up more detailed than its render; that work comes later. This is direction for G3 and G8, not an implementation gate.
 Follow-up answered the same night: green blends toward teal and yellow-green; black, being off the wheel, takes a tint toward deep violet or ember; white toward ivory and powder blue, as the elder dragon render (08) shows.
+
+## Added 2026-10-19 (the white dragon)
+
+Numbering continues at Q47; Q37 to Q46 were recorded on parallel branches (PR #12, `claude/loving-gates-7sydp9`, `claude/pensive-pasteur-hgbhg0`).
+
+### Q47 · Open the white dragon gate (G12), and on what terms? — open
+Robert, 2026-10-19: "Begin work on the white dragon." That is read as the white clan's elder dragon in [render 08](../art/targets/08-sleek-dragon-elder.png): four legs plus two wings, ivory toward powder blue (Q36). Nothing four-legged exists in source; the wyvern rig, animator and flight model are two-legged throughout. The [white dragon design](WHITE_DRAGON.md) sets out the route and proposes gate G12 in three steps: G12a the six-limb skeleton and the fitted body (dev-only), G12b a dev-only resting showcase judged against render 08, G12c the dragon on its tower in the world. The [model kit](../../Art%20and%20Assets/Creatures%20and%20Customization/WHITE_DRAGON_MODEL_KIT.md) holds Robert's Astra and Meshy steps, which need no gate. Each part below is a separate answer:
+- **a. Open G12a now,** ahead of the fidelity plan's order (which leaves the elder dragon for after the Harrier, rider, mounts and islands)? *Recommendation: yes for G12a, which touches no shipped creature; G12b after PR #11 lands, since it reuses #11's trial loading pattern.*
+- **b. Its role:** an elder you meet, resting on its tower (R1); also flying over the haven (R2); or a mount you ride (R3, which Q1 promises once the rig exists). *Recommendation: build R1, with the skeleton made to R3's standard (full leg chains, a saddle socket between the wing roots) so a mount never needs a second rig. R2 and R3 each need their own gate.*
+- **c. Body route:** a Meshy body fitted in Blender to a skeleton the game owns, as the Harrier trial did (Q38); or a procedural body grown from the wyvern builder. *Recommendation: Meshy. For the Harrier, the code pass closed the color gap but not the form gap (Q38), and render 08's form is further from anything in code.*
+- **d. Where its tower stands:** at Windhaven, as the player culture's own elder (Q23); on an island of its own; or not placed until the world pass. *Recommendation: Windhaven, built with the Aegean kit (fidelity plan 4.1), since a tower-top platform big enough for it changes the haven's silhouette.*
+- **e. Its elder:** the figure in the white mantle at its shoulder in G12c as a still figure, or later with the speaking characters (G9). *Recommendation: later; G12c shows the dragon and the banner.*
+- **f. Its name,** and whether the dragon has a voice of its own.
+
+Nothing in the game changes until part a is answered.
