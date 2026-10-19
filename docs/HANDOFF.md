@@ -2,29 +2,23 @@
 
 Keep this file short: one checkpoint, overwritten each session. Move the previous entry to [the handoff log](history/handoff/README.md) under its day before writing a new one. Nothing here authorizes new work on its own; the current task from Robert does.
 
-## Checkpoint 2026-10-19: the white dragon, planned (design lane)
+## Checkpoint 2026-10-19: G12a begun, the white dragon's skeleton, look and parts
 
-- **Objective:** Robert: "Begin work on the white dragon". Read as the white clan's elder dragon in render 08: four legs plus two wings, ivory toward powder blue (Q36). No gate covers dragon implementation, so this session plans it and changes no game code.
-- **Branch:** `design/white-elder-dragon` from main `ae839d9`.
+- **Objective:** gate G12 (Q47), opened by Robert on 2026-10-19 ("Go ahead with accuracy"): the white elder dragon at rest on a tower at Windhaven. G12a is the skeleton, the fitted body, the parts and the flight colour, dev-only.
+- **Branch:** `gate/g12a-white-dragon`, stacked on `design/white-elder-dragon`, which is stacked on main `ae839d9`. No PR yet.
 - **Completed:**
-  - [The white dragon](design/WHITE_DRAGON.md) covers:
-    - what exists, what's approved and what's future;
-    - the dragon's form, read from render 08;
-    - a map of the wyvern system: what can be reused, what must be generalised, what must be new;
-    - the recommended route: its own creature module, a game-owned six-limb skeleton, a Meshy body fitted in Blender, separate parts, rest first;
-    - a bone-budget draft (66 to 68 against the 64 budget);
-    - three roles, from an elder you meet to a mount;
-    - customization (Q48): every flight's dragons take interchangeable parts in five slots (horns, whiskers, frill, tail tip, pattern), and colour comes from the flight plus a small hue shift, proposed at ±8°;
-    - proposed gate G12 in three steps: G12a skeleton, body and parts, G12b resting showcase with a variation lineup, G12c on its tower.
-  - The [white dragon model kit](../Art%20and%20Assets/Creatures%20and%20Customization/WHITE_DRAGON_MODEL_KIT.md) has Robert's Astra reference-sheet prompts and Meshy steps, plus optional sheets for the white elder's parts and the first variants per slot.
-  - Q47 (open) is in the [decision log](design/DECISION_LOG.md), with parts a to f. Q48 records Robert's customization direction, with "parks" read as "parts", and follow-ups 48a to 48c. The design index, the creatures index, the first slice's "not scheduled" line and the open-question counts all point to it.
-- **Tests:** none run; no source changed. The source claims are from reading main at `ae839d9`, and the cited lines were spot-checked.
+  - **Decisions:** Q47 answered (as recommended, the tower at Windhaven; the name and voice stay open as Q47f). Q48's follow-ups answered: parts fit every flight, ±8° hue shift, the elders' dragons are authored characters. The dictated "47 and it does go are unshaven" is recorded with its reading.
+  - **`src/creatures/dragon/` (new; no existing module changed):**
+    - `look.ts`: flights, five part slots, the white flight's palette, and the hue shift as an OKLCH turn holding lightness and chroma, clamped to ±8°.
+    - `catalog.ts`: the white elder's parts from render 08 and its look.
+    - `proportions.ts` and `rig.ts`: the six-limb skeleton in the wyverns' conventions, 64 bones (tongue and wing-claw bones dropped). It stands on four feet at 3.0 m, spreads to 20 m, roots the wings mid-back and seats a rider between the neck and the wing roots.
+  - **Accuracy:** render 08 was measured against the elder (readings in `proportions.ts` and [the design](design/WHITE_DRAGON.md)), and the rig tests hold each reading within ±15%. Measuring corrected the model kit's prompt (wing roots mid-back, not over the shoulders; span about the dragon's length, not twice chest to hips) and the design doc's resting heights.
+- **Tests:** the new dragon tests pass (30, in `look.test.ts`, `catalog.test.ts` and `rig.test.ts`), and typecheck is clean. The full vitest suite and smoke were running when this was committed; their results follow in the next commit.
 - **Known issues:**
-  - The wyvern breed tables are closed (`BreedId`), so the dragon is planned as its own module. A dragon *mount* later needs a creature-type key.
-  - No imported creature loader exists on main. The Harrier's Meshy trial on PR #11 is the pattern G12 reuses, so #11 should land first.
-  - At Windhaven, a tower big enough for the dragon changes the haven's silhouette, which ties G12c to the Aegean kit.
-  - The decision log is still forked across branches: Q37 to Q46 live on PR #12, `claude/loving-gates-7sydp9` and `claude/pensive-pasteur-hgbhg0`. This checkpoint's move of the 2026-10-18 entry matches the copy on those branches.
+  - The proportions are provisional until the approved Astra sheet; standing height isn't in the render and was chosen to fit the measured legs.
+  - Nothing draws the dragon yet: the body, the parts' geometry, the Blender export and fit, and G12b's showcase all wait on Robert's sheet and Meshy body.
+  - The fit script reuses PR #11's, which is unmerged; the decision log is still forked across branches (Q37 to Q46).
 - **Next authorized action:**
-  - Robert answers Q47, confirms the "parts" reading in Q48, and answers its follow-ups.
-  - If he wants to start the asset side, he can make the Astra three-quarter view from the model kit now; that needs no gate.
-  - Nothing in the game is opened by this checkpoint.
+  - Robert makes the Astra three-quarter view from the corrected [model kit](../Art%20and%20Assets/Creatures%20and%20Customization/WHITE_DRAGON_MODEL_KIT.md) and approves it, then the front, side and back views and the Meshy body.
+  - Claude then re-measures the proportions from side view C and fits the body (G12a, rest).
+  - G12b and G12c follow in order.

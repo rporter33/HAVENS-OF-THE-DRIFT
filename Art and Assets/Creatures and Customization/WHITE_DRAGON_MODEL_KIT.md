@@ -31,9 +31,9 @@ Generate the **three-quarter view first**. Approve it against the checklist belo
 ```text
 Reference sheet for a 3D model, for image-to-3D conversion: clarity over drama. One creature: the white elder dragon from the game Havens of the Drift, the same creature as the attached target render, shown standing as an unadorned base body.
 
-Body plan: exactly SIX limbs. Four walking legs plus two separate wings. The wings grow from the upper back, above and slightly behind the front-leg shoulders; the front legs are independent legs with their own shoulders and are not part of the wings. Each wing has a clawed thumb at the wrist and three long finger bones supporting a bat-like membrane. The membrane runs from the last finger back to the flank just in front of the hind legs; it never joins a leg.
+Body plan: exactly SIX limbs. Four walking legs plus two separate wings. The wings grow from the middle of the upper back, well behind the front-leg shoulders, leaving a clear stretch of back between the base of the neck and the wing roots; the front legs are independent legs with their own shoulders and are not part of the wings. Each wing has a clawed thumb at the wrist and three long finger bones supporting a bat-like membrane. The membrane runs from the last finger back to the flank just in front of the hind legs; it never joins a leg.
 
-Proportions (from the target render): sleek, long and old, larger and longer than a wyvern. A long, refined, intelligent head with a gentle brow, a long tapering muzzle and a closed mouth; slightly horse-like in its length, not a crocodile or lizard snout. A long elegant neck in a gentle S, about as long as the body from shoulders to hips. A deep rounded chest, a long body and a slimmer waist. Slender front legs and stronger hind legs, each foot with four toes and short blunt claws. A very long tapering tail, about one and a half times the length from head to hips. Large wings, span about twice the length from chest to hips.
+Proportions (from the target render): sleek, long and old, larger and longer than a wyvern. A long, refined, intelligent head with a gentle brow, a long tapering muzzle and a closed mouth; slightly horse-like in its length, not a crocodile or lizard snout. A long elegant neck in a gentle S, about three quarters of the length from shoulders to hips. A deep rounded chest, a long body and a slimmer waist. Slender front legs and stronger hind legs, each foot with four toes and short blunt claws. A very long tapering tail, about a third longer than the length from nose to hips. Very large wings: the span is about the dragon's whole length from nose to tail tip.
 
 Surface: smooth, broad, continuous stylized forms. Ivory hide #EFE6D6. Cloud-white belly #F7F0E1 with broad shallow belly plates from throat to tail base. Powder-blue back #9DB6D3 in broad plates along the top of the neck, the back and the top of the tail, three to five rows wide. Ivory wing membranes #F2E6D0 with powder-blue wing bones #9DB6D3. Slate claws #4A5260. Pale blue eyes. Flat matte color. No small modeled scales, no texture noise.
 
@@ -53,14 +53,16 @@ Image: orthographic-looking camera, soft even studio light from the front, no ca
 | C | `white-dragon-ref-left.png` | `View: exact left side profile, camera at chest height and perpendicular to the body, both wings still extended (the near wing in front), all four legs visible. Same creature, proportions, colors and light as the approved image; only the camera changes.` |
 | D | `white-dragon-ref-back.png` | `View: straight back, camera at chest height, perfectly centered and symmetrical. Same creature, proportions, colors and light as the approved image; only the camera changes.` |
 
+Corrected 2026-10-19 after measuring render 08 for the game skeleton (`src/creatures/dragon/proportions.ts`). The first version put the wing roots above the front shoulders, asked for a span of twice chest to hips (about half what the render shows), and over-stated the neck and tail. If a sheet was made from the first version, check its wing roots and span against this one.
+
 ### Approve before Meshy
 
 - [ ] Four legs on the ground and two wings on the back: six limbs, no more, no fewer
-- [ ] The wing roots sit on the back above the front shoulders, clearly separate from the front legs
+- [ ] The wing roots sit mid-back, well behind the front shoulders, clearly separate from the front legs
 - [ ] Membranes clear of every leg; feet apart; tail clear of the hind legs
 - [ ] No horns, whiskers, cheek fins, spines, tail fin, saddle or rider
 - [ ] Head long and refined like render 08, mouth closed, not a lizard or crocodile snout
-- [ ] A clear stretch of back between the wing roots (where a saddle could go if dragons become mounts)
+- [ ] A clear stretch of back between the base of the neck and the wing roots, as in render 08
 - [ ] The four views agree on proportions, wing span, neck and tail length and colors (one inconsistent view hurts Meshy more than a missing one)
 
 Drop the approved PNGs in `C:\Users\Robert\Projects\havens-blender-pilot\refs\white-dragon\`.

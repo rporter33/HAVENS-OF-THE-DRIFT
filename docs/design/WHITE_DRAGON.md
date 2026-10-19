@@ -19,7 +19,7 @@ The [storyboard](../website/storyboard/chapter-01/README.md) puts one dragon eld
 
 ## Its form, from render 08
 
-- **Body plan:** six limbs. Four walking legs, and two wings growing from the back above and behind the front shoulders. The front legs are legs; the wings are not arms.
+- **Body plan:** six limbs. Four walking legs, and two wings growing from the middle of the back, well behind the front shoulders, with clear back between the neck and the wing roots. The front legs are legs; the wings are not arms.
 - **Head:** long and refined, gentle brow, long tapering muzzle, mouth closed, pale blue eyes. Swept, branching, antler-like horns in bone ivory. Two long whiskers from the upper lip that hang to the ground. Swept-back ivory cheek fins.
 - **Neck:** long and upright in a gentle S, about the length of the body. Broad ivory throat plates in front, powder-blue plates and ivory spines along the top.
 - **Body:** deep chest, long trunk. Ivory below, powder-blue plates along the back and flanks. Matte, with broad plates rather than small scales, as the brief asks.
@@ -27,7 +27,7 @@ The [storyboard](../website/storyboard/chapter-01/README.md) puts one dragon eld
 - **Legs:** slender forelegs, strong hind legs, four toes each with short slate claws.
 - **Tail:** very long, curled around the platform at rest, with a low ivory fin along the top.
 - **Pose at rest:** lying like a sphinx. Forelegs stretched forward, hind legs folded under, tail curled, head high.
-- **Scale:** read against the elder (about 1.75 m) without correcting for perspective, the resting back is about 3 m up, the head 5 to 6 m, and nose to tail is 20 to 25 m. For comparison, the Harrier has a 15.5 m wingspan and stands 2.6 m (`flight/breeds.ts:71,89`). Proposed: about 1.5 times the Harrier, set in G12a from the approved reference sheet.
+- **Scale:** measured against the elder (about 1.75 m, ~130 px/m at the chest's depth), with the perspective corrected by eye: head ≈ 1.5 m, neck ≈ 2.5 to 2.8 m, chest front to rump ≈ 5.6 m, tail ≈ 11 m, folded wing forearm ≈ 2.5 m and leading finger ≈ 6 m (a span near 20 m). Lying down, the back is about 1.9 m above the platform and the head about 3.5 m. Nose to tail is about 20.6 m. For comparison, the Harrier has a 15.5 m wingspan and stands 2.6 m (`flight/breeds.ts:71,89`). The readings are in `creatures/dragon/proportions.ts`, and the rig tests hold the skeleton to them within ±15%. (The first version of this line over-stated the resting heights as 3 m and 5 to 6 m.)
 
 ## What the game has to build on
 
@@ -64,7 +64,7 @@ No imported creature loader exists on main. The Harrier's Meshy trial (`creature
 ## The route (chosen, Q47)
 
 1. **Its own module,** `src/creatures/dragon/`. It's not a `BreedId`, so no wyvern table, test, golden or save path changes. Shared helpers are imported, not edited. If one has to change, the wyvern goldens prove the change is a no-op for the wyverns.
-2. **The game owns the skeleton,** as it does for the wyverns: a six-limb rig definition in code, written to the approved reference sheet. It's built to the mount standard from the start, with full foreleg chains and a seat socket between the wing roots, so a mount later never needs a second rig.
+2. **The game owns the skeleton,** as it does for the wyverns: a six-limb rig definition in code, written to the approved reference sheet. It's built to the mount standard from the start, with full foreleg chains and a seat socket on the back between the neck and the wing roots, so a mount later never needs a second rig.
 3. **The body from Meshy, fitted in Blender** to that skeleton: the Harrier trial's route (Q38), with the fit script generalised from `harrier_meshy_fit.py`. The [model kit](../../Art%20and%20Assets/Creatures%20and%20Customization/WHITE_DRAGON_MODEL_KIT.md) has Robert's Astra and Meshy steps. The fit bakes the region, belly and back attributes, so the existing hide shader paints the white flight.
 4. **Customization through parts, colour from the flight** (Q48; [below](#customization-parts-and-flight-colour)). Horns, whiskers, cheek fins, spines and tail tip are interchangeable parts on one body. A dragon's colours come from its flight plus a small hue change. Whiskers hang as verlet strands like the tail, so they cost no bones.
 5. **Rest first.** It lies in render 08's pose with idle life: breathing, blinking, the head following the player within a cone, whiskers swaying, the wings settling, the tail tip moving. It never walks or flies in G12.
@@ -72,21 +72,21 @@ No imported creature loader exists on main. The Harrier's Meshy trial (`creature
 
 **The alternative**, a procedural body grown from the wyvern builder, avoids a Meshy dependency but has to reach render 08's head, chest and wing roots in code. For the Harrier, the code pass closed the colour gap but not the form gap (Q38).
 
-### Skeleton draft and the bone budget
+### The skeleton and the bone budget
 
-| Chain | Wyvern today | White dragon draft |
+| Chain | Wyvern today | White dragon (G12a) |
 |---|---|---|
 | Trunk: root, spine, chest, breath, pelvis | 5 | 5 |
 | Neck | 6 | 6, longer segments |
 | Head: head, jaw, tongue ×2, cheek fans ×2 | 6 | 4 (no tongue; the mouth stays closed at rest) |
-| Tail | 10 | 10 to 12 |
-| Wings, ×2: humerus, forearm, hand, claw, three fingers × two segments | 20 | 20, rooted on the back |
+| Tail | 10 | 10 |
+| Wings, ×2: humerus, forearm, hand, claw, three fingers × two segments | 20 | 18, rooted on the back; no claw bone |
 | Hind legs, ×2: thigh, shin, metatarsus, toes | 8 | 8 |
 | Forelegs, ×2: scapula, humerus, forearm, hand, toes | none | 10 |
 | Wing-fold helpers ×2, gular | 3 | 3 |
-| **Total** | **58** | **66 to 68** |
+| **Total** | **58** | **64** |
 
-The wyvern budget is 64 bones, which keeps the bone texture at 16×16. It's tested, not enforced at runtime (`wyvern.anatomy.test.ts:107,448-449`). The draft is 2 to 4 over. Cuts that reach 64: the wing claw bones (claws ride the hand), the gular bone, and a 10-bone tail. Raising the budget for one creature is cheap at runtime but is a budget change. *Recommendation: hold 64 and decide in G12a with the fitted body in hand.*
+The wyvern budget is 64 bones, which keeps the bone texture at 16×16. It's tested, not enforced at runtime (`wyvern.anatomy.test.ts:107,448-449`). The first draft was 66 to 68. G12a holds 64 by dropping the tongue (the mouth stays closed at rest) and the wing claw bones: the thumb claw rides the hand, since a dragon never walks on its wings. The gular bone stays for the breathing throat.
 
 ## Customization: parts and flight colour
 
@@ -138,6 +138,19 @@ Three steps, each its own PR with its own checks. None changes `src/flight`, `sr
 | **G12a** Skeleton, body and parts (dev-only) | `src/creatures/dragon/`: the six-limb rig, proportions from the approved sheet, an export of the bind skeleton for Blender (as G3b exported the Harrier). `scripts/blender/dragon_meshy_fit.py` generalised from the Harrier fit. The dragon's look data, the five slots and the white elder's part in each. The white flight's palette and the hue shift. The fitted GLB under `src/assets/` with its provenance and register entry (route, model and version, task id or "not recorded", plan tier, date). | New anatomy tests: six limbs, symmetric chains, the bone budget, the triangle budget per LOD (exploratory: 16,000 to 20,000 bare, up to 24,000 with parts, from the [model budgets](../../Art%20and%20Assets/Guides/model-budgets/README.md)), bind proportions within tolerance of the sheet. Every part attaches to its bones and stays inside the accessory allowance. Derived colours stay within the bound and are the same on every run. A fit report: every vertex weighted, at most four influences. All wyvern suites and the pose golden unchanged. Typecheck, full vitest, smoke 15/15. | M |
 | **G12b** Resting showcase (dev-only) | `?view=white-dragon`: the dragon in render 08's pose on a stand-in platform, the idle life layer, its own driver, a camera matched to render 08, a capture manifest. A lineup of white dragons across the hue shift and part swaps. | Captures beside render 08 scored on the brief's three questions: identity, fidelity, reachability. In the lineup, Robert judges that every dragon reads as the white flight and that each part reads at gameplay distance; the ±8° shift is tuned here. The idle is stable across frame rates, as the wyvern tail test checks. No console errors; smoke 15/15. Robert times Medium on his GPU. | S to M |
 | **G12c** On its tower | A tower-top platform at Windhaven (Q47d), built with the haven's kit. Colliders: a cylinder for the tower and a `colChain` along the resting body. The white banner. The idle reacts to the player nearby. In the normal build once Robert has accepted G12b. | Dressing and editor checks green, with protected routes clear (spawn, stable door, launch deck). Collision within half a meter of what is seen. Race lines, cloud clearance and the Windline sweep unchanged. Flight replays bit-identical. Captures from render 10's approach and from the plaza. Draw calls at Medium within budget. | M |
+
+### G12a status, 2026-10-19
+
+Built on `gate/g12a-white-dragon` as data and tests. Nothing draws it yet, and no existing module changed; wyvern helpers are imported, not edited.
+- `creatures/dragon/look.ts`: the flights, the five slots, the white flight's palette, and the ±8° shift as an OKLCH hue turn that holds lightness and chroma.
+- `creatures/dragon/catalog.ts`: the white elder's parts (branching horns, long whiskers, fin crest, tail fin, flight plates) and its look, unshifted.
+- `creatures/dragon/proportions.ts` and `rig.ts`: the six-limb skeleton, 64 bones. It stands on all four feet with the body center at 3.0 m, spreads to 20 m, roots the wings mid-back, and seats a rider between the neck and the wing roots. Proportions are provisional, from render 08.
+- Tests: `look.test.ts`, `catalog.test.ts` and `rig.test.ts`, 30 in all. They include each render-08 reading within ±15%.
+
+Waiting on inputs:
+- **The approved Astra sheet** (Robert): the proportions are re-measured from side view C, and the ±15% bands tighten to the sheet.
+- **The Meshy body** (Robert): then the bind-skeleton export for Blender, the fit script (generalised from `harrier_meshy_fit.py` once PR #11 lands), the parts' geometry on the fitted head and tail, the LODs and the register entry.
+- **Not started:** anything visible. That is G12b.
 
 **Later, not in G12:** the other four flights' elder dragons. Each is a palette and a parts set on the same body, made from its own render.
 
