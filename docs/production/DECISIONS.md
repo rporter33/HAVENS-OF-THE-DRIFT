@@ -1,6 +1,6 @@
 # Owner decisions and unresolved choices
 
-Recorded 2026-10-14, updated 2026-10-17. The question-by-question record is [the design decision log](../design/DECISION_LOG.md) (34 answered, 5 open: Vellum in release one, the Craghorn's name, the snap-roll's keyboard input, the Keyhole's tuck bypass, opening the white dragon gate). The owner's current explicit instructions take precedence; this record does not authorize unrelated implementation. [Current status](STATUS.md) distinguishes selected direction from source/runtime evidence.
+Recorded 2026-10-14, updated 2026-10-17. The question-by-question record is [the design decision log](../design/DECISION_LOG.md) (35 answered, 5 open: Vellum in release one, the Craghorn's name, the snap-roll's keyboard input, the Keyhole's tuck bypass, opening the white dragon gate). The owner's current explicit instructions take precedence; this record does not authorize unrelated implementation. [Current status](STATUS.md) distinguishes selected direction from source/runtime evidence.
 
 | Decision | State | Consequence |
 |---|---|---|
@@ -10,7 +10,7 @@ Recorded 2026-10-14, updated 2026-10-17. The question-by-question record is [the
 | Meshy as primary generation tool plus Blender | Selected on 2026-10-14 | Follow the Meshy guide; retain existing Tripo attribution and source identity. No runtime compatibility is implied. |
 | Racing-first fantasy, intelligent companions, modular cosmetics | Current direction | Existing implemented behavior and future design must be distinguished; additional dragons, lore and systems need their own task scope. |
 | Steam eventual release and multiplayer later | Intended future work | No desktop wrapper, Steam integration or networking migration is chosen by this organization task. |
-| Mount roster: both wyvern and dragon | Selected 2026-10-17 | Wyvern remains the shipped mount; dragons need the new rig before any player-facing promise. |
+| Mount roster: both wyvern and dragon | Selected 2026-10-17; customization 2026-10-19 | Wyvern remains the shipped mount; dragons need the new rig before any player-facing promise. Every flight's dragons are customized with parts, and dragons of one flight differ by a small hue change (Q48). The white elder dragon is planned as gate G12, not opened (Q47). |
 | Same game as Driftwing with upgraded looks | Selected 2026-10-17 | Saves, ids and physics stay. A texture/material upgrade toward the latest renders is approved direction; its implementation needs its own gate. |
 | Keep Windline | Selected 2026-10-17 | Not cut. Core-vs-unlocked still open (Q15 follow-up). |
 | Keep the Drift | Selected 2026-10-17 | No new compact cluster. Focus one quadrant first. |

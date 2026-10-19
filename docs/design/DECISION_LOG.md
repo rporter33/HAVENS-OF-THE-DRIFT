@@ -153,3 +153,15 @@ Robert, 2026-10-19: "Begin work on the white dragon." That is read as the white 
 - **f. Its name,** and whether the dragon has a voice of its own.
 
 Nothing in the game changes until part a is answered.
+
+### Q48 · Dragon customization, and colour within a flight — answered 2026-10-19
+Robert, on the white dragon plan: "each of these colors and dragons need customization with parks. Their colors are a small hue change for variation within flight." Read as *parts*: every flight's dragons are customized with interchangeable parts, and dragons of the same flight differ from one another by a small hue change. Say if "parks" meant something else.
+
+Read with Q36. Q36 sets the hues a flight's dragon carries, which can be more than one on the same animal: render 08's white dragon is ivory with powder-blue plates. This answer sets how far individuals of one flight differ: a small hue change, not a free colour. Black has two tints under Q36 (deep violet or ember), so its small change applies within the chosen tint.
+
+What follows in the [white dragon design](WHITE_DRAGON.md#customization-parts-and-flight-colour): a dragon's look is its flight, a bounded hue shift and one part per slot; its colours are derived, not picked. This is direction for G12 and opens no gate. Wyvern colours, free today (`core/types.ts:481`), are not changed by it.
+
+Follow-ups, with recommendations:
+- **48a. Parts across flights:** every part fits every flight's dragon, or each flight has its own parts. *Recommendation: every part fits every flight; colour carries the flight.*
+- **48b. Size of the hue change:** *proposed ±8° of hue around the flight's palette, the whole palette turning together, lightness and saturation held; tuned in G12b's lineup.*
+- **48c. Who customizes:** authored looks for the elders' dragons now; the player customizes a dragon once dragons are mounts (R3, Q47b). *Recommendation: build the look data once, so the elders and a later stable use the same thing.*

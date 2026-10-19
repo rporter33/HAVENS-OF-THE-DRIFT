@@ -8,9 +8,9 @@ Written 2026-10-19 for the proposed gate G12a ([white dragon design](../../docs/
 
 One **base body**: the white clan's elder dragon with render 08's form, as an unadorned body in a neutral standing pose. Four walking legs plus two separate wings that grow from the back. The front legs are legs, not wings. Nothing fitted.
 
-Everything thin or ornamental comes later as separate parts, so it can be built cleanly and swapped: the branching horns, the long whiskers, the cheek fins, the dorsal spines and the tail fin. Meshy handles thin strands and antler tines badly, and in the Harrier's case separate parts kept the stable's customization working.
+Everything thin or ornamental comes later as separate parts, so it can be built cleanly and swapped: the branching horns, the long whiskers, the cheek fins, the dorsal spines and the tail fin. Parts are how every flight's dragons are customized (Q48), so one body serves all five flights. Meshy handles thin strands and antler tines badly, and in the Harrier's case separate parts kept the stable's customization working.
 
-The colors in the sheet are flat and only mark regions. Meshy's texture is not used in the game; the game shader paints the hide. The boundaries help Claude mark the belly, back and hide regions in Blender. The values are a proposal for the white flight (Q36: ivory toward powder blue) and are settled as palette data with the other dragonflight colors.
+The colors in the sheet are flat and only mark regions. Meshy's texture is not used in the game; the game shader paints the hide. The boundaries help Claude mark the belly, back and hide regions in Blender. The values are a proposal for the white flight's base palette (Q36: ivory toward powder blue) and are settled as palette data with the other dragonflight colors. Individual white dragons differ from it by a small hue change the game applies (Q48), so the sheet uses the base.
 
 | Region | Sheet color | Notes |
 |---|---|---|
@@ -74,6 +74,23 @@ Design sheet for game accessory parts, same creature as the attached image, same
 ```
 
 Save as `white-dragon-parts.png` in the same folder.
+
+### Step 1c (optional, for customization): part variants
+
+Also for Claude, not Meshy: the first alternatives for each customization slot, so the dragon's slots start with more than one option. Make it after 1b, with A attached. Several images, one per row, read better than one crowded sheet.
+
+```text
+Design sheet of interchangeable accessory parts for the same dragon as the attached image, same colors and flat studio light on a plain light-gray background #d9d9d9, no text or labels, 16:9. Every part is shown on the same bare head (left profile) or the same bare tail tip, so only the part changes. One row of three:
+```
+
+| Row | Append to the block above |
+|---|---|
+| Horns | `Horns: a pair of long smooth horns swept straight back; a crown of short horns around the back of the skull; a single long spiral horn on the brow.` |
+| Whiskers | `Whiskers: short whiskers curling forward; long whiskers forked at the tips; a pair of fine barbels under the chin instead of whiskers.` |
+| Frill | `Neck and cheek: a webbed sail crest along the top of the neck; a soft mane of long pale fur at the neck; small cheek fins with no crest.` |
+| Tail tip | `Tail tip: an arrowhead spade; a long flat blade fin; twin trailing ribbon fins.` |
+
+Save as `white-dragon-variants-horns.png`, `-whiskers.png`, `-frill.png`, `-tail.png`.
 
 ## Step 2: Meshy generation
 
