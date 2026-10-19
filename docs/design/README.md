@@ -7,6 +7,7 @@ The owner's current direction is racing-first exploratory fantasy, intelligent d
 | Reference | Use and limits |
 |---|---|
 | [First slice](FIRST_SLICE.md) | Pillars and the eleven proposed gates with acceptance tests, derived from the decision log on 2026-10-17. |
+| [Fidelity plan](FIDELITY_PLAN.md) | The Harrier to gold standard (checklist HG-1 to HG-14 and a measured scoreboard), then rider, the other mounts and the islands, phased for the executing agent; decisions D1 to D8 for Robert. Proposed 2026-10-19 (Q46). |
 | [G5 capabilities](CAPABILITIES.md) | Parameters, clamps, bond milestones and route tests for the four capabilities, and the two capability sites G8 authors (Q30). G5 and G8 not opened. |
 | [Decision log](DECISION_LOG.md) | The decision questions with dated answers (33 answered, 4 open as of 2026-10-18). Answer here; never delete, mark superseded. |
 | [Catch-up 2026-10-15](CATCH_UP_2026-10-15.md) | What is implemented, the lore tiers, the review assessment and the reasoning behind each question. |

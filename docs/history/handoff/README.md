@@ -11,3 +11,4 @@ The dated handoff entries that used to live in one 245 KB `docs/AI_HANDOFF.md`, 
 | [2026-10-13](2026-10-13.md) | 1 |
 | [2026-10-14](2026-10-14.md) | 4 |
 | [2026-10-17](2026-10-17.md) | 3 |
+| [2026-10-18](2026-10-18.md) | 1 |

@@ -138,3 +138,15 @@ Built and measured in G8a: with wings folded, a wyvern collides as its body alon
 ### Q36 · How closely the game follows the target renders, and dragonflight color — answered 2026-10-18
 Robert, on the renders in [`docs/art/targets/`](../art/targets/MANIFEST.md): the game's rendering should closely match them, including the look of the dragons and wyverns. Each dragonflight is restricted to its own color but blends into the neighboring hues on the color wheel: the blue flight toward purple, the red flight across orange and yellow. The Codex airship should end up more detailed than its render; that work comes later. This is direction for G3 and G8, not an implementation gate.
 Follow-up answered the same night: green blends toward teal and yellow-green; black, being off the wheel, takes a tint toward deep violet or ember; white toward ivory and powder blue, as the elder dragon render (08) shows.
+
+## Added 2026-10-19 (fidelity plan)
+
+Numbering note: Q37 to Q40 are on `gate/g3c-look-dev` (PR #12) and Q41 to Q45 on `claude/loving-gates-7sydp9`; neither is on main yet. Q46 continues after them. The open question added as "Q36" on `design/harrier-gold-standard` (open G3a, the Harrier half of G3) is folded into this one.
+
+### Q46 · Adopt the fidelity plan and open the Harrier gold-standard gate (G3d)? — open
+Asked 2026-10-19. Robert asked for a plan to bring islands, assets, rider and creatures up to the target renders, the Harrier first as the gold standard, written so Opus 5.5 can enact it. [The fidelity plan](FIDELITY_PLAN.md) sets a checkable bar (the fourteen-line HG checklist and a measured scoreboard against every rendered target), then five phases: land the in-flight G3, G3b and G3c branches and take a baseline; the Harrier to gold standard (G3d); the rider to the Wanderer look; the other three breeds and the dragonflight colours; Windhaven and the landmarks (G8). Its section 10 lists the eight decisions (D1 to D8) in the order they block. Options:
+- **Adopt it as written:** Phase 0 starts now (it needs Robert's in-game review of PRs #11 and #12); G3d opens when the baseline is archived.
+- **Adopt it, but open G3d at once** in parallel with Phase 0, accepting that the "before" is the G3c handoff's numbers rather than a fresh baseline.
+- **Change the order:** islands before the rider, or the rider before the Harrier's tack.
+
+*Recommendation: adopt as written; the Harrier's exit review is only honest against a baseline taken on the merged head.*
