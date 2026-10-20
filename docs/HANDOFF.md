@@ -10,7 +10,7 @@ Keep this file short: one checkpoint, overwritten each session. Move the previou
   - a camera matched to render 08 and a capture manifest;
   - a lineup across the ±8° hue shift;
   - a look at LOD2's wing trailing edge and the parts on the thinner LODs.
-- **Branch:** `gate/g12b-white-dragon`, a worktree branch cut from `g12a-parts-lods` (`e4de879`). That branch is one commit ahead of `gate/g12a-white-dragon` and fast-forwards it. Nothing has been pushed, and no PR is open; its base would be `gate/g12a-white-dragon` until [PR #15](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/15) merges.
+- **Branch:** `gate/g12b-white-dragon`, cut from `g12a-parts-lods` (`e4de879`, which `gate/g12a-white-dragon` now has too), and pushed. [PR #16](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/16) is open into `gate/g12a-white-dragon` until [PR #15](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/15) merges. CI runs only on PRs into `main`, so #16 has no checks until it's retargeted.
 - **Completed:** all of it is in [the white dragon's G12b status](design/WHITE_DRAGON.md#g12b-status-2026-10-19-fourth-session).
   - **The showcase:** `debug/showcases/whiteDragon.ts` loads the body, the LODs and the parts from the dev server only. No dragon file reaches `dist`, and in a production build the lazy chunk refuses with a warning. It offers cameras, the render 08 match, a bind pose, a LOD switch, the hue lineup and the rider for scale.
   - **The dragon:** `creatures/dragon/`:
@@ -50,4 +50,4 @@ Keep this file short: one checkpoint, overwritten each session. Move the previou
 - **Decisions:** none new. The horn colour and the hue range are Robert's to settle from the captures.
 - **Next authorized action:**
   - Robert scores the captures beside render 08 on identity, fidelity and reachability. He judges the hue lineup and the parts at gameplay distance, settles the horn colour, and times Medium on his GPU.
-  - Then Robert says whether to open G12b's PR (its base is `gate/g12a-white-dragon`) and whether to push the captures to an archive branch. After that, G12c.
+  - Robert reviews [PR #16](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/16), retargeted to `main` once PR #15 merges, and says whether to push the captures to an archive branch. After that, G12c.
