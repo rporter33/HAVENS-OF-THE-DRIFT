@@ -47,7 +47,7 @@ describe('OKLCH', () => {
 describe('dragon palette', () => {
   it('has every region for the white flight, as #rrggbb', () => {
     const p = FLIGHT_PALETTES.white!;
-    const keys: (keyof DragonPalette)[] = ['hide', 'belly', 'plates', 'membrane', 'wingBones', 'claws', 'eyes'];
+    const keys: (keyof DragonPalette)[] = ['hide', 'belly', 'plates', 'membrane', 'wingBones', 'claws', 'eyes', 'horns'];
     for (const k of keys) expect(p[k]).toMatch(/^#[0-9a-f]{6}$/);
   });
 

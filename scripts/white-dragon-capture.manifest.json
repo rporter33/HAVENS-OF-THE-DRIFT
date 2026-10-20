@@ -1,0 +1,40 @@
+{
+  "title": "White elder dragon at rest (G12b) — capture set",
+  "intro": "?view=white-dragon on the dev server: the dragon in render 08's pose on the stand-in tower top, the real sky in the late afternoon (tod 0.66; at 0.7 the low sun ahead of render 08's camera hazes the picture orange), clear weather, quality high, SwiftShader unless run with --gpu. The named cameras share render 08's narrower lens (38° vertical) unless an item gives fov=62, the game's own. Every item re-stages fresh dragons (the idle from rest); time moves only in exact 1/30 s frames, so the same manifest gives the same frames. Azimuths are relative to the dragon's heading: 0 in front, 90 its left side.",
+  "defaults": {
+    "boot": "?view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66",
+    "size": "1280x720",
+    "settle": 3
+  },
+  "items": [
+    { "id": "r08-match", "desc": "Render 08's camera and lens: the bare pose (idle off), the gaze ahead", "stage": "cam=r08&idle=0&look=none", "compare": true },
+    { "id": "r08-live", "desc": "Render 08's camera with the idle on and the head following the camera", "stage": "cam=r08&look=camera", "settle": 6, "compare": true },
+    { "id": "r08-rider", "desc": "Render 08's camera with the player's rider (about 1.75 m) at the left shoulder, where the elder stands in render 08: scale", "stage": "cam=r08&rider=beside&look=none&idle=0", "compare": true },
+    { "id": "three", "desc": "Three-quarter from behind the left shoulder", "stage": "cam=three&look=none&idle=0" },
+    { "id": "side", "desc": "Left side", "stage": "cam=side&look=none&idle=0" },
+    { "id": "front", "desc": "Front: forelegs, chest, whiskers, horns", "stage": "cam=front&look=none&idle=0" },
+    { "id": "back", "desc": "From behind: the folded, raised wings and the tail curl", "stage": "cam=back&look=none&idle=0" },
+    { "id": "top", "desc": "From above: the pose's footprint on the platform", "stage": "cam=top&look=none&idle=0" },
+    { "id": "low", "desc": "Low, off the left front: the forelegs, the chest and the hanging whiskers", "stage": "cam=low&look=none&idle=0" },
+    { "id": "head", "desc": "The head close: horns, cheek fins, spines, eye, whiskers from the lip", "stage": "cam=head&look=none&idle=0" },
+    { "id": "wings", "desc": "The folded wings from above and behind", "stage": "cam=wings&look=none&idle=0" },
+    { "id": "lod1-r08", "desc": "LOD1 forced at render 08's camera", "stage": "cam=r08&idle=0&look=none&lod=1", "compare": true },
+    { "id": "lod2-r08", "desc": "LOD2 forced at render 08's camera", "stage": "cam=r08&idle=0&look=none&lod=2", "compare": true },
+    { "id": "head-lod1", "desc": "LOD1's parts on LOD1's body, the head close", "stage": "cam=head&look=none&idle=0&lod=1" },
+    { "id": "head-lod2", "desc": "LOD2's horns on LOD2's body, the head close", "stage": "cam=head&look=none&idle=0&lod=2" },
+    { "id": "bind-lod0-top", "desc": "The bind pose (standing, wings spread) from above, LOD0: the membranes' upper face", "stage": "pose=bind&cam=top&camEl=80&camDist=34&look=none&lod=0" },
+    { "id": "bind-lod2-top", "desc": "The bind pose from above, LOD2: the trailing edge G12a found showing the underside", "stage": "pose=bind&cam=top&camEl=80&camDist=34&look=none&lod=2" },
+    { "id": "bind-lod2-edge", "desc": "The bind pose, LOD2, the left wing's trailing edge close from above and behind", "stage": "pose=bind&cam=top&camAz=150&camEl=55&camDist=14&look=none&lod=2" },
+    { "id": "bind-lod0-edge", "desc": "The same view at LOD0, for comparison", "stage": "pose=bind&cam=top&camAz=150&camEl=55&camDist=14&look=none&lod=0" },
+    { "id": "gameplay-40", "desc": "Gameplay distance, 40 m at render 08's azimuth, the game's lens (62°); LOD by distance (0)", "stage": "cam=r08&fov=62&camDist=40&camEl=6&look=camera", "settle": 4 },
+    { "id": "gameplay-110", "desc": "Gameplay distance, 110 m, the game's lens; LOD by distance (1)", "stage": "cam=r08&fov=62&camDist=110&camEl=8&look=camera", "settle": 4 },
+    { "id": "gameplay-200", "desc": "Gameplay distance, 200 m, the game's lens; LOD by distance (2)", "stage": "cam=r08&fov=62&camDist=200&camEl=10&look=camera", "settle": 4 },
+    { "id": "lineup-hue", "desc": "Five white dragons across the hue shift: -8, -4, 0, +4, +8 degrees, left to right, the same parts", "stage": "lineup=hue&look=none&idle=0", "settle": 4 },
+    { "id": "lineup-hue-close", "desc": "The hue lineup from the front-left, nearer", "stage": "lineup=hue&look=none&idle=0&camDist=46&camAz=32&camEl=9", "settle": 4 },
+    { "id": "lineup-hue-60", "desc": "The hue lineup at gameplay distance, the game's lens", "stage": "lineup=hue&look=none&idle=0&fov=62&camDist=70&camAz=20&camEl=10", "settle": 4 },
+    { "id": "idle-head", "desc": "Strip: the head following the camera as it orbits from the right front round to behind the left shoulder (22°/s), 1 s apart", "stage": "cam=head&camDist=13&camAz=-50&turntable=1&spin=22&look=camera", "settle": 1, "strip": { "frames": 8, "step": 1, "cols": 4 } },
+    { "id": "idle-blink", "desc": "Strip: a blink cued at 3.3 s, the eye close, 0.06 s apart", "stage": "cam=eye&look=none&blink=3.3", "settle": 3.24, "strip": { "frames": 8, "step": 0.06, "cols": 4 } },
+    { "id": "idle-whiskers", "desc": "Strip: the whiskers hanging from the lip and swaying, from low at the left front, 1 s apart", "stage": "cam=low&camDist=11&look=none", "settle": 2, "strip": { "frames": 8, "step": 1, "cols": 4 } },
+    { "id": "idle-wings-tail", "desc": "Strip: the first wing settle (6 s) and the tail tip's drift, from above and behind, 0.4 s apart", "stage": "cam=wings&camDist=20&look=none", "settle": 5.6, "strip": { "frames": 8, "step": 0.4, "cols": 4 } }
+  ]
+}

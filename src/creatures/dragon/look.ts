@@ -36,6 +36,8 @@ export interface DragonPalette {
   wingBones: string;
   claws: string;
   eyes: string;
+  /** Horns, spines, fin rays and the tail fin (the hide shader's horn region). */
+  horns: string;
 }
 
 export const HUE_SHIFT_MAX_DEG = 8;
@@ -54,6 +56,10 @@ export const FLIGHT_PALETTES: Partial<Record<DragonFlight, DragonPalette>> = {
     wingBones: '#9db6d3',
     claws: '#4a5260',
     eyes: '#b8d4e8',
+    // Provisional (G12b, 2026-10-19): the kit asks for "pale bone ivory" without a value. This is
+    // the midpoint of the hide's ivory and the wyverns' bone horn (#d9c9a6, wyvern/materials.ts):
+    // a step warmer and darker than the hide, so the horns read against it. Robert settles it.
+    horns: '#e4d8be',
   },
 };
 

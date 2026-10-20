@@ -2,41 +2,52 @@
 
 Keep this file short: one checkpoint, overwritten each session. Move the previous entry to [the handoff log](history/handoff/README.md) under its day before writing a new one. Nothing here authorizes new work on its own; the current task from Robert does.
 
-## Checkpoint 2026-10-19 (third session): G12a's parts and distance models
+## Checkpoint 2026-10-19 (fourth session): G12b, the white dragon's resting showcase
 
-- **Objective:** finish gate G12a (Q47). Build the white elder's five parts on the fitted body, inside the 2,000 to 4,000 triangle allowance, each riding existing bones. Then build the LODs below the bare body, at budgets set in the gate. Nothing visible before G12b.
-- **Branch:** `gate/g12a-white-dragon`, continuing from `223e5fd`, which adds to [PR #15](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/15). The gate branch is checked out in the main checkout, so this session committed on `g12a-parts-lods`, a worktree branch that fast-forwards it.
-- **Completed:**
-  - **Parts:** `scripts/blender/dragon_parts.py` builds the white elder's set from the archived `white-dragon-parts.png`. It was run through the Blender MCP and wrote `src/assets/dragon/white-dragon-parts.glb` (230 KB), one mesh per piece and LOD. The pieces:
-    - branching horns (the head);
-    - two 3.6 m whiskers (the head; strand coordinates and rest nodes for G12b's verlet hang, no bones);
-    - swept cheek fins (`fanL` / `fanR`);
-    - seven dorsal spines down the nape and a nine-tooth tail fin, both weighted as the hide beneath them.
-
-    LOD0 is 2,314 triangles and LOD1 698. LOD2 keeps the horns only, at 68. `creatures/dragon/parts.ts` parses the file. Each catalog option now names its pieces (`catalog.ts`).
-  - **LODs:** the budgets come from the model budgets guide and are recorded in the gate. LOD1 is 4,000 to 5,000 bare and up to 6,000 with parts; LOD2 is 1,000 to 1,300 bare and up to 1,500. They're in `DRAGON_LOD_BUDGETS` (`asset.ts`). The fit script's new `make_lod` and `export_lods` decimate the fitted body and wings and copy the shader attributes from the nearest LOD0 vertex. They wrote `white-dragon-lod1.glb` (4,500 triangles, 305 KB) and `-lod2.glb` (1,270, 94 KB).
-  - **Register:** `white-dragon-meshy-body` lists the LODs, and there's a new `white-dragon-parts` entry. The master `white-dragon-pilot.blend` now holds the parts and LOD copies; it was re-saved, and its new SHA-256 is in the register.
-  - **Docs:** [the white dragon](design/WHITE_DRAGON.md) has the G12a status, [the parts](design/WHITE_DRAGON.md#the-parts) and [the distance models](design/WHITE_DRAGON.md#the-distance-models). The gate's acceptance names the LOD budgets.
+- **Objective:** gate G12b (Q47). Build `?view=white-dragon`, dev-only:
+  - render 08's pose on a stand-in platform;
+  - the dragon's own driver and idle life;
+  - a camera matched to render 08 and a capture manifest;
+  - a lineup across the ±8° hue shift;
+  - a look at LOD2's wing trailing edge and the parts on the thinner LODs.
+- **Branch:** `gate/g12b-white-dragon`, a worktree branch cut from `g12a-parts-lods` (`e4de879`). That branch is one commit ahead of `gate/g12a-white-dragon` and fast-forwards it. Nothing has been pushed, and no PR is open; its base would be `gate/g12a-white-dragon` until [PR #15](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/15) merges.
+- **Completed:** all of it is in [the white dragon's G12b status](design/WHITE_DRAGON.md#g12b-status-2026-10-19-fourth-session).
+  - **The showcase:** `debug/showcases/whiteDragon.ts` loads the body, the LODs and the parts from the dev server only. No dragon file reaches `dist`, and in a production build the lazy chunk refuses with a warning. It offers cameras, the render 08 match, a bind pose, a LOD switch, the hue lineup and the rider for scale.
+  - **The dragon:** `creatures/dragon/`:
+    - `mesh.ts` binds by name to one 64-bone skeleton for every LOD, and merges the rigid parts;
+    - `materials.ts` is the wyvern hide shader in the white palette, with two small patches in the dragon's own program;
+    - `pose.ts` is render 08's sphinx;
+    - `idle.ts` is the driver: breathing, blinks, the look cone, wing settles and the tail tip;
+    - `whiskers.ts` hangs the whiskers as verlet strands, with no bones;
+    - `Dragon.ts` holds them together, and `load.ts` loads the files.
+  - **Horn colour:** `look.ts` gains `horns: '#e4d8be'`. It's provisional, for Robert to settle; the kit names "pale bone ivory" with no value.
+  - **Found and fixed at load, not in the G12a files:**
+    - three zero-length normals at the wing-root cut at every LOD, and six on the cheek fins, which made a NaN hot spot in the bloom;
+    - membrane triangles wound against their normals, LOD2's 9 of 314 among them. That is the cause of the trailing edge showing its underside.
+    - The fit script should fix both at the source the next time it runs.
+  - **Captures:** `scripts/white-dragon-capture.mjs` runs `scripts/white-dragon-capture.manifest.json`, 29 items and 66 files. They are in `shots/white-dragon/` in this worktree (ignored), with their SHA-256 in `docs/qa/white-dragon-g12b-captures.json`. Five are side-by-sides with render 08 (`*.compare.png`): the bare pose, the live idle, the rider for scale, and LOD1 and LOD2.
 - **Tests,** run on the working tree before commit:
   - typecheck clean;
-  - vitest 134 files, 1,431 tests, against 133 and 1,412 before. The dragon's 70 include 19 new: the parts tests (`parts.test.ts`), per-LOD body tests in `asset.test.ts`, and a catalog test;
-  - the production build succeeds, and nothing from `src/assets/dragon/` reaches `dist`;
-  - smoke 15/15, run as `vite build` then `node scripts/smoke.mjs --no-build` with `CHROMIUM_PATH` set to Edge, as last session.
-  - The final parts script was re-run to a scratch file, and its output matches the committed GLB byte for byte.
-- **Visual checks,** all in Blender solid-shaded renders, bind pose only:
-  - the parts against the parts sheet, side and front;
-  - the parts from above and three-quarter, and with back-face culling (no inward faces);
-  - LOD1's parts on LOD1's body;
-  - both LODs beside LOD0, side and top.
-
-  Not checked: LOD2's horns on LOD2's body, any posed or animated frame, the game's shaders, and anything at gameplay distance. Nothing draws the dragon yet.
-- **Known issues:**
-  - At LOD2 the wings' trailing edge shows the membrane's underside from above in places.
-  - The flight palette has no horn colour. The parts use the hide shader's horn region and fin membrane, and the kit names "pale bone ivory" without a value, so G12b maps it.
-  - The parts sit on LOD0's surface, and on the thinner LODs they aren't measured against the body.
-  - The variant sheets aren't built; each is a later builder and catalog option.
-  - Carried over: the fit's limits (wing-root stubs, a flatter flank under the membrane's root, bind pose only). PR #11's Harrier trial isn't on main. The decision log is still forked across branches (Q37 to Q46).
-- **Decisions:** Robert accepted Q50's recommendations the same day ("im okay with reccomendations, continue"). The size, the wing's source and the membrane's root stand as built, so nothing was rebuilt.
+  - vitest 138 files and 1,457 tests (134 and 1,431 before). The 26 new ones are in four files:
+    - `mesh.test.ts`: binding, skin, breath weights, parts, the repairs, the skeleton and the budgets;
+    - `pose.test.ts`: the pose on the skinned body;
+    - `idle.test.ts`: the idle at 30 to 165 Hz against a 120 Hz run, as the wyvern tail test checks, plus a three-minute hitch run, blinks and the cone;
+    - `materials.test.ts`: the patches and the palette.
+  - A deliberately broken interpolation fails the frame-rate test.
+  - `vite build` passes, with no dragon GLB in `dist`.
+  - smoke 15/15 (`vite build`, then `node scripts/smoke.mjs --no-build` with `CHROMIUM_PATH` set to Edge).
+  - The capture run logged no console errors.
+  - The wyvern suites and the pose golden pass unchanged, and no wyvern module was edited.
+- **Known issues (for Robert's scoring):**
+  - Slimmer body, neck and forelegs than render 08's, from the approved sheet (Q50).
+  - The membranes crumple near the wing root where the folded wing bunches.
+  - The hide's luminance cap greys the ivory a little.
+  - The whiskers end 0.8 m above the platform; reaching it needs about 4.5 m whiskers (a parts change).
+  - The eye is a four-vertex patch and reads as a small dark pupil.
+  - At LOD2 the plates blur into a wash.
+  - At tod 0.7 the low sun ahead of render 08's camera hazes everything orange, so the showcase defaults to 0.66.
+  - The stand-in tower stands on an island south of the Roost.
+- **Decisions:** none new. The horn colour and the hue range are Robert's to settle from the captures.
 - **Next authorized action:**
-  - Robert reviews [PR #15](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/15), the parts and LODs included. `gate/g12a-white-dragon` was fast-forwarded to this session's commit and pushed.
-  - Then G12b's resting showcase, which loads the body, the LODs and the parts.
+  - Robert scores the captures beside render 08 on identity, fidelity and reachability. He judges the hue lineup and the parts at gameplay distance, settles the horn colour, and times Medium on his GPU.
+  - Then Robert says whether to open G12b's PR (its base is `gate/g12a-white-dragon`) and whether to push the captures to an archive branch. After that, G12c.
