@@ -72,9 +72,10 @@ export const FLIGHT_PALETTES: Partial<Record<DragonFlight, DragonPalette>> = {
     wingBones: '#9db6d3',
     claws: '#4a5260',
     eyes: '#b8d4e8',
-    // Provisional (G12b, 2026-10-19): the kit asks for "pale bone ivory" without a value. This is
-    // the midpoint of the hide's ivory and the wyverns' bone horn (#d9c9a6, wyvern/materials.ts):
-    // a step warmer and darker than the hide, so the horns read against it. Robert settles it.
+    // The kit asks for "pale bone ivory" without a value. This is the midpoint of the hide's ivory
+    // and the wyverns' bone horn (#d9c9a6, wyvern/materials.ts): a step warmer and darker than the
+    // hide, so the horns read against it. Proposed in G12b and settled by Robert, 2026-10-19: "the
+    // horn should be an off white color so current is looking good".
     horns: '#e4d8be',
   },
 };

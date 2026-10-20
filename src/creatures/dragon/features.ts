@@ -462,12 +462,19 @@ export interface ClawSite {
 
 /** Clusters of the fit's claw region with at least this many vertices are claws; smaller are stray. */
 export const CLAW_MIN_VERTS = 12;
-/** Claw shape: the length kept of the site's and its bounds (m), the widest a single fitted claw is (m),
- * the base's share of the site's radius, how far back it sinks, its curl and its sideways press. */
-export const CLAW = { length: 0.9, minLength: 0.14, maxLength: 0.32, maxRadius: 0.06, width: 0.3, base: 1.3, sink: 0.25, curl: 0.3, press: 0.72 };
+/**
+ * Claw shape: the share of the site's length kept and its bounds (m), the largest base radius (m),
+ * the base's share of the toe end's radius and of the claw's length (a talon, slender), how far back
+ * into the toe it starts, its curl and its sideways press; and at most how many a foot (render 08's
+ * four toes), at least how far apart (m), how far back from the frontmost toe end one may be (m), and
+ * how much each splays with its toe.
+ */
+export const CLAW = { length: 1, minLength: 0.16, maxLength: 0.27, maxRadius: 0.07, base: 1.1, slender: 0.34, sink: 0.24, curl: 0.34, press: 0.82, perFoot: 4, apart: 0.14, behind: 0.3, splay: 0.35 };
+/** A small fragment of fitted claw this close (m) to a claw goes with it, rather than becoming hide. */
+export const CLAW_FRAGMENT = 0.12;
 /** Claw resolution per LOD: [sides, rings]. */
 export const CLAW_RES: [number, number][] = [
-  [6, 5],
+  [8, 6],
   [4, 3],
   [3, 1],
 ];
@@ -497,76 +504,208 @@ export function clawClusters(body: DragonBodyAsset): number[][] {
   return [...groups.values()];
 }
 
-/** The claw sites of the fitted body (LOD0): every claw cluster big enough to be a claw. */
-export function clawSites(body: DragonBodyAsset, rig: DragonRigDef): ClawSite[] {
-  const n = body.position.length / 3;
-  const P = (v: number) => new Vector3(body.position[v * 3], body.position[v * 3 + 1], body.position[v * 3 + 2]);
-  const byName = new Map(rig.bones.map((b, i) => [b.name, i]));
-  // Hide vertices by position: a claw vertex at the same place as a hide vertex is on the base ring.
-  const key = (p: Vector3) => `${Math.round(p.x * 2000)},${Math.round(p.y * 2000)},${Math.round(p.z * 2000)}`;
-  const hide = new Set<string>();
-  for (let v = 0; v < n; v++) if (Math.round(body.mat[v * 4]) !== 9) hide.add(key(P(v)));
-  const sites: ClawSite[] = [];
-  // A cluster wider than one claw is two fitted claws run together: split it in two, by distance
-  // from its two farthest-apart vertices, until each part is one claw wide.
-  const parts: number[][] = [];
-  const split = (g: number[], depth: number) => {
-    let a = g[0];
-    let bb = g[0];
-    let far = 0;
-    for (const u of g) for (const v of g) if (P(u).distanceTo(P(v)) > far) [a, bb, far] = [u, v, P(u).distanceTo(P(v))];
-    if (far <= CLAW.width || depth >= 2) {
-      parts.push(g);
-      return;
-    }
-    const A = P(a);
-    const B = P(bb);
-    split(g.filter((v) => P(v).distanceTo(A) <= P(v).distanceTo(B)), depth + 1);
-    split(g.filter((v) => P(v).distanceTo(A) > P(v).distanceTo(B)), depth + 1);
+/**
+ * The holes the given dropped vertices (the fitted claws) leave in the body, as ordered loops of body
+ * vertex indices round each rim. The fit duplicates a vertex wherever regions meet, so edges are
+ * matched by position: an edge only one kept triangle uses, near a dropped vertex, is on a rim.
+ */
+export function clawHoles(body: DragonBodyAsset, dropped: Uint8Array): number[][] {
+  const P = body.position;
+  const key = (v: number) => `${Math.round(P[v * 3] * 2000)},${Math.round(P[v * 3 + 1] * 2000)},${Math.round(P[v * 3 + 2] * 2000)}`;
+  const gone: Vector3[] = [];
+  for (let v = 0; v < dropped.length; v++) if (dropped[v]) gone.push(new Vector3(P[v * 3], P[v * 3 + 1], P[v * 3 + 2]));
+  if (!gone.length) return [];
+  const near = (v: number) => {
+    const x = P[v * 3];
+    const y = P[v * 3 + 1];
+    const z = P[v * 3 + 2];
+    for (const g of gone) if ((g.x - x) ** 2 + (g.y - y) ** 2 + (g.z - z) ** 2 < 0.08 * 0.08) return true;
+    return false;
   };
-  for (const g of clawClusters(body)) if (g.length >= CLAW_MIN_VERTS) split(g, 0);
-  for (const g of parts) {
-    if (g.length < CLAW_MIN_VERTS / 2) continue;
-    const ring = g.filter((v) => hide.has(key(P(v))));
-    const rim = ring.length >= 3 ? ring : g;
-    const base = new Vector3();
-    for (const v of rim) base.add(P(v));
-    base.multiplyScalar(1 / rim.length);
-    let tip = P(g[0]);
-    for (const v of g) if (P(v).distanceTo(base) > tip.distanceTo(base)) tip = P(v);
-    let radius = 0;
-    for (const v of rim) radius = Math.max(radius, P(v).distanceTo(base));
-    // The flesh's skin around the base: the ring's weights averaged.
-    const skin: Skin = new Map();
-    for (const v of rim) {
-      for (let k = 0; k < 4; k++) {
-        const wgt = body.weights[v * 4 + k];
-        if (!(wgt > 0)) continue;
-        const bone = byName.get(body.jointNames[body.joints[v * 4 + k]])!;
-        skin.set(bone, (skin.get(bone) ?? 0) + wgt);
-      }
+  const count = new Map<string, number>();
+  const rep = new Map<string, number>();
+  const tris = body.index[0];
+  for (let i = 0; i < tris.length; i += 3) {
+    const t = [tris[i], tris[i + 1], tris[i + 2]];
+    if (dropped[t[0]] && dropped[t[1]] && dropped[t[2]]) continue;
+    for (let k = 0; k < 3; k++) {
+      const a = key(t[k]);
+      const b = key(t[(k + 1) % 3]);
+      if (a === b) continue;
+      const e = a < b ? `${a}|${b}` : `${b}|${a}`;
+      count.set(e, (count.get(e) ?? 0) + 1);
+      if (!rep.has(a)) rep.set(a, t[k]);
     }
-    const top = [...skin.entries()].sort((x, y) => y[1] - x[1]).slice(0, 4);
-    const sum = top.reduce((s, [, w]) => s + w, 0);
-    const main = top[0][0];
-    if (!FOOT.test(rig.bones[main].name)) continue;
-    // Along the toe: out from the foot bone's pivot through the base, turned a little toward the
-    // fitted claw's own tip.
-    const along = base.clone().sub(rig.bones[main].pos).normalize();
-    const own = tip.clone().sub(base).normalize();
-    const dir = along.multiplyScalar(0.65).addScaledVector(own, 0.35).normalize();
-    const length = Math.min(CLAW.maxLength, Math.max(CLAW.minLength, tip.distanceTo(base)));
-    sites.push({
-      base,
+  }
+  const adj = new Map<string, string[]>();
+  for (const [e, c] of count) {
+    if (c !== 1) continue;
+    const [a, b] = e.split('|');
+    if (!near(rep.get(a)!) || !near(rep.get(b)!)) continue;
+    adj.set(a, [...(adj.get(a) ?? []), b]);
+    adj.set(b, [...(adj.get(b) ?? []), a]);
+  }
+  const seen = new Set<string>();
+  const loops: number[][] = [];
+  for (const start of adj.keys()) {
+    if (seen.has(start)) continue;
+    const loop: string[] = [];
+    let cur = start;
+    let prev = '';
+    while (cur && !seen.has(cur)) {
+      seen.add(cur);
+      loop.push(cur);
+      const next = (adj.get(cur) ?? []).find((n) => n !== prev && !seen.has(n));
+      prev = cur;
+      cur = next ?? '';
+    }
+    if (loop.length >= 3) loops.push(loop.map((k) => rep.get(k)!));
+  }
+  return loops;
+}
+
+/** A hole's centre, mean radius and the flesh's skin round it (rig bone indices, top four). */
+function holeShape(body: DragonBodyAsset, rig: DragonRigDef, loop: number[]): { center: Vector3; radius: number; joints: number[]; weights: number[] } {
+  const byName = new Map(rig.bones.map((b, i) => [b.name, i]));
+  const P = (v: number) => new Vector3(body.position[v * 3], body.position[v * 3 + 1], body.position[v * 3 + 2]);
+  const center = new Vector3();
+  for (const v of loop) center.add(P(v));
+  center.multiplyScalar(1 / loop.length);
+  let radius = 0;
+  for (const v of loop) radius += P(v).distanceTo(center) / loop.length;
+  const skin: Skin = new Map();
+  for (const v of loop) {
+    for (let k = 0; k < 4; k++) {
+      const w = body.weights[v * 4 + k];
+      if (!(w > 0)) continue;
+      const bone = byName.get(body.jointNames[body.joints[v * 4 + k]])!;
+      skin.set(bone, (skin.get(bone) ?? 0) + w);
+    }
+  }
+  const top = [...skin.entries()].sort((a, b) => b[1] - a[1]).slice(0, 4);
+  const sum = top.reduce((s, [, w]) => s + w, 0);
+  return { center, radius, joints: top.map(([b]) => b), weights: top.map(([, w]) => w / sum) };
+}
+
+/** The fitted feet's claw clusters, each with the bone that carries it. */
+function footClusters(body: DragonBodyAsset): { verts: number[]; bone: string }[] {
+  const out: { verts: number[]; bone: string }[] = [];
+  for (const g of clawClusters(body)) {
+    let best = 0;
+    for (let k = 1; k < 4; k++) if (body.weights[g[0] * 4 + k] > body.weights[g[0] * 4 + best]) best = k;
+    const bone = body.jointNames[body.joints[g[0] * 4 + best]];
+    if (FOOT.test(bone)) out.push({ verts: g, bone });
+  }
+  return out;
+}
+
+/**
+ * Which fitted foot claw clusters go (as a vertex mask): the claws, and the small fragments of claw
+ * beside them, which would otherwise stand out of the toe's end as slivers of hide.
+ */
+export function footClawMask(body: DragonBodyAsset, near?: (p: Vector3) => boolean, min = CLAW_MIN_VERTS): Uint8Array {
+  const mask = new Uint8Array(body.position.length / 3);
+  const P = (v: number) => new Vector3(body.position[v * 3], body.position[v * 3 + 1], body.position[v * 3 + 2]);
+  const clusters = footClusters(body);
+  const centroid = (g: number[]) => g.reduce((c, v) => c.add(P(v)), new Vector3()).multiplyScalar(1 / g.length);
+  const big = clusters.filter((c) => c.verts.length >= min && (!near || near(centroid(c.verts))));
+  for (const c of big) for (const v of c.verts) mask[v] = 1;
+  for (const c of clusters) {
+    if (big.includes(c)) continue;
+    const m = centroid(c.verts);
+    if (big.some((b) => b.verts.some((v) => P(v).distanceTo(m) < CLAW_FRAGMENT))) for (const v of c.verts) mask[v] = 1;
+  }
+  return mask;
+}
+
+/**
+ * The claw sites of the fitted body (LOD0): one at each toe's end where a fitted claw was, at the
+ * centre of the hole it leaves, its skin the flesh's round the rim, pointing out along the toe and
+ * toward the fitted claw's own tip, its length that claw's. At most four a foot, as render 08's: the
+ * frontmost toe ends, a toe's width apart.
+ */
+export function clawSites(body: DragonBodyAsset, rig: DragonRigDef): ClawSite[] {
+  const P = (v: number) => new Vector3(body.position[v * 3], body.position[v * 3 + 1], body.position[v * 3 + 2]);
+  const mask = footClawMask(body);
+  const owner = new Map<number, number[]>();
+  for (const c of footClusters(body)) for (const v of c.verts) if (mask[v]) owner.set(v, c.verts);
+  const candidates: (ClawSite & { foot: true; key: string; reach: number })[] = [];
+  for (const loop of clawHoles(body, mask)) {
+    const h = holeShape(body, rig, loop);
+    const bone = rig.bones[h.joints[0]].name;
+    if (!FOOT.test(bone)) continue;
+    // The fitted claw this hole belonged to: the one with the dropped vertex nearest its centre.
+    let nearest = -1;
+    for (const v of owner.keys()) if (nearest < 0 || P(v).distanceTo(h.center) < P(nearest).distanceTo(h.center)) nearest = v;
+    if (nearest < 0) continue;
+    let tip = h.center.clone();
+    for (const v of owner.get(nearest)!) if (P(v).distanceTo(h.center) > tip.distanceTo(h.center)) tip = P(v);
+    const side = bone.endsWith('L') ? 'L' : 'R';
+    const fore = /^fore/.test(bone);
+    const a = rig.bones.find((b) => b.name === (fore ? `forepaw${side}` : `meta${side}`))!.pos;
+    const toes = rig.bones.findIndex((x) => x.name === (fore ? `foretoes${side}` : `toes${side}`));
+    const b = rig.bones[toes].pos;
+    const forward = b.clone().sub(a).normalize();
+    // Out along the toe: the toes point forward in the bind pose; each claw splays a little with its
+    // toe (its sideways offset from the foot), then curls down (buildClaws).
+    const splay = h.center.clone().sub(a);
+    splay.y = 0;
+    splay.z = Math.max(0, splay.z);
+    const dir = new Vector3(0, 0, 1).addScaledVector(splay.normalize(), CLAW.splay).normalize();
+    candidates.push({
+      base: h.center,
       dir,
-      length,
-      radius: Math.min(CLAW.maxRadius, Math.max(0.02, radius)),
-      joints: top.map(([b]) => b),
-      weights: top.map(([, w]) => w / sum),
+      length: Math.min(CLAW.maxLength, Math.max(CLAW.minLength, tip.distanceTo(h.center))),
+      radius: Math.min(CLAW.maxRadius, Math.max(0.018, h.radius)),
+      // On the toe bone, so the claw follows the toes (the rim's own skin can lean on the foot's
+      // long bone, which the resting pose turns from upright to flat).
+      joints: [toes],
+      weights: [1],
       foot: true,
+      key: `${fore ? 'fore' : 'hind'}${side}`,
+      reach: h.center.clone().sub(a).dot(forward),
     });
   }
+  const sites: ClawSite[] = [];
+  for (const key of new Set(candidates.map((c) => c.key))) {
+    const kept: ClawSite[] = [];
+    const front = candidates.filter((x) => x.key === key).sort((x, y) => y.reach - x.reach);
+    for (const c of front) {
+      if (kept.length >= CLAW.perFoot) break;
+      // Only the toes' ends: holes well back from the frontmost (on the side of the paw) are capped only.
+      if (c.reach < front[0].reach - CLAW.behind) continue;
+      if (kept.some((k) => k.base.distanceTo(c.base) < CLAW.apart)) continue;
+      kept.push({ base: c.base, dir: c.dir, length: c.length, radius: c.radius, joints: c.joints, weights: c.weights, foot: true });
+    }
+    sites.push(...kept);
+  }
   return sites;
+}
+
+/** Caps over the holes (fans from each rim to its centre, facing out), in the hide, as a piece. */
+export function buildToeCaps(body: DragonBodyAsset, rig: DragonRigDef, loops: number[][]): BuiltPiece {
+  const b = new Builder();
+  const P = (v: number) => new Vector3(body.position[v * 3], body.position[v * 3 + 1], body.position[v * 3 + 2]);
+  const byName = new Map(rig.bones.map((bn, i) => [bn.name, i]));
+  for (const loop of loops) {
+    const h = holeShape(body, rig, loop);
+    const out = h.center.clone().sub(rig.bones[h.joints[0]].pos).normalize();
+    const centre = b.vertex(h.center, new Map(h.joints.map((j, k) => [j, h.weights[k]])), [0, 0, 0, 0], [0, 0]);
+    b.setNormal(centre, out);
+    const rim = loop.map((v) => {
+      const skin: Skin = new Map();
+      for (let k = 0; k < 4; k++) {
+        const w = body.weights[v * 4 + k];
+        if (w > 0) skin.set(byName.get(body.jointNames[body.joints[v * 4 + k]])!, w);
+      }
+      const i = b.vertex(P(v), skin, [0, 0, 0, 0], [body.uv2[v * 2], body.uv2[v * 2 + 1]]);
+      b.setNormal(i, out);
+      return i;
+    });
+    for (let k = 0; k < rim.length; k++) b.triangle(0, centre, rim[k], rim[(k + 1) % rim.length]);
+  }
+  b.windToNormals();
+  return b.done('toeCaps');
 }
 
 /** The claws at a LOD from their sites (bind pose, body space). */
@@ -599,7 +738,7 @@ export function buildClaws(sites: ClawSite[], lod: number): BuiltPiece {
       tan.copy(s.dir).addScaledVector(bend, 2 * CLAW.curl * t).normalize();
       up.copy(bend).negate().addScaledVector(tan, bend.dot(tan)).normalize();
       side.crossVectors(tan, up).normalize();
-      const rad = s.radius * CLAW.base * Math.pow(1 - t, 0.85);
+      const rad = Math.min(s.radius * CLAW.base, CLAW.slender * L) * Math.pow(1 - t, 0.9);
       const row: number[] = [];
       for (let k = 0; k < sides; k++) {
         const a = (k / sides) * Math.PI * 2;
@@ -641,8 +780,13 @@ export function buildClaws(sites: ClawSite[], lod: number): BuiltPiece {
 // Eyes
 // ---------------------------------------------------------------------------------------------
 
-/** The eyeball: its radius (m), its stretch along the head and up, and how deep its center sits. */
-export const EYE = { radius: 0.085, long: 1.45, tall: 0.8, sink: 0.45 };
+/**
+ * The eyeball: its radius (m); its stretch along the head, up, and out along its axis (flattened, so
+ * it bulges little: Robert, 2026-10-19, "bulging a little less"); and how deep its center sits below
+ * the skin, in radii. The opening's rim is where the skin cuts it (sink / depth sets its size); the
+ * eye stands (depth − sink) radii proud of the skin.
+ */
+export const EYE = { radius: 0.085, long: 1.45, tall: 0.8, depth: 0.5, sink: 0.22 };
 /** Eye resolution per LOD: [around, rings]; none far off. */
 export const EYE_RES: ([number, number] | null)[] = [[16, 6], [8, 3], null];
 
@@ -687,14 +831,14 @@ export function buildEyes(frame: EyeFrame, rig: DragonRigDef, lod: number): Buil
       const st = Math.sin(theta);
       return c
         .clone()
-        .addScaledVector(ax, R * Math.cos(theta))
+        .addScaledVector(ax, R * EYE.depth * Math.cos(theta))
         .addScaledVector(fw, R * EYE.long * st * Math.cos(phi))
         .addScaledVector(up, R * EYE.tall * st * Math.sin(phi));
     };
     const normalAt = (theta: number, phi: number) => {
       const st = Math.sin(theta);
       return new Vector3()
-        .addScaledVector(ax, Math.cos(theta) / R)
+        .addScaledVector(ax, Math.cos(theta) / (R * EYE.depth))
         .addScaledVector(fw, (st * Math.cos(phi)) / (R * EYE.long))
         .addScaledVector(up, (st * Math.sin(phi)) / (R * EYE.tall))
         .normalize();

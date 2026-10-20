@@ -2,7 +2,7 @@
  "metadata": {
   "gate": "G12b",
   "capturedOn": "2026-10-19",
-  "pass": "second set: the fidelity pass (built wings, claws, eyes) and the tail; the hue lineup re-shot across the white flight's 0 to +4 degrees",
+  "pass": "third set: the flatter eye, the reworked toes and claws, and the white flight's 0 to +4 degree lineup, on the fidelity pass",
   "branch": "gate/g12b-white-dragon",
   "tested": "the working tree committed with this record",
   "script": "scripts/white-dragon-capture.mjs",
@@ -22,19 +22,19 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 19836,
+    "triangles": 20890,
     "hueShift": 0
    },
    "files": [
     {
      "file": "r08-match.png",
-     "sha256": "78a4a5f71830b51e1dff07a7af181586ade24e2fcdcaeee9e5e36a04b7bf3da4",
-     "bytes": 798868
+     "sha256": "b6ff5c4f8deb87306306c5d9d2249e8f4fff70ad5d061bfdd4a7d41b4636ea15",
+     "bytes": 799047
     },
     {
      "file": "r08-match.compare.png",
-     "sha256": "1e422ccb345017610535732511e37887319581ac608813f5c513c0aaae924bf4",
-     "bytes": 3722934
+     "sha256": "9408d8eb26f27f8a2a2ef29aa1afc7a061ba0a526704c2c20c48f2bd3e62a2c2",
+     "bytes": 3724244
     }
    ]
   },
@@ -45,19 +45,19 @@
    "settle": 6,
    "dragon": {
     "lod": 0,
-    "triangles": 19836,
+    "triangles": 20890,
     "hueShift": 0
    },
    "files": [
     {
      "file": "r08-live.png",
-     "sha256": "4989f325c751300e6fa824a19257cc818a4a8a13aa9b1c915e5a5af40d8d7467",
-     "bytes": 778082
+     "sha256": "6f63fac52bc30d709e9947bae973af33041f78edf2ba3b71e9f14f094543a89c",
+     "bytes": 779275
     },
     {
      "file": "r08-live.compare.png",
-     "sha256": "3d95e2e1155ac404c6fb89ce430b3575761a31ffb44c828e983d92ada3ea81de",
-     "bytes": 3703094
+     "sha256": "b8af436500e89cfff715dfda0a5a7da5dc3eea52c3063f00db3a9b8f40ba4eec",
+     "bytes": 3703819
     }
    ]
   },
@@ -68,19 +68,19 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 19836,
+    "triangles": 20890,
     "hueShift": 0
    },
    "files": [
     {
      "file": "r08-rider.png",
-     "sha256": "62d991266cf0c4d5d9a84336d8d2561b35a72573cd71216d166cfd7047abfb6f",
-     "bytes": 809271
+     "sha256": "21d63adeed77de2a670acaabd5493565336b1f829a996d0fdbdb885a50d64b16",
+     "bytes": 809560
     },
     {
      "file": "r08-rider.compare.png",
-     "sha256": "1e806e9c7e20f7452fa76fbc49fcb44d55fbb76c2d0fad642c21e3ea09c68e33",
-     "bytes": 3726394
+     "sha256": "7f7f05437e971e5b2260d20e5a1bcc3d68706f3749860009e59ee76dd18d8192",
+     "bytes": 3727116
     }
    ]
   },
@@ -91,14 +91,14 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 19836,
+    "triangles": 20890,
     "hueShift": 0
    },
    "files": [
     {
      "file": "three.png",
-     "sha256": "cd68bb2ba34dbf29d5daeadb0eedc91e2efcaad5d36183a4e23fd5798e7f2940",
-     "bytes": 752148
+     "sha256": "0c29e8d43300d33c2b719b268781e5cb84cba61ab92c76d00d81779738ee145c",
+     "bytes": 752304
     }
    ]
   },
@@ -109,14 +109,14 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 19836,
+    "triangles": 20890,
     "hueShift": 0
    },
    "files": [
     {
      "file": "side.png",
-     "sha256": "8485f13aea9f9db5058742182e5c2982915acc6b3924b1bd2705becceb32766c",
-     "bytes": 621958
+     "sha256": "c0d5bf2ffabb01311495298c898f41d884963e6ca85d4c49b1b749b930547456",
+     "bytes": 621897
     }
    ]
   },
@@ -127,14 +127,14 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 19836,
+    "triangles": 20890,
     "hueShift": 0
    },
    "files": [
     {
      "file": "front.png",
-     "sha256": "c124e36d245d29df6f88fe4e189bce4a8c361ccb8f9f4f206268ebaf6e1a47f3",
-     "bytes": 724761
+     "sha256": "9fc4be7d84c19816cf8e76b1c69ea793b365da69be9e067df6cf844bea7bd67a",
+     "bytes": 725850
     }
    ]
   },
@@ -145,14 +145,14 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 19836,
+    "triangles": 20890,
     "hueShift": 0
    },
    "files": [
     {
      "file": "back.png",
-     "sha256": "198b4f2faac7ee0aeb6f3a2ea06c3e3492226c2acc0ec499c31d5a221c9d0617",
-     "bytes": 672367
+     "sha256": "629b564cb1d4e2e963148ecb52333443ffbd4293db3faad8f3e2bacbd987bb8f",
+     "bytes": 672810
     }
    ]
   },
@@ -163,14 +163,14 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 19836,
+    "triangles": 20890,
     "hueShift": 0
    },
    "files": [
     {
      "file": "top.png",
-     "sha256": "c76ff5c4da02ddf180e49c4b6639156f074a52c19a17982923e0e1281cce356a",
-     "bytes": 543772
+     "sha256": "879715c08018869f036ecb0bd5fc18a43cc593c8c9f723d8fb6d4604668d0d1b",
+     "bytes": 543820
     }
    ]
   },
@@ -181,14 +181,14 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 19836,
+    "triangles": 20890,
     "hueShift": 0
    },
    "files": [
     {
      "file": "low.png",
-     "sha256": "649d55e16ea52a7ad42458e745c8ebf0390efe98d6c161f7ba67e14e6124204a",
-     "bytes": 715733
+     "sha256": "a201b9e6171103749a0b31ec4b04800773fb8457d1e782d11269fc2e0ca447ca",
+     "bytes": 715019
     }
    ]
   },
@@ -199,14 +199,14 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 19836,
+    "triangles": 20890,
     "hueShift": 0
    },
    "files": [
     {
      "file": "head.png",
-     "sha256": "39b46a682412dcd50efa695becf86202f10cde3652f290948d487128b3a01280",
-     "bytes": 798918
+     "sha256": "f7bf8531a4ccf8473d2d16efbc7eed08d380c0dc2e15b301713e989821840f28",
+     "bytes": 799572
     }
    ]
   },
@@ -217,14 +217,14 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 19836,
+    "triangles": 20890,
     "hueShift": 0
    },
    "files": [
     {
      "file": "wings.png",
-     "sha256": "6fa4236de69229c3e5cf8dd3707149957fa4562fcb7d659e5dff449668896de0",
-     "bytes": 742117
+     "sha256": "8dd973ab494c1e94f7a64b3660e44648804a6579b92a3e8a74526a47a197e2bb",
+     "bytes": 742300
     }
    ]
   },
@@ -253,14 +253,14 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 19836,
+    "triangles": 20890,
     "hueShift": 0
    },
    "files": [
     {
      "file": "wings-after.png",
-     "sha256": "981757bd93283c3193ccc3d529ebd30b3d25e97d500c885361bc48d1aa11a974",
-     "bytes": 842992
+     "sha256": "2b400788aa0bdecaaeb75401856f39196e4aa97c8755687f2313f75deebb3057",
+     "bytes": 844206
     }
    ]
   },
@@ -271,14 +271,14 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 19836,
+    "triangles": 20890,
     "hueShift": 0
    },
    "files": [
     {
      "file": "wing-root.png",
-     "sha256": "5d9fc6aeda3f6f74e8b87038beb56c421e0586d654c1d08771059f68c2f96e17",
-     "bytes": 942669
+     "sha256": "6fddb7f4f0704a0facd6fcdf93ca3c21ed3f15271b4c24526cb63574f4ee7077",
+     "bytes": 942712
     }
    ]
   },
@@ -307,14 +307,14 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 19836,
+    "triangles": 20890,
     "hueShift": 0
    },
    "files": [
     {
      "file": "eye-after.png",
-     "sha256": "8ed879c5408d5f33bc9ca7ef4cc3d5921b4c7d80f3641414a63548d27d237c2f",
-     "bytes": 843927
+     "sha256": "e49ef0d468db551b6b6863e8e24474fd997aec4d05cd0fc10a8f9bcec52e6edc",
+     "bytes": 844006
     }
    ]
   },
@@ -343,14 +343,14 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 19836,
+    "triangles": 20890,
     "hueShift": 0
    },
    "files": [
     {
      "file": "forepaw-after.png",
-     "sha256": "f8d6415c5fe08e9a9f54afbd17fad280899038f2cfb7b78373d19cb8069b1f61",
-     "bytes": 594446
+     "sha256": "b64e530516b020fbd5f8678aa0357c35c4627f8c60bce9bd5378488804f8956a",
+     "bytes": 606724
     }
    ]
   },
@@ -361,14 +361,14 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 19836,
+    "triangles": 20890,
     "hueShift": 0
    },
    "files": [
     {
      "file": "hindpaw-after.png",
-     "sha256": "6f003b16d055838b59460970996e8d9c2ebb84ec3fcc69e8bf6c45d9bf259662",
-     "bytes": 662461
+     "sha256": "f812c9d67ba9ec337c73a211e9acfeffd8ea121abb2f2823c146ee13d71be13a",
+     "bytes": 675034
     }
    ]
   },
@@ -379,19 +379,19 @@
    "settle": 3,
    "dragon": {
     "lod": 1,
-    "triangles": 5374,
+    "triangles": 5410,
     "hueShift": 0
    },
    "files": [
     {
      "file": "lod1-r08.png",
-     "sha256": "1baa90d2e698bdb122e9f22549defbcf385eb78b116ea2dc11bda6833adc5f00",
-     "bytes": 755993
+     "sha256": "34a0340f368de27018f76b18db029c2da926164a5086a9ecfe60b18706e8fc91",
+     "bytes": 755016
     },
     {
      "file": "lod1-r08.compare.png",
-     "sha256": "42814e102bf6469ee86af4bd43c399d7bb055dd145e06a22a6777bd223f767b9",
-     "bytes": 3686614
+     "sha256": "4fb6cf2bddeaf2f8d71a7a8c71c9f16ec9c3dc39091ba94670df90498ab68a99",
+     "bytes": 3687452
     }
    ]
   },
@@ -402,19 +402,19 @@
    "settle": 3,
    "dragon": {
     "lod": 2,
-    "triangles": 1467,
+    "triangles": 1476,
     "hueShift": 0
    },
    "files": [
     {
      "file": "lod2-r08.png",
-     "sha256": "b58f55f587232e087e20ea97c85689d1941e502975ba1976b2731e122dc04626",
-     "bytes": 711547
+     "sha256": "a356a6170ccad4e78f0de6bf0175102f80293cf30a9f3122a80b6ffc910caa27",
+     "bytes": 710672
     },
     {
      "file": "lod2-r08.compare.png",
-     "sha256": "e87e11bf58ef24c3184e083dbe7f3a9020c3be3b8c24e263bbd697dc4ec55760",
-     "bytes": 3657040
+     "sha256": "1108fa0782b32536be00265bf2a75328ff7db13df1213406ccb77cee92d91b74",
+     "bytes": 3657724
     }
    ]
   },
@@ -425,14 +425,14 @@
    "settle": 3,
    "dragon": {
     "lod": 1,
-    "triangles": 5374,
+    "triangles": 5410,
     "hueShift": 0
    },
    "files": [
     {
      "file": "head-lod1.png",
-     "sha256": "16c006435a65f2ca3944d965317a48e79565a5a4410d70f17875597fc5b81174",
-     "bytes": 744781
+     "sha256": "c7b972763d1df2c423a60347c17be9f47455810053b98de6fb6b1a21e022bf89",
+     "bytes": 744819
     }
    ]
   },
@@ -443,14 +443,14 @@
    "settle": 3,
    "dragon": {
     "lod": 2,
-    "triangles": 1467,
+    "triangles": 1476,
     "hueShift": 0
    },
    "files": [
     {
      "file": "head-lod2.png",
-     "sha256": "44252ed9b0be87b30ab6aed6ec067d3a1faaff2a94a78d14a1a35c791593139e",
-     "bytes": 716885
+     "sha256": "53ce6fcd07997f6b5ff16c6438a39c052285d07503479087a4e22c9c726486e8",
+     "bytes": 716804
     }
    ]
   },
@@ -461,14 +461,14 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 19836,
+    "triangles": 20890,
     "hueShift": 0
    },
    "files": [
     {
      "file": "bind-lod0-top.png",
-     "sha256": "8bc4a72cf9f6944d3dac574acea82427c63018a05a534012fb3cfce59deea5ec",
-     "bytes": 532884
+     "sha256": "09d03d480bd06d60b93a3f17f43e792b701dcd5177f9ce29b42d0d516f4c3a01",
+     "bytes": 532852
     }
    ]
   },
@@ -479,14 +479,14 @@
    "settle": 3,
    "dragon": {
     "lod": 2,
-    "triangles": 1467,
+    "triangles": 1476,
     "hueShift": 0
    },
    "files": [
     {
      "file": "bind-lod2-top.png",
-     "sha256": "575ede4b79016f75467982012b29f884f803508cf3b0d55a11f73a46ce3d1d1b",
-     "bytes": 525065
+     "sha256": "6e0972a34dbd265aa8b4a22d3c861c59f1e00a185a37465718ebf79193e53bfa",
+     "bytes": 525636
     }
    ]
   },
@@ -497,14 +497,14 @@
    "settle": 3,
    "dragon": {
     "lod": 2,
-    "triangles": 1467,
+    "triangles": 1476,
     "hueShift": 0
    },
    "files": [
     {
      "file": "bind-lod2-edge.png",
-     "sha256": "8f368e361c66f72fae7c8b4ecdac092c62047f9ad567633763179dd612818c5f",
-     "bytes": 651729
+     "sha256": "4df4fb8ce26c48f10d3ba28cbfca542ed56cb4f836f1cdf74bcd358761fdcbea",
+     "bytes": 652274
     }
    ]
   },
@@ -515,14 +515,14 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 19836,
+    "triangles": 20890,
     "hueShift": 0
    },
    "files": [
     {
      "file": "bind-lod0-edge.png",
-     "sha256": "fae9c7dd867b54185407db939e4ca526940cd8398fecfb071c0f587302e321d4",
-     "bytes": 721357
+     "sha256": "b3e3f5a6d2d6d9d77d7982d72859f8885c2d30ed77e599c67c0bc75b283dd17a",
+     "bytes": 721648
     }
    ]
   },
@@ -533,14 +533,14 @@
    "settle": 4,
    "dragon": {
     "lod": 0,
-    "triangles": 19836,
+    "triangles": 20890,
     "hueShift": 0
    },
    "files": [
     {
      "file": "gameplay-40.png",
-     "sha256": "6aaf422918aa19c71d065241f7bad5dcbf390d54573c8d3b5463dd113ac3d177",
-     "bytes": 836788
+     "sha256": "b16007581242354772ec2c784a1d3ab18047052d98ec3edcb8dbc71ec8ce139b",
+     "bytes": 836928
     }
    ]
   },
@@ -551,14 +551,14 @@
    "settle": 4,
    "dragon": {
     "lod": 1,
-    "triangles": 5374,
+    "triangles": 5410,
     "hueShift": 0
    },
    "files": [
     {
      "file": "gameplay-110.png",
-     "sha256": "4efe8e1815d52c3df0c302132267b2cec3549bccc347764c46186cadec6d5717",
-     "bytes": 911068
+     "sha256": "0e2edb1301e1e3ad5516a42af3334cd7473a696faf0fdbf7be6676d3f9bb4483",
+     "bytes": 911059
     }
    ]
   },
@@ -569,14 +569,14 @@
    "settle": 4,
    "dragon": {
     "lod": 2,
-    "triangles": 1467,
+    "triangles": 1476,
     "hueShift": 0
    },
    "files": [
     {
      "file": "gameplay-200.png",
-     "sha256": "df0bd356d0b887065d9eb73109717dead145e72965ca4124b8dc235b97d1b099",
-     "bytes": 885724
+     "sha256": "adf769b5bd650a5540f2da4c6c2b6a0a62eb993ce5ff60f9096c0b5f24018799",
+     "bytes": 885730
     }
    ]
   },
@@ -587,14 +587,14 @@
    "settle": 4,
    "dragon": {
     "lod": 0,
-    "triangles": 19836,
+    "triangles": 20890,
     "hueShift": 0
    },
    "files": [
     {
      "file": "lineup-hue.png",
-     "sha256": "e4de23f6fe2fe0a567a0f669265af20d6a800bf1e0bd9349aebb60de79f24809",
-     "bytes": 833600
+     "sha256": "c212baa351f9feac1607db7d72973be8385be5d13dbda0e31dec26b03bb19421",
+     "bytes": 839141
     }
    ]
   },
@@ -605,14 +605,14 @@
    "settle": 4,
    "dragon": {
     "lod": 0,
-    "triangles": 19836,
+    "triangles": 20890,
     "hueShift": 0
    },
    "files": [
     {
      "file": "lineup-hue-close.png",
-     "sha256": "34f8b31512374902b7d554bc63807109be05d184474b3df2be723d485c4ed46e",
-     "bytes": 762856
+     "sha256": "aebca3d5901e18c32e0fbe545ab5b295e3ed98ece1be34a7400c144c62c33a10",
+     "bytes": 766228
     }
    ]
   },
@@ -623,14 +623,14 @@
    "settle": 4,
    "dragon": {
     "lod": 0,
-    "triangles": 19836,
+    "triangles": 20890,
     "hueShift": 0
    },
    "files": [
     {
      "file": "lineup-hue-60.png",
-     "sha256": "eeac66e5786ee99eb9f10912753c2a62d9233cbf9d53804e9782a7e1162a7357",
-     "bytes": 894878
+     "sha256": "0fd4ca3bd5be6541f01b862a0a7469293891ccca8e89355bcf762ddbde7becf3",
+     "bytes": 896300
     }
    ]
   },
@@ -642,48 +642,48 @@
    "files": [
     {
      "file": "idle-head/f00.png",
-     "sha256": "a7b8c32f9879b58a0c64565ed4b2b7d147e3ef6df42d5cb2eb1929cf596061b0",
-     "bytes": 737149
+     "sha256": "d430a31add12955d50562ec36a754983509ca92666ed68edd1213163b4d149f7",
+     "bytes": 737718
     },
     {
      "file": "idle-head/f01.png",
-     "sha256": "1a297041995ad7085180721cc5abdb4d68b55668a28cb2bdc8004f80dde59ca0",
-     "bytes": 747932
+     "sha256": "8909a30abbce5548f1a3dc05bca9a69b0946e81549701c806934e9835d4214b6",
+     "bytes": 749088
     },
     {
      "file": "idle-head/f02.png",
-     "sha256": "839c3fcf696fde548a7d7b1d020ef33dc57c0e99be69bc03afb12c769b30f741",
-     "bytes": 790057
+     "sha256": "9cdc11f01530a589b411a1eefcb305687554231aca57b427f761c948a0457b98",
+     "bytes": 790204
     },
     {
      "file": "idle-head/f03.png",
-     "sha256": "c051cd869dd92778ae0940384041b393b83016e33a13125b9d0b276950bdeba6",
-     "bytes": 719382
+     "sha256": "97d65a30c04e7dc9946eec6f9abe2c13d780fe0888a423e3b6a58e31326b7554",
+     "bytes": 721607
     },
     {
      "file": "idle-head/f04.png",
-     "sha256": "bd3960145169ed3248b771f1d2b607683ddfde632aba51609e4075efd401397b",
-     "bytes": 797284
+     "sha256": "effd9f78403e2e7ea1c4fda9dd01a6741355c551acadc12775346eb834999e8e",
+     "bytes": 798945
     },
     {
      "file": "idle-head/f05.png",
-     "sha256": "260dc29853f86b30f289d236e73ed1441326c85feec96596042270bf78b4cba8",
-     "bytes": 794281
+     "sha256": "5ad0802bae2a1d9000b5c4db87a81c1ba292acfc6a0f98ad5d1351bfc118c717",
+     "bytes": 795368
     },
     {
      "file": "idle-head/f06.png",
-     "sha256": "80172c730bc61993842b142f820b81fd2516f00697e05ecb8b56599a631ab068",
-     "bytes": 811441
+     "sha256": "c359374a1891cc96746eccb95fb50b499ad5f7ce75d168ee8d7b1c3337490f69",
+     "bytes": 810365
     },
     {
      "file": "idle-head/f07.png",
-     "sha256": "064780cc1a1afed9f11fb1c90e03e547c1566c8407577291adfdf64294ea1237",
-     "bytes": 869040
+     "sha256": "a883e5f84317ed8e367e1e3188b4ab50e7aa76e2fd11248e53808b30153b6add",
+     "bytes": 869358
     },
     {
      "file": "idle-head.sheet.png",
-     "sha256": "fcebf4e58363651788b3af3e62105c6d922dff07f4683067b6ef628ffb1a83d4",
-     "bytes": 2869054
+     "sha256": "c06d6ad7afb25722c363d76f7dc2b5cb4a5a631e00da68c83557ca4e92b4fef2",
+     "bytes": 2870496
     }
    ]
   },
@@ -695,48 +695,48 @@
    "files": [
     {
      "file": "idle-blink/f00.png",
-     "sha256": "3d1e3acb85927039276807d4d1ef9c0c4946e7fc405d19a9b5c3db0672ebe60c",
-     "bytes": 845895
+     "sha256": "99265648b81c4bc3e7f858e401522beb809cd4b00c25bd2f05f0d7c232283583",
+     "bytes": 845883
     },
     {
      "file": "idle-blink/f01.png",
-     "sha256": "d5046b229162eb16677cabdc123852364c06e6a1b71e7b71b916a8216d2450e0",
-     "bytes": 846837
+     "sha256": "151ec8ed0c8d9f4cbad65296101e213d115aa48e0f959b518120cdae482a5520",
+     "bytes": 846806
     },
     {
      "file": "idle-blink/f02.png",
-     "sha256": "aeac58ee516132f6b14267e44789f45b9a5b4705b180b62fed4ee38a09ea9a68",
-     "bytes": 845436
+     "sha256": "12efce1e7cde052480ce7343a91d84d66a5ee4483e1ac5280320d714e321a14f",
+     "bytes": 845307
     },
     {
      "file": "idle-blink/f03.png",
-     "sha256": "76ff8c2fdbcd3b5e0a542ea6d1544d652127dbf842974d38f915d6535167df12",
-     "bytes": 844819
+     "sha256": "308e0b15ca78c43261100ee3fd4b5150c495e871b6adbe8dab3db25cb256f065",
+     "bytes": 844293
     },
     {
      "file": "idle-blink/f04.png",
-     "sha256": "cc913e86b46df94807cee2b986afec6b9fda9330bb10653665432a9ee65a5eec",
-     "bytes": 845196
+     "sha256": "d4554fae9abf6733bb63b38bdeadf445e96da4012d9fafb42b6929ec27caad9d",
+     "bytes": 844835
     },
     {
      "file": "idle-blink/f05.png",
-     "sha256": "d59cea6ebfc13b184b9aa90b310478ad13efe775d72a384ce3c3be4913bea962",
-     "bytes": 846183
+     "sha256": "3c99c50acb0b7c1d84491e48fa5e5982f598412c35d7843891b4bf43173611cd",
+     "bytes": 846170
     },
     {
      "file": "idle-blink/f06.png",
-     "sha256": "ac2cd30692dcb58d9122883d34b2b22fc7cad58f4eb017c7a412c9d89d53f731",
-     "bytes": 846283
+     "sha256": "c94ba7052c54d2d9643ec372219bbc521114687c99ba6f8b2526a4e8bfa3f75e",
+     "bytes": 846241
     },
     {
      "file": "idle-blink/f07.png",
-     "sha256": "02739f4a741168841fc7852ab47606764314939aff921e41e3328d5f9a5d30bd",
-     "bytes": 845513
+     "sha256": "243e3b52ada46cb7544f0513880e6b2bb7a1822670460fb748099d517cfd5a12",
+     "bytes": 845301
     },
     {
      "file": "idle-blink.sheet.png",
-     "sha256": "d2cf31a5d12945493d33d8101b1ec70dcd4551a476e561fddc0cb6810c8856af",
-     "bytes": 2379853
+     "sha256": "659814c8e327d4945289cc2bf2325d23ffba693eb94a0fce005a4c689e629561",
+     "bytes": 2379297
     }
    ]
   },
@@ -748,48 +748,48 @@
    "files": [
     {
      "file": "idle-whiskers/f00.png",
-     "sha256": "55a5437a653d8e06419180c187071cdf1b0becb4fd6f6cb6154795e8db8f40a3",
-     "bytes": 828115
+     "sha256": "180a77719627944a8be89a6a225660f3c0b526f5768e57c2ae1f45e9dad88e4a",
+     "bytes": 828069
     },
     {
      "file": "idle-whiskers/f01.png",
-     "sha256": "ebc2489dbeb0018a5a0ffb3ac5af673e4c76cf0d177b9954c5a21f02c10f7503",
-     "bytes": 828068
+     "sha256": "b205fee90bb9f487519f501620174b552aa97b6e4887aa07c00b1df843e86f1c",
+     "bytes": 827689
     },
     {
      "file": "idle-whiskers/f02.png",
-     "sha256": "4dc36a8c3a5b5ebb374b81ebb9bdc19fa002c0f1d665b94a594b689ce155d8e2",
-     "bytes": 829429
+     "sha256": "f04edd2d3406d0ea22f0ecb11fe41a0e6d4cf9cf94beae92cccfac8a1183d703",
+     "bytes": 829291
     },
     {
      "file": "idle-whiskers/f03.png",
-     "sha256": "27017887a6b19394239b7ee67b060528b94669a4d932dc1b06b98fb78ed632ee",
-     "bytes": 830147
+     "sha256": "c035650135d38202de9e6d6fe3bf8e9f23d86e479e96a5db787acc6c3fed339e",
+     "bytes": 828542
     },
     {
      "file": "idle-whiskers/f04.png",
-     "sha256": "8a88f16f513377e807db8239d5d2476433c874e082aebd1c6f766df6c7f8c558",
-     "bytes": 829027
+     "sha256": "73afde46361503e0e8b7a23a62c1d3c2eb73539b5c76d870db525242a01df3a5",
+     "bytes": 829144
     },
     {
      "file": "idle-whiskers/f05.png",
-     "sha256": "2d316617a8523963ccef7459f5b185a6802170a608b95f30bc7ed4705546afaa",
-     "bytes": 827766
+     "sha256": "4590cd1efa8253a084207d77def2babf1c0d5ea210dd198d41cf239ebdb62fec",
+     "bytes": 826873
     },
     {
      "file": "idle-whiskers/f06.png",
-     "sha256": "c7712e70a4d007c4d237d221e735e88bb2edd83339c1db75f59f3a3d89652c86",
-     "bytes": 824892
+     "sha256": "855fa0f7958f8ab69b6dc526d84da7e32f9dc0e21fb479602badf922c5f4aa6c",
+     "bytes": 824605
     },
     {
      "file": "idle-whiskers/f07.png",
-     "sha256": "83dc5e608761414a957f7474e0e5c3976542113da8918d4399788aaccaa3f37b",
-     "bytes": 827268
+     "sha256": "b4aa9a405d040979158363777a14b62a581bebf1322545f9b6a5ba855f27f991",
+     "bytes": 827743
     },
     {
      "file": "idle-whiskers.sheet.png",
-     "sha256": "14873f251b62c7df002af3bf5b290b7139890eb19f160d010c7b3779ee3c695e",
-     "bytes": 2568504
+     "sha256": "688ca5c78eab5050ab8f8af14fb5aaa42306704581a023d1fff5f2e4950f5375",
+     "bytes": 2572657
     }
    ]
   },
@@ -801,48 +801,48 @@
    "files": [
     {
      "file": "idle-wings-tail/f00.png",
-     "sha256": "a191f300b4b4002c6ee00107a809ea984fddde4ff1ef70100d4b4d82e0955524",
-     "bytes": 724990
+     "sha256": "8ef60a3f24d23a96439c16f582bef72e7d67b9707bab53d779163fd2ac9cbbff",
+     "bytes": 725051
     },
     {
      "file": "idle-wings-tail/f01.png",
-     "sha256": "72c5f9da9af8e689197f0a647990574dec0d9093d3ade74048c3c2c75ca6a8d0",
-     "bytes": 724521
+     "sha256": "edfcb0f45d449490915f34d51ecd825007e26d4ea68d4ff9bd6fde9c7efc1c4a",
+     "bytes": 724702
     },
     {
      "file": "idle-wings-tail/f02.png",
-     "sha256": "8da2c734cb0ec4a258d507d923b0db14068e637e59412bd8a3460302bce45cf5",
-     "bytes": 726568
+     "sha256": "e13b71ef77a34b41c58e43edb1a29378441ea8ac91a3cf181a8916d95d147adf",
+     "bytes": 727143
     },
     {
      "file": "idle-wings-tail/f03.png",
-     "sha256": "be12aebaff035859d7a6c2d2e8300b58966df0243024259936cbdfffcabfc4a1",
-     "bytes": 726222
+     "sha256": "64259ed62ebbf90fe6edb848016f9699a7b4369033d3c8043b263aeb27648f8a",
+     "bytes": 726266
     },
     {
      "file": "idle-wings-tail/f04.png",
-     "sha256": "43d17be9537498779dc9272955c2d705b2e5a21849e2f92d1e4c6fdb5fbc0a02",
-     "bytes": 725680
+     "sha256": "85a81ac12b70998d40249c7d75bc8d79f9b7791d5a16e14e2e28c0e876211d65",
+     "bytes": 725629
     },
     {
      "file": "idle-wings-tail/f05.png",
-     "sha256": "19f3ae1246ae8566f5224ffbc4996b0cb64d389adcfc3350c79ba68cc83cb41c",
-     "bytes": 725527
+     "sha256": "b75dd6651557dc8602a1bdbce826bb1d348584b88140f2d22e4e230a2ebf18ea",
+     "bytes": 726031
     },
     {
      "file": "idle-wings-tail/f06.png",
-     "sha256": "7a0a91d50a6886e9ff19eef80c803ab6ff786267a83e7dd750bf9dce0784aa25",
-     "bytes": 725192
+     "sha256": "86c93ebc8886ab7ffb28982f6cd615e31ce257411d2e3261dd23784efec3f145",
+     "bytes": 725450
     },
     {
      "file": "idle-wings-tail/f07.png",
-     "sha256": "764be5a8b0f76312701be6dad704e533c37967657638f66d5663ba98189a2ee7",
-     "bytes": 724989
+     "sha256": "29dcda94a9ea216d1f6e62768b5be719ec7891aaac0be87283b31cb042c7ea9c",
+     "bytes": 725481
     },
     {
      "file": "idle-wings-tail.sheet.png",
-     "sha256": "f387a6ef32086818e3b49b4968b9c819e1277dace3f075a3f331bd75cd9470cb",
-     "bytes": 2361121
+     "sha256": "7a3d621e407a29eb3e14b4d665b453216e2e7112706d9cf524d503907f2072c9",
+     "bytes": 2362753
     }
    ]
   },
@@ -854,48 +854,48 @@
    "files": [
     {
      "file": "idle-tail/f00.png",
-     "sha256": "d5a5a2c34ff42289c7ecf174ab97019d2a3b13166d616b3f411555306b182b41",
-     "bytes": 668560
+     "sha256": "1002a15b3aaa259c980eebd03c2067b7043a05050ebe671d21e73b9fcc6fdcb5",
+     "bytes": 668606
     },
     {
      "file": "idle-tail/f01.png",
-     "sha256": "6aced73024fe4a0ec4db6621c2625b2c36933d799ca93c11ab40578044c71d23",
-     "bytes": 669006
+     "sha256": "9276ee1b57edddbe46bfbd72cf95a06b0edc9f875a4ede1576c81fa054b32026",
+     "bytes": 669165
     },
     {
      "file": "idle-tail/f02.png",
-     "sha256": "12ebf294e6c4de9421cb1b3235be7b64684721f0b7249e11e93499df1ee45468",
-     "bytes": 668062
+     "sha256": "719333be6d41ab98ea2fe348fdb33ff9ad2c186b791c02d868e28fd4e84f2def",
+     "bytes": 667941
     },
     {
      "file": "idle-tail/f03.png",
-     "sha256": "11ef941a268782448a91cad8c8921b129098d283d09b1dc614f7670bd47b7827",
-     "bytes": 667613
+     "sha256": "629beba63232baebdd0bfef5ba2de9500d6d929573d6622b8f299f932911e523",
+     "bytes": 667361
     },
     {
      "file": "idle-tail/f04.png",
-     "sha256": "9889e3eac68ac6c4670428a47d13f4f665eb58ce10f4e401179c0dbb53062094",
-     "bytes": 667502
+     "sha256": "f58b38bd986616e6037ce02894ec58084ed476d58dd5d5b216a745942dddbb02",
+     "bytes": 667243
     },
     {
      "file": "idle-tail/f05.png",
-     "sha256": "6fb62d1f09e4674c421a47183e45daf10727315fe9c321432f276f2975c32f2d",
-     "bytes": 667743
+     "sha256": "e637f621b86148f0c75ac951f0782692ee864a72d7a8d43d98aa344bd8ae5b19",
+     "bytes": 667927
     },
     {
      "file": "idle-tail/f06.png",
-     "sha256": "d0d7c765c42bcd79d78c0d5bf9c988d6bf5906b351dee72d91f5a44948a7199b",
-     "bytes": 667442
+     "sha256": "0d507d70db998a4c617ba66b33ea91c17f91bc71be5e0f1380860a201fb3729c",
+     "bytes": 667572
     },
     {
      "file": "idle-tail/f07.png",
-     "sha256": "675c43be2fca16a5ecb83debe2ab6b6011fa9b16ac1d872da73db9de1a2caa57",
-     "bytes": 667165
+     "sha256": "a137f27f8a8802c78c13ac7abe91ae180ebb9dcb0fcb6894f121e3e9e264ea0f",
+     "bytes": 667259
     },
     {
      "file": "idle-tail.sheet.png",
-     "sha256": "cb7fefbe43bac5e1783936f86b40e21ea4f7c34f36d3aa666a89000da3250d3d",
-     "bytes": 2061250
+     "sha256": "76afe6a52fdd774ab768801d48097ca689b492cb1b948d158a21dad8d73cbb13",
+     "bytes": 2064974
     }
    ]
   }

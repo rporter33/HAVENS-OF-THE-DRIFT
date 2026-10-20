@@ -30,6 +30,9 @@ describe('G12b dragon materials', () => {
     expect(s.fragmentShader).not.toContain(PLATE_LINE);
     expect(s.fragmentShader).not.toContain(CLAW_LINE);
     expect(s.fragmentShader).toContain('uniform vec3 uDwClaws;');
+    // The flattened eyeball is measured in its own stretch, and the lid line drawn round it.
+    expect(s.fragmentShader).toContain('dot(e, uEyeAxis) / uDwEyeShape.z');
+    expect(s.fragmentShader).toContain('dwDragonLid(dwWyvernAlbedo(dwEmit, dwGold))');
     expect(s.uniforms.uDwPlateMix.value).toBe(PLATE_MIX);
     expect(s.uniforms.uDwClaws).toBe(extra.uDwClaws);
     expect(body.customProgramCacheKey()).toContain('-dragon-body');

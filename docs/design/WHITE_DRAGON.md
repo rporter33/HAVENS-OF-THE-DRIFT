@@ -207,7 +207,7 @@ Both are faults in G12a's files. The fit script should fix them at the source th
 | plates `#9db6d3` | secondary, mixed in by the dorsal channel the fit baked from the plates |
 | belly `#f7f0e1` | belly (capped at 0.55) |
 | membrane, eyes | membrane, eyes |
-| horns `#e4d8be` (new, provisional) | horn region: horns, spines, fin rays, tail fin |
+| horns `#e4d8be` (new; settled by Robert) | horn region: horns, spines, fin rays, tail fin |
 | claws `#4a5260` | claws |
 | wing bones | not used: the built finger bones (below) take the plates' channel, the same colour |
 
@@ -215,7 +215,7 @@ Two exact-text patches go on the body program, and they throw if the shader's te
 - **Plate mix:** the wyvern countershades its back 0.47 of the way to the secondary colour. The dragon mixes 0.9 of the way (`PLATE_MIX`), so the plates read powder blue, as in render 08.
 - **Claws:** the wyvern's are a fixed dark keratin; the dragon's take the palette's slate.
 
-The wyvern's own programs are unchanged, and a test proves it. **The horn colour is a proposal:** the kit asks for "pale bone ivory" with no value. `#e4d8be` is the midpoint of the hide's ivory and the wyverns' bone horn (`#d9c9a6`), a step warmer and darker than the hide so the horns read against it. Robert settles it.
+The wyvern's own programs are unchanged, and a test proves it. **The horn colour** was a proposal: the kit asks for "pale bone ivory" with no value. `#e4d8be` is the midpoint of the hide's ivory and the wyverns' bone horn (`#d9c9a6`), a step warmer and darker than the hide so the horns read against it. Robert settled it on 2026-10-19: "the horn should be an off white color so current is looking good."
 
 **The pose** (`creatures/dragon/pose.ts`, `RESTING`) is render 08's sphinx, written as bone directions in the dragon's frame and solved onto the skeleton. In the skinned LOD0:
 - **Belly:** the body center is 1.0 m above the platform, and the belly's lowest point is within 2 cm of it.
@@ -275,11 +275,23 @@ The suite also passed typecheck, the full vitest (138 files, 1,457 tests), `vite
   - The membrane is thinner to light than a wyvern's (0.55): fully thin, the backlit sheet glowed white.
   - Triangles: 1,328 at LOD0, 332 at LOD1 and 112 at LOD2. That is fewer than the fitted membrane's 3,297, 990 and 314, and LOD2's trailing edge is a clean edge now.
 - **Finger bones:** tapered tubes along each finger, swollen a little at the joint, in the plates' powder blue. Each has a small claw at its tip, and render 08's hooked thumb claw sits at each wrist, riding the hand. The fitted finger flesh is dropped, along with the torn fringes of the old membrane on it, as is forearm and hand flesh more than 0.33 m off its bone.
-- **Claws:** each claw site of the fitted feet becomes a curved slate claw. A cluster wider than one claw (30 cm) is split in two first. The claw points along its toe, from the foot bone out through its base, sunk into the toe and capped. It's lighter at the base and darker to the tip, and its skin is the flesh's around it. That gives 16 claws over the four feet, 2 to 5 a foot. The fitted claws were flat facets, and its stray dark patches on the toes are hide now. The hind toes now lie flatter, so the claws rest on the platform instead of sinking into it.
-- **Eyes:** an almond eyeball in each eye, 8.5 cm in radius along its axis, 1.45 times that along the head and 0.8 times it up. It stands proud of the skin around the fitted eye patch, which sits in a socket. The hide shader's eye region draws the pale blue iris, the slit pupil, the highlight and the lids over it. A dark lid line on the hide around it, in the eyeball's own frame, gives the definition Robert asked for.
+- **Claws and toes:** the fitted claws (flat facets), and the small fragments of claw beside them, are taken off the feet. Each hole they leave is found by matching the rim's positions across the fit's duplicated seams, and capped at the toe's end. A slender, curved slate talon is then set at the centre of a hole:
+  - it points forward along its toe and splays a little with it;
+  - it curls down;
+  - it is lighter at the base and darker to the tip;
+  - it rides the toe bone;
+  - its length is the fitted claw's, from 16 to 27 cm.
+
+  Each foot takes at most four, as render 08's four toes: the frontmost toe ends, at least 14 cm apart. Holes on the side of the paw are only capped. That gives 15 talons, 3 or 4 a foot, and none dips more than 3 cm into the platform in the resting pose. The fitted claws' small stray patches elsewhere on the toes are hide. The hind toes lie flatter, so the claws rest on the platform.
+- **Eyes:** an almond eyeball in each eye, 8.5 cm in radius, 1.45 times that along the head, 0.8 times it up and half of it out along its axis. It is flattened so it bulges little (Robert's second note): it stands 2.4 cm proud of the skin around the fitted eye patch, half the first version's 4.7 cm, with the same opening. The hide shader's eye region draws the pale blue iris, the slit pupil, the highlight and the lids over it, measured in the eyeball's own stretch (a patch in the dragon's program) so they fill the flattened almond. A dark lid line on the hide around it, in the eyeball's frame, gives the definition Robert asked for.
 - **Tail:** the wave and the flicks above.
 
-With the parts and whiskers, LOD0 is 19,836 triangles, LOD1 4,946 and LOD2 1,289, all inside their ceilings. The pose test holds the built pieces too: nothing sinks more than 5 cm into the platform.
+With the parts and whiskers, LOD0 is 20,890 triangles, LOD1 5,410 and LOD2 1,476, all inside their ceilings (LOD2's 1,500 only just). The pose test holds the built pieces too: nothing sinks more than 5 cm into the platform.
+
+**Robert's second look, 2026-10-19.**
+- The eye should bulge a little less: it's flattened, as above.
+- The horn: "an off white color so current is looking good," so `#e4d8be` is settled.
+- The toes "are looking better but could use a bit more work": the claws and toes pass above (hole caps, talons along the toes, four a foot).
 
 **What the captures show, for Robert to score.** On the brief's three questions:
 - **Identity:** it reads as the white flight. Ivory hide, powder-blue plates along the back, neck and tail, powder-blue wing bones, branching bone horns, cheek fins, the spines, the tail fin and slate claws, all as render 08 has them.
@@ -287,14 +299,13 @@ With the parts and whiskers, LOD0 is 19,836 triangles, LOD1 4,946 and LOD2 1,289
   - the body, neck and forelegs are slimmer than render 08's (the approved sheet and the Meshy body, Q50);
   - the hide's luminance cap makes the ivory a little greyer than the palette value;
   - the whiskers end about 0.8 m above the platform where render 08's reach the floor. The lip is 3.9 m up on the sheet's neck, so reaching the floor needs whiskers of about 4.5 m (a parts change);
-  - the forepaws carry the fitted body's two or three toes, where render 08 has four;
+  - the forepaws carry the fitted body's three toes, where render 08 has four; a few small pale chips of the fitted toe ends remain beside some claws;
   - the fitted wing root still leaves a stub on the back beneath each wing;
   - at LOD2 the plates blur into a pale blue wash along the back, though at the distance it is used (past 160 m) the dragon is a small silhouette.
 - **Reachability:** the stand-in tower and the dragon read from 40, 110 and 200 m. The tower and the haven are G12c's.
 
 **Still open in G12b:**
 - Robert scores the second set of captures, the 0° to +4° lineup among them.
-- He settles the horn colour.
 - He times Medium on his GPU (`--gpu` with the capture script or the dev server).
 
 ### The parts

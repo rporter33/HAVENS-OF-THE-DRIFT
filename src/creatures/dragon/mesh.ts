@@ -17,7 +17,7 @@ import { smoothstep } from '../../core/math';
 import type { DragonBodyAsset } from './asset';
 import type { DragonPartPiece, DragonStrand } from './parts';
 import type { DragonRigDef } from './rig';
-import { CLAW_MIN_VERTS, EYE, buildClaws, buildEyes, buildFingers, buildMembranes, clawClusters, clawSites, eyeFrame, wingClawSites, type BuiltPiece, type ClawSite, type EyeFrame } from './features';
+import { EYE, buildClaws, buildEyes, buildFingers, buildMembranes, buildToeCaps, clawClusters, clawHoles, clawSites, eyeFrame, footClawMask, wingClawSites, type BuiltPiece, type ClawSite, type EyeFrame } from './features';
 
 export interface DragonWhiskerGeometry {
   geometry: BufferGeometry;
@@ -271,6 +271,23 @@ export function buildDragonLod(rig: DragonRigDef, body: DragonBodyAsset, pieces:
   const eyes = frame ? buildEyes(frame, rig, lod) : null;
   if (eyes) built.push(eyes);
 
+  // The body's claw clusters: those at a claw site give way to the built claw (the toe's end is
+  // capped where the fitted claw was), the rest become hide.
+  const nB0 = body.position.length / 3;
+  let clawDrop: Uint8Array = new Uint8Array(nB0);
+  const claws = { replaced: 0, stray: 0 };
+  if (sites && sites.length) {
+    // At LOD0 the fitted claws and their fragments go wherever they are (their holes are capped, and
+    // the claw sites are a choice of them); the coarser LODs drop those near a site.
+    clawDrop = lod === 0 ? footClawMask(body) : footClawMask(body, (c) => sites.some((s) => c.distanceTo(s.base) < Math.max(0.25, 0.8 * s.length)), 1);
+    for (const g of clawClusters(body)) {
+      if (g.every((v) => clawDrop[v])) claws.replaced++;
+      else claws.stray++;
+    }
+    const caps = buildToeCaps(body, rig, clawHoles(body, clawDrop));
+    if (caps.position.length) built.push(caps);
+  }
+
   const rigid = pieces.filter((p) => !p.strand);
   const strands = pieces.filter((p) => p.strand);
   const nB = body.position.length / 3;
@@ -317,21 +334,7 @@ export function buildDragonLod(rig: DragonRigDef, body: DragonBodyAsset, pieces:
     base += k;
   };
 
-  // The body's claw clusters: those at a claw site give way to the built claw, the rest become hide.
-  const drop = new Uint8Array(nB);
-  const claws = { replaced: 0, stray: 0 };
-  if (sites && sites.length) {
-    for (const g of clawClusters(body)) {
-      const c = new Vector3();
-      for (const v of g) c.add(new Vector3(body.position[v * 3], body.position[v * 3 + 1], body.position[v * 3 + 2]));
-      c.multiplyScalar(1 / g.length);
-      const near = sites.some((s) => c.distanceTo(s.base) < Math.max(0.25, 0.8 * s.length));
-      if (near && (lod > 0 || g.length >= CLAW_MIN_VERTS)) {
-        for (const v of g) drop[v] = 1;
-        claws.replaced++;
-      } else claws.stray++;
-    }
-  }
+  const drop = Uint8Array.from(clawDrop);
   // With the built wings, the fitted fingers' flesh (and the fringes of the old membrane on it) goes.
   if (builtWings) {
     const finger = new Set(rig.bones.flatMap((bone, i) => (/^finger\d[ab][LR]$/.test(bone.name) ? [i] : [])));

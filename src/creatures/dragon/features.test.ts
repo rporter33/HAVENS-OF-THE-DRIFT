@@ -8,7 +8,7 @@ import { Vector3 } from 'three';
 import { ELDER_DRAGONS } from './catalog';
 import { piecesFor } from './Dragon';
 import { diskAssets } from './dragon.testkit';
-import { EYE, FINGER, MEMBRANE_RES, buildEyes, buildFingers, buildMembranes, clawSites, eyeFrame, wingClawSites } from './features';
+import { CLAW, EYE, FINGER, MEMBRANE_RES, buildEyes, buildFingers, buildMembranes, clawSites, eyeFrame, wingClawSites } from './features';
 import { buildDragonLod, eyePatch } from './mesh';
 import { dragonSkin, modelPose, restingPose } from './pose';
 import { dragonRig } from './rig';
@@ -118,7 +118,7 @@ describe('G12b built wings', () => {
 });
 
 describe('G12b built claws and eyes', () => {
-  it('finds two to five claw sites on every foot, each on a foot bone and on the foot', async () => {
+  it('finds two to four claw sites on every foot (render 08 has four toes), each on a toe bone at the foot', async () => {
     const a = await diskAssets();
     const sites = clawSites(a.bodies[0], rig);
     const body = a.bodies[0];
@@ -126,7 +126,7 @@ describe('G12b built claws and eyes', () => {
     for (const bones of feet) {
       const on = sites.filter((s) => bones.includes(s.joints[0]) || s.joints.some((j) => bones.includes(j)));
       expect(on.length).toBeGreaterThanOrEqual(2);
-      expect(on.length).toBeLessThanOrEqual(5);
+      expect(on.length).toBeLessThanOrEqual(CLAW.perFoot);
     }
     // Each base is at the body's surface.
     const P = new Vector3();
@@ -144,7 +144,8 @@ describe('G12b built claws and eyes', () => {
     const eye = eyeFrame(eyePatch(a.bodies[0], rig), rig);
     for (let lod = 0; lod < 3; lod++) {
       const built = buildDragonLod(rig, a.bodies[lod], piecesFor(look, a.parts.pieces, lod), lod, { claws: sites, eye });
-      expect(built.claws.replaced).toBeGreaterThan(4);
+      // At least one a foot (the coarsest LOD runs each foot's claws together).
+      expect(built.claws.replaced).toBeGreaterThanOrEqual(4);
       const nB = a.bodies[lod].position.length / 3;
       const mat = built.geometry.getAttribute('aMat').array as Float32Array;
       const index = built.geometry.getIndex()!.array as Uint32Array;
@@ -159,10 +160,13 @@ describe('G12b built claws and eyes', () => {
     const a = await diskAssets();
     const patch = eyePatch(a.bodies[0], rig);
     const frame = eyeFrame(patch, rig);
-    const pole = frame.center.clone().addScaledVector(frame.axis, EYE.radius);
+    const pole = frame.center.clone().addScaledVector(frame.axis, EYE.radius * EYE.depth);
     // The skin round the patch, measured from the patch along its axis.
     const skinLevel = patch.center.clone().addScaledVector(patch.axis, patch.skin);
-    expect(pole.clone().sub(skinLevel).dot(frame.axis)).toBeGreaterThan(0.02);
+    // Proud of the skin, but only a little (Robert: "bulging a little less").
+    const proud = pole.clone().sub(skinLevel).dot(frame.axis);
+    expect(proud).toBeGreaterThan(0.015);
+    expect(proud).toBeLessThan(0.035);
     expect(frame.center.distanceTo(rig.bones[idx.head].pos)).toBeLessThan(rig.props.shape.headLength);
     expect(buildEyes(frame, rig, 0)).not.toBeNull();
     expect(buildEyes(frame, rig, 1)).not.toBeNull();

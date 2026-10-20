@@ -9,14 +9,15 @@
 //   - claws: the wyvern's are a fixed dark keratin; the dragon's take the palette's slate, a
 //     little lighter at the base and darker to the tip (features.ts gives the built claws their
 //     distance along, aUv2.x).
-//   - the eye's outline: a dark lid line round the almond eyeball (features.ts) on the hide, in
-//     the eyeball's own frame, so the eye stands out (Robert, 2026-10-19).
+//   - the eye: the built eyeball is a flattened almond (features.ts), so the eye region measures it
+//     in its own stretch; and a dark lid line round it on the hide, in its frame, so the eye stands
+//     out (Robert, 2026-10-19).
 //
 // Palette to uniforms: hide → primary, plates → secondary, belly, membrane and eyes as named, and
 // horns → the horn region (horns, spines, fin rays and the tail fin). The hide's and belly's
 // luminance caps are the wyvern's (bloom safety); a palette change is a uniform update.
 
-import { Color, Vector2, Vector3, type MeshToonMaterial, type WebGLProgramParametersWithUniforms } from 'three';
+import { Color, Vector3, type MeshToonMaterial, type WebGLProgramParametersWithUniforms } from 'three';
 import {
   BELLY_MAX_LUMINANCE,
   SCALES_MAX_LUMINANCE,
@@ -39,10 +40,10 @@ export const LID = { from: 0.8, to: 1.22, strength: 0.8 };
 export interface DragonShadeUniforms {
   uDwPlateMix: { value: number };
   uDwClaws: { value: Color };
-  /** The eyeball's frame across its axis and its almond stretch (features.ts EYE). */
+  /** The eyeball's frame across its axis and its stretch: along the head, up and out (features.ts EYE). */
   uDwEyeFw: { value: Vector3 };
   uDwEyeUp: { value: Vector3 };
-  uDwEyeShape: { value: Vector2 };
+  uDwEyeShape: { value: Vector3 };
   /** 0 without the built eyeball (no lid line), 1 with it. */
   uDwEyeLid: { value: number };
 }
@@ -53,12 +54,13 @@ export function createDragonShadeUniforms(): DragonShadeUniforms {
     uDwClaws: { value: new Color() },
     uDwEyeFw: { value: new Vector3(0, 0, 1) },
     uDwEyeUp: { value: new Vector3(0, 1, 0) },
-    uDwEyeShape: { value: new Vector2(EYE.long, EYE.tall) },
+    uDwEyeShape: { value: new Vector3(EYE.long, EYE.tall, EYE.depth) },
     uDwEyeLid: { value: 1 },
   };
 }
 
 export const PLATE_LINE = 'vec3 col = mix(uPrimary, uSecondary, dorsal * 0.47);';
+export const EYE_LINE = 'vec3 e = (p - uEyeCenter) / uEyeRadius;';
 export const CLAW_LINE = 'return mix(vec3(0.22, 0.185, 0.14), vec3(0.09, 0.077, 0.068), smoothstep(0.3, 0.95, vUv2.x));';
 
 function swap(src: string, from: string, to: string): string {
@@ -71,11 +73,14 @@ export function patchDragonBody(frag: string): string {
   let f = swap(
     frag,
     '#include <common>',
-    '#include <common>\nuniform float uDwPlateMix;\nuniform vec3 uDwClaws;\nuniform vec3 uDwEyeFw;\nuniform vec3 uDwEyeUp;\nuniform vec2 uDwEyeShape;\nuniform float uDwEyeLid;',
+    '#include <common>\nuniform float uDwPlateMix;\nuniform vec3 uDwClaws;\nuniform vec3 uDwEyeFw;\nuniform vec3 uDwEyeUp;\nuniform vec3 uDwEyeShape;\nuniform float uDwEyeLid;',
   );
   f = swap(f, PLATE_LINE, 'vec3 col = mix(uPrimary, uSecondary, dorsal * uDwPlateMix);');
   // Slate claws: lighter at the base, darker to the tip, with a little of the hide's grain.
   f = swap(f, CLAW_LINE, 'return mix(uDwClaws * 1.2, uDwClaws * 0.55, smoothstep(0.1, 1.0, vUv2.x)) * (0.94 + 0.12 * (n2 - 0.5));');
+  // The built eyeball is an ellipsoid (features.ts EYE): measured in its own stretch, its surface is
+  // the unit sphere the eye region's iris, pupil and lids are drawn on.
+  f = swap(f, EYE_LINE, EYE_LINE + '\n    if (uDwEyeLid > 0.5) e = uEyeAxis * (dot(e, uEyeAxis) / uDwEyeShape.z) + uDwEyeFw * (dot(e, uDwEyeFw) / uDwEyeShape.x) + uDwEyeUp * (dot(e, uDwEyeUp) / uDwEyeShape.y);');
   f = swap(f, 'void main() {', LID_GLSL + '\nvoid main() {');
   f = swap(f, 'diffuseColor.rgb = dwWyvernAlbedo(dwEmit, dwGold);', 'diffuseColor.rgb = dwDragonLid(dwWyvernAlbedo(dwEmit, dwGold));');
   return f;

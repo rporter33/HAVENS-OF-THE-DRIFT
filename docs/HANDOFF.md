@@ -30,11 +30,11 @@ Keep this file short: one checkpoint, overwritten each session. Move the previou
   - **The fidelity pass,** built at load from the game's own skeleton (the G12a files are unchanged):
     - one clean membrane per wing in three panels, as the wyverns' are built, which stays on its bones and runs taut to the flank when folded;
     - powder-blue finger bones with tip claws and render 08's thumb hook at the wrist;
-    - 16 curved slate claws on the fitted claw sites;
-    - an almond eyeball with a dark lid line;
+    - the toes: the fitted claws taken off and their holes capped at the toe ends, and 15 slender curved talons set along the toes, at most four a foot;
+    - an almond eyeball with a dark lid line, flattened so it bulges little (2.4 cm proud of the skin);
     - the tail's wave and flicks, with the tip sweeping up to 1.6 m.
   - **Hue:** Robert liked 0° or +4° of the lineup, then narrowed the white flight's shift to 0° to +4° (Q48). `look.ts` gives each flight its own range inside the ±8° bound (`FLIGHT_HUE_RANGE`; the other flights keep ±8° until judged). The lineup was re-shot at 0°, +1°, +2°, +3° and +4°, and the elder stays at 0°.
-  - **Horn colour:** `look.ts` gains `horns: '#e4d8be'`. It's provisional, for Robert to settle; the kit names "pale bone ivory" with no value.
+  - **Horn colour:** `look.ts` gains `horns: '#e4d8be'` for the kit's "pale bone ivory". Robert settled it: "an off white color so current is looking good" (Q48).
   - **Found and fixed at load, not in the G12a files:**
     - zero-length normals at the wing-root cut and on the cheek fins, which made a NaN hot spot in the bloom;
     - the fitted membrane's mis-wound triangles, the cause of LOD2's trailing edge. The fitted membrane is now replaced, and kept only for `features=fitted`.
@@ -56,12 +56,14 @@ Keep this file short: one checkpoint, overwritten each session. Move the previou
   - Slimmer body, neck and forelegs than render 08's, from the approved sheet (Q50).
   - The hide's luminance cap greys the ivory a little.
   - The whiskers end 0.8 m above the platform; reaching it needs about 4.5 m whiskers (a parts change).
-  - The forepaws carry the fitted body's two or three toes, where render 08 has four.
+  - The forepaws carry the fitted body's three toes, where render 08 has four, and a few small pale chips of the fitted toe ends remain beside some claws.
   - A stub of the fitted wing root shows on the back beneath each wing.
   - At LOD2 the plates blur into a wash.
   - At tod 0.7 the low sun ahead of render 08's camera hazes everything orange, so the showcase defaults to 0.66.
   - The stand-in tower stands on an island south of the Roost.
-- **Decisions:** the white flight's hue range is 0° to +4° (Robert, 2026-10-19; Q48). The horn colour is still Robert's to settle.
+- **Decisions:** both from Robert on 2026-10-19 and recorded under Q48:
+  - the white flight's hue range is 0° to +4°;
+  - the horn colour `#e4d8be` is settled.
 - **Next authorized action:**
-  - Robert scores the second set of captures (the 0° to +4° lineup among them), settles the horn colour, and times Medium on his GPU.
+  - Robert scores the latest captures (the 0° to +4° lineup, the flatter eye and the reworked toes among them) and times Medium on his GPU.
   - Robert reviews [PR #16](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/16), retargeted to `main` once PR #15 merges, and says whether to push the captures to an archive branch. After that, G12c.
