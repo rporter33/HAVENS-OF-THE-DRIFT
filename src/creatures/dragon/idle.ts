@@ -6,7 +6,8 @@
 //               down the neck, on a slow critically damped spring; outside the cone it looks ahead
 //   whiskers    verlet strands hanging from the lip (whiskers.ts)
 //   wings       the folded wings ride the breath and now and then lift and settle again
-//   tail        the tip drifts slowly along the platform, as a resting cat's does
+//   tail        a slow wave travels down it along the platform, and now and then the end flicks,
+//               as a resting cat's does
 //
 // Frame-rate independent, as the wyvern's tail (wyvern/anim/tail.ts): the look spring and the
 // whiskers step at a fixed 120 Hz from an accumulator, the target interpolated to each step's own
@@ -63,10 +64,17 @@ export const IDLE = {
     breath: 0.6 * DEG,
   },
   tail: {
-    /** The tip's slow drift along the platform: yaw per joint (base → tip) and its rate. */
-    yaw: [0, 0, 0, 0, 0, 0.5, 1.2, 2.4, 4, 6].map((d) => d * DEG),
-    lift: [0, 0, 0, 0, 0, 0, 0, 0.3, 0.8, 1.6].map((d) => d * DEG),
-    rate: 0.16,
+    /**
+     * A slow wave along the platform, base to tip (Robert, 2026-10-19: "the tail should also be
+     * moving a bit more"): the yaw each joint swings (growing toward the tip), the tip's lift, the
+     * wave's rate (Hz) and its lag per joint (rad), so the swing travels down the tail.
+     */
+    yaw: [0, 0.6, 1.2, 2, 3.2, 4.6, 6.2, 8, 10, 12].map((d) => d * DEG),
+    lift: [0, 0, 0, 0, 0, 0.4, 1, 2, 3.4, 5].map((d) => d * DEG),
+    rate: 0.2,
+    lag: 0.45,
+    /** Now and then the end flicks, as a resting cat's does: the first, then every min .. min + span s. */
+    flick: { first: 4.5, min: 7, span: 6, yaw: [0, 0, 0, 0, 0, 1.5, 3.5, 6, 9.5, 14].map((d) => d * DEG), period: 1.3, decay: 0.9 },
   },
 };
 
@@ -168,6 +176,7 @@ export class DragonIdle {
   private hadTarget = false;
   private readonly blinks: Events;
   private readonly settles: Events;
+  private readonly flicks: Events;
   /** The rest eye point (dragon frame), where the look is measured from. */
   private readonly eye = new Vector3();
   /** Scratch: per-bone offsets (model frame) and a step's own model pose. */
@@ -197,6 +206,8 @@ export class DragonIdle {
     const W = IDLE.wing;
     this.blinks = new Events((k) => (hash(k, this.seed) > 1 - B.double ? B.doubleGap : B.min + B.span * hash(k + 101, this.seed)), B.first, opts.blinks ? [...opts.blinks].sort((a, b) => a - b) : null);
     this.settles = new Events((k) => W.min + W.span * hash(k + 503, this.seed), W.first, null);
+    const TF = IDLE.tail.flick;
+    this.flicks = new Events((k) => TF.min + TF.span * hash(k + 907, this.seed), TF.first, null);
     this.headBind = rig.bones[rig.idx.head].pos.clone();
     // Rest eye: the eye point carried by the resting head.
     this.compose(0, 0, 0, this.stepPose, this.stepModel, false);
@@ -323,14 +334,22 @@ export class DragonIdle {
         for (const [a] of w.fingers) set(a, _q);
       }
     }
-    // The tail's tip drifts along the platform, with a little lift at the very end.
+    // The tail: a slow wave travelling down it along the platform, the end lifting a little, and
+    // now and then a flick of the end.
     if (live) {
       const T = IDLE.tail;
-      const sway = 0.7 * noise1(t * T.rate, 41) + 0.3 * Math.sin(t * T.rate * 2.3 * TAU * 0.25);
-      const lift = 0.5 + 0.5 * noise1(t * T.rate * 0.7, 43);
+      const F = T.flick;
+      this.flicks.advance(t);
+      const side = this.flicks.index % 2 === 0 ? 1 : -1;
       idx.tail.forEach((b, i) => {
-        if (T.yaw[i] === 0 && T.lift[i] === 0) return;
-        _q.setFromAxisAngle(Y, T.yaw[i] * sway);
+        if (T.yaw[i] === 0 && T.lift[i] === 0 && F.yaw[i] === 0) return;
+        const ti = t - (i * T.lag) / (TAU * T.rate);
+        const sway = 0.65 * noise1(ti * T.rate, 41) + 0.35 * Math.sin(ti * T.rate * TAU);
+        const lift = 0.5 + 0.5 * noise1(ti * T.rate * 0.7, 43);
+        // The flick reaches each joint a little later than the one before it.
+        const tau = t - this.flicks.last - i * 0.05;
+        const flick = tau > 0 ? Math.sin((TAU * tau) / F.period) * Math.exp(-tau / F.decay) : 0;
+        _q.setFromAxisAngle(Y, T.yaw[i] * sway + side * F.yaw[i] * flick);
         _q2.setFromAxisAngle(X, -T.lift[i] * lift);
         set(b, _q.multiply(_q2));
       });

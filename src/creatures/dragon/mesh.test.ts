@@ -93,7 +93,8 @@ describe('G12b white dragon binding', () => {
     const a = await diskAssets();
     for (let lod = 0; lod < 3; lod++) {
       const pieces = piecesFor(look, a.parts.pieces, lod);
-      const built = buildDragonLod(rig, a.bodies[lod], pieces, lod);
+      // The fitted body as it is (no built features), to count it exactly.
+      const built = buildDragonLod(rig, a.bodies[lod], pieces, lod, { wings: 'fitted', claws: null, eye: null });
       const body = a.bodies[lod];
       const rigid = pieces.filter((p) => !p.strand);
       const tris = (body.index[0].length + body.index[1].length) / 3 + rigid.reduce((s, p) => s + (p.index[0].length + p.index[1].length) / 3, 0);
@@ -114,12 +115,12 @@ describe('G12b white dragon binding', () => {
     }
   });
 
-  it('turns the few membrane triangles wound against their normals, so no wing shows its underside from above', async () => {
+  it('turns the fitted membrane triangles wound against their normals, when the fitted wings are kept', async () => {
     const a = await diskAssets();
     // As decimated: LOD0 47 of 3,297, LOD1 18 of 990, LOD2 9 of 314 (G12a's trailing edge).
     const expected = [47, 18, 9];
     for (let lod = 0; lod < 3; lod++) {
-      const built = buildDragonLod(rig, a.bodies[lod], piecesFor(look, a.parts.pieces, lod), lod);
+      const built = buildDragonLod(rig, a.bodies[lod], piecesFor(look, a.parts.pieces, lod), lod, { wings: 'fitted' });
       expect(built.reoriented).toBe(expected[lod]);
       const g = built.geometry;
       const index = g.getIndex()!.array as Uint32Array;

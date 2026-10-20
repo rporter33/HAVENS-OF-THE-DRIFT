@@ -47,7 +47,7 @@ export const RESTING = {
     thigh: [0.38, -0.08, 0.92] as V3,
     shin: [0.05, -0.178, -0.98] as V3,
     meta: [0.1, -0.03, 1] as V3,
-    toes: [0.04, -0.51, 0.86] as V3,
+    toes: [0.04, -0.2, 0.98] as V3,
   },
   /**
    * The tail lying on the platform: each joint's heading (degrees from straight back, + toward the

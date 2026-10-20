@@ -2,8 +2,8 @@
  "metadata": {
   "gate": "G12b",
   "capturedOn": "2026-10-19",
+  "pass": "second set: the fidelity pass (built wings, claws, eyes) and the tail",
   "branch": "gate/g12b-white-dragon",
-  "base": "e4de879 (g12a-parts-lods)",
   "tested": "the working tree committed with this record",
   "script": "scripts/white-dragon-capture.mjs",
   "manifest": "scripts/white-dragon-capture.manifest.json",
@@ -22,19 +22,19 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 20313,
+    "triangles": 19836,
     "hueShift": 0
    },
    "files": [
     {
      "file": "r08-match.png",
-     "sha256": "f788427eb6e23057d3fe80d0e0591eaaabec2677918483a3cc5c1b36aa077e5c",
-     "bytes": 806409
+     "sha256": "78a4a5f71830b51e1dff07a7af181586ade24e2fcdcaeee9e5e36a04b7bf3da4",
+     "bytes": 798868
     },
     {
      "file": "r08-match.compare.png",
-     "sha256": "4ae73189cab2635b7f8207e58e4684843ea29fdb27cf9a492b0c2d7ef1138505",
-     "bytes": 3730708
+     "sha256": "1e422ccb345017610535732511e37887319581ac608813f5c513c0aaae924bf4",
+     "bytes": 3722934
     }
    ]
   },
@@ -45,19 +45,19 @@
    "settle": 6,
    "dragon": {
     "lod": 0,
-    "triangles": 20313,
+    "triangles": 19836,
     "hueShift": 0
    },
    "files": [
     {
      "file": "r08-live.png",
-     "sha256": "9ce00c5b8c477d3508736916a390ee48a89ce6005ea65dbe11e0d01148229724",
-     "bytes": 784327
+     "sha256": "4989f325c751300e6fa824a19257cc818a4a8a13aa9b1c915e5a5af40d8d7467",
+     "bytes": 778082
     },
     {
      "file": "r08-live.compare.png",
-     "sha256": "9be9ab4ff8398eb7f46105a02a393662c418e1e5fc29373e1778c013fcf25ab2",
-     "bytes": 3710024
+     "sha256": "3d95e2e1155ac404c6fb89ce430b3575761a31ffb44c828e983d92ada3ea81de",
+     "bytes": 3703094
     }
    ]
   },
@@ -68,19 +68,19 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 20313,
+    "triangles": 19836,
     "hueShift": 0
    },
    "files": [
     {
      "file": "r08-rider.png",
-     "sha256": "9b056786818e2628565200ae860a02ea508d7b40f43abb904b476840f9dee3a8",
-     "bytes": 817770
+     "sha256": "62d991266cf0c4d5d9a84336d8d2561b35a72573cd71216d166cfd7047abfb6f",
+     "bytes": 809271
     },
     {
      "file": "r08-rider.compare.png",
-     "sha256": "15d8aaa8ca9508945095df04d874b02413be21f0f83330143bd3a5f02ce2e562",
-     "bytes": 3733703
+     "sha256": "1e806e9c7e20f7452fa76fbc49fcb44d55fbb76c2d0fad642c21e3ea09c68e33",
+     "bytes": 3726394
     }
    ]
   },
@@ -91,14 +91,14 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 20313,
+    "triangles": 19836,
     "hueShift": 0
    },
    "files": [
     {
      "file": "three.png",
-     "sha256": "7fc7861446b5d3701b7ab40414a1d173ea1fe9fb388c9175a328403b2a389d95",
-     "bytes": 743129
+     "sha256": "cd68bb2ba34dbf29d5daeadb0eedc91e2efcaad5d36183a4e23fd5798e7f2940",
+     "bytes": 752148
     }
    ]
   },
@@ -109,14 +109,14 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 20313,
+    "triangles": 19836,
     "hueShift": 0
    },
    "files": [
     {
      "file": "side.png",
-     "sha256": "d39c0eb29585c4e76ac500869eecff4115e3ad095492d0cc77f2ec0c957994ea",
-     "bytes": 619532
+     "sha256": "8485f13aea9f9db5058742182e5c2982915acc6b3924b1bd2705becceb32766c",
+     "bytes": 621958
     }
    ]
   },
@@ -127,14 +127,14 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 20313,
+    "triangles": 19836,
     "hueShift": 0
    },
    "files": [
     {
      "file": "front.png",
-     "sha256": "259f2c346c3f1a8c3578df95259ded9cd32f8430f6be227386ef461fc0d54b6e",
-     "bytes": 725171
+     "sha256": "c124e36d245d29df6f88fe4e189bce4a8c361ccb8f9f4f206268ebaf6e1a47f3",
+     "bytes": 724761
     }
    ]
   },
@@ -145,14 +145,14 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 20313,
+    "triangles": 19836,
     "hueShift": 0
    },
    "files": [
     {
      "file": "back.png",
-     "sha256": "4798751511bdb1dd06580ea67ccf67c4356248d4e1a32bddd8a6372374a0c784",
-     "bytes": 674991
+     "sha256": "198b4f2faac7ee0aeb6f3a2ea06c3e3492226c2acc0ec499c31d5a221c9d0617",
+     "bytes": 672367
     }
    ]
   },
@@ -163,14 +163,14 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 20313,
+    "triangles": 19836,
     "hueShift": 0
    },
    "files": [
     {
      "file": "top.png",
-     "sha256": "3918d6199dc407304edf2c1fcf64b0f850ee6d0b120ba5b9051e38ae3555e27d",
-     "bytes": 545679
+     "sha256": "c76ff5c4da02ddf180e49c4b6639156f074a52c19a17982923e0e1281cce356a",
+     "bytes": 543772
     }
    ]
   },
@@ -181,14 +181,14 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 20313,
+    "triangles": 19836,
     "hueShift": 0
    },
    "files": [
     {
      "file": "low.png",
-     "sha256": "b2c1212035092370579311c4733af8b362ff2320427ec407c01d8703db50cc6e",
-     "bytes": 727587
+     "sha256": "649d55e16ea52a7ad42458e745c8ebf0390efe98d6c161f7ba67e14e6124204a",
+     "bytes": 715733
     }
    ]
   },
@@ -199,14 +199,14 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 20313,
+    "triangles": 19836,
     "hueShift": 0
    },
    "files": [
     {
      "file": "head.png",
-     "sha256": "d2b6957d8345e7653d7a70e73f69e5bf8d818f42e7dcc4b58d51c656b158b168",
-     "bytes": 800627
+     "sha256": "39b46a682412dcd50efa695becf86202f10cde3652f290948d487128b3a01280",
+     "bytes": 798918
     }
    ]
   },
@@ -217,14 +217,158 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 20313,
+    "triangles": 19836,
     "hueShift": 0
    },
    "files": [
     {
      "file": "wings.png",
-     "sha256": "55f2cbfa30923a0c27041117e0e66fc6642e6997eea65fab8c916c0e2106c3f8",
-     "bytes": 746451
+     "sha256": "6fa4236de69229c3e5cf8dd3707149957fa4562fcb7d659e5dff449668896de0",
+     "bytes": 742117
+    }
+   ]
+  },
+  {
+   "id": "wings-before",
+   "desc": "The fitted body's own wings, claws and eye (features=fitted), for comparison with the built ones: the wings from the side",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=wings&camAz=95&camEl=8&camDist=9&look=none&idle=0&features=fitted",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20313,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "wings-before.png",
+     "sha256": "d6fbfb5fc4d10fcfbb1c4ebc533d87121c18bb83df452398c20c040886224c88",
+     "bytes": 853961
+    }
+   ]
+  },
+  {
+   "id": "wings-after",
+   "desc": "The built wings: one clean membrane per wing, powder-blue finger bones, tip claws and the thumb claw at the wrist",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=wings&camAz=95&camEl=8&camDist=9&look=none&idle=0",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 19836,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "wings-after.png",
+     "sha256": "981757bd93283c3193ccc3d529ebd30b3d25e97d500c885361bc48d1aa11a974",
+     "bytes": 842992
+    }
+   ]
+  },
+  {
+   "id": "wing-root",
+   "desc": "The built membrane's inner panel running taut from the raised arm to the flank",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=wings&camTarget=1.2%2C3%2C-1&camAz=60&camEl=30&camDist=6&look=none&idle=0",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 19836,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "wing-root.png",
+     "sha256": "5d9fc6aeda3f6f74e8b87038beb56c421e0586d654c1d08771059f68c2f96e17",
+     "bytes": 942669
+    }
+   ]
+  },
+  {
+   "id": "eye-before",
+   "desc": "The fitted eye patch (features=fitted)",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=eye&look=none&idle=0&features=fitted",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20313,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "eye-before.png",
+     "sha256": "4383a9498bfad31e9883d3d13eaa8fe7921fef929740ad75652d0f3d5acbbe5b",
+     "bytes": 832161
+    }
+   ]
+  },
+  {
+   "id": "eye-after",
+   "desc": "The built eyeball: pale blue iris, slit pupil, the dark lid line",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=eye&look=none&idle=0",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 19836,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "eye-after.png",
+     "sha256": "8ed879c5408d5f33bc9ca7ef4cc3d5921b4c7d80f3641414a63548d27d237c2f",
+     "bytes": 843927
+    }
+   ]
+  },
+  {
+   "id": "forepaw-before",
+   "desc": "The fitted forepaw claws (features=fitted)",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=head&camTarget=0.95%2C0.25%2C4.5&camDist=3.4&camAz=35&camEl=22&look=none&idle=0&features=fitted",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20313,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "forepaw-before.png",
+     "sha256": "e69cb0c0ae775220b381405069292b015e95b354b63b0c626ccf96624e38b305",
+     "bytes": 588266
+    }
+   ]
+  },
+  {
+   "id": "forepaw-after",
+   "desc": "The built forepaw claws",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=head&camTarget=0.95%2C0.25%2C4.5&camDist=3.4&camAz=35&camEl=22&look=none&idle=0",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 19836,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "forepaw-after.png",
+     "sha256": "f8d6415c5fe08e9a9f54afbd17fad280899038f2cfb7b78373d19cb8069b1f61",
+     "bytes": 594446
+    }
+   ]
+  },
+  {
+   "id": "hindpaw-after",
+   "desc": "The built hind claws",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=head&camTarget=1.3%2C0.3%2C-0.7&camDist=3.4&camAz=70&camEl=22&look=none&idle=0",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 19836,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "hindpaw-after.png",
+     "sha256": "6f003b16d055838b59460970996e8d9c2ebb84ec3fcc69e8bf6c45d9bf259662",
+     "bytes": 662461
     }
    ]
   },
@@ -235,19 +379,19 @@
    "settle": 3,
    "dragon": {
     "lod": 1,
-    "triangles": 5198,
+    "triangles": 5374,
     "hueShift": 0
    },
    "files": [
     {
      "file": "lod1-r08.png",
-     "sha256": "8155aac82c95a156cb8f6c64d0ca3f0e72d95733d5e9b4340ed44d8fdea754fd",
-     "bytes": 758117
+     "sha256": "1baa90d2e698bdb122e9f22549defbcf385eb78b116ea2dc11bda6833adc5f00",
+     "bytes": 755993
     },
     {
      "file": "lod1-r08.compare.png",
-     "sha256": "06b0f500237f9d0486f882a180560d916e970ed8a23a83a348f375aa2069f0ba",
-     "bytes": 3690503
+     "sha256": "42814e102bf6469ee86af4bd43c399d7bb055dd145e06a22a6777bd223f767b9",
+     "bytes": 3686614
     }
    ]
   },
@@ -258,19 +402,19 @@
    "settle": 3,
    "dragon": {
     "lod": 2,
-    "triangles": 1338,
+    "triangles": 1467,
     "hueShift": 0
    },
    "files": [
     {
      "file": "lod2-r08.png",
-     "sha256": "f0e35674746348f32bf69dd786df5892ea662b51709c61e73553c2fa8ecbd67f",
-     "bytes": 710032
+     "sha256": "b58f55f587232e087e20ea97c85689d1941e502975ba1976b2731e122dc04626",
+     "bytes": 711547
     },
     {
      "file": "lod2-r08.compare.png",
-     "sha256": "2c93e89fee7d7354b2f9f00b49ee97d36c421dbea110a66c83d03857cf53d993",
-     "bytes": 3656494
+     "sha256": "e87e11bf58ef24c3184e083dbe7f3a9020c3be3b8c24e263bbd697dc4ec55760",
+     "bytes": 3657040
     }
    ]
   },
@@ -281,14 +425,14 @@
    "settle": 3,
    "dragon": {
     "lod": 1,
-    "triangles": 5198,
+    "triangles": 5374,
     "hueShift": 0
    },
    "files": [
     {
      "file": "head-lod1.png",
-     "sha256": "a299d1f2a5dd900790740a4cc80ff15727d39c02fe4ecaa8708ededc7308b80d",
-     "bytes": 747100
+     "sha256": "16c006435a65f2ca3944d965317a48e79565a5a4410d70f17875597fc5b81174",
+     "bytes": 744781
     }
    ]
   },
@@ -299,14 +443,14 @@
    "settle": 3,
    "dragon": {
     "lod": 2,
-    "triangles": 1338,
+    "triangles": 1467,
     "hueShift": 0
    },
    "files": [
     {
      "file": "head-lod2.png",
-     "sha256": "64e77fcf82d1d06d87be0292407d07a9823fdb128a76e628ce1e7a193a8ff8de",
-     "bytes": 717815
+     "sha256": "44252ed9b0be87b30ab6aed6ec067d3a1faaff2a94a78d14a1a35c791593139e",
+     "bytes": 716885
     }
    ]
   },
@@ -317,14 +461,14 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 20313,
+    "triangles": 19836,
     "hueShift": 0
    },
    "files": [
     {
      "file": "bind-lod0-top.png",
-     "sha256": "c2cbd048da94235be1314278abba614f353658deee7d2c38bb28f8cdd26f37ee",
-     "bytes": 545904
+     "sha256": "8bc4a72cf9f6944d3dac574acea82427c63018a05a534012fb3cfce59deea5ec",
+     "bytes": 532884
     }
    ]
   },
@@ -335,14 +479,14 @@
    "settle": 3,
    "dragon": {
     "lod": 2,
-    "triangles": 1338,
+    "triangles": 1467,
     "hueShift": 0
    },
    "files": [
     {
      "file": "bind-lod2-top.png",
-     "sha256": "e89b58db9636af8e59257e999538c4d1e8c3ed8bed5aab52e603dcc39e7cbf28",
-     "bytes": 534930
+     "sha256": "575ede4b79016f75467982012b29f884f803508cf3b0d55a11f73a46ce3d1d1b",
+     "bytes": 525065
     }
    ]
   },
@@ -353,14 +497,14 @@
    "settle": 3,
    "dragon": {
     "lod": 2,
-    "triangles": 1338,
+    "triangles": 1467,
     "hueShift": 0
    },
    "files": [
     {
      "file": "bind-lod2-edge.png",
-     "sha256": "f1b25d6196fe8b22d357603fa8bd9fd079b5cfd9647964e5c36d6b0cd82e67fa",
-     "bytes": 671512
+     "sha256": "8f368e361c66f72fae7c8b4ecdac092c62047f9ad567633763179dd612818c5f",
+     "bytes": 651729
     }
    ]
   },
@@ -371,14 +515,14 @@
    "settle": 3,
    "dragon": {
     "lod": 0,
-    "triangles": 20313,
+    "triangles": 19836,
     "hueShift": 0
    },
    "files": [
     {
      "file": "bind-lod0-edge.png",
-     "sha256": "1f60ae019139d37820fd1a5545865838ba27e6ef30311c6a4725d89f95f30e80",
-     "bytes": 738927
+     "sha256": "fae9c7dd867b54185407db939e4ca526940cd8398fecfb071c0f587302e321d4",
+     "bytes": 721357
     }
    ]
   },
@@ -389,14 +533,14 @@
    "settle": 4,
    "dragon": {
     "lod": 0,
-    "triangles": 20313,
+    "triangles": 19836,
     "hueShift": 0
    },
    "files": [
     {
      "file": "gameplay-40.png",
-     "sha256": "3913d33e1c00dabd302c666eb4bc9f12248575c3361e48255d22502115da0e64",
-     "bytes": 837204
+     "sha256": "6aaf422918aa19c71d065241f7bad5dcbf390d54573c8d3b5463dd113ac3d177",
+     "bytes": 836788
     }
    ]
   },
@@ -407,14 +551,14 @@
    "settle": 4,
    "dragon": {
     "lod": 1,
-    "triangles": 5198,
+    "triangles": 5374,
     "hueShift": 0
    },
    "files": [
     {
      "file": "gameplay-110.png",
-     "sha256": "f67bcd69e6fe1a27d0703a9ef6d11295a98a461953b68c9ad2cce7b6488900e3",
-     "bytes": 912810
+     "sha256": "4efe8e1815d52c3df0c302132267b2cec3549bccc347764c46186cadec6d5717",
+     "bytes": 911068
     }
    ]
   },
@@ -425,14 +569,14 @@
    "settle": 4,
    "dragon": {
     "lod": 2,
-    "triangles": 1338,
+    "triangles": 1467,
     "hueShift": 0
    },
    "files": [
     {
      "file": "gameplay-200.png",
-     "sha256": "9e29e094a235ca31cebaf4ec0eae58e6bdc2e74243f43e4ffb1dca12a8a64fe9",
-     "bytes": 884517
+     "sha256": "df0bd356d0b887065d9eb73109717dead145e72965ca4124b8dc235b97d1b099",
+     "bytes": 885724
     }
    ]
   },
@@ -443,14 +587,14 @@
    "settle": 4,
    "dragon": {
     "lod": 0,
-    "triangles": 20313,
+    "triangles": 19836,
     "hueShift": -8
    },
    "files": [
     {
      "file": "lineup-hue.png",
-     "sha256": "90c9f3d7e39e1f9416b1e9235d19ea014ff77fabf2dbcfe5233bb86834505d5b",
-     "bytes": 839012
+     "sha256": "8d39bf0f4c68ef32fccb061218a8de86df31f3966f889f7a205a9b15d56083c3",
+     "bytes": 837938
     }
    ]
   },
@@ -461,14 +605,14 @@
    "settle": 4,
    "dragon": {
     "lod": 0,
-    "triangles": 20313,
+    "triangles": 19836,
     "hueShift": -8
    },
    "files": [
     {
      "file": "lineup-hue-close.png",
-     "sha256": "90b52f67a0685a54d786db92b4202e8e06996a052ccab7bc8d0278d6f4ae594b",
-     "bytes": 771667
+     "sha256": "b68c6851a47a52708c697a969c594dcab05d5bf9125a3cc5216a870d8cf801e3",
+     "bytes": 763245
     }
    ]
   },
@@ -479,14 +623,14 @@
    "settle": 4,
    "dragon": {
     "lod": 0,
-    "triangles": 20313,
+    "triangles": 19836,
     "hueShift": -8
    },
    "files": [
     {
      "file": "lineup-hue-60.png",
-     "sha256": "fa395859cfa7527cc01edabafa88dd2fded3bdf4e72ecbd93f2767bfa9e52ac0",
-     "bytes": 897847
+     "sha256": "bff167cb74a2a7ae2a75741619a734a51fce19d8102f40c81b002023be7aecc9",
+     "bytes": 896097
     }
    ]
   },
@@ -498,48 +642,48 @@
    "files": [
     {
      "file": "idle-head/f00.png",
-     "sha256": "0bd2ad44c7969a62fdc9c68d37865c69a2cedadb4b26cf33218877f60109f161",
-     "bytes": 743492
+     "sha256": "a7b8c32f9879b58a0c64565ed4b2b7d147e3ef6df42d5cb2eb1929cf596061b0",
+     "bytes": 737149
     },
     {
      "file": "idle-head/f01.png",
-     "sha256": "50aea15170db12302e7dd8ee3bac0774b0d9e3f2c6ed8c90bc898018e146e8f9",
-     "bytes": 750409
+     "sha256": "1a297041995ad7085180721cc5abdb4d68b55668a28cb2bdc8004f80dde59ca0",
+     "bytes": 747932
     },
     {
      "file": "idle-head/f02.png",
-     "sha256": "4b83d79c2b0cecf4864126d486a4b901c22feaddeef38be6f512a4f608d50afd",
-     "bytes": 791201
+     "sha256": "839c3fcf696fde548a7d7b1d020ef33dc57c0e99be69bc03afb12c769b30f741",
+     "bytes": 790057
     },
     {
      "file": "idle-head/f03.png",
-     "sha256": "eb743fcc867d24ceb1adc3eeb17ec064a538f917ec8a2f68b1946cd02bdde949",
-     "bytes": 723549
+     "sha256": "c051cd869dd92778ae0940384041b393b83016e33a13125b9d0b276950bdeba6",
+     "bytes": 719382
     },
     {
      "file": "idle-head/f04.png",
-     "sha256": "d8f25094b80e20d9580511b9091e021c6780aa3f50ebbf872bfb16d16c3fc639",
-     "bytes": 804277
+     "sha256": "bd3960145169ed3248b771f1d2b607683ddfde632aba51609e4075efd401397b",
+     "bytes": 797284
     },
     {
      "file": "idle-head/f05.png",
-     "sha256": "932f5384dc917b8647e14be50534ec1b91990bde49a66318ea9699797c424b9f",
-     "bytes": 803274
+     "sha256": "260dc29853f86b30f289d236e73ed1441326c85feec96596042270bf78b4cba8",
+     "bytes": 794281
     },
     {
      "file": "idle-head/f06.png",
-     "sha256": "94ee8420decc89274ddddb6807359904f2931329d2886fea03c2450f5072cc19",
-     "bytes": 816744
+     "sha256": "80172c730bc61993842b142f820b81fd2516f00697e05ecb8b56599a631ab068",
+     "bytes": 811441
     },
     {
      "file": "idle-head/f07.png",
-     "sha256": "a26a43573e30ba7aab830a0a76274c4598adac000cf27e6a0db57c34fb92bf9d",
-     "bytes": 879215
+     "sha256": "064780cc1a1afed9f11fb1c90e03e547c1566c8407577291adfdf64294ea1237",
+     "bytes": 869040
     },
     {
      "file": "idle-head.sheet.png",
-     "sha256": "f6a9b337ffb7497e7754c08f4e10b47e62b8c9dc8376a8762e7c5140a6adbec7",
-     "bytes": 2874053
+     "sha256": "fcebf4e58363651788b3af3e62105c6d922dff07f4683067b6ef628ffb1a83d4",
+     "bytes": 2869054
     }
    ]
   },
@@ -551,48 +695,48 @@
    "files": [
     {
      "file": "idle-blink/f00.png",
-     "sha256": "ccc169e3451d47059e7f74063e44f563eeac9b01a864a271d737a4edbb589483",
-     "bytes": 832773
+     "sha256": "3d1e3acb85927039276807d4d1ef9c0c4946e7fc405d19a9b5c3db0672ebe60c",
+     "bytes": 845895
     },
     {
      "file": "idle-blink/f01.png",
-     "sha256": "eea8a28a1020b26db382d15345b1a1bfb2c3a2a5194ae290605e835320b0f021",
-     "bytes": 832519
+     "sha256": "d5046b229162eb16677cabdc123852364c06e6a1b71e7b71b916a8216d2450e0",
+     "bytes": 846837
     },
     {
      "file": "idle-blink/f02.png",
-     "sha256": "6ee26b2f1ae73425e5cafeb09985675b9e8da7b031b9d1a9747f4b418c2094c6",
-     "bytes": 832982
+     "sha256": "aeac58ee516132f6b14267e44789f45b9a5b4705b180b62fed4ee38a09ea9a68",
+     "bytes": 845436
     },
     {
      "file": "idle-blink/f03.png",
-     "sha256": "df8c7b5d0274bbe3ee8135ff75bcee3d592f0a3a6b924c553ecbc517b7dc6038",
-     "bytes": 832371
+     "sha256": "76ff8c2fdbcd3b5e0a542ea6d1544d652127dbf842974d38f915d6535167df12",
+     "bytes": 844819
     },
     {
      "file": "idle-blink/f04.png",
-     "sha256": "b7ae803bed280f76f2f232370989dc797d93061f3ec2fff336e4253c5ebcb537",
-     "bytes": 831609
+     "sha256": "cc913e86b46df94807cee2b986afec6b9fda9330bb10653665432a9ee65a5eec",
+     "bytes": 845196
     },
     {
      "file": "idle-blink/f05.png",
-     "sha256": "763a17a82c0eba5c05a80c1ace771cc18b8802aa6c02796d76389e4821a33b77",
-     "bytes": 832316
+     "sha256": "d59cea6ebfc13b184b9aa90b310478ad13efe775d72a384ce3c3be4913bea962",
+     "bytes": 846183
     },
     {
      "file": "idle-blink/f06.png",
-     "sha256": "4cde1f1de90054dd6ebfea06c719cd876debf629f0f2836fbd4614307b3bc261",
-     "bytes": 832711
+     "sha256": "ac2cd30692dcb58d9122883d34b2b22fc7cad58f4eb017c7a412c9d89d53f731",
+     "bytes": 846283
     },
     {
      "file": "idle-blink/f07.png",
-     "sha256": "6abac276625123e69662dec559a985068530400c34a298ddc72504018ad66c9a",
-     "bytes": 832807
+     "sha256": "02739f4a741168841fc7852ab47606764314939aff921e41e3328d5f9a5d30bd",
+     "bytes": 845513
     },
     {
      "file": "idle-blink.sheet.png",
-     "sha256": "f459a99e30245b2fe7acccf7fca4f39fdd99b863bad4993b39526e4b1f01206b",
-     "bytes": 2369623
+     "sha256": "d2cf31a5d12945493d33d8101b1ec70dcd4551a476e561fddc0cb6810c8856af",
+     "bytes": 2379853
     }
    ]
   },
@@ -604,101 +748,154 @@
    "files": [
     {
      "file": "idle-whiskers/f00.png",
-     "sha256": "b69f98a18a5f55844d13c48ee07be5a9f95c28a20ca4ca42d3e9f70d95ff4c2c",
-     "bytes": 842905
+     "sha256": "55a5437a653d8e06419180c187071cdf1b0becb4fd6f6cb6154795e8db8f40a3",
+     "bytes": 828115
     },
     {
      "file": "idle-whiskers/f01.png",
-     "sha256": "e2166e14becfdb4566285a0342b988159cab55507854872e9cfcf17e5bbbfaee",
-     "bytes": 842021
+     "sha256": "ebc2489dbeb0018a5a0ffb3ac5af673e4c76cf0d177b9954c5a21f02c10f7503",
+     "bytes": 828068
     },
     {
      "file": "idle-whiskers/f02.png",
-     "sha256": "11110eeef1fa0c97a9ccc744a6cffc77632dddbffc4319eb544c00d113713d0d",
-     "bytes": 844189
+     "sha256": "4dc36a8c3a5b5ebb374b81ebb9bdc19fa002c0f1d665b94a594b689ce155d8e2",
+     "bytes": 829429
     },
     {
      "file": "idle-whiskers/f03.png",
-     "sha256": "c5315922c8586c24def6914f7df951439ad806d053745d9d2b891271b48f36a2",
-     "bytes": 844307
+     "sha256": "27017887a6b19394239b7ee67b060528b94669a4d932dc1b06b98fb78ed632ee",
+     "bytes": 830147
     },
     {
      "file": "idle-whiskers/f04.png",
-     "sha256": "2e65ce0d50d0c75bff4ae7b1b711a5b79bf335c73daa6974106164416d32596c",
-     "bytes": 843092
+     "sha256": "8a88f16f513377e807db8239d5d2476433c874e082aebd1c6f766df6c7f8c558",
+     "bytes": 829027
     },
     {
      "file": "idle-whiskers/f05.png",
-     "sha256": "98b26db45a18c029590e54e793ee4973f298b9ede33259153e4b6fb06216b0d5",
-     "bytes": 843284
+     "sha256": "2d316617a8523963ccef7459f5b185a6802170a608b95f30bc7ed4705546afaa",
+     "bytes": 827766
     },
     {
      "file": "idle-whiskers/f06.png",
-     "sha256": "46820902f2cc74f1104bcb320b26966247e94e869215c1295626e8160b116a61",
-     "bytes": 840943
+     "sha256": "c7712e70a4d007c4d237d221e735e88bb2edd83339c1db75f59f3a3d89652c86",
+     "bytes": 824892
     },
     {
      "file": "idle-whiskers/f07.png",
-     "sha256": "a30a19b0a7dd2d258e1c6280e9fff8b6049d27206c46a77dd99f14b794edca5e",
-     "bytes": 842867
+     "sha256": "83dc5e608761414a957f7474e0e5c3976542113da8918d4399788aaccaa3f37b",
+     "bytes": 827268
     },
     {
      "file": "idle-whiskers.sheet.png",
-     "sha256": "c90e409c53b3644327799ef5f11fe7f96bea508b62fdbcac1f685dee05bd5dc7",
-     "bytes": 2640633
+     "sha256": "14873f251b62c7df002af3bf5b290b7139890eb19f160d010c7b3779ee3c695e",
+     "bytes": 2568504
     }
    ]
   },
   {
    "id": "idle-wings-tail",
-   "desc": "Strip: the first wing settle (6 s) and the tail tip's drift, from above and behind, 0.4 s apart",
+   "desc": "Strip: the first wing settle (6 s) and the tail's wave, from above and behind, 0.4 s apart",
    "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=wings&camDist=20&look=none",
    "settle": 5.6,
    "files": [
     {
      "file": "idle-wings-tail/f00.png",
-     "sha256": "97cc19de555e9e44035d1a37bbfb4b446e6f5b5c238c9ef322ba29d0c3431c1b",
-     "bytes": 728605
+     "sha256": "a191f300b4b4002c6ee00107a809ea984fddde4ff1ef70100d4b4d82e0955524",
+     "bytes": 724990
     },
     {
      "file": "idle-wings-tail/f01.png",
-     "sha256": "689ef2af5b69ced07eb430a2433a61a0900686c290a991bdd00fd9cf090cd63a",
-     "bytes": 728881
+     "sha256": "72c5f9da9af8e689197f0a647990574dec0d9093d3ade74048c3c2c75ca6a8d0",
+     "bytes": 724521
     },
     {
      "file": "idle-wings-tail/f02.png",
-     "sha256": "71495eef645043e99dc1640636b187ed24681fb0007e9c5259d1b81d018023e0",
-     "bytes": 729321
+     "sha256": "8da2c734cb0ec4a258d507d923b0db14068e637e59412bd8a3460302bce45cf5",
+     "bytes": 726568
     },
     {
      "file": "idle-wings-tail/f03.png",
-     "sha256": "0c5b7f54631f6dd3664ff98cbc1d9a7242043c224f5192f33b10b8da392b2e70",
-     "bytes": 728863
+     "sha256": "be12aebaff035859d7a6c2d2e8300b58966df0243024259936cbdfffcabfc4a1",
+     "bytes": 726222
     },
     {
      "file": "idle-wings-tail/f04.png",
-     "sha256": "67857e38a7006047adf86d1398321380a0989eb8c4fc8952c8864e4fa5ed8585",
-     "bytes": 726154
+     "sha256": "43d17be9537498779dc9272955c2d705b2e5a21849e2f92d1e4c6fdb5fbc0a02",
+     "bytes": 725680
     },
     {
      "file": "idle-wings-tail/f05.png",
-     "sha256": "3ff9f67f15e12276195d27422aeee920d68610d98c505688524f2e5157869941",
-     "bytes": 727408
+     "sha256": "19f3ae1246ae8566f5224ffbc4996b0cb64d389adcfc3350c79ba68cc83cb41c",
+     "bytes": 725527
     },
     {
      "file": "idle-wings-tail/f06.png",
-     "sha256": "1c550f9d28ae4afc8867d0ab58f1e02b4bbdadf1df2bc6def49c8bd8016f8989",
-     "bytes": 728244
+     "sha256": "7a0a91d50a6886e9ff19eef80c803ab6ff786267a83e7dd750bf9dce0784aa25",
+     "bytes": 725192
     },
     {
      "file": "idle-wings-tail/f07.png",
-     "sha256": "b84aaef348392511bb804f7fa0068cd9d1cd226f3c4c6de09ef11f348334dfe4",
-     "bytes": 726465
+     "sha256": "764be5a8b0f76312701be6dad704e533c37967657638f66d5663ba98189a2ee7",
+     "bytes": 724989
     },
     {
      "file": "idle-wings-tail.sheet.png",
-     "sha256": "d0a488f60a28b6d9e5cd888973ce348d9b3098a05c4fc9273d2b4ddfca78c18c",
-     "bytes": 2388910
+     "sha256": "f387a6ef32086818e3b49b4968b9c819e1277dace3f075a3f331bd75cd9470cb",
+     "bytes": 2361121
+    }
+   ]
+  },
+  {
+   "id": "idle-tail",
+   "desc": "Strip: the tail's travelling wave and the first flick of its end (4.5 s), from behind and above, 0.3 s apart",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=back&camTarget=2.5%2C0.5%2C-4&camDist=14&camEl=35&look=none",
+   "settle": 3.9,
+   "files": [
+    {
+     "file": "idle-tail/f00.png",
+     "sha256": "d5a5a2c34ff42289c7ecf174ab97019d2a3b13166d616b3f411555306b182b41",
+     "bytes": 668560
+    },
+    {
+     "file": "idle-tail/f01.png",
+     "sha256": "6aced73024fe4a0ec4db6621c2625b2c36933d799ca93c11ab40578044c71d23",
+     "bytes": 669006
+    },
+    {
+     "file": "idle-tail/f02.png",
+     "sha256": "12ebf294e6c4de9421cb1b3235be7b64684721f0b7249e11e93499df1ee45468",
+     "bytes": 668062
+    },
+    {
+     "file": "idle-tail/f03.png",
+     "sha256": "11ef941a268782448a91cad8c8921b129098d283d09b1dc614f7670bd47b7827",
+     "bytes": 667613
+    },
+    {
+     "file": "idle-tail/f04.png",
+     "sha256": "9889e3eac68ac6c4670428a47d13f4f665eb58ce10f4e401179c0dbb53062094",
+     "bytes": 667502
+    },
+    {
+     "file": "idle-tail/f05.png",
+     "sha256": "6fb62d1f09e4674c421a47183e45daf10727315fe9c321432f276f2975c32f2d",
+     "bytes": 667743
+    },
+    {
+     "file": "idle-tail/f06.png",
+     "sha256": "d0d7c765c42bcd79d78c0d5bf9c988d6bf5906b351dee72d91f5a44948a7199b",
+     "bytes": 667442
+    },
+    {
+     "file": "idle-tail/f07.png",
+     "sha256": "675c43be2fca16a5ecb83debe2ab6b6011fa9b16ac1d872da73db9de1a2caa57",
+     "bytes": 667165
+    },
+    {
+     "file": "idle-tail.sheet.png",
+     "sha256": "cb7fefbe43bac5e1783936f86b40e21ea4f7c34f36d3aa666a89000da3250d3d",
+     "bytes": 2061250
     }
    ]
   }

@@ -18,6 +18,14 @@
     { "id": "low", "desc": "Low, off the left front: the forelegs, the chest and the hanging whiskers", "stage": "cam=low&look=none&idle=0" },
     { "id": "head", "desc": "The head close: horns, cheek fins, spines, eye, whiskers from the lip", "stage": "cam=head&look=none&idle=0" },
     { "id": "wings", "desc": "The folded wings from above and behind", "stage": "cam=wings&look=none&idle=0" },
+    { "id": "wings-before", "desc": "The fitted body's own wings, claws and eye (features=fitted), for comparison with the built ones: the wings from the side", "stage": "cam=wings&camAz=95&camEl=8&camDist=9&look=none&idle=0&features=fitted" },
+    { "id": "wings-after", "desc": "The built wings: one clean membrane per wing, powder-blue finger bones, tip claws and the thumb claw at the wrist", "stage": "cam=wings&camAz=95&camEl=8&camDist=9&look=none&idle=0" },
+    { "id": "wing-root", "desc": "The built membrane's inner panel running taut from the raised arm to the flank", "stage": "cam=wings&camTarget=1.2,3,-1&camAz=60&camEl=30&camDist=6&look=none&idle=0" },
+    { "id": "eye-before", "desc": "The fitted eye patch (features=fitted)", "stage": "cam=eye&look=none&idle=0&features=fitted" },
+    { "id": "eye-after", "desc": "The built eyeball: pale blue iris, slit pupil, the dark lid line", "stage": "cam=eye&look=none&idle=0" },
+    { "id": "forepaw-before", "desc": "The fitted forepaw claws (features=fitted)", "stage": "cam=head&camTarget=0.95,0.25,4.5&camDist=3.4&camAz=35&camEl=22&look=none&idle=0&features=fitted" },
+    { "id": "forepaw-after", "desc": "The built forepaw claws", "stage": "cam=head&camTarget=0.95,0.25,4.5&camDist=3.4&camAz=35&camEl=22&look=none&idle=0" },
+    { "id": "hindpaw-after", "desc": "The built hind claws", "stage": "cam=head&camTarget=1.3,0.3,-0.7&camDist=3.4&camAz=70&camEl=22&look=none&idle=0" },
     { "id": "lod1-r08", "desc": "LOD1 forced at render 08's camera", "stage": "cam=r08&idle=0&look=none&lod=1", "compare": true },
     { "id": "lod2-r08", "desc": "LOD2 forced at render 08's camera", "stage": "cam=r08&idle=0&look=none&lod=2", "compare": true },
     { "id": "head-lod1", "desc": "LOD1's parts on LOD1's body, the head close", "stage": "cam=head&look=none&idle=0&lod=1" },
@@ -32,9 +40,10 @@
     { "id": "lineup-hue", "desc": "Five white dragons across the hue shift: -8, -4, 0, +4, +8 degrees, left to right, the same parts", "stage": "lineup=hue&look=none&idle=0", "settle": 4 },
     { "id": "lineup-hue-close", "desc": "The hue lineup from the front-left, nearer", "stage": "lineup=hue&look=none&idle=0&camDist=46&camAz=32&camEl=9", "settle": 4 },
     { "id": "lineup-hue-60", "desc": "The hue lineup at gameplay distance, the game's lens", "stage": "lineup=hue&look=none&idle=0&fov=62&camDist=70&camAz=20&camEl=10", "settle": 4 },
-    { "id": "idle-head", "desc": "Strip: the head following the camera as it orbits from the right front round to behind the left shoulder (22°/s), 1 s apart", "stage": "cam=head&camDist=13&camAz=-50&turntable=1&spin=22&look=camera", "settle": 1, "strip": { "frames": 8, "step": 1, "cols": 4 } },
-    { "id": "idle-blink", "desc": "Strip: a blink cued at 3.3 s, the eye close, 0.06 s apart", "stage": "cam=eye&look=none&blink=3.3", "settle": 3.24, "strip": { "frames": 8, "step": 0.06, "cols": 4 } },
-    { "id": "idle-whiskers", "desc": "Strip: the whiskers hanging from the lip and swaying, from low at the left front, 1 s apart", "stage": "cam=low&camDist=11&look=none", "settle": 2, "strip": { "frames": 8, "step": 1, "cols": 4 } },
-    { "id": "idle-wings-tail", "desc": "Strip: the first wing settle (6 s) and the tail tip's drift, from above and behind, 0.4 s apart", "stage": "cam=wings&camDist=20&look=none", "settle": 5.6, "strip": { "frames": 8, "step": 0.4, "cols": 4 } }
+    { "id": "idle-head", "desc": "Strip: the head following the camera as it orbits from the right front round to behind the left shoulder (22°/s), 1 s apart", "stage": "cam=head&camDist=13&camAz=-50&turntable=1&spin=22&look=camera", "settle": 1, "strip": { "frames": 8, "step": 1, "cols": 4} },
+    { "id": "idle-blink", "desc": "Strip: a blink cued at 3.3 s, the eye close, 0.06 s apart", "stage": "cam=eye&look=none&blink=3.3", "settle": 3.24, "strip": { "frames": 8, "step": 0.06, "cols": 4} },
+    { "id": "idle-whiskers", "desc": "Strip: the whiskers hanging from the lip and swaying, from low at the left front, 1 s apart", "stage": "cam=low&camDist=11&look=none", "settle": 2, "strip": { "frames": 8, "step": 1, "cols": 4} },
+    { "id": "idle-wings-tail", "desc": "Strip: the first wing settle (6 s) and the tail's wave, from above and behind, 0.4 s apart", "stage": "cam=wings&camDist=20&look=none", "settle": 5.6, "strip": { "frames": 8, "step": 0.4, "cols": 4} },
+    { "id": "idle-tail", "desc": "Strip: the tail's travelling wave and the first flick of its end (4.5 s), from behind and above, 0.3 s apart", "stage": "cam=back&camTarget=2.5,0.5,-4&camDist=14&camEl=35&look=none", "settle": 3.9, "strip": { "frames": 8, "step": 0.3, "cols": 4} }
   ]
 }

@@ -12,7 +12,8 @@ import { createWyvernUniforms, type WyvernUniforms } from '../wyvern/materials';
 import { DRAGON_PARTS } from './catalog';
 import { dragonPalette, type DragonLook } from './look';
 import { applyDragonPalette, createDragonMaterials, createDragonShadeUniforms, type DragonShadeUniforms } from './materials';
-import { buildDragonLod, type DragonLodGeometry } from './mesh';
+import { buildDragonLod, eyePatch, type DragonLodGeometry } from './mesh';
+import { clawSites, eyeFrame } from './features';
 import { DragonIdle } from './idle';
 import type { DragonPartPiece } from './parts';
 import { dragonRig, type DragonRigDef } from './rig';
@@ -34,6 +35,9 @@ export interface DragonOptions {
   still?: boolean;
   /** The bind pose, standing with the wings spread (implies still). */
   bind?: boolean;
+  /** 'built' (default): the built membrane, claws and eyes (features.ts); 'fitted': the fitted
+   * body's own, for comparison. */
+  features?: 'built' | 'fitted';
 }
 
 interface LodView {
@@ -93,8 +97,13 @@ export class Dragon {
     const strands = assets.parts.pieces.find((p) => p.strands.length && piecesFor(this.look, [p], p.lod).length)?.strands ?? null;
     this.idle = new DragonIdle(rig, { seed: opts.seed, strands, blinks: opts.blinks, still: opts.still, bind: opts.bind });
 
+    // The claw sites and the eyeball come from LOD0's body, so every LOD has the same ones.
+    const fitted = opts.features === 'fitted';
+    const built = fitted
+      ? { wings: 'fitted' as const, claws: null, eye: null }
+      : { wings: 'built' as const, claws: clawSites(assets.bodies[0], rig), eye: eyeFrame(eyePatch(assets.bodies[0], rig), rig) };
     this.lods = assets.bodies.map((body, lod) => {
-      const data = buildDragonLod(rig, body, piecesFor(this.look, assets.parts.pieces, lod), lod);
+      const data = buildDragonLod(rig, body, piecesFor(this.look, assets.parts.pieces, lod), lod, built);
       const materials = createDragonMaterials(this.uniforms, this.shade, (2 - lod) as 0 | 1 | 2);
       const mesh = new SkinnedMesh(data.geometry, materials);
       mesh.bind(this.skeleton, _m.identity());
@@ -122,6 +131,9 @@ export class Dragon {
     u.uEyeCenter.value.copy(eye.center);
     u.uEyeAxis.value.copy(eye.axis);
     u.uEyeRadius.value = eye.radius;
+    this.shade.uDwEyeFw.value.copy(eye.forward);
+    this.shade.uDwEyeUp.value.copy(eye.up);
+    this.shade.uDwEyeLid.value = fitted ? 0 : 1;
     u.uBodyScale.value = rig.props.shape.torsoLength / 3.3;
     // Folded at rest: the membranes a little bunched; the cheek fins ripple faintly in the air.
     u.uFold.value = 0.15;

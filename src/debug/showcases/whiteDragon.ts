@@ -15,8 +15,10 @@ import { toonMaterial } from '../../render/painterly';
  *
  *   cam=r08|three|side|front|back|top|low|head|eye|wings   camAz= camEl= camDist= (deg, m; relative
  *                        to the dragon's heading, 0 = in front, 90 = its left), fov= (vertical deg;
- *                        render 08's narrower lens unless given: fov=62 is the game's own)
+ *                        render 08's narrower lens unless given: fov=62 is the game's own),
+ *                        camTarget=x,y,z (the point aimed at, dragon frame)
  *   pose=bind            the bind pose instead (standing, wings spread flat): the LODs' wings from above
+ *   features=fitted      the fitted body's own membranes, claws and eye instead of the built ones
  *   turntable=1 spin=deg/s
  *   look=camera|player|none|x,y,z   what the head follows (none: a slow wandering gaze)
  *   idle=0               the bare pose: no breathing, blinks, settles or drift; whiskers at rest
@@ -153,6 +155,8 @@ function camAngles(p: URLSearchParams, lineup: number): { az: number; el: number
     dist = Math.max(dist, (lineup - 1) * LINEUP_GAP * 1.1 + 16);
     target.set(TERRACE_C.x, 2.4, 0);
   }
+  const at = (p.get('camTarget') ?? '').split(',').map(Number);
+  if (at.length === 3 && at.every(Number.isFinite)) target.set(at[0], at[1], at[2]);
   return { az: num(p, 'camAz', az), el: num(p, 'camEl', el), dist: num(p, 'camDist', dist), target, fov: num(p, 'fov', name === 'r08' ? R08.fov : STUDY_FOV) };
 }
 
@@ -215,7 +219,7 @@ function build(s: State, hues: number[]): void {
   // The dragons' left (body +X) in the world; the lineup runs from the left of the picture.
   const left = new Vector3(Math.cos(s.heading), 0, -Math.sin(s.heading));
   list.forEach((hue, i) => {
-    const d = new Dragon(s.assets!, { look: elderLook(hue), seed: num(p, 'seed', 1) + i, blinks: blinks.length ? blinks : undefined, still, bind: p.get('pose') === 'bind' });
+    const d = new Dragon(s.assets!, { look: elderLook(hue), seed: num(p, 'seed', 1) + i, blinks: blinks.length ? blinks : undefined, still, bind: p.get('pose') === 'bind', features: p.get('features') === 'fitted' ? 'fitted' : 'built' });
     d.group.position.copy(SITE).addScaledVector(left, -(i - (list.length - 1) / 2) * LINEUP_GAP);
     d.group.rotation.y = s.heading;
     const lod = p.get('lod');

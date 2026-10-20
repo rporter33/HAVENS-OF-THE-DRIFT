@@ -178,6 +178,8 @@ Follow-ups, with recommendations:
 
 **Follow-ups answered 2026-10-19.** Robert: "Parts - across flights, hue shift is good, we customize the elders they're characters." The "parts" reading is confirmed. 48a: every part fits every flight's dragon. 48b: ±8°, as proposed. 48c: the elders' dragons are characters whose looks we author; this answer gives the player no dragon customization.
 
+**From G12b's lineup, 2026-10-19.** Of the five white dragons at −8°, −4°, 0°, +4° and +8°, Robert said: "for the hue shift, left to right, kind of like either +4 or 0." Recorded as his preference: the white elder stays at 0°, and +4° is the other shift he likes. The ±8° bound (48b) stands unless he narrows it; narrowing the white flight to 0° to +4° is the obvious option.
+
 ### Q49 · Meshy plan: who owns the generated models? — answered 2026-10-19
 Robert: "mark it down that i have meshy pro plan so we own these models for blender and game use."
 

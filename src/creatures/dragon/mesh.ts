@@ -17,6 +17,7 @@ import { smoothstep } from '../../core/math';
 import type { DragonBodyAsset } from './asset';
 import type { DragonPartPiece, DragonStrand } from './parts';
 import type { DragonRigDef } from './rig';
+import { CLAW_MIN_VERTS, EYE, buildClaws, buildEyes, buildFingers, buildMembranes, clawClusters, clawSites, eyeFrame, wingClawSites, type BuiltPiece, type ClawSite, type EyeFrame } from './features';
 
 export interface DragonWhiskerGeometry {
   geometry: BufferGeometry;
@@ -35,14 +36,32 @@ export interface DragonLodGeometry {
   geometry: BufferGeometry;
   triangles: number;
   whiskers: DragonWhiskerGeometry | null;
-  /** The left eye from the body's eye region: center, outward axis and radius for the hide shader. */
-  eye: { center: Vector3; axis: Vector3; radius: number };
+  /** The left eye for the hide shader: the built eyeball's frame and radius, or the body's own eye
+   * patch when the features are off. */
+  eye: { center: Vector3; axis: Vector3; radius: number; forward: Vector3; up: Vector3 };
   /** Pieces included, by name. */
   pieces: string[];
   /** Membrane triangles turned to face the way their normals do (see orientToNormals). */
   reoriented: number;
   /** Vertices that came with no normal and were given their faces' (see repairNormals). */
   renormaled: number;
+  /** The fitted claw clusters replaced by built claws, and the stray ones turned to hide. */
+  claws: { replaced: number; stray: number };
+}
+
+/** With the built wings, forearm and hand flesh farther than this (m) from its bone is old membrane. */
+export const ARM_FRINGE = 0.33;
+
+/** How a LOD is built (features.ts): the built membrane, claws and eyes, or the fitted body's own. */
+export interface DragonLodOptions {
+  /** 'built' (default): the built membrane, finger bones and wing claws; 'fitted': the fitted body's
+   * own, the membrane's winding put right. */
+  wings?: 'built' | 'fitted';
+  /** The feet's claw sites (from LOD0's body, so every LOD shares them); null keeps the fitted claws.
+   * Default: the given body's own sites. */
+  claws?: ClawSite[] | null;
+  /** The eyeball's frame (from LOD0's eye patch); null keeps the body's eye patch. Default: the given body's. */
+  eye?: EyeFrame | null;
 }
 
 /** Map a file's joint names onto the rig's bone indices; every name must be a rig bone. */
@@ -194,8 +213,11 @@ export function addBreathWeights(rig: DragonRigDef, position: Float32Array, join
   return moved;
 }
 
-/** The body's left eye region (aMat.x = 2, x > 0): center, mean normal and extent. */
-function eyeOf(body: DragonBodyAsset, rig: DragonRigDef): { center: Vector3; axis: Vector3; radius: number } {
+/**
+ * The body's left eye region (aMat.x = 2, x > 0): center, mean normal and extent, and how far out
+ * along the normal the skin round it stands (the patch sits in a socket).
+ */
+export function eyePatch(body: DragonBodyAsset, rig: DragonRigDef): { center: Vector3; axis: Vector3; radius: number; skin: number } {
   const c = new Vector3();
   const nrm = new Vector3();
   const pts: Vector3[] = [];
@@ -209,7 +231,7 @@ function eyeOf(body: DragonBodyAsset, rig: DragonRigDef): { center: Vector3; axi
     nrm.y += body.normal[v * 3 + 1];
     nrm.z += body.normal[v * 3 + 2];
   }
-  if (!pts.length) return { center: rig.eye.clone(), axis: new Vector3(1, 0, 0), radius: rig.eyeRadius };
+  if (!pts.length) return { center: rig.eye.clone(), axis: new Vector3(1, 0, 0), radius: rig.eyeRadius, skin: 0 };
   c.multiplyScalar(1 / pts.length);
   const axis = nrm.normalize();
   let r = 0;
@@ -217,20 +239,43 @@ function eyeOf(body: DragonBodyAsset, rig: DragonRigDef): { center: Vector3; axi
   // The shader's eyeball: a sphere whose front cap is the eye patch. Its center sits behind the
   // patch along the axis, so the patch's middle reads as the pupil and its rim as the iris's edge.
   const radius = Math.max(0.05, r * 0.9);
-  return { center: c.addScaledVector(axis, -0.75 * radius), axis, radius };
+  // The skin round the patch: the upper part of its rise above the patch, within a hand's breadth.
+  const rise: number[] = [];
+  const q = new Vector3();
+  for (let v = 0; v < n; v++) {
+    if (Math.round(body.mat[v * 4]) === 2 || body.position[v * 3] <= 0) continue;
+    q.set(body.position[v * 3], body.position[v * 3 + 1], body.position[v * 3 + 2]).sub(c);
+    const along = q.dot(axis);
+    if (q.length() < 0.16 && along > -0.05) rise.push(along);
+  }
+  rise.sort((a, b) => a - b);
+  const skin = rise.length ? Math.max(0, rise[Math.floor(rise.length * 0.8)]) : 0;
+  return { center: c.addScaledVector(axis, -0.75 * radius), axis, radius, skin: skin + 0.75 * radius };
 }
 
 /**
- * Build one LOD: the body and the given pieces (all of the same LOD), bound to the rig by name.
- * Pieces with strand coordinates (the whiskers) go to the whisker geometry; the rest are merged into
- * the skinned geometry, opaque triangles in group 0 and membrane in group 1.
+ * Build one LOD: the body and the given pieces (all of the same LOD), bound to the rig by name, with
+ * the built features (features.ts). Pieces with strand coordinates (the whiskers) go to the whisker
+ * geometry; the rest are merged into the skinned geometry, opaque triangles in group 0 and membrane
+ * in group 1.
  */
-export function buildDragonLod(rig: DragonRigDef, body: DragonBodyAsset, pieces: DragonPartPiece[], lod: number): DragonLodGeometry {
+export function buildDragonLod(rig: DragonRigDef, body: DragonBodyAsset, pieces: DragonPartPiece[], lod: number, opts: DragonLodOptions = {}): DragonLodGeometry {
+  const builtWings = (opts.wings ?? 'built') === 'built';
+  const sites = opts.claws === undefined ? clawSites(body, rig) : opts.claws;
+  const patch = eyePatch(body, rig);
+  const frame = opts.eye === undefined ? eyeFrame(patch, rig) : opts.eye;
+  const built: BuiltPiece[] = [];
+  if (builtWings) built.push(buildMembranes(rig, lod), buildFingers(rig, lod));
+  const allSites = [...(sites ?? []), ...(builtWings ? wingClawSites(rig) : [])];
+  if (allSites.length) built.push(buildClaws(allSites, lod));
+  const eyes = frame ? buildEyes(frame, rig, lod) : null;
+  if (eyes) built.push(eyes);
+
   const rigid = pieces.filter((p) => !p.strand);
   const strands = pieces.filter((p) => p.strand);
   const nB = body.position.length / 3;
   let n = nB;
-  for (const p of rigid) n += p.position.length / 3;
+  for (const p of [...rigid, ...built]) n += p.position.length / 3;
   const pos = new Float32Array(n * 3);
   const nor = new Float32Array(n * 3);
   const ji = new Uint16Array(n * 4);
@@ -240,9 +285,21 @@ export function buildDragonLod(rig: DragonRigDef, body: DragonBodyAsset, pieces:
   const ex = new Float32Array(n * 4);
   const tri: [number[], number[]] = [[], []];
   let base = 0;
-  const put = (src: { position: Float32Array; normal: Float32Array; joints: Uint16Array; weights: Float32Array; mat: Float32Array; uv2: Float32Array; extra: Float32Array; index: [Uint32Array, Uint32Array]; jointNames: string[] }, what: string) => {
+  const identity = Uint16Array.from(rig.bones, (_, i) => i);
+  type Src = {
+    position: Float32Array;
+    normal: Float32Array;
+    joints: Uint16Array;
+    weights: Float32Array;
+    mat: Float32Array;
+    uv2: Float32Array;
+    extra: Float32Array;
+    index: [Uint32Array, Uint32Array];
+    jointNames?: string[];
+  };
+  const put = (src: Src, what: string, keep: (g: number, a: number, b: number, c: number) => boolean = () => true) => {
     const k = src.position.length / 3;
-    const remap = jointRemap(rig, src.jointNames, what);
+    const remap = src.jointNames ? jointRemap(rig, src.jointNames, what) : identity;
     pos.set(src.position, base * 3);
     nor.set(src.normal, base * 3);
     for (let i = 0; i < k * 4; i++) {
@@ -253,15 +310,65 @@ export function buildDragonLod(rig: DragonRigDef, body: DragonBodyAsset, pieces:
     mat.set(src.mat, base * 4);
     uv2.set(src.uv2, base * 2);
     ex.set(src.extra, base * 4);
-    for (let g = 0; g < 2; g++) for (const i of src.index[g]) tri[g].push(base + i);
+    for (let g = 0; g < 2; g++) {
+      const list = src.index[g];
+      for (let i = 0; i < list.length; i += 3) if (keep(g, list[i], list[i + 1], list[i + 2])) tri[g].push(base + list[i], base + list[i + 1], base + list[i + 2]);
+    }
     base += k;
   };
-  put(body, `Dragon body LOD${lod}`);
-  const membrane = Uint32Array.from(tri[1]);
-  const reoriented = orientToNormals(pos, nor, membrane);
-  tri[1] = Array.from(membrane);
+
+  // The body's claw clusters: those at a claw site give way to the built claw, the rest become hide.
+  const drop = new Uint8Array(nB);
+  const claws = { replaced: 0, stray: 0 };
+  if (sites && sites.length) {
+    for (const g of clawClusters(body)) {
+      const c = new Vector3();
+      for (const v of g) c.add(new Vector3(body.position[v * 3], body.position[v * 3 + 1], body.position[v * 3 + 2]));
+      c.multiplyScalar(1 / g.length);
+      const near = sites.some((s) => c.distanceTo(s.base) < Math.max(0.25, 0.8 * s.length));
+      if (near && (lod > 0 || g.length >= CLAW_MIN_VERTS)) {
+        for (const v of g) drop[v] = 1;
+        claws.replaced++;
+      } else claws.stray++;
+    }
+  }
+  // With the built wings, the fitted fingers' flesh (and the fringes of the old membrane on it) goes.
+  if (builtWings) {
+    const finger = new Set(rig.bones.flatMap((bone, i) => (/^finger\d[ab][LR]$/.test(bone.name) ? [i] : [])));
+    // The forearm and hand flesh keep their bone; what lies far off it is old membrane.
+    const arm = new Map<number, [Vector3, Vector3]>();
+    for (const w of rig.idx.wings) {
+      arm.set(w.forearm, [rig.bones[w.forearm].pos, rig.bones[w.hand].pos]);
+      arm.set(w.hand, [rig.bones[w.hand].pos, rig.bones[w.fingers[0][0]].pos]);
+    }
+    const remap = jointRemap(rig, body.jointNames, 'Dragon body');
+    const p = new Vector3();
+    const ab = new Vector3();
+    for (let v = 0; v < nB; v++) {
+      let best = 0;
+      for (let k = 1; k < 4; k++) if (body.weights[v * 4 + k] > body.weights[v * 4 + best]) best = k;
+      const bone = remap[body.joints[v * 4 + best]];
+      if (finger.has(bone)) drop[v] = 1;
+      const seg = arm.get(bone);
+      if (seg) {
+        p.set(body.position[v * 3], body.position[v * 3 + 1], body.position[v * 3 + 2]).sub(seg[0]);
+        ab.subVectors(seg[1], seg[0]);
+        const t = Math.min(1, Math.max(0, p.dot(ab) / ab.lengthSq()));
+        if (p.addScaledVector(ab, -t).length() > ARM_FRINGE) drop[v] = 1;
+      }
+    }
+  }
+  put(body, `Dragon body LOD${lod}`, (g, a, b, c) => (g === 1 ? !builtWings : !(drop[a] && drop[b] && drop[c])));
+  if (sites && sites.length) for (let v = 0; v < nB; v++) if (Math.round(mat[v * 4]) === 9 && !drop[v]) mat[v * 4] = mat[v * 4 + 1] = mat[v * 4 + 2] = mat[v * 4 + 3] = 0;
+  let reoriented = 0;
+  if (!builtWings) {
+    const membrane = Uint32Array.from(tri[1]);
+    reoriented = orientToNormals(pos, nor, membrane);
+    tri[1] = Array.from(membrane);
+  }
   addBreathWeights(rig, pos, ji, jw, nB);
   for (const p of rigid) put(p, `Dragon part ${p.piece} LOD${lod}`);
+  for (const p of built) put(p, `Dragon ${p.piece} LOD${lod}`);
 
   const renormaled = repairNormals(pos, nor, tri);
   const g = new BufferGeometry();
@@ -280,15 +387,19 @@ export function buildDragonLod(rig: DragonRigDef, body: DragonBodyAsset, pieces:
   g.addGroup(tri[0].length, tri[1].length, 1);
   g.computeBoundingSphere();
 
+  const eye = frame
+    ? { center: frame.center.clone(), axis: frame.axis.clone(), radius: EYE.radius, forward: frame.forward.clone(), up: frame.up.clone() }
+    : { ...patch, forward: new Vector3(0, 0, 1), up: new Vector3(0, 1, 0) };
   return {
     lod,
     geometry: g,
     triangles: all.length / 3,
     whiskers: strands.length ? whiskerGeometry(strands) : null,
-    eye: eyeOf(body, rig),
-    pieces: pieces.map((p) => p.piece),
+    eye,
+    pieces: [...pieces.map((p) => p.piece), ...built.map((p) => p.piece)],
     reoriented,
     renormaled,
+    claws,
   };
 }
 
