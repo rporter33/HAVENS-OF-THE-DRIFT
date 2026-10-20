@@ -2,7 +2,7 @@
 
 Keep this file short: one checkpoint, overwritten each session. Move the previous entry to [the handoff log](history/handoff/README.md) under its day before writing a new one. Nothing here authorizes new work on its own; the current task from Robert does.
 
-## Checkpoint 2026-10-19 (fourth session): G12b, the white dragon's resting showcase and its first fidelity pass
+## Checkpoint 2026-10-19 (fourth session): G12b, the white dragon's resting showcase, accepted
 
 - **Objective:** gate G12b (Q47). Build `?view=white-dragon`, dev-only:
   - render 08's pose on a stand-in platform;
@@ -16,7 +16,7 @@ Keep this file short: one checkpoint, overwritten each session. Move the previou
   - a pass on the wings' and the claws' static mesh;
   - the tail moving more;
   - "continue with fidelity and animation."
-- **Branch:** `gate/g12b-white-dragon`, cut from `g12a-parts-lods` (`e4de879`, which `gate/g12a-white-dragon` now has too), and pushed. [PR #16](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/16) is open into `gate/g12a-white-dragon` until [PR #15](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/15) merges. CI runs only on PRs into `main`, so #16 has no checks until it's retargeted. This session's app can't follow #16: there's no `gh` on this PC.
+- **Branch:** `gate/g12b-white-dragon`, cut from `g12a-parts-lods` (`e4de879`). Robert accepted G12b ("looks good and merged") and merged [PR #16](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/16) into `gate/g12a-white-dragon` (`3f68f9a`). Next, a PR takes `gate/g12a-white-dragon` into `main`, carrying this note, G12a's parts and distance models, and Q50. `main` still has only [PR #15](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/15)'s skeleton and body. There's no `gh` on this PC, so the app can't follow the PRs.
 - **Completed:** all of it is in [the white dragon's G12b status](design/WHITE_DRAGON.md#g12b-status-2026-10-19-fourth-session).
   - **The showcase:** `debug/showcases/whiteDragon.ts` loads the body, the LODs and the parts from the dev server only. No dragon file reaches `dist`, and in a production build the lazy chunk refuses with a warning. It offers cameras (`camTarget=` aims them anywhere), the render 08 match, a bind pose, a LOD switch, the hue lineup, the rider for scale, and `features=fitted` for before-and-after views.
   - **The dragon:** `creatures/dragon/`:
@@ -61,9 +61,11 @@ Keep this file short: one checkpoint, overwritten each session. Move the previou
   - At LOD2 the plates blur into a wash.
   - At tod 0.7 the low sun ahead of render 08's camera hazes everything orange, so the showcase defaults to 0.66.
   - The stand-in tower stands on an island south of the Roost.
-- **Decisions:** both from Robert on 2026-10-19 and recorded under Q48:
-  - the white flight's hue range is 0° to +4°;
-  - the horn colour `#e4d8be` is settled.
+- **Decisions:** all from Robert on 2026-10-19:
+  - the white flight's hue range is 0° to +4° (Q48);
+  - the horn colour `#e4d8be` is settled (Q48);
+  - G12b is accepted (Q47).
 - **Next authorized action:**
-  - Robert scores the latest captures (the 0° to +4° lineup, the flatter eye and the reworked toes among them) and times Medium on his GPU.
-  - Robert reviews [PR #16](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/16), retargeted to `main` once PR #15 merges, and says whether to push the captures to an archive branch. After that, G12c.
+  - Robert reviews and merges the PR from `gate/g12a-white-dragon` into `main`. Its CI runs there.
+  - He times Medium on his GPU (carried), and says whether to push the captures to an archive branch.
+  - G12c (the dragon on its tower at Windhaven, in the normal build) when he opens it.

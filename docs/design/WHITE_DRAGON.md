@@ -174,6 +174,8 @@ The first thing visible is G12b's showcase ([below](#g12b-status-2026-10-19-four
 
 ### G12b status, 2026-10-19 (fourth session)
 
+**Accepted by Robert on 2026-10-19** ("looks good and merged", [Q47](DECISION_LOG.md#q47--open-the-white-dragon-gate-g12-and-on-what-terms--answered-2026-10-19)). He merged [PR #16](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/16) into `gate/g12a-white-dragon` (`3f68f9a`). That branch then goes into `main` together with G12a's parts, its distance models and Q50. The showcase stays dev-only until G12c.
+
 Built on `gate/g12b-white-dragon`, cut from `g12a-parts-lods` (`e4de879`, Q50's answer), which fast-forwards `gate/g12a-white-dragon`. It is dev-only: the normal build doesn't change, and no wyvern module, `src/flight`, `src/player`, the save or the controls were touched. The wyvern helpers are imported, not edited, and the skeleton is still 64 bones.
 
 **The showcase.** `?view=white-dragon` (`debug/showcases/whiteDragon.ts`) puts the white elder on a stand-in tower top: a limestone drum 16 m across with a blue frieze, south of the Roost and above an island. The dragon's files load from the dev server only (`creatures/dragon/load.ts`, by a plain path), so `vite build` bundles none of them. Like every showcase, the module is its own lazy chunk; in a production build it refuses with a console warning. The controls:
@@ -304,9 +306,7 @@ With the parts and whiskers, LOD0 is 20,890 triangles, LOD1 5,410 and LOD2 1,476
   - at LOD2 the plates blur into a pale blue wash along the back, though at the distance it is used (past 160 m) the dragon is a small silhouette.
 - **Reachability:** the stand-in tower and the dragon read from 40, 110 and 200 m. The tower and the haven are G12c's.
 
-**Still open in G12b:**
-- Robert scores the second set of captures, the 0° to +4° lineup among them.
-- He times Medium on his GPU (`--gpu` with the capture script or the dev server).
+**Carried past acceptance:** timing Medium on Robert's GPU (`--gpu` with the capture script, or the dev server).
 
 ### The parts
 

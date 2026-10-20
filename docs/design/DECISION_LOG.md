@@ -162,6 +162,8 @@ Robert, 2026-10-19: "Begin work on the white dragon." That is read as the white 
 
 "With accuracy" is applied as: numbers come from a named source (render 08 now, the approved reference sheet when it exists), provisional ones are marked as such, and every claim about the build is backed by a test or a capture.
 
+**G12b accepted, 2026-10-19.** Robert, on the third set of captures (the flatter eye, the reworked toes, the 0° to +4° lineup): "looks good and merged." He merged [PR #16](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/16) into `gate/g12a-white-dragon` and asked for that branch to go into `main` with this note. The resting showcase stays dev-only. Not done: timing Medium on his GPU. G12c, the dragon on its tower at Windhaven and in the normal build, is next when he opens it.
+
 ### Q47f · The white elder dragon's name, and whether it speaks — open
 
 ### Q48 · Dragon customization, and colour within a flight — answered 2026-10-19
