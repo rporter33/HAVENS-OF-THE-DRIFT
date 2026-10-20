@@ -2,7 +2,7 @@
  "metadata": {
   "gate": "G12b",
   "capturedOn": "2026-10-19",
-  "pass": "second set: the fidelity pass (built wings, claws, eyes) and the tail",
+  "pass": "second set: the fidelity pass (built wings, claws, eyes) and the tail; the hue lineup re-shot across the white flight's 0 to +4 degrees",
   "branch": "gate/g12b-white-dragon",
   "tested": "the working tree committed with this record",
   "script": "scripts/white-dragon-capture.mjs",
@@ -582,19 +582,19 @@
   },
   {
    "id": "lineup-hue",
-   "desc": "Five white dragons across the hue shift: -8, -4, 0, +4, +8 degrees, left to right, the same parts",
+   "desc": "Five white dragons across the white flight's hue range: 0, +1, +2, +3, +4 degrees, left to right, the same parts",
    "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&lineup=hue&look=none&idle=0",
    "settle": 4,
    "dragon": {
     "lod": 0,
     "triangles": 19836,
-    "hueShift": -8
+    "hueShift": 0
    },
    "files": [
     {
      "file": "lineup-hue.png",
-     "sha256": "8d39bf0f4c68ef32fccb061218a8de86df31f3966f889f7a205a9b15d56083c3",
-     "bytes": 837938
+     "sha256": "e4de23f6fe2fe0a567a0f669265af20d6a800bf1e0bd9349aebb60de79f24809",
+     "bytes": 833600
     }
    ]
   },
@@ -606,13 +606,13 @@
    "dragon": {
     "lod": 0,
     "triangles": 19836,
-    "hueShift": -8
+    "hueShift": 0
    },
    "files": [
     {
      "file": "lineup-hue-close.png",
-     "sha256": "b68c6851a47a52708c697a969c594dcab05d5bf9125a3cc5216a870d8cf801e3",
-     "bytes": 763245
+     "sha256": "34f8b31512374902b7d554bc63807109be05d184474b3df2be723d485c4ed46e",
+     "bytes": 762856
     }
    ]
   },
@@ -624,13 +624,13 @@
    "dragon": {
     "lod": 0,
     "triangles": 19836,
-    "hueShift": -8
+    "hueShift": 0
    },
    "files": [
     {
      "file": "lineup-hue-60.png",
-     "sha256": "bff167cb74a2a7ae2a75741619a734a51fce19d8102f40c81b002023be7aecc9",
-     "bytes": 896097
+     "sha256": "eeac66e5786ee99eb9f10912753c2a62d9233cbf9d53804e9782a7e1162a7357",
+     "bytes": 894878
     }
    ]
   },

@@ -33,7 +33,7 @@ Keep this file short: one checkpoint, overwritten each session. Move the previou
     - 16 curved slate claws on the fitted claw sites;
     - an almond eyeball with a dark lid line;
     - the tail's wave and flicks, with the tip sweeping up to 1.6 m.
-  - **Hue:** Robert likes 0° or +4° of the lineup. That is recorded under Q48 in the decision log, and the elder stays at 0°.
+  - **Hue:** Robert liked 0° or +4° of the lineup, then narrowed the white flight's shift to 0° to +4° (Q48). `look.ts` gives each flight its own range inside the ±8° bound (`FLIGHT_HUE_RANGE`; the other flights keep ±8° until judged). The lineup was re-shot at 0°, +1°, +2°, +3° and +4°, and the elder stays at 0°.
   - **Horn colour:** `look.ts` gains `horns: '#e4d8be'`. It's provisional, for Robert to settle; the kit names "pale bone ivory" with no value.
   - **Found and fixed at load, not in the G12a files:**
     - zero-length normals at the wing-root cut and on the cheek fins, which made a NaN hot spot in the bloom;
@@ -61,7 +61,7 @@ Keep this file short: one checkpoint, overwritten each session. Move the previou
   - At LOD2 the plates blur into a wash.
   - At tod 0.7 the low sun ahead of render 08's camera hazes everything orange, so the showcase defaults to 0.66.
   - The stand-in tower stands on an island south of the Roost.
-- **Decisions:** the hue preference above. Whether the white flight's range narrows to 0° to +4°, and the horn colour, are Robert's to settle.
+- **Decisions:** the white flight's hue range is 0° to +4° (Robert, 2026-10-19; Q48). The horn colour is still Robert's to settle.
 - **Next authorized action:**
-  - Robert scores the second set of captures, says whether the hue range narrows, settles the horn colour, and times Medium on his GPU.
+  - Robert scores the second set of captures (the 0° to +4° lineup among them), settles the horn colour, and times Medium on his GPU.
   - Robert reviews [PR #16](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/16), retargeted to `main` once PR #15 merges, and says whether to push the captures to an archive branch. After that, G12c.

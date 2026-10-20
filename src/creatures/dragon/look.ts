@@ -4,8 +4,9 @@
 // flight carries, e.g. the white flight's ivory hide with powder-blue plates in render 08), and a
 // dragon's palette is its flight's turned by its hue shift: Robert, 2026-10-19, "their colors are
 // a small hue change for variation within flight". The turn is in OKLCH with lightness and chroma
-// held, so every dragon of a flight reads as that flight; the shift is at most ±8° (Q48b) and is a
-// stored number, never random at runtime.
+// held, so every dragon of a flight reads as that flight; the shift is at most ±8° (Q48b), within its
+// flight's own range (the white flight's is 0° to +4°: Robert, 2026-10-19, from G12b's lineup), and
+// is a stored number, never random at runtime.
 //
 // The elders' dragons are characters whose looks are authored (Q48c): this is not a save format
 // and nothing here touches WyvernLook or driftwing.save.v1.
@@ -20,7 +21,7 @@ export const DRAGON_PART_SLOTS: readonly DragonPartSlot[] = ['horns', 'whiskers'
 
 export interface DragonLook {
   flight: DragonFlight;
-  /** Hue shift from the flight's palette (degrees; clamped to ±HUE_SHIFT_MAX_DEG). */
+  /** Hue shift from the flight's palette (degrees; clamped to the flight's range, FLIGHT_HUE_RANGE). */
   hueShift: number;
   /** Part id per slot (see catalog.ts). */
   parts: Record<DragonPartSlot, string>;
@@ -40,7 +41,22 @@ export interface DragonPalette {
   horns: string;
 }
 
+/** The bound on any flight's hue shift (Q48b). */
 export const HUE_SHIFT_MAX_DEG = 8;
+
+/**
+ * Each flight's own hue range (degrees), inside the bound. The white flight's is 0° to +4°: of G12b's
+ * lineup at −8°, −4°, 0°, +4° and +8°, Robert liked 0° and +4° and narrowed it to that
+ * (2026-10-19, Q48). Flights without a range of their own take the full ±8° until theirs is judged.
+ */
+export const FLIGHT_HUE_RANGE: Partial<Record<DragonFlight, readonly [number, number]>> = {
+  white: [0, 4],
+};
+
+/** A flight's hue range: its own, or the full bound. */
+export function hueRange(flight: DragonFlight): readonly [number, number] {
+  return FLIGHT_HUE_RANGE[flight] ?? [-HUE_SHIFT_MAX_DEG, HUE_SHIFT_MAX_DEG];
+}
 
 /**
  * Flight palettes. Only the white flight has a source so far: the values are the model kit's,
@@ -63,11 +79,12 @@ export const FLIGHT_PALETTES: Partial<Record<DragonFlight, DragonPalette>> = {
   },
 };
 
-/** A dragon's own palette: its flight's, turned by its (clamped) hue shift. */
+/** A dragon's own palette: its flight's, turned by its hue shift clamped to the flight's range. */
 export function dragonPalette(look: DragonLook): DragonPalette {
   const base = FLIGHT_PALETTES[look.flight];
   if (!base) throw Error(`Dragon look: the ${look.flight} flight has no palette yet`);
-  const shift = clamp(look.hueShift, -HUE_SHIFT_MAX_DEG, HUE_SHIFT_MAX_DEG);
+  const [lo, hi] = hueRange(look.flight);
+  const shift = clamp(look.hueShift, Math.max(lo, -HUE_SHIFT_MAX_DEG), Math.min(hi, HUE_SHIFT_MAX_DEG));
   if (shift === 0) return { ...base };
   const out = {} as DragonPalette;
   for (const k of Object.keys(base) as (keyof DragonPalette)[]) out[k] = shiftHue(base[k], shift);

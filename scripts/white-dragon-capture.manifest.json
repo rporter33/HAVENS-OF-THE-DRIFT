@@ -37,7 +37,7 @@
     { "id": "gameplay-40", "desc": "Gameplay distance, 40 m at render 08's azimuth, the game's lens (62°); LOD by distance (0)", "stage": "cam=r08&fov=62&camDist=40&camEl=6&look=camera", "settle": 4 },
     { "id": "gameplay-110", "desc": "Gameplay distance, 110 m, the game's lens; LOD by distance (1)", "stage": "cam=r08&fov=62&camDist=110&camEl=8&look=camera", "settle": 4 },
     { "id": "gameplay-200", "desc": "Gameplay distance, 200 m, the game's lens; LOD by distance (2)", "stage": "cam=r08&fov=62&camDist=200&camEl=10&look=camera", "settle": 4 },
-    { "id": "lineup-hue", "desc": "Five white dragons across the hue shift: -8, -4, 0, +4, +8 degrees, left to right, the same parts", "stage": "lineup=hue&look=none&idle=0", "settle": 4 },
+    { "id": "lineup-hue", "desc": "Five white dragons across the white flight's hue range: 0, +1, +2, +3, +4 degrees, left to right, the same parts", "stage": "lineup=hue&look=none&idle=0", "settle": 4 },
     { "id": "lineup-hue-close", "desc": "The hue lineup from the front-left, nearer", "stage": "lineup=hue&look=none&idle=0&camDist=46&camAz=32&camEl=9", "settle": 4 },
     { "id": "lineup-hue-60", "desc": "The hue lineup at gameplay distance, the game's lens", "stage": "lineup=hue&look=none&idle=0&fov=62&camDist=70&camAz=20&camEl=10", "settle": 4 },
     { "id": "idle-head", "desc": "Strip: the head following the camera as it orbits from the right front round to behind the left shoulder (22°/s), 1 s apart", "stage": "cam=head&camDist=13&camAz=-50&turntable=1&spin=22&look=camera", "settle": 1, "strip": { "frames": 8, "step": 1, "cols": 4} },

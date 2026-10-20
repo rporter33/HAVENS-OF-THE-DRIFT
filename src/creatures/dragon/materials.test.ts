@@ -77,8 +77,8 @@ describe('G12b dragon materials', () => {
   it('turns with the hue shift as one palette', () => {
     const a = createWyvernUniforms();
     const b = createWyvernUniforms();
-    applyDragonPalette(a, createDragonShadeUniforms(), dragonPalette({ ...ELDER_DRAGONS.white!, hueShift: -8 }));
-    applyDragonPalette(b, createDragonShadeUniforms(), dragonPalette({ ...ELDER_DRAGONS.white!, hueShift: 8 }));
+    applyDragonPalette(a, createDragonShadeUniforms(), dragonPalette({ ...ELDER_DRAGONS.white!, hueShift: 0 }));
+    applyDragonPalette(b, createDragonShadeUniforms(), dragonPalette({ ...ELDER_DRAGONS.white!, hueShift: 4 }));
     expect(a.uSecondary.value.equals(b.uSecondary.value)).toBe(false);
     expect(a.uHorn.value.equals(b.uHorn.value)).toBe(false);
   });

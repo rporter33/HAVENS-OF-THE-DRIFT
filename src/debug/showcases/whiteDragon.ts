@@ -3,7 +3,7 @@ import type { Showcase } from '../showcase';
 import type { Game } from '../../game/Game';
 import { Dragon, type DragonLod } from '../../creatures/dragon/Dragon';
 import { ELDER_DRAGONS } from '../../creatures/dragon/catalog';
-import { HUE_SHIFT_MAX_DEG, type DragonLook } from '../../creatures/dragon/look';
+import { hueRange, type DragonLook } from '../../creatures/dragon/look';
 import { loadWhiteDragonAssets, type WhiteDragonAssets } from '../../creatures/dragon/load';
 import { sunDirection } from '../../sky/sunPath';
 import { toonMaterial } from '../../render/painterly';
@@ -24,8 +24,8 @@ import { toonMaterial } from '../../render/painterly';
  *   idle=0               the bare pose: no breathing, blinks, settles or drift; whiskers at rest
  *   blink=s,s            cue blinks at showcase times (any cue holds the natural ones off)
  *   seed=n               the idle's timed events
- *   hue=deg              the hue shift (±8°, Q48b)
- *   lineup=hue [hues=-8,-4,0,4,8]   white dragons across the hue shift, side by side
+ *   hue=deg              the hue shift, inside the white flight's range (0° to +4°, Q48)
+ *   lineup=hue [hues=0,1,2,3,4]   white dragons across the flight's hue range, side by side
  *   lod=0|1|2|auto       force a LOD (default auto: by the camera's distance)
  *   rider=beside         the player's rider on foot at the dragon's left shoulder, as the elder
  *                        stands in render 08 (scale); look=player then follows the rider
@@ -83,7 +83,14 @@ function num(p: URLSearchParams, name: string, fallback: number): number {
 
 function elderLook(hue: number): DragonLook {
   const base = ELDER_DRAGONS.white!;
-  return { ...base, parts: { ...base.parts }, hueShift: Math.max(-HUE_SHIFT_MAX_DEG, Math.min(HUE_SHIFT_MAX_DEG, hue)) };
+  const [lo, hi] = hueRange(base.flight);
+  return { ...base, parts: { ...base.parts }, hueShift: Math.max(lo, Math.min(hi, hue)) };
+}
+
+/** Five hue shifts evenly across the white flight's range, low to high (0°, +1° .. +4°). */
+function lineupRange(): number[] {
+  const [lo, hi] = hueRange('white');
+  return [0, 1, 2, 3, 4].map((i) => lo + ((hi - lo) * i) / 4);
 }
 
 /** The dragon's heading (world yaw) that puts the sun ahead and to its right, as render 08 has it. */
@@ -175,7 +182,7 @@ function standBeside(game: Game, d: Dragon, camYaw: number): void {
 
 function setup(game: Game, p: URLSearchParams): void {
   teardown(game);
-  const lineupHues = p.get('lineup') === 'hue' ? (p.get('hues') ?? '-8,-4,0,4,8').split(',').map(Number).filter(Number.isFinite) : [];
+  const lineupHues = p.get('lineup') === 'hue' ? (p.get('hues')?.split(',').map(Number).filter(Number.isFinite) ?? lineupRange()) : [];
   const count = Math.max(1, lineupHues.length);
   if (p.has('tod')) game.debug.tod = Number(p.get('tod'));
   else if (game.debug.tod === undefined) game.debug.tod = 0.66;

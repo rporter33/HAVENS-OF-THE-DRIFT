@@ -96,7 +96,7 @@ Robert, 2026-10-19 (Q48): every flight's dragons are customized with parts, and 
 
 **The dragon's look.**
 - **Data:** its flight (white, red, green, blue or black; black also picks its violet or ember tint), a hue shift, and one part per slot. The elders' dragons are characters whose looks we author (Q48c); there is no player-facing dragon customization. It isn't a `WyvernLook`, so wyvern saves don't change.
-- **Colours are derived, not picked.** Each flight has a palette (hide, plates, belly, membrane, wing bones, claws, eyes), and a dragon's palette is the flight's turned by its hue shift. The shift is at most ±8° (Q48b), with the whole palette turning together and lightness and saturation held, so every dragon of a flight reads as that flight. The shift is a stored number, never random at runtime.
+- **Colours are derived, not picked.** Each flight has a palette (hide, plates, belly, membrane, wing bones, claws, eyes), and a dragon's palette is the flight's turned by its hue shift. The shift is at most ±8° (Q48b), with the whole palette turning together and lightness and saturation held, so every dragon of a flight reads as that flight. Each flight may narrow it: the white flight's range is 0° to +4° (Robert, 2026-10-19, from G12b's lineup). The shift is a stored number, never random at runtime.
 - **Parts fit every flight** (Q48a). Every dragon shares one body and one skeleton, and each part attaches to named bones, so a part built once fits all five flights.
 
 | Slot | The white elder's part (render 08) | Other options to draw on |
@@ -242,7 +242,7 @@ The look spring and the whiskers step at a fixed 120 Hz with their inputs interp
 
 `scripts/white-dragon-capture.mjs` and its manifest (`scripts/white-dragon-capture.manifest.json`) shoot 38 items. There are stills, side-by-sides with render 08, LOD and bind-pose views, before-and-after pairs for the fidelity pass, gameplay distances, the hue lineup, and strips of the head, a blink, the whiskers, a wing settle and the tail. They go to `shots/white-dragon/` with `results.json` (SHA-256 per file); the hashes of this session's set are in [the capture record](../qa/white-dragon-g12b-captures.json). The script needs the dev server, and `CHROMIUM_PATH` on this PC.
 
-**The lineup** (`lineup=hue`) shows five white elders at −8°, −4°, 0°, +4° and +8°, the whole palette turned in OKLCH, on one terrace. Only one part set exists, so the lineup varies the hue alone. A part swap needs nothing more in code:
+**The lineup** (`lineup=hue`) shows five white elders across the white flight's range, at 0°, +1°, +2°, +3° and +4°, the whole palette turned in OKLCH, on one terrace. The first set ran from −8° to +8°, before Robert narrowed the range ([below](#g12b-status-2026-10-19-fourth-session)). Only one part set exists, so the lineup varies the hue alone. A part swap needs nothing more in code:
 - `piecesFor` picks a look's pieces by its catalog options, and `buildDragonLod` merges whatever pieces it is given, binding them by bone name.
 - A whisker piece with strands hangs by itself.
 
@@ -261,7 +261,7 @@ What's missing is the parts. Each variant (the swept, crown and spiral horns; th
 The suite also passed typecheck, the full vitest (138 files, 1,457 tests), `vite build` (no dragon file in `dist`) and smoke 15/15.
 
 **Robert's first look, 2026-10-19.** "Good work... I think we're pretty close." His notes:
-- **Hue:** of the lineup he likes 0° or +4° ([Q48](DECISION_LOG.md#q48--dragon-customization-and-colour-within-a-flight--answered-2026-10-19)). The elder stays at 0°.
+- **Hue:** of the lineup he likes 0° or +4° ([Q48](DECISION_LOG.md#q48--dragon-customization-and-colour-within-a-flight--answered-2026-10-19)). The elder stays at 0°. Asked next, he narrowed the white flight's shift to 0° to +4° and asked for the lineup across it, which `look.ts` (`FLIGHT_HUE_RANGE`) and the lineup now hold.
 - **Eyes:** "good, but need a little bit more work... more definition to stand out."
 - **Wings:** "a little bit more of a pass about their static mesh."
 - **Claws:** the same pass.
@@ -293,7 +293,7 @@ With the parts and whiskers, LOD0 is 19,836 triangles, LOD1 4,946 and LOD2 1,289
 - **Reachability:** the stand-in tower and the dragon read from 40, 110 and 200 m. The tower and the haven are G12c's.
 
 **Still open in G12b:**
-- Robert scores the second set of captures, and says whether the white flight's hue range narrows to 0° to +4°.
+- Robert scores the second set of captures, the 0° to +4° lineup among them.
 - He settles the horn colour.
 - He times Medium on his GPU (`--gpu` with the capture script or the dev server).
 
@@ -416,7 +416,7 @@ The flight constants and the 120 Hz step, `driftwing.save.v1` and `driftwing.bon
 
 Answered 2026-10-19 ([Q47](DECISION_LOG.md#q47--open-the-white-dragon-gate-g12-and-on-what-terms--answered-2026-10-19), [Q48](DECISION_LOG.md#q48--dragon-customization-and-colour-within-a-flight--answered-2026-10-19), [Q50](DECISION_LOG.md#q50--the-white-dragons-size-wing-and-membrane-root--answered-2026-10-19)):
 - G12 is open: R1, a Meshy body on a game-owned skeleton, the tower at Windhaven, the elder figure later.
-- Parts fit every flight, the hue shift is ±8°, and the elders' dragons are authored characters.
+- Parts fit every flight, the hue shift is ±8° (the white flight's 0° to +4°), and the elders' dragons are authored characters.
 - The choices the sheet and the Meshy body forced stand as built: the size from render 08's body readings, the wing from the Meshy body, the membrane meeting the flank ahead of the hip.
 
 Open:
