@@ -178,6 +178,12 @@ Follow-ups, with recommendations:
 
 **Follow-ups answered 2026-10-19.** Robert: "Parts - across flights, hue shift is good, we customize the elders they're characters." The "parts" reading is confirmed. 48a: every part fits every flight's dragon. 48b: ±8°, as proposed. 48c: the elders' dragons are characters whose looks we author; this answer gives the player no dragon customization.
 
+**From G12b's lineup, 2026-10-19.** Of the five white dragons at −8°, −4°, 0°, +4° and +8°, Robert said: "for the hue shift, left to right, kind of like either +4 or 0." Recorded as his preference: the white elder stays at 0°, and +4° is the other shift he likes.
+
+**The white flight's range narrowed, 2026-10-19.** Asked whether to narrow the white flight's hue shift to 0° to +4°, Robert answered: "Yes: narrow the white flight's hue shift to 0° to +4°, and redo the lineup across that range." Each flight now has its own range inside the ±8° bound of 48b (`FLIGHT_HUE_RANGE`, `creatures/dragon/look.ts`). The white flight's is 0° to +4°; the other four keep the full ±8° until their own lineups are judged. G12b's lineup now shows 0°, +1°, +2°, +3° and +4°.
+
+**The white flight's horn colour, 2026-10-19.** G12b proposed `#e4d8be` for the kit's "pale bone ivory", which had no value: the midpoint of the hide's ivory and the wyverns' bone horn. Robert: "the horn should be an off white color so current is looking good." Settled; it is the white palette's `horns` (`creatures/dragon/look.ts`).
+
 ### Q49 · Meshy plan: who owns the generated models? — answered 2026-10-19
 Robert: "mark it down that i have meshy pro plan so we own these models for blender and game use."
 

@@ -10,8 +10,8 @@ The white clan's elder dragon, as [render 08](../art/targets/08-sleek-dragon-eld
 
 | | |
 |---|---|
-| **Exists in source** | Nothing. No four-legged creature, no dragon rig, no elder, no non-player creature of any kind, no tower-top platform. |
-| **Usable in this build** | Nothing. |
+| **Exists in source** | On the G12 branches: the six-limb skeleton, the fitted body, the white elder's parts and the distance models (G12a), and a resting dragon with its own driver in a dev-only showcase (G12b, [below](#g12b-status-2026-10-19-fourth-session)). No elder, no tower-top platform in the world. |
+| **Usable in this build** | Nothing in the normal build. On the dev server, `?view=white-dragon`. |
 | **Approved direction** | Four-legged dragons join the roster when their rig exists (Q1). The five clans and ten elders are game canon, introduced in the comic first (Q13). The Air Nomads, the player culture, carry the white flight (Q23). The game should closely match the renders, dragons included; white blends toward ivory and powder blue "as the elder dragon render (08) shows" (Q36). Creature bodies may come from Meshy if Claude can edit the Blender source to fit the game (Q20, Q38). Every flight's dragons are customized with parts, and dragons of one flight differ by a small hue change (Q48). The [render brief](../art/targets/RENDER_BRIEF.md): four legs plus two wings, sleeker and larger than the wyverns, swept branching horns and whiskers, ivory and powder blue, belongs to the clan elders. |
 | **Future ideas, not authorized** | The dragon as a mount, a dragon that flies over the haven, the elder speaking, the five-rival course with one rival per flight (Q44). The other four flights' elder dragons are canon (Q13) but not scheduled. |
 
@@ -96,7 +96,7 @@ Robert, 2026-10-19 (Q48): every flight's dragons are customized with parts, and 
 
 **The dragon's look.**
 - **Data:** its flight (white, red, green, blue or black; black also picks its violet or ember tint), a hue shift, and one part per slot. The elders' dragons are characters whose looks we author (Q48c); there is no player-facing dragon customization. It isn't a `WyvernLook`, so wyvern saves don't change.
-- **Colours are derived, not picked.** Each flight has a palette (hide, plates, belly, membrane, wing bones, claws, eyes), and a dragon's palette is the flight's turned by its hue shift. The shift is at most ±8° (Q48b), with the whole palette turning together and lightness and saturation held, so every dragon of a flight reads as that flight. The shift is a stored number, never random at runtime.
+- **Colours are derived, not picked.** Each flight has a palette (hide, plates, belly, membrane, wing bones, claws, eyes), and a dragon's palette is the flight's turned by its hue shift. The shift is at most ±8° (Q48b), with the whole palette turning together and lightness and saturation held, so every dragon of a flight reads as that flight. Each flight may narrow it: the white flight's range is 0° to +4° (Robert, 2026-10-19, from G12b's lineup). The shift is a stored number, never random at runtime.
 - **Parts fit every flight** (Q48a). Every dragon shares one body and one skeleton, and each part attaches to named bones, so a part built once fits all five flights.
 
 | Slot | The white elder's part (render 08) | Other options to draw on |
@@ -170,7 +170,143 @@ Built on `gate/g12a-white-dragon` as data, tests and dev-only assets. Nothing dr
 Robert accepted Q50's recommendations on 2026-10-19 (the size, the wing's source and the membrane's root stand as built). Still to do in G12a:
 - **Robert's review** of [PR #15](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/15), the parts and LODs included.
 
-Not started: anything visible. That is G12b.
+The first thing visible is G12b's showcase ([below](#g12b-status-2026-10-19-fourth-session)).
+
+### G12b status, 2026-10-19 (fourth session)
+
+Built on `gate/g12b-white-dragon`, cut from `g12a-parts-lods` (`e4de879`, Q50's answer), which fast-forwards `gate/g12a-white-dragon`. It is dev-only: the normal build doesn't change, and no wyvern module, `src/flight`, `src/player`, the save or the controls were touched. The wyvern helpers are imported, not edited, and the skeleton is still 64 bones.
+
+**The showcase.** `?view=white-dragon` (`debug/showcases/whiteDragon.ts`) puts the white elder on a stand-in tower top: a limestone drum 16 m across with a blue frieze, south of the Roost and above an island. The dragon's files load from the dev server only (`creatures/dragon/load.ts`, by a plain path), so `vite build` bundles none of them. Like every showcase, the module is its own lazy chunk; in a production build it refuses with a console warning. The controls:
+- `cam=` names a camera: `r08`, `three`, `side`, `front`, `back`, `top`, `low`, `head`, `eye` or `wings`. `camAz=`, `camEl=` and `camDist=` adjust it, and `fov=` sets the lens.
+- `look=camera|player|none|x,y,z` picks what the head follows.
+- `idle=0` holds the bare pose, and `pose=bind` stands the dragon in the bind pose with the wings spread.
+- `hue=` sets the hue shift, and `lineup=hue` lines up five dragons across it.
+- `lod=0|1|2|auto` forces a LOD.
+- `rider=beside` stands the player's rider at the left shoulder, where render 08's elder stands.
+- `blink=` cues blinks, and `seed=` reseeds the idle.
+
+`window.__whiteDragon.restage(query)` drives captures.
+
+**Binding and geometry** (`creatures/dragon/mesh.ts`, `Dragon.ts`). Each LOD's body and its look's part pieces bind by joint name to `dragonRig()`, and all three LODs share one 64-bone skeleton. Each LOD is one skinned mesh in two draw calls (opaque, membrane), plus the whiskers' own mesh. With the parts:
+- LOD0: 20,313 triangles;
+- LOD1: 5,198;
+- LOD2: 1,338.
+
+All three are inside their ceilings. The LOD follows the camera's distance, dropping to LOD1 past 70 m and LOD2 past 160 m. Three things are made at load, not in the files:
+- **Breath weights:** the fit left the breath bone unweighted. Over the rib cage, between the hips and the shoulders, up to three quarters of each vertex's spine, chest and pelvis weight moves to it (2,710 vertices at LOD0), so the flanks can swell.
+- **Normals:** three vertices at the closed wing-root cut have zero-length normals at every LOD, and the cheek fins have six at LOD0 and LOD1. The shader normalizes them to NaN, which the bloom spread into a white spot with a black core on the wing root. They now take their faces' normal.
+- **Membrane winding:** a few membrane triangles are wound against their own normals. That's LOD0 47 of 3,297, LOD1 18 of 990 and LOD2 9 of 314 (2.8% of LOD2's membrane area). The hide shader picks the upper face or the paler underside by which face the camera sees. This is the cause of the LOD2 trailing edge [noted above](#the-distance-models), and those triangles are turned at load.
+
+Both are faults in G12a's files. The fit script should fix them at the source the next time it runs.
+
+**Shading** (`creatures/dragon/materials.ts`). It uses the wyvern hide shader and its regions, wrapped in the dragon's own programs:
+
+| Palette (look.ts) | Hide shader |
+|---|---|
+| hide `#efe6d6` | primary (luminance capped at the wyverns' 0.6, as their scales are) |
+| plates `#9db6d3` | secondary, mixed in by the dorsal channel the fit baked from the plates |
+| belly `#f7f0e1` | belly (capped at 0.55) |
+| membrane, eyes | membrane, eyes |
+| horns `#e4d8be` (new; settled by Robert) | horn region: horns, spines, fin rays, tail fin |
+| claws `#4a5260` | claws |
+| wing bones | not used: the built finger bones (below) take the plates' channel, the same colour |
+
+Two exact-text patches go on the body program, and they throw if the shader's text moves:
+- **Plate mix:** the wyvern countershades its back 0.47 of the way to the secondary colour. The dragon mixes 0.9 of the way (`PLATE_MIX`), so the plates read powder blue, as in render 08.
+- **Claws:** the wyvern's are a fixed dark keratin; the dragon's take the palette's slate.
+
+The wyvern's own programs are unchanged, and a test proves it. **The horn colour** was a proposal: the kit asks for "pale bone ivory" with no value. `#e4d8be` is the midpoint of the hide's ivory and the wyverns' bone horn (`#d9c9a6`), a step warmer and darker than the hide so the horns read against it. Robert settled it on 2026-10-19: "the horn should be an off white color so current is looking good."
+
+**The pose** (`creatures/dragon/pose.ts`, `RESTING`) is render 08's sphinx, written as bone directions in the dragon's frame and solved onto the skeleton. In the skinned LOD0:
+- **Belly:** the body center is 1.0 m above the platform, and the belly's lowest point is within 2 cm of it.
+- **Head:** the trunk pitches 3° nose up. The neck is the sheet's S leaned a little forward at the base. The skull joint is 4.23 m up and the eye 4.30 m.
+- **Forelegs:** stretched forward along the platform, with the toes 3.1 m ahead of the neck's base.
+- **Hind legs:** folded under, the knee forward, the hock back and the foot flat beside the belly.
+- **Tail:** it lies on the platform, curled round the left side and forward again in front of the haunch, its tip lifting a little.
+- **Wings:** folded and half raised. The arm is near upright, the wrists 5.7 m up, and the fingers fan back and down to the haunch. Raised like this, the wing's dorsal side faces in toward the body (aiming the dorsal side outward twisted every membrane panel).
+- **Footprint:** 8.2 m by 11.7 m, and 6.0 m tall to the wrists.
+
+`pose=bind` keeps the bind pose available.
+
+**The driver and the idle** (`creatures/dragon/idle.ts`, `whiskers.ts`). The dragon has its own driver, with no flight model and no player pose:
+- **Breathing:** eight breaths a minute on the breath bone, with the back rising 1.2 cm and the wings 0.6°.
+- **Blinks:** unhurried, sometimes double, at times a seed lays out.
+- **The head:** it follows the camera or the player inside a cone of ±55° yaw, 16° up and 22° down, on a slow critically damped spring. The turn is shared down the six neck bones. Past 95° to 135° the head looks ahead again, and with no target the gaze wanders slowly.
+- **Whiskers:** two verlet strands of twelve nodes, from the parts' strand data, with no new bones. The root rides the head, the rest shape holds near the lip, then they hang in a slow breeze and stop on the platform.
+- **Wing settles:** every 9 to 17 s a wing lifts 5° and settles back with a small bounce.
+- **The tail:** a slow wave travels down it along the platform, each joint swinging more toward the tip (up to 12°). The tip lifts a little, and every 7 to 13 s the end flicks, as a resting cat's does. The tip sweeps up to 1.6 m from rest, 0.66 m on average.
+
+The look spring and the whiskers step at a fixed 120 Hz with their inputs interpolated, and they are drawn one step behind. Everything else is a function of the drawn time, so the motion is the same at any frame rate.
+
+**Camera, light and captures.** Render 08's camera (`cam=r08`) stands off the left front of the head, at 55° azimuth and 5° up. It is 13.5 m from the shoulder, with a 38° vertical lens; the game's own lens is 62°. The dragon is turned so the low sun is ahead and to its right, as in render 08. The default time is 0.66: at 0.7 the low sun, 50° off the camera's axis, hazed the whole picture orange.
+
+`scripts/white-dragon-capture.mjs` and its manifest (`scripts/white-dragon-capture.manifest.json`) shoot 38 items. There are stills, side-by-sides with render 08, LOD and bind-pose views, before-and-after pairs for the fidelity pass, gameplay distances, the hue lineup, and strips of the head, a blink, the whiskers, a wing settle and the tail. They go to `shots/white-dragon/` with `results.json` (SHA-256 per file); the hashes of this session's set are in [the capture record](../qa/white-dragon-g12b-captures.json). The script needs the dev server, and `CHROMIUM_PATH` on this PC.
+
+**The lineup** (`lineup=hue`) shows five white elders across the white flight's range, at 0°, +1°, +2°, +3° and +4°, the whole palette turned in OKLCH, on one terrace. The first set ran from −8° to +8°, before Robert narrowed the range ([below](#g12b-status-2026-10-19-fourth-session)). Only one part set exists, so the lineup varies the hue alone. A part swap needs nothing more in code:
+- `piecesFor` picks a look's pieces by its catalog options, and `buildDragonLod` merges whatever pieces it is given, binding them by bone name.
+- A whisker piece with strands hangs by itself.
+
+What's missing is the parts. Each variant (the swept, crown and spiral horns; the curled, forked and barbel whiskers; the sail crest, mane and small cheek fins; the spade, blade and ribbon tail tips) needs:
+- a builder in `scripts/blender/dragon_parts.py` on the same anchors and bones;
+- its pieces at each LOD in a parts GLB;
+- its catalog option.
+
+**Checks:** 34 new tests in five files:
+- `mesh.test.ts`: the binding by name, a clean skin, the breath weights taken only from the trunk, the parts merged and the whiskers kept apart, the winding and normal repairs, and one 64-bone skeleton with every LOD inside its ceiling.
+- `pose.test.ts`: the pose on the skinned body and parts.
+- `idle.test.ts`: the idle at 30, 60, 120, 144 and 165 Hz, steady, jittery and with hitches, against a 120 Hz run, as the wyvern's tail is tested. It covers bone directions within 0.25°, whisker nodes within 1 cm, the lids and the breath, and no zig-zag in the whisker tips. It also runs three minutes at 30 Hz with hitches, and checks the blinks, the cone and the whisker hang. A deliberately broken interpolation fails it.
+- `materials.test.ts`: the patches on the real shader source and the palette.
+- `features.test.ts`: each built membrane is one sheet skinned to the wing bones and spine, upper face up, and when posed every finger line stays on its finger and the panel's flank corner on the flank; the finger bones run along the fingers; the wing claws and thumb claw; two to five claw sites a foot, each at the body's surface; no fitted claw left on the body at any LOD; the eyeball proud of the skin, in the head, at LOD0 and LOD1.
+
+The suite also passed typecheck, the full vitest (138 files, 1,457 tests), `vite build` (no dragon file in `dist`) and smoke 15/15.
+
+**Robert's first look, 2026-10-19.** "Good work... I think we're pretty close." His notes:
+- **Hue:** of the lineup he likes 0° or +4° ([Q48](DECISION_LOG.md#q48--dragon-customization-and-colour-within-a-flight--answered-2026-10-19)). The elder stays at 0°. Asked next, he narrowed the white flight's shift to 0° to +4° and asked for the lineup across it, which `look.ts` (`FLIGHT_HUE_RANGE`) and the lineup now hold.
+- **Eyes:** "good, but need a little bit more work... more definition to stand out."
+- **Wings:** "a little bit more of a pass about their static mesh."
+- **Claws:** the same pass.
+- **Tail:** "should also be moving a bit more."
+- And: "continue with fidelity and animation."
+
+**The fidelity pass** (`creatures/dragon/features.ts`) builds the wings, claws and eyes at load from the game's own skeleton and the fitted body. The G12a files are unchanged. `features=fitted` shows the fitted body's own wings, claws and eye, for the before-and-after captures (`wings-before` and `-after`, `eye-`, `forepaw-`).
+- **Membranes:** the fitted membrane is two thin faces that decimation left uneven, and posed they crossed and faceted. It's replaced by one clean sheet per wing in three panels, as the wyverns' wings are built (`wyvern/parts/wings.ts`).
+  - Panels A and B run from the knuckle out between the fingers to a scalloped trailing edge, skinned between the two fingers' bones.
+  - Panel C is a Coons patch from the arm and the inner finger to the flank. Its weights blend from the wing bones near the arm to the spine at the flank, so raised and folded it runs taut from the arm to the flank and its root stays there.
+  - The membrane is thinner to light than a wyvern's (0.55): fully thin, the backlit sheet glowed white.
+  - Triangles: 1,328 at LOD0, 332 at LOD1 and 112 at LOD2. That is fewer than the fitted membrane's 3,297, 990 and 314, and LOD2's trailing edge is a clean edge now.
+- **Finger bones:** tapered tubes along each finger, swollen a little at the joint, in the plates' powder blue. Each has a small claw at its tip, and render 08's hooked thumb claw sits at each wrist, riding the hand. The fitted finger flesh is dropped, along with the torn fringes of the old membrane on it, as is forearm and hand flesh more than 0.33 m off its bone.
+- **Claws and toes:** the fitted claws (flat facets), and the small fragments of claw beside them, are taken off the feet. Each hole they leave is found by matching the rim's positions across the fit's duplicated seams, and capped at the toe's end. A slender, curved slate talon is then set at the centre of a hole:
+  - it points forward along its toe and splays a little with it;
+  - it curls down;
+  - it is lighter at the base and darker to the tip;
+  - it rides the toe bone;
+  - its length is the fitted claw's, from 16 to 27 cm.
+
+  Each foot takes at most four, as render 08's four toes: the frontmost toe ends, at least 14 cm apart. Holes on the side of the paw are only capped. That gives 15 talons, 3 or 4 a foot, and none dips more than 3 cm into the platform in the resting pose. The fitted claws' small stray patches elsewhere on the toes are hide. The hind toes lie flatter, so the claws rest on the platform.
+- **Eyes:** an almond eyeball in each eye, 8.5 cm in radius, 1.45 times that along the head, 0.8 times it up and half of it out along its axis. It is flattened so it bulges little (Robert's second note): it stands 2.4 cm proud of the skin around the fitted eye patch, half the first version's 4.7 cm, with the same opening. The hide shader's eye region draws the pale blue iris, the slit pupil, the highlight and the lids over it, measured in the eyeball's own stretch (a patch in the dragon's program) so they fill the flattened almond. A dark lid line on the hide around it, in the eyeball's frame, gives the definition Robert asked for.
+- **Tail:** the wave and the flicks above.
+
+With the parts and whiskers, LOD0 is 20,890 triangles, LOD1 5,410 and LOD2 1,476, all inside their ceilings (LOD2's 1,500 only just). The pose test holds the built pieces too: nothing sinks more than 5 cm into the platform.
+
+**Robert's second look, 2026-10-19.**
+- The eye should bulge a little less: it's flattened, as above.
+- The horn: "an off white color so current is looking good," so `#e4d8be` is settled.
+- The toes "are looking better but could use a bit more work": the claws and toes pass above (hole caps, talons along the toes, four a foot).
+
+**What the captures show, for Robert to score.** On the brief's three questions:
+- **Identity:** it reads as the white flight. Ivory hide, powder-blue plates along the back, neck and tail, powder-blue wing bones, branching bone horns, cheek fins, the spines, the tail fin and slate claws, all as render 08 has them.
+- **Fidelity:** the pose matches render 08's, and the rider at the shoulder gives the same scale. The wings are now one clean sail each, with render 08's thumb hook at the wrist. The eye is a pale blue almond with a dark outline. The gaps:
+  - the body, neck and forelegs are slimmer than render 08's (the approved sheet and the Meshy body, Q50);
+  - the hide's luminance cap makes the ivory a little greyer than the palette value;
+  - the whiskers end about 0.8 m above the platform where render 08's reach the floor. The lip is 3.9 m up on the sheet's neck, so reaching the floor needs whiskers of about 4.5 m (a parts change);
+  - the forepaws carry the fitted body's three toes, where render 08 has four; a few small pale chips of the fitted toe ends remain beside some claws;
+  - the fitted wing root still leaves a stub on the back beneath each wing;
+  - at LOD2 the plates blur into a pale blue wash along the back, though at the distance it is used (past 160 m) the dragon is a small silhouette.
+- **Reachability:** the stand-in tower and the dragon read from 40, 110 and 200 m. The tower and the haven are G12c's.
+
+**Still open in G12b:**
+- Robert scores the second set of captures, the 0° to +4° lineup among them.
+- He times Medium on his GPU (`--gpu` with the capture script or the dev server).
 
 ### The parts
 
@@ -291,7 +427,7 @@ The flight constants and the 120 Hz step, `driftwing.save.v1` and `driftwing.bon
 
 Answered 2026-10-19 ([Q47](DECISION_LOG.md#q47--open-the-white-dragon-gate-g12-and-on-what-terms--answered-2026-10-19), [Q48](DECISION_LOG.md#q48--dragon-customization-and-colour-within-a-flight--answered-2026-10-19), [Q50](DECISION_LOG.md#q50--the-white-dragons-size-wing-and-membrane-root--answered-2026-10-19)):
 - G12 is open: R1, a Meshy body on a game-owned skeleton, the tower at Windhaven, the elder figure later.
-- Parts fit every flight, the hue shift is ±8°, and the elders' dragons are authored characters.
+- Parts fit every flight, the hue shift is ±8° (the white flight's 0° to +4°), and the elders' dragons are authored characters.
 - The choices the sheet and the Meshy body forced stand as built: the size from render 08's body readings, the wing from the Meshy body, the membrane meeting the flank ahead of the hip.
 
 Open:
