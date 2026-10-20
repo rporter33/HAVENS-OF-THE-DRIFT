@@ -2,46 +2,70 @@
 
 Keep this file short: one checkpoint, overwritten each session. Move the previous entry to [the handoff log](history/handoff/README.md) under its day before writing a new one. Nothing here authorizes new work on its own; the current task from Robert does.
 
-## Checkpoint 2026-10-19 (second session): G12a, the sheet measured and the Meshy body fitted
+## Checkpoint 2026-10-19 (fourth session): G12b, the white dragon's resting showcase, accepted
 
-- **Objective:** continue gate G12a (Q47) with Robert's approved Astra sheet and Meshy body. Check them against the model kit, re-measure the skeleton from side view C and tighten the rig tests, archive the raw files with SHA-256, export the bind skeleton and fit the body in Blender. Nothing visible before G12b.
-- **Branch:** `gate/g12a-white-dragon`, continuing from `194aa2c` (the first G12a session, merged to main as PR #14). Archive branch `archive/g12a-white-dragon` (`4725479`, pushed).
-- **Completed:**
-  - **Checked:** the four sheet views and the Meshy body pass the kit's checklist: six limbs, wing roots mid-back, membranes clear of the legs, no horns or whiskers. There are three departures. Sheet C ties the membrane behind the hip. The Meshy wings root further forward and its tail curves left, both corrected by the fit. Side view C's raised wing is out of scale with the front view. Details are in [the white dragon](design/WHITE_DRAGON.md#the-approved-sheet-and-the-meshy-body).
-  - **Archived:** 12 raw files (the Meshy raw and textured GLB, the four views, an earlier three-quarter view, the parts sheet and four variant sheets) on the orphan branch, with README and MANIFEST. Each blob's SHA-256 matches its source. The Meshy model, version and task ID weren't recorded at hand-over.
-  - **Measured:** three readers measured side view C blind and a fourth reconciled them. `proportions.ts` and `rig.ts` now follow the sheet:
-    - the neck in its S, one rise per segment, and the head pitched 17.6° nose-down;
-    - the sheet's leg joints, standing 3.42 m at the body center;
-    - the size from render 08's body readings, which makes it 20.3 m nose to tail along the skeleton;
-    - the tail in the sheet's sag and curl, joint by joint;
-    - the wing's bones from the Meshy body, 21.8 m spread flat.
+- **Objective:** gate G12b (Q47). Build `?view=white-dragon`, dev-only:
+  - render 08's pose on a stand-in platform;
+  - the dragon's own driver and idle life;
+  - a camera matched to render 08 and a capture manifest;
+  - a lineup across the ±8° hue shift;
+  - a look at LOD2's wing trailing edge and the parts on the thinner LODs.
 
-    `rig.test.ts` now holds side view C within ±5% on lengths and 0.15 m on joints, where it used to hold render 08 within ±15%.
-  - **Bind skeleton:** `creatures/dragon/skeleton.ts` and `scripts/dragon-export-skeleton.mjs` write the skeleton as JSON for Blender: pivots, ends, named points and each weighted bone's span.
-  - **Fit:** `scripts/blender/dragon_meshy_fit.py`, generalised from PR #11's Harrier fit, was run through the Blender MCP:
-    - the wings split off at the root and the cut closed;
-    - bone-heat weights on the body and distance weights on the wings, with at most four bones per vertex;
-    - each Meshy segment mapped onto the game bone's, with the regions baked from the textured download.
-
-    The result, `src/assets/dragon/white-dragon.glb` (17,999 triangles, 1.13 MB, dev-only data), has a parser (`creatures/dragon/asset.ts`) and tests. It is recorded in the register as `white-dragon-meshy-body`. The master is `havens-blender-pilot/white-dragon-pilot.blend` on Robert's PC.
-  - **Reviewed:** four reviewers each covered one area (rig and tests, skeleton export, fit script, docs), and each finding went to a skeptic. All 15 findings were confirmed and fixed:
-    - the tail's sag and the body plan's fold at the neck;
-    - tests that only checked a parameter against itself;
-    - the baked attributes: arc length stepped at stations, tube values on limbs and head, the wing panel coordinate, shared vertices, stray claws;
-    - doc errors: a wrong sign, overstated checklist, wingtip overshoot, missing open-question counts.
-  - **Decisions:** Q50 (open) asks Robert to confirm the size, the wing's source and the membrane's root; each is built as recommended.
+  Then Robert's notes on the first captures: "Good work... I think we're pretty close."
+  - the eyes need more definition;
+  - a pass on the wings' and the claws' static mesh;
+  - the tail moving more;
+  - "continue with fidelity and animation."
+- **Branch:** `gate/g12b-white-dragon`, cut from `g12a-parts-lods` (`e4de879`). Robert accepted G12b ("looks good and merged") and merged [PR #16](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/16) into `gate/g12a-white-dragon` (`3f68f9a`). Next, a PR takes `gate/g12a-white-dragon` into `main`, carrying this note, G12a's parts and distance models, and Q50. `main` still has only [PR #15](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/15)'s skeleton and body. There's no `gh` on this PC, so the app can't follow the PRs.
+- **Completed:** all of it is in [the white dragon's G12b status](design/WHITE_DRAGON.md#g12b-status-2026-10-19-fourth-session).
+  - **The showcase:** `debug/showcases/whiteDragon.ts` loads the body, the LODs and the parts from the dev server only. No dragon file reaches `dist`, and in a production build the lazy chunk refuses with a warning. It offers cameras (`camTarget=` aims them anywhere), the render 08 match, a bind pose, a LOD switch, the hue lineup, the rider for scale, and `features=fitted` for before-and-after views.
+  - **The dragon:** `creatures/dragon/`:
+    - `mesh.ts` binds by name to one 64-bone skeleton for every LOD;
+    - `features.ts` builds the wings, claws and eyes;
+    - `materials.ts` is the wyvern hide shader in the white palette, with small patches in the dragon's own program: the plates, slate claws and the eye's lid line;
+    - `pose.ts` is render 08's sphinx;
+    - `idle.ts` is the driver: breathing, blinks, the look cone, wing settles, and the tail's wave and flicks;
+    - `whiskers.ts` hangs the whiskers as verlet strands, with no bones;
+    - `Dragon.ts` holds them together, and `load.ts` loads the files.
+  - **The fidelity pass,** built at load from the game's own skeleton (the G12a files are unchanged):
+    - one clean membrane per wing in three panels, as the wyverns' are built, which stays on its bones and runs taut to the flank when folded;
+    - powder-blue finger bones with tip claws and render 08's thumb hook at the wrist;
+    - the toes: the fitted claws taken off and their holes capped at the toe ends, and 15 slender curved talons set along the toes, at most four a foot;
+    - an almond eyeball with a dark lid line, flattened so it bulges little (2.4 cm proud of the skin);
+    - the tail's wave and flicks, with the tip sweeping up to 1.6 m.
+  - **Hue:** Robert liked 0° or +4° of the lineup, then narrowed the white flight's shift to 0° to +4° (Q48). `look.ts` gives each flight its own range inside the ±8° bound (`FLIGHT_HUE_RANGE`; the other flights keep ±8° until judged). The lineup was re-shot at 0°, +1°, +2°, +3° and +4°, and the elder stays at 0°.
+  - **Horn colour:** `look.ts` gains `horns: '#e4d8be'` for the kit's "pale bone ivory". Robert settled it: "an off white color so current is looking good" (Q48).
+  - **Found and fixed at load, not in the G12a files:**
+    - zero-length normals at the wing-root cut and on the cheek fins, which made a NaN hot spot in the bloom;
+    - the fitted membrane's mis-wound triangles, the cause of LOD2's trailing edge. The fitted membrane is now replaced, and kept only for `features=fitted`.
+    - The fit script should fix both at the source the next time it runs.
+  - **Captures:** `scripts/white-dragon-capture.mjs` runs `scripts/white-dragon-capture.manifest.json`, 38 items and 83 files, among them before-and-after pairs and a tail strip. They are in `shots/white-dragon/` in this worktree (ignored), with their SHA-256 in `docs/qa/white-dragon-g12b-captures.json`.
 - **Tests,** run on the working tree before commit:
   - typecheck clean;
-  - vitest 133 files, 1,412 tests, against 131 and 1,391 before; the dragon's 51 include 21 new;
-  - the production build succeeds;
-  - smoke 15/15. `npm run smoke` can't build on this PC because `scripts/smoke.mjs` passes the folder path, which has spaces, to Vite unquoted. It ran as `vite build` then `node scripts/smoke.mjs --no-build` with `CHROMIUM_PATH` set to Edge, since Playwright's Chromium isn't installed here.
-  - No visual check in the game: nothing draws the dragon yet. The fit was checked in Blender renders only.
-- **Known issues:**
-  - G12a still needs the parts' geometry (horns, whiskers, cheek fins, spines, tail fin), its LODs, and Robert's answers to Q50.
-  - Fit limits: stubs of the wing root stay on the body under the wing's root, the flank under the membrane's root is filled flatter than the body around it, and the fit is checked in the bind pose only.
-  - PR #11 merged into `art/astra-targets-2026-10-17` after that branch had already reached main, so the Harrier trial isn't on main. The dragon doesn't depend on it.
-  - The decision log is still forked across branches (Q37 to Q46).
-  - This session first tried to build the archive branch in a worktree. Creating it failed on Windows long paths, and the commands after it (`git checkout --orphan`, `git rm`) ran in the main checkout instead. Nothing was lost, since there were no uncommitted changes, and the checkout was restored to `194aa2c` before any further work. The archive was then built with git plumbing, which needs no checkout.
+  - vitest 139 files and 1,465 tests (134 and 1,431 before G12b). The 34 new ones are in five files:
+    - `mesh.test.ts`: binding, skin, breath weights, parts, the repairs, the skeleton and the budgets;
+    - `pose.test.ts`: the pose on the skinned body and the built pieces;
+    - `idle.test.ts`: the idle at 30 to 165 Hz against a 120 Hz run, as the wyvern tail test checks, plus a three-minute hitch run, blinks and the cone;
+    - `materials.test.ts`: the patches and the palette;
+    - `features.test.ts`: the membrane on its bones and flank when posed, the finger bones, the wing claws, the claw sites, no fitted claw left, and the eyeball.
+  - `vite build` passes, with no dragon GLB in `dist`.
+  - smoke 15/15 (`vite build`, then `node scripts/smoke.mjs --no-build` with `CHROMIUM_PATH` set to Edge).
+  - The capture run logged no console errors.
+  - The wyvern suites and the pose golden pass unchanged, and no wyvern module was edited.
+- **Known issues (for Robert's scoring):**
+  - Slimmer body, neck and forelegs than render 08's, from the approved sheet (Q50).
+  - The hide's luminance cap greys the ivory a little.
+  - The whiskers end 0.8 m above the platform; reaching it needs about 4.5 m whiskers (a parts change).
+  - The forepaws carry the fitted body's three toes, where render 08 has four, and a few small pale chips of the fitted toe ends remain beside some claws.
+  - A stub of the fitted wing root shows on the back beneath each wing.
+  - At LOD2 the plates blur into a wash.
+  - At tod 0.7 the low sun ahead of render 08's camera hazes everything orange, so the showcase defaults to 0.66.
+  - The stand-in tower stands on an island south of the Roost.
+- **Decisions:** all from Robert on 2026-10-19:
+  - the white flight's hue range is 0° to +4° (Q48);
+  - the horn colour `#e4d8be` is settled (Q48);
+  - G12b is accepted (Q47).
 - **Next authorized action:**
-  - Robert answers Q50, or lets the recommendations stand, and reviews the PR from this branch.
-  - G12a's parts geometry and LODs, then G12b's resting showcase.
+  - Robert reviews and merges the PR from `gate/g12a-white-dragon` into `main`. Its CI runs there.
+  - He times Medium on his GPU (carried), and says whether to push the captures to an archive branch.
+  - G12c (the dragon on its tower at Windhaven, in the normal build) when he opens it.

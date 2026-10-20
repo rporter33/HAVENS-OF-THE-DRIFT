@@ -12,14 +12,16 @@ export interface DragonPartOption {
   id: string;
   name: string;
   description: string;
+  /** Its geometry: the pieces in white-dragon-parts.glb (parts.ts). A pattern is shading, so none. */
+  pieces: string[];
 }
 
 export const DRAGON_PARTS: DragonPartOption[] = [
-  { slot: 'horns', id: 'branching', name: 'Branching Horns', description: 'Long swept-back horns that branch into tines, pale as old bone.' },
-  { slot: 'whiskers', id: 'long', name: 'Long Whiskers', description: 'Two fine whiskers from the upper lip, long enough to reach the ground at rest.' },
-  { slot: 'frill', id: 'finCrest', name: 'Fin Crest', description: 'Swept-back cheek fins and a row of spines along the neck and back.' },
-  { slot: 'tail', id: 'fin', name: 'Tail Fin', description: 'A low fin along the top of the last third of the tail.' },
-  { slot: 'pattern', id: 'plates', name: 'Flight Plates', description: "Broad plates in the flight's accent along the back, neck and tail; pale below." },
+  { slot: 'horns', id: 'branching', name: 'Branching Horns', description: 'Long swept-back horns that branch into tines, pale as old bone.', pieces: ['horns'] },
+  { slot: 'whiskers', id: 'long', name: 'Long Whiskers', description: 'Two fine whiskers from the upper lip, long enough to reach the ground at rest.', pieces: ['whiskers'] },
+  { slot: 'frill', id: 'finCrest', name: 'Fin Crest', description: 'Swept-back cheek fins and a short row of spines behind the skull, down the nape.', pieces: ['cheekFins', 'spines'] },
+  { slot: 'tail', id: 'fin', name: 'Tail Fin', description: 'A low fin along the top of the last third of the tail.', pieces: ['tailFin'] },
+  { slot: 'pattern', id: 'plates', name: 'Flight Plates', description: "Broad plates in the flight's accent along the back, neck and tail; pale below.", pieces: [] },
 ];
 
 export function dragonPartsFor(slot: DragonPartSlot): DragonPartOption[] {

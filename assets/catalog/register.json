@@ -552,7 +552,9 @@
       "category": "runtime_model",
       "availability_state": "committed",
       "repository_paths": [
-        "src/assets/dragon/white-dragon.glb"
+        "src/assets/dragon/white-dragon.glb",
+        "src/assets/dragon/white-dragon-lod1.glb",
+        "src/assets/dragon/white-dragon-lod2.glb"
       ],
       "provenance_evidence_paths": [
         "Art and Assets/Creatures and Customization/WHITE_DRAGON_MODEL_KIT.md",
@@ -592,6 +594,16 @@
         {
           "path": "src/assets/dragon/white-dragon.glb",
           "sha256": "5e33f0e6e8e83ee9aa0e1a2bc8eee2b71713425bc394e7befd112e93d4370631",
+          "source_commit": null
+        },
+        {
+          "path": "src/assets/dragon/white-dragon-lod1.glb",
+          "sha256": "1f45cd51988424c43cb68d0226dd03ef0d26503155577e1d25cbf34ff52918ee",
+          "source_commit": null
+        },
+        {
+          "path": "src/assets/dragon/white-dragon-lod2.glb",
+          "sha256": "cd517785da6ee0be0dc7deef6e4a393e2d988c6ab5b4eca8450894947ee17561",
           "source_commit": null
         },
         {
@@ -640,17 +652,25 @@
         "master_paths_and_hashes": [
           {
             "path": "C:\\Users\\Robert\\Projects\\havens-blender-pilot\\white-dragon-pilot.blend",
-            "sha256": "159d8d897d2c8a8a103ca95dc6df8bc2064b253254add37380a376fc2f58e788",
-            "note": "workstation only; not archived"
+            "sha256": "d6aa8294360da9404aecfe182c6f4469ee11cc3907ecc9d0cbafbb7be8bd51a2",
+            "note": "workstation only; not archived. Saved 2026-10-19 after the G12a parts and LODs were added (collection White Dragon Parts; the LOD copies in White Dragon Fit). The fit-only save was 159d8d897d2c8a8a103ca95dc6df8bc2064b253254add37380a376fc2f58e788"
           }
         ],
-        "changes": "Split the wings from the body at the root and closed the cut; decimated (body 12,000, wings 6,000 triangles); bone-heat weights on the body, distance weights on the wings, four influences; each bone's Meshy segment mapped onto the game skeleton's (10.89 m per Meshy unit; the tail's sideways curl taken out and the sheet's sag kept; the wing roots moved back to sheet C's); the wyvern hide shader's attributes baked by part (tube, legs, head, wing bones, membrane) from the textured download and the skeleton's body plan."
+        "changes": "Split the wings from the body at the root and closed the cut; decimated (body 12,000, wings 6,000 triangles); bone-heat weights on the body, distance weights on the wings, four influences; each bone's Meshy segment mapped onto the game skeleton's (10.89 m per Meshy unit; the tail's sideways curl taken out and the sheet's sag kept; the wing roots moved back to sheet C's); the wyvern hide shader's attributes baked by part (tube, legs, head, wing bones, membrane) from the textured download and the skeleton's body plan. Distance models (2026-10-19, make_lod in the same script): copies of the fitted body and wings decimated by symmetric collapse to LOD1 3,000 + 1,500 and LOD2 850 + 420 triangles; weights interpolated by the decimation and held to four; the shader attributes and the membrane mask copied from the nearest LOD0 vertex."
       },
       "exports": {
         "repository_paths_and_hashes": [
           {
             "path": "src/assets/dragon/white-dragon.glb",
             "sha256": "5e33f0e6e8e83ee9aa0e1a2bc8eee2b71713425bc394e7befd112e93d4370631"
+          },
+          {
+            "path": "src/assets/dragon/white-dragon-lod1.glb",
+            "sha256": "1f45cd51988424c43cb68d0226dd03ef0d26503155577e1d25cbf34ff52918ee"
+          },
+          {
+            "path": "src/assets/dragon/white-dragon-lod2.glb",
+            "sha256": "cd517785da6ee0be0dc7deef6e4a393e2d988c6ab5b4eca8450894947ee17561"
           }
         ],
         "settings": "the fit script's own GLB writer: one vertex buffer, primitive 0 body and wing bones, primitive 1 membranes, no vertex shared between them; every body triangle one region; JOINTS_0 over mesh.extras.jointNames (no glTF skin)",
@@ -663,19 +683,44 @@
         "texture_dimensions": null,
         "bones": 64,
         "units": "metres",
-        "axes": "game body frame: +Z forward, +Y up, +X left; origin at the body center"
+        "axes": "game body frame: +Z forward, +Y up, +X left; origin at the body center",
+        "lods": [
+          {
+            "lod": 0,
+            "path": "src/assets/dragon/white-dragon.glb",
+            "measured_triangles": 17999,
+            "vertices": 10301,
+            "budget_bare": "16,000 to 20,000"
+          },
+          {
+            "lod": 1,
+            "path": "src/assets/dragon/white-dragon-lod1.glb",
+            "measured_triangles": 4500,
+            "vertices": 2802,
+            "budget_bare": "4,000 to 5,000"
+          },
+          {
+            "lod": 2,
+            "path": "src/assets/dragon/white-dragon-lod2.glb",
+            "measured_triangles": 1270,
+            "vertices": 844,
+            "budget_bare": "1,000 to 1,300"
+          }
+        ]
       },
       "qa": {
         "status": "trial",
         "source_commit": null,
         "evidence_paths": [
           "src/creatures/dragon/asset.test.ts",
+          "src/creatures/dragon/parts.test.ts",
           "src/creatures/dragon/rig.test.ts",
           "src/creatures/dragon/skeleton.test.ts"
         ],
         "limitations": [
           "Dev-only data: nothing loads it until G12b's showcase",
-          "LOD0 only, 17,999 bare triangles; LODs and the parts' geometry still to build",
+          "LOD0 17,999, LOD1 4,500 and LOD2 1,270 bare triangles, inside the budgets set in G12a (WHITE_DRAGON.md); the distance models are judged in Blender only, not at gameplay distance",
+          "At LOD2 the wings' trailing edge shows the membrane's underside from above in places, where the decimation thinned the two faces of the thin sheet differently",
           "Checked in the bind pose only (wings spread flat), not posed or animated",
           "The flank under the membrane's root is filled where the wing was cut away, and short stubs of the wing root stay on the body under the wing's own root",
           "Reference-GPU frame rate not measured"
@@ -689,6 +734,141 @@
       "unresolved_issues": [
         "Meshy model, version, task ID and settings weren't recorded at hand-over; add them from Robert's Meshy history if wanted",
         "Restore from the archive branch into a fresh directory not yet done"
+      ]
+    },
+    {
+      "asset_id": "white-dragon-parts",
+      "version": "2026-10-19",
+      "category": "runtime_model",
+      "availability_state": "committed",
+      "repository_paths": [
+        "src/assets/dragon/white-dragon-parts.glb"
+      ],
+      "provenance_evidence_paths": [
+        "Art and Assets/Creatures and Customization/WHITE_DRAGON_MODEL_KIT.md",
+        "docs/design/WHITE_DRAGON.md",
+        "scripts/blender/dragon_parts.py"
+      ],
+      "generation": {
+        "generator": "procedural geometry in Blender (no generative model)",
+        "ui_or_api_route": "scripts/blender/dragon_parts.py, run through the Blender MCP",
+        "actual_model_version": null,
+        "date": "2026-10-19",
+        "task_id": null,
+        "prompts": null,
+        "settings": "the script's HORNS, WHISKERS, CHEEK_FINS, SPINES, TAIL_FIN and RES tables",
+        "input_references_note": "Shapes read off the Astra parts sheet, placed on the fitted body's surface and skinned to the game skeleton. The variant sheets (horns, whiskers, frill, tail) are kept for later options and not used here.",
+        "input_references_and_hashes": [
+          {
+            "path": "github:rporter33/HAVENS-OF-THE-DRIFT@archive/g12a-white-dragon:refs/white-dragon-parts.png",
+            "sha256": "0d116811065e22bace348e6a7b09b523349355abbc49f63759a6c88099c7c143"
+          },
+          {
+            "path": "src/assets/dragon/white-dragon.glb",
+            "sha256": "5e33f0e6e8e83ee9aa0e1a2bc8eee2b71713425bc394e7befd112e93d4370631"
+          }
+        ]
+      },
+      "source_files": [
+        {
+          "path": "src/assets/dragon/white-dragon-parts.glb",
+          "sha256": "dab290e83d10e5f4e8cca7259552bfc56c6231a32747b71676e28033584dc212",
+          "source_commit": null
+        }
+      ],
+      "rights": {
+        "status": "project_source",
+        "creator": "Claude in Blender, from Robert Porter's Astra parts sheet",
+        "license": null,
+        "attribution": null,
+        "evidence": [
+          "Built by a script in this repository; the reference sheet is Robert's (see white-dragon-meshy-body)"
+        ]
+      },
+      "archive": {
+        "state": "not_applicable_to_committed_copy",
+        "destination": null,
+        "archive_id": null,
+        "versioned_relative_keys": [],
+        "reported_locator": "C:\\Users\\Robert\\Projects\\havens-blender-pilot\\white-dragon-pilot.blend (collection White Dragon Parts)",
+        "companion_dependencies": [
+          "white-dragon-meshy-body"
+        ],
+        "backup_verification": null,
+        "restore_verification": null
+      },
+      "authoring": {
+        "tool_and_version": "Blender 5.2.2 LTS, driven through the Blender MCP; scripts/blender/dragon_parts.py",
+        "master_paths_and_hashes": [
+          {
+            "path": "C:\\Users\\Robert\\Projects\\havens-blender-pilot\\white-dragon-pilot.blend",
+            "sha256": "d6aa8294360da9404aecfe182c6f4469ee11cc3907ecc9d0cbafbb7be8bd51a2",
+            "note": "workstation only; not archived. The script rebuilds the parts from the fitted body and the skeleton."
+          }
+        ],
+        "changes": "Five pieces for the white elder's catalog options (horns/branching, whiskers/long, frill/finCrest as cheek fins and spines, tail/fin), each at LOD0 and LOD1, and the horns alone at LOD2. Horns and whiskers rigid on the head, cheek fins on fanL and fanR, spines and tail fin weighted as the hide beneath them; the whiskers carry strand coordinates and rest nodes for a verlet hang. No bone added."
+      },
+      "exports": {
+        "repository_paths_and_hashes": [
+          {
+            "path": "src/assets/dragon/white-dragon-parts.glb",
+            "sha256": "dab290e83d10e5f4e8cca7259552bfc56c6231a32747b71676e28033584dc212"
+          }
+        ],
+        "settings": "the parts script's GLB writer: one mesh per piece and LOD (extras.part: slot, option, piece, lod), the body GLB's attributes plus _ASTRAND on the whiskers, one primitive per group (material 0 opaque, 1 membrane); JOINTS_0 over extras.jointNames (no glTF skin)",
+        "measured_triangles": 2314,
+        "vertices": 1347,
+        "lods": [
+          {
+            "lod": 0,
+            "measured_triangles": 2314,
+            "vertices": 1347,
+            "budget": "2,000 to 4,000"
+          },
+          {
+            "lod": 1,
+            "measured_triangles": 698,
+            "vertices": 479,
+            "budget": "up to 1,000"
+          },
+          {
+            "lod": 2,
+            "measured_triangles": 68,
+            "vertices": 50,
+            "budget": "up to 200 (horns only)"
+          }
+        ],
+        "materials": [
+          "body",
+          "membrane"
+        ],
+        "texture_dimensions": null,
+        "bones": 64,
+        "units": "metres",
+        "axes": "game body frame: +Z forward, +Y up, +X left; origin at the body center"
+      },
+      "qa": {
+        "status": "trial",
+        "source_commit": null,
+        "evidence_paths": [
+          "src/creatures/dragon/parts.test.ts",
+          "src/creatures/dragon/catalog.test.ts"
+        ],
+        "limitations": [
+          "Dev-only data: nothing loads it until G12b's showcase",
+          "Checked against the parts sheet in Blender solid-shaded renders only, in the bind pose; not posed, animated or seen in the game",
+          "The whiskers' rest curve is the sheet's; their hang is G12b's verlet",
+          "The parts sit on LOD0's surface; on LOD1 they were looked at, on LOD2 neither looked at nor measured against the thinner body",
+          "The flight palette has no horn colour yet: the parts use the hide shader's horn region (1) and fin membrane, and G12b maps the colour"
+        ]
+      },
+      "verification": {
+        "date": "2026-10-19",
+        "method": "SHA-256 of the committed file bytes",
+        "scope": "Committed runtime file identity"
+      },
+      "unresolved_issues": [
+        "Robert hasn't seen the parts yet; G12b's lineup is where each part is judged at gameplay distance"
       ]
     }
   ]

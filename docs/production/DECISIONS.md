@@ -1,6 +1,6 @@
 # Owner decisions and unresolved choices
 
-Recorded 2026-10-14, updated 2026-10-17. The question-by-question record is [the design decision log](../design/DECISION_LOG.md) (37 answered, 6 open: Vellum in release one, the Craghorn's name, the snap-roll's keyboard input, the Keyhole's tuck bypass, the white dragon's name, the white dragon's size, wing and membrane root). The owner's current explicit instructions take precedence; this record does not authorize unrelated implementation. [Current status](STATUS.md) distinguishes selected direction from source/runtime evidence.
+Recorded 2026-10-14, updated 2026-10-17. The question-by-question record is [the design decision log](../design/DECISION_LOG.md) (38 answered, 5 open: Vellum in release one, the Craghorn's name, the snap-roll's keyboard input, the Keyhole's tuck bypass, the white dragon's name). The owner's current explicit instructions take precedence; this record does not authorize unrelated implementation. [Current status](STATUS.md) distinguishes selected direction from source/runtime evidence.
 
 | Decision | State | Consequence |
 |---|---|---|

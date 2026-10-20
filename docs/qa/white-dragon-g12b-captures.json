@@ -1,0 +1,903 @@
+{
+ "metadata": {
+  "gate": "G12b",
+  "capturedOn": "2026-10-19",
+  "pass": "third set: the flatter eye, the reworked toes and claws, and the white flight's 0 to +4 degree lineup, on the fidelity pass",
+  "branch": "gate/g12b-white-dragon",
+  "tested": "the working tree committed with this record",
+  "script": "scripts/white-dragon-capture.mjs",
+  "manifest": "scripts/white-dragon-capture.manifest.json",
+  "boot": "?view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66",
+  "browser": "Microsoft Edge (CHROMIUM_PATH), headless, SwiftShader",
+  "server": "vite dev server, http://127.0.0.1:5421/",
+  "consoleErrors": 0,
+  "location": "shots/white-dragon/ in the worktree (ignored, not on main)",
+  "reference": "docs/art/targets/08-sleek-dragon-elder.png"
+ },
+ "captures": [
+  {
+   "id": "r08-match",
+   "desc": "Render 08's camera and lens: the bare pose (idle off), the gaze ahead",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=r08&idle=0&look=none",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20890,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "r08-match.png",
+     "sha256": "b6ff5c4f8deb87306306c5d9d2249e8f4fff70ad5d061bfdd4a7d41b4636ea15",
+     "bytes": 799047
+    },
+    {
+     "file": "r08-match.compare.png",
+     "sha256": "9408d8eb26f27f8a2a2ef29aa1afc7a061ba0a526704c2c20c48f2bd3e62a2c2",
+     "bytes": 3724244
+    }
+   ]
+  },
+  {
+   "id": "r08-live",
+   "desc": "Render 08's camera with the idle on and the head following the camera",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=r08&look=camera",
+   "settle": 6,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20890,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "r08-live.png",
+     "sha256": "6f63fac52bc30d709e9947bae973af33041f78edf2ba3b71e9f14f094543a89c",
+     "bytes": 779275
+    },
+    {
+     "file": "r08-live.compare.png",
+     "sha256": "b8af436500e89cfff715dfda0a5a7da5dc3eea52c3063f00db3a9b8f40ba4eec",
+     "bytes": 3703819
+    }
+   ]
+  },
+  {
+   "id": "r08-rider",
+   "desc": "Render 08's camera with the player's rider (about 1.75 m) at the left shoulder, where the elder stands in render 08: scale",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=r08&rider=beside&look=none&idle=0",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20890,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "r08-rider.png",
+     "sha256": "21d63adeed77de2a670acaabd5493565336b1f829a996d0fdbdb885a50d64b16",
+     "bytes": 809560
+    },
+    {
+     "file": "r08-rider.compare.png",
+     "sha256": "7f7f05437e971e5b2260d20e5a1bcc3d68706f3749860009e59ee76dd18d8192",
+     "bytes": 3727116
+    }
+   ]
+  },
+  {
+   "id": "three",
+   "desc": "Three-quarter from behind the left shoulder",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=three&look=none&idle=0",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20890,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "three.png",
+     "sha256": "0c29e8d43300d33c2b719b268781e5cb84cba61ab92c76d00d81779738ee145c",
+     "bytes": 752304
+    }
+   ]
+  },
+  {
+   "id": "side",
+   "desc": "Left side",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=side&look=none&idle=0",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20890,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "side.png",
+     "sha256": "c0d5bf2ffabb01311495298c898f41d884963e6ca85d4c49b1b749b930547456",
+     "bytes": 621897
+    }
+   ]
+  },
+  {
+   "id": "front",
+   "desc": "Front: forelegs, chest, whiskers, horns",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=front&look=none&idle=0",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20890,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "front.png",
+     "sha256": "9fc4be7d84c19816cf8e76b1c69ea793b365da69be9e067df6cf844bea7bd67a",
+     "bytes": 725850
+    }
+   ]
+  },
+  {
+   "id": "back",
+   "desc": "From behind: the folded, raised wings and the tail curl",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=back&look=none&idle=0",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20890,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "back.png",
+     "sha256": "629b564cb1d4e2e963148ecb52333443ffbd4293db3faad8f3e2bacbd987bb8f",
+     "bytes": 672810
+    }
+   ]
+  },
+  {
+   "id": "top",
+   "desc": "From above: the pose's footprint on the platform",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=top&look=none&idle=0",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20890,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "top.png",
+     "sha256": "879715c08018869f036ecb0bd5fc18a43cc593c8c9f723d8fb6d4604668d0d1b",
+     "bytes": 543820
+    }
+   ]
+  },
+  {
+   "id": "low",
+   "desc": "Low, off the left front: the forelegs, the chest and the hanging whiskers",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=low&look=none&idle=0",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20890,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "low.png",
+     "sha256": "a201b9e6171103749a0b31ec4b04800773fb8457d1e782d11269fc2e0ca447ca",
+     "bytes": 715019
+    }
+   ]
+  },
+  {
+   "id": "head",
+   "desc": "The head close: horns, cheek fins, spines, eye, whiskers from the lip",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=head&look=none&idle=0",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20890,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "head.png",
+     "sha256": "f7bf8531a4ccf8473d2d16efbc7eed08d380c0dc2e15b301713e989821840f28",
+     "bytes": 799572
+    }
+   ]
+  },
+  {
+   "id": "wings",
+   "desc": "The folded wings from above and behind",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=wings&look=none&idle=0",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20890,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "wings.png",
+     "sha256": "8dd973ab494c1e94f7a64b3660e44648804a6579b92a3e8a74526a47a197e2bb",
+     "bytes": 742300
+    }
+   ]
+  },
+  {
+   "id": "wings-before",
+   "desc": "The fitted body's own wings, claws and eye (features=fitted), for comparison with the built ones: the wings from the side",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=wings&camAz=95&camEl=8&camDist=9&look=none&idle=0&features=fitted",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20313,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "wings-before.png",
+     "sha256": "d6fbfb5fc4d10fcfbb1c4ebc533d87121c18bb83df452398c20c040886224c88",
+     "bytes": 853961
+    }
+   ]
+  },
+  {
+   "id": "wings-after",
+   "desc": "The built wings: one clean membrane per wing, powder-blue finger bones, tip claws and the thumb claw at the wrist",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=wings&camAz=95&camEl=8&camDist=9&look=none&idle=0",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20890,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "wings-after.png",
+     "sha256": "2b400788aa0bdecaaeb75401856f39196e4aa97c8755687f2313f75deebb3057",
+     "bytes": 844206
+    }
+   ]
+  },
+  {
+   "id": "wing-root",
+   "desc": "The built membrane's inner panel running taut from the raised arm to the flank",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=wings&camTarget=1.2%2C3%2C-1&camAz=60&camEl=30&camDist=6&look=none&idle=0",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20890,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "wing-root.png",
+     "sha256": "6fddb7f4f0704a0facd6fcdf93ca3c21ed3f15271b4c24526cb63574f4ee7077",
+     "bytes": 942712
+    }
+   ]
+  },
+  {
+   "id": "eye-before",
+   "desc": "The fitted eye patch (features=fitted)",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=eye&look=none&idle=0&features=fitted",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20313,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "eye-before.png",
+     "sha256": "4383a9498bfad31e9883d3d13eaa8fe7921fef929740ad75652d0f3d5acbbe5b",
+     "bytes": 832161
+    }
+   ]
+  },
+  {
+   "id": "eye-after",
+   "desc": "The built eyeball: pale blue iris, slit pupil, the dark lid line",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=eye&look=none&idle=0",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20890,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "eye-after.png",
+     "sha256": "e49ef0d468db551b6b6863e8e24474fd997aec4d05cd0fc10a8f9bcec52e6edc",
+     "bytes": 844006
+    }
+   ]
+  },
+  {
+   "id": "forepaw-before",
+   "desc": "The fitted forepaw claws (features=fitted)",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=head&camTarget=0.95%2C0.25%2C4.5&camDist=3.4&camAz=35&camEl=22&look=none&idle=0&features=fitted",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20313,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "forepaw-before.png",
+     "sha256": "e69cb0c0ae775220b381405069292b015e95b354b63b0c626ccf96624e38b305",
+     "bytes": 588266
+    }
+   ]
+  },
+  {
+   "id": "forepaw-after",
+   "desc": "The built forepaw claws",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=head&camTarget=0.95%2C0.25%2C4.5&camDist=3.4&camAz=35&camEl=22&look=none&idle=0",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20890,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "forepaw-after.png",
+     "sha256": "b64e530516b020fbd5f8678aa0357c35c4627f8c60bce9bd5378488804f8956a",
+     "bytes": 606724
+    }
+   ]
+  },
+  {
+   "id": "hindpaw-after",
+   "desc": "The built hind claws",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=head&camTarget=1.3%2C0.3%2C-0.7&camDist=3.4&camAz=70&camEl=22&look=none&idle=0",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20890,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "hindpaw-after.png",
+     "sha256": "f812c9d67ba9ec337c73a211e9acfeffd8ea121abb2f2823c146ee13d71be13a",
+     "bytes": 675034
+    }
+   ]
+  },
+  {
+   "id": "lod1-r08",
+   "desc": "LOD1 forced at render 08's camera",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=r08&idle=0&look=none&lod=1",
+   "settle": 3,
+   "dragon": {
+    "lod": 1,
+    "triangles": 5410,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "lod1-r08.png",
+     "sha256": "34a0340f368de27018f76b18db029c2da926164a5086a9ecfe60b18706e8fc91",
+     "bytes": 755016
+    },
+    {
+     "file": "lod1-r08.compare.png",
+     "sha256": "4fb6cf2bddeaf2f8d71a7a8c71c9f16ec9c3dc39091ba94670df90498ab68a99",
+     "bytes": 3687452
+    }
+   ]
+  },
+  {
+   "id": "lod2-r08",
+   "desc": "LOD2 forced at render 08's camera",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=r08&idle=0&look=none&lod=2",
+   "settle": 3,
+   "dragon": {
+    "lod": 2,
+    "triangles": 1476,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "lod2-r08.png",
+     "sha256": "a356a6170ccad4e78f0de6bf0175102f80293cf30a9f3122a80b6ffc910caa27",
+     "bytes": 710672
+    },
+    {
+     "file": "lod2-r08.compare.png",
+     "sha256": "1108fa0782b32536be00265bf2a75328ff7db13df1213406ccb77cee92d91b74",
+     "bytes": 3657724
+    }
+   ]
+  },
+  {
+   "id": "head-lod1",
+   "desc": "LOD1's parts on LOD1's body, the head close",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=head&look=none&idle=0&lod=1",
+   "settle": 3,
+   "dragon": {
+    "lod": 1,
+    "triangles": 5410,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "head-lod1.png",
+     "sha256": "c7b972763d1df2c423a60347c17be9f47455810053b98de6fb6b1a21e022bf89",
+     "bytes": 744819
+    }
+   ]
+  },
+  {
+   "id": "head-lod2",
+   "desc": "LOD2's horns on LOD2's body, the head close",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=head&look=none&idle=0&lod=2",
+   "settle": 3,
+   "dragon": {
+    "lod": 2,
+    "triangles": 1476,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "head-lod2.png",
+     "sha256": "53ce6fcd07997f6b5ff16c6438a39c052285d07503479087a4e22c9c726486e8",
+     "bytes": 716804
+    }
+   ]
+  },
+  {
+   "id": "bind-lod0-top",
+   "desc": "The bind pose (standing, wings spread) from above, LOD0: the membranes' upper face",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&pose=bind&cam=top&camEl=80&camDist=34&look=none&lod=0",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20890,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "bind-lod0-top.png",
+     "sha256": "09d03d480bd06d60b93a3f17f43e792b701dcd5177f9ce29b42d0d516f4c3a01",
+     "bytes": 532852
+    }
+   ]
+  },
+  {
+   "id": "bind-lod2-top",
+   "desc": "The bind pose from above, LOD2: the trailing edge G12a found showing the underside",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&pose=bind&cam=top&camEl=80&camDist=34&look=none&lod=2",
+   "settle": 3,
+   "dragon": {
+    "lod": 2,
+    "triangles": 1476,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "bind-lod2-top.png",
+     "sha256": "6e0972a34dbd265aa8b4a22d3c861c59f1e00a185a37465718ebf79193e53bfa",
+     "bytes": 525636
+    }
+   ]
+  },
+  {
+   "id": "bind-lod2-edge",
+   "desc": "The bind pose, LOD2, the left wing's trailing edge close from above and behind",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&pose=bind&cam=top&camAz=150&camEl=55&camDist=14&look=none&lod=2",
+   "settle": 3,
+   "dragon": {
+    "lod": 2,
+    "triangles": 1476,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "bind-lod2-edge.png",
+     "sha256": "4df4fb8ce26c48f10d3ba28cbfca542ed56cb4f836f1cdf74bcd358761fdcbea",
+     "bytes": 652274
+    }
+   ]
+  },
+  {
+   "id": "bind-lod0-edge",
+   "desc": "The same view at LOD0, for comparison",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&pose=bind&cam=top&camAz=150&camEl=55&camDist=14&look=none&lod=0",
+   "settle": 3,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20890,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "bind-lod0-edge.png",
+     "sha256": "b3e3f5a6d2d6d9d77d7982d72859f8885c2d30ed77e599c67c0bc75b283dd17a",
+     "bytes": 721648
+    }
+   ]
+  },
+  {
+   "id": "gameplay-40",
+   "desc": "Gameplay distance, 40 m at render 08's azimuth, the game's lens (62°); LOD by distance (0)",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=r08&fov=62&camDist=40&camEl=6&look=camera",
+   "settle": 4,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20890,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "gameplay-40.png",
+     "sha256": "b16007581242354772ec2c784a1d3ab18047052d98ec3edcb8dbc71ec8ce139b",
+     "bytes": 836928
+    }
+   ]
+  },
+  {
+   "id": "gameplay-110",
+   "desc": "Gameplay distance, 110 m, the game's lens; LOD by distance (1)",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=r08&fov=62&camDist=110&camEl=8&look=camera",
+   "settle": 4,
+   "dragon": {
+    "lod": 1,
+    "triangles": 5410,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "gameplay-110.png",
+     "sha256": "0e2edb1301e1e3ad5516a42af3334cd7473a696faf0fdbf7be6676d3f9bb4483",
+     "bytes": 911059
+    }
+   ]
+  },
+  {
+   "id": "gameplay-200",
+   "desc": "Gameplay distance, 200 m, the game's lens; LOD by distance (2)",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=r08&fov=62&camDist=200&camEl=10&look=camera",
+   "settle": 4,
+   "dragon": {
+    "lod": 2,
+    "triangles": 1476,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "gameplay-200.png",
+     "sha256": "adf769b5bd650a5540f2da4c6c2b6a0a62eb993ce5ff60f9096c0b5f24018799",
+     "bytes": 885730
+    }
+   ]
+  },
+  {
+   "id": "lineup-hue",
+   "desc": "Five white dragons across the white flight's hue range: 0, +1, +2, +3, +4 degrees, left to right, the same parts",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&lineup=hue&look=none&idle=0",
+   "settle": 4,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20890,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "lineup-hue.png",
+     "sha256": "c212baa351f9feac1607db7d72973be8385be5d13dbda0e31dec26b03bb19421",
+     "bytes": 839141
+    }
+   ]
+  },
+  {
+   "id": "lineup-hue-close",
+   "desc": "The hue lineup from the front-left, nearer",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&lineup=hue&look=none&idle=0&camDist=46&camAz=32&camEl=9",
+   "settle": 4,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20890,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "lineup-hue-close.png",
+     "sha256": "aebca3d5901e18c32e0fbe545ab5b295e3ed98ece1be34a7400c144c62c33a10",
+     "bytes": 766228
+    }
+   ]
+  },
+  {
+   "id": "lineup-hue-60",
+   "desc": "The hue lineup at gameplay distance, the game's lens",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&lineup=hue&look=none&idle=0&fov=62&camDist=70&camAz=20&camEl=10",
+   "settle": 4,
+   "dragon": {
+    "lod": 0,
+    "triangles": 20890,
+    "hueShift": 0
+   },
+   "files": [
+    {
+     "file": "lineup-hue-60.png",
+     "sha256": "0fd4ca3bd5be6541f01b862a0a7469293891ccca8e89355bcf762ddbde7becf3",
+     "bytes": 896300
+    }
+   ]
+  },
+  {
+   "id": "idle-head",
+   "desc": "Strip: the head following the camera as it orbits from the right front round to behind the left shoulder (22°/s), 1 s apart",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=head&camDist=13&camAz=-50&turntable=1&spin=22&look=camera",
+   "settle": 1,
+   "files": [
+    {
+     "file": "idle-head/f00.png",
+     "sha256": "d430a31add12955d50562ec36a754983509ca92666ed68edd1213163b4d149f7",
+     "bytes": 737718
+    },
+    {
+     "file": "idle-head/f01.png",
+     "sha256": "8909a30abbce5548f1a3dc05bca9a69b0946e81549701c806934e9835d4214b6",
+     "bytes": 749088
+    },
+    {
+     "file": "idle-head/f02.png",
+     "sha256": "9cdc11f01530a589b411a1eefcb305687554231aca57b427f761c948a0457b98",
+     "bytes": 790204
+    },
+    {
+     "file": "idle-head/f03.png",
+     "sha256": "97d65a30c04e7dc9946eec6f9abe2c13d780fe0888a423e3b6a58e31326b7554",
+     "bytes": 721607
+    },
+    {
+     "file": "idle-head/f04.png",
+     "sha256": "effd9f78403e2e7ea1c4fda9dd01a6741355c551acadc12775346eb834999e8e",
+     "bytes": 798945
+    },
+    {
+     "file": "idle-head/f05.png",
+     "sha256": "5ad0802bae2a1d9000b5c4db87a81c1ba292acfc6a0f98ad5d1351bfc118c717",
+     "bytes": 795368
+    },
+    {
+     "file": "idle-head/f06.png",
+     "sha256": "c359374a1891cc96746eccb95fb50b499ad5f7ce75d168ee8d7b1c3337490f69",
+     "bytes": 810365
+    },
+    {
+     "file": "idle-head/f07.png",
+     "sha256": "a883e5f84317ed8e367e1e3188b4ab50e7aa76e2fd11248e53808b30153b6add",
+     "bytes": 869358
+    },
+    {
+     "file": "idle-head.sheet.png",
+     "sha256": "c06d6ad7afb25722c363d76f7dc2b5cb4a5a631e00da68c83557ca4e92b4fef2",
+     "bytes": 2870496
+    }
+   ]
+  },
+  {
+   "id": "idle-blink",
+   "desc": "Strip: a blink cued at 3.3 s, the eye close, 0.06 s apart",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=eye&look=none&blink=3.3",
+   "settle": 3.24,
+   "files": [
+    {
+     "file": "idle-blink/f00.png",
+     "sha256": "99265648b81c4bc3e7f858e401522beb809cd4b00c25bd2f05f0d7c232283583",
+     "bytes": 845883
+    },
+    {
+     "file": "idle-blink/f01.png",
+     "sha256": "151ec8ed0c8d9f4cbad65296101e213d115aa48e0f959b518120cdae482a5520",
+     "bytes": 846806
+    },
+    {
+     "file": "idle-blink/f02.png",
+     "sha256": "12efce1e7cde052480ce7343a91d84d66a5ee4483e1ac5280320d714e321a14f",
+     "bytes": 845307
+    },
+    {
+     "file": "idle-blink/f03.png",
+     "sha256": "308e0b15ca78c43261100ee3fd4b5150c495e871b6adbe8dab3db25cb256f065",
+     "bytes": 844293
+    },
+    {
+     "file": "idle-blink/f04.png",
+     "sha256": "d4554fae9abf6733bb63b38bdeadf445e96da4012d9fafb42b6929ec27caad9d",
+     "bytes": 844835
+    },
+    {
+     "file": "idle-blink/f05.png",
+     "sha256": "3c99c50acb0b7c1d84491e48fa5e5982f598412c35d7843891b4bf43173611cd",
+     "bytes": 846170
+    },
+    {
+     "file": "idle-blink/f06.png",
+     "sha256": "c94ba7052c54d2d9643ec372219bbc521114687c99ba6f8b2526a4e8bfa3f75e",
+     "bytes": 846241
+    },
+    {
+     "file": "idle-blink/f07.png",
+     "sha256": "243e3b52ada46cb7544f0513880e6b2bb7a1822670460fb748099d517cfd5a12",
+     "bytes": 845301
+    },
+    {
+     "file": "idle-blink.sheet.png",
+     "sha256": "659814c8e327d4945289cc2bf2325d23ffba693eb94a0fce005a4c689e629561",
+     "bytes": 2379297
+    }
+   ]
+  },
+  {
+   "id": "idle-whiskers",
+   "desc": "Strip: the whiskers hanging from the lip and swaying, from low at the left front, 1 s apart",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=low&camDist=11&look=none",
+   "settle": 2,
+   "files": [
+    {
+     "file": "idle-whiskers/f00.png",
+     "sha256": "180a77719627944a8be89a6a225660f3c0b526f5768e57c2ae1f45e9dad88e4a",
+     "bytes": 828069
+    },
+    {
+     "file": "idle-whiskers/f01.png",
+     "sha256": "b205fee90bb9f487519f501620174b552aa97b6e4887aa07c00b1df843e86f1c",
+     "bytes": 827689
+    },
+    {
+     "file": "idle-whiskers/f02.png",
+     "sha256": "f04edd2d3406d0ea22f0ecb11fe41a0e6d4cf9cf94beae92cccfac8a1183d703",
+     "bytes": 829291
+    },
+    {
+     "file": "idle-whiskers/f03.png",
+     "sha256": "c035650135d38202de9e6d6fe3bf8e9f23d86e479e96a5db787acc6c3fed339e",
+     "bytes": 828542
+    },
+    {
+     "file": "idle-whiskers/f04.png",
+     "sha256": "73afde46361503e0e8b7a23a62c1d3c2eb73539b5c76d870db525242a01df3a5",
+     "bytes": 829144
+    },
+    {
+     "file": "idle-whiskers/f05.png",
+     "sha256": "4590cd1efa8253a084207d77def2babf1c0d5ea210dd198d41cf239ebdb62fec",
+     "bytes": 826873
+    },
+    {
+     "file": "idle-whiskers/f06.png",
+     "sha256": "855fa0f7958f8ab69b6dc526d84da7e32f9dc0e21fb479602badf922c5f4aa6c",
+     "bytes": 824605
+    },
+    {
+     "file": "idle-whiskers/f07.png",
+     "sha256": "b4aa9a405d040979158363777a14b62a581bebf1322545f9b6a5ba855f27f991",
+     "bytes": 827743
+    },
+    {
+     "file": "idle-whiskers.sheet.png",
+     "sha256": "688ca5c78eab5050ab8f8af14fb5aaa42306704581a023d1fff5f2e4950f5375",
+     "bytes": 2572657
+    }
+   ]
+  },
+  {
+   "id": "idle-wings-tail",
+   "desc": "Strip: the first wing settle (6 s) and the tail's wave, from above and behind, 0.4 s apart",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=wings&camDist=20&look=none",
+   "settle": 5.6,
+   "files": [
+    {
+     "file": "idle-wings-tail/f00.png",
+     "sha256": "8ef60a3f24d23a96439c16f582bef72e7d67b9707bab53d779163fd2ac9cbbff",
+     "bytes": 725051
+    },
+    {
+     "file": "idle-wings-tail/f01.png",
+     "sha256": "edfcb0f45d449490915f34d51ecd825007e26d4ea68d4ff9bd6fde9c7efc1c4a",
+     "bytes": 724702
+    },
+    {
+     "file": "idle-wings-tail/f02.png",
+     "sha256": "e13b71ef77a34b41c58e43edb1a29378441ea8ac91a3cf181a8916d95d147adf",
+     "bytes": 727143
+    },
+    {
+     "file": "idle-wings-tail/f03.png",
+     "sha256": "64259ed62ebbf90fe6edb848016f9699a7b4369033d3c8043b263aeb27648f8a",
+     "bytes": 726266
+    },
+    {
+     "file": "idle-wings-tail/f04.png",
+     "sha256": "85a81ac12b70998d40249c7d75bc8d79f9b7791d5a16e14e2e28c0e876211d65",
+     "bytes": 725629
+    },
+    {
+     "file": "idle-wings-tail/f05.png",
+     "sha256": "b75dd6651557dc8602a1bdbce826bb1d348584b88140f2d22e4e230a2ebf18ea",
+     "bytes": 726031
+    },
+    {
+     "file": "idle-wings-tail/f06.png",
+     "sha256": "86c93ebc8886ab7ffb28982f6cd615e31ce257411d2e3261dd23784efec3f145",
+     "bytes": 725450
+    },
+    {
+     "file": "idle-wings-tail/f07.png",
+     "sha256": "29dcda94a9ea216d1f6e62768b5be719ec7891aaac0be87283b31cb042c7ea9c",
+     "bytes": 725481
+    },
+    {
+     "file": "idle-wings-tail.sheet.png",
+     "sha256": "7a3d621e407a29eb3e14b4d665b453216e2e7112706d9cf524d503907f2072c9",
+     "bytes": 2362753
+    }
+   ]
+  },
+  {
+   "id": "idle-tail",
+   "desc": "Strip: the tail's travelling wave and the first flick of its end (4.5 s), from behind and above, 0.3 s apart",
+   "stage": "view=white-dragon&play=1&manual=1&quality=high&weather=clear&tod=0.66&cam=back&camTarget=2.5%2C0.5%2C-4&camDist=14&camEl=35&look=none",
+   "settle": 3.9,
+   "files": [
+    {
+     "file": "idle-tail/f00.png",
+     "sha256": "1002a15b3aaa259c980eebd03c2067b7043a05050ebe671d21e73b9fcc6fdcb5",
+     "bytes": 668606
+    },
+    {
+     "file": "idle-tail/f01.png",
+     "sha256": "9276ee1b57edddbe46bfbd72cf95a06b0edc9f875a4ede1576c81fa054b32026",
+     "bytes": 669165
+    },
+    {
+     "file": "idle-tail/f02.png",
+     "sha256": "719333be6d41ab98ea2fe348fdb33ff9ad2c186b791c02d868e28fd4e84f2def",
+     "bytes": 667941
+    },
+    {
+     "file": "idle-tail/f03.png",
+     "sha256": "629beba63232baebdd0bfef5ba2de9500d6d929573d6622b8f299f932911e523",
+     "bytes": 667361
+    },
+    {
+     "file": "idle-tail/f04.png",
+     "sha256": "f58b38bd986616e6037ce02894ec58084ed476d58dd5d5b216a745942dddbb02",
+     "bytes": 667243
+    },
+    {
+     "file": "idle-tail/f05.png",
+     "sha256": "e637f621b86148f0c75ac951f0782692ee864a72d7a8d43d98aa344bd8ae5b19",
+     "bytes": 667927
+    },
+    {
+     "file": "idle-tail/f06.png",
+     "sha256": "0d507d70db998a4c617ba66b33ea91c17f91bc71be5e0f1380860a201fb3729c",
+     "bytes": 667572
+    },
+    {
+     "file": "idle-tail/f07.png",
+     "sha256": "a137f27f8a8802c78c13ac7abe91ae180ebb9dcb0fcb6894f121e3e9e264ea0f",
+     "bytes": 667259
+    },
+    {
+     "file": "idle-tail.sheet.png",
+     "sha256": "76afe6a52fdd774ab768801d48097ca689b492cb1b948d158a21dad8d73cbb13",
+     "bytes": 2064974
+    }
+   ]
+  }
+ ]
+}

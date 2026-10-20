@@ -162,6 +162,8 @@ Robert, 2026-10-19: "Begin work on the white dragon." That is read as the white 
 
 "With accuracy" is applied as: numbers come from a named source (render 08 now, the approved reference sheet when it exists), provisional ones are marked as such, and every claim about the build is backed by a test or a capture.
 
+**G12b accepted, 2026-10-19.** Robert, on the third set of captures (the flatter eye, the reworked toes, the 0° to +4° lineup): "looks good and merged." He merged [PR #16](https://github.com/rporter33/HAVENS-OF-THE-DRIFT/pull/16) into `gate/g12a-white-dragon` and asked for that branch to go into `main` with this note. The resting showcase stays dev-only. Not done: timing Medium on his GPU. G12c, the dragon on its tower at Windhaven and in the normal build, is next when he opens it.
+
 ### Q47f · The white elder dragon's name, and whether it speaks — open
 
 ### Q48 · Dragon customization, and colour within a flight — answered 2026-10-19
@@ -178,6 +180,12 @@ Follow-ups, with recommendations:
 
 **Follow-ups answered 2026-10-19.** Robert: "Parts - across flights, hue shift is good, we customize the elders they're characters." The "parts" reading is confirmed. 48a: every part fits every flight's dragon. 48b: ±8°, as proposed. 48c: the elders' dragons are characters whose looks we author; this answer gives the player no dragon customization.
 
+**From G12b's lineup, 2026-10-19.** Of the five white dragons at −8°, −4°, 0°, +4° and +8°, Robert said: "for the hue shift, left to right, kind of like either +4 or 0." Recorded as his preference: the white elder stays at 0°, and +4° is the other shift he likes.
+
+**The white flight's range narrowed, 2026-10-19.** Asked whether to narrow the white flight's hue shift to 0° to +4°, Robert answered: "Yes: narrow the white flight's hue shift to 0° to +4°, and redo the lineup across that range." Each flight now has its own range inside the ±8° bound of 48b (`FLIGHT_HUE_RANGE`, `creatures/dragon/look.ts`). The white flight's is 0° to +4°; the other four keep the full ±8° until their own lineups are judged. G12b's lineup now shows 0°, +1°, +2°, +3° and +4°.
+
+**The white flight's horn colour, 2026-10-19.** G12b proposed `#e4d8be` for the kit's "pale bone ivory", which had no value: the midpoint of the hide's ivory and the wyverns' bone horn. Robert: "the horn should be an off white color so current is looking good." Settled; it is the white palette's `horns` (`creatures/dragon/look.ts`).
+
 ### Q49 · Meshy plan: who owns the generated models? — answered 2026-10-19
 Robert: "mark it down that i have meshy pro plan so we own these models for blender and game use."
 
@@ -193,9 +201,15 @@ What still applies:
 
 This is Robert's statement plus the guide's summary of the terms, not a legal review of any one asset.
 
-### Q50 · The white dragon's size, wing and membrane root — open
+### Q50 · The white dragon's size, wing and membrane root — answered 2026-10-19
 Measuring Robert's approved sheet and Meshy body for G12a, 2026-10-19 ([the white dragon](WHITE_DRAGON.md#the-approved-sheet-and-the-meshy-body)), turned up three things the sheet can't settle by itself. Each is built as recommended until Robert answers; changing one is a change to `proportions.ts` and a re-run of the fit.
 - **a. Size.** The sheet has no scale. *Built: render 08's five body readings (head, neck, torso, tail, back height), their geometric mean. The dragon is 20.3 m from nose to tail tip along the skeleton (the provisional rig from render 08: 20.6 m), its body center 3.4 m off the ground, its wings 21.8 m spread flat at the fingers' ends.* Other choices: the head alone (about the same), or render 08's leg readings too, which would make it about 7% smaller. Those were taken lying down.
 - **b. The wing.** Side view C's raised wing is too large for the other views: its leading finger alone would spread the wings to about 25 m, where the front view shows about 16.5 m. *Built: the Meshy body's wing bones, which span 20.7 m as modelled and 21.8 m spread flat; the wing's root stays where C puts it.* Other choice: C's wing, about 25 m.
 - **c. The membrane's root.** C ties the membrane's trailing edge to the top of the rump, about 0.5 m behind the hip. That's clear of the leg, but it isn't the kit's "flank just in front of the hind legs". *Built: as the design and the Meshy body have it, 0.65 m ahead of the hip.*
 - **d. Noted, not asked.** The approved sheet's tail is 2.1 times nose to hips and its neck 0.65 times shoulder to hips, where the kit asked for about 1.33 and 0.75. The skeleton follows the approved sheet.
+
+**Answered 2026-10-19.** Robert, after the recommendations were set out to him: "im okay with reccomendations, continue". So all three stand as built, and nothing is rebuilt:
+- **a.** The size comes from render 08's five body readings: 20.3 m from nose to tail tip along the skeleton, the body center 3.4 m off the ground.
+- **b.** The wing comes from the Meshy body, 21.8 m spread flat, rooted where side view C roots it.
+- **c.** The membrane meets the flank 0.65 m ahead of the hip.
+- **d.** Unchanged: the skeleton follows the approved sheet's tail and neck.

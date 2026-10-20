@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DRAGON_PART_SLOTS, FLIGHT_PALETTES, HUE_SHIFT_MAX_DEG, dragonPalette, hexToOklch, oklchToHex, shiftHue, type DragonLook, type DragonPalette } from './look';
+import { DRAGON_PART_SLOTS, FLIGHT_HUE_RANGE, FLIGHT_PALETTES, HUE_SHIFT_MAX_DEG, dragonPalette, hexToOklch, hueRange, oklchToHex, shiftHue, type DragonLook, type DragonPalette } from './look';
 
 const look = (hueShift: number): DragonLook => ({
   flight: 'white',
@@ -47,7 +47,7 @@ describe('OKLCH', () => {
 describe('dragon palette', () => {
   it('has every region for the white flight, as #rrggbb', () => {
     const p = FLIGHT_PALETTES.white!;
-    const keys: (keyof DragonPalette)[] = ['hide', 'belly', 'plates', 'membrane', 'wingBones', 'claws', 'eyes'];
+    const keys: (keyof DragonPalette)[] = ['hide', 'belly', 'plates', 'membrane', 'wingBones', 'claws', 'eyes', 'horns'];
     for (const k of keys) expect(p[k]).toMatch(/^#[0-9a-f]{6}$/);
   });
 
@@ -55,15 +55,23 @@ describe('dragon palette', () => {
     expect(dragonPalette(look(0))).toEqual(FLIGHT_PALETTES.white);
   });
 
-  it('clamps the shift to the ±8° within a flight (Q48b)', () => {
+  it('clamps the shift to its flight\'s range: the white flight 0° to +4°, inside the ±8° bound (Q48)', () => {
     expect(HUE_SHIFT_MAX_DEG).toBe(8);
-    expect(dragonPalette(look(30))).toEqual(dragonPalette(look(8)));
-    expect(dragonPalette(look(-30))).toEqual(dragonPalette(look(-8)));
+    expect(FLIGHT_HUE_RANGE.white).toEqual([0, 4]);
+    expect(dragonPalette(look(30))).toEqual(dragonPalette(look(4)));
+    expect(dragonPalette(look(-30))).toEqual(FLIGHT_PALETTES.white);
+    expect(dragonPalette(look(-4))).toEqual(FLIGHT_PALETTES.white);
+    // A flight not yet judged keeps the full bound.
+    expect(hueRange('red')).toEqual([-HUE_SHIFT_MAX_DEG, HUE_SHIFT_MAX_DEG]);
+    for (const [lo, hi] of Object.values(FLIGHT_HUE_RANGE)) {
+      expect(lo).toBeGreaterThanOrEqual(-HUE_SHIFT_MAX_DEG);
+      expect(hi).toBeLessThanOrEqual(HUE_SHIFT_MAX_DEG);
+    }
   });
 
   it('keeps a shifted white dragon white: the plates stay powder blue, the hide stays ivory', () => {
     const base = FLIGHT_PALETTES.white!;
-    for (const d of [-8, 8]) {
+    for (const d of [2, 4]) {
       const p = dragonPalette(look(d));
       // A small hue change: the plates move by about the shift, and the near-neutral hide by at
       // most a couple of 8-bit steps.
@@ -74,7 +82,7 @@ describe('dragon palette', () => {
   });
 
   it('is deterministic', () => {
-    expect(dragonPalette(look(5.5))).toEqual(dragonPalette(look(5.5)));
+    expect(dragonPalette(look(2.5))).toEqual(dragonPalette(look(2.5)));
   });
 
   it('refuses a flight with no palette yet', () => {
